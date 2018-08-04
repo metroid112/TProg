@@ -3,6 +3,8 @@ public class TProg {
 		int i = 1;
 		int l = 2;
 		int x = 8;
+		//kjhjh
 		// hola
+		//ñalsdkfsdjf
 	}
 }
