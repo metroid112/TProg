@@ -7,7 +7,7 @@ public class CtrlUsuariosCanales {
 		
 	}
 	
-	public static CtrlUsuariosCanales getCtrlVideos() {
+	public static CtrlUsuariosCanales getCtrlUsuariosCanales() {
 		if (instancia == null) {
 			instancia = new CtrlUsuariosCanales();
 		}
