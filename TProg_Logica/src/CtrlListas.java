@@ -1,5 +1,5 @@
 
-public class CtrlListas {
+public class CtrlListas implements IListas {
 
 	private static CtrlListas instancia = null;
 	

@@ -1,5 +1,5 @@
 
-public class CtrlUsuariosCanales {
+public class CtrlUsuariosCanales implements IUsuariosCanales {
 
 	private static CtrlUsuariosCanales instancia = null;
 	

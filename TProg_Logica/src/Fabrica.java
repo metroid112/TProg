@@ -11,20 +11,20 @@ public class Fabrica {
 		}
 		return instancia;
 	}
-	/////////////// Pato: Mas tarde se sustituye Ctrl por interfaz?
-	public CtrlVideos getCtrlVideos() {
+
+	public IVideos getIVideos() {
 		return CtrlVideos.getCtrlVideos();
 	}
 	
-	public CtrlUsuariosCanales getCtrlUsuariosCanales() {
+	public IUsuariosCanales getIUsuariosCanales() {
 		return CtrlUsuariosCanales.getCtrlUsuariosCanales();
 	}
 	
-	public CtrlListas getCtrlListas() {
+	public IListas getIListas() {
 		return CtrlListas.getCtrlListas();
 	}
 	
-	public CtrlCategorias getCtrlCategorias() {
+	public ICategorias getICategorias() {
 		return CtrlCategorias.getCtrlCategorias();
 	}
 }

@@ -1,5 +1,5 @@
 
-public class CtrlCategorias {
+public class CtrlCategorias implements ICategorias {
 	
 	private static CtrlCategorias instancia = null;
 	

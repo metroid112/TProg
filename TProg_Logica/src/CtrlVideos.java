@@ -1,5 +1,5 @@
 
-public class CtrlVideos {
+public class CtrlVideos implements IVideos {
 
 	private static CtrlVideos instancia = null;
 	
