@@ -1,10 +1,8 @@
-
 public class Fabrica {
 	
 	private static Fabrica instancia;
 	
-	private Fabrica() {
-		
+	private Fabrica() {		
 	}
 	
 	public static Fabrica getFabrica() {
@@ -13,6 +11,20 @@ public class Fabrica {
 		}
 		return instancia;
 	}
+	/////////////// Pato: Mas tarde se sustituye Ctrl por interfaz?
+	public CtrlVideos getCtrlVideos() {
+		return CtrlVideos.getCtrlVideos();
+	}
 	
-
+	public CtrlUsuariosCanales getCtrlUsuariosCanales() {
+		return CtrlUsuariosCanales.getCtrlUsuariosCanales();
+	}
+	
+	public CtrlListas getCtrlListas() {
+		return CtrlListas.getCtrlListas();
+	}
+	
+	public CtrlCategorias getCtrlCategorias() {
+		return CtrlCategorias.getCtrlCategorias();
+	}
 }

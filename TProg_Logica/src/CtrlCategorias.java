@@ -7,7 +7,7 @@ public class CtrlCategorias {
 		
 	}
 	
-	public static CtrlCategorias getInstancia() {
+	public static CtrlCategorias getCtrlCategorias() {
 		if (instancia == null)  {
 			instancia = new CtrlCategorias();
 		}
