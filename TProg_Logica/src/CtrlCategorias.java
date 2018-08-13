@@ -1,7 +1,7 @@
 
 public class CtrlCategorias {
 	
-	private static CtrlCategorias instancia;
+	private static CtrlCategorias instancia = null;
 	
 	private CtrlCategorias(){
 		

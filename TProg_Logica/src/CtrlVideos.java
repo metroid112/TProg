@@ -1,7 +1,7 @@
 
 public class CtrlVideos {
 
-	private static CtrlVideos instancia;
+	private static CtrlVideos instancia = null;
 	
 	private CtrlVideos() {
 		

@@ -1,6 +1,6 @@
 public class Fabrica {
 	
-	private static Fabrica instancia;
+	private static Fabrica instancia = null;
 	
 	private Fabrica() {		
 	}

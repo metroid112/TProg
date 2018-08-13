@@ -1,7 +1,7 @@
 
 public class CtrlUsuariosCanales {
 
-	private static CtrlUsuariosCanales instancia;
+	private static CtrlUsuariosCanales instancia = null;
 	
 	private CtrlUsuariosCanales() {
 		
