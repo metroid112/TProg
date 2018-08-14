@@ -25,4 +25,8 @@ hs_err_pid*
 
 # ignore Eclipse project bin
 /TProg_Logica/bin
+/TProg_Logica/.classpath
+/TProg_Logica/.project
 /TProg_Presentacion/bin
+/TProg_Presentacion/.classpath
+/TProg_Presentacion/.project
