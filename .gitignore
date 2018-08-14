@@ -22,3 +22,7 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /bin/
+
+# ignore Eclipse project bin
+/TProg_Logica/bin
+/TProg_Presentacion/bin
