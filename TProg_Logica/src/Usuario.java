@@ -9,13 +9,29 @@ public class Usuario {
 	private DtTiempo nacimiento;
 	private Image imagen;
 	
-	public Usuario(String nick, String nombre, String apellido, String correo, DtTiempo nacimiento, Image imagen) {
+	private Canal canal;
+	private Comentario[] comentarios;
+	private Calificacion[] calificaciones;
+	private Usuario[] seguidores;
+	private Usuario[] seguidos;
+	
+	public Usuario() {}
+	
+	// Pato: Constructor con todos los atributos, posiblemente se precise cortar algunos
+	public Usuario(String nick, String nombre, String apellido, String correo, DtTiempo nacimiento, Image imagen,
+			Canal canal, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
+			Usuario[] seguidos) {
 		this.nick = nick;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
 		this.nacimiento = nacimiento;
 		this.imagen = imagen;
+		this.canal = canal;
+		this.comentarios = comentarios;
+		this.calificaciones = calificaciones;
+		this.seguidores = seguidores;
+		this.seguidos = seguidos;
 	}
 
 	public String getNick() {
@@ -42,6 +58,26 @@ public class Usuario {
 		return imagen;
 	}
 
+	public Canal getCanal() {
+		return canal;
+	}
+
+	public Comentario[] getComentarios() {
+		return comentarios;
+	}
+
+	public Calificacion[] getCalificaciones() {
+		return calificaciones;
+	}
+
+	public Usuario[] getSeguidores() {
+		return seguidores;
+	}
+
+	public Usuario[] getSeguidos() {
+		return seguidos;
+	}
+
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
@@ -64,5 +100,25 @@ public class Usuario {
 
 	public void setImagen(Image imagen) {
 		this.imagen = imagen;
-	}	
+	}
+
+	public void setCanal(Canal canal) {
+		this.canal = canal;
+	}
+
+	public void setComentarios(Comentario[] comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	public void setCalificaciones(Calificacion[] calificaciones) {
+		this.calificaciones = calificaciones;
+	}
+
+	public void setSeguidores(Usuario[] seguidores) {
+		this.seguidores = seguidores;
+	}
+
+	public void setSeguidos(Usuario[] seguidos) {
+		this.seguidos = seguidos;
+	}
 }
