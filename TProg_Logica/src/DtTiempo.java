@@ -47,7 +47,6 @@ public class DtTiempo {
 		return segundo;
 	}
 
-
 	public void setAnio(int anio) {
 		this.anio = anio;
 	}
