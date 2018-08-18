@@ -1,8 +1,9 @@
 
 public class ListaParticular extends Lista {
 	private boolean visible;
-	
-	public ListaParticular() {}
+
+	public ListaParticular() {
+	}
 
 	public ListaParticular(String nombre, Canal canal, Video[] videos, Categoria[] categorias, boolean visible) {
 		super(nombre, canal, videos, categorias);
@@ -15,5 +16,5 @@ public class ListaParticular extends Lista {
 
 	public void setVisible(boolean visible) {
 		this.visible = visible;
-	}	
+	}
 }

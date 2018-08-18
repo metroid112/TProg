@@ -1,19 +1,6 @@
 
 public class CtrlVideos implements IVideos {
+	public CtrlVideos() {
 
-	private static CtrlVideos instancia = null;
-	
-	private CtrlVideos() {
-		
 	}
-	
-	public static CtrlVideos getCtrlVideos() {
-		if (instancia == null) {
-			instancia = new CtrlVideos();
-		}
-		return instancia;
-	}
-	
-
-
 }

@@ -8,16 +8,18 @@ public class Usuario {
 	private String correo;
 	private DtTiempo nacimiento;
 	private Image imagen;
-	
+
 	private Canal canal;
 	private Comentario[] comentarios;
 	private Calificacion[] calificaciones;
 	private Usuario[] seguidores;
 	private Usuario[] seguidos;
-	
-	public Usuario() {}
-	
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar algunos
+
+	public Usuario() {
+	}
+
+	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
+	// algunos
 	public Usuario(String nick, String nombre, String apellido, String correo, DtTiempo nacimiento, Image imagen,
 			Canal canal, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) {
