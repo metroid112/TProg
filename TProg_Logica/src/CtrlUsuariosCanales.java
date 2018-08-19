@@ -1,7 +1,7 @@
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
 
-	private ManejadorUsuario manejadorUsuario;
+	private ManejadorUsuarios manejadorUsuario;
 	
 	public CtrlUsuariosCanales() {
 
