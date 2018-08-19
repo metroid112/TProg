@@ -1,5 +1,5 @@
 
-public class ManejadorUsuarios {
+public class ManejadorUsuarios implements Manejador {
 
 	private Usuario[] usuarios;
 }
