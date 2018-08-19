@@ -1,4 +1,4 @@
-
+// Pato: Se sustituye por Date?
 public class DtTiempo {
 
 	private int anio;
