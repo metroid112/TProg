@@ -1,18 +1,19 @@
 
 public class Calificacion {
-	
+
 	private boolean like;
-	
+
 	private Usuario usuario;
 	private Video video;
-	
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar algunos
+
+	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
+	// algunos
 	public Calificacion(boolean like, Usuario user, Video video) {
-		this.like  = like;
-		this.usuario  = user;
+		this.like = like;
+		this.usuario = user;
 		this.video = video;
 	}
-	
+
 	public boolean getLike() {
 		return this.like;
 	}

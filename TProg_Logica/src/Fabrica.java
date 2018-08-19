@@ -1,10 +1,10 @@
 public class Fabrica {
-	
+
 	private static Fabrica instancia = null;
-	
-	private Fabrica() {		
+
+	private Fabrica() {
 	}
-	
+
 	public static Fabrica getFabrica() {
 		if (instancia == null) {
 			instancia = new Fabrica();
@@ -13,18 +13,18 @@ public class Fabrica {
 	}
 
 	public IVideos getIVideos() {
-		return CtrlVideos.getCtrlVideos();
+		return new CtrlVideos();
 	}
-	
+
 	public IUsuariosCanales getIUsuariosCanales() {
-		return CtrlUsuariosCanales.getCtrlUsuariosCanales();
+		return new CtrlUsuariosCanales();
 	}
-	
+
 	public IListas getIListas() {
-		return CtrlListas.getCtrlListas();
+		return new CtrlListas();
 	}
-	
+
 	public ICategorias getICategorias() {
-		return CtrlCategorias.getCtrlCategorias();
+		return new CtrlCategorias();
 	}
 }
