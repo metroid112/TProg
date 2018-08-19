@@ -4,23 +4,27 @@ public class Canal {
 	private String nombre;
 	private String descripcion;
 	private boolean visible;
-	
+
 	private Usuario usuario;
 	private Video[] videos;
-	private Lista[] listas;
+	private ListaDefecto[] listaDefecto;
+	private ListaParticular[] listaParticulares;
 	private Categoria categoria;
-	
-	public Canal() {}
 
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar algunos
-	public Canal(String nombre, String descripcion, boolean visible, Usuario usuario, Video[] videos, Lista[] listas,
-			Categoria categoria) {
+	public Canal() {
+	}
+
+	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
+	// algunos
+	public Canal(String nombre, String descripcion, boolean visible, Usuario usuario, Video[] videos,
+			ListaDefecto[] listaDefecto, ListaParticular[] listaParticulares, Categoria categoria) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.visible = visible;
 		this.usuario = usuario;
 		this.videos = videos;
-		this.listas = listas;
+		this.listaDefecto = listaDefecto;
+		this.listaParticulares = listaParticulares;
 		this.categoria = categoria;
 	}
 
@@ -39,13 +43,17 @@ public class Canal {
 	public Usuario getUsuario() {
 		return usuario;
 	}
+	
+	public Lista[] getListaDefecto() {
+		return listaDefecto;
+	}
+
+	public Lista[] getListaParticulares() {
+		return listaParticulares;
+	}
 
 	public Video[] getVideos() {
 		return videos;
-	}
-
-	public Lista[] getListas() {
-		return listas;
 	}
 
 	public Categoria getCategoria() {
@@ -67,16 +75,20 @@ public class Canal {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	public void setListaDefecto(ListaDefecto[] listaDefecto) {
+		this.listaDefecto = listaDefecto;
+	}
+
+	public void setListaParticulares(ListaParticular[] listaParticulares) {
+		this.listaParticulares = listaParticulares;
+	}
 
 	public void setVideos(Video[] videos) {
 		this.videos = videos;
 	}
 
-	public void setListas(Lista[] listas) {
-		this.listas = listas;
-	}
-
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}	
+	}
 }

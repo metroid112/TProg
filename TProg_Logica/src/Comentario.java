@@ -1,17 +1,19 @@
 
 public class Comentario {
-	
+
 	private String texto;
 	private DtTiempo fecha;
-	
+
 	private Usuario usuario;
 	private Video video;
 	private Comentario padre;
 	private Comentario[] respuestas;
-	
-	public Comentario() {}
-	
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar algunos
+
+	public Comentario() {
+	}
+
+	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
+	// algunos
 	public Comentario(String texto, DtTiempo fecha, Usuario usuario, Video video, Comentario padre,
 			Comentario[] respuestas) {
 		this.texto = texto;
@@ -68,5 +70,5 @@ public class Comentario {
 
 	public void setRespuestas(Comentario[] respuestas) {
 		this.respuestas = respuestas;
-	}	
+	}
 }

@@ -1,18 +1,9 @@
 
 public class CtrlListas implements IListas {
+	
+	private ManejadorListas manejadorListas;
 
-	private static CtrlListas instancia = null;
-	
-	private CtrlListas() {
-		
-	}
-	
-	public static CtrlListas getCtrlListas() {
-		if (instancia == null) {
-			instancia = new CtrlListas();
-		}
-		return instancia;
-	}
-	
+	public CtrlListas() {
 
+	}
 }

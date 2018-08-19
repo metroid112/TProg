@@ -1,22 +1,24 @@
 
 public class Video {
-	
+
 	private String nombre;
 	private String descripcion;
 	private int duracion;
 	private DtTiempo fecha;
 	private String url;
 	private boolean visible;
-	
+
 	private Categoria categoria;
 	private Lista[] listas;
 	private Canal canal;
 	private Calificacion[] calificaciones;
 	private Comentario[] comentarios;
-	
-	public Video() {}
 
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar algunos
+	public Video() {
+	}
+
+	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
+	// algunos
 	public Video(String nombre, String descripcion, int duracion, DtTiempo fecha, String url, boolean visible,
 			Categoria categoria, Lista[] listas, Canal canal, Calificacion[] calificaciones, Comentario[] comentarios) {
 		this.nombre = nombre;
