@@ -4,10 +4,18 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.BorderLayout;
+import javax.swing.JInternalFrame;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class Main {
 
 	private JFrame frame;
+	private AltaCategoria categoria;
 
 	/**
 	 * Launch the application.
@@ -30,6 +38,11 @@ public class Main {
 	 */
 	public Main() {
 		initialize();
+		
+		categoria = new AltaCategoria();
+		categoria.setVisible(false);
+		
+		frame.getContentPane().add(categoria);
 	}
 
 	/**
@@ -78,6 +91,11 @@ public class Main {
 		menuBar.add(mnCategora);
 		
 		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
+		mntmAltaCategora.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				categoria.setVisible(true);
+			}
+		});
 		mnCategora.add(mntmAltaCategora);
 		
 		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
@@ -103,6 +121,9 @@ public class Main {
 		
 		JMenuItem mntmConsultaLista = new JMenuItem("Consulta Lista");
 		mnLista.add(mntmConsultaLista);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+
 	}
 
 }
