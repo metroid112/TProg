@@ -4,9 +4,13 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class Main {
 
+	private CrearListaReproduccion crl;
 	private JFrame frame;
 
 	/**
@@ -30,7 +34,10 @@ public class Main {
 	 */
 	public Main() {
 		initialize();
+		crl = new CrearListaReproduccion();
+		crl.setVisible(false);
 		
+		frame.getContentPane().add(crl);
 		
 	}
 
@@ -92,6 +99,11 @@ public class Main {
 		menuBar.add(mnLista);
 		
 		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
+		mntmAltaLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				crl.setVisible(true);
+			}
+		});
 		mnLista.add(mntmAltaLista);
 		
 		JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
