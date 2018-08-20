@@ -16,6 +16,7 @@ public class Main {
 
 	private JFrame frame;
 	private AltaCategoria categoria;
+	private ListarCategorias lista;
 
 	/**
 	 * Launch the application.
@@ -24,6 +25,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					Main window = new Main();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -37,18 +39,31 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
+		
+		
 		initialize();
 		
 		categoria = new AltaCategoria();
 		categoria.setVisible(false);
 		
+		lista = new ListarCategorias();
+		lista.setVisible(false);
+		
+		frame.getContentPane().add(lista);
 		frame.getContentPane().add(categoria);
+		
+
+		
+		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,8 +108,10 @@ public class Main {
 		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
 		mntmAltaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				categoria.setVisible(true);
-			}
+				if (!ventanasAbiertas(categoria.isVisible(),lista.isVisible()))
+						categoria.setVisible(true);
+				}		
+			
 		});
 		mnCategora.add(mntmAltaCategora);
 		
@@ -102,6 +119,14 @@ public class Main {
 		mnCategora.add(mntmConsultaCategora);
 		
 		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
+		mntmListarCategoria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas(categoria.isVisible(),lista.isVisible()))
+					lista.setVisible(true);
+				}
+				
+			
+		});
 		mnCategora.add(mntmListarCategoria);
 		
 		JMenu mnLista = new JMenu("Lista");
@@ -124,6 +149,10 @@ public class Main {
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 
+	}
+
+	private Boolean ventanasAbiertas(Boolean b1,Boolean b2){
+		return b1 || b2;
 	}
 
 }

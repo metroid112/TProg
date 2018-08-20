@@ -29,6 +29,12 @@ public class AltaCategoria extends JInternalFrame{
 		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//puedoAbrirVentana = true;
+				setVisible(false);
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -64,6 +70,7 @@ public class AltaCategoria extends JInternalFrame{
 			JOptionPane.showMessageDialog(this, "La categoria no puede ser vacia.");
 		}
 		else{
+			//ctrlCategoria.AltaCategoria(textField.getText(),null,null,null);		
 			JOptionPane.showMessageDialog(this, "¡Se ha creado la categoria con exito!");
 			textField.setText("");
 			setVisible(false);
