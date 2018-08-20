@@ -26,3 +26,6 @@ hs_err_pid*
 # ignore Eclipse project bin
 /TProg_Logica/bin
 /TProg_Presentacion/bin
+
+# ignore .metadata ?
+.metadata/
