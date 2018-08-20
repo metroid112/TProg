@@ -1,6 +1,6 @@
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class CrearListaReproduccion extends JInternalFrame {
 
-	private JFrame frame;
+	private JFrame frmCrearListaDe;
 
 	
 	private JTextField textFieldNombre;
@@ -29,7 +29,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 			public void run() {
 				try {
 					CrearListaReproduccion window = new CrearListaReproduccion();
-					window.frame.setVisible(true);
+					window.frmCrearListaDe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -48,10 +48,11 @@ public class CrearListaReproduccion extends JInternalFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		//internalFrame.setVisible(true);
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frmCrearListaDe = new JFrame();
+		frmCrearListaDe.setTitle("Crear lista de reproducci\u00F3n");
+		frmCrearListaDe.setBounds(100, 100, 474, 311);
+		frmCrearListaDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblTipoDeLista = new JLabel("Tipo de lista");
 		
@@ -67,8 +68,10 @@ public class CrearListaReproduccion extends JInternalFrame {
 		textFieldNombre.setColumns(10);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
+		lblNombreDeUsuario.setEnabled(false);
 		
 		JComboBox comboBoxUsuario = new JComboBox();
+		comboBoxUsuario.setEnabled(false);
 		
 		JRadioButton rdbtnPrivada = new JRadioButton("Privada");
 		rdbtnPrivada.setEnabled(false);
@@ -78,52 +81,55 @@ public class CrearListaReproduccion extends JInternalFrame {
 		rdbtnPublica.setEnabled(false);
 		
 		JLabel lblCategora = new JLabel("Categor\u00EDa");
+		lblCategora.setEnabled(false);
 		
 		JComboBox comboBoxCategoria = new JComboBox();
+		comboBoxCategoria.setEnabled(false);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		
 		JButton btnCrear = new JButton("Crear");
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+
+		GroupLayout groupLayout = new GroupLayout(frmCrearListaDe.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(22)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNombreDeUsuario)
-						.addComponent(lblTipoDeLista)
-						.addComponent(lblNombre)
-						.addComponent(lblCategora))
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(comboBoxCategoria, 0, 170, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(rdbtnPorDefecto)
+							.addContainerGap(265, Short.MAX_VALUE)
+							.addComponent(btnCrear))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(22)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNombreDeUsuario)
+								.addComponent(lblNombre)
+								.addComponent(lblCategora)
+								.addComponent(lblTipoDeLista))
 							.addGap(18)
-							.addComponent(rdbtnParticular))
-						.addComponent(textFieldNombre)
-						.addComponent(comboBoxUsuario, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addComponent(rdbtnPrivada)
-							.addPreferredGap(ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-							.addComponent(rdbtnPublica)))
-					.addGap(134))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(250, Short.MAX_VALUE)
-					.addComponent(btnCrear)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(comboBoxCategoria, 0, 194, Short.MAX_VALUE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(rdbtnPorDefecto)
+									.addGap(18)
+									.addComponent(rdbtnParticular))
+								.addComponent(textFieldNombre, 194, 194, 194)
+								.addComponent(comboBoxUsuario, 0, 194, Short.MAX_VALUE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(rdbtnPrivada)
+									.addPreferredGap(ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+									.addComponent(rdbtnPublica)))))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnCancelar)
-					.addContainerGap())
+					.addGap(49))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(38)
+					.addGap(31)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblTipoDeLista)
-						.addComponent(rdbtnParticular)
-						.addComponent(rdbtnPorDefecto))
+						.addComponent(rdbtnPorDefecto)
+						.addComponent(rdbtnParticular))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre)
@@ -142,18 +148,20 @@ public class CrearListaReproduccion extends JInternalFrame {
 						.addComponent(comboBoxCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCancelar)
-						.addComponent(btnCrear))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(btnCrear)
+						.addComponent(btnCancelar))
+					.addContainerGap(18, Short.MAX_VALUE))
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		frmCrearListaDe.getContentPane().setLayout(groupLayout);
 		
 		rdbtnParticular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				rdbtnPorDefecto.setSelected(false);
 				
-				comboBoxUsuario.setEditable(true);
-				comboBoxCategoria.setEditable(true);
+				lblNombreDeUsuario.setEnabled(true);
+				lblCategora.setEnabled(true);
+				comboBoxUsuario.setEnabled(true);
+				comboBoxCategoria.setEnabled(true);
 				rdbtnPrivada.setEnabled(true);
 				rdbtnPublica.setEnabled(true);
 			}
@@ -163,8 +171,10 @@ public class CrearListaReproduccion extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				rdbtnParticular.setSelected(false);
 				
-				comboBoxUsuario.setEditable(false);
-				comboBoxCategoria.setEditable(false);
+				lblNombreDeUsuario.setEnabled(false);
+				lblCategora.setEnabled(false);
+				comboBoxUsuario.setEnabled(false);
+				comboBoxCategoria.setEnabled(false);
 				rdbtnPrivada.setEnabled(false);
 				rdbtnPublica.setEnabled(false);
 			}
@@ -184,5 +194,19 @@ public class CrearListaReproduccion extends JInternalFrame {
 			}
 		});
 		
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmCrearListaDe.setVisible(false);
+			}
+		});
+		
+		btnCrear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//if(textFieldNombre.getText() == null)
+				//mostrar JDialog
+				//if(existeUsuario(textFieldNombre.getText())
+					
+			}
+		});
 	}
 }
