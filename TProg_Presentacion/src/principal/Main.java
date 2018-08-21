@@ -1,3 +1,4 @@
+package principal;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -6,6 +7,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+import internalFrames.AltaCategoria;
+import internalFrames.ConsultaCategoria;
+import internalFrames.Dummy;
+import internalFrames.ListarCategorias;
+
 import java.awt.BorderLayout;
 import javax.swing.JInternalFrame;
 import java.awt.event.ActionListener;

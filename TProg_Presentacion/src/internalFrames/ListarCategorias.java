@@ -1,3 +1,4 @@
+package internalFrames;
 import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;

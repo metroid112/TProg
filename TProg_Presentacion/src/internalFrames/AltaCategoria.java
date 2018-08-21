@@ -1,3 +1,4 @@
+package internalFrames;
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
