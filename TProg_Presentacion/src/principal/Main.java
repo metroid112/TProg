@@ -23,7 +23,7 @@ public class Main {
 
 	private JFrame frame;
 	private AltaCategoria altCat;
-	private ListarCategorias lstCat;
+	private ListarCategorias lisCat;
 	private ConsultaCategoria conCat;
 	private Dummy dum;
 
@@ -55,8 +55,8 @@ public class Main {
 		altCat = new AltaCategoria();
 		altCat.setVisible(false);
 		
-		lstCat = new ListarCategorias();
-		lstCat.setVisible(false);
+		lisCat = new ListarCategorias();
+		lisCat.setVisible(false);
 		
 		conCat = new ConsultaCategoria();
 		conCat.setVisible(false);
@@ -64,7 +64,7 @@ public class Main {
 		dum = new Dummy();
 		dum.setVisible(false);
 		
-		frame.getContentPane().add(lstCat);
+		frame.getContentPane().add(lisCat);
 		frame.getContentPane().add(altCat);
 		frame.getContentPane().add(conCat);
 		frame.getContentPane().add(dum, BorderLayout.CENTER );
@@ -123,7 +123,7 @@ public class Main {
 		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
 		mntmAltaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
+				if (!ventanasAbiertas(altCat.isVisible(),lisCat.isVisible(),conCat.isVisible()))
 						altCat.setVisible(true);
 				}		
 			
@@ -133,7 +133,7 @@ public class Main {
 		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
 		mntmConsultaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
+				if (!ventanasAbiertas(altCat.isVisible(),lisCat.isVisible(),conCat.isVisible()))
 					conCat.setVisible(true);
 			}
 		});
@@ -142,8 +142,8 @@ public class Main {
 		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
 		mntmListarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
-					lstCat.setVisible(true);
+				if (!ventanasAbiertas(altCat.isVisible(),lisCat.isVisible(),conCat.isVisible()))
+					lisCat.setVisible(true);
 				}
 				
 			
