@@ -1,4 +1,4 @@
-
+package clases;
 public class Canal {
 
 	private String nombre;

@@ -1,3 +1,5 @@
+package controladores;
+import interfaces.IUsuariosCanales;
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
 

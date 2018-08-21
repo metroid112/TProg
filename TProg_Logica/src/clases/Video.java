@@ -1,4 +1,4 @@
-
+package clases;
 public class Video {
 
 	private String nombre;
