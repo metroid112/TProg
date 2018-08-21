@@ -1,4 +1,5 @@
 package clases;
+
 import java.awt.Image;
 
 public class Usuario {

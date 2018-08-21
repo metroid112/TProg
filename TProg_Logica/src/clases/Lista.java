@@ -1,4 +1,5 @@
 package clases;
+
 public abstract class Lista {
 
 	private String nombre;
