@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 public class ListarCategorias extends JInternalFrame {
 
 	public ListarCategorias() {
-		setBounds(0, 0, 400, 300);
+		setBounds(0, 0, 640, 480);
 		
 		JComboBox comboBox = new JComboBox();
 		
@@ -30,13 +30,13 @@ public class ListarCategorias extends JInternalFrame {
 		});
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(119)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblCategoriasRegistradas, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnCerrar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-						.addComponent(comboBox, Alignment.LEADING, 0, 198, Short.MAX_VALUE))
+						.addComponent(comboBox, Alignment.LEADING, 0, 173, Short.MAX_VALUE)
+						.addComponent(btnCerrar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+						.addComponent(lblCategoriasRegistradas, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
 					.addGap(117))
 		);
 		groupLayout.setVerticalGroup(
@@ -44,11 +44,11 @@ public class ListarCategorias extends JInternalFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(50)
 					.addComponent(lblCategoriasRegistradas)
-					.addGap(16)
+					.addGap(37)
 					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(101)
+					.addGap(225)
 					.addComponent(btnCerrar)
-					.addContainerGap(44, Short.MAX_VALUE))
+					.addContainerGap(34, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 

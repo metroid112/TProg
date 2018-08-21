@@ -16,6 +16,7 @@ public class AltaCategoria extends JInternalFrame{
 	
 	public AltaCategoria() {
 		
+		setBounds(0, 0, 640, 480);
 		textField = new JTextField();
 		textField.setColumns(10);
 		
@@ -39,28 +40,32 @@ public class AltaCategoria extends JInternalFrame{
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(57)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+					.addGap(163)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnAceptar)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnCancelar))
-						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
-					.addContainerGap(67, Short.MAX_VALUE))
+							.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+									.addComponent(btnAceptar)
+									.addPreferredGap(ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+									.addComponent(btnCancelar))
+								.addComponent(textField, GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
+							.addGap(151))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(38)
 					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(18)
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAceptar)
 						.addComponent(btnCancelar))
-					.addGap(61))
+					.addGap(82))
 		);
 		getContentPane().setLayout(groupLayout);
 	}

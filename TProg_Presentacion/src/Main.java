@@ -15,8 +15,10 @@ import java.awt.event.ActionEvent;
 public class Main {
 
 	private JFrame frame;
-	private AltaCategoria categoria;
-	private ListarCategorias lista;
+	private AltaCategoria altCat;
+	private ListarCategorias lstCat;
+	private ConsultaCategoria conCat;
+	private Dummy dum;
 
 	/**
 	 * Launch the application.
@@ -43,16 +45,22 @@ public class Main {
 		
 		initialize();
 		
-		categoria = new AltaCategoria();
-		categoria.setVisible(false);
+		altCat = new AltaCategoria();
+		altCat.setVisible(false);
 		
-		lista = new ListarCategorias();
-		lista.setVisible(false);
+		lstCat = new ListarCategorias();
+		lstCat.setVisible(false);
 		
-		frame.getContentPane().add(lista);
-		frame.getContentPane().add(categoria);
+		conCat = new ConsultaCategoria();
+		conCat.setVisible(false);
 		
-
+		dum = new Dummy();
+		dum.setVisible(false);
+		
+		frame.getContentPane().add(lstCat);
+		frame.getContentPane().add(altCat);
+		frame.getContentPane().add(conCat);
+		frame.getContentPane().add(dum, BorderLayout.CENTER );
 		
 		
 	}
@@ -65,7 +73,7 @@ public class Main {
 
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 500);
+		frame.setBounds(300, 200, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("UyTube - Main");
 		
@@ -108,21 +116,27 @@ public class Main {
 		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
 		mntmAltaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas(categoria.isVisible(),lista.isVisible()))
-						categoria.setVisible(true);
+				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
+						altCat.setVisible(true);
 				}		
 			
 		});
 		mnCategora.add(mntmAltaCategora);
 		
 		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
+		mntmConsultaCategora.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
+					conCat.setVisible(true);
+			}
+		});
 		mnCategora.add(mntmConsultaCategora);
 		
 		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
 		mntmListarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas(categoria.isVisible(),lista.isVisible()))
-					lista.setVisible(true);
+				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
+					lstCat.setVisible(true);
 				}
 				
 			
@@ -151,8 +165,8 @@ public class Main {
 
 	}
 
-	private Boolean ventanasAbiertas(Boolean b1,Boolean b2){
-		return b1 || b2;
+	private Boolean ventanasAbiertas(Boolean b1,Boolean b2,Boolean b3){
+		return b1 || b2 || b3;
 	}
 
 }
