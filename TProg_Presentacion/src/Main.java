@@ -33,8 +33,10 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
+		
 		initialize();
 		crl = new CrearListaReproduccion();
+		crl.setVisible(false);
 		
 		frame.getContentPane().add(crl);
 		
