@@ -1,3 +1,4 @@
+package principal;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,15 +8,15 @@ import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
+import internalFrames.*;
 
 public class Main {
 
-	private CrearListaReproduccion crl;
-	private AgregarVideo av;
-	private ModificarListaReproduccion mlr;
-	private QuitarVideo qv;
-	private ConsultaLista cl;
+	private CrearListaReproduccion creLisRep;
+	private AgregarVideo agrVid;
+	private ModificarListaReproduccion modLisRep;
+	private QuitarVideo quiVid;
+	private ConsultaLista conLis;
 	private JFrame frame;
 
 	/**
@@ -41,23 +42,23 @@ public class Main {
 		
 		initialize();
 		
-		crl = new CrearListaReproduccion();
-		av = new AgregarVideo();
-		mlr = new ModificarListaReproduccion();
-		qv = new QuitarVideo();
-		cl = new ConsultaLista();
+		creLisRep = new CrearListaReproduccion();
+		agrVid = new AgregarVideo();
+		modLisRep = new ModificarListaReproduccion();
+		quiVid = new QuitarVideo();
+		conLis = new ConsultaLista();
 		
-		crl.setVisible(false);
-		av.setVisible(false);
-		mlr.setVisible(false);
-		qv.setVisible(false);
-		cl.setVisible(false);
+		creLisRep.setVisible(false);
+		agrVid.setVisible(false);
+		modLisRep.setVisible(false);
+		quiVid.setVisible(false);
+		conLis.setVisible(false);
 		
-		frame.getContentPane().add(cl);
-		frame.getContentPane().add(crl);
-		frame.getContentPane().add(av);
-		frame.getContentPane().add(mlr);
-		frame.getContentPane().add(qv);
+		frame.getContentPane().add(conLis);
+		frame.getContentPane().add(creLisRep);
+		frame.getContentPane().add(agrVid);
+		frame.getContentPane().add(modLisRep);
+		frame.getContentPane().add(quiVid);
 		
 		
 	}
@@ -121,7 +122,7 @@ public class Main {
 		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
 		mntmAltaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				crl.setVisible(true);
+				creLisRep.setVisible(true);
 			}
 		});
 		mnLista.add(mntmAltaLista);
@@ -129,7 +130,7 @@ public class Main {
 		JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
 		mntmModificarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mlr.setVisible(true);
+				modLisRep.setVisible(true);
 			}
 		});
 		mnLista.add(mntmModificarLista);
@@ -137,7 +138,7 @@ public class Main {
 		JMenuItem mntmAgregarVideoA = new JMenuItem("Agregar Video a Lista");
 		mntmAgregarVideoA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				av.setVisible(true);
+				agrVid.setVisible(true);
 			}
 		});
 		mnLista.add(mntmAgregarVideoA);
@@ -145,7 +146,7 @@ public class Main {
 		JMenuItem mntmQuitarVideoDe = new JMenuItem("Quitar Video de Lista");
 		mntmQuitarVideoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				qv.setVisible(true);
+				quiVid.setVisible(true);
 			}
 		});
 		mnLista.add(mntmQuitarVideoDe);
@@ -153,7 +154,7 @@ public class Main {
 		JMenuItem mntmConsultaLista = new JMenuItem("Consulta Lista");
 		mntmConsultaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cl.setVisible(true);
+				conLis.setVisible(true);
 			}
 		});
 		mnLista.add(mntmConsultaLista);
