@@ -10,14 +10,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 @SuppressWarnings("serial")
 public class ModificarListaReproduccion extends JInternalFrame {
 
-	private JFrame frmModificarListaRep;
 
 	public ModificarListaReproduccion() {
 
-		frmModificarListaRep = new JFrame();
-		frmModificarListaRep.setBounds(0, 0, 640, 480);
-		frmModificarListaRep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmModificarListaRep.setTitle("Modificar lista de reproducci\u00F3n");
+		setBounds(0, 0, 640, 480);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Modificar lista de reproducci\u00F3n");
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		
@@ -44,7 +42,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		
 		JButton btnGuardar = new JButton("Guardar");
 		
-		GroupLayout groupLayout = new GroupLayout(frmModificarListaRep.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -97,7 +95,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 						.addComponent(btnGuardar))
 					.addContainerGap())
 		);
-		frmModificarListaRep.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 		
 		rdbtnPrivada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -107,7 +105,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		});
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmModificarListaRep.setVisible(false);
+				setVisible(false);
 			}
 		});
 		

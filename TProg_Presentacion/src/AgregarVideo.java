@@ -14,14 +14,12 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class AgregarVideo extends JInternalFrame{
 
-	private JFrame frmAgregarVideo;
 
 	public AgregarVideo() {
 		
-		frmAgregarVideo = new JFrame();
-		frmAgregarVideo.setTitle("Agregar video a lista de reproducci\u00F3n");
-		frmAgregarVideo.setBounds(0, 0, 640, 480);
-		frmAgregarVideo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Agregar video a lista de reproducci\u00F3n");
+		setBounds(0, 0, 640, 480);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		
@@ -46,7 +44,7 @@ public class AgregarVideo extends JInternalFrame{
 		JButton btnCancelar = new JButton("Cancelar");
 		
 		JButton btnAceptar = new JButton("Aceptar");
-		GroupLayout groupLayout = new GroupLayout(frmAgregarVideo.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -95,17 +93,13 @@ public class AgregarVideo extends JInternalFrame{
 						.addComponent(btnAceptar))
 					.addContainerGap())
 		);
-		frmAgregarVideo.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 		
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmAgregarVideo.setVisible(false);
+				setVisible(false);
 			}
 		});
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
 
 }

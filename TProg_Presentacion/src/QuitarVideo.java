@@ -14,14 +14,11 @@ import javax.swing.JComboBox;
 @SuppressWarnings("serial")
 public class QuitarVideo extends JInternalFrame{
 
-	private JFrame frmQuitarVideo;
-
 	public QuitarVideo() {
 		
-		frmQuitarVideo = new JFrame();
-		frmQuitarVideo.setTitle("Quitar video");
-		frmQuitarVideo.setBounds(0, 0, 640, 480);
-		frmQuitarVideo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Quitar video");
+		setBounds(0, 0, 640, 480);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		
@@ -41,7 +38,7 @@ public class QuitarVideo extends JInternalFrame{
 		
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setEnabled(false);
-		GroupLayout groupLayout = new GroupLayout(frmQuitarVideo.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -84,11 +81,11 @@ public class QuitarVideo extends JInternalFrame{
 						.addComponent(btnAceptar))
 					.addContainerGap())
 		);
-		frmQuitarVideo.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 		
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmQuitarVideo.setVisible(false);
+				setVisible(false);
 			}
 		});
 	}

@@ -17,16 +17,14 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class CrearListaReproduccion extends JInternalFrame {
 
-	private JFrame frmCrearListaDe;
 	
 	private JTextField textFieldNombre;
 
 	public CrearListaReproduccion() {
 		
-		frmCrearListaDe = new JFrame();
-		frmCrearListaDe.setTitle("Crear lista de reproducci\u00F3n");
-		frmCrearListaDe.setBounds(0, 0, 640, 480);
-		frmCrearListaDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Crear lista de reproducci\u00F3n");
+		setBounds(0, 0, 640, 480);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblTipoDeLista = new JLabel("Tipo de lista");
 		
@@ -65,7 +63,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		
 		JButton btnCrear = new JButton("Crear");
 
-		GroupLayout groupLayout = new GroupLayout(frmCrearListaDe.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -127,7 +125,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 						.addComponent(btnCancelar))
 					.addContainerGap(18, Short.MAX_VALUE))
 		);
-		frmCrearListaDe.getContentPane().setLayout(groupLayout);
+		getContentPane().setLayout(groupLayout);
 		
 		rdbtnParticular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -171,7 +169,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmCrearListaDe.setVisible(false);
+				setVisible(false);
 			}
 		});
 		

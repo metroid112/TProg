@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
+
 public class Main {
 
 	private CrearListaReproduccion crl;
@@ -52,11 +53,12 @@ public class Main {
 		qv.setVisible(false);
 		cl.setVisible(false);
 		
+		frame.getContentPane().add(cl);
 		frame.getContentPane().add(crl);
 		frame.getContentPane().add(av);
 		frame.getContentPane().add(mlr);
 		frame.getContentPane().add(qv);
-		frame.getContentPane().add(cl);
+		
 		
 	}
 

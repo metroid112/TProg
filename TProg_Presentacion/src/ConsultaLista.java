@@ -12,18 +12,18 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class ConsultaLista extends JInternalFrame{
 
-	private JFrame fmrConsultaLista;
+	
 
 	public ConsultaLista() {
 		
-		fmrConsultaLista = new JFrame();
-		fmrConsultaLista.setTitle("Conultar lista");
-		fmrConsultaLista.setBounds(0, 0, 640, 480);
-		fmrConsultaLista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Conultar lista");
+		setBounds(0, 0, 640, 480);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		
@@ -35,18 +35,16 @@ public class ConsultaLista extends JInternalFrame{
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setEnabled(false);
 		
-		JTextArea textArea = new JTextArea();
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setEnabled(false);
-		
 		JButton btnAceptar = new JButton("Aceptar");
-		GroupLayout groupLayout = new GroupLayout(fmrConsultaLista.getContentPane());
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblNombreDeUsuario)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -56,15 +54,12 @@ public class ConsultaLista extends JInternalFrame{
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(btnAceptar)
-								.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 401, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(scrollBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addGap(330)
+							.addComponent(btnAceptar)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -72,18 +67,20 @@ public class ConsultaLista extends JInternalFrame{
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombreDeUsuario)
 						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(textArea)
-						.addComponent(scrollBar, GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(btnAceptar))
 		);
-		fmrConsultaLista.getContentPane().setLayout(groupLayout);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
+		scrollPane.setViewportView(textArea);
+		getContentPane().setLayout(groupLayout);
 		
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				fmrConsultaLista.setVisible(false);
+				setVisible(false);
 			}
 		});
 	}
