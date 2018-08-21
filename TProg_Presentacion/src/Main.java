@@ -35,7 +35,6 @@ public class Main {
 	public Main() {
 		initialize();
 		crl = new CrearListaReproduccion();
-		crl.setVisible(false);
 		
 		frame.getContentPane().add(crl);
 		
