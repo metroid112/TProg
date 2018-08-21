@@ -11,6 +11,10 @@ import java.awt.event.ActionEvent;
 public class Main {
 
 	private CrearListaReproduccion crl;
+	private AgregarVideo av;
+	private ModificarListaReproduccion mlr;
+	private QuitarVideo qv;
+	private ConsultaLista cl;
 	private JFrame frame;
 
 	/**
@@ -35,10 +39,24 @@ public class Main {
 	public Main() {
 		
 		initialize();
+		
 		crl = new CrearListaReproduccion();
+		av = new AgregarVideo();
+		mlr = new ModificarListaReproduccion();
+		qv = new QuitarVideo();
+		cl = new ConsultaLista();
+		
 		crl.setVisible(false);
+		av.setVisible(false);
+		mlr.setVisible(false);
+		qv.setVisible(false);
+		cl.setVisible(false);
 		
 		frame.getContentPane().add(crl);
+		frame.getContentPane().add(av);
+		frame.getContentPane().add(mlr);
+		frame.getContentPane().add(qv);
+		frame.getContentPane().add(cl);
 		
 	}
 
@@ -46,6 +64,7 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,6 +116,7 @@ public class Main {
 		mnCategora.add(mntmListarCategoria);
 		
 		JMenu mnLista = new JMenu("Lista");
+		
 		menuBar.add(mnLista);
 		
 		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
@@ -108,15 +128,35 @@ public class Main {
 		mnLista.add(mntmAltaLista);
 		
 		JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
+		mntmModificarLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mlr.setVisible(true);
+			}
+		});
 		mnLista.add(mntmModificarLista);
 		
 		JMenuItem mntmAgregarVideoA = new JMenuItem("Agregar Video a Lista");
+		mntmAgregarVideoA.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				av.setVisible(true);
+			}
+		});
 		mnLista.add(mntmAgregarVideoA);
 		
 		JMenuItem mntmQuitarVideoDe = new JMenuItem("Quitar Video de Lista");
+		mntmQuitarVideoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				qv.setVisible(true);
+			}
+		});
 		mnLista.add(mntmQuitarVideoDe);
 		
 		JMenuItem mntmConsultaLista = new JMenuItem("Consulta Lista");
+		mntmConsultaLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cl.setVisible(true);
+			}
+		});
 		mnLista.add(mntmConsultaLista);
 	}
 

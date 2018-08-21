@@ -42,13 +42,6 @@ public class CrearListaReproduccion extends JInternalFrame {
 	 * Create the application.
 	 */
 	public CrearListaReproduccion() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		
 		frmCrearListaDe = new JFrame();
 		frmCrearListaDe.setTitle("Crear lista de reproducci\u00F3n");
@@ -211,4 +204,5 @@ public class CrearListaReproduccion extends JInternalFrame {
 			}
 		});
 	}
+
 }
