@@ -1,3 +1,10 @@
+package interfaces;
+
+import controladores.CtrlCategorias;
+import controladores.CtrlListas;
+import controladores.CtrlUsuariosCanales;
+import controladores.CtrlVideos;
+
 public class Fabrica {
 
 	private static Fabrica instancia = null;

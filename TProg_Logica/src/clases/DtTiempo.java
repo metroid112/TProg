@@ -1,3 +1,5 @@
+package clases;
+
 // Pato: Se sustituye por Date?
 public class DtTiempo {
 
