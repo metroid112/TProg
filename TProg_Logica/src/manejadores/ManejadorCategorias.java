@@ -1,4 +1,4 @@
-package controladores;
+package manejadores;
 import clases.Categoria;
 import interfaces.Manejador;
 

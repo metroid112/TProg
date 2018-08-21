@@ -1,4 +1,4 @@
-package controladores;
+package manejadores;
 import interfaces.Manejador;
 
 public class ManejadorListas implements Manejador {
