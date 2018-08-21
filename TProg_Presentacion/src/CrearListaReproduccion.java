@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
 @SuppressWarnings("serial")
 public class CrearListaReproduccion extends JInternalFrame {
 
@@ -70,6 +71,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		lblNombreDeUsuario.setEnabled(false);
 		
+		 
 		JComboBox comboBoxUsuario = new JComboBox();
 		comboBoxUsuario.setEnabled(false);
 		
