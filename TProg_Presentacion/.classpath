@@ -2,6 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<<<<<<< HEAD
 	<classpathentry combineaccessrules="false" kind="src" path="/TProg_Logica"/>
+=======
+>>>>>>> categoriaJoaco
 	<classpathentry kind="output" path="bin"/>
 </classpath>

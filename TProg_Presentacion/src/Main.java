@@ -4,10 +4,21 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.BorderLayout;
+import javax.swing.JInternalFrame;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class Main {
 
 	private JFrame frame;
+	private AltaCategoria altCat;
+	private ListarCategorias lstCat;
+	private ConsultaCategoria conCat;
+	private Dummy dum;
 
 	/**
 	 * Launch the application.
@@ -16,6 +27,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					Main window = new Main();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -29,15 +41,39 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
+		
+		
 		initialize();
+		
+		altCat = new AltaCategoria();
+		altCat.setVisible(false);
+		
+		lstCat = new ListarCategorias();
+		lstCat.setVisible(false);
+		
+		conCat = new ConsultaCategoria();
+		conCat.setVisible(false);
+		
+		dum = new Dummy();
+		dum.setVisible(false);
+		
+		frame.getContentPane().add(lstCat);
+		frame.getContentPane().add(altCat);
+		frame.getContentPane().add(conCat);
+		frame.getContentPane().add(dum, BorderLayout.CENTER );
+		
+		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+
+		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 500);
+		frame.setBounds(300, 200, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("UyTube - Main");
 		
@@ -78,12 +114,33 @@ public class Main {
 		menuBar.add(mnCategora);
 		
 		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
+		mntmAltaCategora.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
+						altCat.setVisible(true);
+				}		
+			
+		});
 		mnCategora.add(mntmAltaCategora);
 		
 		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
+		mntmConsultaCategora.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
+					conCat.setVisible(true);
+			}
+		});
 		mnCategora.add(mntmConsultaCategora);
 		
 		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
+		mntmListarCategoria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas(altCat.isVisible(),lstCat.isVisible(),conCat.isVisible()))
+					lstCat.setVisible(true);
+				}
+				
+			
+		});
 		mnCategora.add(mntmListarCategoria);
 		
 		JMenu mnLista = new JMenu("Lista");
@@ -103,6 +160,13 @@ public class Main {
 		
 		JMenuItem mntmConsultaLista = new JMenuItem("Consulta Lista");
 		mnLista.add(mntmConsultaLista);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+
+	}
+
+	private Boolean ventanasAbiertas(Boolean b1,Boolean b2,Boolean b3){
+		return b1 || b2 || b3;
 	}
 
 }
