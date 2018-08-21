@@ -12,36 +12,10 @@ public class ModificarListaReproduccion extends JInternalFrame {
 
 	private JFrame frmModificarListaRep;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ModificarListaReproduccion window = new ModificarListaReproduccion();
-					window.frmModificarListaRep.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public ModificarListaReproduccion() {
 
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
 		frmModificarListaRep = new JFrame();
-		frmModificarListaRep.setBounds(100, 100, 450, 300);
+		frmModificarListaRep.setBounds(0, 0, 640, 480);
 		frmModificarListaRep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmModificarListaRep.setTitle("Modificar lista de reproducci\u00F3n");
 		
@@ -144,5 +118,6 @@ public class ModificarListaReproduccion extends JInternalFrame {
 			}
 		});
 	}
+
 
 }

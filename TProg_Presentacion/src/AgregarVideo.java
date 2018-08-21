@@ -16,36 +16,11 @@ public class AgregarVideo extends JInternalFrame{
 
 	private JFrame frmAgregarVideo;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AgregarVideo window = new AgregarVideo();
-					window.frmAgregarVideo.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public AgregarVideo() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+		
 		frmAgregarVideo = new JFrame();
 		frmAgregarVideo.setTitle("Agregar video a lista de reproducci\u00F3n");
-		frmAgregarVideo.setBounds(100, 100, 450, 300);
+		frmAgregarVideo.setBounds(0, 0, 640, 480);
 		frmAgregarVideo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
@@ -128,5 +103,9 @@ public class AgregarVideo extends JInternalFrame{
 			}
 		});
 	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
 
 }

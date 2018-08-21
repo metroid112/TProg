@@ -16,36 +16,11 @@ public class QuitarVideo extends JInternalFrame{
 
 	private JFrame frmQuitarVideo;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					QuitarVideo window = new QuitarVideo();
-					window.frmQuitarVideo.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public QuitarVideo() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+		
 		frmQuitarVideo = new JFrame();
 		frmQuitarVideo.setTitle("Quitar video");
-		frmQuitarVideo.setBounds(100, 100, 450, 300);
+		frmQuitarVideo.setBounds(0, 0, 640, 480);
 		frmQuitarVideo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");

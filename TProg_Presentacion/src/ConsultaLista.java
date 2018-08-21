@@ -18,36 +18,11 @@ public class ConsultaLista extends JInternalFrame{
 
 	private JFrame fmrConsultaLista;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultaLista window = new ConsultaLista();
-					window.fmrConsultaLista.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public ConsultaLista() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+		
 		fmrConsultaLista = new JFrame();
 		fmrConsultaLista.setTitle("Conultar lista");
-		fmrConsultaLista.setBounds(100, 100, 459, 300);
+		fmrConsultaLista.setBounds(0, 0, 640, 480);
 		fmrConsultaLista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
@@ -112,4 +87,5 @@ public class ConsultaLista extends JInternalFrame{
 			}
 		});
 	}
+
 }

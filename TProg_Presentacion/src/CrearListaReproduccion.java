@@ -18,34 +18,14 @@ import java.awt.event.ActionEvent;
 public class CrearListaReproduccion extends JInternalFrame {
 
 	private JFrame frmCrearListaDe;
-
 	
 	private JTextField textFieldNombre;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CrearListaReproduccion window = new CrearListaReproduccion();
-					window.frmCrearListaDe.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	public CrearListaReproduccion() {
 		
 		frmCrearListaDe = new JFrame();
 		frmCrearListaDe.setTitle("Crear lista de reproducci\u00F3n");
-		frmCrearListaDe.setBounds(100, 100, 474, 311);
+		frmCrearListaDe.setBounds(0, 0, 640, 480);
 		frmCrearListaDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblTipoDeLista = new JLabel("Tipo de lista");
