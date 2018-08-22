@@ -43,6 +43,6 @@ public class ManejadorUsuarios implements IManejador {
 
 	@Override
 	public String[] toArray() {
-		return (String[]) usuarios.keySet().toArray();
+		return usuarios.keySet().toArray(new String[usuarios.size()]);
 	}
 }
