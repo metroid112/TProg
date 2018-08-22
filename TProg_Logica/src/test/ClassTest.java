@@ -1,7 +1,5 @@
 package test;
 
-import java.util.Arrays;
-
 import org.junit.Assert;
 
 import clases.Categoria;
@@ -19,17 +17,35 @@ public class ClassTest {
 	}
 
 	public void testManejadorCategoria() {
-		System.out.println("Testeo manejador categoria");
+		System.out.println("Testeo manejador categoria\n");
+		testManejadorCategoriaAdd();
+		testManejadorCategoriaRemove();
+		testManejadorCategoriasToArray();
+		System.out.println("Termino test manejador categoria\n");
+	}
+	
+	public void testManejadorCategoriaAdd() {
 		ManejadorCategorias manejadorCategoria = new ManejadorCategorias();
 		Categoria categoria = new Categoria();
-		categoria.setNombre("hola");
 		manejadorCategoria.add(categoria);
 		Assert.assertEquals(true, manejadorCategoria.isMember(categoria));
-		//manejadorCategoria.remove(categoria);
-		//Assert.assertEquals(false, manejadorCategoria.isMember(categoria));
-		
-		System.out.println(manejadorCategoria.toArray()[0]);
-		System.out.println("Termino test manejador categoria\n");
+	}
+	
+	public void testManejadorCategoriaRemove() {
+		ManejadorCategorias manejadorCategoria = new ManejadorCategorias();
+		Categoria categoria = new Categoria();
+		manejadorCategoria.add(categoria);
+		Assert.assertEquals(true, manejadorCategoria.isMember(categoria));
+		manejadorCategoria.remove(categoria);
+		Assert.assertEquals(false, manejadorCategoria.isMember(categoria));
+	}
+	
+	public void testManejadorCategoriasToArray() {
+		ManejadorCategorias manejadorCategoria = new ManejadorCategorias();
+		Categoria categoria = new Categoria();
+		categoria.setNombre("Test toArray() en espacio 0");
+		manejadorCategoria.add(categoria);
+		System.out.println("\t" + manejadorCategoria.toArray()[0] + "\n");
 	}
 	
 	public void testManejadorLista() {
