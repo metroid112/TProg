@@ -58,10 +58,11 @@ public class ListarCategorias extends JInternalFrame {
 		);
 		
 		JList<Object> list = new JList<Object>();
+		list.setEnabled(false);
 		scrollPane.setViewportView(list);
 		list.setVisibleRowCount(4);
-		list.setModel(new AbstractListModel<Object>() {
-			String[] values = new String[] {"PRUEBA 1", "PRUEBA 2", "PRUEBA 3"};
+		list.setModel(new AbstractListModel() {
+			String[] values = new String[] {"PRUEBA 1", "PRUEBA 2", "PRUEBA 3", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"};
 			public int getSize() {
 				return values.length;
 			}
