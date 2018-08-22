@@ -5,19 +5,27 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import internalFrames.*;
+import java.awt.BorderLayout;
+import javax.swing.JInternalFrame;
+
 
 public class Main {
-
 	private CrearListaReproduccion creLisRep;
-	private AgregarVideo agrVid;
-	private ModificarListaReproduccion modLisRep;
-	private QuitarVideo quiVid;
-	private ConsultaLista conLis;
 	private JFrame frame;
+	private AltaCategoria altCat;
+	private ListarCategorias lisCat;
+	private ConsultaCategoria conCat;
+	private Dummy dum;
+  private AgregarVideo agrVid;
+	private ModificarListaReproduccion modLisRep;
+  private QuitarVideo quiVid;
+	private ConsultaLista conLis;
 
 	/**
 	 * Launch the application.
@@ -42,10 +50,23 @@ public class Main {
 		
 		initialize();
 		
+		altCat = new AltaCategoria();
+		altCat.setVisible(false);
+		
+		lisCat = new ListarCategorias();
+		lisCat.setVisible(false);
+		
+		conCat = new ConsultaCategoria();
+		conCat.setVisible(false);
+		
+		dum = new Dummy();
+		dum.setVisible(false);
 		creLisRep = new CrearListaReproduccion();
 		agrVid = new AgregarVideo();
+    
 		modLisRep = new ModificarListaReproduccion();
 		quiVid = new QuitarVideo();
+   
 		conLis = new ConsultaLista();
 		
 		creLisRep.setVisible(false);
@@ -53,20 +74,28 @@ public class Main {
 		modLisRep.setVisible(false);
 		quiVid.setVisible(false);
 		conLis.setVisible(false);
-		
-		frame.getContentPane().add(conLis);
+    
+    frame.getContentPane().add(conLis);
 		frame.getContentPane().add(creLisRep);
 		frame.getContentPane().add(agrVid);
 		frame.getContentPane().add(modLisRep);
 		frame.getContentPane().add(quiVid);
+		frame.getContentPane().add(lisCat);
+		frame.getContentPane().add(altCat);
+		frame.getContentPane().add(conCat);
+		frame.getContentPane().add(dum, BorderLayout.CENTER );
 		
 		
 	}
-
+	/**
+	 * Initialize the contents of the frame.
+	 */
 	private void initialize() {
 		
+
+		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 600);
+		frame.setBounds(300, 200, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("UyTube - Main");
 		
@@ -107,18 +136,38 @@ public class Main {
 		menuBar.add(mnCategora);
 		
 		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
+		mntmAltaCategora.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas(altCat.isVisible(),lisCat.isVisible(),conCat.isVisible()))
+						altCat.setVisible(true);
+				}		
+			
+		});
 		mnCategora.add(mntmAltaCategora);
 		
 		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
+		mntmConsultaCategora.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (!ventanasAbiertas(altCat.isVisible(),lisCat.isVisible(),conCat.isVisible()))
+					conCat.setVisible(true);
+			}
+		});
 		mnCategora.add(mntmConsultaCategora);
 		
 		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
+		mntmListarCategoria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas(altCat.isVisible(),lisCat.isVisible(),conCat.isVisible()))
+					lisCat.setVisible(true);
+				}
+				
+			
+		});
 		mnCategora.add(mntmListarCategoria);
 		
 		JMenu mnLista = new JMenu("Lista");
-		
 		menuBar.add(mnLista);
-		
+    
 		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
 		mntmAltaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -127,7 +176,7 @@ public class Main {
 		});
 		mnLista.add(mntmAltaLista);
 		
-		JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
+    JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
 		mntmModificarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				modLisRep.setVisible(true);
@@ -158,6 +207,14 @@ public class Main {
 			}
 		});
 		mnLista.add(mntmConsultaLista);
+    
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+
+	}
+
+	private Boolean ventanasAbiertas(Boolean b1,Boolean b2,Boolean b3){
+		return b1 || b2 || b3;
 	}
 
 }

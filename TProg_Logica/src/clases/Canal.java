@@ -1,3 +1,4 @@
+package clases;
 
 public class Canal {
 
@@ -43,7 +44,7 @@ public class Canal {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
+
 	public Lista[] getListaDefecto() {
 		return listaDefecto;
 	}
@@ -75,7 +76,7 @@ public class Canal {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	public void setListaDefecto(ListaDefecto[] listaDefecto) {
 		this.listaDefecto = listaDefecto;
 	}
