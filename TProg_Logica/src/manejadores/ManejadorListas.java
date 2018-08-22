@@ -1,8 +1,40 @@
 package manejadores;
 
-import interfaces.Manejador;
+import java.util.HashSet;
 
-public class ManejadorListas implements Manejador {
+import interfaces.IManejador;
 
-	private String[] listaDefecto;
+public class ManejadorListas implements IManejador {
+
+	private HashSet<String> listasDefecto;
+
+	@Override
+	public void add(Object o) {
+		listasDefecto.add((String) o);
+	}
+
+	@Override
+	public void remove(Object o) {
+		listasDefecto.remove((String) o);
+	}
+
+	@Override
+	public boolean isMember(Object o) {
+		return listasDefecto.contains(o);
+	}
+
+	@Override
+	public boolean isMemberKey(Object o) {
+		return isMember(o);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return listasDefecto.isEmpty();
+	}
+
+	@Override
+	public int size() {
+		return listasDefecto.size();
+	}
 }
