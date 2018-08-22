@@ -11,13 +11,13 @@ public class ManejadorCategorias implements IManejador {
 
 	@Override
 	public void add(Object o) {
-		Categoria cat = (Categoria)o;
+		Categoria cat = (Categoria) o;
 		categorias.put(cat.getNombre(), cat);
 	}
 
 	@Override
 	public void remove(Object o) {
-		Categoria cat = (Categoria)o;
+		Categoria cat = (Categoria) o;
 		categorias.remove(cat.getNombre(), cat);
 	}
 
@@ -25,10 +25,10 @@ public class ManejadorCategorias implements IManejador {
 	public boolean isMember(Object o) {
 		return categorias.containsValue(o);
 	}
-	
+
 	@Override
 	public boolean isMemberKey(Object o) {
-		Categoria cat = (Categoria)o;
+		Categoria cat = (Categoria) o;
 		return categorias.containsKey(cat.getNombre());
 	}
 
