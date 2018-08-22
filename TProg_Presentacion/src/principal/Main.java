@@ -95,10 +95,11 @@ public class Main {
 	private void initialize() {
 
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(300, 200, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("UyTube - Main");
-
+		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 

@@ -1,5 +1,6 @@
 package internalFrames;
 import java.awt.EventQueue;
+import javax.swing.UIManager;
 
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;

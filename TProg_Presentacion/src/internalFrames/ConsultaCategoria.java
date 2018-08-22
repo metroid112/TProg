@@ -12,6 +12,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.DefaultComboBoxModel;
 
 public class ConsultaCategoria extends JInternalFrame {
 
@@ -36,6 +37,9 @@ public class ConsultaCategoria extends JInternalFrame {
 		JLabel lblListasDeReproduccion = new JLabel("Listas de reproduccion:");
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"","Deportes", "Gatos"}));
+
+		
 		
 		JLabel lblSeleccioneUnaCategoria = new JLabel("Seleccione una categoria:");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
