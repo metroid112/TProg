@@ -5,6 +5,19 @@ import java.util.HashSet;
 import interfaces.IManejador;
 
 public class ManejadorListas implements IManejador {
+	
+	private static ManejadorListas manejador = null;
+	
+	private ManejadorListas() {
+		
+	}
+	
+	public static ManejadorListas getManejadorListas() {
+		if (manejador == null) {
+			manejador = new ManejadorListas();
+		}
+		return manejador;
+	}
 
 	private HashSet<String> listasDefecto  = new HashSet<String>();
 

@@ -6,6 +6,19 @@ import clases.Usuario;
 import interfaces.IManejador;
 
 public class ManejadorUsuarios implements IManejador {
+	
+	private static ManejadorUsuarios manejador = null;
+	
+	private ManejadorUsuarios() {
+		
+	}
+	
+	public static ManejadorUsuarios getManejadorUsuarios() {
+		if (manejador == null) {
+			manejador = new ManejadorUsuarios();
+		}
+		return manejador;
+	}
 
 	private HashMap<String, Usuario> usuarios = new HashMap<String, Usuario>();
 
