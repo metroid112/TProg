@@ -22,6 +22,8 @@ public class ClassTest {
 		Categoria categoria = new Categoria();
 		manejadorCategoria.add(categoria);
 		Assert.assertEquals(true, manejadorCategoria.isMember(categoria));
+		manejadorCategoria.remove(categoria);
+		Assert.assertEquals(false, manejadorCategoria.isMember(categoria));
 		System.out.println("Termino test manejador categoria\n");
 	}
 	
@@ -31,6 +33,8 @@ public class ClassTest {
 		String listaDefecto = "Lista";
 		manejadorLista.add(listaDefecto);
 		Assert.assertEquals(true, manejadorLista.isMember(listaDefecto));
+		manejadorLista.remove(listaDefecto);
+		Assert.assertEquals(false, manejadorLista.isMember(listaDefecto));
 		System.out.println("Termino test manejador lista\n");
 	}
 	
@@ -40,6 +44,8 @@ public class ClassTest {
 		Usuario usuario = new Usuario();
 		manejadorUsuario.add(usuario);
 		Assert.assertEquals(true, manejadorUsuario.isMember(usuario));
+		manejadorUsuario.remove(usuario);
+		Assert.assertEquals(false, manejadorUsuario.isMember(usuario));
 		System.out.println("Termino test manejador usuario\n");
 	}
 }
