@@ -61,20 +61,22 @@ public class Main {
 
 		dum = new Dummy();
 		dum.setVisible(false);
+		
 		creLisRep = new CrearListaReproduccion();
-		agrVid = new AgregarVideo();
-
-		modLisRep = new ModificarListaReproduccion();
-		quiVid = new QuitarVideo();
-
-		conLis = new ConsultaLista();
-
 		creLisRep.setVisible(false);
+		
+		agrVid = new AgregarVideo();
 		agrVid.setVisible(false);
+		
+		modLisRep = new ModificarListaReproduccion();
 		modLisRep.setVisible(false);
+		
+		quiVid = new QuitarVideo();
 		quiVid.setVisible(false);
+		
+		conLis = new ConsultaLista();
 		conLis.setVisible(false);
-
+		
 		frame.getContentPane().add(conLis);
 		frame.getContentPane().add(creLisRep);
 		frame.getContentPane().add(agrVid);
@@ -136,7 +138,8 @@ public class Main {
 		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
 		mntmAltaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible()))
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
 					altCat.setVisible(true);
 			}
 
@@ -146,7 +149,8 @@ public class Main {
 		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
 		mntmConsultaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible()))
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
 					conCat.setVisible(true);
 			}
 		});
@@ -155,7 +159,8 @@ public class Main {
 		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
 		mntmListarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible()))
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
 					lisCat.setVisible(true);
 			}
 
@@ -168,7 +173,9 @@ public class Main {
 		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
 		mntmAltaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				creLisRep.setVisible(true);
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					creLisRep.setVisible(true);
 			}
 		});
 		mnLista.add(mntmAltaLista);
@@ -176,7 +183,9 @@ public class Main {
 		JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
 		mntmModificarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				modLisRep.setVisible(true);
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					modLisRep.setVisible(true);
 			}
 		});
 		mnLista.add(mntmModificarLista);
@@ -184,7 +193,9 @@ public class Main {
 		JMenuItem mntmAgregarVideoA = new JMenuItem("Agregar Video a Lista");
 		mntmAgregarVideoA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				agrVid.setVisible(true);
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					agrVid.setVisible(true);
 			}
 		});
 		mnLista.add(mntmAgregarVideoA);
@@ -192,7 +203,9 @@ public class Main {
 		JMenuItem mntmQuitarVideoDe = new JMenuItem("Quitar Video de Lista");
 		mntmQuitarVideoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				quiVid.setVisible(true);
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					quiVid.setVisible(true);
 			}
 		});
 		mnLista.add(mntmQuitarVideoDe);
@@ -200,7 +213,9 @@ public class Main {
 		JMenuItem mntmConsultaLista = new JMenuItem("Consulta Lista");
 		mntmConsultaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				conLis.setVisible(true);
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					conLis.setVisible(true);
 			}
 		});
 		mnLista.add(mntmConsultaLista);
@@ -209,8 +224,8 @@ public class Main {
 
 	}
 
-	private Boolean ventanasAbiertas(Boolean b1, Boolean b2, Boolean b3) {
-		return b1 || b2 || b3;
+	private Boolean ventanasAbiertas(Boolean b1, Boolean b2, Boolean b3, Boolean b4, Boolean b5, Boolean b6, Boolean b7, Boolean b8) {
+		return b1 || b2 || b3 || b4 || b5 || b6 || b7 || b8;
 	}
 
 }
