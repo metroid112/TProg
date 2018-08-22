@@ -5,27 +5,27 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-
-import internalFrames.AltaCategoria;
-import internalFrames.ConsultaCategoria;
-import internalFrames.Dummy;
-import internalFrames.ListarCategorias;
-
-import java.awt.BorderLayout;
-import javax.swing.JInternalFrame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import internalFrames.*;
+import java.awt.BorderLayout;
+import javax.swing.JInternalFrame;
 
 
 public class Main {
-
+	private CrearListaReproduccion creLisRep;
 	private JFrame frame;
 	private AltaCategoria altCat;
 	private ListarCategorias lisCat;
 	private ConsultaCategoria conCat;
 	private Dummy dum;
+  private AgregarVideo agrVid;
+	private ModificarListaReproduccion modLisRep;
+  private QuitarVideo quiVid;
+	private ConsultaLista conLis;
 
 	/**
 	 * Launch the application.
@@ -34,7 +34,6 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
 					Main window = new Main();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -49,7 +48,6 @@ public class Main {
 	 */
 	public Main() {
 		
-		
 		initialize();
 		
 		altCat = new AltaCategoria();
@@ -63,7 +61,25 @@ public class Main {
 		
 		dum = new Dummy();
 		dum.setVisible(false);
+		creLisRep = new CrearListaReproduccion();
+		agrVid = new AgregarVideo();
+    
+		modLisRep = new ModificarListaReproduccion();
+		quiVid = new QuitarVideo();
+   
+		conLis = new ConsultaLista();
 		
+		creLisRep.setVisible(false);
+		agrVid.setVisible(false);
+		modLisRep.setVisible(false);
+		quiVid.setVisible(false);
+		conLis.setVisible(false);
+    
+    frame.getContentPane().add(conLis);
+		frame.getContentPane().add(creLisRep);
+		frame.getContentPane().add(agrVid);
+		frame.getContentPane().add(modLisRep);
+		frame.getContentPane().add(quiVid);
 		frame.getContentPane().add(lisCat);
 		frame.getContentPane().add(altCat);
 		frame.getContentPane().add(conCat);
@@ -71,7 +87,6 @@ public class Main {
 		
 		
 	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -152,21 +167,47 @@ public class Main {
 		
 		JMenu mnLista = new JMenu("Lista");
 		menuBar.add(mnLista);
-		
+    
 		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
+		mntmAltaLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				creLisRep.setVisible(true);
+			}
+		});
 		mnLista.add(mntmAltaLista);
 		
-		JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
+    JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
+		mntmModificarLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				modLisRep.setVisible(true);
+			}
+		});
 		mnLista.add(mntmModificarLista);
 		
 		JMenuItem mntmAgregarVideoA = new JMenuItem("Agregar Video a Lista");
+		mntmAgregarVideoA.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agrVid.setVisible(true);
+			}
+		});
 		mnLista.add(mntmAgregarVideoA);
 		
 		JMenuItem mntmQuitarVideoDe = new JMenuItem("Quitar Video de Lista");
+		mntmQuitarVideoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				quiVid.setVisible(true);
+			}
+		});
 		mnLista.add(mntmQuitarVideoDe);
 		
 		JMenuItem mntmConsultaLista = new JMenuItem("Consulta Lista");
+		mntmConsultaLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				conLis.setVisible(true);
+			}
+		});
 		mnLista.add(mntmConsultaLista);
+    
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 
