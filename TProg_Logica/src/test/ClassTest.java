@@ -1,0 +1,35 @@
+package test;
+
+import org.junit.Assert;
+
+import clases.Categoria;
+import clases.Usuario;
+import manejadores.ManejadorCategorias;
+import manejadores.ManejadorListas;
+import manejadores.ManejadorUsuarios;
+
+public class ClassTest {
+
+	public void testManejadores() {
+		System.out.println("Testeo manejador categoria");
+		ManejadorCategorias manejadorCategoria = new ManejadorCategorias();
+		Categoria categoria = new Categoria();
+		manejadorCategoria.add(categoria);
+		Assert.assertEquals(true, manejadorCategoria.isMember(categoria));
+		System.out.println("Termino test manejador categoria\n");
+		
+		System.out.println("Testeo manejador lista");
+		ManejadorListas manejadorLista = new ManejadorListas();
+		String listaDefecto = "Lista";
+		manejadorLista.add(listaDefecto);
+		Assert.assertEquals(true, manejadorLista.isMember(listaDefecto));
+		System.out.println("Termino test manejador lista\n");
+		
+		System.out.println("Testeo manejador usuario");
+		ManejadorUsuarios manejadorUsuario = new ManejadorUsuarios();
+		Usuario usuario = new Usuario();
+		manejadorUsuario.add(usuario);
+		Assert.assertEquals(true, manejadorUsuario.isMember(usuario));
+		System.out.println("Termino test manejador usuario\n");
+	}
+}

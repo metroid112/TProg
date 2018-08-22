@@ -7,7 +7,7 @@ import interfaces.IManejador;
 
 public class ManejadorUsuarios implements IManejador {
 
-	private HashMap<String, Usuario> usuarios;
+	private HashMap<String, Usuario> usuarios = new HashMap<String, Usuario>();
 
 	@Override
 	public void add(Object o) {

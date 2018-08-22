@@ -6,7 +6,7 @@ import interfaces.IManejador;
 
 public class ManejadorListas implements IManejador {
 
-	private HashSet<String> listasDefecto;
+	private HashSet<String> listasDefecto  = new HashSet<String>();
 
 	@Override
 	public void add(Object o) {

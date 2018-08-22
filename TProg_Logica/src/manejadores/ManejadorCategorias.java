@@ -7,12 +7,12 @@ import interfaces.IManejador;
 
 public class ManejadorCategorias implements IManejador {
 
-	private HashMap<String, Categoria> categorias;
+	private HashMap<String, Categoria> categorias = new HashMap<String, Categoria>();
 
 	@Override
 	public void add(Object o) {
 		Categoria cat = (Categoria) o;
-		categorias.put(cat.getNombre(), cat);
+		categorias.put(cat.getNombre(), (Categoria) o);
 	}
 
 	@Override
