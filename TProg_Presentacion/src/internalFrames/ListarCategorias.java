@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
+import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class ListarCategorias extends JInternalFrame {
@@ -31,23 +32,15 @@ public class ListarCategorias extends JInternalFrame {
 			}
 		});
 		
-		JList<Object> list = new JList<Object>();
-		list.setModel(new AbstractListModel<Object>() {
-			String[] values = new String[] {"PRUEBA 1", "PRUEBA 2", "PRUEBA 3"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		JScrollPane scrollPane = new JScrollPane();
+		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(119)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(list, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
 						.addComponent(btnCerrar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
 						.addComponent(lblCategoriasRegistradas, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
 					.addGap(117))
@@ -57,12 +50,25 @@ public class ListarCategorias extends JInternalFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(50)
 					.addComponent(lblCategoriasRegistradas)
-					.addGap(32)
-					.addComponent(list)
-					.addGap(250)
+					.addGap(27)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
 					.addComponent(btnCerrar)
-					.addContainerGap(79, Short.MAX_VALUE))
+					.addGap(31))
 		);
+		
+		JList<Object> list = new JList<Object>();
+		scrollPane.setViewportView(list);
+		list.setVisibleRowCount(4);
+		list.setModel(new AbstractListModel<Object>() {
+			String[] values = new String[] {"PRUEBA 1", "PRUEBA 2", "PRUEBA 3"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
 		getContentPane().setLayout(groupLayout);
 
 	}
