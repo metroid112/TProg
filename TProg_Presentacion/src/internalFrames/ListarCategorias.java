@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 public class ListarCategorias extends JInternalFrame {
 
 	public ListarCategorias() {
+		setTitle("Lista de Categorias");
 		setBounds(0, 0, 640, 480);
 		
 		JComboBox comboBox = new JComboBox();

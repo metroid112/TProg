@@ -16,6 +16,7 @@ public class AltaCategoria extends JInternalFrame{
 	private JTextField textField;
 	
 	public AltaCategoria() {
+		setTitle("Alta de Categoria");
 		
 		setBounds(0, 0, 640, 480);
 		textField = new JTextField();

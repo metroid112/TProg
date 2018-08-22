@@ -17,6 +17,7 @@ public class ConsultaCategoria extends JInternalFrame {
 
 	
 	public ConsultaCategoria() {
+		setTitle("Consulta de Categorias");
 		setBounds(0, 0, 640, 480);
 		
 		JButton btnNewButton = new JButton("Cerrar");
