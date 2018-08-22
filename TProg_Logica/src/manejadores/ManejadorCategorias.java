@@ -41,4 +41,9 @@ public class ManejadorCategorias implements IManejador {
 	public int size() {
 		return categorias.size();
 	}
+
+	@Override
+	public String[] toArray() {
+		return (String[]) categorias.keySet().toArray();
+	}
 }

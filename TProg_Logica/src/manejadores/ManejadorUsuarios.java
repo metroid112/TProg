@@ -40,4 +40,9 @@ public class ManejadorUsuarios implements IManejador {
 	public int size() {
 		return usuarios.size();
 	}
+
+	@Override
+	public String[] toArray() {
+		return (String[]) usuarios.keySet().toArray();
+	}
 }

@@ -37,4 +37,9 @@ public class ManejadorListas implements IManejador {
 	public int size() {
 		return listasDefecto.size();
 	}
+
+	@Override
+	public String[] toArray() {
+		return (String[]) listasDefecto.toArray();
+	}
 }
