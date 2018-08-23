@@ -5,5 +5,5 @@ import manejadores.ManejadorCategorias;
 
 public class CtrlCategorias implements ICategorias {
 
-	ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
+	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
 }
