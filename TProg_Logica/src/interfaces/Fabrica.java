@@ -37,16 +37,4 @@ public class Fabrica {
 	public ICategorias getICategorias() {
 		return new CtrlCategorias();
 	}
-	
-	public IManejador getIManejadorCategorias() {
-		return ManejadorCategorias.getManejadorCategorias();
-	}
-	
-	public IManejador getIManejadorListas() {
-		return ManejadorListas.getManejadorListas();
-	}
-	
-	public IManejador getIManejadorUsuarios() {
-		return ManejadorUsuarios.getManejadorUsuarios();
-	}
 }

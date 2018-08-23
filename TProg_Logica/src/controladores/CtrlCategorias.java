@@ -1,10 +1,9 @@
 package controladores;
 
 import interfaces.ICategorias;
+import manejadores.ManejadorCategorias;
 
 public class CtrlCategorias implements ICategorias {
 
-	public CtrlCategorias() {
-
-	}
+	ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
 }
