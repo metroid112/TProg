@@ -26,6 +26,7 @@ public class Main {
 	private ModificarListaReproduccion modLisRep;
 	private QuitarVideo quiVid;
 	private ConsultaLista conLis;
+	private AltaUsuario altUsu;
 
 	/**
 	 * Launch the application.
@@ -77,6 +78,9 @@ public class Main {
 		conLis = new ConsultaLista();
 		conLis.setVisible(false);
 		
+		altUsu = new AltaUsuario();
+		altUsu.setVisible(false);
+		
 		frame.getContentPane().add(conLis);
 		frame.getContentPane().add(creLisRep);
 		frame.getContentPane().add(agrVid);
@@ -85,6 +89,7 @@ public class Main {
 		frame.getContentPane().add(lisCat);
 		frame.getContentPane().add(altCat);
 		frame.getContentPane().add(conCat);
+		frame.getContentPane().add(altUsu);
 		frame.getContentPane().add(dum, BorderLayout.CENTER);
 
 	}
@@ -109,6 +114,12 @@ public class Main {
 		menuBar.add(mnUsuario);
 
 		JMenuItem mntmAltaUsuario = new JMenuItem("Alta Usuario");
+		mntmAltaUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					altUsu.setVisible(true);
+			}
+
+		});
 		mnUsuario.add(mntmAltaUsuario);
 
 		JMenuItem mntmNewMenuItem = new JMenuItem("Modificar Usuario");
