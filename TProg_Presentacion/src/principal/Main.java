@@ -32,11 +32,9 @@ public class Main {
 	private ModificarListaReproduccion modLisRep;
 	private QuitarVideo quiVid;
 	private ConsultaLista conLis;
-<<<<<<< HEAD
 	private AltaUsuario altUsu;
-=======
 	private ICategorias ctrlCat;
->>>>>>> catJoaco
+
 
 	/**
 	 * Launch the application.
