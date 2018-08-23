@@ -4,7 +4,19 @@ public class ListaDefecto extends Lista {
 	
 	private String nombre;
 	
-	public ListaDefecto(String nom){
-		this.nombre = nom;
+	
+	
+	public ListaDefecto(String nombre){
+		this.nombre = nombre;
 	}
+	
+	public String getNombre(){
+		return this.nombre;
+	}
+	
+	public void setNombre(String nombre){
+		this.nombre = nombre;
+	}
+	
+	
 }
