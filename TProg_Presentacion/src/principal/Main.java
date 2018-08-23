@@ -7,11 +7,17 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import clases.Categoria;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import internalFrames.*;
+import interfaces.Fabrica;
+import interfaces.ICategorias;
+import controladores.CtrlCategorias;
+
 import java.awt.BorderLayout;
 import javax.swing.JInternalFrame;
 
@@ -26,7 +32,11 @@ public class Main {
 	private ModificarListaReproduccion modLisRep;
 	private QuitarVideo quiVid;
 	private ConsultaLista conLis;
+<<<<<<< HEAD
 	private AltaUsuario altUsu;
+=======
+	private ICategorias ctrlCat;
+>>>>>>> catJoaco
 
 	/**
 	 * Launch the application.
@@ -51,6 +61,9 @@ public class Main {
 
 		initialize();
 
+		Fabrica fabrica = Fabrica.getFabrica();
+		ctrlCat = fabrica.getICategorias();
+		
 		altCat = new AltaCategoria();
 		altCat.setVisible(false);
 
