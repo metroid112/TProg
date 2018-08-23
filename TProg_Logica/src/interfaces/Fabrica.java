@@ -35,6 +35,6 @@ public class Fabrica {
 	}
 
 	public ICategorias getICategorias() {
-		return new CtrlCategorias();
+		return new CtrlCategorias();	// esto crea una instancia de ctrlCategoria y lo devuelve
 	}
 }

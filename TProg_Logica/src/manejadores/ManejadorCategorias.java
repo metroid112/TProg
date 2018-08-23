@@ -68,10 +68,14 @@ public class ManejadorCategorias implements IManejador {
 			{
 				Categoria cat = new Categoria(s,null,null,null);
 				add(cat);
+				
 			}
-			else{
+			else
+			{
 				throw new Exception("La categoria ya existe");
 			}
 		}
 	}
+	
+	//public  listarCategorias()
 }

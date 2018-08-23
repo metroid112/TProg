@@ -8,11 +8,11 @@ public class CtrlCategorias implements ICategorias {
 	
 	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
 	
-	public CtrlCategorias() {
+	public CtrlCategorias() { // constructor
 		
 	}
 	
-	public void altaCategoria(String s) throws Exception{
+	public void altaCategoria(String s) throws Exception{	// metodo
 		manejadorCategorias.altaCategoria(s);
 	}
 }
