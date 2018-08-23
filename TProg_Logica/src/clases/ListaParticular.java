@@ -1,4 +1,5 @@
 package clases;
+
 public class ListaParticular extends Lista {
 	private boolean visible;
 

@@ -5,9 +5,5 @@ import manejadores.ManejadorListas;
 
 public class CtrlListas implements IListas {
 
-	private ManejadorListas manejadorListas;
-
-	public CtrlListas() {
-
-	}
+	private ManejadorListas manejadorListas = ManejadorListas.getManejadorListas();
 }
