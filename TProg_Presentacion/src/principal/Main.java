@@ -87,7 +87,6 @@ public class Main {
 		quiVid.setVisible(false);
 		
 		conLis = new ConsultaLista();
-		conLis.setVisible(false);
 		
 		altUsu = new AltaUsuario();
 		altUsu.setVisible(false);
