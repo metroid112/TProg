@@ -8,18 +8,18 @@ import interfaces.IManejador;
 public class ManejadorCategorias implements IManejador {
 
 	private static ManejadorCategorias manejador = null;
-	
+
 	private ManejadorCategorias() {
-		
+
 	}
-	
+
 	public static ManejadorCategorias getManejadorCategorias() {
 		if (manejador == null) {
 			manejador = new ManejadorCategorias();
 		}
 		return manejador;
 	}
-	
+
 	private HashMap<String, Categoria> categorias = new HashMap<String, Categoria>();
 
 	@Override

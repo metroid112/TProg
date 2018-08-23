@@ -9,7 +9,7 @@ import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
 
 public class ClassTest {
-	
+
 	public void testManejadores() {
 		testManejadorCategoria();
 		testManejadorLista();
@@ -23,14 +23,14 @@ public class ClassTest {
 		testManejadorCategoriasToArray();
 		System.out.println("Termino test manejador categoria\n");
 	}
-	
+
 	public void testManejadorCategoriaAdd() {
 		ManejadorCategorias manejadorCategoria = ManejadorCategorias.getManejadorCategorias();
 		Categoria categoria = new Categoria();
 		manejadorCategoria.add(categoria);
 		Assert.assertEquals(true, manejadorCategoria.isMember(categoria));
 	}
-	
+
 	public void testManejadorCategoriaRemove() {
 		ManejadorCategorias manejadorCategoria = ManejadorCategorias.getManejadorCategorias();
 		Categoria categoria = new Categoria();
@@ -39,7 +39,7 @@ public class ClassTest {
 		manejadorCategoria.remove(categoria);
 		Assert.assertEquals(false, manejadorCategoria.isMember(categoria));
 	}
-	
+
 	public void testManejadorCategoriasToArray() {
 		ManejadorCategorias manejadorCategoria = ManejadorCategorias.getManejadorCategorias();
 		Categoria categoria = new Categoria();
@@ -47,7 +47,7 @@ public class ClassTest {
 		manejadorCategoria.add(categoria);
 		System.out.println("\t" + manejadorCategoria.toArray()[0] + "\n");
 	}
-	
+
 	public void testManejadorLista() {
 		System.out.println("Testeo manejador lista\n");
 		testManejadorListaAdd();
@@ -55,14 +55,14 @@ public class ClassTest {
 		testManejadorListaToArray();
 		System.out.println("Termino test manejador lista\n");
 	}
-	
+
 	public void testManejadorListaAdd() {
 		ManejadorListas manejadorLista = ManejadorListas.getManejadorListas();
 		String listaDefecto = "Lista";
 		manejadorLista.add(listaDefecto);
 		Assert.assertEquals(true, manejadorLista.isMember(listaDefecto));
 	}
-	
+
 	public void testManejadorListaRemove() {
 		ManejadorListas manejadorLista = ManejadorListas.getManejadorListas();
 		String listaDefecto = "Lista";
@@ -71,7 +71,7 @@ public class ClassTest {
 		manejadorLista.remove(listaDefecto);
 		Assert.assertEquals(false, manejadorLista.isMember(listaDefecto));
 	}
-	
+
 	public void testManejadorListaToArray() {
 		ManejadorListas manejadorLista = ManejadorListas.getManejadorListas();
 		String listaDefecto = "Lista";
@@ -79,15 +79,15 @@ public class ClassTest {
 		Assert.assertEquals(true, manejadorLista.isMember(listaDefecto));
 		System.out.println("\t" + manejadorLista.toArray()[0] + "\n");
 	}
-	
-	public void testManejadorUsuario() {		
+
+	public void testManejadorUsuario() {
 		System.out.println("Testeo manejador usuario");
 		testManejadorUsuarioAdd();
 		testManejadorUsuarioRemove();
 		testManejadorUsuarioToArray();
 		System.out.println("Termino test manejador usuario\n");
 	}
-	
+
 	public void testManejadorUsuarioAdd() {
 		ManejadorUsuarios manejadorUsuario = ManejadorUsuarios.getManejadorUsuarios();
 		Usuario usuario = new Usuario();
@@ -95,7 +95,7 @@ public class ClassTest {
 		manejadorUsuario.add(usuario);
 		Assert.assertEquals(true, manejadorUsuario.isMember(usuario));
 	}
-	
+
 	public void testManejadorUsuarioRemove() {
 		ManejadorUsuarios manejadorUsuario = ManejadorUsuarios.getManejadorUsuarios();
 		Usuario usuario = new Usuario();
@@ -105,7 +105,7 @@ public class ClassTest {
 		manejadorUsuario.remove(usuario);
 		Assert.assertEquals(false, manejadorUsuario.isMember(usuario));
 	}
-	
+
 	public void testManejadorUsuarioToArray() {
 		ManejadorUsuarios manejadorUsuario = ManejadorUsuarios.getManejadorUsuarios();
 		Usuario usuario = new Usuario();

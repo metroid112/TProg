@@ -13,6 +13,6 @@ public interface IManejador {
 	public boolean isEmpty();
 
 	public int size();
-	
+
 	public String[] toArray();
 }
