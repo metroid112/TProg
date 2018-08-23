@@ -38,11 +38,11 @@ public class AltaVideo extends JInternalFrame {
 	 */
 	public AltaVideo() {
 		setTitle("Alta de Video");
-		setBounds(100, 100, 450, 330);
+		setBounds(100, 100, 500, 330);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 30, 1, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, 75, 30, 1, 0, 0, 0, 0, 0, 0, 36, 1, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
@@ -56,7 +56,7 @@ public class AltaVideo extends JInternalFrame {
 		JComboBox cBoxUsuarios = new JComboBox();
 		GridBagConstraints gbc_cBoxUsuarios = new GridBagConstraints();
 		gbc_cBoxUsuarios.gridwidth = 7;
-		gbc_cBoxUsuarios.insets = new Insets(0, 0, 5, 0);
+		gbc_cBoxUsuarios.insets = new Insets(0, 0, 5, 5);
 		gbc_cBoxUsuarios.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cBoxUsuarios.gridx = 3;
 		gbc_cBoxUsuarios.gridy = 1;
@@ -72,7 +72,7 @@ public class AltaVideo extends JInternalFrame {
 		TextoNombre = new JTextField();
 		GridBagConstraints gbc_TextoNombre = new GridBagConstraints();
 		gbc_TextoNombre.gridwidth = 7;
-		gbc_TextoNombre.insets = new Insets(0, 0, 5, 0);
+		gbc_TextoNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_TextoNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_TextoNombre.gridx = 3;
 		gbc_TextoNombre.gridy = 2;
@@ -90,7 +90,7 @@ public class AltaVideo extends JInternalFrame {
 		GridBagConstraints gbc_tAreaDescripcion = new GridBagConstraints();
 		gbc_tAreaDescripcion.gridwidth = 7;
 		gbc_tAreaDescripcion.gridheight = 2;
-		gbc_tAreaDescripcion.insets = new Insets(0, 0, 5, 0);
+		gbc_tAreaDescripcion.insets = new Insets(0, 0, 5, 5);
 		gbc_tAreaDescripcion.fill = GridBagConstraints.BOTH;
 		gbc_tAreaDescripcion.gridx = 3;
 		gbc_tAreaDescripcion.gridy = 3;
@@ -103,31 +103,47 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblDuracion.gridy = 5;
 		getContentPane().add(lblDuracion, gbc_lblDuracion);
 		
+		JSpinner spinnerHoras = new JSpinner();
+		GridBagConstraints gbc_spinnerHoras = new GridBagConstraints();
+		gbc_spinnerHoras.insets = new Insets(0, 0, 5, 5);
+		gbc_spinnerHoras.gridx = 3;
+		gbc_spinnerHoras.gridy = 5;
+		getContentPane().add(spinnerHoras, gbc_spinnerHoras);
+		
+		JLabel lblHoras = new JLabel("horas");
+		GridBagConstraints gbc_lblHoras = new GridBagConstraints();
+		gbc_lblHoras.insets = new Insets(0, 0, 5, 5);
+		gbc_lblHoras.gridx = 4;
+		gbc_lblHoras.gridy = 5;
+		getContentPane().add(lblHoras, gbc_lblHoras);
+		
 		JSpinner spinnerMinutos = new JSpinner();
 		GridBagConstraints gbc_spinnerMinutos = new GridBagConstraints();
 		gbc_spinnerMinutos.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerMinutos.gridx = 3;
+		gbc_spinnerMinutos.gridx = 5;
 		gbc_spinnerMinutos.gridy = 5;
 		getContentPane().add(spinnerMinutos, gbc_spinnerMinutos);
 		
 		JLabel lblMin = new JLabel("min.");
 		GridBagConstraints gbc_lblMin = new GridBagConstraints();
 		gbc_lblMin.insets = new Insets(0, 0, 5, 5);
-		gbc_lblMin.gridx = 4;
+		gbc_lblMin.gridx = 6;
 		gbc_lblMin.gridy = 5;
 		getContentPane().add(lblMin, gbc_lblMin);
 		
 		JSpinner spinnerSegundos = new JSpinner();
 		GridBagConstraints gbc_spinnerSegundos = new GridBagConstraints();
+		gbc_spinnerSegundos.anchor = GridBagConstraints.WEST;
 		gbc_spinnerSegundos.insets = new Insets(0, 0, 5, 5);
-		gbc_spinnerSegundos.gridx = 5;
+		gbc_spinnerSegundos.gridx = 7;
 		gbc_spinnerSegundos.gridy = 5;
 		getContentPane().add(spinnerSegundos, gbc_spinnerSegundos);
 		
 		JLabel lblSeg = new JLabel("seg.");
 		GridBagConstraints gbc_lblSeg = new GridBagConstraints();
+		gbc_lblSeg.anchor = GridBagConstraints.WEST;
 		gbc_lblSeg.insets = new Insets(0, 0, 5, 5);
-		gbc_lblSeg.gridx = 6;
+		gbc_lblSeg.gridx = 8;
 		gbc_lblSeg.gridy = 5;
 		getContentPane().add(lblSeg, gbc_lblSeg);
 		
@@ -141,7 +157,7 @@ public class AltaVideo extends JInternalFrame {
 		tFieldURL = new JTextField();
 		GridBagConstraints gbc_tFieldURL = new GridBagConstraints();
 		gbc_tFieldURL.gridwidth = 7;
-		gbc_tFieldURL.insets = new Insets(0, 0, 5, 0);
+		gbc_tFieldURL.insets = new Insets(0, 0, 5, 5);
 		gbc_tFieldURL.fill = GridBagConstraints.HORIZONTAL;
 		gbc_tFieldURL.gridx = 3;
 		gbc_tFieldURL.gridy = 6;
@@ -158,23 +174,24 @@ public class AltaVideo extends JInternalFrame {
 		JComboBox cBoxCategoria = new JComboBox();
 		GridBagConstraints gbc_cBoxCategoria = new GridBagConstraints();
 		gbc_cBoxCategoria.gridwidth = 7;
-		gbc_cBoxCategoria.insets = new Insets(0, 0, 5, 0);
+		gbc_cBoxCategoria.insets = new Insets(0, 0, 5, 5);
 		gbc_cBoxCategoria.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cBoxCategoria.gridx = 3;
 		gbc_cBoxCategoria.gridy = 7;
 		getContentPane().add(cBoxCategoria, gbc_cBoxCategoria);
 		
-		JButton btnConfirmar = new JButton("Confirmar");
-		GridBagConstraints gbc_btnConfirmar = new GridBagConstraints();
-		gbc_btnConfirmar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnConfirmar.gridx = 7;
-		gbc_btnConfirmar.gridy = 9;
-		getContentPane().add(btnConfirmar, gbc_btnConfirmar);
+		JButton btnAceptar = new JButton("Aceptar");
+		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
+		gbc_btnAceptar.gridwidth = 2;
+		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnAceptar.gridx = 7;
+		gbc_btnAceptar.gridy = 9;
+		getContentPane().add(btnAceptar, gbc_btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
 		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCancelar.gridx = 8;
+		gbc_btnCancelar.gridx = 9;
 		gbc_btnCancelar.gridy = 9;
 		getContentPane().add(btnCancelar, gbc_btnCancelar);
 
