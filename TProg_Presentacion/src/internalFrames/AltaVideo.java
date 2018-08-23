@@ -12,31 +12,19 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JSpinner;
 import javax.swing.JButton;
+import interfaces.IVideos;
 
 public class AltaVideo extends JInternalFrame {
 	private JTextField TextoNombre;
 	private JTextField tFieldURL;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaVideo frame = new AltaVideo();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private IVideos contVideos;
 
 	/**
 	 * Create the frame.
 	 */
-	public AltaVideo() {
+	public AltaVideo(IVideos interfaz) {
+		contVideos = interfaz;		// Se inicia con la interfaz como parametro
+		
 		setTitle("Alta de Video");
 		setBounds(100, 100, 500, 330);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -197,4 +185,9 @@ public class AltaVideo extends JInternalFrame {
 
 	}
 
+	public void cargarDatos(){
+		/*
+		 * Aca se le piden la lista de usuarios y la lista de categorias al controlador
+		 */
+	}
 }

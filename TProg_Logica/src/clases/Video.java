@@ -1,33 +1,35 @@
 package clases;
 
+import java.time.LocalDate;
+import java.time.Duration;
+
 public class Video {
 
 	private String nombre;
 	private String descripcion;
-	private int duracion;
-	private DtTiempo fecha;
+	private Duration duracion;
 	private String url;
 	private boolean visible;
-
+	private LocalDate fecha = LocalDate.now();	/* Funciona esto? */
 	private Categoria categoria;
-	private Lista[] listas;
+	private Lista[] listas;		//array?
 	private Canal canal;
-	private Calificacion[] calificaciones;
-	private Comentario[] comentarios;
+	private Calificacion[] calificaciones;		// array?
+	private Comentario[] comentarios;		// array?
 
 	public Video() {
 	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Video(String nombre, String descripcion, int duracion, DtTiempo fecha, String url, boolean visible,
+	public Video(String nombre, String descripcion, Duration duracion, String url, 
 			Categoria categoria, Lista[] listas, Canal canal, Calificacion[] calificaciones, Comentario[] comentarios) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
-		this.fecha = fecha;
+		// this.fecha = LocalDate.now();		DEJO COMENTADO PARA PROBAR
 		this.url = url;
-		this.visible = visible;
+		this.visible = false;		// Arranca privado
 		this.categoria = categoria;
 		this.listas = listas;
 		this.canal = canal;
@@ -43,11 +45,11 @@ public class Video {
 		return descripcion;
 	}
 
-	public int getDuracion() {
+	public Duration getDuracion() {
 		return duracion;
 	}
 
-	public DtTiempo getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
@@ -87,11 +89,19 @@ public class Video {
 		this.descripcion = descripcion;
 	}
 
-	public void setDuracion(int duracion) {
+	public void setDuracion(Duration duracion) {
 		this.duracion = duracion;
 	}
+	
+	public void setDuracion(int hora, int minuto, int segundo) {
+		this.duracion = Duration.ofHours(hora);
+		this.duracion = duracion.plusMinutes(minuto);
+		this.duracion = duracion.plusSeconds(segundo);
+		
+				
+	}
 
-	public void setFecha(DtTiempo fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
