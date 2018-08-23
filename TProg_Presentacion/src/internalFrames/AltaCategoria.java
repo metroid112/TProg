@@ -8,12 +8,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import interfaces.ICategorias;
 
 @SuppressWarnings("serial")
 public class AltaCategoria extends JInternalFrame{
 	private JTextField textField;
+	private ICategorias ctrlCat;
 	
 	public AltaCategoria() {
 		setTitle("Alta de Categoria");
@@ -73,14 +77,27 @@ public class AltaCategoria extends JInternalFrame{
 	}
 	
 	protected void cmdAltaCategcoriaActionPerformed(ActionEvent e){
-		if (textField.getText().equals("")){
-			JOptionPane.showMessageDialog(this, "La categoria no puede ser vacia.");
-		}
-		else{
-			//ctrlCategoria.AltaCategoria(textField.getText(),null,null,null);		
-			JOptionPane.showMessageDialog(this, "¡Se ha creado la categoria con exito!");
-			textField.setText("");
-			setVisible(false);
+		if (textField.getText().isEmpty())
+			JOptionPane.showMessageDialog(this, "La categoria no puede ser vacía");
+		else
+		{
+			try
+			{
+                ctrlCat.altaCategoria(textField.getText());
+                // Muestro Ã©xito de la operaciÃ³n
+                JOptionPane.showMessageDialog(this, "La categoria se ha creado con exito");
+                textField.setText("");
+                setVisible(false);
+                
+			   
+            } catch (Exception m) {
+                // Muestro error de registro
+            	JOptionPane.showMessageDialog(this,"mierda");
+                JOptionPane.showMessageDialog(this, m.getMessage());
+            }
 		}
 	}
+	
+
+		
 }

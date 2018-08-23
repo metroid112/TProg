@@ -1,9 +1,10 @@
 package manejadores;
 
 import java.util.HashMap;
-
+import java.lang.Exception;
 import clases.Categoria;
 import interfaces.IManejador;
+import javax.swing.JOptionPane;
 
 public class ManejadorCategorias implements IManejador {
 
@@ -58,5 +59,19 @@ public class ManejadorCategorias implements IManejador {
 	@Override
 	public String[] toArray() {
 		return categorias.keySet().toArray(new String[categorias.size()]);
+	}
+	
+	public void altaCategoria(String s) throws Exception{
+		
+		{
+			if (!categorias.containsKey(s))
+			{
+				Categoria cat = new Categoria(s,null,null,null);
+				add(cat);
+			}
+			else{
+				throw new Exception("La categoria ya existe");
+			}
+		}
 	}
 }
