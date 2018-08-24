@@ -185,7 +185,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
 						quiVid.isVisible(), conLis.isVisible()))
-					lisCat.setVisible(true);
+					lisCat.setVisible(true);			
 			}
 
 		});

@@ -3,6 +3,7 @@ package controladores;
 import interfaces.ICategorias;
 import java.lang.Exception;
 import manejadores.ManejadorCategorias;
+import java.util.*;
 
 public class CtrlCategorias implements ICategorias {
 	
@@ -14,5 +15,9 @@ public class CtrlCategorias implements ICategorias {
 	
 	public void altaCategoria(String s) throws Exception{	// metodo
 		manejadorCategorias.altaCategoria(s);
+	}
+	
+	public Set<String> listarCategorias(){
+		return manejadorCategorias.getCategorias();
 	}
 }

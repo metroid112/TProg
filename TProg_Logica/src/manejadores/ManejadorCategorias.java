@@ -1,6 +1,7 @@
 package manejadores;
 
 import java.util.HashMap;
+import java.util.*;
 import java.lang.Exception;
 import clases.Categoria;
 import interfaces.IManejador;
@@ -77,5 +78,10 @@ public class ManejadorCategorias implements IManejador {
 		}
 	}
 	
-	//public  listarCategorias()
+	public Set<String> getCategorias(){
+		if (!categorias.isEmpty())
+			Set<String> cats = new HashSet<String>();
+		return cats
+		
+	}
 }
