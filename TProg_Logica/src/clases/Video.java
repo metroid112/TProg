@@ -2,6 +2,7 @@ package clases;
 
 import java.time.LocalDate;
 import java.time.Duration;
+import java.util.LinkedList;
 
 public class Video {
 
@@ -12,18 +13,16 @@ public class Video {
 	private boolean visible;
 	private LocalDate fecha = LocalDate.now();	/* Funciona esto? */
 	private Categoria categoria;
-	private Lista[] listas;		//array?
 	private Canal canal;
-	private Calificacion[] calificaciones;		// array?
-	private Comentario[] comentarios;		// array?
+	private LinkedList<Calificacion> calificaciones;		// array?
+	private LinkedList<Comentario> comentarios;		// diccionario???
 
 	public Video() {
 	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Video(String nombre, String descripcion, Duration duracion, String url, 
-			Categoria categoria, Lista[] listas, Canal canal, Calificacion[] calificaciones, Comentario[] comentarios) {
+	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
@@ -31,10 +30,10 @@ public class Video {
 		this.url = url;
 		this.visible = false;		// Arranca privado
 		this.categoria = categoria;
-		this.listas = listas;
-		this.canal = canal;
-		this.calificaciones = calificaciones;
-		this.comentarios = comentarios;
+		/*
+		 * la categoria debe crear un link a este video
+		 */
+		
 	}
 
 	public String getNombre() {
@@ -65,19 +64,15 @@ public class Video {
 		return categoria;
 	}
 
-	public Lista[] getListas() {
-		return listas;
-	}
-
 	public Canal getCanal() {
 		return canal;
 	}
 
-	public Calificacion[] getCalificaciones() {
+	public LinkedList<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
 
-	public Comentario[] getComentarios() {
+	public LinkedList<Comentario> getComentarios() {
 		return comentarios;
 	}
 
@@ -117,19 +112,12 @@ public class Video {
 		this.categoria = categoria;
 	}
 
-	public void setListas(Lista[] listas) {
-		this.listas = listas;
-	}
-
 	public void setCanal(Canal canal) {
 		this.canal = canal;
 	}
 
-	public void setCalificaciones(Calificacion[] calificaciones) {
+	public void setCalificaciones(LinkedList<Calificacion> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
 
-	public void setComentarios(Comentario[] comentarios) {
-		this.comentarios = comentarios;
-	}
 }
