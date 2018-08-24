@@ -17,7 +17,7 @@ public class CtrlCategorias implements ICategorias {
 		manejadorCategorias.altaCategoria(s);
 	}
 	
-	public Set<String> listarCategorias(){
-		return manejadorCategorias.getCategorias();
+	public String[] listarCategorias(){
+		return manejadorCategorias.toArray();
 	}
 }

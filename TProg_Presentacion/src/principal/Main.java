@@ -184,8 +184,10 @@ public class Main {
 		mntmListarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
+						quiVid.isVisible(), conLis.isVisible())){
+					lisCat.cargarDatos();
 					lisCat.setVisible(true);			
+			}
 			}
 
 		});

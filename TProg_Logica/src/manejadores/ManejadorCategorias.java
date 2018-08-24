@@ -77,11 +77,4 @@ public class ManejadorCategorias implements IManejador {
 			}
 		}
 	}
-	
-	public Set<String> getCategorias(){
-		if (!categorias.isEmpty())
-			Set<String> cats = new HashSet<String>();
-		return cats
-		
-	}
 }
