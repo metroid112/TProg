@@ -1,24 +1,26 @@
 package clases;
 
+import java.time.LocalDate;
+
 public class Comentario {
 
 	private String texto;
-	private DtTiempo fecha;
-
+	private LocalDate fecha;
 	private Usuario usuario;
 	private Video video;
 	private Comentario padre;
 	private Comentario[] respuestas;
+	private long id;	// id de comentario para uso interno
 
 	public Comentario() {
 	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Comentario(String texto, DtTiempo fecha, Usuario usuario, Video video, Comentario padre,
+	public Comentario(String texto, Usuario usuario, Video video, Comentario padre,
 			Comentario[] respuestas) {
 		this.texto = texto;
-		this.fecha = fecha;
+		this.fecha = LocalDate.now();
 		this.usuario = usuario;
 		this.video = video;
 		this.padre = padre;
@@ -29,7 +31,7 @@ public class Comentario {
 		return texto;
 	}
 
-	public DtTiempo getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
@@ -53,7 +55,7 @@ public class Comentario {
 		this.texto = texto;
 	}
 
-	public void setFecha(DtTiempo fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
