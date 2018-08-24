@@ -187,7 +187,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		                JOptionPane.showMessageDialog(null, "La lista fue creada con exito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
 					}
 					catch(Exception x){
-						JOptionPane.showMessageDialog(null, "El nombre de la lista ya existe.", "Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Ya existe una lista con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
