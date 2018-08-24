@@ -8,10 +8,6 @@ public class ManejadorListas implements IManejador {
 
 	private static ManejadorListas manejador = null;
 
-	private ManejadorListas() {
-
-	}
-
 	public static ManejadorListas getManejadorListas() {
 		if (manejador == null) {
 			manejador = new ManejadorListas();
@@ -21,14 +17,23 @@ public class ManejadorListas implements IManejador {
 
 	private HashSet<String> listasDefecto = new HashSet<String>();
 
+	private ManejadorListas() {
+
+	}
+
 	@Override
 	public void add(Object o) {
 		listasDefecto.add((String) o);
 	}
 
 	@Override
-	public void remove(Object o) {
-		listasDefecto.remove((String) o);
+	public Object get(Object key) {
+		return key;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return listasDefecto.isEmpty();
 	}
 
 	@Override
@@ -37,13 +42,8 @@ public class ManejadorListas implements IManejador {
 	}
 
 	@Override
-	public boolean isMemberKey(Object o) {
-		return isMember(o);
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return listasDefecto.isEmpty();
+	public void remove(Object o) {
+		listasDefecto.remove((String) o);
 	}
 
 	@Override

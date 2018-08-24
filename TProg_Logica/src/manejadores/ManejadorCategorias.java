@@ -9,10 +9,6 @@ public class ManejadorCategorias implements IManejador {
 
 	private static ManejadorCategorias manejador = null;
 
-	private ManejadorCategorias() {
-
-	}
-
 	public static ManejadorCategorias getManejadorCategorias() {
 		if (manejador == null) {
 			manejador = new ManejadorCategorias();
@@ -22,6 +18,10 @@ public class ManejadorCategorias implements IManejador {
 
 	private HashMap<String, Categoria> categorias = new HashMap<String, Categoria>();
 
+	private ManejadorCategorias() {
+
+	}
+
 	@Override
 	public void add(Object o) {
 		Categoria cat = (Categoria) o;
@@ -29,9 +29,13 @@ public class ManejadorCategorias implements IManejador {
 	}
 
 	@Override
-	public void remove(Object o) {
-		Categoria cat = (Categoria) o;
-		categorias.remove(cat.getNombre(), cat);
+	public Object get(Object key) {
+		return categorias.get(key);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return categorias.isEmpty();
 	}
 
 	@Override
@@ -39,15 +43,14 @@ public class ManejadorCategorias implements IManejador {
 		return categorias.containsValue(o);
 	}
 
-	@Override
-	public boolean isMemberKey(Object o) {
-		Categoria cat = (Categoria) o;
-		return categorias.containsKey(cat.getNombre());
+	public boolean isMemberKey(Object key) {
+		return categorias.containsKey(key);
 	}
 
 	@Override
-	public boolean isEmpty() {
-		return categorias.isEmpty();
+	public void remove(Object o) {
+		Categoria cat = (Categoria) o;
+		categorias.remove(cat.getNombre(), cat);
 	}
 
 	@Override
