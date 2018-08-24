@@ -3,9 +3,8 @@ package manejadores;
 import java.util.HashMap;
 
 import clases.Usuario;
-import interfaces.IManejador;
 
-public class ManejadorUsuarios implements IManejador {
+public class ManejadorUsuarios {
 
 	private static ManejadorUsuarios manejador = null;
 
@@ -22,23 +21,19 @@ public class ManejadorUsuarios implements IManejador {
 
 	}
 
-	@Override
 	public void add(Object o) {
 		Usuario usuario = (Usuario) o;
 		usuarios.put(usuario.getNick(), usuario);
 	}
 
-	@Override
 	public Object get(Object key) {
 		return usuarios.get(key);
 	}
 
-	@Override
 	public boolean isEmpty() {
 		return usuarios.isEmpty();
 	}
 
-	@Override
 	public boolean isMember(Object o) {
 		return usuarios.containsValue(o);
 	}
@@ -47,19 +42,20 @@ public class ManejadorUsuarios implements IManejador {
 		return usuarios.containsKey(key);
 	}
 
-	@Override
 	public void remove(Object o) {
 		Usuario usuario = (Usuario) o;
 		usuarios.remove(usuario.getNick(), usuario);
 	}
 
-	@Override
 	public int size() {
 		return usuarios.size();
 	}
 
-	@Override
 	public String[] toArray() {
 		return usuarios.keySet().toArray(new String[usuarios.size()]);
+	}
+
+	public Object getCollection() {
+		return usuarios;
 	}
 }
