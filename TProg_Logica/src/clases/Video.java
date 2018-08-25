@@ -1,11 +1,13 @@
 package clases;
 
+import java.time.LocalDate;
+
 public class Video {
 
 	private String nombre;
 	private String descripcion;
 	private int duracion;
-	private DtTiempo fecha;
+	private LocalDate fecha;
 	private String url;
 	private boolean visible;
 
@@ -20,7 +22,7 @@ public class Video {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Video(String nombre, String descripcion, int duracion, DtTiempo fecha, String url, boolean visible,
+	public Video(String nombre, String descripcion, int duracion, LocalDate fecha, String url, boolean visible,
 			Categoria categoria, Lista[] listas, Canal canal, Calificacion[] calificaciones, Comentario[] comentarios) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -47,7 +49,7 @@ public class Video {
 		return duracion;
 	}
 
-	public DtTiempo getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
@@ -91,7 +93,7 @@ public class Video {
 		this.duracion = duracion;
 	}
 
-	public void setFecha(DtTiempo fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
