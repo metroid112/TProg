@@ -179,7 +179,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 					
 					try{
 						if(rdbtnPorDefecto.isSelected())
-							ctrLista.ingresarListaDefecto(textFieldNombre.getText());
+							ctrLista.altaListaDefecto(textFieldNombre.getText());
 						
 						if(rdbtnParticular.isSelected()){
 							ctrLista.ingresarListaParticular(textFieldNombre.getText(), comboBoxUsuario.getName(), rdbtnPublica.isSelected()); //Visibilidad publica = true

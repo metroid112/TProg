@@ -1,11 +1,9 @@
 package interfaces;
 import java.lang.Exception;
-import java.util.*;
 
 public interface ICategorias {
 	
-	public  void altaCategoria(String s) throws Exception;	
+	public void altaCategoria(String nombreCategoria) throws Exception;	
 	
 	public String[] listarCategorias();
-
 }

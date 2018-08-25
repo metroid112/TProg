@@ -9,7 +9,7 @@ import clases.Comentario;
 
 public interface IUsuariosCanales {
 	
-	public abstract void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaDeNacimiento, Image imagen, 
+	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaDeNacimiento, Image imagen, 
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) throws Exception;
 }
