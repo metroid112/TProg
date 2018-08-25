@@ -83,8 +83,7 @@ public class AltaCategoria extends JInternalFrame{
 		{
 			try
 			{
-				fab = Fabrica.getFabrica();
-				ctrlCat = fab.getICategorias();  
+			
 				String texto = textField.getText().toUpperCase();
                 ctrlCat.altaCategoria(texto);		
                 // Muestro éxito de la operación
