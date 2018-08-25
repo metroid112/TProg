@@ -21,30 +21,28 @@ public class ManejadorUsuarios {
 
 	}
 
-	public void add(Object o) {
-		Usuario usuario = (Usuario) o;
-		usuarios.put(usuario.getNick(), usuario);
+	public void add(Usuario user) {
+		usuarios.put(user.getNick(), user);
 	}
 
-	public Object get(Object key) {
-		return usuarios.get(key);
+	public Object get(String nick) {
+		return usuarios.get(nick);
 	}
 
 	public boolean isEmpty() {
 		return usuarios.isEmpty();
 	}
 
-	public boolean isMember(Object o) {
-		return usuarios.containsValue(o);
+	public boolean isMember(Usuario user) {
+		return usuarios.containsValue(user);
 	}
 
-	public boolean isMemberKey(Object key) {
-		return usuarios.containsKey(key);
+	public boolean isMemberKey(String nick) {
+		return usuarios.containsKey(nick);
 	}
 
-	public void remove(Object o) {
-		Usuario usuario = (Usuario) o;
-		usuarios.remove(usuario.getNick(), usuario);
+	public void remove(Usuario user) {
+		usuarios.remove(user.getNick(), user);
 	}
 
 	public int size() {
@@ -53,9 +51,5 @@ public class ManejadorUsuarios {
 
 	public String[] toArray() {
 		return usuarios.keySet().toArray(new String[usuarios.size()]);
-	}
-
-	public Object getCollection() {
-		return usuarios;
 	}
 }

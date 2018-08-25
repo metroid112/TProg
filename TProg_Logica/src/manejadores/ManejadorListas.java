@@ -19,20 +19,20 @@ public class ManejadorListas {
 
 	}
 
-	public void add(Object o) {
-		listasDefecto.add((String) o);
+	public void add(String lista) {
+		listasDefecto.add(lista);
 	}
 
 	public boolean isEmpty() {
 		return listasDefecto.isEmpty();
 	}
 
-	public boolean isMember(Object o) {
-		return listasDefecto.contains(o);
+	public boolean isMember(String lista) {
+		return listasDefecto.contains(lista);
 	}
 
-	public void remove(Object o) {
-		listasDefecto.remove((String) o);
+	public void remove(String lista) {
+		listasDefecto.remove(lista);
 	}
 
 	public int size() {
@@ -41,9 +41,5 @@ public class ManejadorListas {
 
 	public String[] toArray() {
 		return listasDefecto.toArray(new String[listasDefecto.size()]);
-	}
-
-	public Object getCollection() {
-		return listasDefecto;
 	}
 }

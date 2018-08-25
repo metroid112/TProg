@@ -21,30 +21,28 @@ public class ManejadorCategorias {
 
 	}
 
-	public void add(Object o) {
-		Categoria cat = (Categoria) o;
-		categorias.put(cat.getNombre(), (Categoria) o);
+	public void add(Categoria categoria) {
+		categorias.put(categoria.getNombre(), categoria);
 	}
 
-	public Object get(Object key) {
-		return categorias.get(key);
+	public Object get(String nombreCategoria) {
+		return categorias.get(nombreCategoria);
 	}
 
 	public boolean isEmpty() {
 		return categorias.isEmpty();
 	}
 
-	public boolean isMember(Object o) {
-		return categorias.containsValue(o);
+	public boolean isMember(Categoria categoria) {
+		return categorias.containsValue(categoria);
 	}
 
-	public boolean isMemberKey(Object key) {
-		return categorias.containsKey(key);
+	public boolean isMemberKey(String nombreCategoria) {
+		return categorias.containsKey(nombreCategoria);
 	}
 
-	public void remove(Object o) {
-		Categoria cat = (Categoria) o;
-		categorias.remove(cat.getNombre(), cat);
+	public void remove(Categoria categoria) {
+		categorias.remove(categoria.getNombre(), categoria);
 	}
 
 	public int size() {
@@ -53,9 +51,5 @@ public class ManejadorCategorias {
 
 	public String[] toArray() {
 		return categorias.keySet().toArray(new String[categorias.size()]);
-	}
-
-	public Object getCollection() {
-		return categorias;
 	}
 }
