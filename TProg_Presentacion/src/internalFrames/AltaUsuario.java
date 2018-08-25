@@ -6,19 +6,32 @@ import javax.swing.JInternalFrame;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
+import java.awt.Image;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import clases.Calificacion;
+import clases.Comentario;
+import clases.Usuario;
+import interfaces.Fabrica;
+import interfaces.IUsuariosCanales;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import java.awt.Rectangle;
+import javax.swing.DefaultComboBoxModel;
+
 
 @SuppressWarnings("serial")
 public class AltaUsuario extends JInternalFrame {
@@ -29,26 +42,20 @@ public class AltaUsuario extends JInternalFrame {
 	private JLabel lblCorreo;
 	private JLabel lblFechaDeNacimiento;
 	private JTextField textField_4;
-
-	/**
-	 * Launch the application.
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaUsuario frame = new AltaUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JRadioButton rdbtnNewRadioButton;
+	private JTextPane textPane;
 
 	/**
 	 * Create the frame.
 	 */
+	private IUsuariosCanales ctrlUsu;
+	private Fabrica fab;
+	private JTextField dia;
+	private JTextField mes;
+	private JTextField ano;
+	
+	
+	@SuppressWarnings("unchecked")
 	public AltaUsuario() {
 		setNormalBounds(new Rectangle(20, 0, 300, 400));
 		setTitle("Alta Usuario");
@@ -93,18 +100,12 @@ public class AltaUsuario extends JInternalFrame {
 		lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
 		lblFechaDeNacimiento.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		JComboBox comboBox = new JComboBox();
-		
-		JComboBox comboBox_1 = new JComboBox();
-		
-		JComboBox comboBox_2 = new JComboBox();
-		
 		JLabel lblPrivacidad = new JLabel("Privacidad:");
 		lblPrivacidad.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		//logica radio buttons
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Privado");
+		rdbtnNewRadioButton = new JRadioButton("Privado");
 		rdbtnNewRadioButton.setSelected(true);
 		
 		JRadioButton rdbtnPblico = new JRadioButton("P\u00FAblico");
@@ -141,7 +142,7 @@ public class AltaUsuario extends JInternalFrame {
 		JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
 		lblDescripcin.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		JTextPane textPane = new JTextPane();
+		textPane = new JTextPane();
 		textPane.setEnabled(false);
 		
 		//logica editar textos por defecto
@@ -170,6 +171,19 @@ public class AltaUsuario extends JInternalFrame {
 			}
 		});
 		
+		dia = new JTextField();
+		dia.setColumns(10);
+		
+		mes = new JTextField();
+		mes.setColumns(10);
+		
+		ano = new JTextField();
+		ano.setColumns(10);
+		
+		JLabel label = new JLabel("/");
+		
+		JLabel label_1 = new JLabel("/");
+		
 		//fin lógica botones
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -179,7 +193,7 @@ public class AltaUsuario extends JInternalFrame {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(28)
-							.addComponent(lblIngreseLosDatos, GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
+							.addComponent(lblIngreseLosDatos, GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -190,36 +204,27 @@ public class AltaUsuario extends JInternalFrame {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblDescripcin, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+									.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNombreCanal, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblFechaDeNacimiento, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
-									.addGap(30))
+									.addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblCorreo, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+									.addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblApellido, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+									.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+									.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNickname, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+									.addComponent(textField, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblCambiarCanalPor, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
@@ -231,9 +236,20 @@ public class AltaUsuario extends JInternalFrame {
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addComponent(rdbtnNo, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-										.addComponent(rdbtnPblico))
-									.addPreferredGap(ComponentPlacement.RELATED)))))
-					.addGap(102))
+										.addComponent(rdbtnPblico)))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblFechaDeNacimiento, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(dia, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(label)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(mes, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+									.addGap(7)
+									.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 5, GroupLayout.PREFERRED_SIZE)
+									.addGap(6)
+									.addComponent(ano, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)))))
+					.addGap(48))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -258,10 +274,12 @@ public class AltaUsuario extends JInternalFrame {
 						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblFechaDeNacimiento))
+						.addComponent(lblFechaDeNacimiento)
+						.addComponent(dia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(mes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(ano, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label)
+						.addComponent(label_1))
 					.addGap(13)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(rdbtnPblico)
@@ -302,16 +320,55 @@ public class AltaUsuario extends JInternalFrame {
 //			JOptionPane.showMessageDialog(this, "Fecha inválida.");
 //		}
 		else{
-			//ctrlCategoria.AltaCategoria(textField.getText(),null,null,null);		
-			JOptionPane.showMessageDialog(this, "¡Se ha creado el usuario con éxito!");
-			textField.setText("");
-			textField_1.setText("");
-			textField_2.setText("");
-			textField_3.setText("");
-			textField_4.setText("");
-//			textPane.			
+			try
+			{
+				fab = Fabrica.getFabrica();
+				ctrlUsu = fab.getIUsuariosCanales(); 
+				
+				String nick = textField.getText();
+				String nombre = textField_1.getText();
+				String apellido = textField_2.getText();
+				String correo = textField_3.getText();
+				Date nacimiento = null; //formar la fecha desde las partes.
+				Image imagen = null;
+				String nombreCanal = textField_4.getText();
+				boolean privado = rdbtnNewRadioButton.isSelected();
+				String descripcion = textPane.getText();
+				Comentario[] comentarios = null;
+				Calificacion[] calificaciones = null;
+				Usuario[] seguidores = null;
+				Usuario[] seguidos = null;
+				try {
+					String mes2 =(mes.getText().length()==1)?"0"+mes.getText():mes.getText();
+					String dia2 =(dia.getText().length()==1)?"0"+dia.getText():dia.getText();
+					String fechaString = dia2+"/"+ mes2 +"/"+ano.getText();
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+					nacimiento = sdf.parse(fechaString);
+				    if (!fechaString.equals(sdf.format(nacimiento))) throw new Exception();
+				}catch (Exception ex) {
+					throw new Exception("Formato de fecha incorrecto", ex);
+				}
+				ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, 
+						nombreCanal, privado, descripcion, comentarios, calificaciones, seguidores,
+						seguidos);
+				
+				JOptionPane.showMessageDialog(this, "¡Se ha creado el usuario con éxito!");
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textField_4.setText("");
+				textPane.setText("");
+				dia.setText("");
+				mes.setText("");
+				ano.setText("");
+			   
+				setVisible(false);
+            } catch (Exception m) {
+                JOptionPane.showMessageDialog(this, m.getMessage());
+                m.printStackTrace();
+            }
 			
-			setVisible(false);
 		}
 	}
 }
