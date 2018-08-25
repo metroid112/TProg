@@ -1,7 +1,8 @@
 package manejadores;
 
 import java.util.HashMap;
-
+import java.util.*;
+import java.lang.Exception;
 import clases.Categoria;
 
 public class ManejadorCategorias {
@@ -51,5 +52,21 @@ public class ManejadorCategorias {
 
 	public String[] toArray() {
 		return categorias.keySet().toArray(new String[categorias.size()]);
+	}
+	
+	public void altaCategoria(String s) throws Exception{
+		
+		{
+			if (!categorias.containsKey(s))
+			{
+				Categoria cat = new Categoria(s,null,null,null);
+				add(cat);
+				
+			}
+			else
+			{
+				throw new Exception("La categoria ya existe");
+			}
+		}
 	}
 }

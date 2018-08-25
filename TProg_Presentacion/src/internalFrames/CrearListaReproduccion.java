@@ -1,16 +1,13 @@
 package internalFrames;
+
+import java.lang.Exception;
 import java.awt.EventQueue;
 
+import controladores.CtrlListas;
 import javax.swing.*;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -20,6 +17,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 
 	
 	private JTextField textFieldNombre;
+	private CtrlListas ctrLista = new CtrlListas();
 
 	public CrearListaReproduccion() {
 		
@@ -176,12 +174,38 @@ public class CrearListaReproduccion extends JInternalFrame {
 		
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//if(textFieldNombre.getText() == null)
-				//mostrar JDialog
-				//if(existeUsuario(textFieldNombre.getText())
+				
+				if(checkNombre()){
 					
+					try{
+						if(rdbtnPorDefecto.isSelected())
+							ctrLista.ingresarListaDefecto(textFieldNombre.getText());
+						
+						if(rdbtnParticular.isSelected()){
+							ctrLista.ingresarListaParticular(textFieldNombre.getText(), comboBoxUsuario.getName(), rdbtnPublica.isSelected()); //Visibilidad publica = true
+						}
+		                JOptionPane.showMessageDialog(null, "La lista fue creada con exito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
+					}
+					catch(Exception x){
+						JOptionPane.showMessageDialog(null, "Ya existe una lista con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
 			}
 		});
+		
+	}
+	
+	
+	private boolean checkNombre(){
+		
+		String nombre = textFieldNombre.getText();
+		
+		if(textFieldNombre.getText().isEmpty()){
+			JOptionPane.showMessageDialog(null, "El nombre de lista no puede ser vacío", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		
+		return true;
 	}
 
 }

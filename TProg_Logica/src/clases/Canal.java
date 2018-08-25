@@ -92,4 +92,14 @@ public class Canal {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	
+	public void ingresarListaParticular(String nombre, boolean visibilidad){
+		ListaParticular nuevaLista = new ListaParticular(nombre,this,null,null,visibilidad);
+		listaParticulares[listaParticulares.length] = nuevaLista;	//puede cambiar la implementacion
+	}
+	
+	public void ingresarListaDefecto(String nombre){
+		ListaDefecto nuevaLista = new ListaDefecto(nombre);
+		listaDefecto[listaDefecto.length] = nuevaLista; //puede cambiar la implementacion
+	}
 }

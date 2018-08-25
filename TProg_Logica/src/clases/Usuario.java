@@ -1,6 +1,7 @@
 package clases;
 
 import java.awt.Image;
+import java.util.Date;
 
 public class Usuario {
 
@@ -8,9 +9,8 @@ public class Usuario {
 	private String nombre;
 	private String apellido;
 	private String correo;
-	private DtTiempo nacimiento;
+	private Date nacimiento;
 	private Image imagen;
-
 	private Canal canal;
 	private Comentario[] comentarios;
 	private Calificacion[] calificaciones;
@@ -22,7 +22,7 @@ public class Usuario {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Usuario(String nick, String nombre, String apellido, String correo, DtTiempo nacimiento, Image imagen,
+	public Usuario(String nick, String nombre, String apellido, String correo, Date nacimiento, Image imagen,
 			Canal canal, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) {
 		this.nick = nick;
@@ -54,7 +54,7 @@ public class Usuario {
 		return correo;
 	}
 
-	public DtTiempo getNacimiento() {
+	public Date getNacimiento() {
 		return nacimiento;
 	}
 
@@ -98,7 +98,7 @@ public class Usuario {
 		this.correo = correo;
 	}
 
-	public void setNacimiento(DtTiempo nacimiento) {
+	public void setNacimiento(Date nacimiento) {
 		this.nacimiento = nacimiento;
 	}
 
@@ -125,4 +125,5 @@ public class Usuario {
 	public void setSeguidos(Usuario[] seguidos) {
 		this.seguidos = seguidos;
 	}
+	
 }
