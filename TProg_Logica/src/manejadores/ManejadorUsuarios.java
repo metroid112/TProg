@@ -3,15 +3,10 @@ package manejadores;
 import java.util.HashMap;
 
 import clases.Usuario;
-import interfaces.IManejador;
 
-public class ManejadorUsuarios implements IManejador {
+public class ManejadorUsuarios {
 
 	private static ManejadorUsuarios manejador = null;
-
-	private ManejadorUsuarios() {
-
-	}
 
 	public static ManejadorUsuarios getManejadorUsuarios() {
 		if (manejador == null) {
@@ -22,39 +17,38 @@ public class ManejadorUsuarios implements IManejador {
 
 	private HashMap<String, Usuario> usuarios = new HashMap<String, Usuario>();
 
-	@Override
-	public void add(Object o) {
-		Usuario usuario = (Usuario) o;
-		usuarios.put(usuario.getNick(), usuario);
+	private ManejadorUsuarios() {
+
 	}
 
-	@Override
-	public void remove(Object o) {
-		Usuario usuario = (Usuario) o;
-		usuarios.remove(usuario.getNick(), usuario);
+	public void add(Usuario user) {
+		usuarios.put(user.getNick(), user);
 	}
 
-	@Override
-	public boolean isMember(Object o) {
-		return usuarios.containsValue(o);
+	public Object get(String nick) {
+		return usuarios.get(nick);
 	}
 
-	@Override
-	public boolean isMemberKey(Object o) {
-		return usuarios.containsKey(o);
-	}
-
-	@Override
 	public boolean isEmpty() {
 		return usuarios.isEmpty();
 	}
 
-	@Override
+	public boolean isMember(Usuario user) {
+		return usuarios.containsValue(user);
+	}
+
+	public boolean isMemberKey(String nick) {
+		return usuarios.containsKey(nick);
+	}
+
+	public void remove(Usuario user) {
+		usuarios.remove(user.getNick(), user);
+	}
+
 	public int size() {
 		return usuarios.size();
 	}
 
-	@Override
 	public String[] toArray() {
 		return usuarios.keySet().toArray(new String[usuarios.size()]);
 	}
