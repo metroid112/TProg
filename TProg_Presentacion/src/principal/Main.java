@@ -174,8 +174,11 @@ public class Main {
 		mntmConsultaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
+						quiVid.isVisible(), conLis.isVisible())){
+					conCat.cargarDatos();
 					conCat.setVisible(true);
+				}
+					
 			}
 		});
 		mnCategora.add(mntmConsultaCategora);
