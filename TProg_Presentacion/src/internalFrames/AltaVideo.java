@@ -11,14 +11,25 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JSpinner;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import interfaces.IVideos;
+import java.awt.event.ActionListener;
+import java.time.Duration;
+import java.awt.event.ActionEvent;
+import javax.swing.SpinnerNumberModel;
 
 public class AltaVideo extends JInternalFrame {
 	private JTextField TextoNombre;
 	private JTextField tFieldURL;
+	JComboBox cBoxUsuarios;
+	JTextArea tAreaDescripcion;
+	JSpinner spinnerHoras;
+	JSpinner spinnerMinutos;
+	JSpinner spinnerSegundos;
+	JComboBox cBoxCategoria;
+	
 	private IVideos contVideos;
-
 	/**
 	 * Create the frame.
 	 */
@@ -41,7 +52,7 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblUsuario.gridy = 1;
 		getContentPane().add(lblUsuario, gbc_lblUsuario);
 		
-		JComboBox cBoxUsuarios = new JComboBox();
+		cBoxUsuarios = new JComboBox();
 		GridBagConstraints gbc_cBoxUsuarios = new GridBagConstraints();
 		gbc_cBoxUsuarios.gridwidth = 7;
 		gbc_cBoxUsuarios.insets = new Insets(0, 0, 5, 5);
@@ -74,7 +85,7 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblDescripcion.gridy = 3;
 		getContentPane().add(lblDescripcion, gbc_lblDescripcion);
 		
-		JTextArea tAreaDescripcion = new JTextArea();
+		tAreaDescripcion = new JTextArea();
 		GridBagConstraints gbc_tAreaDescripcion = new GridBagConstraints();
 		gbc_tAreaDescripcion.gridwidth = 7;
 		gbc_tAreaDescripcion.gridheight = 2;
@@ -91,7 +102,8 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblDuracion.gridy = 5;
 		getContentPane().add(lblDuracion, gbc_lblDuracion);
 		
-		JSpinner spinnerHoras = new JSpinner();
+		spinnerHoras = new JSpinner();
+		spinnerHoras.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		GridBagConstraints gbc_spinnerHoras = new GridBagConstraints();
 		gbc_spinnerHoras.insets = new Insets(0, 0, 5, 5);
 		gbc_spinnerHoras.gridx = 3;
@@ -105,7 +117,8 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblHoras.gridy = 5;
 		getContentPane().add(lblHoras, gbc_lblHoras);
 		
-		JSpinner spinnerMinutos = new JSpinner();
+		spinnerMinutos = new JSpinner();
+		spinnerMinutos.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		GridBagConstraints gbc_spinnerMinutos = new GridBagConstraints();
 		gbc_spinnerMinutos.insets = new Insets(0, 0, 5, 5);
 		gbc_spinnerMinutos.gridx = 5;
@@ -119,7 +132,8 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblMin.gridy = 5;
 		getContentPane().add(lblMin, gbc_lblMin);
 		
-		JSpinner spinnerSegundos = new JSpinner();
+		spinnerSegundos = new JSpinner();
+		spinnerSegundos.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		GridBagConstraints gbc_spinnerSegundos = new GridBagConstraints();
 		gbc_spinnerSegundos.anchor = GridBagConstraints.WEST;
 		gbc_spinnerSegundos.insets = new Insets(0, 0, 5, 5);
@@ -159,7 +173,7 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblCategoria.gridy = 7;
 		getContentPane().add(lblCategoria, gbc_lblCategoria);
 		
-		JComboBox cBoxCategoria = new JComboBox();
+		cBoxCategoria = new JComboBox();
 		GridBagConstraints gbc_cBoxCategoria = new GridBagConstraints();
 		gbc_cBoxCategoria.gridwidth = 7;
 		gbc_cBoxCategoria.insets = new Insets(0, 0, 5, 5);
@@ -177,6 +191,11 @@ public class AltaVideo extends JInternalFrame {
 		getContentPane().add(btnAceptar, gbc_btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
 		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnCancelar.gridx = 9;
@@ -186,8 +205,27 @@ public class AltaVideo extends JInternalFrame {
 	}
 
 	public void cargarDatos(){
-		/*
+		/**
 		 * Aca se le piden la lista de usuarios y la lista de categorias al controlador
 		 */
+		String[] usuarios = contVideos.listarUsuarios();
+		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(usuarios);
 	}
+	
+	public void aceptar() {
+		String nick, nombre, descripcion, url, categoria;
+		Duration duracion;
+		nick = (String) cBoxUsuarios.getSelectedItem();
+		nombre = TextoNombre.getText();
+		descripcion = tAreaDescripcion.getText();
+		url = tFieldURL.getText();
+		categoria = (String) cBoxCategoria.getSelectedItem();
+		duracion = Duration.ofHours((long) spinnerHoras.getValue());
+		duracion = duracion.plusMinutes((long) spinnerMinutos.getValue());
+		duracion = duracion.plusSeconds((long) spinnerSegundos.getValue());
+		contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria);
+		setVisible(false);
+		
+	}
+	
 }
