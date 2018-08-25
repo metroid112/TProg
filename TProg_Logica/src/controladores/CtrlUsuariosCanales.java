@@ -15,10 +15,9 @@ import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 
-@SuppressWarnings("unused")
 public class CtrlUsuariosCanales implements IUsuariosCanales {
 
-	public CtrlUsuariosCanales() { // constructor
+	public CtrlUsuariosCanales() {
 		
 	}
 	
@@ -26,7 +25,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	
 	public void altaUsuario(String nick, String nombre, String apellido, String correo, Date nacimiento, Image imagen, 
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
-			Usuario[] seguidos) throws Exception{
+			Usuario[] seguidos) throws Exception {
 		
 			Canal canal = new Canal(nombreCanal, descripcion, privado, null, null,
 					null, null, null);
