@@ -25,7 +25,7 @@ public class ManejadorCategorias {
 		categorias.put(categoria.getNombre(), categoria);
 	}
 
-	public Object get(String nombreCategoria) {
+	public Categoria get(String nombreCategoria) {
 		return categorias.get(nombreCategoria);
 	}
 

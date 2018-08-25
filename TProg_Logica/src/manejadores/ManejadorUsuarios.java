@@ -25,7 +25,7 @@ public class ManejadorUsuarios {
 		usuarios.put(user.getNick(), user);
 	}
 
-	public Object get(String nick) {
+	public Usuario get(String nick) {
 		return usuarios.get(nick);
 	}
 
