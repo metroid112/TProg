@@ -4,9 +4,6 @@ import controladores.CtrlCategorias;
 import controladores.CtrlListas;
 import controladores.CtrlUsuariosCanales;
 import controladores.CtrlVideos;
-import manejadores.ManejadorCategorias;
-import manejadores.ManejadorListas;
-import manejadores.ManejadorUsuarios;
 
 public class Fabrica {
 
@@ -35,6 +32,6 @@ public class Fabrica {
 	}
 
 	public ICategorias getICategorias() {
-		return new CtrlCategorias();	// esto crea una instancia de ctrlCategoria y lo devuelve
+		return new CtrlCategorias();
 	}
 }
