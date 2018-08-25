@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JComboBox;
@@ -18,16 +20,17 @@ import java.awt.event.ActionListener;
 import java.time.Duration;
 import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JTable;
 
 public class AltaVideo extends JInternalFrame {
 	private JTextField TextoNombre;
 	private JTextField tFieldURL;
-	JComboBox cBoxUsuarios;
+	JComboBox<String> cBoxUsuarios;
 	JTextArea tAreaDescripcion;
 	JSpinner spinnerHoras;
 	JSpinner spinnerMinutos;
 	JSpinner spinnerSegundos;
-	JComboBox cBoxCategoria;
+	JComboBox<String> cBoxCategoria;
 	
 	private IVideos contVideos;
 	/**
@@ -39,10 +42,10 @@ public class AltaVideo extends JInternalFrame {
 		setTitle("Alta de Video");
 		setBounds(100, 100, 500, 330);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 75, 30, 1, 0, 0, 0, 0, 0, 0, 36, 1, 0, 0};
+		gridBagLayout.columnWidths = new int[]{23, 78, 30, 1, 0, 0, 0, 0, 0, 0, 36, 1, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
@@ -52,7 +55,7 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblUsuario.gridy = 1;
 		getContentPane().add(lblUsuario, gbc_lblUsuario);
 		
-		cBoxUsuarios = new JComboBox();
+		cBoxUsuarios = new JComboBox<String>();
 		GridBagConstraints gbc_cBoxUsuarios = new GridBagConstraints();
 		gbc_cBoxUsuarios.gridwidth = 7;
 		gbc_cBoxUsuarios.insets = new Insets(0, 0, 5, 5);
@@ -173,7 +176,7 @@ public class AltaVideo extends JInternalFrame {
 		gbc_lblCategoria.gridy = 7;
 		getContentPane().add(lblCategoria, gbc_lblCategoria);
 		
-		cBoxCategoria = new JComboBox();
+		cBoxCategoria = new JComboBox<String>();
 		GridBagConstraints gbc_cBoxCategoria = new GridBagConstraints();
 		gbc_cBoxCategoria.gridwidth = 7;
 		gbc_cBoxCategoria.insets = new Insets(0, 0, 5, 5);
@@ -209,12 +212,19 @@ public class AltaVideo extends JInternalFrame {
 		 * Aca se le piden la lista de usuarios y la lista de categorias al controlador
 		 */
 		String[] usuarios = contVideos.listarUsuarios();
-		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(usuarios);
+		String [] categorias = contVideos.listarCategorias();
+		DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<>(usuarios);
+		DefaultComboBoxModel<String> modelC = new DefaultComboBoxModel<>(categorias);
+		cBoxUsuarios.setModel(modelU);
+		cBoxCategoria.setModel(modelC);
 	}
 	
 	public void aceptar() {
 		String nick, nombre, descripcion, url, categoria;
 		Duration duracion;
+		/*
+		 * recolecto la info del frame
+		 */
 		nick = (String) cBoxUsuarios.getSelectedItem();
 		nombre = TextoNombre.getText();
 		descripcion = tAreaDescripcion.getText();
@@ -223,9 +233,15 @@ public class AltaVideo extends JInternalFrame {
 		duracion = Duration.ofHours((long) spinnerHoras.getValue());
 		duracion = duracion.plusMinutes((long) spinnerMinutos.getValue());
 		duracion = duracion.plusSeconds((long) spinnerSegundos.getValue());
-		contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria);
-		setVisible(false);
+		// TODO fecha del video
 		
+		try {
+		contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video", JOptionPane.ERROR_MESSAGE);	// Muesta el error al dar de alta
+		}
+		JOptionPane.showMessageDialog(this, "Video creado con exito!");
+		setVisible(false);
 	}
 	
 }

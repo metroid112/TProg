@@ -1,6 +1,7 @@
 package clases;
 
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
 
 public class Comentario {
 
@@ -9,7 +10,7 @@ public class Comentario {
 	private Usuario usuario;
 	private Video video;
 	private Comentario padre;
-	private Comentario[] respuestas;
+	private LinkedHashMap<Integer,Comentario> respuestas;
 	private long id;	// id de comentario para uso interno
 
 	public Comentario() {
@@ -17,14 +18,13 @@ public class Comentario {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Comentario(String texto, Usuario usuario, Video video, Comentario padre,
-			Comentario[] respuestas) {
+	public Comentario(String texto, Usuario usuario, Video video, Comentario padre) {
 		this.texto = texto;
 		this.fecha = LocalDate.now();
 		this.usuario = usuario;
 		this.video = video;
 		this.padre = padre;
-		this.respuestas = respuestas;
+		this.respuestas = null;
 	}
 
 	public String getTexto() {
@@ -47,7 +47,7 @@ public class Comentario {
 		return padre;
 	}
 
-	public Comentario[] getRespuestas() {
+	public LinkedHashMap<Integer, Comentario> getRespuestas() {
 		return respuestas;
 	}
 
@@ -71,7 +71,7 @@ public class Comentario {
 		this.padre = padre;
 	}
 
-	public void setRespuestas(Comentario[] respuestas) {
+	public void setRespuestas(LinkedHashMap<Integer, Comentario> respuestas) {
 		this.respuestas = respuestas;
 	}
 }

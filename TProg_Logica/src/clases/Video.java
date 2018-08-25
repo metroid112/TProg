@@ -2,6 +2,8 @@ package clases;
 
 import java.time.LocalDate;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 public class Video {
@@ -14,8 +16,8 @@ public class Video {
 	private LocalDate fecha = LocalDate.now();	/* Funciona esto? */
 	private Categoria categoria;
 	private Canal canal;
-	private LinkedList<Calificacion> calificaciones;		// array?
-	private LinkedList<Comentario> comentarios;		// diccionario???
+	private LinkedList<Calificacion> calificaciones;
+	private LinkedHashMap<Integer,Comentario> comentarios;		// LinkedHashMap mantiene el orden a diferencia del HashMap
 
 	public Video() {
 	}
@@ -30,9 +32,7 @@ public class Video {
 		this.url = url;
 		this.visible = false;		// Arranca privado
 		this.categoria = categoria;
-		/*
-		 * la categoria debe crear un link a este video
-		 */
+		categoria.addVideo(this); 	//TODO addVideo() categoria
 		
 	}
 
@@ -72,7 +72,7 @@ public class Video {
 		return calificaciones;
 	}
 
-	public LinkedList<Comentario> getComentarios() {
+	public LinkedHashMap<Integer,Comentario> getComentarios() {
 		return comentarios;
 	}
 
