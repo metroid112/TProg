@@ -10,6 +10,10 @@ public class Categoria {
 
 	public Categoria() {
 	}
+	
+	public Categoria(String nombre) {
+		this.nombre = nombre;
+	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
