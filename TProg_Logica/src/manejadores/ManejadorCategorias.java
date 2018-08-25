@@ -4,16 +4,10 @@ import java.util.HashMap;
 import java.util.*;
 import java.lang.Exception;
 import clases.Categoria;
-import interfaces.IManejador;
-import javax.swing.JOptionPane;
 
-public class ManejadorCategorias implements IManejador {
+public class ManejadorCategorias {
 
 	private static ManejadorCategorias manejador = null;
-
-	private ManejadorCategorias() {
-
-	}
 
 	public static ManejadorCategorias getManejadorCategorias() {
 		if (manejador == null) {
@@ -24,40 +18,38 @@ public class ManejadorCategorias implements IManejador {
 
 	private HashMap<String, Categoria> categorias = new HashMap<String, Categoria>();
 
-	@Override
-	public void add(Object o) {
-		Categoria cat = (Categoria) o;
-		categorias.put(cat.getNombre(), (Categoria) o);
+	private ManejadorCategorias() {
+
 	}
 
-	@Override
-	public void remove(Object o) {
-		Categoria cat = (Categoria) o;
-		categorias.remove(cat.getNombre(), cat);
+	public void add(Categoria categoria) {
+		categorias.put(categoria.getNombre(), categoria);
 	}
 
-	@Override
-	public boolean isMember(Object o) {
-		return categorias.containsValue(o);
+	public Object get(String nombreCategoria) {
+		return categorias.get(nombreCategoria);
 	}
 
-	@Override
-	public boolean isMemberKey(Object o) {
-		Categoria cat = (Categoria) o;
-		return categorias.containsKey(cat.getNombre());
-	}
-
-	@Override
 	public boolean isEmpty() {
 		return categorias.isEmpty();
 	}
 
-	@Override
+	public boolean isMember(Categoria categoria) {
+		return categorias.containsValue(categoria);
+	}
+
+	public boolean isMemberKey(String nombreCategoria) {
+		return categorias.containsKey(nombreCategoria);
+	}
+
+	public void remove(Categoria categoria) {
+		categorias.remove(categoria.getNombre(), categoria);
+	}
+
 	public int size() {
 		return categorias.size();
 	}
 
-	@Override
 	public String[] toArray() {
 		return categorias.keySet().toArray(new String[categorias.size()]);
 	}
