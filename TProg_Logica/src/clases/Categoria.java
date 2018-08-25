@@ -1,4 +1,5 @@
 package clases;
+import java.util.*;
 
 public class Categoria {
 
@@ -6,7 +7,7 @@ public class Categoria {
 
 	private Lista[] listas;
 	private Canal[] canales;
-	private Video[] videos;
+	private LinkedList<Video> videos = new LinkedList<Video>();
 
 	public Categoria() {
 	}
@@ -17,12 +18,6 @@ public class Categoria {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Categoria(String nombre, Lista[] listas, Canal[] canales, Video[] videos) {
-		this.nombre = nombre;
-		this.listas = listas;
-		this.canales = canales;
-		this.videos = videos;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -36,7 +31,7 @@ public class Categoria {
 		return canales;
 	}
 
-	public Video[] getVideos() {
+	public LinkedList<Video> getVideos() {
 		return videos;
 	}
 
@@ -52,7 +47,11 @@ public class Categoria {
 		this.canales = canales;
 	}
 
-	public void setVideos(Video[] videos) {
+	public void setVideos(LinkedList<Video> videos) {
 		this.videos = videos;
+	}
+	
+	public void addVideo(Video v){
+		videos.add(v);
 	}
 }
