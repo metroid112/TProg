@@ -48,7 +48,7 @@ public class ListarUsuarios extends JInternalFrame {
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				//model.removeAllElements();
+				model.removeAllElements();
 			}
 		});
 		

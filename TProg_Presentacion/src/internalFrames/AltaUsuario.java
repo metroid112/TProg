@@ -317,13 +317,13 @@ public class AltaUsuario extends JInternalFrame {
 			JOptionPane.showMessageDialog(this, "El usuario ya existe.");
 		}		
 		else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")){
-			JOptionPane.showMessageDialog(this, "Correo electrónico inválido");
+			JOptionPane.showMessageDialog(this, "Correo electronico invalido");
 		}
 		else if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
 			JOptionPane.showMessageDialog(this, "Los campos Nickname, Nombre y Apellido son obligatorios.");
 		}
-		else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".com")){
-			JOptionPane.showMessageDialog(this, "Correo electrónico inválido");
+		else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")){
+			JOptionPane.showMessageDialog(this, "Correo electronico invalido");
 		}
 //		else if ((comboBox.getSelectedIndex() == -1) || (comboBox_1.getSelectedIndex() == -1) || (comboBox_2.getSelectedIndex() == -1)){
 //			JOptionPane.showMessageDialog(this, "Fecha inválida.");
@@ -359,7 +359,7 @@ public class AltaUsuario extends JInternalFrame {
 						nombreCanal, privado, descripcion, comentarios, calificaciones, seguidores,
 						seguidos);
 				
-				JOptionPane.showMessageDialog(this, "¡Se ha creado el usuario con éxito!");
+				JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
 				clean();			   
 				setVisible(false);
             } catch (Exception m) {
