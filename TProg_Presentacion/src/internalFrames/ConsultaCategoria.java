@@ -8,10 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+import clases.Categoria;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
-
+import java.util.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
@@ -102,10 +102,12 @@ public class ConsultaCategoria extends JInternalFrame {
 		);
 		
 		JList<String> list = new JList<>(videos);
+		list.setEnabled(false);
 		scrollPane.setViewportView(list);
 		
 
 		JList<String> list_1 = new JList<>(listas);
+		list_1.setEnabled(false);
 		scrollPane_1.setViewportView(list_1);
 		getContentPane().setLayout(groupLayout);
 
@@ -127,11 +129,23 @@ public class ConsultaCategoria extends JInternalFrame {
 	
 	protected void cmdConsultaCategoriaActionPerformed(Object o){
 		videos.removeAllElements();
+		listas.removeAllElements();
 		if (o != null)
 		{
 			String s = o.toString();
 			if (!s.equals(""))
-				videos.addElement(s);
-		}
+			{
+				fab = Fabrica.getFabrica();
+				ctrlCat = fab.getICategorias();
+				
+				String[] infoVideo = ctrlCat.getInfoVideos(s);
+				int largo = infoVideo.length;
+				for (int i = 0; i < largo; i++)
+					videos.addElement(infoVideo[i]);
+			}
+		}		
+				
 	}
+	
+	
 }
