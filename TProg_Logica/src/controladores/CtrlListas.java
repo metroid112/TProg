@@ -3,6 +3,8 @@ package controladores;
 import interfaces.IListas;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
+import clases.ListaDefecto;
+import clases.ListaParticular;
 import clases.Usuario;
 
 public class CtrlListas implements IListas {
@@ -24,5 +26,11 @@ public class CtrlListas implements IListas {
 		//manejadorUsuarios.ingresarListaDefecto(nombreListaDefecto);
 
 		/*	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal*/
+	}
+	
+	public  void listarListas(String usuario){
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		//usuarioObjetivo.getCanal()
+		
 	}
 }

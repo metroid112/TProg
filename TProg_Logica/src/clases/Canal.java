@@ -49,11 +49,11 @@ public class Canal {
 		return usuario;
 	}
 
-	public Lista[] getListaDefecto() {
+	public ListaDefecto[] getListaDefecto() {
 		return listaDefecto;
 	}
 
-	public Lista[] getListaParticulares() {
+	public ListaParticular[] getListaParticulares() {
 		return listaParticulares;
 	}
 
