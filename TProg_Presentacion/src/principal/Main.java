@@ -40,7 +40,7 @@ public class Main {
 	
 	private JFrame frame;
 	
-	private HashSet<JInternalFrame> frames;
+	private HashSet<JInternalFrame> frames = new HashSet<JInternalFrame>();
 	
 	private AgregarVideo agrVid;
 	private AltaCategoria altCat;
