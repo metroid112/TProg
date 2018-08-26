@@ -33,9 +33,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			canal.setUsuario(usu);
 			manejadorUsuarios.add(usu);
 	};
-<<<<<<< HEAD
-
-=======
 	
 	public String[] listarUsuarios() {
 		
@@ -50,5 +47,5 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	public Integer cantidadUsuarios() {
 		return manejadorUsuarios.size();
 	}
->>>>>>> master
+
 }
