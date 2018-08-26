@@ -54,4 +54,21 @@ public class Categoria {
 	public void addVideo(Video v){
 		videos.add(v);
 	}
+	
+	public String[] getInfoVideos(){
+		String[] infoVideos = new String[videos.size()];
+		if (!videos.isEmpty()){
+			int i = 0;
+			for (Video video: videos) {
+				String nomVideo = video.getCanal().getUsuario().getNick();
+				infoVideos[i] = "(" + nomVideo + "," + video.getNombre() + ")";
+				i++;
+			}
+		}
+		return infoVideos;
+	}
+	
+	public int size(){
+		return videos.size();
+	}
 }

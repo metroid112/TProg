@@ -1,6 +1,7 @@
 package controladores;
 
 import interfaces.ICategorias;
+import clases.Categoria;
 import java.lang.Exception;
 import manejadores.ManejadorCategorias;
 
@@ -19,4 +20,11 @@ public class CtrlCategorias implements ICategorias {
 	public String[] listarCategorias(){
 		return manejadorCategorias.toArray();
 	}
+	
+	public String[] getInfoVideos(String s){
+		Categoria c = manejadorCategorias.get(s);
+		return c.getInfoVideos();
+	}
+	
+
 }

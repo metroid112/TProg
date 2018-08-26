@@ -6,23 +6,26 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
-import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+import clases.Categoria;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
-
+import java.util.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 public class ConsultaCategoria extends JInternalFrame {
 
 	private ICategorias ctrlCat;
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
+	private DefaultListModel<String> videos = new DefaultListModel<>();
+	private DefaultListModel<String> listas = new DefaultListModel<>();
 	
 	public ConsultaCategoria() {
 		setTitle("Consulta de Categorias");
@@ -45,6 +48,13 @@ public class ConsultaCategoria extends JInternalFrame {
 		JLabel lblListasDeReproduccion = new JLabel("Listas de reproduccion:");
 		
 		JComboBox comboBox = new JComboBox<>(model);
+		
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Object selected = comboBox.getSelectedItem();
+				cmdConsultaCategoriaActionPerformed(selected);
+			}
+		});
 		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"","Deportes", "Gatos"}));
 
 		
@@ -91,13 +101,14 @@ public class ConsultaCategoria extends JInternalFrame {
 							.addContainerGap())))
 		);
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setEditable(false);
-		scrollPane_1.setViewportView(textArea_1);
+		JList<String> list = new JList<>(videos);
+		list.setEnabled(false);
+		scrollPane.setViewportView(list);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
-		scrollPane.setViewportView(textArea);
+
+		JList<String> list_1 = new JList<>(listas);
+		list_1.setEnabled(false);
+		scrollPane_1.setViewportView(list_1);
 		getContentPane().setLayout(groupLayout);
 
 	}
@@ -115,4 +126,26 @@ public class ConsultaCategoria extends JInternalFrame {
 		}
 		ctrlCat = null;
 	}
+	
+	protected void cmdConsultaCategoriaActionPerformed(Object o){
+		videos.removeAllElements();
+		listas.removeAllElements();
+		if (o != null)
+		{
+			String s = o.toString();
+			if (!s.equals(""))
+			{
+				fab = Fabrica.getFabrica();
+				ctrlCat = fab.getICategorias();
+				
+				String[] infoVideo = ctrlCat.getInfoVideos(s);
+				int largo = infoVideo.length;
+				for (int i = 0; i < largo; i++)
+					videos.addElement(infoVideo[i]);
+			}
+		}		
+				
+	}
+	
+	
 }
