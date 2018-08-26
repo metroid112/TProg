@@ -185,7 +185,7 @@ public class AltaUsuario extends JInternalFrame {
 		
 		JLabel label_1 = new JLabel("/");
 		
-		//fin lÛgica botones
+		//fin l√≥gica botones
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -317,13 +317,16 @@ public class AltaUsuario extends JInternalFrame {
 			JOptionPane.showMessageDialog(this, "El usuario ya existe.");
 		}		
 		else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")){
-			JOptionPane.showMessageDialog(this, "Correo electrÛnico inv·lido");
+			JOptionPane.showMessageDialog(this, "Correo electr√≥nico inv√°lido");
 		}
 		else if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
 			JOptionPane.showMessageDialog(this, "Los campos Nickname, Nombre y Apellido son obligatorios.");
 		}
+		else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".com")){
+			JOptionPane.showMessageDialog(this, "Correo electr√≥nico inv√°lido");
+		}
 //		else if ((comboBox.getSelectedIndex() == -1) || (comboBox_1.getSelectedIndex() == -1) || (comboBox_2.getSelectedIndex() == -1)){
-//			JOptionPane.showMessageDialog(this, "Fecha inv·lida.");
+//			JOptionPane.showMessageDialog(this, "Fecha inv√°lida.");
 //		}
 		else{
 			try
@@ -356,7 +359,7 @@ public class AltaUsuario extends JInternalFrame {
 						nombreCanal, privado, descripcion, comentarios, calificaciones, seguidores,
 						seguidos);
 				
-				JOptionPane.showMessageDialog(this, "°Se ha creado el usuario con Èxito!");
+				JOptionPane.showMessageDialog(this, "¬°Se ha creado el usuario con √©xito!");
 				clean();			   
 				setVisible(false);
             } catch (Exception m) {

@@ -1,6 +1,7 @@
 package manejadores;
 
 import java.util.HashMap;
+import java.util.*;
 import java.lang.Exception;
 import clases.Categoria;
 
@@ -59,5 +60,9 @@ public class ManejadorCategorias {
 		} else {
 			throw new Exception("La categoria ya existe");
 		}
+	}
+	
+	public Categoria getInfoVideos(String s){
+		return get(s);
 	}
 }
