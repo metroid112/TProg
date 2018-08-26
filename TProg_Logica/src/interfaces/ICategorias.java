@@ -8,4 +8,6 @@ public interface ICategorias {
 	public String[] listarCategorias();
 	
 	public String[] getInfoVideos(String s);
+
+	public String[] getInfoListas(String s);
 }
