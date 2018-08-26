@@ -1,41 +1,53 @@
 package clases;
 
+<<<<<<< HEAD
 import java.time.Duration;
 import java.time.LocalDate;
+=======
+import java.time.LocalDate;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+>>>>>>> origin/AltaVideo-Fran
 
 public class Video {
 
 	private String nombre;
 	private String descripcion;
 	private Duration duracion;
+<<<<<<< HEAD
 	private LocalDate fecha;
+=======
+>>>>>>> origin/AltaVideo-Fran
 	private String url;
 	private boolean visible;
-
+	private LocalDate fecha = LocalDate.now();	/* Funciona esto? */
 	private Categoria categoria;
-	private Lista[] listas;
 	private Canal canal;
-	private Calificacion[] calificaciones;
-	private Comentario[] comentarios;
+	private LinkedList<Calificacion> calificaciones;
+	private LinkedHashMap<Integer,Comentario> comentarios;		// LinkedHashMap mantiene el orden a diferencia del HashMap
 
 	public Video() {
 	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
+<<<<<<< HEAD
 	public Video(String nombre, String descripcion, Duration duracion, LocalDate fecha, String url, boolean visible,
 			Categoria categoria, Lista[] listas, Canal canal, Calificacion[] calificaciones, Comentario[] comentarios) {
+=======
+	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria) {
+>>>>>>> origin/AltaVideo-Fran
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
-		this.fecha = fecha;
+		// this.fecha = LocalDate.now();		DEJO COMENTADO PARA PROBAR
 		this.url = url;
-		this.visible = visible;
+		this.visible = false;		// Arranca privado
 		this.categoria = categoria;
-		this.listas = listas;
-		this.canal = canal;
-		this.calificaciones = calificaciones;
-		this.comentarios = comentarios;
+		categoria.addVideo(this); 	//TODO addVideo() categoria
+		
 	}
 
 	public String getNombre() {
@@ -66,19 +78,15 @@ public class Video {
 		return categoria;
 	}
 
-	public Lista[] getListas() {
-		return listas;
-	}
-
 	public Canal getCanal() {
 		return canal;
 	}
 
-	public Calificacion[] getCalificaciones() {
+	public LinkedList<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
 
-	public Comentario[] getComentarios() {
+	public LinkedHashMap<Integer,Comentario> getComentarios() {
 		return comentarios;
 	}
 
@@ -92,6 +100,14 @@ public class Video {
 
 	public void setDuracion(Duration duracion) {
 		this.duracion = duracion;
+	}
+	
+	public void setDuracion(int hora, int minuto, int segundo) {
+		this.duracion = Duration.ofHours(hora);
+		this.duracion = duracion.plusMinutes(minuto);
+		this.duracion = duracion.plusSeconds(segundo);
+		
+				
 	}
 
 	public void setFecha(LocalDate fecha) {
@@ -110,19 +126,12 @@ public class Video {
 		this.categoria = categoria;
 	}
 
-	public void setListas(Lista[] listas) {
-		this.listas = listas;
-	}
-
 	public void setCanal(Canal canal) {
 		this.canal = canal;
 	}
 
-	public void setCalificaciones(Calificacion[] calificaciones) {
+	public void setCalificaciones(LinkedList<Calificacion> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
 
-	public void setComentarios(Comentario[] comentarios) {
-		this.comentarios = comentarios;
-	}
 }
