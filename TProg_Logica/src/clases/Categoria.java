@@ -5,8 +5,7 @@ public class Categoria {
 
 	private String nombre;
 
-	private Lista[] listas;
-	private Canal[] canales;
+	private LinkedList<Lista> listas = new LinkedList<Lista>();
 	private LinkedList<Video> videos = new LinkedList<Video>();
 
 	public Categoria() {
@@ -23,13 +22,10 @@ public class Categoria {
 		return nombre;
 	}
 
-	public Lista[] getListas() {
+	public LinkedList<Lista> getListas() {
 		return listas;
 	}
 
-	public Canal[] getCanales() {
-		return canales;
-	}
 
 	public LinkedList<Video> getVideos() {
 		return videos;
@@ -39,13 +35,10 @@ public class Categoria {
 		this.nombre = nombre;
 	}
 
-	public void setListas(Lista[] listas) {
+	public void setListas(LinkedList<Lista> listas) {
 		this.listas = listas;
 	}
 
-	public void setCanales(Canal[] canales) {
-		this.canales = canales;
-	}
 
 	public void setVideos(LinkedList<Video> videos) {
 		this.videos = videos;
@@ -70,5 +63,18 @@ public class Categoria {
 	
 	public int size(){
 		return videos.size();
+	}
+	
+	public String[] getInfoListas(){
+		String[] infoListas = new String[listas.size()];
+		if (!listas.isEmpty()){
+			int i = 0;
+			for (Lista lista: listas) {
+				String nomLista = lista.getCanal().getUsuario().getNick();
+				infoListas[i] = "(" + nomLista + "," + lista.getNombre() + ")";
+				i++;
+			}
+		}
+		return infoListas;		
 	}
 }

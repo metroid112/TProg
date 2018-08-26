@@ -26,5 +26,10 @@ public class CtrlCategorias implements ICategorias {
 		return c.getInfoVideos();
 	}
 	
+	public String[] getInfoListas(String s){
+		Categoria c = manejadorCategorias.get(s);
+		return c.getInfoListas();
+	}
+	
 
 }

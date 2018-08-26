@@ -142,6 +142,11 @@ public class ConsultaCategoria extends JInternalFrame {
 				int largo = infoVideo.length;
 				for (int i = 0; i < largo; i++)
 					videos.addElement(infoVideo[i]);
+				
+				String[] infoLista = ctrlCat.getInfoListas(s);
+				largo = infoLista.length;
+				for (int i = 0; i < largo; i++)
+					listas.addElement(infoLista[i]);
 			}
 		}		
 				
