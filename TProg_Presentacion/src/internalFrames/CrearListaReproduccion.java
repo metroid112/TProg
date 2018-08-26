@@ -3,7 +3,8 @@ package internalFrames;
 import java.lang.Exception;
 import java.awt.EventQueue;
 
-import controladores.CtrlListas;
+import interfaces.Fabrica;
+import interfaces.IListas;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -17,7 +18,8 @@ public class CrearListaReproduccion extends JInternalFrame {
 
 	
 	private JTextField textFieldNombre;
-	private CtrlListas ctrLista = new CtrlListas();
+	private IListas ctrLista;
+	private Fabrica fab;
 
 	public CrearListaReproduccion() {
 		
@@ -175,6 +177,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				fab = new Fabrica();
 				if(checkNombre()){
 					
 					try{

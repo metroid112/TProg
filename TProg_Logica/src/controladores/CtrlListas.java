@@ -19,7 +19,7 @@ public class CtrlListas implements IListas {
 	public void ingresarListaDefecto(String nombre){
 		
 		manejadorListas.add(nombre); //guarda el nombre de la lista
-		
+		//pendiente agregarle notify
 		//controladorUsuCan.ingresarListaDefecto(nombre);
 		/*	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal*/
 	}
