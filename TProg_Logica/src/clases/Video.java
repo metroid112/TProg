@@ -1,28 +1,21 @@
 package clases;
 
-<<<<<<< HEAD
+
 import java.time.Duration;
-import java.time.LocalDate;
-=======
-import java.time.LocalDate;
-import java.time.Duration;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
->>>>>>> origin/AltaVideo-Fran
+
 
 public class Video {
 
 	private String nombre;
 	private String descripcion;
 	private Duration duracion;
-<<<<<<< HEAD
-	private LocalDate fecha;
-=======
->>>>>>> origin/AltaVideo-Fran
 	private String url;
 	private boolean visible;
-	private LocalDate fecha = LocalDate.now();	/* Funciona esto? */
+	private Date fecha;
 	private Categoria categoria;
 	private Canal canal;
 	private LinkedList<Calificacion> calificaciones;
@@ -33,20 +26,18 @@ public class Video {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-<<<<<<< HEAD
-	public Video(String nombre, String descripcion, Duration duracion, LocalDate fecha, String url, boolean visible,
-			Categoria categoria, Lista[] listas, Canal canal, Calificacion[] calificaciones, Comentario[] comentarios) {
-=======
-	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria) {
->>>>>>> origin/AltaVideo-Fran
+
+	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Canal canal) {
+
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
-		// this.fecha = LocalDate.now();		DEJO COMENTADO PARA PROBAR
+		// TODO fecha video
 		this.url = url;
 		this.visible = false;		// Arranca privado
 		this.categoria = categoria;
-		categoria.addVideo(this); 	//TODO addVideo() categoria
+		this.canal = canal;
+		categoria.addVideo(this);
 		
 	}
 
@@ -62,7 +53,7 @@ public class Video {
 		return duracion;
 	}
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
@@ -110,7 +101,7 @@ public class Video {
 				
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
