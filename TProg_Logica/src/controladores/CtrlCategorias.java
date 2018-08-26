@@ -1,9 +1,22 @@
 package controladores;
 
 import interfaces.ICategorias;
+import java.lang.Exception;
 import manejadores.ManejadorCategorias;
 
 public class CtrlCategorias implements ICategorias {
-
-	ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
+	
+	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
+	
+	public CtrlCategorias() {
+		
+	}
+	
+	public void altaCategoria(String nombreCategoria) throws Exception{
+		manejadorCategorias.altaCategoria(nombreCategoria);
+	}
+	
+	public String[] listarCategorias(){
+		return manejadorCategorias.toArray();
+	}
 }

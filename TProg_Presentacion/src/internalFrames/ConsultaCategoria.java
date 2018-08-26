@@ -9,6 +9,10 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import interfaces.Fabrica;
+import interfaces.ICategorias;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
@@ -16,6 +20,9 @@ import javax.swing.DefaultComboBoxModel;
 
 public class ConsultaCategoria extends JInternalFrame {
 
+	private ICategorias ctrlCat;
+	private Fabrica fab;
+	private DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
 	
 	public ConsultaCategoria() {
 		setTitle("Consulta de Categorias");
@@ -25,6 +32,7 @@ public class ConsultaCategoria extends JInternalFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				model.removeAllElements();
 			}
 		});
 		
@@ -36,8 +44,8 @@ public class ConsultaCategoria extends JInternalFrame {
 		
 		JLabel lblListasDeReproduccion = new JLabel("Listas de reproduccion:");
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"","Deportes", "Gatos"}));
+		JComboBox comboBox = new JComboBox<>(model);
+		//comboBox.setModel(new DefaultComboBoxModel(new String[] {"","Deportes", "Gatos"}));
 
 		
 		
@@ -92,5 +100,19 @@ public class ConsultaCategoria extends JInternalFrame {
 		scrollPane.setViewportView(textArea);
 		getContentPane().setLayout(groupLayout);
 
+	}
+	
+	public void cargarDatos(){
+		
+		fab = Fabrica.getFabrica();
+		ctrlCat = fab.getICategorias();
+		
+	    String[] cats = ctrlCat.listarCategorias();
+		int largo = cats.length;
+		model.addElement("");
+		for (int i = 0; i < largo; i++ ){
+		  model.addElement(cats[i]);
+		}
+		ctrlCat = null;
 	}
 }

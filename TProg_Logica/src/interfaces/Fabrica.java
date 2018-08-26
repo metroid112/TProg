@@ -4,9 +4,6 @@ import controladores.CtrlCategorias;
 import controladores.CtrlListas;
 import controladores.CtrlUsuariosCanales;
 import controladores.CtrlVideos;
-import manejadores.ManejadorCategorias;
-import manejadores.ManejadorListas;
-import manejadores.ManejadorUsuarios;
 
 public class Fabrica {
 

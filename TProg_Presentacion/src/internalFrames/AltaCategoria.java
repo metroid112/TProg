@@ -8,13 +8,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import interfaces.Fabrica; 
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import interfaces.ICategorias;
 
 @SuppressWarnings("serial")
 public class AltaCategoria extends JInternalFrame{
 	private JTextField textField;
-	
+	private ICategorias ctrlCat;
+	private Fabrica fab;
 	public AltaCategoria() {
 		setTitle("Alta de Categoria");
 		
@@ -34,7 +38,7 @@ public class AltaCategoria extends JInternalFrame{
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//puedoAbrirVentana = true;
+				textField.setText("");
 				setVisible(false);
 			}
 		});
@@ -73,14 +77,27 @@ public class AltaCategoria extends JInternalFrame{
 	}
 	
 	protected void cmdAltaCategcoriaActionPerformed(ActionEvent e){
-		if (textField.getText().equals("")){
-			JOptionPane.showMessageDialog(this, "La categoria no puede ser vacia.");
-		}
-		else{
-			//ctrlCategoria.AltaCategoria(textField.getText(),null,null,null);		
-			JOptionPane.showMessageDialog(this, "¡Se ha creado la categoria con exito!");
-			textField.setText("");
-			setVisible(false);
+		if (textField.getText().isEmpty())
+			JOptionPane.showMessageDialog(this, "La categoria no puede ser vacía");
+		else
+		{
+			try
+			{
+				fab = Fabrica.getFabrica();
+				ctrlCat = fab.getICategorias();
+				String texto = textField.getText();
+                ctrlCat.altaCategoria(texto);		
+                // Muestro Ã©xito de la operaciÃ³n
+                JOptionPane.showMessageDialog(this, "La categoria se ha creado con exito");
+                textField.setText("");
+                setVisible(false);   
+			   
+            } catch (Exception m) {
+                JOptionPane.showMessageDialog(this, m.getMessage());
+            }
 		}
 	}
+	
+
+		
 }
