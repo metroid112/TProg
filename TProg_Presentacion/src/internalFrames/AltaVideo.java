@@ -186,6 +186,11 @@ public class AltaVideo extends JInternalFrame {
 		getContentPane().add(cBoxCategoria, gbc_cBoxCategoria);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				aceptar();
+			}
+		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.gridwidth = 2;
 		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
@@ -211,12 +216,15 @@ public class AltaVideo extends JInternalFrame {
 		/**
 		 * Aca se le piden la lista de usuarios y la lista de categorias al controlador
 		 */
-		String[] usuarios = contVideos.listarUsuarios();
+		//String[] usuarios = contVideos.listarUsuarios();
+		String[] usuarios = new String[1];
+		usuarios[0] = "hola";
 		String [] categorias = contVideos.listarCategorias();
 		DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<>(usuarios);
 		DefaultComboBoxModel<String> modelC = new DefaultComboBoxModel<>(categorias);
 		cBoxUsuarios.setModel(modelU);
 		cBoxCategoria.setModel(modelC);
+		
 	}
 	
 	public void aceptar() {
@@ -230,18 +238,26 @@ public class AltaVideo extends JInternalFrame {
 		descripcion = tAreaDescripcion.getText();
 		url = tFieldURL.getText();
 		categoria = (String) cBoxCategoria.getSelectedItem();
-		duracion = Duration.ofHours((long) spinnerHoras.getValue());
-		duracion = duracion.plusMinutes((long) spinnerMinutos.getValue());
-		duracion = duracion.plusSeconds((long) spinnerSegundos.getValue());
+		duracion = Duration.ofHours((int) spinnerHoras.getValue());
+		duracion = duracion.plusMinutes((int) spinnerMinutos.getValue());
+		duracion = duracion.plusSeconds((int) spinnerSegundos.getValue());
 		// TODO fecha del video
-		
-		try {
-		contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria);
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video", JOptionPane.ERROR_MESSAGE);	// Muesta el error al dar de alta
+		if (datosCorrectos(nick, nombre, url, duracion)) {
+			try {
+			contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria);
+			JOptionPane.showMessageDialog(this, "Video creado con exito!");
+			setVisible(false);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video", JOptionPane.ERROR_MESSAGE);	// Muesta el error al dar de alta
+			}
+		} else {
+			JOptionPane.showMessageDialog(this, "No deben haber campos vacios.", "Error!", JOptionPane.ERROR_MESSAGE);
 		}
-		JOptionPane.showMessageDialog(this, "Video creado con exito!");
-		setVisible(false);
+		
+	}
+	
+	public boolean datosCorrectos(String nick, String nombre, String url, Duration duracion) {
+		return (nick != null && !(nombre.equals("")) && !(url.equals("")) && !(duracion.isZero()));
 	}
 	
 }

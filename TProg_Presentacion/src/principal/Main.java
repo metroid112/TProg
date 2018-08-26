@@ -1,25 +1,29 @@
 package principal;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import clases.Categoria;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import internalFrames.*;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
-import controladores.CtrlCategorias;
-
-import java.awt.BorderLayout;
-import javax.swing.JInternalFrame;
+import interfaces.IVideos;
+import internalFrames.AgregarVideo;
+import internalFrames.AltaCategoria;
+import internalFrames.AltaUsuario;
+import internalFrames.AltaVideo;
+import internalFrames.ConsultaCategoria;
+import internalFrames.ConsultaLista;
+import internalFrames.CrearListaReproduccion;
+import internalFrames.Dummy;
+import internalFrames.ListarCategorias;
+import internalFrames.ModificarListaReproduccion;
+import internalFrames.QuitarVideo;
 
 public class Main {
 	private CrearListaReproduccion creLisRep;
@@ -91,6 +95,12 @@ public class Main {
 		altUsu = new AltaUsuario();
 		altUsu.setVisible(false);
 		
+		IVideos IVid = fabrica.getIVideos();
+		AltaVideo altVid = new AltaVideo(IVid);
+		altVid.cargarDatos();
+		altVid.setVisible(true);
+		
+		frame.getContentPane().add(altVid);
 		frame.getContentPane().add(conLis);
 		frame.getContentPane().add(creLisRep);
 		frame.getContentPane().add(agrVid);

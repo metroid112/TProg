@@ -1,19 +1,14 @@
 package clases;
 
 import java.time.LocalDate;
-<<<<<<< HEAD
-=======
+import java.util.Date;
 import java.util.LinkedHashMap;
->>>>>>> origin/AltaVideo-Fran
+
 
 public class Comentario {
 
 	private String texto;
-	private LocalDate fecha;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/AltaVideo-Fran
+	private Date fecha;
 	private Usuario usuario;
 	private Video video;
 	private Comentario padre;
@@ -25,14 +20,10 @@ public class Comentario {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-<<<<<<< HEAD
-	public Comentario(String texto, LocalDate fecha, Usuario usuario, Video video, Comentario padre,
-			Comentario[] respuestas) {
-=======
 	public Comentario(String texto, Usuario usuario, Video video, Comentario padre) {
->>>>>>> origin/AltaVideo-Fran
+
 		this.texto = texto;
-		this.fecha = LocalDate.now();
+		//TODO fecha
 		this.usuario = usuario;
 		this.video = video;
 		this.padre = padre;
@@ -43,7 +34,7 @@ public class Comentario {
 		return texto;
 	}
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
@@ -67,7 +58,7 @@ public class Comentario {
 		this.texto = texto;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
