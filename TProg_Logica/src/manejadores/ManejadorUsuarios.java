@@ -50,6 +50,8 @@ public class ManejadorUsuarios {
 	}
 
 	public String[] toArray() {
-		return usuarios.keySet().toArray(new String[usuarios.size()]);
+		//String[] res = new String[usuarios.size()];
+		String[] res = usuarios.keySet().toArray(new String[usuarios.size()]);
+		return res;
 	}
 }
