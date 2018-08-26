@@ -22,6 +22,7 @@ import internalFrames.ConsultaLista;
 import internalFrames.CrearListaReproduccion;
 import internalFrames.Dummy;
 import internalFrames.ListarCategorias;
+import internalFrames.ListarUsuarios;
 import internalFrames.ModificarListaReproduccion;
 import internalFrames.QuitarVideo;
 
