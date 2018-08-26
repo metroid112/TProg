@@ -43,7 +43,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		lblNombreDeUsuario.setEnabled(false);
 		
-		 
+		
 		JComboBox comboBoxUsuario = new JComboBox();
 		comboBoxUsuario.setEnabled(false);
 		
@@ -177,7 +177,8 @@ public class CrearListaReproduccion extends JInternalFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				fab = new Fabrica();
+				fab = fab.getFabrica();
+				ctrLista = fab.getIListas();
 				if(checkNombre()){
 					
 					try{

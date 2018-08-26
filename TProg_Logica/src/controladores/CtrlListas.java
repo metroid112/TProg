@@ -2,13 +2,15 @@ package controladores;
 
 import interfaces.IListas;
 import manejadores.ManejadorListas;
+import manejadores.ManejadorUsuarios;
 import clases.Lista;
 import clases.ListaDefecto;
 
 public class CtrlListas implements IListas {
 
+	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	private ManejadorListas manejadorListas = ManejadorListas.getManejadorListas();
-	private CtrlUsuariosCanales controladorUsuCan = new CtrlUsuariosCanales();
+	
 	
 	public void ingresarListaParticular(String nombre, String usuario, boolean visibilidad){
 		
