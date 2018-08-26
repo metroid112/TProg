@@ -8,12 +8,8 @@ import java.util.Date;
 
 import clases.Calificacion;
 import clases.Canal;
-import clases.Categoria;
 import clases.Comentario;
-import clases.ListaDefecto;
-import clases.ListaParticular;
 import clases.Usuario;
-import clases.Video;
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
 
@@ -37,5 +33,22 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			canal.setUsuario(usu);
 			manejadorUsuarios.add(usu);
 	};
+<<<<<<< HEAD
 
+=======
+	
+	public String[] listarUsuarios() {
+		
+		return manejadorUsuarios.toArray();
+	
+	}
+	
+	public boolean existeUsuario(String nick) {
+		return manejadorUsuarios.isMemberKey(nick);
+	}
+	
+	public Integer cantidadUsuarios() {
+		return manejadorUsuarios.size();
+	}
+>>>>>>> master
 }

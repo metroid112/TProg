@@ -1,25 +1,29 @@
 package principal;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import clases.Categoria;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import internalFrames.*;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
-import controladores.CtrlCategorias;
-
-import java.awt.BorderLayout;
-import javax.swing.JInternalFrame;
+import interfaces.IVideos;
+import internalFrames.AgregarVideo;
+import internalFrames.AltaCategoria;
+import internalFrames.AltaUsuario;
+import internalFrames.AltaVideo;
+import internalFrames.ConsultaCategoria;
+import internalFrames.ConsultaLista;
+import internalFrames.CrearListaReproduccion;
+import internalFrames.Dummy;
+import internalFrames.ListarCategorias;
+import internalFrames.ModificarListaReproduccion;
+import internalFrames.QuitarVideo;
 
 public class Main {
 	private CrearListaReproduccion creLisRep;
@@ -34,6 +38,7 @@ public class Main {
 	private ConsultaLista conLis;
 	private AltaUsuario altUsu;
 	private ICategorias ctrlCat;
+	private ListarUsuarios lisUsu;
 
 
 	/**
@@ -91,6 +96,17 @@ public class Main {
 		altUsu = new AltaUsuario();
 		altUsu.setVisible(false);
 		
+
+		lisUsu = new ListarUsuarios();
+		lisUsu.setVisible(false);
+		
+
+		IVideos IVid = fabrica.getIVideos();
+		AltaVideo altVid = new AltaVideo(IVid);
+		altVid.cargarDatos();
+		altVid.setVisible(true);
+		
+		frame.getContentPane().add(altVid);
 		frame.getContentPane().add(conLis);
 		frame.getContentPane().add(creLisRep);
 		frame.getContentPane().add(agrVid);
@@ -100,6 +116,7 @@ public class Main {
 		frame.getContentPane().add(altCat);
 		frame.getContentPane().add(conCat);
 		frame.getContentPane().add(altUsu);
+		frame.getContentPane().add(lisUsu);
 		frame.getContentPane().add(dum, BorderLayout.CENTER);
 
 	}
@@ -142,6 +159,14 @@ public class Main {
 		mnUsuario.add(mntmConsultarUsuario);
 
 		JMenuItem mntmListarUsuario = new JMenuItem("Listar Usuario");
+		mntmListarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ale) {
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					lisUsu.cargarDatos();
+					lisUsu.setVisible(true);
+			}
+		});
 		mnUsuario.add(mntmListarUsuario);
 
 		JMenu mnVideo = new JMenu("Video");
