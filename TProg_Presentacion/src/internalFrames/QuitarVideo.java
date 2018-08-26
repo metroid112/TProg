@@ -8,16 +8,19 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import interfaces.Fabrica;
+import interfaces.*;
 
 import javax.swing.JComboBox;
 
 @SuppressWarnings("serial")
 public class QuitarVideo extends JInternalFrame{
 
+	private IUsuariosCanales ctrUsu;
+	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelLisUsu = new DefaultComboBoxModel<String>();
@@ -100,21 +103,51 @@ public class QuitarVideo extends JInternalFrame{
 				setVisible(false);
 			}
 		});
+		
+		comboBoxUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxUsuario.getSelectedItem() != ""){
+					
+					comboBoxLisUsu.setEnabled(true);
+				}
+				else comboBoxLisUsu.setEnabled(false);
+			}
+		});
+		
+		comboBoxLisUsu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxUsuario.getSelectedItem() != ""){
+					
+					comboBoxVideos.setEnabled(true);
+				}
+				else comboBoxVideos.setEnabled(false);
+			}
+		});
+		
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean checkUsuario = true;
+				
+
+				if(comboBoxUsuario.getSelectedItem() == ""){
+						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
+						checkUsuario = false;
+				}
+				if(checkUsuario){}
+			}
+		});
 	}
 	
 	public void cargarDatos(){
-		/*
 		fab = Fabrica.getFabrica();
-		ctrCat = fab.getIUsuariosCanales();
-		
+		ctrUsu = fab.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
-		largo = usuarios.length;
+		int largou = usuarios.length;
 		modelUsuario.addElement("");
-		for (int i = 0; i < largo; i++ ){
+		for (int i = 0; i < largou; i++ ){
 		  modelUsuario.addElement(usuarios[i]);
 		}
 		ctrUsu = null;
-		*/
 	}
 
 }

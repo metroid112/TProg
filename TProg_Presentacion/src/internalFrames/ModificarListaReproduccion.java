@@ -6,11 +6,13 @@ import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import interfaces.Fabrica;
+import interfaces.*;
 
 @SuppressWarnings("serial")
 public class ModificarListaReproduccion extends JInternalFrame {
 
+	private IUsuariosCanales ctrUsu;
+	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelLisRep = new DefaultComboBoxModel<String>();
@@ -46,6 +48,10 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -123,20 +129,48 @@ public class ModificarListaReproduccion extends JInternalFrame {
 				
 			}
 		});
+		
+		comboBoxUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxUsuario.getSelectedItem() != ""){
+					
+					comboBoxLisRep.setEnabled(true);
+					comboBoxCategoria.setEnabled(true);
+					rdbtnPrivada.setEnabled(true);
+					rdbtnPublica.setEnabled(true);
+				}
+				else{ 
+					comboBoxLisRep.setEnabled(false);
+					comboBoxCategoria.setEnabled(false);
+					rdbtnPrivada.setEnabled(false);
+					rdbtnPublica.setEnabled(false);
+				}
+			}
+		});
+		
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean checkUsuario = true;
+				
+
+				if(comboBoxUsuario.getSelectedItem() == ""){
+						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
+						checkUsuario = false;
+				}
+				if(checkUsuario){}
+			}
+		});
 	}
 	public void cargarDatos(){
-		/*
 		fab = Fabrica.getFabrica();
-		ctrCat = fab.getIUsuariosCanales();
-		
+		ctrUsu = fab.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
-		largo = usuarios.length;
+		int largou = usuarios.length;
 		modelUsuario.addElement("");
-		for (int i = 0; i < largo; i++ ){
+		for (int i = 0; i < largou; i++ ){
 		  modelUsuario.addElement(usuarios[i]);
 		}
 		ctrUsu = null;
-		*/
 	}
 
 

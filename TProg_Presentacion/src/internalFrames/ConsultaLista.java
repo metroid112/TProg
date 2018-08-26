@@ -8,10 +8,11 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import interfaces.Fabrica;
+import interfaces.*;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
@@ -21,6 +22,8 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class ConsultaLista extends JInternalFrame{
 
+	private IUsuariosCanales ctrUsu;
+	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelListas = new DefaultComboBoxModel<String>();
@@ -93,21 +96,29 @@ public class ConsultaLista extends JInternalFrame{
 				setVisible(false);
 			}
 		});
+		
+		comboBoxUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxUsuario.getSelectedItem() != ""){
+					
+					comboBoxListas.setEnabled(true);
+				}
+				else comboBoxListas.setEnabled(false);
+			}
+		});
+
 	}
 	
 	public void cargarDatos(){
-		/*
 		fab = Fabrica.getFabrica();
-		ctrCat = fab.getIUsuariosCanales();
-		
+		ctrUsu = fab.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
-		largo = usuarios.length;
+		int largou = usuarios.length;
 		modelUsuario.addElement("");
-		for (int i = 0; i < largo; i++ ){
+		for (int i = 0; i < largou; i++ ){
 		  modelUsuario.addElement(usuarios[i]);
 		}
 		ctrUsu = null;
-		*/
 	}
 
 }
