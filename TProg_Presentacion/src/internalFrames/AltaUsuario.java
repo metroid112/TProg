@@ -310,11 +310,11 @@ public class AltaUsuario extends JInternalFrame {
 	}
 	
 	protected void cmdAltaUsuarioActionPerformed(ActionEvent e){
-		if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".com")){
-			JOptionPane.showMessageDialog(this, "Correo electrónico inválido");
-		}
-		else if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
+		if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
 			JOptionPane.showMessageDialog(this, "Los campos Nickname, Nombre y Apellido son obligatorios.");
+		}
+		else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".com")){
+			JOptionPane.showMessageDialog(this, "Correo electrónico inválido");
 		}
 //		else if ((comboBox.getSelectedIndex() == -1) || (comboBox_1.getSelectedIndex() == -1) || (comboBox_2.getSelectedIndex() == -1)){
 //			JOptionPane.showMessageDialog(this, "Fecha inválida.");
