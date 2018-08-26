@@ -59,12 +59,13 @@ public class AltaUsuario extends JInternalFrame {
 	public AltaUsuario() {
 		setNormalBounds(new Rectangle(20, 0, 300, 400));
 		setTitle("Alta Usuario");
-		setBounds(0, 0, 463, 531);
+		setBounds(0, 0, 455, 531);
 		
 		JButton btnNewButton = new JButton("Cancelar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
+				clean();
 			}
 		});
 		
@@ -310,7 +311,12 @@ public class AltaUsuario extends JInternalFrame {
 	}
 	
 	protected void cmdAltaUsuarioActionPerformed(ActionEvent e){
-		if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".com")){
+		fab = Fabrica.getFabrica();
+		ctrlUsu = fab.getIUsuariosCanales(); 
+		if (ctrlUsu.existeUsuario(textField.getText())) {
+			JOptionPane.showMessageDialog(this, "El usuario ya existe.");
+		}		
+		else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")){
 			JOptionPane.showMessageDialog(this, "Correo electrónico inválido");
 		}
 		else if (textField.getText().equals("") || textField_1.getText().equals("") || textField_2.getText().equals("")){
@@ -322,8 +328,6 @@ public class AltaUsuario extends JInternalFrame {
 		else{
 			try
 			{
-				fab = Fabrica.getFabrica();
-				ctrlUsu = fab.getIUsuariosCanales(); 
 				
 				String nick = textField.getText();
 				String nombre = textField_1.getText();
@@ -353,16 +357,7 @@ public class AltaUsuario extends JInternalFrame {
 						seguidos);
 				
 				JOptionPane.showMessageDialog(this, "¡Se ha creado el usuario con éxito!");
-				textField.setText("");
-				textField_1.setText("");
-				textField_2.setText("");
-				textField_3.setText("");
-				textField_4.setText("");
-				textPane.setText("");
-				dia.setText("");
-				mes.setText("");
-				ano.setText("");
-			   
+				clean();			   
 				setVisible(false);
             } catch (Exception m) {
                 JOptionPane.showMessageDialog(this, m.getMessage());
@@ -370,5 +365,18 @@ public class AltaUsuario extends JInternalFrame {
             }
 			
 		}
+	}
+	
+	//Limpia la ventana.
+	protected void clean() {
+		textField.setText("");
+		textField_1.setText("");
+		textField_2.setText("");
+		textField_3.setText("");
+		textField_4.setText("");
+		textPane.setText("");
+		dia.setText("");
+		mes.setText("");
+		ano.setText("");
 	}
 }

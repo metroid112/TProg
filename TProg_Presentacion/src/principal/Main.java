@@ -34,6 +34,7 @@ public class Main {
 	private ConsultaLista conLis;
 	private AltaUsuario altUsu;
 	private ICategorias ctrlCat;
+	private ListarUsuarios lisUsu;
 
 
 	/**
@@ -91,6 +92,9 @@ public class Main {
 		altUsu = new AltaUsuario();
 		altUsu.setVisible(false);
 		
+		lisUsu = new ListarUsuarios();
+		lisUsu.setVisible(false);
+		
 		frame.getContentPane().add(conLis);
 		frame.getContentPane().add(creLisRep);
 		frame.getContentPane().add(agrVid);
@@ -100,6 +104,7 @@ public class Main {
 		frame.getContentPane().add(altCat);
 		frame.getContentPane().add(conCat);
 		frame.getContentPane().add(altUsu);
+		frame.getContentPane().add(lisUsu);
 		frame.getContentPane().add(dum, BorderLayout.CENTER);
 
 	}
@@ -142,6 +147,14 @@ public class Main {
 		mnUsuario.add(mntmConsultarUsuario);
 
 		JMenuItem mntmListarUsuario = new JMenuItem("Listar Usuario");
+		mntmListarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ale) {
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					lisUsu.cargarDatos();
+					lisUsu.setVisible(true);
+			}
+		});
 		mnUsuario.add(mntmListarUsuario);
 
 		JMenu mnVideo = new JMenu("Video");
