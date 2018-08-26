@@ -98,7 +98,7 @@ public class ConsultaLista extends JInternalFrame{
 	public void cargarDatos(){
 		/*
 		fab = Fabrica.getFabrica();
-		ctrCat = fab.getICategorias();
+		ctrCat = fab.getIUsuariosCanales();
 		
 	    String[] usuarios = ctrUsu.listarUsuarios();
 		largo = usuarios.length;

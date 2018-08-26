@@ -209,8 +209,6 @@ public class CrearListaReproduccion extends JInternalFrame {
 	
 	private boolean checkNombre(){
 		
-		String nombre = textFieldNombre.getText();
-		
 		if(textFieldNombre.getText().isEmpty()){
 			JOptionPane.showMessageDialog(null, "El nombre de lista no puede ser vacío", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;

@@ -4,9 +4,6 @@ import interfaces.IListas;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
 import clases.Usuario;
-import clases.Lista;
-import clases.ListaDefecto;
-import clases.ListaParticular;
 
 public class CtrlListas implements IListas {
 
@@ -24,9 +21,8 @@ public class CtrlListas implements IListas {
 		
 
 		manejadorListas.add(nombreListaDefecto); //guarda el nombre de la lista
-		
+		//manejadorUsuarios.ingresarListaDefecto(nombreListaDefecto);
 
-		//controladorUsuCan.ingresarListaDefecto(nombre);
 		/*	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal*/
 	}
 }
