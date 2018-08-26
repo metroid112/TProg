@@ -1,4 +1,5 @@
 package clases;
+import java.util.*;
 
 public class Canal {
 
@@ -94,7 +95,7 @@ public class Canal {
 	}
 	
 	public void ingresarListaParticular(String nombre, boolean visibilidad){
-		ListaParticular nuevaLista = new ListaParticular(nombre,this,null,null,visibilidad);
+		ListaParticular nuevaLista = new ListaParticular(nombre,this,new LinkedList<Video>(),new HashMap<String,Categoria>(),visibilidad);
 		listaParticulares[listaParticulares.length] = nuevaLista;	//puede cambiar la implementacion
 	}
 	

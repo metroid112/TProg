@@ -1,10 +1,8 @@
 package internalFrames;
 
-import java.lang.Exception;
-import java.awt.EventQueue;
+import java.lang.Exception; //AL CERRAR Y ABRIR VENTANA NO SE REINICIAN LOS PARAMETROS
 
-import interfaces.Fabrica;
-import interfaces.IListas;
+import interfaces.*;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -18,14 +16,20 @@ public class CrearListaReproduccion extends JInternalFrame {
 
 	
 	private JTextField textFieldNombre;
+	private IUsuariosCanales ctrUsu;
 	private IListas ctrLista;
+	private ICategorias ctrCat;
 	private Fabrica fab;
+	
+	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelCategoria = new DefaultComboBoxModel<String>();
 
 	public CrearListaReproduccion() {
 		
 		setTitle("Crear lista de reproducci\u00F3n");
 		setBounds(0, 0, 640, 480);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 		JLabel lblTipoDeLista = new JLabel("Tipo de lista");
 		
@@ -44,7 +48,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		lblNombreDeUsuario.setEnabled(false);
 		
 		
-		JComboBox comboBoxUsuario = new JComboBox();
+		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		comboBoxUsuario.setEnabled(false);
 		
 		JRadioButton rdbtnPrivada = new JRadioButton("Privada");
@@ -57,7 +61,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		JLabel lblCategora = new JLabel("Categor\u00EDa");
 		lblCategora.setEnabled(false);
 		
-		JComboBox comboBoxCategoria = new JComboBox();
+		JComboBox comboBoxCategoria = new JComboBox(modelCategoria);
 		comboBoxCategoria.setEnabled(false);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -171,6 +175,9 @@ public class CrearListaReproduccion extends JInternalFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
+				modelCategoria.removeAllElements();
+				modelUsuario.removeAllElements();
+				
 			}
 		});
 		
@@ -210,6 +217,29 @@ public class CrearListaReproduccion extends JInternalFrame {
 		}
 		
 		return true;
+	}
+	
+	public void cargarDatos(){
+		
+		fab = Fabrica.getFabrica();
+		ctrCat = fab.getICategorias();
+		
+	    String[] cats = ctrCat.listarCategorias();
+		int largo = cats.length;
+		modelCategoria.addElement("");
+		for (int i = 0; i < largo; i++ ){
+		  modelCategoria.addElement(cats[i]);
+		}
+		ctrCat = null;
+		/*
+	    String[] usuarios = ctrUsu.listarUsuarios();
+		largo = usuarios.length;
+		modelUsuario.addElement("");
+		for (int i = 0; i < largo; i++ ){
+		  modelUsuario.addElement(usuarios[i]);
+		}
+		ctrUsu = null;
+		*/
 	}
 
 }

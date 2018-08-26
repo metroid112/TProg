@@ -3,6 +3,7 @@ package controladores;
 import interfaces.IListas;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
+import clases.Usuario;
 import clases.Lista;
 import clases.ListaDefecto;
 import clases.ListaParticular;
@@ -12,10 +13,11 @@ public class CtrlListas implements IListas {
 	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	private ManejadorListas manejadorListas = ManejadorListas.getManejadorListas();
 
-	public void ingresarListaParticular(String nombre, String usuario, boolean visibilidad){
+	public void ingresarListaParticular(String nombre, String usuario, boolean visibilidad){ //busco el usuario y le pido a su canal que haga el resto
 		
-		//controladorUsuCan.ingresarListaParticular(nombre, usuario, visibilidad);
-		/*	Buscar al usuario y convoca la funcion ingresarListaParticular(nombre, visibilidad) sobre su canal*/
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		usuarioObjetivo.getCanal().ingresarListaParticular(nombre,visibilidad);
+		
 	}
 	
 	public void ingresarListaDefecto(String nombreListaDefecto){

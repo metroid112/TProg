@@ -1,17 +1,21 @@
 package internalFrames;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.JFrame;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import interfaces.Fabrica;
 
 @SuppressWarnings("serial")
 public class ModificarListaReproduccion extends JInternalFrame {
 
-
+	private Fabrica fab;
+	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelLisRep = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelCategoria = new DefaultComboBoxModel<String>();
+	
 	public ModificarListaReproduccion() {
 
 		setBounds(0, 0, 640, 480);
@@ -31,13 +35,13 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		JRadioButton rdbtnPublica = new JRadioButton("P\u00FAblica");
 		rdbtnPublica.setEnabled(false);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setEnabled(false);
+		JComboBox comboBoxLisRep = new JComboBox(modelLisRep);
+		comboBoxLisRep.setEnabled(false);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setEnabled(false);
+		JComboBox comboBoxCategoria = new JComboBox(modelCategoria);
+		comboBoxCategoria.setEnabled(false);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		
@@ -60,9 +64,9 @@ public class ModificarListaReproduccion extends JInternalFrame {
 								.addComponent(lblCategora))
 							.addGap(28)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(comboBox_2, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(comboBox_1, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(comboBox, 0, 146, Short.MAX_VALUE))))
+								.addComponent(comboBoxCategoria, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(comboBoxLisRep, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(comboBoxUsuario, 0, 146, Short.MAX_VALUE))))
 					.addContainerGap(134, Short.MAX_VALUE))
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addContainerGap(250, Short.MAX_VALUE)
@@ -77,15 +81,15 @@ public class ModificarListaReproduccion extends JInternalFrame {
 					.addGap(23)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombreDeUsuario)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblListaDeReproduccin)
-						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxLisRep, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCategora)
-						.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(rdbtnPrivada)
@@ -106,6 +110,9 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		});
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				modelUsuario.removeAllElements();
+				modelLisRep.removeAllElements();
+				modelCategoria.removeAllElements();
 				setVisible(false);
 			}
 		});
@@ -116,6 +123,20 @@ public class ModificarListaReproduccion extends JInternalFrame {
 				
 			}
 		});
+	}
+	public void cargarDatos(){
+		/*
+		fab = Fabrica.getFabrica();
+		ctrCat = fab.getICategorias();
+		
+	    String[] usuarios = ctrUsu.listarUsuarios();
+		largo = usuarios.length;
+		modelUsuario.addElement("");
+		for (int i = 0; i < largo; i++ ){
+		  modelUsuario.addElement(usuarios[i]);
+		}
+		ctrUsu = null;
+		*/
 	}
 
 

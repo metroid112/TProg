@@ -204,6 +204,7 @@ public class Main {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
 						quiVid.isVisible(), conLis.isVisible()))
+					creLisRep.cargarDatos();
 					creLisRep.setVisible(true);
 			}
 		});
@@ -214,6 +215,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
 						quiVid.isVisible(), conLis.isVisible()))
+					modLisRep.cargarDatos();
 					modLisRep.setVisible(true);
 			}
 		});
@@ -224,6 +226,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
 						quiVid.isVisible(), conLis.isVisible()))
+					agrVid.cargarDatos();
 					agrVid.setVisible(true);
 			}
 		});
@@ -234,6 +237,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
 						quiVid.isVisible(), conLis.isVisible()))
+					quiVid.cargarDatos();
 					quiVid.setVisible(true);
 			}
 		});
@@ -244,6 +248,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
 						quiVid.isVisible(), conLis.isVisible()))
+					conLis.cargarDatos();
 					conLis.setVisible(true);
 			}
 		});
