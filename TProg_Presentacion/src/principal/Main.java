@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.HashSet;
 
 import javax.swing.JFrame;
@@ -276,6 +277,6 @@ public class Main {
 	
 	public void cargarDatos() {
 		logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
-		
+		this.usuariosCanales.altaUsuario("bobo", "bobeta", "bobon", "bobo@bobetas.com", new Date(), "bobones", false);
 	}
 }

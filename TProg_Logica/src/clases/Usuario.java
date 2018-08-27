@@ -9,7 +9,7 @@ public class Usuario {
 	private String nombre;
 	private String apellido;
 	private String correo;
-	private Date nacimiento;
+	private Date fechaNacimiento;
 	private Image imagen;
 	private Canal canal;
 	private Comentario[] comentarios;
@@ -29,13 +29,21 @@ public class Usuario {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
-		this.nacimiento = nacimiento;
+		this.fechaNacimiento = nacimiento;
 		this.imagen = imagen;
 		this.canal = canal;
 		this.comentarios = comentarios;
 		this.calificaciones = calificaciones;
 		this.seguidores = seguidores;
 		this.seguidos = seguidos;
+	}
+
+	public Usuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento) {
+		this.nick = nickname;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.correo = correo;
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public String getNick() {
@@ -55,7 +63,7 @@ public class Usuario {
 	}
 
 	public Date getNacimiento() {
-		return nacimiento;
+		return fechaNacimiento;
 	}
 
 	public Image getImagen() {
@@ -99,7 +107,7 @@ public class Usuario {
 	}
 
 	public void setNacimiento(Date nacimiento) {
-		this.nacimiento = nacimiento;
+		this.fechaNacimiento = nacimiento;
 	}
 
 	public void setImagen(Image imagen) {
