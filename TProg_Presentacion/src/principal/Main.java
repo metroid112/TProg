@@ -42,15 +42,15 @@ public class Main {
 	
 	private HashSet<JInternalFrame> frames = new HashSet<JInternalFrame>();
 	
-	private AgregarVideo agrVid;
-	private AltaCategoria altCat;
-	private AltaUsuario altUsu;
-	private ConsultaCategoria conCat;
-	private ConsultaLista conLis;
-	private CrearListaReproduccion creLisRep;
-	private ListarCategorias lisCat;
-	private ModificarListaReproduccion modLisRep;
-	private QuitarVideo quiVid;
+	private AgregarVideo frmAgregarVideo;
+	private AltaCategoria frmAltaCategoria;
+	private AltaUsuario frmAltaUsuario;
+	private ConsultaCategoria frmConsultaCategoria;
+	private ConsultaLista frmConsultaLista;
+	private CrearListaReproduccion frmCrearListaReproduccion;
+	private ListarCategorias frmListarCategorias;
+	private ModificarListaReproduccion frmModificarListaReproduccion;
+	private QuitarVideo frmQuitarVideo;
 	
 	private Fabrica fabrica = Fabrica.getFabrica();
 	private ICategorias categorias = fabrica.getICategorias();
@@ -62,35 +62,35 @@ public class Main {
 
 		initialize();
 
-		altCat = new AltaCategoria();
-		lisCat = new ListarCategorias();
-		conCat = new ConsultaCategoria();
-		creLisRep = new CrearListaReproduccion();
-		agrVid = new AgregarVideo();
-		modLisRep = new ModificarListaReproduccion();
-		quiVid = new QuitarVideo();
-		conLis = new ConsultaLista();
-		altUsu = new AltaUsuario();
+		frmAltaCategoria = new AltaCategoria();
+		frmListarCategorias = new ListarCategorias();
+		frmConsultaCategoria = new ConsultaCategoria();
+		frmCrearListaReproduccion = new CrearListaReproduccion();
+		frmAgregarVideo = new AgregarVideo();
+		frmModificarListaReproduccion = new ModificarListaReproduccion();
+		frmQuitarVideo = new QuitarVideo();
+		frmConsultaLista = new ConsultaLista();
+		frmAltaUsuario = new AltaUsuario();
 
-		frame.getContentPane().add(conLis);
-		frame.getContentPane().add(creLisRep);
-		frame.getContentPane().add(agrVid);
-		frame.getContentPane().add(modLisRep);
-		frame.getContentPane().add(quiVid);
-		frame.getContentPane().add(lisCat);
-		frame.getContentPane().add(altCat);
-		frame.getContentPane().add(conCat);
-		frame.getContentPane().add(altUsu);
+		frame.getContentPane().add(frmConsultaLista);
+		frame.getContentPane().add(frmCrearListaReproduccion);
+		frame.getContentPane().add(frmAgregarVideo);
+		frame.getContentPane().add(frmModificarListaReproduccion);
+		frame.getContentPane().add(frmQuitarVideo);
+		frame.getContentPane().add(frmListarCategorias);
+		frame.getContentPane().add(frmAltaCategoria);
+		frame.getContentPane().add(frmConsultaCategoria);
+		frame.getContentPane().add(frmAltaUsuario);
 		
-		frames.add(conLis);
-		frames.add(creLisRep);
-		frames.add(agrVid);
-		frames.add(modLisRep);
-		frames.add(quiVid);
-		frames.add(lisCat);
-		frames.add(altCat);
-		frames.add(conCat);
-		frames.add(altUsu);
+		frames.add(frmConsultaLista);
+		frames.add(frmCrearListaReproduccion);
+		frames.add(frmAgregarVideo);
+		frames.add(frmModificarListaReproduccion);
+		frames.add(frmQuitarVideo);
+		frames.add(frmListarCategorias);
+		frames.add(frmAltaCategoria);
+		frames.add(frmConsultaCategoria);
+		frames.add(frmAltaUsuario);
 		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
@@ -117,12 +117,15 @@ public class Main {
 		JMenu mnVideo = new JMenu("Video");
 		menuBar.add(mnVideo);
 		
-		JMenu mnCategora = new JMenu("Categoria");
-		menuBar.add(mnCategora);
+		JMenu mnCategoria = new JMenu("Categoria");
+		menuBar.add(mnCategoria);
 		
 		JMenu mnLista = new JMenu("Lista");
 		menuBar.add(mnLista);
 
+		JMenuItem mntmAltaUsuario = new JMenuItem("Alta Usuario");
+		mnUsuario.add(mntmAltaUsuario);
+		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Modificar Usuario");
 		mnUsuario.add(mntmNewMenuItem);
 
@@ -140,18 +143,15 @@ public class Main {
 
 		JMenuItem mntmConsultaVideo = new JMenuItem("Consulta Video");
 		mnVideo.add(mntmConsultaVideo);
-		
-		JMenuItem mntmAltaUsuario = new JMenuItem("Alta Usuario");
-		mnUsuario.add(mntmAltaUsuario);
 
 		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
-		mnCategora.add(mntmAltaCategora);
+		mnCategoria.add(mntmAltaCategora);
 
-		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
-		mnCategora.add(mntmConsultaCategora);
+		JMenuItem mntmConsultaCategoria = new JMenuItem("Consulta Categoria");
+		mnCategoria.add(mntmConsultaCategoria);
 
 		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
-		mnCategora.add(mntmListarCategoria);
+		mnCategoria.add(mntmListarCategoria);
 
 		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
 		mnLista.add(mntmAltaLista);
@@ -172,7 +172,7 @@ public class Main {
 		mntmAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					altUsu.setVisible(true);
+					frmAltaUsuario.setVisible(true);
 			}
 		});
 		
@@ -180,7 +180,7 @@ public class Main {
 		mntmConsultaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					conLis.setVisible(true);
+					frmConsultaLista.setVisible(true);
 			}
 		});
 		
@@ -188,7 +188,7 @@ public class Main {
 		mntmQuitarVideoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					quiVid.setVisible(true);
+					frmQuitarVideo.setVisible(true);
 			}
 		});
 
@@ -196,7 +196,7 @@ public class Main {
 		mntmAgregarVideoA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					agrVid.setVisible(true);
+					frmAgregarVideo.setVisible(true);
 			}
 		});
 		
@@ -204,7 +204,7 @@ public class Main {
 		mntmModificarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					modLisRep.setVisible(true);
+					frmModificarListaReproduccion.setVisible(true);
 			}
 		});
 		
@@ -212,7 +212,7 @@ public class Main {
 		mntmAltaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!ventanasAbiertas())
-					creLisRep.setVisible(true);
+					frmCrearListaReproduccion.setVisible(true);
 			}
 		});
 		
@@ -220,17 +220,17 @@ public class Main {
 		mntmListarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas()) {
-					lisCat.cargarDatos();
-					lisCat.setVisible(true);
+					frmListarCategorias.cargarDatos();
+					frmListarCategorias.setVisible(true);
 				}
 			}
 		});
 		
 		/************************ CONSULTA CATEGORIA ************************/
-		mntmConsultaCategora.addActionListener(new ActionListener() {
+		mntmConsultaCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!ventanasAbiertas())
-					conCat.setVisible(true);
+					frmConsultaCategoria.setVisible(true);
 			}
 		});
 		
@@ -238,7 +238,7 @@ public class Main {
 		mntmAltaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					altCat.setVisible(true);
+					frmAltaCategoria.setVisible(true);
 			}
 
 		});
