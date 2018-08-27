@@ -14,6 +14,10 @@ import javax.swing.JMenuItem;
 
 import interfaces.*;
 import internalFrames.*;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import javax.swing.JScrollPane;
+import java.awt.Rectangle;
 
 public class Main {
 
@@ -44,6 +48,8 @@ public class Main {
 	private ModificarListaReproduccion frmModificarListaReproduccion;
 	private QuitarVideo frmQuitarVideo;
 	
+	private JTextArea logCarga;
+	
 	private Fabrica fabrica = Fabrica.getFabrica();
 	private ICategorias categorias = fabrica.getICategorias();
 	private IListas listas = fabrica.getIListas();
@@ -64,15 +70,15 @@ public class Main {
 		frmConsultaLista = new ConsultaLista();
 		frmAltaUsuario = new AltaUsuario();
 
-//		frame.getContentPane().add(frmConsultaLista);
-//		frame.getContentPane().add(frmCrearListaReproduccion);
-//		frame.getContentPane().add(frmAgregarVideo);
-//		frame.getContentPane().add(frmModificarListaReproduccion);
-//		frame.getContentPane().add(frmQuitarVideo);
-//		frame.getContentPane().add(frmListarCategorias);
-//		frame.getContentPane().add(frmAltaCategoria);
-//		frame.getContentPane().add(frmConsultaCategoria);
-//		frame.getContentPane().add(frmAltaUsuario);
+		frame.getContentPane().add(frmConsultaLista);
+		frame.getContentPane().add(frmCrearListaReproduccion);
+		frame.getContentPane().add(frmAgregarVideo);
+		frame.getContentPane().add(frmModificarListaReproduccion);
+		frame.getContentPane().add(frmQuitarVideo);
+		frame.getContentPane().add(frmListarCategorias);
+		frame.getContentPane().add(frmAltaCategoria);
+		frame.getContentPane().add(frmConsultaCategoria);
+		frame.getContentPane().add(frmAltaUsuario);
 		
 		frames.add(frmConsultaLista);
 		frames.add(frmCrearListaReproduccion);
@@ -87,6 +93,14 @@ public class Main {
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
 		}
+		
+		JScrollPane scrollPane = new JScrollPane();
+		logCarga = new JTextArea();
+		logCarga.setBackground(UIManager.getColor("Button.background"));
+		logCarga.setEditable(false);
+		logCarga.setVisible(true);
+		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		scrollPane.setViewportView(logCarga);
 	}
 
 	private void initialize() {
@@ -238,6 +252,15 @@ public class Main {
 
 		});
 		
+		/************************ CARGA DATOS ************************/
+		mntmCargaDatos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas()) {
+					cargarDatos();
+				}
+			}
+		});
+		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 	}
 
@@ -247,7 +270,12 @@ public class Main {
 				return true;
 			}
 		}
+		logCarga.setText(null);
 		return false;
 	}
-
+	
+	public void cargarDatos() {
+		logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
+		
+	}
 }
