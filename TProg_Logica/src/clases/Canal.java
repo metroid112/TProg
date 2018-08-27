@@ -33,6 +33,12 @@ public class Canal {
 		this.categoria = categoria;
 	}
 
+	public Canal(String nombreCanal, boolean visible, Usuario user) {
+		this.nombre = nombreCanal;
+		this.visible = visible;
+		this.usuario = user;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
