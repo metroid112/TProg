@@ -1,41 +1,44 @@
 package clases;
 
+
 import java.time.Duration;
-import java.time.LocalDate;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+
 
 public class Video {
 
 	private String nombre;
 	private String descripcion;
 	private Duration duracion;
-	private LocalDate fecha;
 	private String url;
 	private boolean visible;
-
+	private Date fecha;
 	private Categoria categoria;
-	private Lista[] listas;
 	private Canal canal;
-	private Calificacion[] calificaciones;
-	private Comentario[] comentarios;
+	private LinkedList<Calificacion> calificaciones;
+	private LinkedHashMap<Integer,Comentario> comentarios;		// LinkedHashMap mantiene el orden a diferencia del HashMap
 
 	public Video() {
 	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Video(String nombre, String descripcion, Duration duracion, LocalDate fecha, String url, boolean visible,
-			Categoria categoria, Lista[] listas, Canal canal, Calificacion[] calificaciones, Comentario[] comentarios) {
+
+	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Canal canal) {
+
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
-		this.fecha = fecha;
+		// TODO fecha video
 		this.url = url;
-		this.visible = visible;
+		this.visible = false;		// Arranca privado
 		this.categoria = categoria;
-		this.listas = listas;
 		this.canal = canal;
-		this.calificaciones = calificaciones;
-		this.comentarios = comentarios;
+		categoria.addVideo(this);
+		
 	}
 
 	public String getNombre() {
@@ -50,7 +53,7 @@ public class Video {
 		return duracion;
 	}
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
@@ -66,19 +69,15 @@ public class Video {
 		return categoria;
 	}
 
-	public Lista[] getListas() {
-		return listas;
-	}
-
 	public Canal getCanal() {
 		return canal;
 	}
 
-	public Calificacion[] getCalificaciones() {
+	public LinkedList<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
 
-	public Comentario[] getComentarios() {
+	public LinkedHashMap<Integer,Comentario> getComentarios() {
 		return comentarios;
 	}
 
@@ -93,8 +92,16 @@ public class Video {
 	public void setDuracion(Duration duracion) {
 		this.duracion = duracion;
 	}
+	
+	public void setDuracion(int hora, int minuto, int segundo) {
+		this.duracion = Duration.ofHours(hora);
+		this.duracion = duracion.plusMinutes(minuto);
+		this.duracion = duracion.plusSeconds(segundo);
+		
+				
+	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
@@ -110,19 +117,12 @@ public class Video {
 		this.categoria = categoria;
 	}
 
-	public void setListas(Lista[] listas) {
-		this.listas = listas;
-	}
-
 	public void setCanal(Canal canal) {
 		this.canal = canal;
 	}
 
-	public void setCalificaciones(Calificacion[] calificaciones) {
+	public void setCalificaciones(LinkedList<Calificacion> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
 
-	public void setComentarios(Comentario[] comentarios) {
-		this.comentarios = comentarios;
-	}
 }

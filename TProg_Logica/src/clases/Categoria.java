@@ -1,12 +1,12 @@
 package clases;
+import java.util.*;
 
 public class Categoria {
 
 	private String nombre;
 
-	private Lista[] listas;
-	private Canal[] canales;
-	private Video[] videos;
+	private LinkedList<Lista> listas = new LinkedList<Lista>();
+	private LinkedList<Video> videos = new LinkedList<Video>();
 
 	public Categoria() {
 	}
@@ -17,26 +17,17 @@ public class Categoria {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Categoria(String nombre, Lista[] listas, Canal[] canales, Video[] videos) {
-		this.nombre = nombre;
-		this.listas = listas;
-		this.canales = canales;
-		this.videos = videos;
-	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public Lista[] getListas() {
+	public LinkedList<Lista> getListas() {
 		return listas;
 	}
 
-	public Canal[] getCanales() {
-		return canales;
-	}
 
-	public Video[] getVideos() {
+	public LinkedList<Video> getVideos() {
 		return videos;
 	}
 
@@ -44,15 +35,46 @@ public class Categoria {
 		this.nombre = nombre;
 	}
 
-	public void setListas(Lista[] listas) {
+	public void setListas(LinkedList<Lista> listas) {
 		this.listas = listas;
 	}
 
-	public void setCanales(Canal[] canales) {
-		this.canales = canales;
-	}
 
-	public void setVideos(Video[] videos) {
+	public void setVideos(LinkedList<Video> videos) {
 		this.videos = videos;
+	}
+	
+	public void addVideo(Video v){
+		videos.add(v);
+	}
+	
+	public String[] getInfoVideos(){
+		String[] infoVideos = new String[videos.size()];
+		if (!videos.isEmpty()){
+			int i = 0;
+			for (Video video: videos) {
+				String nomVideo = video.getCanal().getUsuario().getNick();
+				infoVideos[i] = "(" + nomVideo + "," + video.getNombre() + ")";
+				i++;
+			}
+		}
+		return infoVideos;
+	}
+	
+	public int size(){
+		return videos.size();
+	}
+	
+	public String[] getInfoListas(){
+		String[] infoListas = new String[listas.size()];
+		if (!listas.isEmpty()){
+			int i = 0;
+			for (Lista lista: listas) {
+				String nomLista = lista.getCanal().getUsuario().getNick();
+				infoListas[i] = "(" + nomLista + "," + lista.getNombre() + ")";
+				i++;
+			}
+		}
+		return infoListas;		
 	}
 }

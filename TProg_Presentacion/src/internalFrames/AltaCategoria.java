@@ -84,8 +84,8 @@ public class AltaCategoria extends JInternalFrame{
 			try
 			{
 				fab = Fabrica.getFabrica();
-				ctrlCat = fab.getICategorias();  
-				String texto = textField.getText().toUpperCase();
+				ctrlCat = fab.getICategorias();
+				String texto = textField.getText();
                 ctrlCat.altaCategoria(texto);		
                 // Muestro éxito de la operación
                 JOptionPane.showMessageDialog(this, "La categoria se ha creado con exito");

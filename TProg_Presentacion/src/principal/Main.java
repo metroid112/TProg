@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.Date;
 import java.util.HashSet;
 
@@ -12,13 +13,12 @@ import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
-import interfaces.*;
-import internalFrames.*;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
-import java.awt.Rectangle;
+
+import interfaces.*;
+import internalFrames.*;
 
 public class Main {
 
@@ -143,6 +143,14 @@ public class Main {
 		mnUsuario.add(mntmConsultarUsuario);
 
 		JMenuItem mntmListarUsuario = new JMenuItem("Listar Usuario");
+		mntmListarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ale) {
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					lisUsu.cargarDatos();
+					lisUsu.setVisible(true);
+			}
+		});
 		mnUsuario.add(mntmListarUsuario);
 
 		JMenuItem mntmAltaVideo = new JMenuItem("Alta Video");

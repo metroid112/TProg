@@ -1,5 +1,7 @@
 package clases;
 
+import java.time.Duration;
+
 public class Canal {
 
 	private String nombre;
@@ -7,7 +9,8 @@ public class Canal {
 	private boolean visible;
 
 	private Usuario usuario;
-	private Video[] videos;
+	// borrar
+	private Video[] videos = new Video[2];
 	private ListaDefecto[] listaDefecto;
 	private ListaParticular[] listaParticulares;
 	private Categoria categoria;
@@ -107,5 +110,15 @@ public class Canal {
 	public void ingresarListaDefecto(String nombre){
 		ListaDefecto nuevaLista = new ListaDefecto(nombre);
 		listaDefecto[listaDefecto.length] = nuevaLista; //puede cambiar la implementacion
+	}
+/**
+ * 
+ * borrar
+ */
+	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2) {
+		
+		this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this);
+		
+		
 	}
 }

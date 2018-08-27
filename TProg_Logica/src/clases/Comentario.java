@@ -1,37 +1,40 @@
 package clases;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.LinkedHashMap;
+
 
 public class Comentario {
 
 	private String texto;
-	private LocalDate fecha;
-
+	private Date fecha;
 	private Usuario usuario;
 	private Video video;
 	private Comentario padre;
-	private Comentario[] respuestas;
+	private LinkedHashMap<Integer,Comentario> respuestas;
+	private long id;	// id de comentario para uso interno
 
 	public Comentario() {
 	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Comentario(String texto, LocalDate fecha, Usuario usuario, Video video, Comentario padre,
-			Comentario[] respuestas) {
+	public Comentario(String texto, Usuario usuario, Video video, Comentario padre) {
+
 		this.texto = texto;
-		this.fecha = fecha;
+		//TODO fecha
 		this.usuario = usuario;
 		this.video = video;
 		this.padre = padre;
-		this.respuestas = respuestas;
+		this.respuestas = null;
 	}
 
 	public String getTexto() {
 		return texto;
 	}
 
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
@@ -47,7 +50,7 @@ public class Comentario {
 		return padre;
 	}
 
-	public Comentario[] getRespuestas() {
+	public LinkedHashMap<Integer, Comentario> getRespuestas() {
 		return respuestas;
 	}
 
@@ -55,7 +58,7 @@ public class Comentario {
 		this.texto = texto;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
@@ -71,7 +74,7 @@ public class Comentario {
 		this.padre = padre;
 	}
 
-	public void setRespuestas(Comentario[] respuestas) {
+	public void setRespuestas(LinkedHashMap<Integer, Comentario> respuestas) {
 		this.respuestas = respuestas;
 	}
 }
