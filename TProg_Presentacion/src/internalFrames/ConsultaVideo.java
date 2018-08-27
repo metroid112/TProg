@@ -12,18 +12,21 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controladores.CtrlVideos;
+import paneles.SeleccionVideo;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JList;
+import javax.swing.JPanel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ConsultaVideo extends JInternalFrame implements ActionListener {
-	private JComboBox<String> cBoxUsuarios;
-	private JList<String> list;
+public class ConsultaVideo extends JInternalFrame {
+	
 	private CtrlVideos contVideos;
+	private SeleccionVideo seleccionVideo;
 
 	/**
 	 * Create the frame.
@@ -33,14 +36,13 @@ public class ConsultaVideo extends JInternalFrame implements ActionListener {
 		this.contVideos = contVideos;
 		
 		setTitle("Consulta de Video");
-		setBounds(100, 100, 450, 300);
-		
-		cBoxUsuarios = new JComboBox<String>();
-		cBoxUsuarios.addActionListener(this);		// Agrego el listener para leer el usuario seleccionado
-		
-		JLabel lblUsuario = new JLabel("Usuario:");
+		setBounds(100, 100, 505, 390);
 		
 		JButton btnVerInfo = new JButton("Ver Info");
+		btnVerInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -49,70 +51,35 @@ public class ConsultaVideo extends JInternalFrame implements ActionListener {
 			}
 		});
 		
-		JScrollPane scrollPane = new JScrollPane();
+		seleccionVideo = new SeleccionVideo(this.contVideos);		// Se crea el panel de seleccion
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(19)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
 							.addComponent(btnVerInfo)
-							.addGap(18)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnCancelar))
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-							.addGap(56)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblUsuario)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(cBoxUsuarios, 0, 276, Short.MAX_VALUE)))))
-					.addGap(54))
+						.addComponent(seleccionVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(20, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(22)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblUsuario)
-						.addComponent(cBoxUsuarios, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-					.addGap(18)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(seleccionVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancelar)
 						.addComponent(btnVerInfo))
 					.addGap(36))
 		);
-		
-		list = new JList<String>();
-		scrollPane.setViewportView(list);
-		
-		JLabel lblVideos = new JLabel("Videos");
-		scrollPane.setColumnHeaderView(lblVideos);
 		getContentPane().setLayout(groupLayout);
 
 	}
-	
 	public void cargarDatos() {
-		String[] usuarios = contVideos.listarUsuarios();
-		DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuarios);
-		cBoxUsuarios.setModel(modelU);
+		seleccionVideo.cargarDatos();
 	}
-	
-	public void updateLista(String nickname) {
-		DefaultListModel<String> model = new DefaultListModel<String>();
-		String[] videos = contVideos.listarVideos(nickname);
-		for (String vid : videos) {
-			model.addElement(vid);
-		}
-		list.setModel(model);
-	}
-
-	public void actionPerformed(ActionEvent e) {		// El metodo salta cuando hay un elemento seleccionado en el combo box
-		updateLista((String)cBoxUsuarios.getSelectedItem());		// Llamo updateLista y le paso el nickname seleccionado
-		
-	}
-		
 }
