@@ -19,6 +19,7 @@ import internalFrames.AltaUsuario;
 import internalFrames.AltaVideo;
 import internalFrames.ConsultaCategoria;
 import internalFrames.ConsultaLista;
+import internalFrames.ConsultaUsuario;
 import internalFrames.CrearListaReproduccion;
 import internalFrames.Dummy;
 import internalFrames.ListarCategorias;
@@ -40,6 +41,7 @@ public class Main {
 	private AltaUsuario altUsu;
 	private ICategorias ctrlCat;
 	private ListarUsuarios lisUsu;
+	private ConsultaUsuario consultaUsuario;
 
 
 	/**
@@ -97,6 +99,8 @@ public class Main {
 		altUsu = new AltaUsuario();
 		altUsu.setVisible(false);
 		
+		consultaUsuario = new ConsultaUsuario();
+		consultaUsuario.setVisible(false);
 
 		lisUsu = new ListarUsuarios();
 		lisUsu.setVisible(false);
@@ -118,6 +122,7 @@ public class Main {
 		frame.getContentPane().add(conCat);
 		frame.getContentPane().add(altUsu);
 		frame.getContentPane().add(lisUsu);
+		frame.getContentPane().add(consultaUsuario);
 		frame.getContentPane().add(dum, BorderLayout.CENTER);
 
 	}
@@ -157,6 +162,14 @@ public class Main {
 		mnUsuario.add(mntmNewMenuItem);
 
 		JMenuItem mntmConsultarUsuario = new JMenuItem("Consultar Usuario");
+		mntmConsultarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ale) {
+				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
+						quiVid.isVisible(), conLis.isVisible()))
+					consultaUsuario.cargarDatos();
+					consultaUsuario.setVisible(true);
+			}	
+		});
 		mnUsuario.add(mntmConsultarUsuario);
 
 		JMenuItem mntmListarUsuario = new JMenuItem("Listar Usuario");
