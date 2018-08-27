@@ -32,7 +32,7 @@ public class Video {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
-		this.fecha = fecha;
+		this.fecha = fecha;		// Chequear fecha?
 		this.url = url;
 		this.visible = false;		// Arranca privado
 		this.categoria = categoria;
