@@ -28,4 +28,9 @@ public class CtrlVideos implements IVideos {
 		Categoria categoria = mCat.get(catString);
 		mUsu.get(nick).getCanal().altaVideo(nombre, descripcion, duracion, url, categoria, fecha);
 	}
+	
+	public String[] listarVideos(String nick) {
+		Usuario usuario = mUsu.get(nick);
+		return usuario.getCanal().getArrayVideos();		// TODO agregar funcion al canal
+	}
 }
