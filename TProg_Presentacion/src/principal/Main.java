@@ -42,6 +42,7 @@ public class Main {
 	private AgregarVideo frmAgregarVideo;
 	private AltaCategoria frmAltaCategoria;
 	private AltaUsuario frmAltaUsuario;
+	private ListarUsuarios frmListarUsuarios;
 	private ConsultaCategoria frmConsultaCategoria;
 	private ConsultaLista frmConsultaLista;
 	private CrearListaReproduccion frmCrearListaReproduccion;
@@ -70,6 +71,7 @@ public class Main {
 		frmQuitarVideo = new QuitarVideo();
 		frmConsultaLista = new ConsultaLista();
 		frmAltaUsuario = new AltaUsuario();
+		frmListarUsuarios = new ListarUsuarios();
 
 		frame.getContentPane().add(frmConsultaLista);
 		frame.getContentPane().add(frmCrearListaReproduccion);
@@ -80,6 +82,7 @@ public class Main {
 		frame.getContentPane().add(frmAltaCategoria);
 		frame.getContentPane().add(frmConsultaCategoria);
 		frame.getContentPane().add(frmAltaUsuario);
+		frame.getContentPane().add(frmListarUsuarios);
 		
 		frames.add(frmConsultaLista);
 		frames.add(frmCrearListaReproduccion);
@@ -90,6 +93,7 @@ public class Main {
 		frames.add(frmAltaCategoria);
 		frames.add(frmConsultaCategoria);
 		frames.add(frmAltaUsuario);
+		frames.add(frmListarUsuarios);
 		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
@@ -143,14 +147,6 @@ public class Main {
 		mnUsuario.add(mntmConsultarUsuario);
 
 		JMenuItem mntmListarUsuario = new JMenuItem("Listar Usuario");
-		mntmListarUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ale) {
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
-					lisUsu.cargarDatos();
-					lisUsu.setVisible(true);
-			}
-		});
 		mnUsuario.add(mntmListarUsuario);
 
 		JMenuItem mntmAltaVideo = new JMenuItem("Alta Video");
@@ -191,6 +187,15 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
 					frmAltaUsuario.setVisible(true);
+			}
+		});
+		
+		/************************ LISTAR USUARIO ************************/
+		mntmListarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ale) {
+				if (!ventanasAbiertas())
+					frmListarUsuarios.cargarDatos();
+					frmListarUsuarios.setVisible(true);
 			}
 		});
 		

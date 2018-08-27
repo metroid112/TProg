@@ -53,7 +53,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.isMemberKey(nick);
 	}
 	
-	public Integer cantidadUsuarios() {
+	public int cantidadUsuarios() {
 		return manejadorUsuarios.size();
 	}
 }
