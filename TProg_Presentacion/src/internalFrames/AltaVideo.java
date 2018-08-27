@@ -216,9 +216,7 @@ public class AltaVideo extends JInternalFrame {
 		/**
 		 * Aca se le piden la lista de usuarios y la lista de categorias al controlador
 		 */
-		//String[] usuarios = contVideos.listarUsuarios();
-		String[] usuarios = new String[1];
-		usuarios[0] = "hola";
+		String[] usuarios = contVideos.listarUsuarios();
 		String [] categorias = contVideos.listarCategorias();
 		DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<>(usuarios);
 		DefaultComboBoxModel<String> modelC = new DefaultComboBoxModel<>(categorias);
@@ -230,7 +228,7 @@ public class AltaVideo extends JInternalFrame {
 	public void aceptar() {
 		String nick, nombre, descripcion, url, categoria;
 		Duration duracion;
-		/*
+		/**
 		 * recolecto la info del frame
 		 */
 		nick = (String) cBoxUsuarios.getSelectedItem();

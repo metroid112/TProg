@@ -25,6 +25,6 @@ public class CtrlVideos implements IVideos {
 	@Override
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url, String catString) {
 		Categoria categoria = mCat.get(catString);
-		mUsu.get(nick).getCanal().altaVideo(nombre, descripcion, duracion, url, categoria);		// TODO canal altaVideo()
+		mUsu.get(nick).getCanal().altaVideo(nombre, descripcion, duracion, url, categoria);
 	}
 }

@@ -12,8 +12,9 @@ public class Comentario {
 	private Usuario usuario;
 	private Video video;
 	private Comentario padre;
-	private LinkedHashMap<Integer,Comentario> respuestas;
-	private long id;	// id de comentario para uso interno
+	private LinkedHashMap<Integer,Comentario> respuestas = new LinkedHashMap<Integer, Comentario>();
+	private int id;	// id de comentario para uso interno
+	private static int idCounter = 0;
 
 	public Comentario() {
 	}
@@ -23,11 +24,23 @@ public class Comentario {
 	public Comentario(String texto, Usuario usuario, Video video, Comentario padre) {
 
 		this.texto = texto;
-		//TODO fecha
 		this.usuario = usuario;
 		this.video = video;
 		this.padre = padre;
-		this.respuestas = null;
+		this.fecha = new Date();
+		this.id = Comentario.idCounter;
+		Comentario.idCounter++;
+	}
+	
+	public Comentario(String texto, Usuario usuario, Video video, Comentario padre, Date fecha) {
+
+		this.texto = texto;
+		this.usuario = usuario;
+		this.video = video;
+		this.padre = padre;
+		this.fecha = fecha;
+		this.id = Comentario.idCounter;
+		Comentario.idCounter++;
 	}
 
 	public String getTexto() {
