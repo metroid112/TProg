@@ -18,14 +18,9 @@ public class Video {
 	private Date fecha;
 	private Categoria categoria;
 	private Canal canal;
-	private LinkedList<Calificacion> calificaciones;
-	private LinkedHashMap<Integer,Comentario> comentarios;		// LinkedHashMap mantiene el orden a diferencia del HashMap
-
-	public Video() {
-	}
-
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
-	// algunos
+	private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
+	private LinkedHashMap<Integer,Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
+	// LinkedHashMap mantiene el orden a diferencia del HashMap
 
 	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Canal canal, Date fecha) {
 

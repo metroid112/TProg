@@ -222,6 +222,8 @@ public class AltaVideo extends JInternalFrame {
 		String [] categorias = contVideos.listarCategorias();
 		DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<>(usuarios);
 		DefaultComboBoxModel<String> modelC = new DefaultComboBoxModel<>(categorias);
+		modelC.addElement("Sin Categoria");
+		modelC.setSelectedItem("Sin Categoria");
 		cBoxUsuarios.setModel(modelU);
 		cBoxCategoria.setModel(modelC);
 		
@@ -238,6 +240,9 @@ public class AltaVideo extends JInternalFrame {
 		descripcion = tAreaDescripcion.getText();
 		url = tFieldURL.getText();
 		categoria = (String) cBoxCategoria.getSelectedItem();
+		if (categoria.equals("Sin Categoria")) {		// Chequeo si eligio alguna categoria
+			categoria = null;		
+		}
 		duracion = Duration.ofHours((int) spinnerHoras.getValue());
 		duracion = duracion.plusMinutes((int) spinnerMinutos.getValue());
 		duracion = duracion.plusSeconds((int) spinnerSegundos.getValue());
