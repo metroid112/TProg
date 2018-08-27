@@ -110,9 +110,9 @@ public class Canal {
  * 
  * borrar
  */
-	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2) {
+	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
 		
-		this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this);
+		this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
 		
 		
 	}
