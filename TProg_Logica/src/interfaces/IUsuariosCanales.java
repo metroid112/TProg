@@ -13,9 +13,11 @@ public interface IUsuariosCanales {
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) throws Exception;
 	
+	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String nombreCanal, boolean visible);
+  
 	public String[] listarUsuarios();
 	
 	public boolean existeUsuario(String nick);
 	
-	public Integer cantidadUsuarios();
+	public int cantidadUsuarios();
 }
