@@ -142,34 +142,81 @@ public class Main {
 		mnVideo.add(mntmConsultaVideo);
 		
 		JMenuItem mntmAltaUsuario = new JMenuItem("Alta Usuario");
+		mnUsuario.add(mntmAltaUsuario);
+
+		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
+		mnCategora.add(mntmAltaCategora);
+
+		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
+		mnCategora.add(mntmConsultaCategora);
+
+		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
+		mnCategora.add(mntmListarCategoria);
+
+		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
+		mnLista.add(mntmAltaLista);
+
+		JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
+		mnLista.add(mntmModificarLista);
+
+		JMenuItem mntmAgregarVideoA = new JMenuItem("Agregar Video a Lista");
+		mnLista.add(mntmAgregarVideoA);
+
+		JMenuItem mntmQuitarVideoDe = new JMenuItem("Quitar Video de Lista");
+		mnLista.add(mntmQuitarVideoDe);
+
+		JMenuItem mntmConsultaLista = new JMenuItem("Consulta Lista");
+		mnLista.add(mntmConsultaLista);
+		
+		/************************ ALTA USUARIO ************************/
 		mntmAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
 					altUsu.setVisible(true);
 			}
 		});
-		mnUsuario.add(mntmAltaUsuario);
-
-		JMenuItem mntmAltaCategora = new JMenuItem("Alta Categoria");
-		mntmAltaCategora.addActionListener(new ActionListener() {
+		
+		/************************ CONSULTA LISTA ************************/
+		mntmConsultaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					altCat.setVisible(true);
+					conLis.setVisible(true);
 			}
-
 		});
-		mnCategora.add(mntmAltaCategora);
+		
+		/************************ QUITAR VIDEO DE LISTA ************************/
+		mntmQuitarVideoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas())
+					quiVid.setVisible(true);
+			}
+		});
 
-		JMenuItem mntmConsultaCategora = new JMenuItem("Consulta Categoria");
-		mntmConsultaCategora.addActionListener(new ActionListener() {
+		/************************ AGREGAR VIDEO A LISTA ************************/
+		mntmAgregarVideoA.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas())
+					agrVid.setVisible(true);
+			}
+		});
+		
+		/************************ MODIFICAR LISTA ************************/
+		mntmModificarLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas())
+					modLisRep.setVisible(true);
+			}
+		});
+		
+		/************************ ALTA LISTA ************************/
+		mntmAltaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!ventanasAbiertas())
-					conCat.setVisible(true);
+					creLisRep.setVisible(true);
 			}
 		});
-		mnCategora.add(mntmConsultaCategora);
-
-		JMenuItem mntmListarCategoria = new JMenuItem("Listar Categoria");
+		
+		/************************ LISTAR CATEGORIA ************************/
 		mntmListarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas()) {
@@ -177,55 +224,25 @@ public class Main {
 					lisCat.setVisible(true);
 				}
 			}
-
 		});
-		mnCategora.add(mntmListarCategoria);
-
-		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
-		mntmAltaLista.addActionListener(new ActionListener() {
+		
+		/************************ CONSULTA CATEGORIA ************************/
+		mntmConsultaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!ventanasAbiertas())
-					creLisRep.setVisible(true);
+					conCat.setVisible(true);
 			}
 		});
-		mnLista.add(mntmAltaLista);
-
-		JMenuItem mntmModificarLista = new JMenuItem("Modificar Lista");
-		mntmModificarLista.addActionListener(new ActionListener() {
+		
+		/************************ ALTA CATEGORIA ************************/
+		mntmAltaCategora.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					modLisRep.setVisible(true);
+					altCat.setVisible(true);
 			}
-		});
-		mnLista.add(mntmModificarLista);
 
-		JMenuItem mntmAgregarVideoA = new JMenuItem("Agregar Video a Lista");
-		mntmAgregarVideoA.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
-					agrVid.setVisible(true);
-			}
 		});
-		mnLista.add(mntmAgregarVideoA);
-
-		JMenuItem mntmQuitarVideoDe = new JMenuItem("Quitar Video de Lista");
-		mntmQuitarVideoDe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
-					quiVid.setVisible(true);
-			}
-		});
-		mnLista.add(mntmQuitarVideoDe);
-
-		JMenuItem mntmConsultaLista = new JMenuItem("Consulta Lista");
-		mntmConsultaLista.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
-					conLis.setVisible(true);
-			}
-		});
-		mnLista.add(mntmConsultaLista);
-
+		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 	}
 
