@@ -27,12 +27,12 @@ public class Video {
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
 
-	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Canal canal) {
+	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Canal canal, Date fecha) {
 
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
-		// TODO fecha video
+		this.fecha = fecha;
 		this.url = url;
 		this.visible = false;		// Arranca privado
 		this.categoria = categoria;

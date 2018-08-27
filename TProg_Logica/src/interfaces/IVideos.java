@@ -1,6 +1,7 @@
 package interfaces;
 
 import java.time.Duration;
+import java.util.Date;
 
 public interface IVideos {
 	public String[] listarUsuarios();
@@ -8,5 +9,5 @@ public interface IVideos {
 	public String[] listarCategorias();
 
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
-			String categoria);
+			String categoria, Date fecha);
 }
