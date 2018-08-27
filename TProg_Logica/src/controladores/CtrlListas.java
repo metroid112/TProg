@@ -30,7 +30,7 @@ public class CtrlListas implements IListas {
 	
 	public  void listarListas(String usuario){
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
-		//usuarioObjetivo.getCanal()
-		
+		ListaDefecto[] lisDef = usuarioObjetivo.getCanal().getListaDefecto();
+		ListaParticular[] lisPar = usuarioObjetivo.getCanal().getListaParticulares();		
 	}
 }

@@ -203,6 +203,7 @@ public class Main {
 		mntmConsultaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
+					frmConsultaLista.cargarDatos();
 					frmConsultaLista.setVisible(true);
 			}
 		});
@@ -211,52 +212,27 @@ public class Main {
 		mntmQuitarVideoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
+					frmQuitarVideo.cargarDatos();
 					frmQuitarVideo.setVisible(true);
 			}
 		});
 
-<<<<<<< HEAD
-		JMenu mnLista = new JMenu("Lista");
-		menuBar.add(mnLista);
-
-		JMenuItem mntmAltaLista = new JMenuItem("Alta Lista");
-		mntmAltaLista.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
-					creLisRep.cargarDatos();
-					creLisRep.setVisible(true);
-=======
 		/************************ AGREGAR VIDEO A LISTA ************************/
 		mntmAgregarVideoA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
+					frmAgregarVideo.cargarDatos();
 					frmAgregarVideo.setVisible(true);
->>>>>>> master
+
 			}
 		});
 		
 		/************************ MODIFICAR LISTA ************************/
 		mntmModificarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
-					modLisRep.cargarDatos();
-					modLisRep.setVisible(true);
-			}
-		});
-		mnLista.add(mntmModificarLista);
 
-		JMenuItem mntmAgregarVideoA = new JMenuItem("Agregar Video a Lista");
-		mntmAgregarVideoA.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
-					agrVid.cargarDatos();
-					agrVid.setVisible(true);
-=======
 				if (!ventanasAbiertas())
+					frmModificarListaReproduccion.cargarDatos();
 					frmModificarListaReproduccion.setVisible(true);
 			}
 		});
@@ -265,25 +241,21 @@ public class Main {
 		mntmAltaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!ventanasAbiertas())
+					frmCrearListaReproduccion.cargarDatos();
 					frmCrearListaReproduccion.setVisible(true);
->>>>>>> master
+
 			}
 		});
 		
 		/************************ LISTAR CATEGORIA ************************/
 		mntmListarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
-					quiVid.cargarDatos();
-					quiVid.setVisible(true);
-=======
+
 				if (!ventanasAbiertas()) {
 					frmListarCategorias.cargarDatos();
 					frmListarCategorias.setVisible(true);
 				}
->>>>>>> master
+
 			}
 		});
 		
@@ -307,16 +279,11 @@ public class Main {
 		/************************ CARGA DATOS ************************/
 		mntmCargaDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
-					conLis.cargarDatos();
-					conLis.setVisible(true);
-=======
+
 				if (!ventanasAbiertas()) {
 					cargarDatos();
 				}
->>>>>>> master
+
 			}
 		});
 		

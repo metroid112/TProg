@@ -112,14 +112,12 @@ public class Canal {
 		ListaDefecto nuevaLista = new ListaDefecto(nombre);
 		listaDefecto[listaDefecto.length] = nuevaLista; //puede cambiar la implementacion
 	}
-/**
- * 
- * borrar
- */
+
 	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
 		
 		this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
-		
-		
 	}
+	
+	public String[] getArrayVideos(){ return null;}
+	//Pendiente: devuelve un array de string con los nombres de los videos
 }
