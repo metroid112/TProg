@@ -13,15 +13,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import interfaces.*;
-import internalFrames.AgregarVideo;
-import internalFrames.AltaCategoria;
-import internalFrames.AltaUsuario;
-import internalFrames.ConsultaCategoria;
-import internalFrames.ConsultaLista;
-import internalFrames.CrearListaReproduccion;
-import internalFrames.ListarCategorias;
-import internalFrames.ModificarListaReproduccion;
-import internalFrames.QuitarVideo;
+import internalFrames.*;
 
 public class Main {
 
@@ -72,15 +64,15 @@ public class Main {
 		frmConsultaLista = new ConsultaLista();
 		frmAltaUsuario = new AltaUsuario();
 
-		frame.getContentPane().add(frmConsultaLista);
-		frame.getContentPane().add(frmCrearListaReproduccion);
-		frame.getContentPane().add(frmAgregarVideo);
-		frame.getContentPane().add(frmModificarListaReproduccion);
-		frame.getContentPane().add(frmQuitarVideo);
-		frame.getContentPane().add(frmListarCategorias);
-		frame.getContentPane().add(frmAltaCategoria);
-		frame.getContentPane().add(frmConsultaCategoria);
-		frame.getContentPane().add(frmAltaUsuario);
+//		frame.getContentPane().add(frmConsultaLista);
+//		frame.getContentPane().add(frmCrearListaReproduccion);
+//		frame.getContentPane().add(frmAgregarVideo);
+//		frame.getContentPane().add(frmModificarListaReproduccion);
+//		frame.getContentPane().add(frmQuitarVideo);
+//		frame.getContentPane().add(frmListarCategorias);
+//		frame.getContentPane().add(frmAltaCategoria);
+//		frame.getContentPane().add(frmConsultaCategoria);
+//		frame.getContentPane().add(frmAltaUsuario);
 		
 		frames.add(frmConsultaLista);
 		frames.add(frmCrearListaReproduccion);
@@ -123,6 +115,9 @@ public class Main {
 		JMenu mnLista = new JMenu("Lista");
 		menuBar.add(mnLista);
 
+		JMenuItem mntmCargaDatos = new JMenuItem("Cargar Datos");
+		mnMenu.add(mntmCargaDatos);
+		
 		JMenuItem mntmAltaUsuario = new JMenuItem("Alta Usuario");
 		mnUsuario.add(mntmAltaUsuario);
 		
