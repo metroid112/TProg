@@ -124,12 +124,14 @@ public class ModificarListaReproduccion extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					
-					
+					modelLisRep.removeAllElements();
+					cargarListas();
 					comboBoxLisRep.setEnabled(true);
 					rdbtnPrivada.setEnabled(true);
 					rdbtnPublica.setEnabled(true);
 				}
-				else{ 
+				else{
+					
 					comboBoxLisRep.setEnabled(false);
 					rdbtnPrivada.setEnabled(false);
 					rdbtnPublica.setEnabled(false);
@@ -165,7 +167,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 	public void cargarListas(){
 		fab = Fabrica.getFabrica();
 		ctrLis = fab.getIListas();
-		String s = modelLisRep.getSelectedItem().toString();
+		String s = modelUsuario.getSelectedItem().toString();
 		
 	    String[] listas = ctrLis.listarListasUsuario(s);
 	    
@@ -173,10 +175,15 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		
 		modelLisRep.addElement("");
 		for (int i = 0; i < largol; i++ ){
-		  modelUsuario.addElement(listas[i]);
+			modelLisRep.addElement(listas[i]);
 		}
 		ctrUsu = null;
 	}
+	
+	public void clean(){
+		
+	}
+
 
 
 }

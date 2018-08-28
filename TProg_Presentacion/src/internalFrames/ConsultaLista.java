@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 public class ConsultaLista extends JInternalFrame{
 
 	private IUsuariosCanales ctrUsu;
+	private IListas ctrLis;
 	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
@@ -91,9 +92,12 @@ public class ConsultaLista extends JInternalFrame{
 		
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				modelUsuario.removeAllElements();
-				modelListas.removeAllElements();
+				
 				setVisible(false);
+				modelListas.removeAllElements();
+				modelUsuario.removeAllElements();
+				//text area vaciar
+				
 			}
 		});
 		
@@ -101,9 +105,13 @@ public class ConsultaLista extends JInternalFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					
-					comboBoxListas.setEnabled(true);
+					modelListas.removeAllElements();
+					cargarListas();
+					comboBoxListas.setEnabled(true);					
 				}
-				else comboBoxListas.setEnabled(false);
+				else{ 
+					comboBoxListas.setEnabled(false);
+				}
 			}
 		});
 
@@ -120,5 +128,27 @@ public class ConsultaLista extends JInternalFrame{
 		}
 		ctrUsu = null;
 	}
+	
+	public void cargarListas(){
+		fab = Fabrica.getFabrica();
+		ctrLis = fab.getIListas();
+		 
+		if(modelUsuario.getSelectedItem() != null){
+			
+			String s = modelUsuario.getSelectedItem().toString();
+			
+		    String[] listas = ctrLis.listarListasUsuario(s);
+		    
+			int largol = listas.length;
+			
+			modelListas.addElement("");
+			for (int i = 0; i < largol; i++ ){
+			  modelListas.addElement(listas[i]);
+			}
+		}
+			
+		ctrLis = null;
+	}
+	
 
 }

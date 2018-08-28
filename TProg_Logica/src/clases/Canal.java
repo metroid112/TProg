@@ -132,9 +132,8 @@ public class Canal {
 	public void ingresarListaParticular(String nombre, boolean visibilidad){
 		
 		ListaParticular nuevaLista = new ListaParticular(nombre,this,new LinkedList<Video>(),new HashMap<String,Categoria>(),visibilidad);
-		System.out.println(listaParticulares.size());
 		listaParticulares.put(nombre, nuevaLista);	//puede cambiar la implementacion
-		System.out.println(listaParticulares.size());
+
 	}
 
 	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
@@ -157,6 +156,7 @@ public class Canal {
 
 		public String[] getListaUsuario() {
 		
+<<<<<<< HEAD
 	
 		//String[] result = new String[listaDefecto.size() + listaParticulares.size()];
 
@@ -172,6 +172,8 @@ public class Canal {
 			}
 			
 		*/
+=======
+>>>>>>> listasReproduccion-agustin
 		String[] listasArrDefecto = listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
 		String[] listasArrParticular = listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
 		
@@ -179,7 +181,10 @@ public class Canal {
 	}
 	
 	public String[] getArrayVideos(){ 
-		return null;
-		}
-	//Pendiente: devuelve un array de string con los nombres de los videos
+		return videos.keySet().toArray(new String[videos.size()]);
+	}
+	
+	public Video getVideoCanal(String video){
+		return videos.get(video);
+	}
 }
