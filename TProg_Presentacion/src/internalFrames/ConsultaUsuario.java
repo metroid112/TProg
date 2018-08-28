@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class ConsultaUsuario extends JInternalFrame {
 	SelectorUsuarios panel = new SelectorUsuarios();
+	//private JInternalFrame infoUsuario;
 	public ConsultaUsuario() {
 		/*groupLayout_1.setHorizontalGroup(
 			groupLayout_1.createParallelGroup(Alignment.LEADING)
@@ -41,14 +42,18 @@ public class ConsultaUsuario extends JInternalFrame {
 		
 		JButton btnSeleccionar = new JButton("Seleccionar");
 		btnSeleccionar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String usuarioSeleccionado = panel.getSelectedItem();
-				if (usuarioSeleccionado != null) {
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un usuario", "Error", getDefaultCloseOperation());
-				}
+			public void actionPerformed(ActionEvent clic) {
+				//String usuarioSeleccionado = panel.getSelectedItem();
+				JOptionPane.showMessageDialog(getFocusOwner(), "click", "Um suceso", getDefaultCloseOperation());
+//				if (usuarioSeleccionado != null) {
+	//				VerInformacionUsuario verInformacion = new VerInformacionUsuario(usuarioSeleccionado);
+		//			verInformacion.setVisible(true);
+			//		JOptionPane.showMessageDialog(getFocusOwner(), "Entro", "Um suceso", getDefaultCloseOperation());
+		//			setEnabled(false);
+			//	}
+				//else {
+				//	JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un usuario", "Error", getDefaultCloseOperation());
+			//	}
 			}
 		});
 		

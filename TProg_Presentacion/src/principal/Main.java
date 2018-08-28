@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 
-<<<<<<< HEAD
+
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IVideos;
@@ -29,11 +29,12 @@ import internalFrames.ConsultaCategoria;
 import internalFrames.ConsultaLista;
 import internalFrames.ConsultaUsuario;
 import internalFrames.CrearListaReproduccion;
-import internalFrames.Dummy;
 import internalFrames.ListarCategorias;
 import internalFrames.ListarUsuarios;
 import internalFrames.ModificarListaReproduccion;
 import internalFrames.QuitarVideo;
+import interfaces.*;
+import internalFrames.*;
 
 public class Main {
 	private CrearListaReproduccion creLisRep;
@@ -41,7 +42,6 @@ public class Main {
 	private AltaCategoria altCat;
 	private ListarCategorias lisCat;
 	private ConsultaCategoria conCat;
-	private Dummy dum;
 	private AgregarVideo agrVid;
 	private ModificarListaReproduccion modLisRep;
 	private QuitarVideo quiVid;
@@ -55,13 +55,10 @@ public class Main {
 	/**
 	 * Launch the application.
 	 */
-=======
-import interfaces.*;
-import internalFrames.*;
 
-public class Main {
 
->>>>>>> master
+
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -75,7 +72,6 @@ public class Main {
 		});
 	}
 	
-	private JFrame frame;
 	
 	private HashSet<JInternalFrame> frames = new HashSet<JInternalFrame>();
 	
@@ -135,7 +131,6 @@ public class Main {
 		frames.add(frmAltaUsuario);
 		frames.add(frmListarUsuarios);
 		
-<<<<<<< HEAD
 		agrVid = new AgregarVideo();
 		agrVid.setVisible(false);
 		
@@ -146,6 +141,10 @@ public class Main {
 		quiVid.setVisible(false);
 		
 		conLis = new ConsultaLista();
+		conLis.setVisible(false);
+		
+		creLisRep = new CrearListaReproduccion();
+		creLisRep.setVisible(false);
 		
 		altUsu = new AltaUsuario();
 		altUsu.setVisible(false);
@@ -156,11 +155,19 @@ public class Main {
 		lisUsu = new ListarUsuarios();
 		lisUsu.setVisible(false);
 		
+		altCat = new AltaCategoria();
+		altCat.setVisible(false);
+		
+		conCat = new ConsultaCategoria();
+		conCat.setVisible(false);
+		
+		lisCat = new ListarCategorias();
+		lisCat.setVisible(false);
 
 		IVideos IVid = fabrica.getIVideos();
 		AltaVideo altVid = new AltaVideo(IVid);
 		altVid.cargarDatos();
-		altVid.setVisible(true);
+		altVid.setVisible(false);
 		
 		frame.getContentPane().add(altVid);
 		frame.getContentPane().add(conLis);
@@ -174,9 +181,6 @@ public class Main {
 		frame.getContentPane().add(altUsu);
 		frame.getContentPane().add(lisUsu);
 		frame.getContentPane().add(consultaUsuario);
-		frame.getContentPane().add(dum, BorderLayout.CENTER);
-
-=======
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
 		}
@@ -188,7 +192,6 @@ public class Main {
 		logCarga.setVisible(true);
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		scrollPane.setViewportView(logCarga);
->>>>>>> master
 	}
 
 	private void initialize() {
@@ -227,14 +230,6 @@ public class Main {
 		mnUsuario.add(mntmNewMenuItem);
 
 		JMenuItem mntmConsultarUsuario = new JMenuItem("Consultar Usuario");
-		mntmConsultarUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ale) {
-				if (!ventanasAbiertas(altCat.isVisible(), lisCat.isVisible(), conCat.isVisible(), creLisRep.isVisible(), altUsu.isVisible(), agrVid.isVisible(), modLisRep.isVisible(), 
-						quiVid.isVisible(), conLis.isVisible()))
-					consultaUsuario.cargarDatos();
-					consultaUsuario.setVisible(true);
-			}	
-		});
 		mnUsuario.add(mntmConsultarUsuario);
 
 		JMenuItem mntmListarUsuario = new JMenuItem("Listar Usuario");
@@ -364,6 +359,15 @@ public class Main {
 					cargarDatos();
 				}
 			}
+		});
+		
+		/************************** CONSULTA USUARIO ******************/
+		mntmConsultarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ale) {
+				if (!ventanasAbiertas())
+					consultaUsuario.cargarDatos();
+					consultaUsuario.setVisible(true);
+			}	
 		});
 		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
