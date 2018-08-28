@@ -13,19 +13,19 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 
-import controladores.CtrlVideos;
+import interfaces.IVideos;
 
 import javax.swing.JList;
 
 public class SeleccionVideo extends JPanel implements ActionListener {
 	private JComboBox<String> cBoxUsuarios;
-	private CtrlVideos contVideos;
+	private IVideos contVideos;
 	private JList<String> listaVideos;
 	
 	/**
 	 * Create the panel.
 	 */
-	public SeleccionVideo(CtrlVideos contVideos) {
+	public SeleccionVideo(IVideos contVideos) {
 		
 		this.contVideos = contVideos;
 		
@@ -33,6 +33,9 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 		
 		cBoxUsuarios = new JComboBox<String>();
 		cBoxUsuarios.addActionListener(this);		// Agrego el listener para leer el usuario seleccionado
+		/**
+		 * en vez de action listener quizas funcione mejor con un item listener hay que probar TODO prueba
+		 */
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout groupLayout = new GroupLayout(this);

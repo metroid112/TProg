@@ -49,6 +49,10 @@ public class Main {
 	private ListarCategorias frmListarCategorias;
 	private ModificarListaReproduccion frmModificarListaReproduccion;
 	private QuitarVideo frmQuitarVideo;
+	/**
+	 * agregado temporal
+	 */
+	private ConsultaVideo frmConsultaVideo;
 	
 	private JTextArea logCarga;
 	
@@ -72,6 +76,12 @@ public class Main {
 		frmConsultaLista = new ConsultaLista();
 		frmAltaUsuario = new AltaUsuario();
 		frmListarUsuarios = new ListarUsuarios();
+		/**
+		 * agrego temporal
+		 */
+		frmConsultaVideo = new ConsultaVideo(videos);
+		frame.getContentPane().add(frmConsultaVideo);
+		frmConsultaVideo.setVisible(true);
 
 		frame.getContentPane().add(frmConsultaLista);
 		frame.getContentPane().add(frmCrearListaReproduccion);
