@@ -6,6 +6,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -21,8 +22,8 @@ import interfaces.IUsuariosCanales;
 
 
 public class DetallesUsuario extends JPanel {
-	private IUsuariosCanales ctrlUsu;
-	private Fabrica fab;
+	private Fabrica fab = Fabrica.getFabrica();
+	private IUsuariosCanales ctrlUsu = fab.getIUsuariosCanales();
 	
 	private DefaultListModel<String> modelListas = new DefaultListModel<>();
 	private JList<String> listasDeReproduccion =  new JList<>(modelListas);
@@ -34,8 +35,6 @@ public class DetallesUsuario extends JPanel {
 	 */
 	public DetallesUsuario(String usuario) {
 		
-		fab = Fabrica.getFabrica();
-		ctrlUsu = fab.getIUsuariosCanales(); 
 		String nombre = ctrlUsu.getNombre(usuario);
 		String apellido = ctrlUsu.getApellido(usuario);
 		String correo = ctrlUsu.getCorreo(usuario);
@@ -208,8 +207,9 @@ public class DetallesUsuario extends JPanel {
 		scrollPane.setViewportView(videos);
 		setLayout(groupLayout);
 		
-		cargarDatosListas(usuario);
-		cargarDatosVideos(usuario);
+		//cargarDatosListas(usuario);
+		//cargarDatosVideos(usuario);
+		setVisible(true);
 	}
 	public void cargarDatosListas(String usuario){
 		modelListas.removeAllElements();

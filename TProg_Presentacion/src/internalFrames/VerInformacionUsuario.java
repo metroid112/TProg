@@ -3,6 +3,7 @@ package internalFrames;
 import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.BorderLayout;
@@ -24,7 +25,8 @@ public class VerInformacionUsuario extends JInternalFrame {
 		DetallesUsuario panel = new DetallesUsuario(usuario);
 		panel.setVisible(true);
 		getContentPane().add(panel, BorderLayout.CENTER);
-
+		JOptionPane.showMessageDialog(getFocusOwner(), "Everinfo", "Um suceso", getDefaultCloseOperation());
+		setVisible(true);
 	}
 
 }

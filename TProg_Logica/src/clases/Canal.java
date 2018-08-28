@@ -1,6 +1,7 @@
 package clases;
 
 import java.time.Duration;
+import java.util.Date;
 
 public class Canal {
 
@@ -26,9 +27,24 @@ public class Canal {
 		this.descripcion = descripcion;
 		this.visible = visible;
 		this.usuario = usuario;
-		this.videos = videos;
-		this.listaDefecto = listaDefecto;
-		this.listaParticulares = listaParticulares;
+		if (videos != null) {
+			this.videos = videos;
+		}
+		else {
+			this.videos = new Video[0];
+		}
+		if (listaDefecto != null) {
+			this.listaDefecto = listaDefecto;
+		}
+		else {
+			this.listaDefecto = new ListaDefecto[0];
+		}
+		if (listaParticulares != null) {
+			this.listaParticulares = listaParticulares;
+		}
+		else {
+			this.listaParticulares = new ListaParticular[0];
+		}
 		this.categoria = categoria;
 	}
 
@@ -115,9 +131,9 @@ public class Canal {
  * 
  * borrar
  */
-	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2) {
+	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
 		
-		this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this);
+		this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
 		
 		
 	}
