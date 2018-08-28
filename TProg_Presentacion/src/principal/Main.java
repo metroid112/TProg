@@ -51,7 +51,6 @@ public class Main {
 		});
 	}
 	
-	
 	private JFrame frame;
 	private HashSet<JInternalFrame> frames = new HashSet<JInternalFrame>();
 	
