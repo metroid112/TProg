@@ -33,4 +33,10 @@ public class CtrlVideos implements IVideos {
 		Usuario usuario = mUsu.get(nick);
 		return usuario.getCanal().getArrayVideos();		// TODO agregar funcion al canal
 	}
+
+	@Override
+	public void getDtVideo(String video, String usuario) {
+		mUsu.get(usuario).getCanal().getVideos		// TODO buscar el video y pedirle el dt
+		
+	}
 }

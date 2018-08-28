@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
+import dataTypes.DtVideo;
+
 
 public class Video {
 
@@ -36,6 +38,10 @@ public class Video {
 		
 	}
 
+	public DtVideo getDT() {
+		return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha, this.duracion, this.visible);	// TODO comentarios
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

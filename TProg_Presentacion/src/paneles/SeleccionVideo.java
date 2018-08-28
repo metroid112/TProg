@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import interfaces.IVideos;
 
 import javax.swing.JList;
+import javax.swing.ListSelectionModel;
 
 public class SeleccionVideo extends JPanel implements ActionListener {
 	private JComboBox<String> cBoxUsuarios;
@@ -64,12 +65,17 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 		);
 		
 		listaVideos = new JList<String>();
+		listaVideos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listaVideos);
 		
 		JLabel lblVideos = new JLabel("Videos:");
 		scrollPane.setColumnHeaderView(lblVideos);
 		setLayout(groupLayout);
 
+	}
+	
+	public String getVideo() {
+		return listaVideos.getSelectedValue();
 	}
 	
 	public void cargarDatos() {
@@ -90,6 +96,10 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {		// El metodo salta cuando hay un elemento seleccionado en el combo box
 		updateLista((String)cBoxUsuarios.getSelectedItem());		// Llamo updateLista y le paso el nickname seleccionado
 		
+	}
+
+	public String getUsuario() {
+		return (String) cBoxUsuarios.getSelectedItem();
 	}
 
 }

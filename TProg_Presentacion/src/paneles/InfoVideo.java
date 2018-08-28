@@ -5,16 +5,22 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import interfaces.IVideos;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.JRadioButton;
 
 public class InfoVideo extends JPanel {
+	private IVideos contVideo;
 
 	/**
 	 * Create the panel.
 	 */
-	public InfoVideo() {
+	public InfoVideo(IVideos contVideo) {
+		
+		this.contVideo = contVideo;
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		

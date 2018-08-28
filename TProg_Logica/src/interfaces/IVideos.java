@@ -12,4 +12,6 @@ public interface IVideos {
 			String categoria, Date fecha);
 
 	public String[] listarVideos(String nickname);
+
+	public void getDtVideo(String video, String usuario);
 }

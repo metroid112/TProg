@@ -30,6 +30,7 @@ public class ConsultaVideo extends JInternalFrame {
 	
 	private IVideos contVideos;
 	private SeleccionVideo seleccionVideo;
+	private InfoVideo infoVideo;
 
 	/**
 	 * Create the frame.
@@ -86,11 +87,13 @@ public class ConsultaVideo extends JInternalFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
 				cambioPanel();		// Vuelvo al panel de seleccion
+				
 			}
 		});
 		
-		InfoVideo infoVideo = new InfoVideo();
+		infoVideo = new InfoVideo(contVideos);
 		GroupLayout gl_panelInfo = new GroupLayout(panelInfo);
 		gl_panelInfo.setHorizontalGroup(
 			gl_panelInfo.createParallelGroup(Alignment.LEADING)
