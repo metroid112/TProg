@@ -1,6 +1,7 @@
 package manejadores;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import clases.Usuario;
 
@@ -16,7 +17,6 @@ public class ManejadorUsuarios {
 	}
 
 	private HashMap<String, Usuario> usuarios = new HashMap<String, Usuario>();
-	private HashMap<String, Usuario> usuariosMail = new HashMap<String, Usuario>();
 
 	private ManejadorUsuarios() {
 
@@ -24,11 +24,10 @@ public class ManejadorUsuarios {
 
 	public void add(Usuario user) {
 		usuarios.put(user.getNick(), user);
-		usuariosMail.put(user.getCorreo(), user);
 	}
 
-	public Usuario get(String key) {
-		return usuarios.get(key);
+	public Usuario get(String nick) {
+		return usuarios.get(nick);
 	}
 
 	public boolean isEmpty() {
@@ -36,16 +35,24 @@ public class ManejadorUsuarios {
 	}
 
 	public boolean isMember(Usuario user) {
-		return usuarios.containsValue(user) && usuariosMail.containsValue(user);
+		return usuarios.containsValue(user);
 	}
 
-	public boolean isMemberKey(String key) {
-		return usuarios.containsKey(key) || usuariosMail.containsKey(key);
+	public boolean isMemberKey(String nick) {
+		return usuarios.containsKey(nick);
+	}
+	
+	public boolean isEmailUnique(String email) {
+		for (Entry<String, Usuario> user : usuarios.entrySet()) {
+			if (user.getValue().getCorreo() == email) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public void remove(Usuario user) {
 		usuarios.remove(user.getNick(), user);
-		usuariosMail.remove(user.getCorreo(), user);
 	}
 
 	public int size() {
