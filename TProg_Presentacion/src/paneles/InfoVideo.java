@@ -1,11 +1,15 @@
 package paneles;
 
 import javax.swing.JPanel;
+
+import java.text.SimpleDateFormat;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import dataTypes.DtVideo;
 import interfaces.IVideos;
 
 import javax.swing.JScrollPane;
@@ -14,6 +18,7 @@ import javax.swing.JRadioButton;
 
 public class InfoVideo extends JPanel {
 	private IVideos contVideo;
+	private JLabel lblVnombre, lblVdescripcion, lblVduracion, lblVfecha, lblVvisibilidad, lblVcategoria, lblVurl;
 
 	/**
 	 * Create the panel.
@@ -38,19 +43,20 @@ public class InfoVideo extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JLabel lblVnombre = new JLabel("vNombre");
+		lblVnombre = new JLabel("vNombre");
 		
-		JLabel lblVdescripcion = new JLabel("vDescripcion");
+		lblVdescripcion = new JLabel("vDescripcion");
 		
-		JLabel lblVduracion = new JLabel("vDuracion");
+		lblVduracion = new JLabel("vDuracion");
 		
-		JLabel lblVfecha = new JLabel("vFecha");
+		lblVfecha = new JLabel("vFecha");
 		
-		JLabel lblVvisibilidad = new JLabel("vVisibilidad");
+		lblVvisibilidad = new JLabel("vVisibilidad");
 		
-		JLabel lblVcategoria = new JLabel("vCategoria");
+		lblVcategoria = new JLabel("vCategoria");
 		
-		JLabel lblVurl = new JLabel("vURL");
+		lblVurl = new JLabel("vURL");
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -126,7 +132,18 @@ public class InfoVideo extends JPanel {
 
 	}
 	
-	public void cargarDatos() {		// TODO agregar DataVideo de parametro
-		
+	public void cargarDatos(DtVideo dtVid) {
+		lblVnombre.setText(dtVid.getNombre());
+		lblVdescripcion.setText(dtVid.getDescripcion());
+		lblVurl.setText(dtVid.getURL());
+		if (dtVid.isVisible()) {
+			lblVvisibilidad.setText("Publico");
+		} else {
+			lblVvisibilidad.setText("Privado");
+		}
+		lblVcategoria.setText(dtVid.getCategoria());
+		lblVduracion.setText(dtVid.getDuracion().toString()); 	// Formato?
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		lblVfecha.setText(dateFormat.format(dtVid.getFecha()));	// Formato?
 	}
 }

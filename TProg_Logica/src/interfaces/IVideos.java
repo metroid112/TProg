@@ -3,6 +3,8 @@ package interfaces;
 import java.time.Duration;
 import java.util.Date;
 
+import dataTypes.DtVideo;
+
 public interface IVideos {
 	public String[] listarUsuarios();
 	
@@ -13,5 +15,5 @@ public interface IVideos {
 
 	public String[] listarVideos(String nickname);
 
-	public void getDtVideo(String video, String usuario);
+	public DtVideo getDtVideo(String video, String usuario);
 }

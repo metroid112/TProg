@@ -51,6 +51,7 @@ public class ConsultaVideo extends JInternalFrame {
 		JButton btnVerInfo = new JButton("Ver Info");
 		btnVerInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				infoVideo.cargarDatos(contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario()));
 				cambioPanel();		// Voy al panel de informacion
 			}
 		});
@@ -125,6 +126,7 @@ public class ConsultaVideo extends JInternalFrame {
 	public void cargarDatos() {
 		seleccionVideo.cargarDatos();
 	}
+	
 	
 	private void cambioPanel() {
 		CardLayout layout= (CardLayout) getContentPane().getLayout();	// Consigo el layout
