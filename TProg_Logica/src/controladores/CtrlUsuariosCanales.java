@@ -5,6 +5,7 @@ import manejadores.ManejadorUsuarios;
 
 import java.awt.Image;
 import java.util.Date;
+import java.util.HashMap;
 
 import clases.Calificacion;
 import clases.Canal;
@@ -15,6 +16,7 @@ import clases.Usuario;
 import clases.Video;
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
+
 
 	public CtrlUsuariosCanales() {
 		
@@ -27,8 +29,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) throws Exception {
 		
-			Canal canal = new Canal(nombreCanal, descripcion, privado, null, null,
-					null, null, null);
+			Canal canal = new Canal(nombreCanal, descripcion, privado, null, new HashMap<String, Video>(),
+					new HashMap<String, ListaDefecto>(), new HashMap<String, ListaParticular>(), null);
 			
 			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento, imagen,
 					canal, comentarios, calificaciones, seguidores,
@@ -82,7 +84,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	public int cantidadUsuarios() {
 		return manejadorUsuarios.size();
 	}
-	
+
 	//getters de datos de ususario.
 	
 	public String getNombre(String nick) {
@@ -137,4 +139,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.get(nick).getCanal().getDescripcion();
 	}
 	//Fin getters usuario.
-}
+=======
+
+

@@ -1,19 +1,22 @@
 package clases;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 public abstract class Lista {
 
 	private String nombre;
 
 	private Canal canal;
-	private Video[] videos;
-	private Categoria[] categorias;
+	private LinkedList<Video> videos;
+	private HashMap<String,Categoria> categorias;
 
 	public Lista() {
 	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Lista(String nombre, Canal canal, Video[] videos, Categoria[] categorias) {
+	public Lista(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias) {
 		this.nombre = nombre;
 		this.canal = canal;
 		this.videos = videos;
@@ -24,31 +27,32 @@ public abstract class Lista {
 		return nombre;
 	}
 
-	public Canal getCanal() {
-		return canal;
-	}
-
-	public Video[] getVideos() {
-		return videos;
-	}
-
-	public Categoria[] getCategorias() {
-		return categorias;
-	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public Canal getCanal() {
+		return canal;
 	}
 
 	public void setCanal(Canal canal) {
 		this.canal = canal;
 	}
 
-	public void setVideos(Video[] videos) {
+	public LinkedList<Video> getVideos() {
+		return videos;
+	}
+
+	public void setVideos(LinkedList<Video> videos) {
 		this.videos = videos;
 	}
 
-	public void setCategorias(Categoria[] categorias) {
+	public HashMap<String, Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(HashMap<String, Categoria> categorias) {
 		this.categorias = categorias;
 	}
+
 }
