@@ -2,26 +2,46 @@ package controladores;
 
 import interfaces.IListas;
 import manejadores.ManejadorListas;
-import clases.Lista;
+import manejadores.ManejadorUsuarios;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import clases.ListaDefecto;
 import clases.ListaParticular;
+import clases.Canal;
+import clases.Usuario;
+import clases.Video;
 
 public class CtrlListas implements IListas {
 
+	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	private ManejadorListas manejadorListas = ManejadorListas.getManejadorListas();
-	private CtrlUsuariosCanales controladorUsuariosCanales = new CtrlUsuariosCanales();
-	
-	public void ingresarListaParticular(String nombre, String usuario, boolean visibilidad){
+
+	public void altaListaParticular(String nombre, String usuario, boolean visibilidad){ //busco el usuario y le pido a su canal que haga el resto
 		
-		//controladorUsuCan.ingresarListaParticular(nombre, usuario, visibilidad);
-		/*	Buscar al usuario y convoca la funcion ingresarListaParticular(nombre, visibilidad) sobre su canal*/
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		usuarioObjetivo.getCanal().ingresarListaParticular(nombre,visibilidad);
+		
 	}
 	
 	public void altaListaDefecto(String nombreListaDefecto){
 		
+
 		manejadorListas.add(nombreListaDefecto); //guarda el nombre de la lista
-		
-		//controladorUsuCan.ingresarListaDefecto(nombre);
+		//manejadorUsuarios.ingresarListaDefecto(nombreListaDefecto);
+
 		/*	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal*/
 	}
-}
+	
+	public  String[] listarListasUsuario(String usuario){
+		
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		Canal canalObjetivo = usuarioObjetivo.getCanal();
+		
+		return canalObjetivo.getListaUsuario();
+
+		}
+		
+	}
+
