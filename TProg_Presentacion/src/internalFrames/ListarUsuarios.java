@@ -28,66 +28,52 @@ public class ListarUsuarios extends JInternalFrame {
 	/**
 	 * Launch the application.
 	 */
-	private DefaultListModel<String> model = new DefaultListModel<>();
 
+	SelectorUsuarios selector = new SelectorUsuarios();
 	/**
 	 * Create the frame.
 	 */
 
 	public ListarUsuarios() {
 		setTitle("Listar Usuarios");
-		setBounds(100, 100, 430, 445);
-		JList<String> list =  new JList<>(model);
+		setBounds(100, 100, 451, 490);
+		//JList<String> list =  new JList<>(model);
+		//SelectorUsuarios selector = new SelectorUsuarios();
 		
-		JLabel lblUsuariosExistentes = new JLabel("Usuarios existentes");
-		lblUsuariosExistentes.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		cargarDatos();
-		JButton btnCerrar = new JButton("Cerrar");
-		btnCerrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		JButton btnNewButton = new JButton("Cerrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				model.removeAllElements();
+				//model.removeAllElements();
 			}
 		});
-		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(140)
-							.addComponent(lblUsuariosExistentes, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(87)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(89, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(305, Short.MAX_VALUE)
-					.addComponent(btnCerrar)
-					.addContainerGap())
+					.addComponent(selector, GroupLayout.PREFERRED_SIZE, 440, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(353, Short.MAX_VALUE)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+					.addGap(24))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(17)
-					.addComponent(lblUsuariosExistentes, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-					.addGap(29)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-					.addComponent(btnCerrar)
-					.addContainerGap())
+					.addComponent(selector, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnNewButton)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		
-		scrollPane.setViewportView(list);
 		getContentPane().setLayout(groupLayout);
 
 	}
+	
 	public void cargarDatos(){
-		
-		fab = Fabrica.getFabrica();
+		selector.cargarDatos();
+	}
+	/*	fab = Fabrica.getFabrica();
 		ctrlUsu = fab.getIUsuariosCanales();
 		
 	    String[] usua = ctrlUsu.listarUsuarios();
@@ -96,5 +82,5 @@ public class ListarUsuarios extends JInternalFrame {
 		  model.addElement(usua[i]);
 		}
 		ctrlUsu = null;
-	}
+	}*/
 }

@@ -2,6 +2,7 @@ package clases;
 import java.util.*;
 import clases.ListaDefecto;
 import java.time.Duration;
+import java.util.Date;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
@@ -31,10 +32,23 @@ public class Canal {
 		this.descripcion = descripcion;
 		this.visible = visible;
 		this.usuario = usuario;
-		this.videos = videos;
-		this.listaDefecto = listaDefecto;
-		this.listaParticulares = listaParticulares;
+/*		if (videos != null) {
+			this.videos = videos;
+		}
+		else {
+			this.videos = new Video[0];
+		}
+		if (listaDefecto != null) {
+			this.listaDefecto = listaDefecto;
+		}
+		else {
+			this.listaDefecto = new ListaDefecto[0];
+		}
+		if (listaParticulares != null) {
+			this.listaParticulares = listaParticulares;
+		}*/
 		this.categoria = categoria;
+
 		
 	}
 
@@ -127,12 +141,26 @@ public class Canal {
 		
 		videos.put(nombre2,new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha));
 	}
-	
-	public String[] getListaUsuario() {
+
+/**
+ * 
+ * borrar
+ */
+	//public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
+		
+
+		//this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
+	//}
+
+		//this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
+
+
+		public String[] getListaUsuario() {
 		
 	
 		//String[] result = new String[listaDefecto.size() + listaParticulares.size()];
-		
+
+
 		/*
 		if(!listaDefecto.isEmpty()){
 			int i = 0;
