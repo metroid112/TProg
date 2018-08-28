@@ -1,9 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
-
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
 import clases.Categoria;
 import clases.Usuario;
