@@ -1,15 +1,19 @@
 package internalFrames;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import interfaces.*;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
@@ -18,7 +22,11 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class ConsultaLista extends JInternalFrame{
 
+	private IUsuariosCanales ctrUsu;
 	
+	private Fabrica fab;
+	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelListas = new DefaultComboBoxModel<String>();
 
 	public ConsultaLista() {
 		
@@ -28,14 +36,14 @@ public class ConsultaLista extends JInternalFrame{
 		
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		
 		JLabel lblLista = new JLabel("Lista");
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setEnabled(false);
+		JComboBox comboBoxListas = new JComboBox(modelListas);
+		comboBoxListas.setEnabled(false);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		JButton btnCerrar = new JButton("Cerrar");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -50,14 +58,14 @@ public class ConsultaLista extends JInternalFrame{
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNombreDeUsuario)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
+									.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
 									.addGap(10)
 									.addComponent(lblLista)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(comboBoxListas, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)))
 							.addContainerGap())
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addComponent(btnAceptar)
+							.addComponent(btnCerrar)
 							.addGap(234))))
 		);
 		groupLayout.setVerticalGroup(
@@ -66,13 +74,13 @@ public class ConsultaLista extends JInternalFrame{
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblLista)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNombreDeUsuario)
-						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxListas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnAceptar)
+					.addComponent(btnCerrar)
 					.addGap(5))
 		);
 		
@@ -81,11 +89,36 @@ public class ConsultaLista extends JInternalFrame{
 		scrollPane.setViewportView(textArea);
 		getContentPane().setLayout(groupLayout);
 		
-		btnAceptar.addActionListener(new ActionListener() {
+		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				modelUsuario.removeAllElements();
+				modelListas.removeAllElements();
 				setVisible(false);
 			}
 		});
+		
+		comboBoxUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxUsuario.getSelectedItem() != ""){
+					
+					comboBoxListas.setEnabled(true);
+				}
+				else comboBoxListas.setEnabled(false);
+			}
+		});
+
+	}
+	
+	public void cargarDatos(){
+		fab = Fabrica.getFabrica();
+		ctrUsu = fab.getIUsuariosCanales();
+	    String[] usuarios = ctrUsu.listarUsuarios();
+		int largou = usuarios.length;
+		modelUsuario.addElement("");
+		for (int i = 0; i < largou; i++ ){
+		  modelUsuario.addElement(usuarios[i]);
+		}
+		ctrUsu = null;
 	}
 
 }

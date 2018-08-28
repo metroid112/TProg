@@ -1,4 +1,5 @@
 package clases;
+import java.util.*;
 
 public class ListaParticular extends Lista {
 	private boolean visible;
@@ -6,7 +7,7 @@ public class ListaParticular extends Lista {
 	public ListaParticular() {
 	}
 
-	public ListaParticular(String nombre, Canal canal, Video[] videos, Categoria[] categorias, boolean visible) {
+	public ListaParticular(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias, boolean visible) {
 		super(nombre, canal, videos, categorias);
 		this.visible = visible;
 	}

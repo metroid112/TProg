@@ -1,9 +1,8 @@
 package internalFrames;
 
-import java.lang.Exception;
-import java.awt.EventQueue;
+import java.lang.Exception; //AL CERRAR Y ABRIR VENTANA NO SE REINICIAN LOS PARAMETROS
 
-import controladores.CtrlListas;
+import interfaces.*;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -17,13 +16,20 @@ public class CrearListaReproduccion extends JInternalFrame {
 
 	
 	private JTextField textFieldNombre;
-	private CtrlListas ctrLista = new CtrlListas();
+	private IUsuariosCanales ctrUsu;
+	private IListas ctrLista;
+	private ICategorias ctrCat;
+	
+	private Fabrica fab;
+	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelCategoria = new DefaultComboBoxModel<String>();
 
 	public CrearListaReproduccion() {
 		
 		setTitle("Crear lista de reproducci\u00F3n");
 		setBounds(0, 0, 640, 480);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 		JLabel lblTipoDeLista = new JLabel("Tipo de lista");
 		
@@ -41,8 +47,8 @@ public class CrearListaReproduccion extends JInternalFrame {
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		lblNombreDeUsuario.setEnabled(false);
 		
-		 
-		JComboBox comboBoxUsuario = new JComboBox();
+		
+		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		comboBoxUsuario.setEnabled(false);
 		
 		JRadioButton rdbtnPrivada = new JRadioButton("Privada");
@@ -51,12 +57,6 @@ public class CrearListaReproduccion extends JInternalFrame {
 		
 		JRadioButton rdbtnPublica = new JRadioButton("Publica");
 		rdbtnPublica.setEnabled(false);
-		
-		JLabel lblCategora = new JLabel("Categor\u00EDa");
-		lblCategora.setEnabled(false);
-		
-		JComboBox comboBoxCategoria = new JComboBox();
-		comboBoxCategoria.setEnabled(false);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		
@@ -68,27 +68,25 @@ public class CrearListaReproduccion extends JInternalFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap(265, Short.MAX_VALUE)
+							.addContainerGap(431, Short.MAX_VALUE)
 							.addComponent(btnCrear))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(22)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNombreDeUsuario)
 								.addComponent(lblNombre)
-								.addComponent(lblCategora)
 								.addComponent(lblTipoDeLista))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(comboBoxCategoria, 0, 194, Short.MAX_VALUE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(rdbtnPorDefecto)
 									.addGap(18)
 									.addComponent(rdbtnParticular))
 								.addComponent(textFieldNombre, 194, 194, 194)
-								.addComponent(comboBoxUsuario, 0, 194, Short.MAX_VALUE)
+								.addComponent(comboBoxUsuario, 0, 360, Short.MAX_VALUE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(rdbtnPrivada)
-									.addPreferredGap(ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
 									.addComponent(rdbtnPublica)))))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnCancelar)
@@ -114,15 +112,11 @@ public class CrearListaReproduccion extends JInternalFrame {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(rdbtnPublica)
 						.addComponent(rdbtnPrivada))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCategora)
-						.addComponent(comboBoxCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(39)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCrear)
 						.addComponent(btnCancelar))
-					.addContainerGap(18, Short.MAX_VALUE))
+					.addContainerGap(203, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 		
@@ -131,9 +125,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 				rdbtnPorDefecto.setSelected(false);
 				
 				lblNombreDeUsuario.setEnabled(true);
-				lblCategora.setEnabled(true);
-				comboBoxUsuario.setEnabled(true);
-				comboBoxCategoria.setEnabled(true);
+				comboBoxUsuario.setEnabled(true);				
 				rdbtnPrivada.setEnabled(true);
 				rdbtnPublica.setEnabled(true);
 			}
@@ -144,9 +136,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 				rdbtnParticular.setSelected(false);
 				
 				lblNombreDeUsuario.setEnabled(false);
-				lblCategora.setEnabled(false);
 				comboBoxUsuario.setEnabled(false);
-				comboBoxCategoria.setEnabled(false);
 				rdbtnPrivada.setEnabled(false);
 				rdbtnPublica.setEnabled(false);
 			}
@@ -169,20 +159,37 @@ public class CrearListaReproduccion extends JInternalFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
+				modelCategoria.removeAllElements();
+				modelUsuario.removeAllElements();
+				
 			}
 		});
 		
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(checkNombre()){
+				fab = fab.getFabrica();
+				ctrLista = fab.getIListas();
+				boolean checkUsuario = true;
+				
+				if(rdbtnParticular.isSelected()){
+					if(comboBoxUsuario.getSelectedItem() == ""){
+						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
+						checkUsuario = false;
+					}
+				}
+				
+				
+				if(checkNombre() && checkUsuario){
 					
 					try{
-						if(rdbtnPorDefecto.isSelected())
+						if(rdbtnPorDefecto.isSelected()){
 							ctrLista.altaListaDefecto(textFieldNombre.getText());
+						}
 						
 						if(rdbtnParticular.isSelected()){
-							ctrLista.ingresarListaParticular(textFieldNombre.getText(), comboBoxUsuario.getName(), rdbtnPublica.isSelected()); //Visibilidad publica = true
+							System.out.println(modelUsuario.getSelectedItem().toString());
+							ctrLista.altaListaParticular(textFieldNombre.getText(), modelUsuario.getSelectedItem().toString(), rdbtnPublica.isSelected()); //Visibilidad publica = true
 						}
 		                JOptionPane.showMessageDialog(null, "La lista fue creada con exito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
 					}
@@ -195,10 +202,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		
 	}
 	
-	
 	private boolean checkNombre(){
-		
-		String nombre = textFieldNombre.getText();
 		
 		if(textFieldNombre.getText().isEmpty()){
 			JOptionPane.showMessageDialog(null, "El nombre de lista no puede ser vacío", "Error", JOptionPane.ERROR_MESSAGE);
@@ -206,6 +210,31 @@ public class CrearListaReproduccion extends JInternalFrame {
 		}
 		
 		return true;
+	}
+
+	
+	public void cargarDatos(){
+		
+		fab = Fabrica.getFabrica();
+		ctrCat = fab.getICategorias();
+		
+	    String[] cats = ctrCat.listarCategorias();
+		int largo = cats.length;
+		modelCategoria.addElement("");
+		for (int i = 0; i < largo; i++ ){
+		  modelCategoria.addElement(cats[i]);
+		}
+		ctrCat = null;
+		
+		ctrUsu = fab.getIUsuariosCanales();
+	    String[] usuarios = ctrUsu.listarUsuarios();
+		int largou = usuarios.length;
+		modelUsuario.addElement("");
+		for (int i = 0; i < largou; i++ ){
+		  modelUsuario.addElement(usuarios[i]);
+		}
+		ctrUsu = null;
+		
 	}
 
 }

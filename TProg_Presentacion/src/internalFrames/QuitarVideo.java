@@ -1,20 +1,32 @@
 package internalFrames;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import interfaces.*;
+
 import javax.swing.JComboBox;
 
 @SuppressWarnings("serial")
 public class QuitarVideo extends JInternalFrame{
 
+	private IUsuariosCanales ctrUsu;
+	
+	private Fabrica fab;
+	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelLisUsu = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
+	
+	
 	public QuitarVideo() {
 		
 		setTitle("Quitar video");
@@ -31,13 +43,13 @@ public class QuitarVideo extends JInternalFrame{
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setEnabled(false);
+		JComboBox comboBoxLisUsu = new JComboBox(modelLisUsu);
+		comboBoxLisUsu.setEnabled(false);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setEnabled(false);
+		JComboBox comboBoxVideos = new JComboBox(modelVideos);
+		comboBoxVideos.setEnabled(false);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -49,9 +61,9 @@ public class QuitarVideo extends JInternalFrame{
 						.addComponent(lblVideos))
 					.addGap(26)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(comboBox, 0, 120, Short.MAX_VALUE)
-						.addComponent(comboBox_1, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(comboBox_2, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(comboBoxUsuario, 0, 120, Short.MAX_VALUE)
+						.addComponent(comboBoxLisUsu, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(comboBoxVideos, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap(178, Short.MAX_VALUE))
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addContainerGap(242, Short.MAX_VALUE)
@@ -66,15 +78,15 @@ public class QuitarVideo extends JInternalFrame{
 					.addGap(32)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombreDeUsuario)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblListasDelUsuario)
-						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxLisUsu, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblVideos)
-						.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxVideos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancelar)
@@ -85,9 +97,57 @@ public class QuitarVideo extends JInternalFrame{
 		
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				modelUsuario.removeAllElements();
+				modelLisUsu.removeAllElements();
+				modelVideos.removeAllElements();
 				setVisible(false);
 			}
 		});
+		
+		comboBoxUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxUsuario.getSelectedItem() != ""){
+					
+					comboBoxLisUsu.setEnabled(true);
+				}
+				else comboBoxLisUsu.setEnabled(false);
+			}
+		});
+		
+		comboBoxLisUsu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxUsuario.getSelectedItem() != ""){
+					
+					comboBoxVideos.setEnabled(true);
+				}
+				else comboBoxVideos.setEnabled(false);
+			}
+		});
+		
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean checkUsuario = true;
+				
+
+				if(comboBoxUsuario.getSelectedItem() == ""){
+						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
+						checkUsuario = false;
+				}
+				if(checkUsuario){}
+			}
+		});
+	}
+	
+	public void cargarDatos(){
+		fab = Fabrica.getFabrica();
+		ctrUsu = fab.getIUsuariosCanales();
+	    String[] usuarios = ctrUsu.listarUsuarios();
+		int largou = usuarios.length;
+		modelUsuario.addElement("");
+		for (int i = 0; i < largou; i++ ){
+		  modelUsuario.addElement(usuarios[i]);
+		}
+		ctrUsu = null;
 	}
 
 }
