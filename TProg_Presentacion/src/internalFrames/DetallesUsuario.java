@@ -18,12 +18,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import interfaces.Fabrica;
-import interfaces.IUsuariosCanales;
+import interfaces.IUsuarios;
 
 
 public class DetallesUsuario extends JPanel {
 	private Fabrica fab = Fabrica.getFabrica();
-	private IUsuariosCanales ctrlUsu = fab.getIUsuariosCanales();
+	private IUsuarios ctrlUsu = fab.getIUsuariosCanales();
 	
 	private DefaultListModel<String> modelListas = new DefaultListModel<>();
 	private JList<String> listasDeReproduccion =  new JList<>(modelListas);

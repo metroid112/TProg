@@ -22,7 +22,7 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class ConsultaLista extends JInternalFrame{
 
-	private IUsuariosCanales ctrUsu;
+	private IUsuarios ctrUsu;
 	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();

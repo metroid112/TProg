@@ -16,14 +16,14 @@ import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import interfaces.Fabrica;
-import interfaces.IUsuariosCanales;
+import interfaces.IUsuarios;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class ListarUsuarios extends JInternalFrame {
-	private IUsuariosCanales ctrlUsu;
+	private IUsuarios ctrlUsu;
 	private Fabrica fab;
 	/**
 	 * Launch the application.

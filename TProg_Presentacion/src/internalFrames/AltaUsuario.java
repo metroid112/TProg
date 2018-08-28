@@ -22,7 +22,7 @@ import clases.Calificacion;
 import clases.Comentario;
 import clases.Usuario;
 import interfaces.Fabrica;
-import interfaces.IUsuariosCanales;
+import interfaces.IUsuarios;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -48,7 +48,7 @@ public class AltaUsuario extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	private IUsuariosCanales ctrlUsu;
+	private IUsuarios ctrlUsu;
 	private Fabrica fab;
 	private JTextField dia;
 	private JTextField mes;

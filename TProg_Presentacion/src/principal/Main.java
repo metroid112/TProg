@@ -55,7 +55,7 @@ public class Main {
 	private Fabrica fabrica = Fabrica.getFabrica();
 	private ICategorias categorias = fabrica.getICategorias();
 	private IListas listas = fabrica.getIListas();
-	private IUsuariosCanales usuariosCanales = fabrica.getIUsuariosCanales();
+	private IUsuarios usuariosCanales = fabrica.getIUsuariosCanales();
 	private IVideos videos = fabrica.getIVideos();
 
 	public Main() {

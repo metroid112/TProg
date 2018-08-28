@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 
 import interfaces.Fabrica;
-import interfaces.IUsuariosCanales;
+import interfaces.IUsuarios;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
@@ -19,7 +19,7 @@ import javax.swing.event.ListSelectionEvent;
 
 @SuppressWarnings("serial")
 public class SelectorUsuarios extends JPanel {
-	private IUsuariosCanales ctrlUsu;
+	private IUsuarios ctrlUsu;
 	private Fabrica fab;
 	/**
 	 * Launch the application.

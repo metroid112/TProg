@@ -16,7 +16,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 
 	
 	private JTextField textFieldNombre;
-	private IUsuariosCanales ctrUsu;
+	private IUsuarios ctrUsu;
 	private IListas ctrLista;
 	private ICategorias ctrCat;
 	
