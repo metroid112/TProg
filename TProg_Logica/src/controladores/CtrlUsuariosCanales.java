@@ -84,7 +84,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	public int cantidadUsuarios() {
 		return manejadorUsuarios.size();
 	}
-	
+
 	//getters de datos de ususario.
 	
 	public String getNombre(String nick) {

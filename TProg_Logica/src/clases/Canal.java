@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 
-
 public class Canal {
 
 	private String nombre;
@@ -149,13 +148,18 @@ public class Canal {
  */
 	//public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
 		
+
 		//this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
 	//}
 
-	public String[] getListaUsuario() {
+		//this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
+
+
+		public String[] getListaUsuario() {
 		
 	
 		//String[] result = new String[listaDefecto.size() + listaParticulares.size()];
+
 
 		/*
 		if(!listaDefecto.isEmpty()){
