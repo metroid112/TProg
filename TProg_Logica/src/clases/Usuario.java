@@ -32,11 +32,31 @@ public class Usuario {
 		this.fechaNacimiento = nacimiento;
 		this.imagen = imagen;
 		this.canal = canal;
-		this.comentarios = comentarios;
-		this.calificaciones = calificaciones;
-		this.seguidores = seguidores;
-		this.seguidos = seguidos;
-	}
+		if (comentarios != null) {
+			this.comentarios = comentarios;
+		}
+		else {
+			this.comentarios = new Comentario[0];
+		}
+		if (calificaciones != null) {
+			this.calificaciones = calificaciones;
+		}
+		else {
+			this.calificaciones = new Calificacion[0];
+		}		
+		if (seguidores != null) {
+			this.seguidores = seguidores;
+		}
+		else {
+			this.seguidores = new Usuario[0];
+		}
+		if (seguidos != null) {
+			this.seguidos = seguidos;
+		}
+		else {
+			this.seguidos = new Usuario[0];
+		}
+}
 
 	public Usuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento) {
 		this.nick = nickname;
