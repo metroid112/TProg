@@ -102,11 +102,6 @@ public class Main {
 		frames.add(frmListarUsuarios);
 		frames.add(frmConsultaUsuario);
 		
-		IVideos IVid = fabrica.getIVideos();
-		AltaVideo altVid = new AltaVideo(IVid);
-		altVid.cargarDatos();
-		altVid.setVisible(false);
-		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
 		}
