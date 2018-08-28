@@ -8,28 +8,7 @@ import manejadores.ManejadorCategorias;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
 
-public class ClassTest {
-
-	@Test
-	public void test() {
-		testManejadores();
-	}
-	
-	@Test
-	public void testManejadores() {
-		testManejadorCategoria();
-		testManejadorLista();
-		testManejadorUsuario();
-	}
-
-	@Test
-	public void testManejadorCategoria() {
-		System.out.println("Testeo manejador categoria\n");
-		testManejadorCategoriaAdd();
-		testManejadorCategoriaRemove();
-		testManejadorCategoriasToArray();
-		System.out.println("Termino test manejador categoria\n");
-	}
+public class ClassManejadorTest {
 
 	@Test
 	public void testManejadorCategoriaAdd() {
@@ -59,15 +38,6 @@ public class ClassTest {
 	}
 
 	@Test
-	public void testManejadorLista() {
-		System.out.println("Testeo manejador lista\n");
-		testManejadorListaAdd();
-		testManejadorListaRemove();
-		testManejadorListaToArray();
-		System.out.println("Termino test manejador lista\n");
-	}
-
-	@Test
 	public void testManejadorListaAdd() {
 		ManejadorListas manejadorLista = ManejadorListas.getManejadorListas();
 		String listaDefecto = "Lista";
@@ -92,15 +62,6 @@ public class ClassTest {
 		manejadorLista.add(listaDefecto);
 		Assert.assertEquals(true, manejadorLista.isMember(listaDefecto));
 		System.out.println("\t" + manejadorLista.toArray()[0] + "\n");
-	}
-
-	@Test
-	public void testManejadorUsuario() {
-		System.out.println("Testeo manejador usuario");
-		testManejadorUsuarioAdd();
-		testManejadorUsuarioRemove();
-		testManejadorUsuarioToArray();
-		System.out.println("Termino test manejador usuario\n");
 	}
 
 	@Test
