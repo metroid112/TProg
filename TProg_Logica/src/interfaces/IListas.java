@@ -6,5 +6,5 @@ public interface IListas {
 	
 	public void altaListaDefecto(String nombre);
 	
-	public void  listarListas(String usuario);
+	public  String[] listarListasUsuario(String usuario);
 }

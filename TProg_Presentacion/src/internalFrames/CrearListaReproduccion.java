@@ -183,11 +183,13 @@ public class CrearListaReproduccion extends JInternalFrame {
 				if(checkNombre() && checkUsuario){
 					
 					try{
-						if(rdbtnPorDefecto.isSelected())
+						if(rdbtnPorDefecto.isSelected()){
 							ctrLista.altaListaDefecto(textFieldNombre.getText());
+						}
 						
 						if(rdbtnParticular.isSelected()){
-							ctrLista.altaListaParticular(textFieldNombre.getText(), comboBoxUsuario.getName(), rdbtnPublica.isSelected()); //Visibilidad publica = true
+							System.out.println(modelUsuario.getSelectedItem().toString());
+							ctrLista.altaListaParticular(textFieldNombre.getText(), modelUsuario.getSelectedItem().toString(), rdbtnPublica.isSelected()); //Visibilidad publica = true
 						}
 		                JOptionPane.showMessageDialog(null, "La lista fue creada con exito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
 					}

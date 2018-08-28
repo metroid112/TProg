@@ -12,6 +12,7 @@ import interfaces.*;
 public class ModificarListaReproduccion extends JInternalFrame {
 
 	private IUsuariosCanales ctrUsu;
+	private IListas ctrLis;
 	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
@@ -123,6 +124,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					
+					
 					comboBoxLisRep.setEnabled(true);
 					rdbtnPrivada.setEnabled(true);
 					rdbtnPublica.setEnabled(true);
@@ -156,6 +158,22 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		modelUsuario.addElement("");
 		for (int i = 0; i < largou; i++ ){
 		  modelUsuario.addElement(usuarios[i]);
+		}
+		ctrUsu = null;
+	}
+	
+	public void cargarListas(){
+		fab = Fabrica.getFabrica();
+		ctrLis = fab.getIListas();
+		String s = modelLisRep.getSelectedItem().toString();
+		
+	    String[] listas = ctrLis.listarListasUsuario(s);
+	    
+		int largol = listas.length;
+		
+		modelLisRep.addElement("");
+		for (int i = 0; i < largol; i++ ){
+		  modelUsuario.addElement(listas[i]);
 		}
 		ctrUsu = null;
 	}

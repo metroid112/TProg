@@ -3,9 +3,15 @@ package controladores;
 import interfaces.IListas;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import clases.ListaDefecto;
 import clases.ListaParticular;
+import clases.Canal;
 import clases.Usuario;
+import clases.Video;
 
 public class CtrlListas implements IListas {
 
@@ -28,9 +34,14 @@ public class CtrlListas implements IListas {
 		/*	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal*/
 	}
 	
-	public  void listarListas(String usuario){
+	public  String[] listarListasUsuario(String usuario){
+		
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
-		ListaDefecto[] lisDef = usuarioObjetivo.getCanal().getListaDefecto();
-		ListaParticular[] lisPar = usuarioObjetivo.getCanal().getListaParticulares();		
+		Canal canalObjetivo = usuarioObjetivo.getCanal();
+		
+		return canalObjetivo.getListaUsuario();
+
+		}
+		
 	}
-}
+

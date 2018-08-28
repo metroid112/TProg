@@ -5,11 +5,15 @@ import manejadores.ManejadorUsuarios;
 
 import java.awt.Image;
 import java.util.Date;
+import java.util.HashMap;
 
 import clases.Calificacion;
 import clases.Canal;
 import clases.Comentario;
+import clases.ListaDefecto;
+import clases.ListaParticular;
 import clases.Usuario;
+import clases.Video;
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
 
@@ -25,8 +29,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) throws Exception {
 		
-			Canal canal = new Canal(nombreCanal, descripcion, privado, null, null,
-					null, null, null);
+			Canal canal = new Canal(nombreCanal, descripcion, privado, null, new HashMap<String, Video>(),
+					new HashMap<String, ListaDefecto>(), new HashMap<String, ListaParticular>(), null);
 			
 			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento, imagen,
 					canal, comentarios, calificaciones, seguidores,
