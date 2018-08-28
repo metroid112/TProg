@@ -27,8 +27,9 @@ public class CtrlListas implements IListas {
 	
 	public void altaListaDefecto(String nombreListaDefecto){
 		
+		manejadorListas.add(nombreListaDefecto); 
+		
 
-		manejadorListas.add(nombreListaDefecto); //guarda el nombre de la lista
 		//manejadorUsuarios.ingresarListaDefecto(nombreListaDefecto);
 
 		/*	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal*/
