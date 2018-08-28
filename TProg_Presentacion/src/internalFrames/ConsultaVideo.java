@@ -39,7 +39,7 @@ public class ConsultaVideo extends JInternalFrame {
 		this.contVideos = contVideos;
 		
 		setTitle("Consulta de Video");
-		setBounds(100, 100, 505, 438);
+		setBounds(100, 100, 505, 475);
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
 		JPanel panelSeleccion = new JPanel();
@@ -95,22 +95,20 @@ public class ConsultaVideo extends JInternalFrame {
 		gl_panelInfo.setHorizontalGroup(
 			gl_panelInfo.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelInfo.createSequentialGroup()
-					.addContainerGap(59, Short.MAX_VALUE)
-					.addComponent(btnVolver)
-					.addGap(172))
-				.addGroup(gl_panelInfo.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(infoVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(29, Short.MAX_VALUE))
+					.addGap(19)
+					.addGroup(gl_panelInfo.createParallelGroup(Alignment.TRAILING)
+						.addComponent(infoVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnVolver))
+					.addContainerGap(20, Short.MAX_VALUE))
 		);
 		gl_panelInfo.setVerticalGroup(
-			gl_panelInfo.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panelInfo.createSequentialGroup()
+			gl_panelInfo.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panelInfo.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(infoVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+					.addComponent(infoVideo, GroupLayout.PREFERRED_SIZE, 382, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnVolver)
-					.addGap(35))
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		panelInfo.setLayout(gl_panelInfo);
 		btnCancelar.addActionListener(new ActionListener() {
