@@ -29,3 +29,6 @@ hs_err_pid*
 
 # ignore .metadata
 .metadata/
+
+# not ignore libs
+!TProg_Presentacion/lib/*.jar

@@ -1,11 +1,12 @@
 package clases;
 import java.util.*;
+import clases.ListaParticular;
 
 public class Categoria {
 
 	private String nombre;
 
-	private LinkedList<Lista> listas = new LinkedList<Lista>();
+	private LinkedList<ListaParticular> listas = new LinkedList<ListaParticular>();
 	private LinkedList<Video> videos = new LinkedList<Video>();
 
 	public Categoria() {
@@ -22,7 +23,7 @@ public class Categoria {
 		return nombre;
 	}
 
-	public LinkedList<Lista> getListas() {
+	public LinkedList<ListaParticular> getListas() {
 		return listas;
 	}
 
@@ -35,7 +36,7 @@ public class Categoria {
 		this.nombre = nombre;
 	}
 
-	public void setListas(LinkedList<Lista> listas) {
+	public void setListas(LinkedList<ListaParticular> listas) {
 		this.listas = listas;
 	}
 
