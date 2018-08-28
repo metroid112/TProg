@@ -13,7 +13,6 @@ public class ClassTest {
 	@Test
 	public void test() {
 		testManejadores();
-		//fail("Not yet implemented");
 	}
 	
 	@Test
