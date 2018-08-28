@@ -289,6 +289,7 @@ public class Main {
 		mntmConsultaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
+					frmConsultaLista.cargarDatos();
 					frmConsultaLista.setVisible(true);
 			}
 		});
@@ -297,6 +298,7 @@ public class Main {
 		mntmQuitarVideoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
+					frmQuitarVideo.cargarDatos();
 					frmQuitarVideo.setVisible(true);
 			}
 		});
@@ -305,14 +307,18 @@ public class Main {
 		mntmAgregarVideoA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
+					frmAgregarVideo.cargarDatos();
 					frmAgregarVideo.setVisible(true);
+
 			}
 		});
 		
 		/************************ MODIFICAR LISTA ************************/
 		mntmModificarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				if (!ventanasAbiertas())
+					frmModificarListaReproduccion.cargarDatos();
 					frmModificarListaReproduccion.setVisible(true);
 			}
 		});
@@ -321,17 +327,21 @@ public class Main {
 		mntmAltaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!ventanasAbiertas())
+					frmCrearListaReproduccion.cargarDatos();
 					frmCrearListaReproduccion.setVisible(true);
+
 			}
 		});
 		
 		/************************ LISTAR CATEGORIA ************************/
 		mntmListarCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				if (!ventanasAbiertas()) {
 					frmListarCategorias.cargarDatos();
 					frmListarCategorias.setVisible(true);
 				}
+
 			}
 		});
 		
@@ -355,9 +365,11 @@ public class Main {
 		/************************ CARGA DATOS ************************/
 		mntmCargaDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				if (!ventanasAbiertas()) {
 					cargarDatos();
 				}
+
 			}
 		});
 		

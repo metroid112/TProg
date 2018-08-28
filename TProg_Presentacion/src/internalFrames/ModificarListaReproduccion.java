@@ -1,17 +1,24 @@
 package internalFrames;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.JFrame;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import interfaces.*;
 
 @SuppressWarnings("serial")
 public class ModificarListaReproduccion extends JInternalFrame {
 
-
+	private IUsuariosCanales ctrUsu;
+	private IListas ctrLis;
+	
+	private Fabrica fab;
+	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelLisRep = new DefaultComboBoxModel<String>();
+	private DefaultComboBoxModel<String> modelCategoria = new DefaultComboBoxModel<String>();
+	
 	public ModificarListaReproduccion() {
 
 		setBounds(0, 0, 640, 480);
@@ -22,8 +29,6 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		
 		JLabel lblListaDeReproduccin = new JLabel("Lista de reproducci\u00F3n");
 		
-		JLabel lblCategora = new JLabel("Categor\u00EDa");
-		
 		JRadioButton rdbtnPrivada = new JRadioButton("Privada");
 		rdbtnPrivada.setSelected(true);
 		rdbtnPrivada.setEnabled(false);
@@ -31,21 +36,22 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		JRadioButton rdbtnPublica = new JRadioButton("P\u00FAblica");
 		rdbtnPublica.setEnabled(false);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setEnabled(false);
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setEnabled(false);
+		JComboBox comboBoxLisRep = new JComboBox(modelLisRep);
+		comboBoxLisRep.setEnabled(false);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(24)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -56,16 +62,14 @@ public class ModificarListaReproduccion extends JInternalFrame {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNombreDeUsuario)
-								.addComponent(lblListaDeReproduccin)
-								.addComponent(lblCategora))
+								.addComponent(lblListaDeReproduccin))
 							.addGap(28)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(comboBox_2, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(comboBox_1, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(comboBox, 0, 146, Short.MAX_VALUE))))
-					.addContainerGap(134, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(250, Short.MAX_VALUE)
+								.addComponent(comboBoxLisRep, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(comboBoxUsuario, 0, 146, Short.MAX_VALUE))))
+					.addContainerGap(324, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(458, Short.MAX_VALUE)
 					.addComponent(btnGuardar)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnCancelar)
@@ -77,20 +81,16 @@ public class ModificarListaReproduccion extends JInternalFrame {
 					.addGap(23)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombreDeUsuario)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblListaDeReproduccin)
-						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCategora)
-						.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+						.addComponent(comboBoxLisRep, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(50)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(rdbtnPrivada)
 						.addComponent(rdbtnPublica))
-					.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancelar)
 						.addComponent(btnGuardar))
@@ -106,6 +106,9 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		});
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				modelUsuario.removeAllElements();
+				modelLisRep.removeAllElements();
+				modelCategoria.removeAllElements();
 				setVisible(false);
 			}
 		});
@@ -116,6 +119,63 @@ public class ModificarListaReproduccion extends JInternalFrame {
 				
 			}
 		});
+		
+		comboBoxUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxUsuario.getSelectedItem() != ""){
+					
+					
+					comboBoxLisRep.setEnabled(true);
+					rdbtnPrivada.setEnabled(true);
+					rdbtnPublica.setEnabled(true);
+				}
+				else{ 
+					comboBoxLisRep.setEnabled(false);
+					rdbtnPrivada.setEnabled(false);
+					rdbtnPublica.setEnabled(false);
+				}
+			}
+		});
+		
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean checkUsuario = true;
+				
+
+				if(comboBoxUsuario.getSelectedItem() == ""){
+						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
+						checkUsuario = false;
+				}
+				if(checkUsuario){}
+			}
+		});
+	}
+	public void cargarDatos(){
+		fab = Fabrica.getFabrica();
+		ctrUsu = fab.getIUsuariosCanales();
+	    String[] usuarios = ctrUsu.listarUsuarios();
+		int largou = usuarios.length;
+		modelUsuario.addElement("");
+		for (int i = 0; i < largou; i++ ){
+		  modelUsuario.addElement(usuarios[i]);
+		}
+		ctrUsu = null;
+	}
+	
+	public void cargarListas(){
+		fab = Fabrica.getFabrica();
+		ctrLis = fab.getIListas();
+		String s = modelLisRep.getSelectedItem().toString();
+		
+	    String[] listas = ctrLis.listarListasUsuario(s);
+	    
+		int largol = listas.length;
+		
+		modelLisRep.addElement("");
+		for (int i = 0; i < largol; i++ ){
+		  modelUsuario.addElement(listas[i]);
+		}
+		ctrUsu = null;
 	}
 
 

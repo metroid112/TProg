@@ -5,6 +5,7 @@ import manejadores.ManejadorUsuarios;
 
 import java.awt.Image;
 import java.util.Date;
+import java.util.HashMap;
 
 import clases.Calificacion;
 import clases.Canal;
@@ -15,6 +16,7 @@ import clases.Usuario;
 import clases.Video;
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
+
 
 	public CtrlUsuariosCanales() {
 		
@@ -27,8 +29,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) throws Exception {
 		
-			Canal canal = new Canal(nombreCanal, descripcion, privado, null, null,
-					null, null, null);
+			Canal canal = new Canal(nombreCanal, descripcion, privado, null, new HashMap<String, Video>(),
+					new HashMap<String, ListaDefecto>(), new HashMap<String, ListaParticular>(), null);
 			
 			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento, imagen,
 					canal, comentarios, calificaciones, seguidores,
@@ -52,17 +54,17 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	
 	public String[] listarVideos(String nick) {
 		//String[] res = usuarios.keySet().toArray(new String[usuarios.size()]);
-		Video[] videos = manejadorUsuarios.get(nick).getCanal().getVideos();
-		String[] res = new String[videos.length];
-		int largo = videos.length;
+		/*HashMap<String, Video> videos = manejadorUsuarios.get(nick).getCanal().getVideos();
+		String[] res = new String[videos.size()];
+		int largo = videos.size();
 		for (int i = 0; i < largo; i++ ){
 			res[i]=videos[i].getNombre();
-		}
-		return res;
+		}*/ //HAY QUE REFACTORIZAR
+		return null;
 	}
 	
 	public String[] listarListasDeReproduccion(String nick) {
-		ListaDefecto[] listaDefecto = (ListaDefecto[]) manejadorUsuarios.get(nick).getCanal().getListaDefecto();
+		/*ListaDefecto[] listaDefecto = (ListaDefecto[]) manejadorUsuarios.get(nick).getCanal().getListaDefecto();
 		ListaParticular[] listaParticulares = (ListaParticular[]) manejadorUsuarios.get(nick).getCanal().getListaParticulares();
 		int largo = listaDefecto.length + listaParticulares.length + 1;
 		String[] res = new String[largo];
@@ -71,8 +73,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		}
 		for (int i = listaDefecto.length + 1; i < largo; i++ ){
 			res[i]=listaParticulares[i].getNombre();
-		}
-		return res;
+		}*/ //HAY QUE REFACTORIZAR
+		return null;
 	}
 	
 	public boolean existeUsuario(String nick) {
@@ -137,4 +139,5 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.get(nick).getCanal().getDescripcion();
 	}
 	//Fin getters usuario.
+
 }
