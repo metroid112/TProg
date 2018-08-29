@@ -301,6 +301,7 @@ public class Main {
 		mntmConsultaVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
+					frmConsultaVideo.cargarDatos();
 					frmConsultaVideo.setVisible(true);
 			}
 
@@ -310,6 +311,7 @@ public class Main {
 		mntmAltaVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
+					frmConsultaVideo.cargarDatos();
 					frmAltaVideo.setVisible(true);
 			}
 
