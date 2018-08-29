@@ -38,6 +38,11 @@ public class Main {
 	private JFrame frame;
 	private HashSet<JInternalFrame> frames = new HashSet<JInternalFrame>();
 	
+	private Fabrica fabrica = Fabrica.getFabrica();
+	private ICategorias categorias = fabrica.getICategorias();
+	private IListas listas = fabrica.getIListas();
+	private IUsuariosCanales usuariosCanales = fabrica.getIUsuariosCanales();
+	private IVideos videos = fabrica.getIVideos();	
 
 	private AgregarVideo frmAgregarVideo = new AgregarVideo();
 	private AltaCategoria frmAltaCategoria = new AltaCategoria();
@@ -51,15 +56,12 @@ public class Main {
 	private QuitarVideo frmQuitarVideo = new QuitarVideo();
 	private VerInformacionUsuario frmVerInfoUsuario = new VerInformacionUsuario();
 	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
+	private ConsultaVideo frmConsultaVideo = new ConsultaVideo(videos);
+	private AltaVideo frmAltaVideo = new AltaVideo(videos);
 
 	
 	private JTextArea logCarga;
 	
-	private Fabrica fabrica = Fabrica.getFabrica();
-	private ICategorias categorias = fabrica.getICategorias();
-	private IListas listas = fabrica.getIListas();
-	private IUsuariosCanales usuariosCanales = fabrica.getIUsuariosCanales();
-	private IVideos videos = fabrica.getIVideos();
 
 	public Main() {
 
@@ -77,6 +79,8 @@ public class Main {
 		frame.getContentPane().add(frmListarUsuarios);
 		frame.getContentPane().add(frmConsultaUsuario);
 		frame.getContentPane().add(frmVerInfoUsuario);
+		frame.getContentPane().add(frmConsultaVideo);
+		frame.getContentPane().add(frmAltaVideo);
 		
 		frames.add(frmConsultaLista);
 		frames.add(frmCrearListaReproduccion);
@@ -90,6 +94,8 @@ public class Main {
 		frames.add(frmListarUsuarios);
 		frames.add(frmConsultaUsuario);
 		frames.add(frmVerInfoUsuario);
+		frames.add(frmConsultaVideo);
+		frames.add(frmAltaVideo);
 
 		
 		for (JInternalFrame frame: frames) {
@@ -291,8 +297,28 @@ public class Main {
 			}
 		});
 		
+		/*********************** CONSULTA VIDEO **********************/
+		mntmConsultaVideo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas())
+					frmConsultaVideo.setVisible(true);
+			}
+
+		});
+		
+		/*********************** ALTA VIDEO *************************/
+		mntmAltaVideo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas())
+					frmAltaVideo.setVisible(true);
+			}
+
+		});
+		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 	}
+	
+	
 
 	public boolean ventanasAbiertas() {
 		for (JInternalFrame frame : frames) {
