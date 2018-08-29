@@ -18,7 +18,6 @@ public class CrearListaReproduccion extends JInternalFrame {
 	private JTextField textFieldNombre;
 	private IUsuariosCanales ctrUsu;
 	private IListas ctrLista;
-	private ICategorias ctrCat;
 	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
@@ -159,8 +158,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				modelCategoria.removeAllElements();
-				modelUsuario.removeAllElements();
+				clean();
 				
 			}
 		});
@@ -177,24 +175,22 @@ public class CrearListaReproduccion extends JInternalFrame {
 						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
 						checkUsuario = false;
 					}
-				}
-				
-				
+				}					
 				if(checkNombre() && checkUsuario){
 					
 					try{
 						if(rdbtnPorDefecto.isSelected()){
 							ctrLista.altaListaDefecto(textFieldNombre.getText());
-						}
-						
-						if(rdbtnParticular.isSelected()){
-							System.out.println(modelUsuario.getSelectedItem().toString());
+						}						
+						if(rdbtnParticular.isSelected()){							
 							ctrLista.altaListaParticular(textFieldNombre.getText(), modelUsuario.getSelectedItem().toString(), rdbtnPublica.isSelected()); //Visibilidad publica = true
 						}
 		                JOptionPane.showMessageDialog(null, "La lista fue creada con exito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
+		                clean();
+		                setVisible(false);
 					}
 					catch(Exception x){
-						JOptionPane.showMessageDialog(null, "Ya existe una lista con ese nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,x.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}
@@ -216,16 +212,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 	public void cargarDatos(){
 		
 		fab = Fabrica.getFabrica();
-		ctrCat = fab.getICategorias();
-		
-	    String[] cats = ctrCat.listarCategorias();
-		int largo = cats.length;
-		modelCategoria.addElement("");
-		for (int i = 0; i < largo; i++ ){
-		  modelCategoria.addElement(cats[i]);
-		}
-		ctrCat = null;
-		
+
 		ctrUsu = fab.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
 		int largou = usuarios.length;
@@ -234,6 +221,12 @@ public class CrearListaReproduccion extends JInternalFrame {
 		  modelUsuario.addElement(usuarios[i]);
 		}
 		ctrUsu = null;
+		
+	}
+
+	public void  clean(){
+		
+		modelUsuario.removeAllElements();
 		
 	}
 

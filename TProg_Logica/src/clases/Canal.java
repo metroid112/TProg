@@ -125,16 +125,15 @@ public class Canal {
 	}
 
 	public void ingresarListaDefecto(String nombre){
-		ListaDefecto nuevaLista = new ListaDefecto(nombre);
+		ListaDefecto nuevaLista = new ListaDefecto(nombre,this,new LinkedList<Video>());
 		listaDefecto.put(nombre, nuevaLista); //puede cambiar la implementacion
 	}
 	
 	public void ingresarListaParticular(String nombre, boolean visibilidad){
 		
 		ListaParticular nuevaLista = new ListaParticular(nombre,this,new LinkedList<Video>(),new HashMap<String,Categoria>(),visibilidad);
-		System.out.println(listaParticulares.size());
 		listaParticulares.put(nombre, nuevaLista);	//puede cambiar la implementacion
-		System.out.println(listaParticulares.size());
+
 	}
 
 	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
@@ -142,36 +141,10 @@ public class Canal {
 		videos.put(nombre2,new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha));
 	}
 
-/**
- * 
- * borrar
- */
-	//public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
+
+	public String[] getListaUsuario() {
 		
 
-		//this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
-	//}
-
-		//this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
-
-
-		public String[] getListaUsuario() {
-		
-	
-		//String[] result = new String[listaDefecto.size() + listaParticulares.size()];
-
-
-		/*
-		if(!listaDefecto.isEmpty()){
-			int i = 0;
-			for (Map.Entry<String, ListaDefecto> entrada : listaDefecto.entrySet()) {
-				
-				String nomLista = entrada.getKey();
-				result[i] = "(" + nomLista + ")";
-				i++;
-			}
-			
-		*/
 		String[] listasArrDefecto = listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
 		String[] listasArrParticular = listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
 		
@@ -179,11 +152,11 @@ public class Canal {
 	}
 	
 	public String[] getArrayVideos(){ 
-		return null;
-		}
-	//Pendiente: devuelve un array de string con los nombres de los videos
+		return videos.keySet().toArray(new String[videos.size()]);
+	}
+	
+	public Video getVideoCanal(String video){
 
-	public Video getVideoCanal(String video) {
 		return videos.get(video);
 	}
 }
