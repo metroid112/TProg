@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.event.ActionListener;
@@ -51,8 +52,7 @@ public class ConsultaVideo extends JInternalFrame {
 		JButton btnVerInfo = new JButton("Ver Info");
 		btnVerInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				infoVideo.cargarDatos(contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario()));	// Paso la info al panel de info
-				cambioPanel();		// Voy al panel de informacion
+				verInfo();
 			}
 		});
 		
@@ -127,6 +127,14 @@ public class ConsultaVideo extends JInternalFrame {
 		seleccionVideo.cargarDatos();
 	}
 	
+	private void verInfo() {
+		if (seleccionVideo.getVideo() != null && seleccionVideo.getUsuario() != null) {	
+			infoVideo.cargarDatos(contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario()));	// Paso la info al panel de info
+			cambioPanel();		// Voy al panel de informacion
+		} else { 
+			JOptionPane.showMessageDialog(this, "Debe rellenar los campos", "Error", JOptionPane.ERROR_MESSAGE);					
+		}
+	}
 	
 	private void cambioPanel() {
 		CardLayout layout= (CardLayout) getContentPane().getLayout();	// Consigo el layout

@@ -311,7 +311,7 @@ public class Main {
 		mntmAltaVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas())
-					frmConsultaVideo.cargarDatos();
+					frmAltaVideo.cargarDatos();
 					frmAltaVideo.setVisible(true);
 			}
 
