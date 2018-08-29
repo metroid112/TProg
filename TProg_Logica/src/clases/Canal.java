@@ -32,21 +32,6 @@ public class Canal {
 		this.descripcion = descripcion;
 		this.visible = visible;
 		this.usuario = usuario;
-/*		if (videos != null) {
-			this.videos = videos;
-		}
-		else {
-			this.videos = new Video[0];
-		}
-		if (listaDefecto != null) {
-			this.listaDefecto = listaDefecto;
-		}
-		else {
-			this.listaDefecto = new ListaDefecto[0];
-		}
-		if (listaParticulares != null) {
-			this.listaParticulares = listaParticulares;
-		}*/
 		this.categoria = categoria;
 
 		
@@ -151,19 +136,24 @@ public class Canal {
 		return Stream.concat(Arrays.stream(listasArrDefecto),Arrays.stream(listasArrParticular)).toArray(String[]::new);
 	}
 	
+	public String[] getListaParticularUsuario() {
+		
+		return listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
+		
+	}
+	
+	public void guardarCambios(String nomLis, boolean visible){
+		ListaParticular listaObjetivo = listaParticulares.get(nomLis);
+		listaObjetivo.setVisible(visible);
+	}
+	
 	public String[] getArrayVideos(){ 
-<<<<<<< HEAD
+
 		return videos.keySet().toArray(new String[videos.size()]);
 	}
 	
 	public Video getVideoCanal(String video){
-=======
-		return null;
-		}
-	//Pendiente: devuelve un array de string con los nombres de los videos
 
-	public Video getVideoCanal(String video) {
->>>>>>> d2143d057dca2469c245c2873ccdb247305a0cbd
 		return videos.get(video);
 	}
 }

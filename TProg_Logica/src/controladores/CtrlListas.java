@@ -34,8 +34,7 @@ public class CtrlListas implements IListas {
 		manejadorUsuarios.agregarListaDefecto(nombreListaDefecto);
 		}
 		else{
-			//throw new Exception("La categoria ya existe");
-			
+			//throw new Exception("La categoria ya existe");		
 		}		
 	}
 	
@@ -44,9 +43,23 @@ public class CtrlListas implements IListas {
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
 		Canal canalObjetivo = usuarioObjetivo.getCanal();
 		
+		return canalObjetivo.getListaParticularUsuario();
+
+	}
+	
+	public  String[] listarListasParticularUsuario(String usuario){
+		
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		Canal canalObjetivo = usuarioObjetivo.getCanal();
+		
 		return canalObjetivo.getListaUsuario();
 
 		}
-		
+	
+	public void guardarCambios(String nomLis, String usuario, boolean visible){
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		usuarioObjetivo.getCanal().guardarCambios(nomLis,visible);
+	}
+	
 	}
 

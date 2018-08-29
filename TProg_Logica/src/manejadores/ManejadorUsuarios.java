@@ -1,11 +1,9 @@
 package manejadores;
 
 import java.util.HashMap;
-<<<<<<< HEAD
 import java.util.Map;
-=======
 import java.util.Map.Entry;
->>>>>>> d2143d057dca2469c245c2873ccdb247305a0cbd
+
 
 import clases.Usuario;
 

@@ -141,14 +141,11 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean checkUsuario = true;
 				
-
-				if(comboBoxUsuario.getSelectedItem() == ""){
-						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
-						checkUsuario = false;
+				if(checkUsuario() && checkLista()){
+					ctrLis.guardarCambios(modelLisRep.getSelectedItem().toString(),modelUsuario.getSelectedItem().toString(),rdbtnPublica.isSelected());
+					setVisible(false);
 				}
-				if(checkUsuario){}
 			}
 		});
 	}
@@ -172,7 +169,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 			
 			String s = modelUsuario.getSelectedItem().toString();
 			
-		    String[] listas = ctrLis.listarListasUsuario(s);
+		    String[] listas = ctrLis.listarListasParticularUsuario(s);
 		    
 			int largol = listas.length;
 			
@@ -188,6 +185,22 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		
 	}
 
+	boolean checkUsuario(){
 
+		if(modelUsuario.getSelectedItem() == ""){
+			JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+	
+	boolean checkLista(){
+
+		if(modelLisRep.getSelectedItem() == ""){
+			JOptionPane.showMessageDialog(null, "No has seleccionado ninguna lista", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
+	}
 
 }

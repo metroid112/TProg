@@ -47,6 +47,9 @@ public class ConsultaLista extends JInternalFrame{
 		JButton btnCerrar = new JButton("Cerrar");
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		JButton btnConsultar = new JButton("Consultar");
+
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -66,8 +69,10 @@ public class ConsultaLista extends JInternalFrame{
 									.addComponent(comboBoxListas, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)))
 							.addContainerGap())
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(btnConsultar)
+							.addGap(18)
 							.addComponent(btnCerrar)
-							.addGap(234))))
+							.addGap(100))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -81,7 +86,9 @@ public class ConsultaLista extends JInternalFrame{
 					.addGap(18)
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCerrar)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnCerrar)
+						.addComponent(btnConsultar))
 					.addGap(5))
 		);
 		
@@ -111,6 +118,17 @@ public class ConsultaLista extends JInternalFrame{
 				}
 				else{ 
 					comboBoxListas.setEnabled(false);
+				}
+			}
+		});
+		
+
+		
+		btnConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textArea.removeAll();
+				if(checkUsuario() && checkLista()){
+					
 				}
 			}
 		});
@@ -150,5 +168,21 @@ public class ConsultaLista extends JInternalFrame{
 		ctrLis = null;
 	}
 	
+	boolean checkUsuario(){
 
+		if(modelUsuario.getSelectedItem() == ""){
+			JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+	
+	boolean checkLista(){
+
+		if(modelListas.getSelectedItem() == ""){
+			JOptionPane.showMessageDialog(null, "No has seleccionado ninguna lista", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
+	}
 }
