@@ -49,7 +49,9 @@ public class Main {
 	private ListarCategorias frmListarCategorias = new ListarCategorias();
 	private ModificarListaReproduccion frmModificarListaReproduccion = new ModificarListaReproduccion();
 	private QuitarVideo frmQuitarVideo = new QuitarVideo();
-	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario();
+	private VerInformacionUsuario frmVerInfoUsuario = new VerInformacionUsuario();
+	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
+
 	
 	private JTextArea logCarga;
 	
@@ -74,6 +76,7 @@ public class Main {
 		frame.getContentPane().add(frmAltaUsuario);
 		frame.getContentPane().add(frmListarUsuarios);
 		frame.getContentPane().add(frmConsultaUsuario);
+		frame.getContentPane().add(frmVerInfoUsuario);
 		
 		frames.add(frmConsultaLista);
 		frames.add(frmCrearListaReproduccion);
@@ -86,6 +89,8 @@ public class Main {
 		frames.add(frmAltaUsuario);
 		frames.add(frmListarUsuarios);
 		frames.add(frmConsultaUsuario);
+		frames.add(frmVerInfoUsuario);
+
 		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
