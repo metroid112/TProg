@@ -39,7 +39,8 @@ public class Video {
 	}
 
 	public DtVideo getDT() {
-		return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha, this.duracion, this.visible);	// TODO comentarios
+		return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha, this.duracion,
+				this.visible, this.comentarios);
 	}
 	
 	public String getNombre() {

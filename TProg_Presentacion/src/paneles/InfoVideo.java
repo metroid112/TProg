@@ -145,5 +145,6 @@ public class InfoVideo extends JPanel {
 		lblVduracion.setText(dtVid.getDuracion().toString()); 	// Formato?
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		lblVfecha.setText(dateFormat.format(dtVid.getFecha()));	// Formato?
+		// TODO comentario
 	}
 }
