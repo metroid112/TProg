@@ -24,6 +24,10 @@ public class ConsultaLista extends JInternalFrame{
 
 <<<<<<< HEAD
 	private IUsuarios ctrUsu;
+=======
+	private IUsuariosCanales ctrUsu;
+	private IListas ctrLis;
+>>>>>>> master
 	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
