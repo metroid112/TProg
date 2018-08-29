@@ -58,10 +58,6 @@ public class Main {
 	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
 	private ConsultaVideo frmConsultaVideo = new ConsultaVideo(videos);
 	private AltaVideo frmAltaVideo = new AltaVideo(videos);
-	/** 
-	 * agregado
-	 */
-	private ModificarVideo frmModificarVideo = new ModificarVideo(videos);
 
 	
 	private JTextArea logCarga;
@@ -85,12 +81,6 @@ public class Main {
 		frame.getContentPane().add(frmVerInfoUsuario);
 		frame.getContentPane().add(frmConsultaVideo);
 		frame.getContentPane().add(frmAltaVideo);
-		/**
-		 * agregado
-		 */
-		frame.getContentPane().add(frmModificarVideo);
-		frmModificarVideo.cargarDatos();
-		frmModificarVideo.setVisible(true);
 		
 		frames.add(frmConsultaLista);
 		frames.add(frmCrearListaReproduccion);
