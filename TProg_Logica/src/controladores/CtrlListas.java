@@ -27,7 +27,9 @@ public class CtrlListas implements IListas {
 	
 	public void altaListaDefecto(String nombreListaDefecto){
 		
-		manejadorListas.add(nombreListaDefecto); 
+		manejadorListas.add(nombreListaDefecto);
+		manejadorListas.notifyAll();
+		manejadorUsuarios.agregarListaDefecto(nombreListaDefecto);
 		
 
 		//manejadorUsuarios.ingresarListaDefecto(nombreListaDefecto);

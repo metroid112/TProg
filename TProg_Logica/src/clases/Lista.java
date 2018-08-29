@@ -9,18 +9,17 @@ public abstract class Lista {
 
 	private Canal canal;
 	private LinkedList<Video> videos;
-	private HashMap<String,Categoria> categorias;
+	
 
 	public Lista() {
 	}
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Lista(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias) {
+	public Lista(String nombre, Canal canal, LinkedList<Video> videos) {
 		this.nombre = nombre;
 		this.canal = canal;
 		this.videos = videos;
-		this.categorias = categorias;
 	}
 
 	public String getNombre() {
@@ -47,12 +46,6 @@ public abstract class Lista {
 		this.videos = videos;
 	}
 
-	public HashMap<String, Categoria> getCategorias() {
-		return categorias;
-	}
 
-	public void setCategorias(HashMap<String, Categoria> categorias) {
-		this.categorias = categorias;
-	}
 
 }

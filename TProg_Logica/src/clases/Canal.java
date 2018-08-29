@@ -125,7 +125,7 @@ public class Canal {
 	}
 
 	public void ingresarListaDefecto(String nombre){
-		ListaDefecto nuevaLista = new ListaDefecto(nombre);
+		ListaDefecto nuevaLista = new ListaDefecto(nombre,this,new LinkedList<Video>());
 		listaDefecto.put(nombre, nuevaLista); //puede cambiar la implementacion
 	}
 	
@@ -156,24 +156,7 @@ public class Canal {
 
 		public String[] getListaUsuario() {
 		
-<<<<<<< HEAD
-	
-		//String[] result = new String[listaDefecto.size() + listaParticulares.size()];
 
-
-		/*
-		if(!listaDefecto.isEmpty()){
-			int i = 0;
-			for (Map.Entry<String, ListaDefecto> entrada : listaDefecto.entrySet()) {
-				
-				String nomLista = entrada.getKey();
-				result[i] = "(" + nomLista + ")";
-				i++;
-			}
-			
-		*/
-=======
->>>>>>> listasReproduccion-agustin
 		String[] listasArrDefecto = listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
 		String[] listasArrParticular = listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
 		

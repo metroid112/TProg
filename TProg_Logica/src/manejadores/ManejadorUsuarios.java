@@ -1,6 +1,7 @@
 package manejadores;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import clases.Usuario;
 
@@ -54,5 +55,12 @@ public class ManejadorUsuarios {
 
 	public String[] toArray() {
 		return usuarios.keySet().toArray(new String[usuarios.size()]);
+	}
+	
+	public void agregarListaDefecto(String nombreListaDefecto){
+		
+		for(Map.Entry<String, Usuario> entry : usuarios.entrySet()){
+			entry.getValue().getCanal().ingresarListaDefecto(nombreListaDefecto);
+		}
 	}
 }
