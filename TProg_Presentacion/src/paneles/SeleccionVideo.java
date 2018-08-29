@@ -82,6 +82,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 		String[] usuarios = contVideos.listarUsuarios();
 		DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuarios);
 		cBoxUsuarios.setModel(modelU);
+		updateLista((String) cBoxUsuarios.getSelectedItem());
 	}
 	
 	public void updateLista(String nickname) {
