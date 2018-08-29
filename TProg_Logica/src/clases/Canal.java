@@ -141,20 +141,8 @@ public class Canal {
 		videos.put(nombre2,new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha));
 	}
 
-/**
- * 
- * borrar
- */
-	//public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2, Date fecha) {
-		
 
-		//this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
-	//}
-
-		//this.videos[0] = new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha);
-
-
-		public String[] getListaUsuario() {
+	public String[] getListaUsuario() {
 		
 
 		String[] listasArrDefecto = listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
