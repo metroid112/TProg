@@ -2,6 +2,7 @@ package manejadores;
 
 import java.util.HashSet;
 
+
 public class ManejadorListas {
 
 	private static ManejadorListas manejador = null;
@@ -41,5 +42,12 @@ public class ManejadorListas {
 
 	public String[] toArray() {
 		return listasDefecto.toArray(new String[listasDefecto.size()]);
+	}
+	
+	public boolean existeLista(String nombre){
+		if(!listasDefecto.contains(nombre)){
+			return false;
+		}
+		return true;
 	}
 }

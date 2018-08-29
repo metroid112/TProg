@@ -4,6 +4,7 @@ import interfaces.IListas;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
 
+import java.lang.Exception;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,16 +26,17 @@ public class CtrlListas implements IListas {
 		
 	}
 	
-	public void altaListaDefecto(String nombreListaDefecto){
+	public void altaListaDefecto(String nombreListaDefecto){ //	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal
 		
+		if(!manejadorListas.existeLista(nombreListaDefecto)){
 		manejadorListas.add(nombreListaDefecto);
-		manejadorListas.notifyAll();
+		//manejadorListas.notifyAll();
 		manejadorUsuarios.agregarListaDefecto(nombreListaDefecto);
-		
-
-		//manejadorUsuarios.ingresarListaDefecto(nombreListaDefecto);
-
-		/*	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal*/
+		}
+		else{
+			//throw new Exception("La categoria ya existe");
+			
+		}		
 	}
 	
 	public  String[] listarListasUsuario(String usuario){

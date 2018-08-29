@@ -167,15 +167,19 @@ public class ModificarListaReproduccion extends JInternalFrame {
 	public void cargarListas(){
 		fab = Fabrica.getFabrica();
 		ctrLis = fab.getIListas();
-		String s = modelUsuario.getSelectedItem().toString();
 		
-	    String[] listas = ctrLis.listarListasUsuario(s);
-	    
-		int largol = listas.length;
-		
-		modelLisRep.addElement("");
-		for (int i = 0; i < largol; i++ ){
-			modelLisRep.addElement(listas[i]);
+		if(modelUsuario.getSelectedItem() != null){
+			
+			String s = modelUsuario.getSelectedItem().toString();
+			
+		    String[] listas = ctrLis.listarListasUsuario(s);
+		    
+			int largol = listas.length;
+			
+			modelLisRep.addElement("");
+			for (int i = 0; i < largol; i++ ){
+			  modelLisRep.addElement(listas[i]);
+			}
 		}
 		ctrUsu = null;
 	}
