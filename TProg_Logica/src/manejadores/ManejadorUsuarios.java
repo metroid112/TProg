@@ -1,6 +1,7 @@
 package manejadores;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import clases.Usuario;
 
@@ -40,6 +41,15 @@ public class ManejadorUsuarios {
 	public boolean isMemberKey(String nick) {
 		return usuarios.containsKey(nick);
 	}
+	
+	public boolean isEmailUnique(String email) {
+		for (Entry<String, Usuario> user : usuarios.entrySet()) {
+			if (user.getValue().getCorreo() == email) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	public void remove(Usuario user) {
 		usuarios.remove(user.getNick(), user);
@@ -50,8 +60,6 @@ public class ManejadorUsuarios {
 	}
 
 	public String[] toArray() {
-		//String[] res = new String[usuarios.size()];
-		String[] res = usuarios.keySet().toArray(new String[usuarios.size()]);
-		return res;
+		return usuarios.keySet().toArray(new String[usuarios.size()]);
 	}
 }

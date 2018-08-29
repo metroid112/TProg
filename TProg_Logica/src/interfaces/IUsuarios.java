@@ -30,27 +30,29 @@ public interface IUsuarios {
 
 	public String getApellido(String nick);
 
-	public String getCorreo(String nick) ;
+	public String getCorreo(String nick);
 
 	public Date getNacimiento(String nick);
 
-	public Image getImagen(String nick) ;
+	public Image getImagen(String nick);
 
-	public Canal getCanal(String nick) ;
+	public Canal getCanal(String nick);
 	
-	public String getNombreCanal(String nick) ;
+	public String getNombreCanal(String nick);
 
 	public Comentario[] getComentarios(String nick);
 
-	public Calificacion[] getCalificaciones(String nick) ;
+	public Calificacion[] getCalificaciones(String nick);
 
-	public Usuario[] getSeguidores(String nick) ;
+	public Usuario[] getSeguidores(String nick);
 
-	public Usuario[] getSeguidos(String nick) ;
+	public Usuario[] getSeguidos(String nick);
 	
-	public boolean getPrivado(String nick) ;
+	public boolean getPrivado(String nick);
 	
 	public String getDescripcionCanal(String nick);
+	
+	public boolean isEmailUnique(String email);
 	
 	//fin getters usuarios.
 	

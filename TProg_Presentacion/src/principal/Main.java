@@ -38,6 +38,7 @@ public class Main {
 	private JFrame frame;
 	private HashSet<JInternalFrame> frames = new HashSet<JInternalFrame>();
 	
+
 	private AgregarVideo frmAgregarVideo = new AgregarVideo();
 	private AltaCategoria frmAltaCategoria = new AltaCategoria();
 	private AltaUsuario frmAltaUsuario = new AltaUsuario();
