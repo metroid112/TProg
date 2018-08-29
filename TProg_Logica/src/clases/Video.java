@@ -34,7 +34,9 @@ public class Video {
 		this.visible = false;		// Arranca privado
 		this.categoria = categoria;
 		this.canal = canal;
-		categoria.addVideo(this);
+		if (this.categoria != null) {
+			categoria.addVideo(this);
+		}
 		
 	}
 
