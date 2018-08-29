@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
+import dataTypes.DtComentario;
+
 
 public class Comentario {
 
@@ -20,7 +22,6 @@ public class Comentario {
 	 * comentario respuesta sin fecha
 	 */
 	public Comentario(String texto, Usuario usuario, Video video, Comentario padre) {
-
 		this.texto = texto;
 		this.usuario = usuario;
 		this.video = video;
@@ -102,6 +103,10 @@ public class Comentario {
 	public LinkedHashMap<Integer, Comentario> getRespuestas() {
 		return respuestas;
 	}
+	
+	public boolean tieneRespuestas() {
+		return !(this.respuestas.isEmpty());
+	}
 
 	public void setTexto(String texto) {
 		this.texto = texto;
@@ -125,5 +130,9 @@ public class Comentario {
 
 	public void setRespuestas(LinkedHashMap<Integer, Comentario> respuestas) {
 		this.respuestas = respuestas;
+	}
+	
+	public DtComentario getDT() {
+		return new DtComentario(this);
 	}
 }
