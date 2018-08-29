@@ -19,7 +19,7 @@ import javax.swing.JComboBox;
 @SuppressWarnings("serial")
 public class QuitarVideo extends JInternalFrame{
 
-	private IUsuarios ctrUsu;
+	private IUsuariosCanales ctrUsu;
 	
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();

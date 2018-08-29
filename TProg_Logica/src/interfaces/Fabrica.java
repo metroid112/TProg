@@ -23,7 +23,7 @@ public class Fabrica {
 		return new CtrlVideos();
 	}
 
-	public IUsuarios getIUsuariosCanales() {
+	public IUsuariosCanales getIUsuariosCanales() {
 		return new CtrlUsuariosCanales();
 	}
 

@@ -19,7 +19,7 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 public class AgregarVideo extends JInternalFrame{
 	
-	private IUsuarios ctrUsu;
+	private IUsuariosCanales ctrUsu;
 	private IVideos ctrVid;
 	
 	private Fabrica fab;

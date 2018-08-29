@@ -11,7 +11,7 @@ import interfaces.*;
 @SuppressWarnings("serial")
 public class ModificarListaReproduccion extends JInternalFrame {
 
-	private IUsuarios ctrUsu;
+	private IUsuariosCanales ctrUsu;
 	private IListas ctrLis;
 	
 	private Fabrica fab;

@@ -1,6 +1,6 @@
 package controladores;
 
-import interfaces.IUsuarios;
+import interfaces.IUsuariosCanales;
 import manejadores.ManejadorUsuarios;
 
 import java.awt.Image;
@@ -15,7 +15,7 @@ import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 
-public class CtrlUsuariosCanales implements IUsuarios {
+public class CtrlUsuariosCanales implements IUsuariosCanales {
 
 
 	public CtrlUsuariosCanales() {
