@@ -58,7 +58,6 @@ public class Main {
 	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
 	private ConsultaVideo frmConsultaVideo = new ConsultaVideo(videos);
 	private AltaVideo frmAltaVideo = new AltaVideo(videos);
-
 	
 	private JTextArea logCarga;
 	
@@ -96,7 +95,6 @@ public class Main {
 		frames.add(frmVerInfoUsuario);
 		frames.add(frmConsultaVideo);
 		frames.add(frmAltaVideo);
-
 		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
