@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ModificarVideo extends JInternalFrame {
-	private JPanel seleccionVideo;
+	private SeleccionVideo seleccionVideo;
 	private IVideos contVid;
 	/**
 	 * Create the frame.
@@ -65,5 +65,9 @@ public class ModificarVideo extends JInternalFrame {
 		);
 		panel.setLayout(gl_panel);
 
+	}
+	
+	public void cargarDatos() {
+		seleccionVideo.cargarDatos();
 	}
 }
