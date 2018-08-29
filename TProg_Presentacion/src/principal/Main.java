@@ -17,22 +17,6 @@ import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 
-
-import interfaces.Fabrica;
-import interfaces.ICategorias;
-import interfaces.IVideos;
-import internalFrames.AgregarVideo;
-import internalFrames.AltaCategoria;
-import internalFrames.AltaUsuario;
-import internalFrames.AltaVideo;
-import internalFrames.ConsultaCategoria;
-import internalFrames.ConsultaLista;
-import internalFrames.ConsultaUsuario;
-import internalFrames.CrearListaReproduccion;
-import internalFrames.ListarCategorias;
-import internalFrames.ListarUsuarios;
-import internalFrames.ModificarListaReproduccion;
-import internalFrames.QuitarVideo;
 import interfaces.*;
 import internalFrames.*;
 
@@ -102,11 +86,6 @@ public class Main {
 		frames.add(frmAltaUsuario);
 		frames.add(frmListarUsuarios);
 		frames.add(frmConsultaUsuario);
-		
-		IVideos IVid = fabrica.getIVideos();
-		AltaVideo altVid = new AltaVideo(IVid);
-		altVid.cargarDatos();
-		altVid.setVisible(false);
 		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
