@@ -274,8 +274,11 @@ public class Main {
 		/************************ CONSULTA CATEGORIA ************************/
 		mntmConsultaCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()){
+					frmConsultaCategoria.cargarDatos();
 					frmConsultaCategoria.setVisible(true);
+				}
+					
 			}
 		});
 		
