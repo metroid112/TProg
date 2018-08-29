@@ -87,8 +87,12 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 	public void updateLista(String nickname) {
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		String[] videos = contVideos.listarVideos(nickname);
-		for (String vid : videos) {
-			model.addElement(vid);
+		if (videos != null) {
+			for (String vid : videos) {
+				model.addElement(vid);
+			}
+		} else {
+			model.addElement("NULL");
 		}
 		listaVideos.setModel(model);
 	}

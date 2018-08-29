@@ -241,7 +241,7 @@ public class AltaVideo extends JInternalFrame {
 		url = tFieldURL.getText();
 		categoria = (String) cBoxCategoria.getSelectedItem();
 		if (categoria.equals("Sin Categoria")) {		// Chequeo si eligio alguna categoria
-			categoria = null;		
+			categoria = null;
 		}
 		duracion = Duration.ofHours((int) spinnerHoras.getValue());
 		duracion = duracion.plusMinutes((int) spinnerMinutos.getValue());

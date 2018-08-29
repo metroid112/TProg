@@ -52,28 +52,33 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.toArray();
 	}
 	
-	public String[] listarVideos(String nick) {
-		//String[] res = usuarios.keySet().toArray(new String[usuarios.size()]);
-		/*HashMap<String, Video> videos = manejadorUsuarios.get(nick).getCanal().getVideos();
-		String[] res = new String[videos.size()];
-		int largo = videos.size();
-		for (int i = 0; i < largo; i++ ){
-			res[i]=videos[i].getNombre();
-		}*/ //HAY QUE REFACTORIZAR
-		return null;
+	public String[] listarSeguidos() {
+		return manejadorUsuarios.toArray();
 	}
 	
-	public String[] listarListasDeReproduccion(String nick) {
-		/*ListaDefecto[] listaDefecto = (ListaDefecto[]) manejadorUsuarios.get(nick).getCanal().getListaDefecto();
-		ListaParticular[] listaParticulares = (ListaParticular[]) manejadorUsuarios.get(nick).getCanal().getListaParticulares();
+	public String[] listarSeguidores() {
+		return manejadorUsuarios.toArray();
+	}
+	
+	public String[] listarVideos(String nick) {
+		HashMap<String, Video> videos = manejadorUsuarios.get(nick).getCanal().getVideos();
+		String[] res = videos.keySet().toArray(new String[videos.size()]);
+		return res;
+	}
+	
+	public String[] listarListasDeReproduccion(String nick)  {
+		HashMap<String, ListaDefecto> listasDefecto = manejadorUsuarios.get(nick).getCanal().getListaDefecto();
+		String[] listaDefecto = listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
+		HashMap<String, ListaParticular> ListasParticular = manejadorUsuarios.get(nick).getCanal().getListaParticulares();
+		String[] listaParticulares = ListasParticular.keySet().toArray(new String[ListasParticular.size()]);
 		int largo = listaDefecto.length + listaParticulares.length + 1;
 		String[] res = new String[largo];
 		for (int i = 0; i < listaDefecto.length; i++ ){
-			res[i]=listaDefecto[i].getNombre();
+			res[i]=listaDefecto[i];
 		}
 		for (int i = listaDefecto.length + 1; i < largo; i++ ){
-			res[i]=listaParticulares[i].getNombre();
-		}*/ //HAY QUE REFACTORIZAR
+			res[i]=listaParticulares[i];
+		}
 		return null;
 	}
 	
@@ -139,5 +144,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.get(nick).getCanal().getDescripcion();
 	}
 	//Fin getters usuario.
+
+	@Override
+	public boolean isEmailUnique(String email) {
+		return manejadorUsuarios.isEmailUnique(email);
+	}
 
 }

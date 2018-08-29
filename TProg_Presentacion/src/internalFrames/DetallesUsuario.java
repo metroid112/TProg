@@ -19,6 +19,7 @@ import java.util.Date;
 
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
+import javax.swing.JInternalFrame;
 
 
 public class DetallesUsuario extends JPanel {
@@ -59,7 +60,7 @@ public class DetallesUsuario extends JPanel {
 		
 		JLabel lblVideos = new JLabel("Videos");
 		
-		JLabel lblListasDeReproduccion = new JLabel("Listas de reproduccion:");
+		JLabel lblListasDeReproduccion = new JLabel("Listas");
 		
 		
 		String nickname = "Datos del usuario " + usuario;
@@ -101,73 +102,80 @@ public class DetallesUsuario extends JPanel {
 		JLabel lblcanal = new JLabel(canal);
 		
 		JTextPane txtpnddescripcioncanal = new JTextPane();
+		txtpnddescripcioncanal.setEditable(false);
 		txtpnddescripcioncanal.setBackground(SystemColor.menu);
 		txtpnddescripcioncanal.setText(descripcionCanal);
 		
 		JPanel imagen = new JPanel();
+		
+		JScrollPane scrollPane_Seguidores = new JScrollPane();
+		
+		JScrollPane scrollPane_Seguidos = new JScrollPane();
+		
+		JLabel lblUsuariosSeguidos = new JLabel("Seguidos");
+		
+		JLabel lblSeguidores = new JLabel("Seguidores");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblCorreo, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblFechaDeNacimiento, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblApellido, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-									.addPreferredGap(ComponentPlacement.RELATED)
+									.addContainerGap()
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblfecha, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblcorreo, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblapellido, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+												.addComponent(lblCorreo, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblFechaDeNacimiento, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblApellido, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblfecha, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblcorreo, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblapellido, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGap(59)
+											.addComponent(lblCanalPrivado, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(lblNombreCanal, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(lblcanal, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(lblDescripcionCanal, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(txtpnddescripcioncanal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(59)
-									.addComponent(lblCanalPrivado, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNombreCanal, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblcanal, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblDescripcionCanal, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtpnddescripcioncanal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+									.addGap(90)
+									.addComponent(imagen, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+									.addComponent(scrollPane_Seguidos, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+									.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+								.addComponent(lblVideos)
+								.addComponent(lblUsuariosSeguidos))
+							.addGap(18)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblSeguidores, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblListasDeReproduccion, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
+								.addComponent(scrollPane_Seguidores, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
+								.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
+							.addGap(71))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(90)
-							.addComponent(imagen, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblVideos)
-						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblListasDeReproduccion, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE))
-					.addGap(43))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-					.addGap(151)
-					.addComponent(lblDatosDelUsuario, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(151, Short.MAX_VALUE))
+							.addGap(151)
+							.addComponent(lblDatosDelUsuario, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblDatosDelUsuario, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-							.addGap(26)
-							.addComponent(lblVideos)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(lblListasDeReproduccion)
-							.addGap(2)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-							.addGap(40))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(7)
 							.addComponent(imagen, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
@@ -182,8 +190,22 @@ public class DetallesUsuario extends JPanel {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblCorreo)
-								.addComponent(lblcorreo))
+								.addComponent(lblcorreo)
+								.addComponent(lblUsuariosSeguidos)
+								.addComponent(lblSeguidores))
+							.addPreferredGap(ComponentPlacement.RELATED))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(26)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblVideos)
+								.addComponent(lblListasDeReproduccion))
 							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
+								.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
+							.addGap(38)))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblFechaDeNacimiento)
 								.addComponent(lblfecha))
@@ -195,15 +217,19 @@ public class DetallesUsuario extends JPanel {
 								.addComponent(lblcanal))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(txtpnddescripcioncanal, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblDescripcionCanal))
-							.addContainerGap())))
+								.addComponent(lblDescripcionCanal)
+								.addComponent(txtpnddescripcioncanal, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(scrollPane_Seguidores, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane_Seguidos, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		
-		//JList listasDeReproduccion = new JList();
-		scrollPane_1.setViewportView(listasDeReproduccion);
+		JList listaSeguidores = new JList();
+		scrollPane_Seguidores.setViewportView(listaSeguidores);
 		
-		//JList videos = new JList();
+		JList listaSeguidos = new JList();
+		scrollPane_Seguidos.setViewportView(listaSeguidos);
+		scrollPane_1.setViewportView(listasDeReproduccion);
 		scrollPane.setViewportView(videos);
 		setLayout(groupLayout);
 		

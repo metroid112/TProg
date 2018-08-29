@@ -164,10 +164,18 @@ public class Canal {
 	}
 	
 	public String[] getArrayVideos(){ 
+<<<<<<< HEAD
 		return videos.keySet().toArray(new String[videos.size()]);
 	}
 	
 	public Video getVideoCanal(String video){
+=======
+		return null;
+		}
+	//Pendiente: devuelve un array de string con los nombres de los videos
+
+	public Video getVideoCanal(String video) {
+>>>>>>> d2143d057dca2469c245c2873ccdb247305a0cbd
 		return videos.get(video);
 	}
 }
