@@ -19,6 +19,7 @@ import javax.swing.JRadioButton;
 public class InfoVideo extends JPanel {
 	private IVideos contVideo;
 	private JLabel lblVnombre, lblVdescripcion, lblVduracion, lblVfecha, lblVvisibilidad, lblVcategoria, lblVurl;
+	private JTree tree;
 
 	/**
 	 * Create the panel.
@@ -126,7 +127,7 @@ public class InfoVideo extends JPanel {
 					.addContainerGap(26, Short.MAX_VALUE))
 		);
 		
-		JTree tree = new JTree();	// TODO arbol
+		tree = new JTree();	// TODO arbol
 		scrollPane.setColumnHeaderView(tree);
 		setLayout(groupLayout);
 
@@ -145,6 +146,10 @@ public class InfoVideo extends JPanel {
 		lblVduracion.setText(dtVid.getDuracion().toString()); 	// Formato?
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		lblVfecha.setText(dateFormat.format(dtVid.getFecha()));	// Formato?
-		// TODO comentario
+		loadComentarios();
+	}
+	
+	public void loadComentarios() {
+		
 	}
 }

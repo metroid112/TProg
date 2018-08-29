@@ -57,5 +57,9 @@ public class DtVideo {
 	public boolean isVisible() {
 		return visible;
 	}
+	
+	public LinkedHashMap<Integer, DtComentario> getComents() {
+		return this.comentarios;
+	}
 
 }
