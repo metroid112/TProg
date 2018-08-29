@@ -12,21 +12,14 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class VerInformacionUsuario extends JInternalFrame {
 
-	/**
-	 * Launch the application.
-	 */
-	/**
-	 * Create the frame.
-	 */
-	public VerInformacionUsuario(String usuario) {
+	public VerInformacionUsuario() {
 		setBounds(100, 100, 787, 459);
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		
+	}
+	
+	public void CargarInformacionUsuario(String usuario) {
 		DetallesUsuario panel = new DetallesUsuario(usuario);
-		panel.setVisible(true);
 		getContentPane().add(panel, BorderLayout.CENTER);
-		JOptionPane.showMessageDialog(getFocusOwner(), "Everinfo", "Um suceso", getDefaultCloseOperation());
-		setVisible(true);
 	}
 
 }

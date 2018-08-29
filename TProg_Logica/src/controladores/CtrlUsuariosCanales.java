@@ -52,6 +52,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.toArray();
 	}
 	
+	public String[] listarSeguidos() {
+		return manejadorUsuarios.toArray();
+	}
+	
+	public String[] listarSeguidores() {
+		return manejadorUsuarios.toArray();
+	}
+	
 	public String[] listarVideos(String nick) {
 		HashMap<String, Video> videos = manejadorUsuarios.get(nick).getCanal().getVideos();
 		String[] res = videos.keySet().toArray(new String[videos.size()]);
