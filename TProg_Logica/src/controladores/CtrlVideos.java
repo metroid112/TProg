@@ -36,7 +36,11 @@ public class CtrlVideos implements IVideos {
 	
 	public String[] listarVideos(String nick) {
 		Usuario usuario = mUsu.get(nick);
-		return usuario.getCanal().getArrayVideos();
+		if (usuario != null) {
+			return usuario.getCanal().getArrayVideos();
+		} else {
+			return null;
+		}
 	}
 
 	@Override
