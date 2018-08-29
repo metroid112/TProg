@@ -137,4 +137,9 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	}
 	//Fin getters usuario.
 
+	@Override
+	public boolean isEmailUnique(String email) {
+		return manejadorUsuarios.isEmailUnique(email);
+	}
+
 }
