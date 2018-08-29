@@ -41,14 +41,7 @@ public class CtrlVideos implements IVideos {
 
 	@Override
 	public DtVideo getDtVideo(String video, String usuario) {
-<<<<<<< HEAD
-		mUsu.get(usuario).getCanal().getVideoCanal(video);		// TODO buscar el video y pedirle el dt
-=======
-
 		Video vid = mUsu.get(usuario).getCanal().getVideoCanal(video);
 		return vid.getDT();
-
->>>>>>> d2143d057dca2469c245c2873ccdb247305a0cbd
-		
 	}
 }
