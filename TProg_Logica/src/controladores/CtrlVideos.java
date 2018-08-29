@@ -25,8 +25,12 @@ public class CtrlVideos implements IVideos {
 		return mCat.toArray(); 
 	}
 
-	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url, String catString, Date fecha) {
-		Categoria categoria = mCat.get(catString);
+	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, 
+			String url, String catString, Date fecha) {
+		Categoria categoria = null;
+		if (catString != null) {
+			categoria = mCat.get(catString);
+		}
 		mUsu.get(nick).getCanal().altaVideo(nombre, descripcion, duracion, url, categoria, fecha);
 	}
 	
@@ -37,7 +41,7 @@ public class CtrlVideos implements IVideos {
 
 	@Override
 	public DtVideo getDtVideo(String video, String usuario) {
-		mUsu.get(usuario).getCanal().getVideos;		// TODO buscar el video y pedirle el dt
-		
+		Video vid = mUsu.get(usuario).getCanal().getVideoCanal(video);
+		return vid.getDT();
 	}
 }

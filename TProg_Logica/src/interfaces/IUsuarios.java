@@ -18,6 +18,10 @@ public interface IUsuarios {
   
 	public String[] listarUsuarios();
 	
+	public String[] listarSeguidos();
+	
+	public String[] listarSeguidores() ;
+	
 	public String[] listarVideos(String nick);
 	
 	public String[] listarListasDeReproduccion(String nick);

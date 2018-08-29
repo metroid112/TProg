@@ -4,10 +4,22 @@ import javax.swing.JPanel;
 
 import java.text.SimpleDateFormat;
 
+import java.util.LinkedHashMap;
+
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
+
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
+import dataTypes.DtComentario;
 
 import dataTypes.DtVideo;
 import interfaces.IVideos;
@@ -19,6 +31,9 @@ import javax.swing.JRadioButton;
 public class InfoVideo extends JPanel {
 	private IVideos contVideo;
 	private JLabel lblVnombre, lblVdescripcion, lblVduracion, lblVfecha, lblVvisibilidad, lblVcategoria, lblVurl;
+
+	private JTree tree;
+
 
 	/**
 	 * Create the panel.
@@ -126,7 +141,9 @@ public class InfoVideo extends JPanel {
 					.addContainerGap(26, Short.MAX_VALUE))
 		);
 		
-		JTree tree = new JTree();	// TODO arbol
+
+		tree = new JTree();	// TODO arbol
+
 		scrollPane.setColumnHeaderView(tree);
 		setLayout(groupLayout);
 
@@ -145,5 +162,31 @@ public class InfoVideo extends JPanel {
 		lblVduracion.setText(dtVid.getDuracion().toString()); 	// Formato?
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		lblVfecha.setText(dateFormat.format(dtVid.getFecha()));	// Formato?
+
+		
+		DefaultMutableTreeNode raiz = loadComentarios(dtVid.getComents(), dtVid.getNombre());
+		DefaultTreeModel model = new DefaultTreeModel(raiz);
+		tree.setModel(model);
+		
+	}
+	
+	public DefaultMutableTreeNode loadComentarios(LinkedHashMap<Integer, DtComentario> coments, String nombreVideo) {
+		DefaultMutableTreeNode nodo, raiz;
+		raiz = new DefaultMutableTreeNode(nombreVideo);
+		for (DtComentario com : coments.values()) {
+			nodo = getNode(com);
+			raiz.add(nodo);
+		}
+		return raiz;
+	}
+	
+	public DefaultMutableTreeNode getNode(DtComentario comentario) {
+		DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(comentario.getString());
+		for (DtComentario hijo : comentario.getHijos().values()) {
+			DefaultMutableTreeNode nodoHijo = getNode(hijo);		// Recursion
+			nodo.add(nodoHijo);
+		}
+		return nodo;
+
 	}
 }

@@ -3,23 +3,41 @@ package dataTypes;
 import java.time.Duration;
 import java.util.Date;
 
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+
 import clases.Categoria;
+import clases.Comentario;
+
 
 public class DtVideo {
 	private String nombre, URL, descripcion, categoria;
 	private Date fecha;
 	private Duration duracion;
 	private boolean visible;
-	// TODO comentarios
+
+	private LinkedHashMap<Integer, DtComentario> comentarios = new LinkedHashMap<Integer, DtComentario>();
 	
-	public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha, Duration duracion, boolean visibile) {
+	public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha, Duration duracion,
+			boolean visibile, LinkedHashMap<Integer, Comentario> comentarios) {
+
 		this.nombre = nombre;
 		this.URL = url;
 		this.descripcion = descripcion;
-		this.categoria = categoria.getNombre();
+		if (categoria != null) {
+			this.categoria = categoria.getNombre();
+		} else {
+			this.categoria = "Sin Categoria";
+		}
 		this.duracion = duracion;
 		this.fecha = fecha;
-		// comentarios
+
+		for (Comentario com : comentarios.values()) {
+			DtComentario dtCom = com.getDT();		// Creo Dt
+			this.comentarios.put(dtCom.getId(), dtCom); 		// Lo agrego a la coleccion
+		}
+		
+
 	}
 	
 	public String getNombre() {
@@ -49,5 +67,11 @@ public class DtVideo {
 	public boolean isVisible() {
 		return visible;
 	}
+
+	
+	public LinkedHashMap<Integer, DtComentario> getComents() {
+		return this.comentarios;
+	}
+
 
 }

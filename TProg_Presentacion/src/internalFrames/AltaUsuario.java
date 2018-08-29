@@ -44,6 +44,8 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextField textField_4;
 	private JRadioButton rdbtnNewRadioButton;
 	private JTextPane textPane;
+	private JRadioButton rdbtnSi;
+	private JRadioButton rdbtnNo;
 
 	/**
 	 * Create the frame.
@@ -128,9 +130,9 @@ public class AltaUsuario extends JInternalFrame {
 		JLabel lblCambiarCanalPor = new JLabel("Cambiar canal por defecto:");
 		lblCambiarCanalPor.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		JRadioButton rdbtnSi = new JRadioButton("Si");
+		rdbtnSi = new JRadioButton("Si");
 		
-		JRadioButton rdbtnNo = new JRadioButton("No");
+		rdbtnNo = new JRadioButton("No");
 		rdbtnNo.setSelected(true);
 		
 		JLabel lblNombreCanal = new JLabel("Nombre canal:");
@@ -316,6 +318,9 @@ public class AltaUsuario extends JInternalFrame {
 		if (ctrlUsu.existeUsuario(textField.getText())) {
 			JOptionPane.showMessageDialog(this, "El usuario ya existe.");
 		}		
+		else if (!ctrlUsu.isEmailUnique(textField_3.getText())) {
+			JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.");
+		}		
 		else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")){
 			JOptionPane.showMessageDialog(this, "Correo electronico invalido");
 		}
@@ -338,9 +343,14 @@ public class AltaUsuario extends JInternalFrame {
 				String correo = textField_3.getText();
 				Date nacimiento = null; //formar la fecha desde las partes.
 				Image imagen = null;
-				String nombreCanal = textField_4.getText();
 				boolean privado = rdbtnNewRadioButton.isSelected();
-				String descripcion = textPane.getText();
+				boolean personalizado = rdbtnSi.isSelected();
+				String descripcion = "Sin descripcion";
+				String nombreCanal = textField.getText();
+				if (personalizado) {
+					descripcion = textPane.getText();
+					nombreCanal = textField_4.getText();
+				}
 				Comentario[] comentarios = null;
 				Calificacion[] calificaciones = null;
 				Usuario[] seguidores = null;
