@@ -182,4 +182,8 @@ public class Canal {
 		return null;
 		}
 	//Pendiente: devuelve un array de string con los nombres de los videos
+
+	public Video getVideoCanal(String video) {
+		return videos.get(video);
+	}
 }

@@ -51,6 +51,7 @@ public class Main {
 	private QuitarVideo frmQuitarVideo = new QuitarVideo();
 	private VerInformacionUsuario frmVerInfoUsuario = new VerInformacionUsuario();
 	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
+
 	
 	private JTextArea logCarga;
 	
@@ -88,8 +89,8 @@ public class Main {
 		frames.add(frmAltaUsuario);
 		frames.add(frmListarUsuarios);
 		frames.add(frmConsultaUsuario);
-		frames.add(frmConsultaUsuario);
 		frames.add(frmVerInfoUsuario);
+
 		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
