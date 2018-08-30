@@ -126,7 +126,7 @@ public class ConsultaLista extends JInternalFrame{
 		
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				textArea.removeAll();
+				textArea.setText(null);;
 				if(checkUsuario() && checkLista()){
 					
 				}

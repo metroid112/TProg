@@ -136,6 +136,9 @@ public class AgregarVideo extends JInternalFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					
+					modelVideos.removeAllElements();
+					modelUsuObj.removeAllElements();
+					cargarVideosUsuarios();
 					comboBoxVideos.setEnabled(true);
 					comboBoxUsuObj.setEnabled(true);
 				}
@@ -146,6 +149,35 @@ public class AgregarVideo extends JInternalFrame{
 				}
 			}
 		});
+	}
+	
+	public void cargarVideosUsuarios(){
+		
+		fab = Fabrica.getFabrica();
+		ctrVid = fab.getIVideos();
+		 
+		if(modelUsuario.getSelectedItem() != null){
+			
+			String s = modelUsuario.getSelectedItem().toString();
+			
+		    String[] videos = ctrVid.listarVideos(s);
+		    
+			int largov = videos.length;
+			
+			modelVideos.addElement("");
+			for (int i = 0; i < largov; i++ ){
+			  modelVideos.addElement(videos[i]);
+			}
+		}
+		
+		ctrUsu = fab.getIUsuariosCanales();
+	    String[] usuarios = ctrUsu.listarUsuarios();
+		int largou = usuarios.length;
+		modelUsuObj.addElement("");
+		for (int i = 0; i < largou; i++ ){
+		  modelUsuObj.addElement(usuarios[i]);
+		}
+		ctrUsu = null;
 	}
 	
 	public void cargarDatos(){

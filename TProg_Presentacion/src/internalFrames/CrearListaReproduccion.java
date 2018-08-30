@@ -159,6 +159,14 @@ public class CrearListaReproduccion extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				clean();
+				rdbtnPrivada.setEnabled(false);
+				rdbtnPrivada.setSelected(true);
+				rdbtnPublica.setEnabled(false);
+				rdbtnPublica.setSelected(false);
+				comboBoxUsuario.setEnabled(false);
+				lblNombreDeUsuario.setEnabled(false);
+				rdbtnPorDefecto.setSelected(true);
+				rdbtnParticular.setSelected(false);
 				
 			}
 		});
@@ -187,6 +195,14 @@ public class CrearListaReproduccion extends JInternalFrame {
 						}
 		                JOptionPane.showMessageDialog(null, "La lista fue creada con exito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
 		                clean();
+						rdbtnPrivada.setEnabled(false);
+						rdbtnPrivada.setSelected(true);
+						rdbtnPublica.setEnabled(false);
+						rdbtnPublica.setSelected(false);
+						comboBoxUsuario.setEnabled(false);
+						lblNombreDeUsuario.setEnabled(false);
+						rdbtnPorDefecto.setSelected(true);
+						rdbtnParticular.setSelected(false);
 		                setVisible(false);
 					}
 					catch(Exception x){
@@ -227,6 +243,8 @@ public class CrearListaReproduccion extends JInternalFrame {
 	public void  clean(){
 		
 		modelUsuario.removeAllElements();
+		textFieldNombre.setText(null);
+		
 		
 	}
 

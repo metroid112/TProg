@@ -19,14 +19,20 @@ public class CtrlListas implements IListas {
 	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	private ManejadorListas manejadorListas = ManejadorListas.getManejadorListas();
 
-	public void altaListaParticular(String nombre, String usuario, boolean visibilidad){ //busco el usuario y le pido a su canal que haga el resto
+	public void altaListaParticular(String nombre, String usuario, boolean visibilidad) throws Exception{ //busco el usuario y le pido a su canal que haga el resto
 		
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		if(!usuarioObjetivo.getCanal().getListaParticulares().containsKey(nombre)){
+		
 		usuarioObjetivo.getCanal().ingresarListaParticular(nombre,visibilidad);
+		}
+		else{
+			throw new Exception("El usuario " + usuario + " ya posee una lista por defecto con nombre: " + nombre);
+		}
 		
 	}
 	
-	public void altaListaDefecto(String nombreListaDefecto){ //	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal
+	public void altaListaDefecto(String nombreListaDefecto) throws Exception{ //	Itera en todos los usuarios y convoca ingresarListaDefecto(String nombre) sobre su canal
 		
 		if(!manejadorListas.existeLista(nombreListaDefecto)){
 		manejadorListas.add(nombreListaDefecto);
@@ -34,7 +40,7 @@ public class CtrlListas implements IListas {
 		manejadorUsuarios.agregarListaDefecto(nombreListaDefecto);
 		}
 		else{
-			//throw new Exception("La categoria ya existe");		
+			throw new Exception("Ya existe una lista por defecto con nombre " + nombreListaDefecto);		
 		}		
 	}
 	
@@ -43,7 +49,7 @@ public class CtrlListas implements IListas {
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
 		Canal canalObjetivo = usuarioObjetivo.getCanal();
 		
-		return canalObjetivo.getListaParticularUsuario();
+		return canalObjetivo.getListaUsuario();
 
 	}
 	
@@ -52,7 +58,7 @@ public class CtrlListas implements IListas {
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
 		Canal canalObjetivo = usuarioObjetivo.getCanal();
 		
-		return canalObjetivo.getListaUsuario();
+		return canalObjetivo.getListaParticularUsuario();
 
 		}
 	

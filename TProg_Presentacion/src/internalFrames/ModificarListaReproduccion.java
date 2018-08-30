@@ -106,10 +106,14 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		});
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				modelUsuario.removeAllElements();
-				modelLisRep.removeAllElements();
-				modelCategoria.removeAllElements();
 				setVisible(false);
+				clean();
+				rdbtnPrivada.setSelected(true);
+				rdbtnPublica.setSelected(false);
+				rdbtnPrivada.setEnabled(false);
+				rdbtnPublica.setEnabled(false);
+				comboBoxLisRep.setEnabled(false);
+				
 			}
 		});
 		
@@ -145,6 +149,12 @@ public class ModificarListaReproduccion extends JInternalFrame {
 				if(checkUsuario() && checkLista()){
 					ctrLis.guardarCambios(modelLisRep.getSelectedItem().toString(),modelUsuario.getSelectedItem().toString(),rdbtnPublica.isSelected());
 					setVisible(false);
+					clean();
+					rdbtnPrivada.setSelected(true);
+					rdbtnPublica.setSelected(false);
+					rdbtnPrivada.setEnabled(false);
+					rdbtnPublica.setEnabled(false);
+					comboBoxLisRep.setEnabled(false);
 				}
 			}
 		});
@@ -182,7 +192,9 @@ public class ModificarListaReproduccion extends JInternalFrame {
 	}
 	
 	public void clean(){
-		
+		modelUsuario.removeAllElements();
+		modelLisRep.removeAllElements();
+		modelCategoria.removeAllElements();
 	}
 
 	boolean checkUsuario(){
