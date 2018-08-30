@@ -24,7 +24,11 @@ public class DtVideo {
 		this.nombre = nombre;
 		this.URL = url;
 		this.descripcion = descripcion;
-		this.categoria = categoria.getNombre();
+		if (categoria != null) {
+			this.categoria = categoria.getNombre();
+		} else {
+			this.categoria = "Sin Categoria";
+		}
 		this.duracion = duracion;
 		this.fecha = fecha;
 

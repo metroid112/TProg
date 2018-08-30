@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -58,7 +60,6 @@ public class Main {
 	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
 	private ConsultaVideo frmConsultaVideo = new ConsultaVideo(videos);
 	private AltaVideo frmAltaVideo = new AltaVideo(videos);
-
 	
 	private JTextArea logCarga;
 	
@@ -96,7 +97,8 @@ public class Main {
 		frames.add(frmVerInfoUsuario);
 		frames.add(frmConsultaVideo);
 		frames.add(frmAltaVideo);
-
+		//relaciones
+		frmVerInfoUsuario.SetPadre(frmConsultaUsuario);
 		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
@@ -274,8 +276,11 @@ public class Main {
 		/************************ CONSULTA CATEGORIA ************************/
 		mntmConsultaCategoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()){
+					frmConsultaCategoria.cargarDatos();
 					frmConsultaCategoria.setVisible(true);
+				}
+					
 			}
 		});
 		
@@ -292,7 +297,7 @@ public class Main {
 		mntmCargaDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas()) {
-					cargarDatos();
+					//cargarDatos();
 				}
 			}
 		});
@@ -332,8 +337,10 @@ public class Main {
 		return false;
 	}
 	
-	public void cargarDatos() {
+	public void cargarDatos() throws ParseException {
 		logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
-		this.usuariosCanales.altaUsuario("bobo", "bobeta", "bobon", "bobo@bobetas.com", new Date(), "bobones", false);
+		//public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String nombreCanal, boolean visible);
+		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "Canal Horacio", false);
 	}
 }

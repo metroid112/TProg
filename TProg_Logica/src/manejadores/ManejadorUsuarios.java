@@ -3,7 +3,10 @@ package manejadores;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 import clases.Usuario;
 

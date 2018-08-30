@@ -41,6 +41,7 @@ public class CtrlVideos implements IVideos {
 
 	@Override
 	public DtVideo getDtVideo(String video, String usuario) {
+<<<<<<< HEAD
 
 
 		Video vid = mUsu.get(usuario).getCanal().getVideoCanal(video);
@@ -48,5 +49,9 @@ public class CtrlVideos implements IVideos {
 
 
 		
+=======
+		Video vid = mUsu.get(usuario).getCanal().getVideoCanal(video);
+		return vid.getDT();
+>>>>>>> master
 	}
 }

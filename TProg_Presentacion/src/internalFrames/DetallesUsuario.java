@@ -20,7 +20,7 @@ import java.util.Date;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import javax.swing.JInternalFrame;
-
+import javax.swing.JTextField;
 
 public class DetallesUsuario extends JPanel {
 	private Fabrica fab = Fabrica.getFabrica();
@@ -30,7 +30,10 @@ public class DetallesUsuario extends JPanel {
 	private JList<String> listasDeReproduccion =  new JList<>(modelListas);
 	private DefaultListModel<String> modelVideos = new DefaultListModel<>();
 	private JList<String> videos =  new JList<>(modelListas);
-	
+	private boolean editar = false;
+	public void SetEditar(boolean b) {
+		this.editar = b;
+	}
 	/**
 	 * Create the panel.
 	 */
@@ -91,19 +94,24 @@ public class DetallesUsuario extends JPanel {
 		JLabel lblDescripcionCanal = new JLabel("Descripcion canal:");
 		lblDescripcionCanal.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		JLabel lblNewLabel = new JLabel(nombre);
+		JTextField lblNewLabel = new JTextField(nombre);
+		lblNewLabel.setEditable(editar);
 		
-		JLabel lblapellido = new JLabel(apellido);
+		JTextField lblapellido = new JTextField(apellido);
+		lblapellido.setEditable(editar);
 		
-		JLabel lblcorreo = new JLabel(correo);
+		JTextField lblcorreo = new JTextField(correo);
+		lblcorreo.setEditable(editar);
 		
-		JLabel lblfecha = new JLabel(fechaParaMostrar);
+		JTextField lblfecha = new JTextField(fechaParaMostrar);
+		lblfecha.setEditable(editar);
 		
-		JLabel lblcanal = new JLabel(canal);
+		JTextField lblcanal = new JTextField(canal);
+		lblcanal.setEditable(editar);
 		
 		JTextPane txtpnddescripcioncanal = new JTextPane();
-		txtpnddescripcioncanal.setEditable(false);
-		txtpnddescripcioncanal.setBackground(SystemColor.menu);
+		txtpnddescripcioncanal.setEditable(editar);
+		txtpnddescripcioncanal.setBackground(Color.WHITE);
 		txtpnddescripcioncanal.setText(descripcionCanal);
 		
 		JPanel imagen = new JPanel();
