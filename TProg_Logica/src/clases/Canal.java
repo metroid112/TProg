@@ -60,6 +60,12 @@ public class Canal {
 	}
 
 
+	public Canal(String nombreCanal, String descripcionCanal, boolean visible) {
+		this.nombre = nombreCanal;
+		this.descripcion = descripcionCanal;
+		this.visible = visible;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

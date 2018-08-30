@@ -4,8 +4,14 @@ import interfaces.IUsuariosCanales;
 import manejadores.ManejadorUsuarios;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.VolatileImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+
+import javax.imageio.ImageIO;
 
 import clases.Calificacion;
 import clases.Canal;
@@ -25,7 +31,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	
 	@Override
-	public void altaUsuario(String nick, String nombre, String apellido, String correo, Date nacimiento, Image imagen, 
+	public void altaUsuario(String nick, String nombre, String apellido, String correo, Date nacimiento, BufferedImage imagen, 
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) throws Exception {
 		
@@ -148,6 +154,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	@Override
 	public boolean isEmailUnique(String email) {
 		return manejadorUsuarios.isEmailUnique(email);
+	}
+
+	@Override
+	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
+			String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
+		manejadorUsuarios.add(new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)), new Canal(nombreCanal, descripcionCanal, visible)));
 	}
 
 }

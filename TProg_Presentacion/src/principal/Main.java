@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -297,7 +298,7 @@ public class Main {
 				if (!ventanasAbiertas()) {
 					try {
 						cargarDatos();
-					} catch (ParseException e1) {
+					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
 				}
@@ -339,10 +340,24 @@ public class Main {
 		return false;
 	}
 	
-	public void cargarDatos() throws ParseException {
+	public void cargarDatos() throws ParseException, IOException {
 		logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
-		//public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String nombreCanal, boolean visible);
+		//public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String path, String nombreCanal, String descripcionCanal, boolean visible);
 		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "Canal Horacio", false);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
 	}
 }

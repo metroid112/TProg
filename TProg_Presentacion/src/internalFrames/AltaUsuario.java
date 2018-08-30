@@ -11,6 +11,8 @@ import java.awt.Image;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.VolatileImage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.event.ActionEvent;
@@ -342,7 +344,7 @@ public class AltaUsuario extends JInternalFrame {
 				String apellido = textField_2.getText();
 				String correo = textField_3.getText();
 				Date nacimiento = null; //formar la fecha desde las partes.
-				Image imagen = null;
+				BufferedImage imagen = null;
 				boolean privado = rdbtnNewRadioButton.isSelected();
 				boolean personalizado = rdbtnSi.isSelected();
 				String descripcion = "Sin descripcion";

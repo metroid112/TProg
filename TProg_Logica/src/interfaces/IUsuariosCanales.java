@@ -1,6 +1,9 @@
 package interfaces;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.VolatileImage;
+import java.io.IOException;
 import java.util.Date;
 
 import clases.Calificacion;
@@ -10,11 +13,13 @@ import clases.Comentario;
 
 public interface IUsuariosCanales {
 	
-	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaDeNacimiento, Image imagen, 
+	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaDeNacimiento, BufferedImage imagen, 
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) throws Exception;
 	
 	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String nombreCanal, boolean visible);
+	
+	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException;
   
 	public String[] listarUsuarios();
 	

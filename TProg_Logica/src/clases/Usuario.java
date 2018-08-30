@@ -1,6 +1,8 @@
 package clases;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.VolatileImage;
 import java.util.Date;
 
 public class Usuario {
@@ -10,7 +12,7 @@ public class Usuario {
 	private String apellido;
 	private String correo;
 	private Date fechaNacimiento;
-	private Image imagen;
+	private BufferedImage imagen;
 	private Canal canal;
 	private Comentario[] comentarios;
 	private Calificacion[] calificaciones;
@@ -22,7 +24,7 @@ public class Usuario {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Usuario(String nick, String nombre, String apellido, String correo, Date nacimiento, Image imagen,
+	public Usuario(String nick, String nombre, String apellido, String correo, Date nacimiento, BufferedImage imagen,
 			Canal canal, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) {
 		this.nick = nick;
@@ -66,6 +68,17 @@ public class Usuario {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
+	public Usuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
+			BufferedImage image, Canal canal) {
+		this.nick = nickname;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.correo = correo;
+		this.fechaNacimiento = fechaNacimiento;
+		this.imagen = image;
+		this.canal = canal;
+	}
+
 	public String getNick() {
 		return nick;
 	}
@@ -86,7 +99,7 @@ public class Usuario {
 		return fechaNacimiento;
 	}
 
-	public Image getImagen() {
+	public BufferedImage getImagen() {
 		return imagen;
 	}
 
@@ -130,7 +143,7 @@ public class Usuario {
 		this.fechaNacimiento = nacimiento;
 	}
 
-	public void setImagen(Image imagen) {
+	public void setImagen(BufferedImage imagen) {
 		this.imagen = imagen;
 	}
 
