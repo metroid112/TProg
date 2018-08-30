@@ -21,7 +21,6 @@ import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import javax.swing.JInternalFrame;
 
-
 public class DetallesUsuario extends JPanel {
 	private Fabrica fab = Fabrica.getFabrica();
 	private IUsuariosCanales ctrlUsu = fab.getIUsuariosCanales();
