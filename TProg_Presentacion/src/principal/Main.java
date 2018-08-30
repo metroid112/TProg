@@ -360,5 +360,7 @@ public class Main {
 		this.usuariosCanales.altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy", format.parse("17/03/1976"), "img\\recoba.JPG", "Chino Recoba", "Canal de goles con Nacional ", false);
 		this.usuariosCanales.altaUsuario("tonyp", "Antonio", "Pacheco", "eltony@manya.org.uy", format.parse("14/02/1955"), "img\\pacheco.JPG", "Tony Pacheco", "Todos los goles con Peñarol", false);
 		this.usuariosCanales.altaUsuario("nicoJ", "Nicolás", "Jodal", "jodal@artech.com.uy", format.parse("09/08/1960"), "img\\null.JPG", "Desde Genexus", "Canal información C y T", true);
+		
+		this.usuariosCanales.seguir("hrubino", "hectorg");
 	}
 }

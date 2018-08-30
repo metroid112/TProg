@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import javax.imageio.ImageIO;
 
@@ -38,9 +39,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			Canal canal = new Canal(nombreCanal, descripcion, privado, null, new HashMap<String, Video>(),
 					new HashMap<String, ListaDefecto>(), new HashMap<String, ListaParticular>(), null);
 			
-			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento, imagen,
-					canal, comentarios, calificaciones, seguidores,
-					seguidos);
+			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento);
 			canal.setUsuario(usu);
 			manejadorUsuarios.add(usu);
 	}
@@ -130,11 +129,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.get(nick).getCalificaciones();
 	}
 
-	public Usuario[] getSeguidores(String nick) {
+	public HashSet<Usuario> getSeguidores(String nick) {
 		return manejadorUsuarios.get(nick).getSeguidores();
 	}
 
-	public Usuario[] getSeguidos(String nick) {
+	public HashSet<Usuario> getSeguidos(String nick) {
 		return manejadorUsuarios.get(nick).getSeguidos();
 	}
 	
@@ -162,4 +161,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		manejadorUsuarios.add(new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)), new Canal(nombreCanal, descripcionCanal, visible)));
 	}
 
+	@Override
+	public void seguir(String seguidor, String seguido) {
+		manejadorUsuarios.get(seguidor).seguir(manejadorUsuarios.get(seguido));
+	}
 }

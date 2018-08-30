@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
 import java.util.Date;
+import java.util.HashSet;
 
 public class Usuario {
 
@@ -16,8 +17,8 @@ public class Usuario {
 	private Canal canal;
 	private Comentario[] comentarios;
 	private Calificacion[] calificaciones;
-	private Usuario[] seguidores;
-	private Usuario[] seguidos;
+	private HashSet<Usuario> seguidores = new HashSet<Usuario>();
+	private HashSet<Usuario> seguidos = new HashSet<Usuario>();
 
 	public Usuario() {
 	}
@@ -25,8 +26,8 @@ public class Usuario {
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
 	public Usuario(String nick, String nombre, String apellido, String correo, Date nacimiento, BufferedImage imagen,
-			Canal canal, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
-			Usuario[] seguidos) {
+			Canal canal, Comentario[] comentarios, Calificacion[] calificaciones, HashSet<Usuario> seguidores,
+			HashSet<Usuario> seguidos) {
 		this.nick = nick;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -46,18 +47,8 @@ public class Usuario {
 		else {
 			this.calificaciones = new Calificacion[0];
 		}		
-		if (seguidores != null) {
-			this.seguidores = seguidores;
-		}
-		else {
-			this.seguidores = new Usuario[0];
-		}
-		if (seguidos != null) {
-			this.seguidos = seguidos;
-		}
-		else {
-			this.seguidos = new Usuario[0];
-		}
+		this.seguidores = seguidores;
+		this.seguidos = seguidos;
 }
 
 	public Usuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento) {
@@ -115,11 +106,11 @@ public class Usuario {
 		return calificaciones;
 	}
 
-	public Usuario[] getSeguidores() {
+	public HashSet<Usuario> getSeguidores() {
 		return seguidores;
 	}
 
-	public Usuario[] getSeguidos() {
+	public HashSet<Usuario> getSeguidos() {
 		return seguidos;
 	}
 
@@ -159,12 +150,16 @@ public class Usuario {
 		this.calificaciones = calificaciones;
 	}
 
-	public void setSeguidores(Usuario[] seguidores) {
+	public void setSeguidores(HashSet<Usuario> seguidores) {
 		this.seguidores = seguidores;
 	}
 
-	public void setSeguidos(Usuario[] seguidos) {
+	public void setSeguidos(HashSet<Usuario> seguidos) {
 		this.seguidos = seguidos;
+	}
+	
+	public void seguir(Usuario seguido) {
+		this.seguidos.add(seguido);
 	}
 	
 }

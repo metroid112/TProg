@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashSet;
 
 import clases.Calificacion;
 import clases.Canal;
@@ -34,7 +35,7 @@ public interface IUsuariosCanales {
 	public boolean existeUsuario(String nick);
 	
 	public int cantidadUsuarios();
-	//getters de datos de ususario.
+
 	public String getNombre(String nick);
 
 	public String getApellido(String nick);
@@ -44,25 +45,14 @@ public interface IUsuariosCanales {
 	public Date getNacimiento(String nick);
 
 	public Image getImagen(String nick);
-
-	public Canal getCanal(String nick);
 	
 	public String getNombreCanal(String nick);
 
-	public Comentario[] getComentarios(String nick);
-
-	public Calificacion[] getCalificaciones(String nick);
-
-	public Usuario[] getSeguidores(String nick);
-
-	public Usuario[] getSeguidos(String nick);
-	
 	public boolean getPrivado(String nick);
 	
 	public String getDescripcionCanal(String nick);
 	
 	public boolean isEmailUnique(String email);
 	
-	//fin getters usuarios.
-	
+	public void seguir(String seguidor, String seguido);
 }
