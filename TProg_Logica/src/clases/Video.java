@@ -131,4 +131,15 @@ public class Video {
 		this.calificaciones = calificaciones;
 	}
 
+	public void modificarDatos(String nombre, String descripcion, String url, Categoria categoria,
+			Duration duracion, Boolean visible, Date fecha) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.url = url;
+		this.categoria = categoria;
+		this.duracion = duracion;
+		this.visible = visible;
+		this.fecha = fecha;
+	}
+
 }

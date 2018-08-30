@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.time.Duration;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -65,7 +66,7 @@ public class ModificarVideo extends JInternalFrame {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				modVideo(); 		// Cambio al siguiente panel
+				cargarInfo(); 		// Cambio al siguiente panel
 			}
 		});
 		GroupLayout gl_panelSeleccion = new GroupLayout(panelSeleccion);
@@ -101,7 +102,6 @@ public class ModificarVideo extends JInternalFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cambioPanel();
-				//TODO clear datos
 			}
 		});
 		
@@ -151,46 +151,57 @@ public class ModificarVideo extends JInternalFrame {
 		spinnerSeg.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		
 		JLabel lblSeg = new JLabel("seg.");
+		
+		JButton btnModificarDatos = new JButton("Modificar datos");
+		btnModificarDatos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				modificarVideo();
+			}
+		});
+		
 		GroupLayout gl_panelMod = new GroupLayout(panelMod);
 		gl_panelMod.setHorizontalGroup(
 			gl_panelMod.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelMod.createSequentialGroup()
-					.addContainerGap(233, Short.MAX_VALUE)
-					.addComponent(btnVolver)
-					.addGap(188))
-				.addGroup(gl_panelMod.createSequentialGroup()
-					.addGap(37)
-					.addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblDescripcion)
-						.addComponent(lblNombre)
-						.addComponent(lblDuracion)
-						.addComponent(lblUrl)
-						.addComponent(lblCategoria)
-						.addComponent(lblFecha)
-						.addComponent(lblVisibilidad))
-					.addGap(18)
 					.addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panelMod.createSequentialGroup()
-							.addComponent(rdbtnPublico)
+							.addGap(37)
+							.addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblDescripcion)
+								.addComponent(lblNombre)
+								.addComponent(lblDuracion)
+								.addComponent(lblUrl)
+								.addComponent(lblCategoria)
+								.addComponent(lblFecha)
+								.addComponent(lblVisibilidad))
 							.addGap(18)
-							.addComponent(rdbtnPrivado))
-						.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(cBoxCategoria, 0, 361, Short.MAX_VALUE)
-						.addComponent(tfNombre, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
-						.addGroup(gl_panelMod.createSequentialGroup()
-							.addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblHoras)
-							.addGap(18)
-							.addComponent(spinnerMin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblMin)
-							.addGap(18)
-							.addComponent(spinnerSeg, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblSeg))
-						.addComponent(tfURL, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
+							.addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panelMod.createSequentialGroup()
+									.addComponent(rdbtnPublico)
+									.addGap(18)
+									.addComponent(rdbtnPrivado))
+								.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(cBoxCategoria, 0, 361, Short.MAX_VALUE)
+								.addComponent(tfNombre, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+								.addGroup(gl_panelMod.createSequentialGroup()
+									.addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblHoras)
+									.addGap(18)
+									.addComponent(spinnerMin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblMin)
+									.addGap(18)
+									.addComponent(spinnerSeg, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblSeg))
+								.addComponent(tfURL, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)))
+						.addGroup(Alignment.TRAILING, gl_panelMod.createSequentialGroup()
+							.addContainerGap(312, Short.MAX_VALUE)
+							.addComponent(btnModificarDatos)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnVolver)))
 					.addContainerGap())
 		);
 		gl_panelMod.setVerticalGroup(
@@ -230,9 +241,11 @@ public class ModificarVideo extends JInternalFrame {
 					.addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUrl)
 						.addComponent(tfURL, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(28)
-					.addComponent(btnVolver)
-					.addGap(53))
+					.addGap(34)
+					.addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnVolver)
+						.addComponent(btnModificarDatos))
+					.addGap(47))
 		);
 		
 		textDescripcion = new JTextArea();
@@ -251,8 +264,8 @@ public class ModificarVideo extends JInternalFrame {
 		
 	}
 	
-	private void modVideo() {
-		if (seleccionVideo.getUsuario() != null) {
+	private void cargarInfo() {
+		if (seleccionVideo.getUsuario() != null && seleccionVideo.getVideo() != null) {
 			DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());		// Pido info del video para desplegar
 			tfNombre.setText(infoVid.getNombre());
 			textDescripcion.setText(infoVid.getDescripcion());
@@ -265,9 +278,9 @@ public class ModificarVideo extends JInternalFrame {
 			int horas,min,seg;
 			Duration duracion = infoVid.getDuracion();
 			horas = (int) duracion.toHours();
-			duracion.minusHours(horas);
+			duracion = duracion.minusHours((long) horas);
 			min = (int) duracion.toMinutes();
-			duracion.minusMinutes(min);
+			duracion = duracion.minusMinutes((long) min);
 			seg = (int) duracion.getSeconds();
 			spinnerHoras.setValue(horas);
 			spinnerMin.setValue(min);
@@ -282,7 +295,7 @@ public class ModificarVideo extends JInternalFrame {
 					if (model.getElementAt(i).equals(infoVid.getCategoria())) {
 						model.setSelectedItem(model.getElementAt(i));
 						encontrado = true;
-					}	
+					}
 					i++;
 				}
 				if (!encontrado) {
@@ -296,7 +309,51 @@ public class ModificarVideo extends JInternalFrame {
 			
 			cambioPanel();
 		} else {
-			JOptionPane.showMessageDialog(this, "Usuario vacio", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	public boolean datosCorrectos(String nombre, String url, Duration duracion) {
+		return (!(nombre.equals("")) && !(url.equals("")) && !(duracion.isZero()));
+	}
+
+	private void modificarVideo() {
+		//try {
+			
+			String nick, nombreOld, nombre, descripcion, url, categoria;
+			Duration duracion;
+			Boolean visible;
+			nick = seleccionVideo.getUsuario();
+			nombreOld = seleccionVideo.getVideo();
+			nombre = tfNombre.getText();
+			descripcion = textDescripcion.getText();
+			url = tfURL.getText();
+			categoria = (String) cBoxCategoria.getSelectedItem();
+			if (categoria.equals("Sin Categoria")) {		// Chequeo si eligio alguna categoria
+				categoria = null;
+			}
+			duracion = Duration.ofHours((int) spinnerHoras.getValue());
+			duracion = duracion.plusMinutes((int) spinnerMin.getValue());
+			duracion = duracion.plusSeconds((int) spinnerSeg.getValue());
+			Date fecha = datePicker.getDate();
+			if (rdbtnPrivado.isSelected()) {
+				visible = false;
+			} else {
+				visible = true;
+			}
+			if (datosCorrectos(nombre, url, duracion )) {
+				contVid.modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fecha);
+				JOptionPane.showMessageDialog(this, "Datos modificados con exito");
+				setVisible(false);
+				cambioPanel();
+			} else {
+				JOptionPane.showMessageDialog(this,"Datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			
+
+		/*} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		}*/
+	}
+
 }

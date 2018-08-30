@@ -101,6 +101,7 @@ public class AltaVideo extends JInternalFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
+				clearDatos();
 			}
 		});
 		
@@ -252,6 +253,7 @@ public class AltaVideo extends JInternalFrame {
 			contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha); 
 			JOptionPane.showMessageDialog(this, "Video creado con exito!");
 			setVisible(false);
+			clearDatos();
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video", JOptionPane.ERROR_MESSAGE);	// Muesta el error al dar de alta
 			}
@@ -263,5 +265,16 @@ public class AltaVideo extends JInternalFrame {
 	
 	public boolean datosCorrectos(String nick, String nombre, String url, Duration duracion) {
 		return (nick != null && !(nombre.equals("")) && !(url.equals("")) && !(duracion.isZero()));
+	}
+	
+	private void clearDatos() {
+		TextoNombre.setText(null);
+		tFieldURL.setText(null);
+		tAreaDescripcion.setText(null);
+		datePicker.setDate(new Date());
+		cBoxCategoria.setSelectedItem(null);
+		spinnerHoras.setValue(0);
+		spinnerMinutos.setValue(0);
+		spinnerSegundos.setValue(0);
 	}
 }

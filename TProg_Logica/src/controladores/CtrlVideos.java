@@ -43,9 +43,23 @@ public class CtrlVideos implements IVideos {
 		}
 	}
 
-	@Override
 	public DtVideo getDtVideo(String video, String usuario) {
 		Video vid = mUsu.get(usuario).getCanal().getVideoCanal(video);
 		return vid.getDT();
 	}
+	
+	public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion, String url,
+			String categoriaString, Duration duracion, Boolean visible, Date fecha) {
+		Video vid = mUsu.get(nick).getCanal().getVideoCanal(nombreOld);
+		// TODO actualizar colecciones con el nuevo nombre del video
+		Categoria categoria;
+		if (categoriaString != null) {
+			categoria = mCat.get(categoriaString);
+		} else {
+			categoria = null;
+		}
+		vid.modificarDatos(nombre, descripcion, url, categoria, duracion, visible, fecha);
+		
+	}
+	
 }

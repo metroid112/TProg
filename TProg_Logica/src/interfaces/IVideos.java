@@ -16,4 +16,7 @@ public interface IVideos {
 	public String[] listarVideos(String nickname);
 
 	public DtVideo getDtVideo(String video, String usuario);
+
+	public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion, String url,
+			String categoria, Duration duracion, Boolean visible, Date fecha);
 }
