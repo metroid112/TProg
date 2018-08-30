@@ -148,10 +148,7 @@ public class Canal {
 	}
 	
 	public String[] getArrayVideos(){ 
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 		return videos.keySet().toArray(new String[videos.size()]);
 	}
 	

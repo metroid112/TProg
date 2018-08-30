@@ -18,6 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
+import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class ConsultaLista extends JInternalFrame{
@@ -49,47 +50,59 @@ public class ConsultaLista extends JInternalFrame{
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JButton btnConsultar = new JButton("Consultar");
+		
+		JList list = new JList();
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(17)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNombreDeUsuario)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
-									.addGap(10)
-									.addComponent(lblLista)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(comboBoxListas, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(lblLista)
+								.addComponent(list, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+								.addComponent(comboBoxListas, 0, 129, Short.MAX_VALUE)
+								.addComponent(comboBoxUsuario, 0, 146, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
 							.addContainerGap())
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnConsultar)
 							.addGap(18)
 							.addComponent(btnCerrar)
-							.addGap(100))))
+							.addGap(100))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblNombreDeUsuario)
+							.addContainerGap(524, Short.MAX_VALUE))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblLista)
-						.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNombreDeUsuario)
-						.addComponent(comboBoxListas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCerrar)
-						.addComponent(btnConsultar))
-					.addGap(5))
+					.addGap(25)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnCerrar)
+								.addComponent(btnConsultar))
+							.addGap(5))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblNombreDeUsuario)
+							.addGap(13)
+							.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(comboBoxListas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(lblLista)
+							.addGap(18)
+							.addComponent(list, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
 		);
 		
 		JTextArea textArea = new JTextArea();

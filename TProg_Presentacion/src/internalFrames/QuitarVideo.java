@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import interfaces.*;
 
 import javax.swing.JComboBox;
+import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class QuitarVideo extends JInternalFrame{
@@ -45,31 +46,36 @@ public class QuitarVideo extends JInternalFrame{
 		
 		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		
-		JComboBox comboBoxLisUsu = new JComboBox(modelLisUsu);
-		comboBoxLisUsu.setEnabled(false);
+		JComboBox comboBoxTipoListas = new JComboBox(modelLisUsu);
+		comboBoxTipoListas.setEnabled(false);
 		
 		JComboBox comboBoxVideos = new JComboBox(modelVideos);
 		comboBoxVideos.setEnabled(false);
+		
+		JList listListas = new JList();
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(20)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNombreDeUsuario)
-						.addComponent(lblListasDelUsuario)
-						.addComponent(lblVideos))
-					.addGap(26)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(comboBoxUsuario, 0, 120, Short.MAX_VALUE)
-						.addComponent(comboBoxLisUsu, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(comboBoxVideos, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap(178, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(242, Short.MAX_VALUE)
-					.addComponent(btnAceptar)
-					.addGap(18)
-					.addComponent(btnCancelar)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap(450, Short.MAX_VALUE)
+							.addComponent(btnAceptar)
+							.addGap(18)
+							.addComponent(btnCancelar))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(20)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNombreDeUsuario)
+								.addComponent(lblListasDelUsuario)
+								.addComponent(lblVideos))
+							.addGap(26)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(comboBoxUsuario, 0, 120, Short.MAX_VALUE)
+								.addComponent(comboBoxTipoListas, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(listListas, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(comboBoxVideos, Alignment.TRAILING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED, 358, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -82,12 +88,15 @@ public class QuitarVideo extends JInternalFrame{
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblListasDelUsuario)
-						.addComponent(comboBoxLisUsu, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblVideos)
-						.addComponent(comboBoxVideos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+						.addComponent(comboBoxTipoListas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(26)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(listListas, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(comboBoxVideos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblVideos))
+					.addPreferredGap(ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancelar)
 						.addComponent(btnAceptar))
@@ -108,13 +117,13 @@ public class QuitarVideo extends JInternalFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					
-					comboBoxLisUsu.setEnabled(true);
+					comboBoxTipoListas.setEnabled(true);
 				}
-				else comboBoxLisUsu.setEnabled(false);
+				else comboBoxTipoListas.setEnabled(false);
 			}
 		});
 		
-		comboBoxLisUsu.addActionListener(new ActionListener() {
+		comboBoxTipoListas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					

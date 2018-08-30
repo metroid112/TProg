@@ -15,6 +15,7 @@ import interfaces.*;
 
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class AgregarVideo extends JInternalFrame{
@@ -50,17 +51,25 @@ public class AgregarVideo extends JInternalFrame{
 		JComboBox comboBoxUsuObj = new JComboBox(modelUsuObj);
 		comboBoxUsuObj.setEnabled(false);
 		
-		JComboBox comboBoxListas = new JComboBox(modelListas);
-		comboBoxListas.setEnabled(false);
+		JComboBox comboBoxTipoListas = new JComboBox(modelListas);
+		comboBoxTipoListas.setEnabled(false);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		
+		JList listListas = new JList();
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(450, Short.MAX_VALUE)
+					.addComponent(btnAceptar)
+					.addGap(18)
+					.addComponent(btnCancelar)
+					.addContainerGap())
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(21)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNombreDeUsuario)
@@ -68,18 +77,14 @@ public class AgregarVideo extends JInternalFrame{
 						.addComponent(lblUsuario)
 						.addComponent(lblListas))
 					.addGap(28)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(comboBoxUsuario, 0, 129, Short.MAX_VALUE)
-						.addComponent(comboBoxVideos, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(comboBoxUsuObj, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(comboBoxListas, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap(166, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(242, Short.MAX_VALUE)
-					.addComponent(btnAceptar)
-					.addGap(18)
-					.addComponent(btnCancelar)
-					.addContainerGap())
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(listListas, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(comboBoxUsuario, 0, 129, Short.MAX_VALUE)
+							.addComponent(comboBoxVideos, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(comboBoxUsuObj, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(comboBoxTipoListas, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+					.addContainerGap(344, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -99,8 +104,10 @@ public class AgregarVideo extends JInternalFrame{
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblListas)
-						.addComponent(comboBoxListas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+						.addComponent(comboBoxTipoListas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(listListas, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancelar)
 						.addComponent(btnAceptar))
@@ -193,5 +200,4 @@ public class AgregarVideo extends JInternalFrame{
 		ctrUsu = null;
 		
 	}
-
 }
