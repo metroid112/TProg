@@ -366,7 +366,7 @@ public class AltaUsuario extends JInternalFrame {
 					throw new Exception("Formato de fecha incorrecto", ex);
 				}
 				ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, 
-						nombreCanal, privado, descripcion, comentarios, calificaciones, seguidores,
+						nombreCanal, !privado, descripcion, comentarios, calificaciones, seguidores,
 						seguidos);
 				
 				JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
