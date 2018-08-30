@@ -390,5 +390,24 @@ public class Main {
 		this.usuariosCanales.seguir("chino", "tonyp");
 		this.usuariosCanales.seguir("tonyp", "chino");
 		this.usuariosCanales.seguir("nicoJ", "diegop");
+		
+		try {
+			this.categorias.altaCategoria("Música");
+			this.categorias.altaCategoria("Deporte");
+			this.categorias.altaCategoria("Carnaval");
+			this.categorias.altaCategoria("Noticias");
+			this.categorias.altaCategoria("Entretenimiento");
+			this.categorias.altaCategoria("Comida");
+			this.categorias.altaCategoria("Videojuegos");
+			this.categorias.altaCategoria("Ciencia y Tecnología");
+			this.categorias.altaCategoria("ONG y activismo");
+			this.categorias.altaCategoria("Gente y blogs");
+			this.categorias.altaCategoria("Mascotas y animales");
+			this.categorias.altaCategoria("Viajes y eventos");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 }
