@@ -298,7 +298,6 @@ public class Main {
 		mntmCargaDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas()) {
-<<<<<<< HEAD
 					try {
 						cargarDatos();
 					} catch (Exception e1) {
@@ -347,19 +346,19 @@ public class Main {
 		logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
 		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
-		this.usuariosCanales.altaUsuario("mbusca", "Martín", "Buscaglia", "Martin.bus@agadu.org.uy", format.parse("14/06/1972"), "img\\horacio.JPG", "El bocha", "Mi canal para colgar cosas", true);
-		this.usuariosCanales.altaUsuario("hectorg", "Héctor", "Guido", "hector.gui@elgalpon.org.uy", format.parse("07/01/1954"), "img\\horacio.JPG", "hectorg", "Canal HG", true);
-		this.usuariosCanales.altaUsuario("tabarec", "Tabaré", "Cardozo", "tabare.car@agadu.org.uy", format.parse("24/07/1971"), "img\\horacio.JPG", "Tabaré", "Mi música e ainda mais", true);
-		this.usuariosCanales.altaUsuario("cachilas", "Waldemar \"Cachila\"", "Silva", "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"), "img\\horacio.JPG", "El Cachila", "Para juntar cosas", false);
-		this.usuariosCanales.altaUsuario("juliob", "Julio", "Bocca", "juliobocca@sodre.com.uy", format.parse("16/03/1967"), "img\\horacio.JPG", "juliob", "Canal de JB", true);
-		this.usuariosCanales.altaUsuario("diegop", "Diego", "Parodi", "diego@efectocine.com", format.parse("01/01/1975"), "img\\horacio.JPG", "diegop", "Canal de DP", true);
-		this.usuariosCanales.altaUsuario("kairoh", "Kairo", "Herrera", "kairoher@pilsenrock.com.uy", format.parse("25/04/1840"), "img\\horacio.JPG", "Kairo música", "Videos de grandes canciones de hoy y siempre", true);
-		this.usuariosCanales.altaUsuario("robinh", "Robin", "Henderson", "Robin.h@tinglesa.com.uy", format.parse("03/08/1940"), "img\\horacio.JPG", "robinh", "Henderson", true);
-		this.usuariosCanales.altaUsuario("marcelot", "Marcelo", "Tinelli", "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"), "img\\horacio.JPG", "Tinelli total", "Todo lo que querías y más !", true);
-		this.usuariosCanales.altaUsuario("novick", "Edgardo", "Novick", "edgardo@novick.com.uy", format.parse("17/07/1952"), "img\\horacio.JPG", "Con la gente", "Preparando las elecciones", true);
-		this.usuariosCanales.altaUsuario("sergiop", "Sergio", "Puglia", "puglia@alpanpan.com.uy", format.parse("28/01/1950"), "img\\horacio.JPG", "Puglia invita", "Programas del ciclo y videos de cocina masterchef", true);
-		this.usuariosCanales.altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy", format.parse("17/03/1976"), "img\\horacio.JPG", "Chino Recoba", "Canal de goles con Nacional ", false);
-		this.usuariosCanales.altaUsuario("tonyp", "Antonio", "Pacheco", "eltony@manya.org.uy", format.parse("14/02/1955"), "img\\horacio.JPG", "Tony Pacheco", "Todos los goles con Peñarol", false);
-		this.usuariosCanales.altaUsuario("nicoJ", "Nicolás", "Jodal", "jodal@artech.com.uy", format.parse("09/08/1960"), "img\\horacio.JPG", "Desde Genexus", "Canal información C y T", true);
+		this.usuariosCanales.altaUsuario("mbusca", "Martín", "Buscaglia", "Martin.bus@agadu.org.uy", format.parse("14/06/1972"), "img\\martin.JPG", "El bocha", "Mi canal para colgar cosas", true);
+		this.usuariosCanales.altaUsuario("hectorg", "Héctor", "Guido", "hector.gui@elgalpon.org.uy", format.parse("07/01/1954"), "img\\null.JPG", "hectorg", "Canal HG", true);
+		this.usuariosCanales.altaUsuario("tabarec", "Tabaré", "Cardozo", "tabare.car@agadu.org.uy", format.parse("24/07/1971"), "img\\tabare.JPG", "Tabaré", "Mi música e ainda mais", true);
+		this.usuariosCanales.altaUsuario("cachilas", "Waldemar \"Cachila\"", "Silva", "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"), "img\\cachila.JPG", "El Cachila", "Para juntar cosas", false);
+		this.usuariosCanales.altaUsuario("juliob", "Julio", "Bocca", "juliobocca@sodre.com.uy", format.parse("16/03/1967"), "img\\null.JPG", "juliob", "Canal de JB", true);
+		this.usuariosCanales.altaUsuario("diegop", "Diego", "Parodi", "diego@efectocine.com", format.parse("01/01/1975"), "img\\null.JPG", "diegop", "Canal de DP", true);
+		this.usuariosCanales.altaUsuario("kairoh", "Kairo", "Herrera", "kairoher@pilsenrock.com.uy", format.parse("25/04/1840"), "img\\kairo.JPG", "Kairo música", "Videos de grandes canciones de hoy y siempre", true);
+		this.usuariosCanales.altaUsuario("robinh", "Robin", "Henderson", "Robin.h@tinglesa.com.uy", format.parse("03/08/1940"), "img\\null.JPG", "robinh", "Henderson", true);
+		this.usuariosCanales.altaUsuario("marcelot", "Marcelo", "Tinelli", "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"), "img\\null.JPG", "Tinelli total", "Todo lo que querías y más !", true);
+		this.usuariosCanales.altaUsuario("novick", "Edgardo", "Novick", "edgardo@novick.com.uy", format.parse("17/07/1952"), "img\\null.JPG", "Con la gente", "Preparando las elecciones", true);
+		this.usuariosCanales.altaUsuario("sergiop", "Sergio", "Puglia", "puglia@alpanpan.com.uy", format.parse("28/01/1950"), "img\\null.JPG", "Puglia invita", "Programas del ciclo y videos de cocina masterchef", true);
+		this.usuariosCanales.altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy", format.parse("17/03/1976"), "img\\recoba.JPG", "Chino Recoba", "Canal de goles con Nacional ", false);
+		this.usuariosCanales.altaUsuario("tonyp", "Antonio", "Pacheco", "eltony@manya.org.uy", format.parse("14/02/1955"), "img\\pacheco.JPG", "Tony Pacheco", "Todos los goles con Peñarol", false);
+		this.usuariosCanales.altaUsuario("nicoJ", "Nicolás", "Jodal", "jodal@artech.com.uy", format.parse("09/08/1960"), "img\\null.JPG", "Desde Genexus", "Canal información C y T", true);
 	}
 }
