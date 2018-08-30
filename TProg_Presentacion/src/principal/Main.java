@@ -97,6 +97,8 @@ public class Main {
 		frames.add(frmVerInfoUsuario);
 		frames.add(frmConsultaVideo);
 		frames.add(frmAltaVideo);
+		//relaciones
+		frmVerInfoUsuario.SetPadre(frmConsultaUsuario);
 		
 		for (JInternalFrame frame: frames) {
 			frame.setVisible(false);
@@ -295,7 +297,7 @@ public class Main {
 		mntmCargaDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas()) {
-					cargarDatos();
+					//cargarDatos();
 				}
 			}
 		});
