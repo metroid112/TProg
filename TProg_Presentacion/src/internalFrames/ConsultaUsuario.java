@@ -21,7 +21,10 @@ import javax.swing.JOptionPane;
 public class ConsultaUsuario extends JInternalFrame {
 	SelectorUsuarios panel = new SelectorUsuarios();
 	//private JInternalFrame infoUsuario;
-	
+	public void SetVisible(boolean b) {
+		setEnabled(b);
+	}
+
 	public ConsultaUsuario(VerInformacionUsuario ventanaInfo) {
 		/*groupLayout_1.setHorizontalGroup(
 			groupLayout_1.createParallelGroup(Alignment.LEADING)
@@ -32,7 +35,7 @@ public class ConsultaUsuario extends JInternalFrame {
 				.addGap(0, 409, Short.MAX_VALUE)
 		);*/
 		setTitle("Consultar Usuario");
-		setBounds(100, 100, 466, 490);
+		setBounds(100, 10, 466, 490);
 		
 		JButton btnNewButton = new JButton("Cerrar");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -50,7 +53,7 @@ public class ConsultaUsuario extends JInternalFrame {
 					//VerInformacionUsuario verInformacion = new VerInformacionUsuario(usuarioSeleccionado);
 					ventanaInfo.CargarInformacionUsuario(usuarioSeleccionado);
 					ventanaInfo.setVisible(true);
-					JOptionPane.showMessageDialog(getFocusOwner(), "Entro", "Um suceso", getDefaultCloseOperation());
+					setVisible(false);
 				}
 				else {
 					JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un usuario", "Error", getDefaultCloseOperation());
