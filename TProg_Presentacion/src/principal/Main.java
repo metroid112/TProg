@@ -362,5 +362,33 @@ public class Main {
 		this.usuariosCanales.altaUsuario("nicoJ", "Nicolás", "Jodal", "jodal@artech.com.uy", format.parse("09/08/1960"), "img\\null.JPG", "Desde Genexus", "Canal información C y T", true);
 		
 		this.usuariosCanales.seguir("hrubino", "hectorg");
+		this.usuariosCanales.seguir("hrubino", "hectorg");
+		this.usuariosCanales.seguir("mbusca", "tabarec");
+		this.usuariosCanales.seguir("mbusca", "cachilas");
+		this.usuariosCanales.seguir("mbusca", "kairoh");
+		this.usuariosCanales.seguir("hectorg", "mbusca");
+		this.usuariosCanales.seguir("hectorg", "juliob");
+		this.usuariosCanales.seguir("tabarec", "hrubino");
+		this.usuariosCanales.seguir("tabarec", "cachilas");
+		this.usuariosCanales.seguir("cachilas", "hrubino");
+		this.usuariosCanales.seguir("juliob", "mbusca");
+		this.usuariosCanales.seguir("juliob", "diegop");
+		this.usuariosCanales.seguir("diegop", "hectorg");
+		this.usuariosCanales.seguir("kairoh", "sergiop");
+		this.usuariosCanales.seguir("robinh", "hectorg");
+		this.usuariosCanales.seguir("robinh", "juliob");
+		this.usuariosCanales.seguir("robinh", "diegop");
+		this.usuariosCanales.seguir("marcelot", "cachilas");
+		this.usuariosCanales.seguir("marcelot", "juliob");
+		this.usuariosCanales.seguir("marcelot", "kairoh");
+		this.usuariosCanales.seguir("novick", "hrubino");
+		this.usuariosCanales.seguir("novick", "cachilas");
+		this.usuariosCanales.seguir("novick", "juliob");
+		this.usuariosCanales.seguir("sergiop", "mbusca");
+		this.usuariosCanales.seguir("sergiop", "juliob");
+		this.usuariosCanales.seguir("sergiop", "kairoh");
+		this.usuariosCanales.seguir("chino", "tonyp");
+		this.usuariosCanales.seguir("tonyp", "chino");
+		this.usuariosCanales.seguir("nicoJ", "diegop");
 	}
 }
