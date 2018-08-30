@@ -295,7 +295,11 @@ public class Main {
 		mntmCargaDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas()) {
-					cargarDatos();
+					try {
+						cargarDatos();
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
