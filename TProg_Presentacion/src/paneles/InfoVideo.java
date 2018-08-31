@@ -2,8 +2,9 @@ package paneles;
 
 import javax.swing.JPanel;
 
+import java.util.Date;
 import java.text.SimpleDateFormat;
-
+import java.time.Duration;
 import java.util.LinkedHashMap;
 
 
@@ -142,7 +143,7 @@ public class InfoVideo extends JPanel {
 		);
 		
 
-		tree = new JTree();	// TODO arbol
+		tree = new JTree();
 
 		scrollPane.setColumnHeaderView(tree);
 		setLayout(groupLayout);
@@ -159,9 +160,15 @@ public class InfoVideo extends JPanel {
 			lblVvisibilidad.setText("Privado");
 		}
 		lblVcategoria.setText(dtVid.getCategoria());
-		lblVduracion.setText(dtVid.getDuracion().toString()); 	// Formato?
+		Duration duracion = dtVid.getDuracion();
+		int horas = (int) duracion.toHours();
+		duracion = duracion.minusHours((long) horas);
+		int min = (int) duracion.toMinutes();
+		duracion = duracion.minusMinutes((long) min);
+		int seg = (int) duracion.getSeconds();
+		lblVduracion.setText(String.format("%d:%02d:%02d", horas, min, seg)); 	// Formato?
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		lblVfecha.setText(dateFormat.format(dtVid.getFecha()));	// Formato?
+		lblVfecha.setText(dateFormat.format(dtVid.getFecha()));
 
 		
 		DefaultMutableTreeNode raiz = loadComentarios(dtVid.getComents(), dtVid.getNombre());

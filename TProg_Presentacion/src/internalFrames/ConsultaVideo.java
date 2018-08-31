@@ -88,7 +88,7 @@ public class ConsultaVideo extends JInternalFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
+				//contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
 				cambioPanel();		// Vuelvo al panel de seleccion
 				
 			}
