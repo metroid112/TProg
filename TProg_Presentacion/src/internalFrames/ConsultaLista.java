@@ -131,18 +131,18 @@ public class ConsultaLista extends JInternalFrame{
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					
 					listListas.removeAllElements();
-					modelListas.addElement("Por defecto");
-					modelListas.addElement("Particular");
-					comboBoxListas.setEnabled(true);					
-				}
-				else{ 
-					comboBoxListas.setEnabled(false);
-					if(comboBoxListas.getSelectedItem().toString() == "Por defecto"){
+
+					comboBoxListas.setEnabled(true);
+					/*if(comboBoxListas.getSelectedItem().toString() == "Por defecto"){
 						cargarDefectoListas();
 					}
-					else{
+					if(comboBoxListas.getSelectedItem().toString() == "Particular"){
 						cargarParticularListas();
-					}
+					}*/
+				}
+				else{ 
+
+					comboBoxListas.setEnabled(false);
 				}
 			}
 		});
@@ -173,6 +173,9 @@ public class ConsultaLista extends JInternalFrame{
 		  modelUsuario.addElement(usuarios[i]);
 		}
 		ctrUsu = null;
+		
+		modelListas.addElement("Por defecto");
+		modelListas.addElement("Particular");
 	}
 	
 	
