@@ -35,6 +35,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				padre.SetVisible(true);
+				//getContentPane().removeAll();
 			}
 		});
 		panel.add(btnNewButton);
