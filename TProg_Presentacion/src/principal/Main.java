@@ -408,6 +408,18 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		//this.videos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha);
+		//this.videos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha, visible);
+		
+		//this.listas.altaListaDefecto(nombre)
+		
+		//this.listas.altaListaParticular(nombre, categoria, visibilidad)
+		
+		//this.listas.agregarVideo(nombreLista, nombreVideo)
+		
+		//this.usuariosCanales.agregarVideo(nick, nombreVideo)
+		
+		//this.videos.comentar(nombreVideo, autor, comentarioPadre, comentario, fecha)
+		
+		//this.videos.calificar(nombreVideo, autor, meGusta)
 	}
 }
