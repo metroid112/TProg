@@ -12,6 +12,9 @@ public interface IVideos {
 
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
 			String categoria, Date fecha);
+	
+	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
+			String categoria, Date fecha, boolean visible);
 
 	public String[] listarVideos(String nickname);
 
