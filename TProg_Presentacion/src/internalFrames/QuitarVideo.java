@@ -118,6 +118,8 @@ public class QuitarVideo extends JInternalFrame{
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					
 					comboBoxTipoListas.setEnabled(true);
+					modelLisUsu.addElement("Por defecto");
+					modelLisUsu.addElement("Particular");
 				}
 				else comboBoxTipoListas.setEnabled(false);
 			}
@@ -142,7 +144,9 @@ public class QuitarVideo extends JInternalFrame{
 						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
 						checkUsuario = false;
 				}
-				if(checkUsuario){}
+				if(checkUsuario){
+
+				}
 			}
 		});
 	}

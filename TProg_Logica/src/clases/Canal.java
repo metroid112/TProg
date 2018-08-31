@@ -127,13 +127,12 @@ public class Canal {
 	}
 
 
-	public String[] getListaUsuario() {
+	public String[] getListaDefectoUsuario() {
 		
 
-		String[] listasArrDefecto = listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
-		String[] listasArrParticular = listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
+		return listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
 		
-		return Stream.concat(Arrays.stream(listasArrDefecto),Arrays.stream(listasArrParticular)).toArray(String[]::new);
+		//return Stream.concat(Arrays.stream(listasArrDefecto),Arrays.stream(listasArrParticular)).toArray(String[]::new);
 	}
 	
 	public String[] getListaParticularUsuario() {

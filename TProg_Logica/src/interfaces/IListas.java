@@ -6,7 +6,7 @@ public interface IListas {
 	
 	public void altaListaDefecto(String nombre) throws Exception;
 	
-	public  String[] listarListasUsuario(String usuario);
+	public  String[] listarListasDefectoUsuario(String usuario);
 	
 	public  String[] listarListasParticularUsuario(String usuario);
 	

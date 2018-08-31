@@ -44,12 +44,12 @@ public class CtrlListas implements IListas {
 		}		
 	}
 	
-	public  String[] listarListasUsuario(String usuario){
+	public  String[] listarListasDefectoUsuario(String usuario){
 		
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
 		Canal canalObjetivo = usuarioObjetivo.getCanal();
 		
-		return canalObjetivo.getListaUsuario();
+		return canalObjetivo.getListaDefectoUsuario();
 
 	}
 	
