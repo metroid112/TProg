@@ -1,4 +1,4 @@
-package internalFrames;
+package paneles;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -35,8 +35,12 @@ public class DetallesUsuario extends JPanel {
 	private String noImagen = "img\\sinImagen.jpg";
 	private DefaultListModel<String> modelListas = new DefaultListModel<>();
 	private JList<String> listasDeReproduccion =  new JList<>(modelListas);
+	private DefaultListModel<String> modelSeguidores = new DefaultListModel<>();
+	private DefaultListModel<String> modelSeguidos = new DefaultListModel<>();
+	private JList<String> listaSeguidores = new JList<>(modelSeguidores);
+	private JList<String> listaSeguidos = new JList<>(modelSeguidos);
 	private DefaultListModel<String> modelVideos = new DefaultListModel<>();
-	private JList<String> videos =  new JList<>(modelListas);
+	private JList<String> videos =  new JList<>(modelVideos);
 	private boolean editar = false;
 	public void SetEditar(boolean b) {
 		this.editar = b;
@@ -251,10 +255,8 @@ public class DetallesUsuario extends JPanel {
 					.addContainerGap())
 		);
 		
-		JList listaSeguidores = new JList();
 		scrollPane_Seguidores.setViewportView(listaSeguidores);
 		
-		JList listaSeguidos = new JList();
 		scrollPane_Seguidos.setViewportView(listaSeguidos);
 		scrollPane_1.setViewportView(listasDeReproduccion);
 		scrollPane.setViewportView(videos);
@@ -262,8 +264,34 @@ public class DetallesUsuario extends JPanel {
 		
 		//cargarDatosListas(usuario);
 		//cargarDatosVideos(usuario);
+		//cargarDatosSeguidores(usuario);
+		//cargarDatosSeguidos(usuario);
 		setVisible(true);
 	}
+	public void cargarDatosSeguidores(String usuario){
+		modelSeguidores.removeAllElements();
+		fab = Fabrica.getFabrica();
+		ctrlUsu = fab.getIUsuariosCanales();
+	
+		String[] Seguidores = ctrlUsu.listarSeguidores(usuario);
+		int largo = Seguidores.length;
+		for (int i = 0; i < largo; i++ ){
+			modelSeguidores.addElement(Seguidores[i]);
+		}
+			ctrlUsu = null;
+		}
+	public void cargarDatosSeguidos(String usuario){
+		modelSeguidos.removeAllElements();
+		fab = Fabrica.getFabrica();
+		ctrlUsu = fab.getIUsuariosCanales();
+	
+		String[] Seguidos = ctrlUsu.listarSeguidos(usuario);
+		int largo = Seguidos.length;
+		for (int i = 0; i < largo; i++ ){
+			modelSeguidos.addElement(Seguidos[i]);
+		}
+			ctrlUsu = null;
+		}
 	public void cargarDatosListas(String usuario){
 		modelListas.removeAllElements();
 		fab = Fabrica.getFabrica();
@@ -298,4 +326,8 @@ public class DetallesUsuario extends JPanel {
 		return videos.getSelectedValue();
 		//return model.
 	}
+	
+	//public void clean() {
+		
+	//}
 }
