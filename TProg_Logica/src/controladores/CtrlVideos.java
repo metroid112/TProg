@@ -44,4 +44,10 @@ public class CtrlVideos implements IVideos {
 		Video vid = mUsu.get(usuario).getCanal().getVideoCanal(video);
 		return vid.getDT();
 	}
+
+	@Override
+	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
+			String categoria, Date fecha, boolean visible) {
+		mUsu.get(nick).getCanal().altaVideo(nombre, descripcion, duracion, url, categoria, fecha, visible);
+	}
 }

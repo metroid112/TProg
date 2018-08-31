@@ -165,4 +165,10 @@ public class Canal {
 
 		return videos.get(video);
 	}
+
+	public void altaVideo(String nombre, String descripcion, Duration duracion, String url, String categoria,
+			Date fecha, boolean visible) {
+		//this.videos.put(nombre, new Video(nombre, descripcion, duracion, url, categoria, fecha, visible))
+		
+	}
 }
