@@ -143,7 +143,7 @@ public class InfoVideo extends JPanel {
 		);
 		
 
-		tree = new JTree();	// TODO arbol
+		tree = new JTree();
 
 		scrollPane.setColumnHeaderView(tree);
 		setLayout(groupLayout);
