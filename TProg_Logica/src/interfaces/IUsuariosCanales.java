@@ -24,9 +24,9 @@ public interface IUsuariosCanales {
   
 	public String[] listarUsuarios();
 	
-	public String[] listarSeguidos();
+	public String[] listarSeguidos(String nick);
 	
-	public String[] listarSeguidores() ;
+	public String[] listarSeguidores(String nick) ;
 	
 	public String[] listarVideos(String nick);
 	

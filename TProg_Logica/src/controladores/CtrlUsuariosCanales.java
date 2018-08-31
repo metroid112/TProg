@@ -41,6 +41,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			
 			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento);
 			canal.setUsuario(usu);
+			usu.setCanal(canal);
 			manejadorUsuarios.add(usu);
 	}
 
@@ -57,12 +58,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.toArray();
 	}
 	
-	public String[] listarSeguidos() {
-		return manejadorUsuarios.toArray();
+	public String[] listarSeguidos(String nick) {
+		return manejadorUsuarios.get(nick).getSeguidos().toArray(new String[manejadorUsuarios.get(nick).getSeguidos().size()]);
 	}
 	
-	public String[] listarSeguidores() {
-		return manejadorUsuarios.toArray();
+	public String[] listarSeguidores(String nick) {
+		return manejadorUsuarios.get(nick).getSeguidores().toArray(new String[manejadorUsuarios.get(nick).getSeguidores().size()]);
 	}
 	
 	public String[] listarVideos(String nick) {

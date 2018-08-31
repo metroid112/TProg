@@ -47,8 +47,8 @@ public class Usuario {
 		else {
 			this.calificaciones = new Calificacion[0];
 		}		
-		this.seguidores = seguidores;
-		this.seguidos = seguidos;
+		//this.seguidores = seguidores;
+		//this.seguidos = seguidos;
 }
 
 	public Usuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento) {

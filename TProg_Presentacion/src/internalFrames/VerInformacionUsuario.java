@@ -6,6 +6,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+import paneles.DetallesUsuario;
+
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
@@ -34,7 +37,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				padre.SetVisible(true);
+				//padre.SetVisible(true);
 				//getContentPane().removeAll();
 			}
 		});
