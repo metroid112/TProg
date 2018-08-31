@@ -19,7 +19,7 @@ public class DtVideo {
 	private LinkedHashMap<Integer, DtComentario> comentarios = new LinkedHashMap<Integer, DtComentario>();
 	
 	public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha, Duration duracion,
-			boolean visibile, LinkedHashMap<Integer, Comentario> comentarios) {
+			boolean visible, LinkedHashMap<Integer, Comentario> comentarios) {
 
 		this.nombre = nombre;
 		this.URL = url;
@@ -36,6 +36,7 @@ public class DtVideo {
 			DtComentario dtCom = com.getDT();		// Creo Dt
 			this.comentarios.put(dtCom.getId(), dtCom); 		// Lo agrego a la coleccion
 		}
+		this.visible = visible;
 		
 
 	}
