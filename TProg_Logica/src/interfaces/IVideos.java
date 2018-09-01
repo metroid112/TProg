@@ -3,6 +3,7 @@ package interfaces;
 import java.time.Duration;
 import java.util.Date;
 
+import clases.Categoria;
 import dataTypes.DtVideo;
 
 public interface IVideos {

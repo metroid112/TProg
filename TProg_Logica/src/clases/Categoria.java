@@ -78,4 +78,8 @@ public class Categoria {
 		}
 		return infoListas;		
 	}
+	
+	public boolean equals(Categoria categoria) {
+		return (this.nombre.equals(categoria.nombre));
+	}
 }

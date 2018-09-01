@@ -40,6 +40,18 @@ public class Video {
 		
 	}
 
+	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Date fecha,
+			boolean visible, Canal canal) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.duracion = duracion;
+		this.url = url;
+		this.categoria = categoria;
+		this.fecha = fecha;
+		this.visible = visible;
+		this.canal = canal;
+	}
+
 	public DtVideo getDT() {
 
 		return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha, this.duracion,

@@ -48,7 +48,7 @@ public class ModificarVideo extends JInternalFrame {
 	public ModificarVideo(IVideos contVid) {
 		this.contVid = contVid;
 		setTitle("Modificar Video");
-		setBounds(100, 100, 500, 450);
+		setBounds(100, 100, 500, 480);
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
 		JPanel panelSeleccion = new JPanel();
@@ -163,7 +163,7 @@ public class ModificarVideo extends JInternalFrame {
 		gl_panelMod.setHorizontalGroup(
 			gl_panelMod.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelMod.createSequentialGroup()
-					.addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panelMod.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panelMod.createSequentialGroup()
 							.addGap(37)
 							.addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
@@ -176,14 +176,14 @@ public class ModificarVideo extends JInternalFrame {
 								.addComponent(lblVisibilidad))
 							.addGap(18)
 							.addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
 								.addGroup(gl_panelMod.createSequentialGroup()
 									.addComponent(rdbtnPublico)
 									.addGap(18)
 									.addComponent(rdbtnPrivado))
 								.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(cBoxCategoria, 0, 361, Short.MAX_VALUE)
-								.addComponent(tfNombre, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
-								.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+								.addComponent(cBoxCategoria, 0, 347, Short.MAX_VALUE)
+								.addComponent(tfNombre, GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
 								.addGroup(gl_panelMod.createSequentialGroup()
 									.addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
@@ -196,9 +196,9 @@ public class ModificarVideo extends JInternalFrame {
 									.addComponent(spinnerSeg, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(lblSeg))
-								.addComponent(tfURL, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)))
-						.addGroup(Alignment.TRAILING, gl_panelMod.createSequentialGroup()
-							.addContainerGap(312, Short.MAX_VALUE)
+								.addComponent(tfURL, GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
+						.addGroup(gl_panelMod.createSequentialGroup()
+							.addContainerGap(272, Short.MAX_VALUE)
 							.addComponent(btnModificarDatos)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnVolver)))
@@ -214,8 +214,8 @@ public class ModificarVideo extends JInternalFrame {
 					.addGap(18)
 					.addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblDescripcion)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblDuracion)
 						.addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -249,6 +249,9 @@ public class ModificarVideo extends JInternalFrame {
 		);
 		
 		textDescripcion = new JTextArea();
+		textDescripcion.setWrapStyleWord(true);
+		textDescripcion.setLineWrap(true);
+		textDescripcion.setRows(5);
 		scrollPane.setViewportView(textDescripcion);
 		panelMod.setLayout(gl_panelMod);
 
@@ -341,7 +344,7 @@ public class ModificarVideo extends JInternalFrame {
 			} else {
 				visible = true;
 			}
-			if (datosCorrectos(nombre, url, duracion )) {
+			if (datosCorrectos(nombre, url, duracion ) && duracion.isZero()) {
 				contVid.modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fecha);
 				JOptionPane.showMessageDialog(this, "Datos modificados con exito");
 				setVisible(false);

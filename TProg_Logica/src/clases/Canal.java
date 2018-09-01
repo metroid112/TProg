@@ -162,9 +162,15 @@ public class Canal {
 		return videos.get(video);
 	}
 
-	public void altaVideo(String nombre, String descripcion, Duration duracion, String url, String categoria,
+	public Video altaVideo(String nombre, String descripcion, Duration duracion, String url, Categoria categoria,
 			Date fecha, boolean visible) {
+<<<<<<< HEAD
 		//this.videos.put(nombre, new Video(nombre, descripcion, duracion, url, categoria, fecha, visible));
 		
+=======
+		Video video = new Video(nombre, descripcion, duracion, url, categoria, fecha, visible, this);
+		this.videos.put(nombre, video);		
+		return video;
+>>>>>>> master
 	}
 }
