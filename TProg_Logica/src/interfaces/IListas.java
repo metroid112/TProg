@@ -11,4 +11,6 @@ public interface IListas {
 	public  String[] listarListasParticularUsuario(String usuario);
 	
 	public void guardarCambios(String nomLis,String usuario,boolean visible);
+	
+	public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista, boolean defecto);
 }

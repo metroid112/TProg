@@ -11,6 +11,7 @@ import java.util.Map;
 import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Canal;
+import clases.Categoria;
 import clases.Usuario;
 import clases.Video;
 
@@ -65,6 +66,22 @@ public class CtrlListas implements IListas {
 	public void guardarCambios(String nomLis, String usuario, boolean visible){
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
 		usuarioObjetivo.getCanal().guardarCambios(nomLis,visible);
+	}
+	
+	public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista, boolean defecto){
+		Usuario uInicial = manejadorUsuarios.get(usuario);
+		Usuario uObjetivo = manejadorUsuarios.get(usuarioObjetivo);
+		
+		Video videoObj = uInicial.getCanal().getVideoCanal(video);
+		Categoria categoriasVideo = videoObj.getCategoria();
+		
+		
+		if(){
+		//pregunto si el video ya xiste en esa lista
+		//busco la lista y chequeo sus categorias
+		// inserto el video
+		}
+		
 	}
 	
 	}

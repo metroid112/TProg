@@ -32,7 +32,6 @@ public class AgregarVideo extends JInternalFrame{
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelUsuObj = new DefaultComboBoxModel<String>();
-	private DefaultComboBoxModel<String> modelListas = new DefaultComboBoxModel<String>();
 	private DefaultListModel<String> listListas = new DefaultListModel<>();
 
 	public AgregarVideo() {
@@ -137,7 +136,6 @@ public class AgregarVideo extends JInternalFrame{
 				modelUsuario.removeAllElements();
 				modelVideos.removeAllElements();
 				modelUsuObj.removeAllElements();
-				modelListas.removeAllElements();
 				rdbtnListasPordefecto.setEnabled(false);
 				rdbtnListasPordefecto.setSelected(true);
 				rdbtnListasParticulares.setEnabled(false);
@@ -156,13 +154,14 @@ public class AgregarVideo extends JInternalFrame{
 						checkUsuario = false;
 				}
 				if(checkUsuario){
-					
-					//agregarVideo(String video, String usuario, String lista);
+					ctrLis = fab.getIListas();
+					ctrLis.agregarVideoLista(modelUsuario.getSelectedItem().toString(),modelVideos.getSelectedItem().toString(), 
+							modelUsuObj.getSelectedItem().toString(), 
+							list.getSelectedValue().toString(),rdbtnListasPordefecto.isSelected());
 					
 					modelUsuario.removeAllElements();
 					modelVideos.removeAllElements();
 					modelUsuObj.removeAllElements();
-					modelListas.removeAllElements();
 					rdbtnListasPordefecto.setEnabled(false);
 					rdbtnListasPordefecto.setSelected(true);
 					rdbtnListasParticulares.setEnabled(false);
@@ -239,7 +238,6 @@ public class AgregarVideo extends JInternalFrame{
 		
 		rdbtnListasPordefecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//rdbtnListasParticulares.setSelected(false);
 				
 				cargarDefectoListas();
 			}
@@ -247,7 +245,6 @@ public class AgregarVideo extends JInternalFrame{
 		
 		rdbtnListasParticulares.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//rdbtnListasPordefecto.setSelected(false);
 				
 				cargarParticularListas();
 			}
