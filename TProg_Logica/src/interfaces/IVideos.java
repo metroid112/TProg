@@ -15,7 +15,7 @@ public interface IVideos {
 			String categoria, Date fecha);
 	
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
-			Categoria categoria, Date fecha, boolean visible);
+			String categoria, Date fecha, boolean visible);
 
 	public String[] listarVideos(String nickname);
 

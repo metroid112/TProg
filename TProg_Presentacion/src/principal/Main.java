@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -420,8 +421,23 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		//this.videos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha, visible);
+
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
 		
 		//this.listas.altaListaDefecto(nombre)
 		

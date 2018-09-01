@@ -50,9 +50,10 @@ public class CtrlVideos implements IVideos {
 
 	@Override
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
-			Categoria categoria, Date fecha, boolean visible) {
-		Video video = mUsu.get(nick).getCanal().altaVideo(nombre, descripcion, duracion, url, categoria, fecha, visible);
-		mCat.get(categoria.getNombre()).addVideo(video);
+			String categoria, Date fecha, boolean visible) {
+		Categoria category = mCat.get(categoria);
+		Video video = mUsu.get(nick).getCanal().altaVideo(nombre, descripcion, duracion, url, category, fecha, visible);
+		category.addVideo(video);
 	}
   
 	public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion, String url,
