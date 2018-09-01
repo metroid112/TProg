@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -26,7 +27,7 @@ public class AgregarVideo extends JInternalFrame{
 	private IUsuariosCanales ctrUsu;
 	private IVideos ctrVid;
 	private IListas ctrLis;
-	
+	private ButtonGroup grupoLista = new ButtonGroup();
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
@@ -60,14 +61,15 @@ public class AgregarVideo extends JInternalFrame{
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		
-		JRadioButton rdbtnListasPordefecto = new JRadioButton("Listas por defecto");
+		JRadioButton rdbtnListasPordefecto = new JRadioButton("Listas por defecto",true);
 
 		rdbtnListasPordefecto.setEnabled(false);
-		rdbtnListasPordefecto.setSelected(true);
 		
 		JRadioButton rdbtnListasParticulares = new JRadioButton("Listas particulares");
 
 		rdbtnListasParticulares.setEnabled(false);
+		grupoLista.add(rdbtnListasPordefecto);
+		grupoLista.add(rdbtnListasParticulares);
 		
 		JScrollPane scrollPane = new JScrollPane();
 
@@ -219,11 +221,11 @@ public class AgregarVideo extends JInternalFrame{
 					rdbtnListasParticulares.setEnabled(true);
 					
 					if(rdbtnListasPordefecto.isSelected()){
-						listListas.removeAllElements();
+						
 						cargarDefectoListas();
 					}
 					if(rdbtnListasParticulares.isSelected()){
-						listListas.removeAllElements();
+						
 						cargarParticularListas();
 					}
 				}
@@ -237,16 +239,16 @@ public class AgregarVideo extends JInternalFrame{
 		
 		rdbtnListasPordefecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				rdbtnListasParticulares.setSelected(false);
-				listListas.removeAllElements();
+				//rdbtnListasParticulares.setSelected(false);
+				
 				cargarDefectoListas();
 			}
 		});
 		
 		rdbtnListasParticulares.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				rdbtnListasPordefecto.setSelected(false);
-				listListas.removeAllElements();
+				//rdbtnListasPordefecto.setSelected(false);
+				
 				cargarParticularListas();
 			}
 		});
@@ -305,6 +307,7 @@ public class AgregarVideo extends JInternalFrame{
 	}
 	
 	public void cargarDefectoListas(){
+		listListas.removeAllElements();
 		fab = Fabrica.getFabrica();
 		ctrLis = fab.getIListas();
 		
@@ -325,6 +328,7 @@ public class AgregarVideo extends JInternalFrame{
 	}
 	
 	public void cargarParticularListas(){
+		listListas.removeAllElements();
 		fab = Fabrica.getFabrica();
 		ctrLis = fab.getIListas();
 		

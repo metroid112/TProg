@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -27,7 +28,7 @@ public class ConsultaLista extends JInternalFrame{
 
 	private IUsuariosCanales ctrUsu;
 	private IListas ctrLis;
-	
+	private ButtonGroup grupoLista = new ButtonGroup();
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 
@@ -51,12 +52,13 @@ public class ConsultaLista extends JInternalFrame{
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		
-		JRadioButton rdbtnListasPorDefecto = new JRadioButton("Listas por defecto");
+		JRadioButton rdbtnListasPorDefecto = new JRadioButton("Listas por defecto",true);
 		rdbtnListasPorDefecto.setEnabled(false);
-		rdbtnListasPorDefecto.setSelected(true);
 		
 		JRadioButton rdbtnListasParticulares = new JRadioButton("Listas particulares");
 		rdbtnListasParticulares.setEnabled(false);
+		grupoLista.add(rdbtnListasPorDefecto);
+		grupoLista.add(rdbtnListasParticulares);
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -135,17 +137,13 @@ public class ConsultaLista extends JInternalFrame{
 		});
 		
 		rdbtnListasPorDefecto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				rdbtnListasParticulares.setSelected(false);
-				listListas.removeAllElements();
+			public void actionPerformed(ActionEvent arg0) {		
 				cargarDefectoListas();
 			}
 		});
 		
 		rdbtnListasParticulares.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				rdbtnListasPorDefecto.setSelected(false);
-				listListas.removeAllElements();
+			public void actionPerformed(ActionEvent e) {		
 				cargarParticularListas();
 			}
 		});
@@ -159,13 +157,10 @@ public class ConsultaLista extends JInternalFrame{
 					rdbtnListasParticulares.setEnabled(true);
 					rdbtnListasPorDefecto.setEnabled(true);
 
-
-					if(rdbtnListasPorDefecto.isSelected()){
-						listListas.removeAllElements();
+					if(rdbtnListasPorDefecto.isSelected()){						
 						cargarDefectoListas();
 					}
-					if(rdbtnListasParticulares.isSelected()){
-						listListas.removeAllElements();
+					if(rdbtnListasParticulares.isSelected()){						
 						cargarParticularListas();
 					}
 					
@@ -212,10 +207,11 @@ public class ConsultaLista extends JInternalFrame{
 	
 	
 	public void cargarDefectoListas(){
+		
+		listListas.removeAllElements();
+		
 		fab = Fabrica.getFabrica();
 		ctrLis = fab.getIListas();
-		
-		
 		
 		if(modelUsuario.getSelectedItem() != null){
 			
@@ -234,6 +230,7 @@ public class ConsultaLista extends JInternalFrame{
 	}
 	
 	public void cargarParticularListas(){
+		listListas.removeAllElements();
 		fab = Fabrica.getFabrica();
 		ctrLis = fab.getIListas();
 		

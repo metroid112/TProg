@@ -18,7 +18,8 @@ public class CrearListaReproduccion extends JInternalFrame {
 	private JTextField textFieldNombre;
 	private IUsuariosCanales ctrUsu;
 	private IListas ctrLista;
-	
+	private ButtonGroup grupoTipo = new ButtonGroup();
+	private ButtonGroup grupoVisibilidad = new ButtonGroup();
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelCategoria = new DefaultComboBoxModel<String>();
@@ -32,11 +33,11 @@ public class CrearListaReproduccion extends JInternalFrame {
 		
 		JLabel lblTipoDeLista = new JLabel("Tipo de lista");
 		
-		JRadioButton rdbtnPorDefecto = new JRadioButton("Por defecto");
-		rdbtnPorDefecto.setSelected(true);
+		JRadioButton rdbtnPorDefecto = new JRadioButton("Por defecto",true);
 	
 		JRadioButton rdbtnParticular = new JRadioButton("Particular");
-		
+		grupoTipo.add(rdbtnPorDefecto);
+		grupoTipo.add(rdbtnParticular);
 	
 		JLabel lblNombre = new JLabel("Nombre");
 		
@@ -50,12 +51,13 @@ public class CrearListaReproduccion extends JInternalFrame {
 		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		comboBoxUsuario.setEnabled(false);
 		
-		JRadioButton rdbtnPrivada = new JRadioButton("Privada");
-		rdbtnPrivada.setEnabled(false);
-		rdbtnPrivada.setSelected(true);
+		JRadioButton rdbtnPrivada = new JRadioButton("Privada",true);
 		
 		JRadioButton rdbtnPublica = new JRadioButton("Publica");
+		rdbtnPrivada.setEnabled(false);
 		rdbtnPublica.setEnabled(false);
+		grupoVisibilidad.add(rdbtnPrivada);
+		grupoVisibilidad.add(rdbtnPublica);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		
@@ -121,7 +123,6 @@ public class CrearListaReproduccion extends JInternalFrame {
 		
 		rdbtnParticular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				rdbtnPorDefecto.setSelected(false);
 				
 				lblNombreDeUsuario.setEnabled(true);
 				comboBoxUsuario.setEnabled(true);				
@@ -132,7 +133,6 @@ public class CrearListaReproduccion extends JInternalFrame {
 		
 		rdbtnPorDefecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				rdbtnParticular.setSelected(false);
 				
 				lblNombreDeUsuario.setEnabled(false);
 				comboBoxUsuario.setEnabled(false);
@@ -140,21 +140,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 				rdbtnPublica.setEnabled(false);
 			}
 		});
-		
-		rdbtnPrivada.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				rdbtnPublica.setSelected(false);
-				
-			}
-		});
-		
-		rdbtnPublica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				rdbtnPrivada.setSelected(false);
-				
-			}
-		});
-		
+
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);

@@ -13,7 +13,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 
 	private IUsuariosCanales ctrUsu;
 	private IListas ctrLis;
-	
+	private ButtonGroup grupoVisibilidad = new ButtonGroup();
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelLisRep = new DefaultComboBoxModel<String>();
@@ -29,12 +29,13 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		
 		JLabel lblListaDeReproduccin = new JLabel("Lista de reproducci\u00F3n");
 		
-		JRadioButton rdbtnPrivada = new JRadioButton("Privada");
-		rdbtnPrivada.setSelected(true);
+		JRadioButton rdbtnPrivada = new JRadioButton("Privada",true);
 		rdbtnPrivada.setEnabled(false);
 		
-		JRadioButton rdbtnPublica = new JRadioButton("P\u00FAblica");
+		JRadioButton rdbtnPublica = new JRadioButton("Publica");
 		rdbtnPublica.setEnabled(false);
+		grupoVisibilidad.add(rdbtnPublica);
+		grupoVisibilidad.add(rdbtnPrivada);
 		
 		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		
@@ -98,12 +99,6 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		);
 		getContentPane().setLayout(groupLayout);
 		
-		rdbtnPrivada.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				rdbtnPublica.setSelected(false);
-				
-			}
-		});
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
@@ -117,12 +112,6 @@ public class ModificarListaReproduccion extends JInternalFrame {
 			}
 		});
 		
-		rdbtnPublica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				rdbtnPrivada.setSelected(false);
-				
-			}
-		});
 		
 		comboBoxUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
