@@ -422,7 +422,7 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT1H2M2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
 		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
 		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
 		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
