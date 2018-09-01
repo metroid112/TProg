@@ -268,7 +268,7 @@ public class AltaVideo extends JInternalFrame {
 		TextoNombre.setText(null);
 		tFieldURL.setText(null);
 		tAreaDescripcion.setText(null);
-		datePicker.setDate(new Date());
+		datePicker.setDate(null);
 		cBoxCategoria.setSelectedItem(null);
 		spinnerHoras.setValue(0);
 		spinnerMinutos.setValue(0);
