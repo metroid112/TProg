@@ -6,7 +6,11 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-	ClassManejadorTest.class
+	CtrlCategoriasTest.class,
+	CtrlListasTest.class,
+	CtrlUsuariosCanalesTest.class,
+	CtrlVideosTest.class
+	//ClassManejadorTest.class
 })
 
 public class TestSuite {
