@@ -3,6 +3,7 @@ package interfaces;
 import java.time.Duration;
 import java.util.Date;
 
+import clases.Categoria;
 import dataTypes.DtVideo;
 
 public interface IVideos {
@@ -14,7 +15,7 @@ public interface IVideos {
 			String categoria, Date fecha);
 	
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
-			String categoria, Date fecha, boolean visible);
+			Categoria categoria, Date fecha, boolean visible);
 
 	public String[] listarVideos(String nickname);
 

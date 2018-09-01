@@ -30,6 +30,4 @@ public class CtrlCategorias implements ICategorias {
 		Categoria c = manejadorCategorias.get(s);
 		return c.getInfoListas();
 	}
-	
-
 }
