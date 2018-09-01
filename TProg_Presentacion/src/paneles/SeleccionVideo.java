@@ -89,8 +89,6 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 			for (String vid : videos) {
 				model.addElement(vid);
 			}
-		} else {
-			model.addElement("NULL");
 		}
 		listaVideos.setModel(model);
 	}
