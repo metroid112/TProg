@@ -65,4 +65,8 @@ public class ManejadorCategorias {
 	public Categoria getInfoVideos(String s){
 		return get(s);
 	}
+	
+	public void removeAll() {
+		this.categorias.clear();
+	}
 }

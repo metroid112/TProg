@@ -311,6 +311,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas()) {
 					try {
+						logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
 						cargarDatos();
 					} catch (Exception e1) {
 						e1.printStackTrace();
@@ -368,7 +369,6 @@ public class Main {
 	}
 	
 	public void cargarDatos() throws ParseException, IOException {
-		logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
 		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
 		this.usuariosCanales.altaUsuario("mbusca", "Martín", "Buscaglia", "Martin.bus@agadu.org.uy", format.parse("14/06/1972"), "img\\martin.JPG", "El bocha", "Mi canal para colgar cosas", true);
