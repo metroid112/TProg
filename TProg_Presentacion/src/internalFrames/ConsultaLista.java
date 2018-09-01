@@ -154,7 +154,7 @@ public class ConsultaLista extends JInternalFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxUsuario.getSelectedItem() != ""){
 					
-					listListas.removeAllElements();
+					
 					list.setEnabled(true);
 					rdbtnListasParticulares.setEnabled(true);
 					rdbtnListasPorDefecto.setEnabled(true);

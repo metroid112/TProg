@@ -195,10 +195,14 @@ public class AgregarVideo extends JInternalFrame{
 		comboBoxVideos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxVideos.getSelectedItem() != ""){
+					
 					modelUsuObj.removeAllElements();
 					comboBoxUsuObj.setEnabled(true);
+					cargarUsuarioObj();
+					
 				}
 				else{
+					
 					comboBoxUsuObj.setEnabled(false);
 					rdbtnListasPordefecto.setEnabled(false);
 					rdbtnListasParticulares.setEnabled(false);
@@ -234,12 +238,16 @@ public class AgregarVideo extends JInternalFrame{
 		rdbtnListasPordefecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				rdbtnListasParticulares.setSelected(false);
+				listListas.removeAllElements();
+				cargarDefectoListas();
 			}
 		});
 		
 		rdbtnListasParticulares.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				rdbtnListasPordefecto.setSelected(false);
+				listListas.removeAllElements();
+				cargarParticularListas();
 			}
 		});
 		
@@ -265,7 +273,13 @@ public class AgregarVideo extends JInternalFrame{
 			  modelVideos.addElement(videos[i]);
 			}
 		}
+		ctrVid = null;
 		
+	}
+	
+	public void cargarUsuarioObj(){
+		
+		fab = Fabrica.getFabrica();
 		ctrUsu = fab.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
 		int largou = usuarios.length;
@@ -294,11 +308,9 @@ public class AgregarVideo extends JInternalFrame{
 		fab = Fabrica.getFabrica();
 		ctrLis = fab.getIListas();
 		
-		
-		
-		if(modelUsuario.getSelectedItem() != null){
+		if(modelUsuObj.getSelectedItem() != null){
 			
-			String s = modelUsuario.getSelectedItem().toString();
+			String s = modelUsuObj.getSelectedItem().toString();
 			
 		    String[] listas = ctrLis.listarListasDefectoUsuario(s);
 		    
@@ -316,9 +328,9 @@ public class AgregarVideo extends JInternalFrame{
 		fab = Fabrica.getFabrica();
 		ctrLis = fab.getIListas();
 		
-		if(modelUsuario.getSelectedItem() != null){
+		if(modelUsuObj.getSelectedItem() != null){
 			
-			String s = modelUsuario.getSelectedItem().toString();
+			String s = modelUsuObj.getSelectedItem().toString();
 			
 		    String[] listas = ctrLis.listarListasParticularUsuario(s);
 		    
