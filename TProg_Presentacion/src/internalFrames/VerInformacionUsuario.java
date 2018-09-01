@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class VerInformacionUsuario extends JInternalFrame {
-
+	private DetallesUsuario paneluser = null;
 	public void SetVisible(boolean b) {
 		setEnabled(b);
 	}
@@ -37,6 +37,8 @@ public class VerInformacionUsuario extends JInternalFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
+				getContentPane().remove(paneluser);
+				paneluser = null;
 				//padre.SetVisible(true);
 				//getContentPane().removeAll();
 			}
@@ -45,8 +47,8 @@ public class VerInformacionUsuario extends JInternalFrame {
 	}
 	
 	public void CargarInformacionUsuario(String usuario) {
-		DetallesUsuario panel = new DetallesUsuario(usuario);
-		getContentPane().add(panel, BorderLayout.CENTER);
+		paneluser = new DetallesUsuario(usuario);
+		getContentPane().add(paneluser, BorderLayout.CENTER);
 	}
 
 }
