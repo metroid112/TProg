@@ -41,6 +41,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			
 			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento);
 			canal.setUsuario(usu);
+			usu.setCanal(canal);
 			manejadorUsuarios.add(usu);
 	}
 
@@ -57,12 +58,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.toArray();
 	}
 	
-	public String[] listarSeguidos() {
-		return manejadorUsuarios.toArray();
+	public String[] listarSeguidos(String nick) {
+		return manejadorUsuarios.get(nick).getSeguidos().keySet().toArray(new String[manejadorUsuarios.get(nick).getSeguidos().size()]);
 	}
 	
-	public String[] listarSeguidores() {
-		return manejadorUsuarios.toArray();
+	public String[] listarSeguidores(String nick) {
+		return manejadorUsuarios.get(nick).getSeguidores().keySet().toArray(new String[manejadorUsuarios.get(nick).getSeguidores().size()]);
 	}
 	
 	public String[] listarVideos(String nick) {
@@ -129,11 +130,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.get(nick).getCalificaciones();
 	}
 
-	public HashSet<Usuario> getSeguidores(String nick) {
+	public HashMap<String, Usuario> getSeguidores(String nick) {
 		return manejadorUsuarios.get(nick).getSeguidores();
 	}
 
-	public HashSet<Usuario> getSeguidos(String nick) {
+	public HashMap<String, Usuario> getSeguidos(String nick) {
 		return manejadorUsuarios.get(nick).getSeguidos();
 	}
 	

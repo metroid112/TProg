@@ -61,6 +61,7 @@ public class Main {
 	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
 	private ConsultaVideo frmConsultaVideo = new ConsultaVideo(videos);
 	private AltaVideo frmAltaVideo = new AltaVideo(videos);
+	private ModificarVideo frmModificarVideo = new ModificarVideo(videos);
 	
 	private JTextArea logCarga;
 	
@@ -83,6 +84,7 @@ public class Main {
 		frame.getContentPane().add(frmVerInfoUsuario);
 		frame.getContentPane().add(frmConsultaVideo);
 		frame.getContentPane().add(frmAltaVideo);
+		frame.getContentPane().add(frmModificarVideo);
 		
 		frames.add(frmConsultaLista);
 		frames.add(frmCrearListaReproduccion);
@@ -98,6 +100,7 @@ public class Main {
 		frames.add(frmVerInfoUsuario);
 		frames.add(frmConsultaVideo);
 		frames.add(frmAltaVideo);
+		frames.add(frmModificarVideo);
 		//relaciones
 		frmVerInfoUsuario.SetPadre(frmConsultaUsuario);
 		
@@ -323,6 +326,16 @@ public class Main {
 				if (!ventanasAbiertas())
 					frmAltaVideo.cargarDatos();
 					frmAltaVideo.setVisible(true);
+			}
+
+		});
+		
+		/******************* MODIFICAR VIDEO *********************/
+		mntmModificarVideo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas())
+					frmModificarVideo.cargarDatos();
+					frmModificarVideo.setVisible(true);
 			}
 
 		});
