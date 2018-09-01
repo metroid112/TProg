@@ -194,53 +194,59 @@ public class Main {
 		/************************ ALTA USUARIO ************************/
 		mntmAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmAltaUsuario.setVisible(true);
+				}
 			}
 		});
 		
 		/************************** CONSULTA USUARIO ******************/
 		mntmConsultarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ale) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmConsultaUsuario.cargarDatos();
 					frmConsultaUsuario.setVisible(true);
+				}
 			}	
 		});
 		
 		/************************ LISTAR USUARIO ************************/
 		mntmListarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ale) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmListarUsuarios.cargarDatos();
 					frmListarUsuarios.setVisible(true);
+				}
 			}
 		});
 		
 		/************************ CONSULTA LISTA ************************/
 		mntmConsultaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmConsultaLista.cargarDatos();
 					frmConsultaLista.setVisible(true);
+				}
 			}
 		});
 		
 		/************************ QUITAR VIDEO DE LISTA ************************/
 		mntmQuitarVideoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmQuitarVideo.cargarDatos();
 					frmQuitarVideo.setVisible(true);
+				}
 			}
 		});
 
 		/************************ AGREGAR VIDEO A LISTA ************************/
 		mntmAgregarVideoA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmAgregarVideo.cargarDatos();
 					frmAgregarVideo.setVisible(true);
+				}
 
 			}
 		});
@@ -249,18 +255,20 @@ public class Main {
 		mntmModificarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmModificarListaReproduccion.cargarDatos();
 					frmModificarListaReproduccion.setVisible(true);
+				}
 			}
 		});
 		
 		/************************ ALTA LISTA ************************/
 		mntmAltaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmCrearListaReproduccion.cargarDatos();
 					frmCrearListaReproduccion.setVisible(true);
+				}
 
 			}
 		});
@@ -313,9 +321,10 @@ public class Main {
 		/*********************** CONSULTA VIDEO **********************/
 		mntmConsultaVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmConsultaVideo.cargarDatos();
 					frmConsultaVideo.setVisible(true);
+				}
 			}
 
 		});
@@ -323,9 +332,10 @@ public class Main {
 		/*********************** ALTA VIDEO *************************/
 		mntmAltaVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmAltaVideo.cargarDatos();
 					frmAltaVideo.setVisible(true);
+				}
 			}
 
 		});
@@ -333,9 +343,10 @@ public class Main {
 		/******************* MODIFICAR VIDEO *********************/
 		mntmModificarVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
+				if (!ventanasAbiertas()) {
 					frmModificarVideo.cargarDatos();
 					frmModificarVideo.setVisible(true);
+				}
 			}
 
 		});
