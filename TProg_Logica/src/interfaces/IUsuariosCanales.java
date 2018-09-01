@@ -54,5 +54,7 @@ public interface IUsuariosCanales {
 	
 	public boolean isEmailUnique(String email);
 	
+	public boolean isCanalPublico(String usuario);
+	
 	public void seguir(String seguidor, String seguido);
 }
