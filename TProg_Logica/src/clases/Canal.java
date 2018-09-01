@@ -116,13 +116,13 @@ public class Canal {
 	}
 
 	public void ingresarListaDefecto(String nombre){
-		ListaDefecto nuevaLista = new ListaDefecto(nombre,this,new LinkedList<Video>());
+		ListaDefecto nuevaLista = new ListaDefecto(nombre,this,new LinkedList<Video>(),new LinkedList<Categoria>());
 		listaDefecto.put(nombre, nuevaLista); //puede cambiar la implementacion
 	}
 	
 	public void ingresarListaParticular(String nombre, boolean visibilidad){
 		
-		ListaParticular nuevaLista = new ListaParticular(nombre,this,new LinkedList<Video>(),new HashMap<String,Categoria>(),visibilidad);
+		ListaParticular nuevaLista = new ListaParticular(nombre,this,new LinkedList<Video>(),new HashMap<String,Categoria>(),visibilidad,new LinkedList<Categoria>());
 		listaParticulares.put(nombre, nuevaLista);	//puede cambiar la implementacion
 
 	}
@@ -161,16 +161,40 @@ public class Canal {
 
 		return videos.get(video);
 	}
+	//Categoria categoria = videoObj.getCategoria();
+	
+	public void agregarVideoListaDefecto(Video videoObj, String lista){
+		ListaDefecto listaObj = listaDefecto.get(lista);
+			if(!listaObj.existeVideo(videoObj)){
+				listaObj.insertarVideo(videoObj);
+				
+				Categoria categoria = videoObj.getCategoria();
+				if(!listaObj.existeCategoria(categoria)){
+					listaObj.insertarCategoria(categoria);
+				}
+			}
+		
+	}
+	
+	public void agregarVideoListaParticular(Video videoObj, String lista){
+		ListaParticular listaObj = listaParticulares.get(lista);
+			if(!listaObj.existeVideo(videoObj)){
+				listaObj.insertarVideo(videoObj);
+				
+				Categoria categoria = videoObj.getCategoria();
+				if(!listaObj.existeCategoria(categoria)){
+					listaObj.insertarCategoria(categoria);
+				}
+			}
+	}
+	
 
 	public Video altaVideo(String nombre, String descripcion, Duration duracion, String url, Categoria categoria,
 			Date fecha, boolean visible) {
-<<<<<<< HEAD
-		//this.videos.put(nombre, new Video(nombre, descripcion, duracion, url, categoria, fecha, visible));
-		
-=======
+
 		Video video = new Video(nombre, descripcion, duracion, url, categoria, fecha, visible, this);
 		this.videos.put(nombre, video);		
 		return video;
->>>>>>> master
+
 	}
 }

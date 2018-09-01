@@ -9,8 +9,8 @@ public class ListaParticular extends Lista {
 	public ListaParticular() {
 	}
 
-	public ListaParticular(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias, boolean visible) {
-		super(nombre, canal, videos);
+	public ListaParticular(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias, boolean visible, LinkedList<Categoria> categoria) {
+		super(nombre, canal, videos, categoria);
 		this.visible = visible;
 		this.categorias = categorias;
 	}

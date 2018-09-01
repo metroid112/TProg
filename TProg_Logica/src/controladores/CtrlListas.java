@@ -73,18 +73,14 @@ public class CtrlListas implements IListas {
 		Usuario uObjetivo = manejadorUsuarios.get(usuarioObjetivo);
 		
 		Video videoObj = uInicial.getCanal().getVideoCanal(video);
-		//Categoria categoriasVideo = videoObj.getCategoria();
-		uObjetivo.getCanal().
 		
 		if(defecto){
-			uObjetivo.getCanal().agregarVideoListaDefecto();
+			uObjetivo.getCanal().agregarVideoListaDefecto(videoObj,lista);
 		}
 		else{
-			uObjetivo.getCanal().agregarVideoListaParticular();
+			uObjetivo.getCanal().agregarVideoListaParticular(videoObj,lista);
 		}
-		//pregunto si el video ya xiste en esa lista
-		//busco la lista y chequeo sus categorias
-		// inserto el video
+
 	}
 	
 	}
