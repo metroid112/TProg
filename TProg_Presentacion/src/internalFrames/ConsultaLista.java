@@ -1,4 +1,5 @@
 package internalFrames;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,10 +12,13 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.table.TableColumn;
 
 import interfaces.*;
+import paneles.InfoVideo;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
@@ -22,6 +26,9 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 @SuppressWarnings("serial")
 public class ConsultaLista extends JInternalFrame{
@@ -33,24 +40,27 @@ public class ConsultaLista extends JInternalFrame{
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 
 	private DefaultListModel<String> listListas = new DefaultListModel<>();
+	
+	private JList<String> list, listaVideos;
 
 	public ConsultaLista() {
 		
 		setTitle("Conultar lista");
-		setBounds(0, 0, 640, 480);
+		setBounds(0, 0, 540, 480);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		JPanel panelSeleccion = new JPanel();
+		InfoVideo panelInfo = new InfoVideo(Fabrica.getFabrica().getIVideos());
+		ctrLis = Fabrica.getFabrica().getIListas();
+		getContentPane().setLayout(new CardLayout());
+		getContentPane().add(panelSeleccion);
+		getContentPane().add(panelInfo);
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		
 		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		
 		JButton btnCerrar = new JButton("Cerrar");
 		
-		JScrollPane scrollPane = new JScrollPane();
-		
-		JButton btnConsultar = new JButton("Consultar");
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
+		JScrollPane scrollPaneListas = new JScrollPane();
 		
 		JRadioButton rdbtnListasPorDefecto = new JRadioButton("Listas por defecto",true);
 		rdbtnListasPorDefecto.setEnabled(false);
@@ -59,66 +69,98 @@ public class ConsultaLista extends JInternalFrame{
 		rdbtnListasParticulares.setEnabled(false);
 		grupoLista.add(rdbtnListasPorDefecto);
 		grupoLista.add(rdbtnListasParticulares);
+		
+		JLabel lblVisibilidad = new JLabel("Visibilidad:");
+		lblVisibilidad.setEnabled(false);
+		
+		JLabel lblLvisibilidad = new JLabel("");
+		
+		JScrollPane scrollPaneVideos = new JScrollPane();
+		
+		JButton btnConsultarVideo = new JButton("Consultar Video");
+		btnConsultarVideo.setEnabled(false);
+		btnConsultarVideo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		GroupLayout groupLayout = new GroupLayout(panelSeleccion);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblNombreDeUsuario)
+							.addGap(120))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(17)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(comboBoxUsuario, 0, 146, Short.MAX_VALUE)
-								.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboBoxUsuario, 0, 144, Short.MAX_VALUE)
 								.addComponent(rdbtnListasPorDefecto)
-								.addComponent(rdbtnListasParticulares))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-							.addContainerGap())
+								.addComponent(rdbtnListasParticulares)
+								.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+							.addGap(68)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnConsultar)
-							.addGap(18)
-							.addComponent(btnCerrar)
-							.addGap(100))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNombreDeUsuario)
-							.addContainerGap(524, Short.MAX_VALUE))))
+							.addComponent(lblVisibilidad)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(lblLvisibilidad))
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+							.addComponent(scrollPaneVideos, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(btnConsultarVideo)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnCerrar))))
+					.addGap(84))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(25)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNombreDeUsuario)
+						.addComponent(lblVisibilidad)
+						.addComponent(lblLvisibilidad))
+					.addGap(13)
+					.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblNombreDeUsuario)
-							.addGap(13)
-							.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(rdbtnListasPorDefecto)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(rdbtnListasParticulares)
 							.addGap(11)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCerrar)
-						.addComponent(btnConsultar))
-					.addGap(5))
+							.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(scrollPaneVideos, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnCerrar)
+								.addComponent(btnConsultarVideo))))
+					.addGap(37))
 		);
 		
-		JList list = new JList(listListas);
-		list.setEnabled(false);
-		scrollPane_1.setViewportView(list);
+		listaVideos = new JList<String>();
+		scrollPaneVideos.setViewportView(listaVideos);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
-		scrollPane.setViewportView(textArea);
-		getContentPane().setLayout(groupLayout);
+		JLabel lblVideos = new JLabel("Videos:");
+		lblVideos.setEnabled(false);
+		scrollPaneVideos.setColumnHeaderView(lblVideos);
+		
+		list = new JList<String>(listListas);
+		
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				lblLvisibilidad.setEnabled(true);
+				lblVideos.setEnabled(true);
+				cargaDatosLista();
+			}
+		});
+		list.setEnabled(false);
+		scrollPaneListas.setViewportView(list);
+		panelSeleccion.setLayout(groupLayout);
 		
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -131,7 +173,6 @@ public class ConsultaLista extends JInternalFrame{
 				rdbtnListasParticulares.setSelected(false);
 				rdbtnListasPorDefecto.setEnabled(false);
 				rdbtnListasParticulares.setEnabled(false);
-				textArea.setText(null);
 				
 			}
 		});
@@ -175,17 +216,6 @@ public class ConsultaLista extends JInternalFrame{
 				}
 			}
 		});
-		
-
-		
-		btnConsultar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				textArea.setText(null);
-				if(checkUsuario()){
-					
-				}
-			}
-		});
 
 	}
 	
@@ -209,9 +239,6 @@ public class ConsultaLista extends JInternalFrame{
 	public void cargarDefectoListas(){
 		
 		listListas.removeAllElements();
-		
-		fab = Fabrica.getFabrica();
-		ctrLis = fab.getIListas();
 		
 		if(modelUsuario.getSelectedItem() != null){
 			
@@ -260,5 +287,10 @@ public class ConsultaLista extends JInternalFrame{
 		return true;
 	}
 	
-
+	private void cargaDatosLista() {
+		String lista = list.getSelectedValue();
+		DtLista dtLista = ctrLis.getDt(lista);
+		//TODO terminar carga de datos y desplegar videos
+		
+	}
 }

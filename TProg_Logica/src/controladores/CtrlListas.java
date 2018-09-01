@@ -1,5 +1,6 @@
 package controladores;
 
+import interfaces.DtLista;
 import interfaces.IListas;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
@@ -82,6 +83,12 @@ public class CtrlListas implements IListas {
 		// inserto el video
 		}
 		
+	}
+
+	@Override
+	public DtLista getDt(String lista) {
+		// TODO Cread dt y terminar funcion
+		return null;
 	}
 	
 	}
