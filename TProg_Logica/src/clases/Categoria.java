@@ -79,7 +79,8 @@ public class Categoria {
 		return infoListas;		
 	}
 	
-	public boolean equals(Categoria categoria) {
-		return (this.nombre.equals(categoria.nombre));
+	
+	public boolean equals(Object categoria) {
+		return (this.nombre.equals(((Categoria) categoria).getNombre()));
 	}
 }

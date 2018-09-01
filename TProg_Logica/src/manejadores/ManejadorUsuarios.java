@@ -70,4 +70,8 @@ public class ManejadorUsuarios {
 			entry.getValue().getCanal().ingresarListaDefecto(nombreListaDefecto);
 		}
 	}
+	
+	public void removeAll() {
+		this.usuarios.clear();
+	}
 }
