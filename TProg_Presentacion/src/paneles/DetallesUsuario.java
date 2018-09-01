@@ -42,6 +42,7 @@ public class DetallesUsuario extends JPanel {
 	private DefaultListModel<String> modelVideos = new DefaultListModel<>();
 	private JList<String> videos =  new JList<>(modelVideos);
 	private boolean editar = false;
+	private JTextField textField;
 	public void SetEditar(boolean b) {
 		this.editar = b;
 	}
@@ -61,6 +62,26 @@ public class DetallesUsuario extends JPanel {
 		String fechaParaMostrar = sdf.format(fechaNacimiento);
 		
 		boolean privado = ctrlUsu.getPrivado(usuario);
+		
+		JPanel imagen = new JPanel();
+		imagen.setBackground(SystemColor.menu);
+		imagen.setSize(100, 100);
+		Image tmp = null;
+		if (imagenF != null) {
+			tmp = imagenF.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);
+		}
+		else {
+			try {
+				Image img = ImageIO.read(new File(noImagen));
+				tmp = img.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		JLabel icon = new JLabel(new ImageIcon(tmp));
+		imagen.add(icon);
+		
 		String tipoCanal;
 		if(privado) {
 			tipoCanal = "Canal privado";
@@ -95,10 +116,6 @@ public class DetallesUsuario extends JPanel {
 		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
 		lblFechaDeNacimiento.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		JLabel lblCanalPrivado = new JLabel(tipoCanal);
-		lblCanalPrivado.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCanalPrivado.setHorizontalAlignment(SwingConstants.CENTER);
-		
 		JLabel lblNombreCanal = new JLabel("Nombre canal:");
 		lblNombreCanal.setHorizontalAlignment(SwingConstants.TRAILING);
 		
@@ -119,31 +136,6 @@ public class DetallesUsuario extends JPanel {
 		
 		JTextField lblcanal = new JTextField(canal);
 		lblcanal.setEditable(editar);
-		
-		JTextPane txtpnddescripcioncanal = new JTextPane();
-		txtpnddescripcioncanal.setEditable(editar);
-		txtpnddescripcioncanal.setBackground(Color.WHITE);
-		txtpnddescripcioncanal.setText(descripcionCanal);
-		
-		JPanel imagen = new JPanel();
-		imagen.setBackground(SystemColor.menu);
-		imagen.setSize(100, 100);
-		Image tmp = null;
-		if (imagenF != null) {
-			tmp = imagenF.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);
-		}
-		else {
-			try {
-				Image img = ImageIO.read(new File(noImagen));
-				tmp = img.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		JLabel icon = new JLabel(new ImageIcon(tmp));
-		imagen.add(icon);
-		
 		JScrollPane scrollPane_Seguidores = new JScrollPane();
 		
 		JScrollPane scrollPane_Seguidos = new JScrollPane();
@@ -151,6 +143,14 @@ public class DetallesUsuario extends JPanel {
 		JLabel lblUsuariosSeguidos = new JLabel("Seguidos");
 		
 		JLabel lblSeguidores = new JLabel("Seguidores");
+		
+		textField = new JTextField(tipoCanal);
+		textField.setEditable(false);
+		
+		JLabel lblPrivacidadCanal = new JLabel("Visibilidad:");
+		lblPrivacidadCanal.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -173,16 +173,17 @@ public class DetallesUsuario extends JPanel {
 										.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
 										.addComponent(imagen, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(59)
-									.addComponent(lblCanalPrivado, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNombreCanal, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblcanal, GroupLayout.PREFERRED_SIZE, 189, GroupLayout.PREFERRED_SIZE))
+									.addComponent(lblcanal, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblDescripcionCanal, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtpnddescripcioncanal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblPrivacidadCanal, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textField, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
@@ -240,22 +241,32 @@ public class DetallesUsuario extends JPanel {
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblFechaDeNacimiento)
 								.addComponent(lblfecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblCanalPrivado, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+							.addGap(16)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblPrivacidadCanal))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblNombreCanal)
 								.addComponent(lblcanal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblDescripcionCanal)
-								.addComponent(txtpnddescripcioncanal, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblDescripcionCanal)))
 						.addComponent(scrollPane_Seguidores, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
 						.addComponent(scrollPane_Seguidos, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+					.addGap(103))
 		);
 		
+		JTextPane textPane = new JTextPane();
+		textPane.setText(descripcionCanal);
+		textPane.setEditable(false);
+		textPane.setBackground(Color.WHITE);
+		scrollPane_2.setViewportView(textPane);
+		listaSeguidores.setEnabled(false);
+		
 		scrollPane_Seguidores.setViewportView(listaSeguidores);
+		listaSeguidos.setEnabled(false);
 		
 		scrollPane_Seguidos.setViewportView(listaSeguidos);
 		scrollPane_1.setViewportView(listasDeReproduccion);
@@ -263,9 +274,9 @@ public class DetallesUsuario extends JPanel {
 		setLayout(groupLayout);
 		
 		//cargarDatosListas(usuario);
-		//cargarDatosVideos(usuario);
-		//cargarDatosSeguidores(usuario);
-		//cargarDatosSeguidos(usuario);
+		cargarDatosVideos(usuario);
+		cargarDatosSeguidores(usuario);
+		cargarDatosSeguidos(usuario);
 		setVisible(true);
 	}
 	public void cargarDatosSeguidores(String usuario){
@@ -326,8 +337,4 @@ public class DetallesUsuario extends JPanel {
 		return videos.getSelectedValue();
 		//return model.
 	}
-	
-	//public void clean() {
-		
-	//}
 }
