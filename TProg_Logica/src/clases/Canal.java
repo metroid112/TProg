@@ -32,21 +32,6 @@ public class Canal {
 		this.descripcion = descripcion;
 		this.visible = visible;
 		this.usuario = usuario;
-/*		if (videos != null) {
-			this.videos = videos;
-		}
-		else {
-			this.videos = new Video[0];
-		}
-		if (listaDefecto != null) {
-			this.listaDefecto = listaDefecto;
-		}
-		else {
-			this.listaDefecto = new ListaDefecto[0];
-		}
-		if (listaParticulares != null) {
-			this.listaParticulares = listaParticulares;
-		}*/
 		this.categoria = categoria;
 
 		
@@ -148,16 +133,27 @@ public class Canal {
 	}
 
 
-	public String[] getListaUsuario() {
+	public String[] getListaDefectoUsuario() {
 		
 
-		String[] listasArrDefecto = listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
-		String[] listasArrParticular = listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
+		return listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
 		
-		return Stream.concat(Arrays.stream(listasArrDefecto),Arrays.stream(listasArrParticular)).toArray(String[]::new);
+		//return Stream.concat(Arrays.stream(listasArrDefecto),Arrays.stream(listasArrParticular)).toArray(String[]::new);
+	}
+	
+	public String[] getListaParticularUsuario() {
+		
+		return listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
+		
+	}
+	
+	public void guardarCambios(String nomLis, boolean visible){
+		ListaParticular listaObjetivo = listaParticulares.get(nomLis);
+		listaObjetivo.setVisible(visible);
 	}
 	
 	public String[] getArrayVideos(){ 
+
 		return videos.keySet().toArray(new String[videos.size()]);
 	}
 	

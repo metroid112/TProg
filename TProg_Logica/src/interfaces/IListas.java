@@ -2,9 +2,13 @@ package interfaces;
 
 public interface IListas {
 
-	public void altaListaParticular(String nombre, String usuario, boolean visibilidad);
+	public void altaListaParticular(String nombre, String usuario, boolean visibilidad) throws Exception;
 	
-	public void altaListaDefecto(String nombre);
+	public void altaListaDefecto(String nombre) throws Exception;
 	
-	public  String[] listarListasUsuario(String usuario);
+	public  String[] listarListasDefectoUsuario(String usuario);
+	
+	public  String[] listarListasParticularUsuario(String usuario);
+	
+	public void guardarCambios(String nomLis,String usuario,boolean visible);
 }
