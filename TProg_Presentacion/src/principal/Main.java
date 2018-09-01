@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -60,6 +61,7 @@ public class Main {
 	private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
 	private ConsultaVideo frmConsultaVideo = new ConsultaVideo(videos);
 	private AltaVideo frmAltaVideo = new AltaVideo(videos);
+	private ModificarVideo frmModificarVideo = new ModificarVideo(videos);
 	
 	private JTextArea logCarga;
 	
@@ -82,6 +84,7 @@ public class Main {
 		frame.getContentPane().add(frmVerInfoUsuario);
 		frame.getContentPane().add(frmConsultaVideo);
 		frame.getContentPane().add(frmAltaVideo);
+		frame.getContentPane().add(frmModificarVideo);
 		
 		frames.add(frmConsultaLista);
 		frames.add(frmCrearListaReproduccion);
@@ -97,6 +100,7 @@ public class Main {
 		frames.add(frmVerInfoUsuario);
 		frames.add(frmConsultaVideo);
 		frames.add(frmAltaVideo);
+		frames.add(frmModificarVideo);
 		//relaciones
 		frmVerInfoUsuario.SetPadre(frmConsultaUsuario);
 		
@@ -297,7 +301,11 @@ public class Main {
 		mntmCargaDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!ventanasAbiertas()) {
-					//cargarDatos();
+					try {
+						cargarDatos();
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -322,6 +330,16 @@ public class Main {
 
 		});
 		
+		/******************* MODIFICAR VIDEO *********************/
+		mntmModificarVideo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas())
+					frmModificarVideo.cargarDatos();
+					frmModificarVideo.setVisible(true);
+			}
+
+		});
+		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 	}
 	
@@ -337,10 +355,72 @@ public class Main {
 		return false;
 	}
 	
-	public void cargarDatos() throws ParseException {
+	public void cargarDatos() throws ParseException, IOException {
 		logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
-		//public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String nombreCanal, boolean visible);
 		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "Canal Horacio", false);
+		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img\\horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", true);
+		this.usuariosCanales.altaUsuario("mbusca", "Martín", "Buscaglia", "Martin.bus@agadu.org.uy", format.parse("14/06/1972"), "img\\martin.JPG", "El bocha", "Mi canal para colgar cosas", true);
+		this.usuariosCanales.altaUsuario("hectorg", "Héctor", "Guido", "hector.gui@elgalpon.org.uy", format.parse("07/01/1954"), "img\\null.JPG", "hectorg", "Canal HG", true);
+		this.usuariosCanales.altaUsuario("tabarec", "Tabaré", "Cardozo", "tabare.car@agadu.org.uy", format.parse("24/07/1971"), "img\\tabare.JPG", "Tabaré", "Mi música e ainda mais", true);
+		this.usuariosCanales.altaUsuario("cachilas", "Waldemar \"Cachila\"", "Silva", "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"), "img\\cachila.JPG", "El Cachila", "Para juntar cosas", false);
+		this.usuariosCanales.altaUsuario("juliob", "Julio", "Bocca", "juliobocca@sodre.com.uy", format.parse("16/03/1967"), "img\\null.JPG", "juliob", "Canal de JB", true);
+		this.usuariosCanales.altaUsuario("diegop", "Diego", "Parodi", "diego@efectocine.com", format.parse("01/01/1975"), "img\\null.JPG", "diegop", "Canal de DP", true);
+		this.usuariosCanales.altaUsuario("kairoh", "Kairo", "Herrera", "kairoher@pilsenrock.com.uy", format.parse("25/04/1840"), "img\\kairo.JPG", "Kairo música", "Videos de grandes canciones de hoy y siempre", true);
+		this.usuariosCanales.altaUsuario("robinh", "Robin", "Henderson", "Robin.h@tinglesa.com.uy", format.parse("03/08/1940"), "img\\null.JPG", "robinh", "Henderson", true);
+		this.usuariosCanales.altaUsuario("marcelot", "Marcelo", "Tinelli", "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"), "img\\null.JPG", "Tinelli total", "Todo lo que querías y más !", true);
+		this.usuariosCanales.altaUsuario("novick", "Edgardo", "Novick", "edgardo@novick.com.uy", format.parse("17/07/1952"), "img\\null.JPG", "Con la gente", "Preparando las elecciones", true);
+		this.usuariosCanales.altaUsuario("sergiop", "Sergio", "Puglia", "puglia@alpanpan.com.uy", format.parse("28/01/1950"), "img\\null.JPG", "Puglia invita", "Programas del ciclo y videos de cocina masterchef", true);
+		this.usuariosCanales.altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy", format.parse("17/03/1976"), "img\\recoba.JPG", "Chino Recoba", "Canal de goles con Nacional ", false);
+		this.usuariosCanales.altaUsuario("tonyp", "Antonio", "Pacheco", "eltony@manya.org.uy", format.parse("14/02/1955"), "img\\pacheco.JPG", "Tony Pacheco", "Todos los goles con Peñarol", false);
+		this.usuariosCanales.altaUsuario("nicoJ", "Nicolás", "Jodal", "jodal@artech.com.uy", format.parse("09/08/1960"), "img\\null.JPG", "Desde Genexus", "Canal información C y T", true);
+		
+		this.usuariosCanales.seguir("hrubino", "hectorg");
+		this.usuariosCanales.seguir("hrubino", "hectorg");
+		this.usuariosCanales.seguir("mbusca", "tabarec");
+		this.usuariosCanales.seguir("mbusca", "cachilas");
+		this.usuariosCanales.seguir("mbusca", "kairoh");
+		this.usuariosCanales.seguir("hectorg", "mbusca");
+		this.usuariosCanales.seguir("hectorg", "juliob");
+		this.usuariosCanales.seguir("tabarec", "hrubino");
+		this.usuariosCanales.seguir("tabarec", "cachilas");
+		this.usuariosCanales.seguir("cachilas", "hrubino");
+		this.usuariosCanales.seguir("juliob", "mbusca");
+		this.usuariosCanales.seguir("juliob", "diegop");
+		this.usuariosCanales.seguir("diegop", "hectorg");
+		this.usuariosCanales.seguir("kairoh", "sergiop");
+		this.usuariosCanales.seguir("robinh", "hectorg");
+		this.usuariosCanales.seguir("robinh", "juliob");
+		this.usuariosCanales.seguir("robinh", "diegop");
+		this.usuariosCanales.seguir("marcelot", "cachilas");
+		this.usuariosCanales.seguir("marcelot", "juliob");
+		this.usuariosCanales.seguir("marcelot", "kairoh");
+		this.usuariosCanales.seguir("novick", "hrubino");
+		this.usuariosCanales.seguir("novick", "cachilas");
+		this.usuariosCanales.seguir("novick", "juliob");
+		this.usuariosCanales.seguir("sergiop", "mbusca");
+		this.usuariosCanales.seguir("sergiop", "juliob");
+		this.usuariosCanales.seguir("sergiop", "kairoh");
+		this.usuariosCanales.seguir("chino", "tonyp");
+		this.usuariosCanales.seguir("tonyp", "chino");
+		this.usuariosCanales.seguir("nicoJ", "diegop");
+		
+		try {
+			this.categorias.altaCategoria("Música");
+			this.categorias.altaCategoria("Deporte");
+			this.categorias.altaCategoria("Carnaval");
+			this.categorias.altaCategoria("Noticias");
+			this.categorias.altaCategoria("Entretenimiento");
+			this.categorias.altaCategoria("Comida");
+			this.categorias.altaCategoria("Videojuegos");
+			this.categorias.altaCategoria("Ciencia y Tecnología");
+			this.categorias.altaCategoria("ONG y activismo");
+			this.categorias.altaCategoria("Gente y blogs");
+			this.categorias.altaCategoria("Mascotas y animales");
+			this.categorias.altaCategoria("Viajes y eventos");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//this.videos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha);
 	}
 }

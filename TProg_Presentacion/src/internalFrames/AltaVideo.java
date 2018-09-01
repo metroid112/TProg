@@ -101,6 +101,7 @@ public class AltaVideo extends JInternalFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
+				clearDatos();
 			}
 		});
 		
@@ -120,15 +121,15 @@ public class AltaVideo extends JInternalFrame {
 							.addComponent(lblDuracion)
 							.addGap(87)
 							.addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(28)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblHoras)
-							.addGap(5)
+							.addGap(10)
 							.addComponent(spinnerMinutos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(5)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblMin)
-							.addGap(5)
+							.addGap(10)
 							.addComponent(spinnerSegundos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(5)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblSeg))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(295)
@@ -177,19 +178,13 @@ public class AltaVideo extends JInternalFrame {
 					.addGap(5)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(3)
-									.addComponent(lblHoras))
 								.addComponent(spinnerMinutos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(3)
-									.addComponent(lblMin))
 								.addComponent(spinnerSegundos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(3)
-									.addComponent(lblSeg)))
+								.addComponent(lblHoras)
+								.addComponent(lblMin)
+								.addComponent(lblSeg))
 							.addGap(5))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblDuracion)
@@ -252,16 +247,28 @@ public class AltaVideo extends JInternalFrame {
 			contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha); 
 			JOptionPane.showMessageDialog(this, "Video creado con exito!");
 			setVisible(false);
+			clearDatos();
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video", JOptionPane.ERROR_MESSAGE);	// Muesta el error al dar de alta
 			}
 		} else {
-			JOptionPane.showMessageDialog(this, "No deben haber campos vacios.", "Error!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "No deben haber campos vacios.", "Error!", JOptionPane.ERROR_MESSAGE); 	// TODO arreglo de error
 		}
 		
 	}
 	
 	public boolean datosCorrectos(String nick, String nombre, String url, Duration duracion) {
 		return (nick != null && !(nombre.equals("")) && !(url.equals("")) && !(duracion.isZero()));
+	}
+	
+	private void clearDatos() {
+		TextoNombre.setText(null);
+		tFieldURL.setText(null);
+		tAreaDescripcion.setText(null);
+		datePicker.setDate(new Date());
+		cBoxCategoria.setSelectedItem(null);
+		spinnerHoras.setValue(0);
+		spinnerMinutos.setValue(0);
+		spinnerSegundos.setValue(0);
 	}
 }

@@ -45,6 +45,12 @@ public class Canal {
 	}
 
 
+	public Canal(String nombreCanal, String descripcionCanal, boolean visible) {
+		this.nombre = nombreCanal;
+		this.descripcion = descripcionCanal;
+		this.visible = visible;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -154,5 +160,11 @@ public class Canal {
 	public Video getVideoCanal(String video){
 
 		return videos.get(video);
+	}
+
+	public void altaVideo(String nombre, String descripcion, Duration duracion, String url, String categoria,
+			Date fecha, boolean visible) {
+		//this.videos.put(nombre, new Video(nombre, descripcion, duracion, url, categoria, fecha, visible))
+		
 	}
 }

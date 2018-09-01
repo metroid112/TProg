@@ -4,8 +4,15 @@ import interfaces.IUsuariosCanales;
 import manejadores.ManejadorUsuarios;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.VolatileImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
+
+import javax.imageio.ImageIO;
 
 import clases.Calificacion;
 import clases.Canal;
@@ -25,17 +32,16 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	
 	@Override
-	public void altaUsuario(String nick, String nombre, String apellido, String correo, Date nacimiento, Image imagen, 
+	public void altaUsuario(String nick, String nombre, String apellido, String correo, Date nacimiento, BufferedImage imagen, 
 			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
 			Usuario[] seguidos) throws Exception {
 		
 			Canal canal = new Canal(nombreCanal, descripcion, privado, null, new HashMap<String, Video>(),
 					new HashMap<String, ListaDefecto>(), new HashMap<String, ListaParticular>(), null);
 			
-			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento, imagen,
-					canal, comentarios, calificaciones, seguidores,
-					seguidos);
+			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento);
 			canal.setUsuario(usu);
+			usu.setCanal(canal);
 			manejadorUsuarios.add(usu);
 	}
 
@@ -52,12 +58,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.toArray();
 	}
 	
-	public String[] listarSeguidos() {
-		return manejadorUsuarios.toArray();
+	public String[] listarSeguidos(String nick) {
+		return manejadorUsuarios.get(nick).getSeguidos().keySet().toArray(new String[manejadorUsuarios.get(nick).getSeguidos().size()]);
 	}
 	
-	public String[] listarSeguidores() {
-		return manejadorUsuarios.toArray();
+	public String[] listarSeguidores(String nick) {
+		return manejadorUsuarios.get(nick).getSeguidores().keySet().toArray(new String[manejadorUsuarios.get(nick).getSeguidores().size()]);
 	}
 	
 	public String[] listarVideos(String nick) {
@@ -124,11 +130,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.get(nick).getCalificaciones();
 	}
 
-	public Usuario[] getSeguidores(String nick) {
+	public HashMap<String, Usuario> getSeguidores(String nick) {
 		return manejadorUsuarios.get(nick).getSeguidores();
 	}
 
-	public Usuario[] getSeguidos(String nick) {
+	public HashMap<String, Usuario> getSeguidos(String nick) {
 		return manejadorUsuarios.get(nick).getSeguidos();
 	}
 	
@@ -150,4 +156,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.isEmailUnique(email);
 	}
 
+	@Override
+	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
+			String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
+		manejadorUsuarios.add(new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)), new Canal(nombreCanal, descripcionCanal, visible)));
+	}
+
+	@Override
+	public void seguir(String seguidor, String seguido) {
+		manejadorUsuarios.get(seguidor).seguir(manejadorUsuarios.get(seguido));
+	}
 }

@@ -36,7 +36,7 @@ public class ListarUsuarios extends JInternalFrame {
 
 	public ListarUsuarios() {
 		setTitle("Listar Usuarios");
-		setBounds(100, 100, 451, 490);
+		setBounds(100, 10, 451, 490);
 		//JList<String> list =  new JList<>(model);
 		//SelectorUsuarios selector = new SelectorUsuarios();
 		

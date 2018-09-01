@@ -6,6 +6,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
+import paneles.DetallesUsuario;
+
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
@@ -15,7 +18,7 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class VerInformacionUsuario extends JInternalFrame {
-
+	private DetallesUsuario paneluser = null;
 	public void SetVisible(boolean b) {
 		setEnabled(b);
 	}
@@ -34,15 +37,18 @@ public class VerInformacionUsuario extends JInternalFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				padre.SetVisible(true);
+				getContentPane().remove(paneluser);
+				paneluser = null;
+				//padre.SetVisible(true);
+				//getContentPane().removeAll();
 			}
 		});
 		panel.add(btnNewButton);
 	}
 	
 	public void CargarInformacionUsuario(String usuario) {
-		DetallesUsuario panel = new DetallesUsuario(usuario);
-		getContentPane().add(panel, BorderLayout.CENTER);
+		paneluser = new DetallesUsuario(usuario);
+		getContentPane().add(paneluser, BorderLayout.CENTER);
 	}
 
 }

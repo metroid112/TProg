@@ -34,9 +34,6 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 		
 		cBoxUsuarios = new JComboBox<String>();
 		cBoxUsuarios.addActionListener(this);		// Agrego el listener para leer el usuario seleccionado
-		/**
-		 * en vez de action listener quizas funcione mejor con un item listener hay que probar TODO prueba
-		 */
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -82,6 +79,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 		String[] usuarios = contVideos.listarUsuarios();
 		DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuarios);
 		cBoxUsuarios.setModel(modelU);
+		updateLista((String) cBoxUsuarios.getSelectedItem());
 	}
 	
 	public void updateLista(String nickname) {
