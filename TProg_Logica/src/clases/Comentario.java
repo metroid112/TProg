@@ -135,4 +135,18 @@ public class Comentario {
 	public DtComentario getDT() {
 		return new DtComentario(this);
 	}
+	public Comentario getCom(Integer idComentario) {
+		if (this.id == idComentario) {
+			return this;
+		} else if (!this.respuestas.isEmpty()) {
+			Comentario encontrado = null;
+			for (Comentario hijo : this.respuestas.values()) {
+				Comentario retornado = hijo.getCom(idComentario);
+				if (retornado != null) {
+					encontrado = retornado;
+				}
+			}
+			return encontrado;
+		} else return null;
+	}
 }

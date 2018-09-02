@@ -61,7 +61,7 @@ public class CtrlVideos implements IVideos {
 	public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion, String url,
 			String categoriaString, Duration duracion, Boolean visible, Date fecha) {
 		Video vid = mUsu.get(nick).getCanal().getVideoCanal(nombreOld);
-		// TODO actualizar colecciones con el nuevo nombre del video
+		vid.getCanal().modVideo(nombreOld, nombre);
 		Categoria categoria;
 		if (categoriaString != null) {
 			categoria = mCat.get(categoriaString);
