@@ -22,6 +22,7 @@ import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
+import dataTypes.DtUsuario;
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
 
@@ -193,5 +194,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
 		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
 		usuario.responder(texto, fecha, idComentarioPadre, vid);
+	}
+
+	@Override
+	public DtUsuario getDt(String nick) {
+		return manejadorUsuarios.get(nick).getDt();
 	}
 }

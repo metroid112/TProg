@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import dataTypes.DtUsuario;
+
 public class Usuario {
 
 	private String nick;
@@ -182,6 +184,10 @@ public class Usuario {
 		Comentario comentario = new Comentario(texto, this, vid, padre, fecha);
 		this.comentarios.add(comentario);
 		
+	}
+	
+	public DtUsuario getDt() {
+		return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo, this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible());
 	}
 	
 	

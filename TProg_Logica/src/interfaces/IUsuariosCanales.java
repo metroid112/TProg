@@ -10,6 +10,7 @@ import java.util.HashSet;
 import clases.Calificacion;
 import clases.Canal;
 import clases.Usuario;
+import dataTypes.DtUsuario;
 import clases.Comentario;
 
 public interface IUsuariosCanales {
@@ -30,23 +31,7 @@ public interface IUsuariosCanales {
 	
 	public boolean existeUsuario(String nick);
 	
-	public int cantidadUsuarios();
-
-	public String getNombre(String nick);
-
-	public String getApellido(String nick);
-
-	public String getCorreo(String nick);
-
-	public Date getNacimiento(String nick);
-
-	public Image getImagen(String nick);
-	
-	public String getNombreCanal(String nick);
-
-	public boolean getPrivado(String nick);
-	
-	public String getDescripcionCanal(String nick);
+	public DtUsuario getDt(String nick);
 	
 	public boolean isEmailUnique(String email);
 	
