@@ -11,8 +11,8 @@ public class ListaParticular extends Lista {
 	public ListaParticular() {
 	}
 
-	public ListaParticular(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias, boolean visible, LinkedList<Categoria> categoria) {
-		super(nombre, canal, videos, categoria);
+	public ListaParticular(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias, boolean visible) {
+		super(nombre, canal, videos);
 		this.visible = visible;
 		this.categorias = categorias;
 	}
@@ -31,6 +31,33 @@ public class ListaParticular extends Lista {
 
 	public void setCategorias(HashMap<String, Categoria> categorias) {
 		this.categorias = categorias;
+	}
+	
+	public boolean existeCategoria(Categoria categoria){
+		if(categoria != null){
+				return categorias.containsKey(categoria);
+		}
+		return true;
+	}
+
+	public void insertarCategoria(Categoria categoria){
+		categorias.put(categoria.getNombre(), categoria);
+	}
+	
+	public void quitarCategoria(Categoria categoria){
+		categorias.remove(categoria);
+	}
+	
+	public boolean esUnicaCategoria(Categoria categoria){
+		if(categoria != null){
+			for(Video v: super.getVideos()){
+				if(v.getCategoria() == categoria){
+					return false;
+				}
+			}
+			return true;
+		}
+		return false;
 	}
 
 	@Override

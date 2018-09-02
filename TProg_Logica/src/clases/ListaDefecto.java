@@ -11,8 +11,8 @@ public class ListaDefecto extends Lista {
 	
 	
 	
-	public ListaDefecto(String nombre, Canal canal,LinkedList<Video> videos, LinkedList<Categoria> categoria){
-		super(nombre, canal,videos, categoria);	
+	public ListaDefecto(String nombre, Canal canal,LinkedList<Video> videos){
+		super(nombre, canal,videos);	
 	}
 	
 	public String getNombre(){

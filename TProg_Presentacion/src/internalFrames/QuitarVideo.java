@@ -154,6 +154,7 @@ public class QuitarVideo extends JInternalFrame{
 			}
 		});
 		
+		
 		comboBoxUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(comboBoxUsuario.getSelectedItem() != ""){
@@ -197,13 +198,17 @@ public class QuitarVideo extends JInternalFrame{
 		btnAceptar.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				boolean checkUsuario = true;
-				
+				boolean checkVideo = true;
 
 				if(comboBoxUsuario.getSelectedItem() == ""){
 						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
 						checkUsuario = false;
 				}
-				if(checkUsuario){
+				if(comboBoxVideos.getSelectedItem() == ""){
+					JOptionPane.showMessageDialog(null, "No has seleccionado ningún video", "Error", JOptionPane.ERROR_MESSAGE);
+					checkUsuario = false;
+				}
+				if(checkUsuario && checkVideo){
 					ctrLis = fab.getIListas();
 					ctrLis.quitarVideoLista(modelUsuario.getSelectedItem().toString(),
 							modelVideos.getSelectedItem().toString(),list.getSelectedValue().toString(),
