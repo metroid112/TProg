@@ -169,9 +169,23 @@ public class Usuario {
 		this.calificaciones.add(cal);
 	}
 
-	public void valorarVideo(boolean like, Video vid) {
-		Calificacion cal = new Calificacion(like, this, vid);
-		vid.addCalificacion(cal);
-		this.addCalificacion(cal);
+	public void valorarVideo(boolean like, Video vid) throws Exception {
+		if (!yaCalificado(vid)) {
+			Calificacion cal = new Calificacion(like, this, vid);
+			vid.addCalificacion(cal);
+			this.addCalificacion(cal);
+		} else {
+			throw new Exception("Video ya calificado");
+		}
+	}
+
+	private boolean yaCalificado(Video vid) {
+		boolean calificado = false;
+		for (Calificacion cal : this.calificaciones) {
+			if (cal.getVideo().equals(vid)) {
+				calificado = true;
+			}
+		}
+		return calificado;
 	}
 }
