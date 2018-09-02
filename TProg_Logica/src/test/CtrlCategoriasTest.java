@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import clases.Categoria;
-import controladores.CtrlCategorias;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
@@ -21,16 +20,15 @@ import manejadores.ManejadorCategorias;
 
 public class CtrlCategoriasTest {
 	
-	private Categoria categoria = new Categoria("Prueba");
-	private Fabrica fabrica = Fabrica.getFabrica();
-	private ICategorias categorias = fabrica.getICategorias();
-	private IUsuariosCanales usuarios = fabrica.getIUsuariosCanales();
-	private IListas lista = fabrica.getIListas();
-	private IVideos video = fabrica.getIVideos();
-	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
 	private String[] arrayCat = {"Deportes", "Musica"};
-	private String[] arrayVid = {"(Pato,Video1)"};
 	private String[] arrayLis = {"(Pato,Lista1)"};
+	private String[] arrayVid = {"(Pato,Video1)"};
+	private Categoria categoria = new Categoria("Prueba");
+	private ICategorias categorias = Fabrica.getICategorias();
+	private IListas lista = Fabrica.getIListas();
+	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
+	private IUsuariosCanales usuarios = Fabrica.getIUsuariosCanales();
+	private IVideos video = Fabrica.getIVideos();
 	
 	@After
 	public void clear() {
@@ -45,10 +43,15 @@ public class CtrlCategoriasTest {
 	}
 
 	@Test
-	public void testListarCategorias() throws Exception {
-		categorias.altaCategoria("Deportes");
-		categorias.altaCategoria("Musica");
-		Assert.assertArrayEquals(arrayCat, categorias.listarCategorias());
+	public void testGetInfoListas() throws Exception{
+		fail("Not yet implemented");
+		categorias.altaCategoria("Prueba");
+		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+		usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com", format.parse("11/04/1993"), "Pato", true);
+		video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba", format.parse("11/04/1993"));
+		lista.altaListaParticular("Lista1", "Pato", true);
+		//lista.
+		
 	}
 
 	@Test
@@ -60,16 +63,11 @@ public class CtrlCategoriasTest {
 		Assert.assertArrayEquals(arrayVid, categorias.getInfoVideos("Prueba"));
 	}
 
-//	@Test
-//	public void testGetInfoListas() throws Exception{
-//		
-//		categorias.altaCategoria("Prueba");
-//		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-//		usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com", format.parse("11/04/1993"), "Pato", true);
-//		video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba", format.parse("11/04/1993"));
-//		lista.altaListaParticular("Lista1", "Pato", true);
-//		lista.
-//		
-//	}
+	@Test
+	public void testListarCategorias() throws Exception {
+		categorias.altaCategoria("Deportes");
+		categorias.altaCategoria("Musica");
+		Assert.assertArrayEquals(arrayCat, categorias.listarCategorias());
+	}
 
 }

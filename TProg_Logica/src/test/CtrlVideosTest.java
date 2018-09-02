@@ -1,19 +1,15 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.fail;
 
-import java.awt.image.BufferedImage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import clases.Canal;
-import clases.Categoria;
-import clases.Usuario;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
@@ -24,23 +20,40 @@ import manejadores.ManejadorUsuarios;
 
 public class CtrlVideosTest {
 	
-	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-	private Fabrica fabrica = Fabrica.getFabrica();
-	private ICategorias categorias = fabrica.getICategorias();
-	private IUsuariosCanales usuarios = fabrica.getIUsuariosCanales();
-	private IListas lista = fabrica.getIListas();
-	private IVideos video = fabrica.getIVideos();
-	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
-	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
-    private String[] arrayCat = {"Deportes", "Musica"};
-	private String[] arrayVid = {"(Pato,Video1)"};
+	private String[] arrayCat = {"Deportes", "Musica"};
 	private String[] arrayLis = {"(Pato,Lista1)"};
+	private String[] arrayVid = {"(Pato,Video1)"};
+	private ICategorias categorias = fabrica.getICategorias();
+	private Fabrica fabrica = Fabrica.getFabrica();
+	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+	private IListas lista = fabrica.getIListas();
+	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
+    private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	private String[] usu = {"Pato"};
 	//Usuario usuario = new Usuario("Pato", "Federico", "Aguilera", "correo@.com", format.parse("11/04/1993"));
+	private IUsuariosCanales usuarios = fabrica.getIUsuariosCanales();
+	private IVideos video = fabrica.getIVideos();
 	
 	@After
 	public void clear() {
 		manejadorUsuarios.removeAll();
+	}
+
+	@Test
+	public void testAltaVideo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetDtVideo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testListarCategorias() throws Exception {
+		categorias.altaCategoria("Deportes");
+		categorias.altaCategoria("Musica");
+		Assert.assertArrayEquals(arrayCat, video.listarCategorias());
 	}
 
 	@Test
@@ -52,24 +65,7 @@ public class CtrlVideosTest {
 	}
 
 	@Test
-	public void testListarCategorias() throws Exception {
-		categorias.altaCategoria("Deportes");
-		categorias.altaCategoria("Musica");
-		Assert.assertArrayEquals(arrayCat, video.listarCategorias());
-	}
-
-	@Test
-	public void testAltaVideo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testListarVideos() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDtVideo() {
 		fail("Not yet implemented");
 	}
 	

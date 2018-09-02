@@ -19,19 +19,19 @@ public class Fabrica {
 		return instancia;
 	}
 
-	public IVideos getIVideos() {
+	public static IVideos getIVideos() {
 		return new CtrlVideos();
 	}
 
-	public IUsuariosCanales getIUsuariosCanales() {
+	public static IUsuariosCanales getIUsuariosCanales() {
 		return new CtrlUsuariosCanales();
 	}
 
-	public IListas getIListas() {
+	public static IListas getIListas() {
 		return new CtrlListas();
 	}
 
-	public ICategorias getICategorias() {
+	public static ICategorias getICategorias() {
 		return new CtrlCategorias();
 	}
 }
