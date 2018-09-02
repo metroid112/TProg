@@ -4,10 +4,11 @@ import java.time.Duration;
 import java.util.Date;
 
 import dataTypes.DtVideo;
+import excepciones.DuplicateClassException;
 
 public interface IVideos {
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
-			String categoria, Date fecha);
+			String categoria, Date fecha) throws DuplicateClassException;
 
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
 			String categoria, Date fecha, boolean visible);

@@ -7,6 +7,7 @@ import clases.Categoria;
 import clases.Usuario;
 import clases.Video;
 import dataTypes.DtVideo;
+import excepciones.DuplicateClassException;
 import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -21,7 +22,7 @@ public class CtrlVideos implements IVideos {
 
 	@Override
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
-			String catString, Date fecha) {
+			String catString, Date fecha) throws DuplicateClassException {
 		Categoria categoria = null;
 		if (catString != null) {
 			categoria = mCat.get(catString);

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import excepciones.DuplicateClassException;
 import manejadores.ManejadorListas;
 
 public class Canal {
@@ -55,9 +56,12 @@ public class Canal {
 	}
 
 	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2,
-			Date fecha) {
-
-		videos.put(nombre2, new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha));
+			Date fecha) throws DuplicateClassException {
+		if (!videos.containsKey(nombre2)) {
+			videos.put(nombre2, new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha));
+		} else {
+			throw new DuplicateClassException(new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha), nombre2);
+		}
 	}
 
 	public Video altaVideo(String nombre, String descripcion, Duration duracion, String url, Categoria categoria,
