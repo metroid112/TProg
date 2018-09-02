@@ -2,6 +2,8 @@ package controladores;
 
 import interfaces.ICategorias;
 import clases.Categoria;
+import excepciones.DuplicateClassException;
+
 import java.lang.Exception;
 import manejadores.ManejadorCategorias;
 
@@ -13,7 +15,7 @@ public class CtrlCategorias implements ICategorias {
 		
 	}
 	
-	public void altaCategoria(String nombreCategoria) throws Exception{
+	public void altaCategoria(String nombreCategoria) throws DuplicateClassException {
 		manejadorCategorias.altaCategoria(nombreCategoria);
 	}
 	
