@@ -181,6 +181,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		manejadorUsuarios.get(seguidor).seguir(manejadorUsuarios.get(seguido));
 	}
 	
+	@Override
 	public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDueñoVideo) throws Exception {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
 		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);	// Puede calificar su propio video?
@@ -188,6 +189,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		usuario.valorarVideo(like, vid);
 	}
 	
+	@Override
 	public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDueñoVideo) {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
 		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
@@ -195,6 +197,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		usuario.modificarValoracion(like, vid);
 	}
 	
+	@Override
 	public void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDueñoVideo) {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
 		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
@@ -202,6 +205,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		usuario.comentar(texto, fecha, vid);
 	}
 	
+	@Override
 	public void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
 			String nombreDueñoVideo, Integer idComentarioPadre) {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);

@@ -59,4 +59,13 @@ public interface IUsuariosCanales {
 	public String[] listarVideosLista(String usuario,String lista,boolean defecto);
 	
 	public void seguir(String seguidor, String seguido);
+
+	void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDueñoVideo) throws Exception;
+
+	void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDueñoVideo);
+
+	void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDueñoVideo);
+
+	void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
+			String nombreDueñoVideo, Integer idComentarioPadre);
 }

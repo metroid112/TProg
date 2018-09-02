@@ -436,7 +436,7 @@ public class Main {
 		}
 
 		this.videos.altaVideo("hectorg", "100 años de FING", "XXXXX", Duration.parse("PT1H2M2S"), "https://youtu.be/peGS4TBxSaI", "Noticias", format.parse("99/99/9999"), true);
-		this.videos.altaVideo("hectorg", "50 años del InCo", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/GzOJSk4urlM", "Noticias", format.parse("99/99/9999"), true);
+		this.videos.altaVideo("hectorg", "50 años del InCo", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/GzOJSk4urlM", "Noticias", format.parse("01/01/1990"), true);
 		this.videos.altaVideo("hectorg", "Ingeniería de Muestra 2017", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/RnaYRA1k5j4", "Noticias", format.parse("99/99/9999"), true);
 		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
 		this.videos.altaVideo("tabarec", "Niño payaso", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("99/99/9999"), false);
@@ -480,7 +480,8 @@ public class Main {
 		
 		//this.listas.agregarVideoALista(nombreLista, nombreVideo)
 		
-		//this.videos.comentar(nombreVideo, autor, comentarioPadre, comentario, fecha)
+		DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
+		this.usuariosCanales.comentarVideo("Fue un gran evento", formatComentario.parse("05/12/2017 14:35"), "nicoJ", "50 años del InCo", "hectorg");
 		
 		//this.videos.calificar(nombreVideo, autor, meGusta)
 	}
