@@ -6,9 +6,9 @@ import java.util.LinkedList;
 import clases.Comentario;
 
 public class DtComentario {
-	private LinkedHashMap<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
-	private Integer id;
-	private String texto, Usuario;
+	public LinkedHashMap<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
+	public Integer id;
+	public String texto, Usuario;
 	
 	
 	public DtComentario(Comentario comentario) {
@@ -21,15 +21,7 @@ public class DtComentario {
 			}
 		}
 	}
-
-	public Integer getId() {
-		return this.id;
-	}
 	
-	public LinkedHashMap<Integer, DtComentario> getHijos() {
-		return this.hijos;
-	}
-
 	public String getString() {
 		return ("(" + this.Usuario + ") " + this.texto);
 	}

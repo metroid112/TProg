@@ -217,7 +217,7 @@ public class InfoVideo extends JPanel {
 	
 	public DefaultMutableTreeNode getNode(DtComentario comentario) {
 		DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(comentario.getString());
-		for (DtComentario hijo : comentario.getHijos().values()) {
+		for (DtComentario hijo : comentario.hijos.values()) {
 			DefaultMutableTreeNode nodoHijo = getNode(hijo);		// Recursion
 			nodo.add(nodoHijo);
 		}

@@ -36,7 +36,7 @@ public class DtVideo {
 
 		for (Comentario com : comentarios.values()) {
 			DtComentario dtCom = com.getDT();		// Creo Dt
-			this.comentarios.put(dtCom.getId(), dtCom); 		// Lo agrego a la coleccion
+			this.comentarios.put(dtCom.id, dtCom); 		// Lo agrego a la coleccion
 		}
 		this.visible = visible;
 		for (Calificacion cal : calificaciones) {
