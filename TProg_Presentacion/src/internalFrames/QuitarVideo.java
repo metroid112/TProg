@@ -65,6 +65,8 @@ public class QuitarVideo extends JInternalFrame{
 		grupoLista.add(rdbtnListasParticulares);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		JLabel lblListasDelUsuario = new JLabel("Listas del usuario");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -73,14 +75,15 @@ public class QuitarVideo extends JInternalFrame{
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(rdbtnListasPorDefecto)
 						.addComponent(lblVideos)
-						.addComponent(lblNombreDeUsuario))
+						.addComponent(lblNombreDeUsuario)
+						.addComponent(lblListasDelUsuario))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 							.addComponent(rdbtnListasParticulares)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(comboBoxVideos, 0, 111, Short.MAX_VALUE)
+								.addComponent(comboBoxVideos, 0, 120, Short.MAX_VALUE)
 								.addComponent(scrollPane, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(355, GroupLayout.PREFERRED_SIZE))
 				.addGroup(groupLayout.createSequentialGroup()
@@ -95,12 +98,9 @@ public class QuitarVideo extends JInternalFrame{
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(32)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNombreDeUsuario)
-							.addGap(18))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)))
+						.addComponent(lblNombreDeUsuario)
+						.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(rdbtnListasPorDefecto)
@@ -108,8 +108,13 @@ public class QuitarVideo extends JInternalFrame{
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(rdbtnListasParticulares)
 							.addGap(18)))
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(89)
+							.addComponent(lblListasDelUsuario)))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(comboBoxVideos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -189,7 +194,7 @@ public class QuitarVideo extends JInternalFrame{
 			}
 		});
 		
-		btnAceptar.addActionListener(new ActionListener() { /////////////////////////////////////////////////////
+		btnAceptar.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				boolean checkUsuario = true;
 				
