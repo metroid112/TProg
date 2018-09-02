@@ -11,7 +11,6 @@ public abstract class Lista {
 
 	private Canal canal;
 	private LinkedList<Video> videos;
-	private LinkedList<Categoria> categorias;
 	
 
 	public Lista() {
