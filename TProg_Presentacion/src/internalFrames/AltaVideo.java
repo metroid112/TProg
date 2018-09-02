@@ -259,7 +259,7 @@ public class AltaVideo extends JInternalFrame {
 				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video", JOptionPane.ERROR_MESSAGE);	// Muesta el error al dar de alta
 			}
 		} else {
-			JOptionPane.showMessageDialog(this, "No deben haber campos vacios.", "Error!", JOptionPane.ERROR_MESSAGE); 	// TODO arreglo de error
+			JOptionPane.showMessageDialog(this, "No deben haber campos vacios.", "Error!", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}

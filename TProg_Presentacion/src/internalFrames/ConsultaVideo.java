@@ -41,7 +41,7 @@ public class ConsultaVideo extends JInternalFrame {
 		this.contVideos = contVideos;
 		
 		setTitle("Consulta de Video");
-		setBounds(100, 100, 540, 475);
+		setBounds(100, 100, 580, 475);
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
 		JPanel panelSeleccion = new JPanel();
@@ -61,14 +61,14 @@ public class ConsultaVideo extends JInternalFrame {
 		gl_panelSeleccion.setHorizontalGroup(
 			gl_panelSeleccion.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelSeleccion.createSequentialGroup()
-					.addGap(19)
+					.addGap(57)
 					.addGroup(gl_panelSeleccion.createParallelGroup(Alignment.TRAILING)
-						.addComponent(seleccionVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panelSeleccion.createSequentialGroup()
 							.addComponent(btnVerInfo)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnCancelar)))
-					.addContainerGap(20, Short.MAX_VALUE))
+							.addComponent(btnCancelar))
+						.addComponent(seleccionVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(57, Short.MAX_VALUE))
 		);
 		gl_panelSeleccion.setVerticalGroup(
 			gl_panelSeleccion.createParallelGroup(Alignment.LEADING)
@@ -76,9 +76,10 @@ public class ConsultaVideo extends JInternalFrame {
 					.addGap(5)
 					.addComponent(seleccionVideo, GroupLayout.PREFERRED_SIZE, 357, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panelSeleccion.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panelSeleccion.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnCancelar)
-						.addComponent(btnVerInfo)))
+						.addComponent(btnVerInfo))
+					.addContainerGap(54, Short.MAX_VALUE))
 		);
 		panelSeleccion.setLayout(gl_panelSeleccion);
 		
@@ -104,17 +105,18 @@ public class ConsultaVideo extends JInternalFrame {
 							.addGap(400)
 							.addComponent(btnVolver))
 						.addGroup(gl_panelInfo.createSequentialGroup()
-							.addContainerGap()
+							.addGap(29)
 							.addComponent(infoVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(20, Short.MAX_VALUE))
+					.addContainerGap(28, Short.MAX_VALUE))
 		);
 		gl_panelInfo.setVerticalGroup(
 			gl_panelInfo.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelInfo.createSequentialGroup()
+					.addContainerGap()
 					.addComponent(infoVideo, GroupLayout.PREFERRED_SIZE, 395, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnVolver)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(21, Short.MAX_VALUE))
 		);
 		panelInfo.setLayout(gl_panelInfo);
 		btnCancelar.addActionListener(new ActionListener() {

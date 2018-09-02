@@ -51,7 +51,7 @@ public class ConsultaLista extends JInternalFrame{
 	public ConsultaLista() {
 		
 		setTitle("Conultar lista");
-		setBounds(0, 0, 540, 500);
+		setBounds(0, 0, 580, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panelSeleccion = new JPanel();
 		infoVid = new InfoVideo(Fabrica.getFabrica().getIVideos());
@@ -131,10 +131,10 @@ public class ConsultaLista extends JInternalFrame{
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(17)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(comboBoxUsuario, 0, 144, Short.MAX_VALUE)
+								.addComponent(comboBoxUsuario, 0, 125, Short.MAX_VALUE)
 								.addComponent(rdbtnListasPorDefecto)
 								.addComponent(rdbtnListasParticulares)
-								.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+								.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
 							.addGap(68)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -142,13 +142,13 @@ public class ConsultaLista extends JInternalFrame{
 							.addComponent(lblVisibilidad)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(Lvisible))
-						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-							.addComponent(scrollPaneVideos, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(btnConsultarVideo)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnCerrar))))
-					.addGap(84))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(53)
+							.addComponent(btnConsultarVideo)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnCerrar))
+						.addComponent(scrollPaneVideos, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE))
+					.addGap(42))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -161,16 +161,16 @@ public class ConsultaLista extends JInternalFrame{
 					.addGap(13)
 					.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(rdbtnListasPorDefecto)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(rdbtnListasParticulares)
 							.addGap(11)
-							.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(scrollPaneVideos, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(btnCerrar)
 								.addComponent(btnConsultarVideo))))

@@ -55,7 +55,7 @@ public class Video {
 	public DtVideo getDT() {
 
 		return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha, this.duracion,
-				this.visible, this.comentarios);
+				this.visible, this.comentarios, this.calificaciones);
 
 	}
 	
@@ -114,9 +114,7 @@ public class Video {
 	public void setDuracion(int hora, int minuto, int segundo) {
 		this.duracion = Duration.ofHours(hora);
 		this.duracion = duracion.plusMinutes(minuto);
-		this.duracion = duracion.plusSeconds(segundo);
-		
-				
+		this.duracion = duracion.plusSeconds(segundo);	
 	}
 
 	public void setFecha(Date fecha) {
@@ -139,10 +137,6 @@ public class Video {
 		this.canal = canal;
 	}
 
-	public void setCalificaciones(LinkedList<Calificacion> calificaciones) {
-		this.calificaciones = calificaciones;
-	}
-
 	public void modificarDatos(String nombre, String descripcion, String url, Categoria categoria,
 			Duration duracion, Boolean visible, Date fecha) {
 		this.nombre = nombre;
@@ -152,6 +146,14 @@ public class Video {
 		this.duracion = duracion;
 		this.visible = visible;
 		this.fecha = fecha;
+	}
+	
+	public void addCalificacion(Calificacion cal) {
+		this.calificaciones.add(cal); 	// TODO quien crea calificaciones?
+	}
+	
+	public void addComentarioPadre(Comentario com) {
+		this.comentarios.put(com.getID(), com); 		//TODO quien crea comentarios?
 	}
 
 }

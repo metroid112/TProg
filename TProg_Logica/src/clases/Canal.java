@@ -240,4 +240,10 @@ public class Canal {
 			return listaPar.getArrayVideos();
 		}
 	}
+
+	public void modVideo(String nombreOld, String nombre) {
+		Video vid = this.videos.remove(nombreOld);
+		this.videos.put(nombre, vid);
+		
+	}
 }
