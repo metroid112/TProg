@@ -1,6 +1,6 @@
 package interfaces;
 
-import internalFrames.DtLista;
+import dataTypes.DtLista;
 
 public interface IListas {
 
@@ -16,5 +16,5 @@ public interface IListas {
 	
 	public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista, boolean defecto);
 
-	public DtLista getDt(String lista);
+	public DtLista getDt(String lista, String usuario) throws Exception;
 }

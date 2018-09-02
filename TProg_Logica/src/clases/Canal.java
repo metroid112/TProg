@@ -167,4 +167,15 @@ public class Canal {
 		//this.videos.put(nombre, new Video(nombre, descripcion, duracion, url, categoria, fecha, visible))
 		
 	}
+
+	public Lista getLista(String lista) throws Exception {
+		if (this.listaDefecto.containsKey(lista)) {
+			return this.listaDefecto.get(lista);
+		} else if (this.listaParticulares.containsKey(lista)) {
+			return this.listaParticulares.get(lista); 
+		} else {
+			throw new Exception("No existe lista");
+		}
+		
+	}
 }

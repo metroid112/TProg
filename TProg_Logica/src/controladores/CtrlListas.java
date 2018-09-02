@@ -1,6 +1,6 @@
 package controladores;
 
-import interfaces.DtLista;
+import dataTypes.DtLista;
 import interfaces.IListas;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
@@ -13,6 +13,7 @@ import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Canal;
 import clases.Categoria;
+import clases.Lista;
 import clases.Usuario;
 import clases.Video;
 
@@ -86,9 +87,11 @@ public class CtrlListas implements IListas {
 	}
 
 	@Override
-	public DtLista getDt(String lista) {
+	public DtLista getDt(String lista, String usuario) throws Exception {
 		// TODO Cread dt y terminar funcion
-		return null;
+		Lista list = manejadorUsuarios.get(usuario).getCanal().getLista(lista);
+		
+		return list.getDtLista();
 	}
 	
 	}

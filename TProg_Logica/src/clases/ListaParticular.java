@@ -1,6 +1,8 @@
 package clases;
 import java.util.*;
 
+import dataTypes.DtLista;
+
 public class ListaParticular extends Lista {
 	
 	private boolean visible;
@@ -29,5 +31,14 @@ public class ListaParticular extends Lista {
 
 	public void setCategorias(HashMap<String, Categoria> categorias) {
 		this.categorias = categorias;
+	}
+
+	@Override
+	public DtLista getDtLista() {
+		LinkedList<String> videos = new LinkedList<String>();
+		for (Video vid : this.getVideos()){
+			videos.add(vid.getNombre());
+		}
+		return new DtLista(this.getNombre(), "Particular", this.visible, videos);		
 	}
 }

@@ -3,6 +3,8 @@ package clases;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import dataTypes.DtLista;
+
 public abstract class Lista {
 
 	private String nombre;
@@ -45,6 +47,8 @@ public abstract class Lista {
 	public void setVideos(LinkedList<Video> videos) {
 		this.videos = videos;
 	}
+
+	public abstract DtLista getDtLista();
 
 
 

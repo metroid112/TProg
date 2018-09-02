@@ -17,6 +17,8 @@ import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.TableColumn;
 
+import dataTypes.DtLista;
+import dataTypes.DtVideo;
 import interfaces.*;
 import paneles.InfoVideo;
 
@@ -38,6 +40,9 @@ public class ConsultaLista extends JInternalFrame{
 	private ButtonGroup grupoLista = new ButtonGroup();
 	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
+	private JComboBox<String> comboBoxUsuario;
+	private JLabel Lvisible;
+	private InfoVideo infoVid;
 
 	private DefaultListModel<String> listListas = new DefaultListModel<>();
 	
@@ -46,17 +51,45 @@ public class ConsultaLista extends JInternalFrame{
 	public ConsultaLista() {
 		
 		setTitle("Conultar lista");
-		setBounds(0, 0, 540, 480);
+		setBounds(0, 0, 540, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panelSeleccion = new JPanel();
-		InfoVideo panelInfo = new InfoVideo(Fabrica.getFabrica().getIVideos());
+		infoVid = new InfoVideo(Fabrica.getFabrica().getIVideos());
+		JPanel panelInfo = new JPanel();
 		ctrLis = Fabrica.getFabrica().getIListas();
 		getContentPane().setLayout(new CardLayout());
 		getContentPane().add(panelSeleccion);
 		getContentPane().add(panelInfo);
+		
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cambioPanel();
+			}
+		});
+		GroupLayout gl_panelInfo = new GroupLayout(panelInfo);
+		gl_panelInfo.setHorizontalGroup(
+			gl_panelInfo.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelInfo.createSequentialGroup()
+					.addGap(37)
+					.addGroup(gl_panelInfo.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnVolver)
+						.addComponent(infoVid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(37, Short.MAX_VALUE))
+		);
+		gl_panelInfo.setVerticalGroup(
+			gl_panelInfo.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelInfo.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(infoVid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnVolver)
+					.addContainerGap(35, Short.MAX_VALUE))
+		);
+		panelInfo.setLayout(gl_panelInfo);
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 		
-		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
+		comboBoxUsuario = new JComboBox<String>(modelUsuario);
 		
 		JButton btnCerrar = new JButton("Cerrar");
 		
@@ -73,7 +106,7 @@ public class ConsultaLista extends JInternalFrame{
 		JLabel lblVisibilidad = new JLabel("Visibilidad:");
 		lblVisibilidad.setEnabled(false);
 		
-		JLabel lblLvisibilidad = new JLabel("");
+		Lvisible = new JLabel("");
 		
 		JScrollPane scrollPaneVideos = new JScrollPane();
 		
@@ -81,6 +114,8 @@ public class ConsultaLista extends JInternalFrame{
 		btnConsultarVideo.setEnabled(false);
 		btnConsultarVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				cargarVideo();
+				cambioPanel();
 			}
 		});
 
@@ -106,7 +141,7 @@ public class ConsultaLista extends JInternalFrame{
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblVisibilidad)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblLvisibilidad))
+							.addComponent(Lvisible))
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 							.addComponent(scrollPaneVideos, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
 							.addGroup(groupLayout.createSequentialGroup()
@@ -122,7 +157,7 @@ public class ConsultaLista extends JInternalFrame{
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombreDeUsuario)
 						.addComponent(lblVisibilidad)
-						.addComponent(lblLvisibilidad))
+						.addComponent(Lvisible))
 					.addGap(13)
 					.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -153,8 +188,9 @@ public class ConsultaLista extends JInternalFrame{
 		
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				lblLvisibilidad.setEnabled(true);
+				Lvisible.setEnabled(true);
 				lblVideos.setEnabled(true);
+				btnConsultarVideo.setEnabled(true);
 				cargaDatosLista();
 			}
 		});
@@ -222,14 +258,11 @@ public class ConsultaLista extends JInternalFrame{
 	public void cargarDatos(){
 		
 		fab = Fabrica.getFabrica();
-		ctrUsu = fab.getIUsuariosCanales();
-		
-	    String[] usuarios = ctrUsu.listarUsuarios();
-		int largou = usuarios.length;
-		
+		ctrUsu = fab.getIUsuariosCanales();		
+	    String[] usuarios = ctrUsu.listarUsuarios();		
 		modelUsuario.addElement("");
-		for (int i = 0; i < largou; i++ ){
-		  modelUsuario.addElement(usuarios[i]);
+		for (String usuario : usuarios){
+		  modelUsuario.addElement(usuario);
 		}
 		ctrUsu = null;
 		
@@ -289,8 +322,34 @@ public class ConsultaLista extends JInternalFrame{
 	
 	private void cargaDatosLista() {
 		String lista = list.getSelectedValue();
-		DtLista dtLista = ctrLis.getDt(lista);
-		//TODO terminar carga de datos y desplegar videos
+		String usuario = (String) comboBoxUsuario.getSelectedItem();
+		try {
+			DtLista dtLista = ctrLis.getDt(lista, usuario);
+			if (dtLista.isVisible()) {
+				Lvisible.setText("Publico");
+			} else {
+				Lvisible.setText("Privado");
+			}
+			DefaultListModel<String> modeloVideos = new DefaultListModel<String>();
+			for (String vid : dtLista.getVideos()) {
+				modeloVideos.addElement(vid);
+			}
+			listaVideos.setModel(modeloVideos);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		
+	}
+	
+	private void cambioPanel() {
+		CardLayout layout = (CardLayout) getContentPane().getLayout();
+		layout.next(getContentPane());
+	}
+	
+	private void cargarVideo() {
+		IVideos ctrVid = Fabrica.getFabrica().getIVideos();
+		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue(), (String) comboBoxUsuario.getSelectedItem());
+		infoVid.cargarDatos(dtVid);
 		
 	}
 }
