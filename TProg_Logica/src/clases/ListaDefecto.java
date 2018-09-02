@@ -29,7 +29,7 @@ public class ListaDefecto extends Lista {
 		for (Video vid : this.getVideos()){
 			videos.add(vid.getNombre());
 		}
-		return new DtLista(this.getNombre(), "Defecto", false, videos, null);		
+		return new DtLista(this.getNombre(), "Defecto", false, videos, new LinkedList<String>());		
 	}
 	
 	

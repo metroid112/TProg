@@ -68,7 +68,7 @@ public class ListaParticular extends Lista {
 		}
 		LinkedList<String> categorias = new LinkedList<String>();
 		for (Categoria cat : this.getCategorias().values()){
-			videos.add(cat.getNombre());
+			categorias.add(cat.getNombre());
 		}
 		return new DtLista(this.getNombre(), "Particular", this.visible, videos, categorias);		
 	}
