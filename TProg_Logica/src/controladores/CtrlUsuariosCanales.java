@@ -169,7 +169,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	@Override
 	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
 			String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
-		manejadorUsuarios.add(new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)), new Canal(nombreCanal, descripcionCanal, visible)));
+		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)));
+		Canal canal = new Canal(nombreCanal, visible, user);
+		user.setCanal(canal);
+		manejadorUsuarios.add(user);
 	}
 
 	@Override

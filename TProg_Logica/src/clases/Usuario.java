@@ -61,14 +61,13 @@ public class Usuario {
 	}
 
 	public Usuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			BufferedImage image, Canal canal) {
+			BufferedImage image) {
 		this.nick = nickname;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
 		this.fechaNacimiento = fechaNacimiento;
 		this.imagen = image;
-		this.canal = canal;
 	}
 
 	public String getNick() {
