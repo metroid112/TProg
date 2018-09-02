@@ -174,6 +174,17 @@ public class Canal {
 			}
 		
 	}
+  
+	public Lista getLista(String lista) throws Exception {
+		if (this.listaDefecto.containsKey(lista)) {
+			return this.listaDefecto.get(lista);
+		} else if (this.listaParticulares.containsKey(lista)) {
+			return this.listaParticulares.get(lista); 
+		} else {
+			throw new Exception("No existe lista");
+		}
+		
+	}
 	
 	public void agregarVideoListaParticular(Video videoObj, String lista){
 		ListaParticular listaObj = listaParticulares.get(lista);
