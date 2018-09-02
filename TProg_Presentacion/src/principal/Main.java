@@ -313,6 +313,7 @@ public class Main {
 					try {
 						logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
 						cargarDatos();
+						mntmCargaDatos.setEnabled(false);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
@@ -489,9 +490,12 @@ public class Main {
 		//this.usuariosCanales.comentarVideo("Peñarol peñarol!!!", formatComentario.parse("14/11/2016 05:34"), "kairoh", "50 años del InCo", "hectorg");
 		//this.usuariosCanales.comentarVideo("Rock and Rolllll", formatComentario.parse("30/10/2017 02:17"), "marcelot", "50 años del InCo", "hectorg");
 		//this.usuariosCanales.comentarVideo("Anoche exploto!!!", formatComentario.parse("25/08/2018 18:00"), "marcelot", "50 años del InCo", "hectorg");
-		//this.usuariosCanales.comentarVideo("Me encanta este tema", formatComentario.parse("11/09/2017 03:45"), "marcelot", "50 años del InCo", "hectorg");
-		//this.usuariosCanales.responderComentario("Gracias Marce ;)", formatComentario.parse("15/09/2018 12:29"), "tabarec", "50 años del InCo", "hectorg", 8);
+		//this.usuariosCanales.comentarVideo("Me encanta este tema", formatComentario.parse("11/09/2017 03:45"), "marcelot", "Locura celeste", "tabarec");
+		//this.usuariosCanales.responderComentario("Gracias Marce ;)", formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "tabarec", 3);
+		//this.usuariosCanales.comentarVideo("Me encanta este tema", formatComentario.parse("11/09/2017 03:45"), "marcelot", "Locura celeste", "cachilas");
+		//this.usuariosCanales.responderComentario("Gracias Marce ;)", formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "cachilas", 5);
 		
-		this.usuariosCanales.valorarVideo(nombreUsuario, like, nombreVideo, nombreDueñoVideo);
+		//this.usuariosCanales.valorarVideo(nombreUsuario, like, nombreVideo, nombreDueñoVideo);
+		
 	}
 }
