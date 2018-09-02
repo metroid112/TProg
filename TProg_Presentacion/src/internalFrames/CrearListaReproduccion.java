@@ -197,7 +197,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		                setVisible(false);
 					}
 					catch(Exception x){
-						JOptionPane.showMessageDialog(null,x.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Este usuario ya posee una lista con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			}

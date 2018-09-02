@@ -32,6 +32,33 @@ public class ListaParticular extends Lista {
 	public void setCategorias(HashMap<String, Categoria> categorias) {
 		this.categorias = categorias;
 	}
+	
+	public boolean existeCategoria(Categoria categoria){
+		if(categoria != null){
+				return categorias.containsKey(categoria);
+		}
+		return true;
+	}
+
+	public void insertarCategoria(Categoria categoria){
+		categorias.put(categoria.getNombre(), categoria);
+	}
+	
+	public void quitarCategoria(Categoria categoria){
+		categorias.remove(categoria);
+	}
+	
+	public boolean esUnicaCategoria(Categoria categoria){
+		if(categoria != null){
+			for(Video v: super.getVideos()){
+				if(v.getCategoria() == categoria){
+					return false;
+				}
+			}
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public DtLista getDtLista() {

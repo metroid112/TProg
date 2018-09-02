@@ -96,13 +96,13 @@ public class Canal {
 	}
 
 	public void ingresarListaDefecto(String nombre){
-		ListaDefecto nuevaLista = new ListaDefecto(nombre,this,new LinkedList<Video>(),new LinkedList<Categoria>());
+		ListaDefecto nuevaLista = new ListaDefecto(nombre,this,new LinkedList<Video>());
 		listaDefecto.put(nombre, nuevaLista); //puede cambiar la implementacion
 	}
 	
 	public void ingresarListaParticular(String nombre, boolean visibilidad){
 		
-		ListaParticular nuevaLista = new ListaParticular(nombre,this,new LinkedList<Video>(),new HashMap<String,Categoria>(),visibilidad,new LinkedList<Categoria>());
+		ListaParticular nuevaLista = new ListaParticular(nombre,this,new LinkedList<Video>(),new HashMap<String,Categoria>(),visibilidad);
 		listaParticulares.put(nombre, nuevaLista);	//puede cambiar la implementacion
 
 	}
@@ -144,13 +144,7 @@ public class Canal {
 		ListaDefecto listaObj = listaDefecto.get(lista);
 			if(!listaObj.existeVideo(videoObj)){
 				listaObj.insertarVideo(videoObj);
-				
-				Categoria categoria = videoObj.getCategoria();
-				if(!listaObj.existeCategoria(categoria)){
-					listaObj.insertarCategoria(categoria);
-				}
 			}
-		
 	}
   
 	public Lista getLista(String lista) throws Exception {
@@ -161,7 +155,6 @@ public class Canal {
 		} else {
 			throw new Exception("No existe lista");
 		}
-		
 	}
 	
 	public void agregarVideoListaParticular(Video videoObj, String lista){
@@ -174,17 +167,13 @@ public class Canal {
 					listaObj.insertarCategoria(categoria);
 				}
 			}
+			// disparar excepcion
 	}
 	
 	public void quitarVideoListaDefecto(String video,String lista){
 		ListaDefecto listaObj = listaDefecto.get(lista);
 		Video videoObj = videos.get(video);
 		listaObj.quitarVideo(videoObj);
-		Categoria cat = videoObj.getCategoria();
-		
-		if(listaObj.esUnicaCategoria(cat)){
-			listaObj.quitarCategoria(cat);
-		}
 		
 	}
 	
@@ -193,7 +182,6 @@ public class Canal {
 		Video videoObj = videos.get(video);
 		listaObj.quitarVideo(videoObj);
 		Categoria cat = videoObj.getCategoria();
-		
 		
 		if(listaObj.esUnicaCategoria(cat)){
 			listaObj.quitarCategoria(cat);

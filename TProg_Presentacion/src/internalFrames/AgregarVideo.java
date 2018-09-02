@@ -166,7 +166,6 @@ public class AgregarVideo extends JInternalFrame{
 						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
 						checkUsuario = false;
 				}
-
 				
 				if(checkUsuario){
 					ctrLis = fab.getIListas();

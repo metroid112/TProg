@@ -11,7 +11,6 @@ public abstract class Lista {
 
 	private Canal canal;
 	private LinkedList<Video> videos;
-	private LinkedList<Categoria> categorias;
 	
 
 	public Lista() {
@@ -19,11 +18,11 @@ public abstract class Lista {
 
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Lista(String nombre, Canal canal, LinkedList<Video> videos, LinkedList<Categoria> categoria) {
+	public Lista(String nombre, Canal canal, LinkedList<Video> videos) {
 		this.nombre = nombre;
 		this.canal = canal;
 		this.videos = videos;
-		this.categorias = categoria;
+
 	}
 
 	public String getNombre() {
@@ -63,33 +62,6 @@ public abstract class Lista {
 	public void quitarVideo(Video video){
 		
 		videos.remove(video);
-	}
-	
-	public boolean existeCategoria(Categoria categoria){
-		if(categoria != null){
-				return categorias.contains(categoria);
-		}
-		return true;
-	}
-
-	public void insertarCategoria(Categoria categoria){
-		categorias.add(categoria);
-	}
-	
-	public void quitarCategoria(Categoria categoria){
-		categorias.remove(categoria);
-	}
-	
-	public boolean esUnicaCategoria(Categoria categoria){
-		if(categoria != null){
-			for(Video v:videos){
-				if(v.getCategoria() == categoria){
-					return false;
-				}
-			}
-			return true;
-		}
-		return false;
 	}
 	
 	public String[] getArrayVideos(){
