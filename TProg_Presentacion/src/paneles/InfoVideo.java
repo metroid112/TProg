@@ -192,7 +192,7 @@ public class InfoVideo extends JPanel {
 		DefaultListModel<String> modeloLista = new DefaultListModel<String>();
 		if (!dtVid.calificaciones.isEmpty()) {
 			for (DtCalificacion cal : dtVid.calificaciones) {
-				modeloLista.addElement(cal.getUsuario() + " - " + cal.getLikeParsed());
+				modeloLista.addElement(cal.usuario + " - " + cal.getLikeParsed());
 			}
 		} else {
 			modeloLista.addElement("Sin calificaciones");
