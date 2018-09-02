@@ -56,5 +56,7 @@ public interface IUsuariosCanales {
 	
 	public boolean isCanalPublico(String usuario);
 	
+	public String[] listarVideosLista(String usuario,String lista,boolean defecto);
+	
 	public void seguir(String seguidor, String seguido);
 }

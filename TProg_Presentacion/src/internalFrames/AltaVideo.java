@@ -6,9 +6,11 @@ import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -31,13 +33,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class AltaVideo extends JInternalFrame {
 	private JTextField TextoNombre;
 	private JTextField tFieldURL;
-	JComboBox<String> cBoxUsuarios;
-	JTextArea tAreaDescripcion;
-	JSpinner spinnerHoras;
-	JSpinner spinnerMinutos;
-	JSpinner spinnerSegundos;
-	JComboBox<String> cBoxCategoria;
-	JXDatePicker datePicker;
+	private JComboBox<String> cBoxUsuarios;
+	private JTextArea tAreaDescripcion;
+	private JSpinner spinnerHoras;
+	private JSpinner spinnerMinutos;
+	private JSpinner spinnerSegundos;
+	private JComboBox<String> cBoxCategoria;
+	private JXDatePicker datePicker;
+	private JScrollPane scrollPane;
 	
 	private IVideos contVideos;
 	/**
@@ -47,7 +50,7 @@ public class AltaVideo extends JInternalFrame {
 		contVideos = interfaz;		// Se inicia con la interfaz como parametro
 		
 		setTitle("Alta de Video");
-		setBounds(0, 0, 640, 480);
+		setBounds(0, 0, 550, 400);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
 		
@@ -61,6 +64,11 @@ public class AltaVideo extends JInternalFrame {
 		JLabel lblDescripcion = new JLabel("Descripcion:");
 		
 		tAreaDescripcion = new JTextArea();
+		tAreaDescripcion.setWrapStyleWord(true);
+		tAreaDescripcion.setRows(3);
+		tAreaDescripcion.setLineWrap(true);
+		scrollPane = new JScrollPane();
+		scrollPane.setViewportView(tAreaDescripcion);
 		
 		JLabel lblDuracion = new JLabel("Duracion:");
 		
@@ -110,12 +118,10 @@ public class AltaVideo extends JInternalFrame {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblUsuario)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblUsuario))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
 							.addComponent(lblDuracion)
 							.addGap(87)
 							.addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -129,38 +135,36 @@ public class AltaVideo extends JInternalFrame {
 							.addComponent(spinnerSegundos, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblSeg))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(lblFecha, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-											.addGap(66))
-										.addGroup(groupLayout.createSequentialGroup()
-											.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-												.addComponent(lblUrl, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(lblCategoria, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
-											.addGap(49)))
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-											.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-											.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-												.addGroup(groupLayout.createSequentialGroup()
-													.addComponent(btnAceptar)
-													.addGap(18)
-													.addComponent(btnCancelar))
-												.addComponent(cBoxCategoria, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)))
-										.addComponent(tFieldURL, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)))
-								.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+									.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(lblFecha, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+										.addGap(66))
+									.addGroup(groupLayout.createSequentialGroup()
+										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+											.addComponent(lblUrl, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(lblCategoria, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+										.addGap(49)))
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblNombreDelVideo, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblDescripcion))
-									.addGap(27)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(tAreaDescripcion, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
-										.addComponent(cBoxUsuarios, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
-										.addComponent(TextoNombre, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE))))))
+										.addComponent(datePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+											.addGroup(groupLayout.createSequentialGroup()
+												.addComponent(btnAceptar)
+												.addGap(18)
+												.addComponent(btnCancelar))
+											.addComponent(cBoxCategoria, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(tFieldURL, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addComponent(lblDescripcion)
+									.addComponent(lblNombreDelVideo, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE))
+								.addGap(18)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
+									.addComponent(cBoxUsuarios, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
+									.addComponent(TextoNombre, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)))))
 					.addGap(38))
 		);
 		groupLayout.setVerticalGroup(
@@ -177,7 +181,7 @@ public class AltaVideo extends JInternalFrame {
 					.addGap(5)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblDescripcion)
-						.addComponent(tAreaDescripcion, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE))
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()

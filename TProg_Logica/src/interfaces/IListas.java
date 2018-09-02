@@ -17,4 +17,6 @@ public interface IListas {
 	public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista, boolean defecto);
 
 	public DtLista getDt(String lista, String usuario) throws Exception;
+	
+	public void quitarVideoLista(String usuario, String video, String lista,boolean deefecto);
 }

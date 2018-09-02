@@ -28,12 +28,14 @@ import interfaces.IVideos;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 
 public class InfoVideo extends JPanel {
 	private IVideos contVideo;
-	private JLabel lblVnombre, lblVdescripcion, lblVduracion, lblVfecha, lblVvisibilidad, lblVcategoria, lblVurl;
-
+	private JLabel lblVnombre, lblVduracion, lblVfecha, lblVvisibilidad, lblVcategoria, lblVurl;
+	private JTextArea textVdescripcion;
 	private JTree tree;
+	private JScrollPane scrollPane2;
 
 
 	/**
@@ -44,8 +46,6 @@ public class InfoVideo extends JPanel {
 		this.contVideo = contVideo;
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		
-		JLabel lblDescripcion = new JLabel("Descripcion:");
 		
 		JLabel lblDuracion = new JLabel("Duracion:");
 		
@@ -61,7 +61,12 @@ public class InfoVideo extends JPanel {
 		
 		lblVnombre = new JLabel("vNombre");
 		
-		lblVdescripcion = new JLabel("vDescripcion");
+		textVdescripcion = new JTextArea("vDescripcion");
+		textVdescripcion.setWrapStyleWord(true);
+		textVdescripcion.setLineWrap(true);
+		textVdescripcion.setEditable(false);
+		
+		scrollPane2 = new JScrollPane(textVdescripcion);
 		
 		lblVduracion = new JLabel("vDuracion");
 		
@@ -77,34 +82,29 @@ public class InfoVideo extends JPanel {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(17)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+					.addGap(18))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(32)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(32)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblDescripcion)
-								.addComponent(lblNombre)
-								.addComponent(lblDuracion)
-								.addComponent(lblVisibilidad)
-								.addComponent(lblFecha)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblCategoria))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(lblUrl)))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblVurl)
-								.addComponent(lblVcategoria)
-								.addComponent(lblVfecha)
-								.addComponent(lblVvisibilidad)
-								.addComponent(lblVduracion)
-								.addComponent(lblVnombre)
-								.addComponent(lblVdescripcion)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(35)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(35, Short.MAX_VALUE))
+						.addComponent(lblNombre)
+						.addComponent(lblDuracion)
+						.addComponent(lblVisibilidad)
+						.addComponent(lblFecha)
+						.addComponent(lblCategoria)
+						.addComponent(lblUrl))
+					.addGap(26)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblVurl)
+						.addComponent(lblVcategoria)
+						.addComponent(lblVfecha)
+						.addComponent(lblVvisibilidad)
+						.addComponent(lblVduracion)
+						.addComponent(lblVnombre))
+					.addGap(318))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -113,10 +113,6 @@ public class InfoVideo extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombre)
 						.addComponent(lblVnombre))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblDescripcion)
-						.addComponent(lblVdescripcion))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblDuracion)
@@ -137,22 +133,30 @@ public class InfoVideo extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUrl)
 						.addComponent(lblVurl))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addGap(36)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPane2, Alignment.LEADING)
+						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+					.addGap(29))
 		);
+		
+		JLabel lblDecripcion = new JLabel("Decripcion");
+		scrollPane2.setColumnHeaderView(lblDecripcion);
 		
 
 		tree = new JTree();
 
-		scrollPane.setColumnHeaderView(tree);
+		scrollPane.setViewportView(tree);
+		
+		JLabel lblComentarios = new JLabel("Comentarios");
+		scrollPane.setColumnHeaderView(lblComentarios);
 		setLayout(groupLayout);
 
 	}
 	
 	public void cargarDatos(DtVideo dtVid) {
 		lblVnombre.setText(dtVid.getNombre());
-		lblVdescripcion.setText(dtVid.getDescripcion());
+		textVdescripcion.setText(dtVid.getDescripcion());
 		lblVurl.setText(dtVid.getURL());
 		if (dtVid.isVisible()) {
 			lblVvisibilidad.setText("Publico");
