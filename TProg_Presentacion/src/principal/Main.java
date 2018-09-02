@@ -492,6 +492,6 @@ public class Main {
 		//this.usuariosCanales.comentarVideo("Me encanta este tema", formatComentario.parse("11/09/2017 03:45"), "marcelot", "50 años del InCo", "hectorg");
 		//this.usuariosCanales.responderComentario("Gracias Marce ;)", formatComentario.parse("15/09/2018 12:29"), "tabarec", "50 años del InCo", "hectorg", 8);
 		
-		//this.videos.calificar(nombreVideo, autor, meGusta)
+		this.usuariosCanales.valorarVideo(nombreUsuario, like, nombreVideo, nombreDueñoVideo);
 	}
 }
