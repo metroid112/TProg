@@ -1,30 +1,19 @@
 package internalFrames;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JList;
-import java.awt.BorderLayout;
-
-import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import javax.swing.JInternalFrame;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
-
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
+import paneles.SelectorUsuarios;
 
 @SuppressWarnings("serial")
 public class ListarUsuarios extends JInternalFrame {
-	private IUsuariosCanales ctrlUsu;
-	private Fabrica fab;
 	/**
 	 * Launch the application.
 	 */

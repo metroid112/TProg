@@ -3,34 +3,32 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.table.TableColumn;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import dataTypes.DtLista;
 import dataTypes.DtVideo;
-import interfaces.*;
+import interfaces.Fabrica;
+import interfaces.IListas;
+import interfaces.IUsuariosCanales;
+import interfaces.IVideos;
 import paneles.InfoVideo;
-
-import javax.swing.JTextArea;
-import javax.swing.JScrollBar;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.JRadioButton;
-import javax.swing.JTable;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
 
 @SuppressWarnings("serial")
 public class ConsultaLista extends JInternalFrame{
@@ -38,7 +36,6 @@ public class ConsultaLista extends JInternalFrame{
 	private IUsuariosCanales ctrUsu;
 	private IListas ctrLis;
 	private ButtonGroup grupoLista = new ButtonGroup();
-	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private JComboBox<String> comboBoxUsuario;
 	private JLabel Lvisible;
@@ -55,9 +52,11 @@ public class ConsultaLista extends JInternalFrame{
 		setBounds(0, 0, 580, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panelSeleccion = new JPanel();
-		infoVid = new InfoVideo(Fabrica.getFabrica().getIVideos());
+		Fabrica.getFabrica();
+		infoVid = new InfoVideo(Fabrica.getIVideos());
 		JPanel panelInfo = new JPanel();
-		ctrLis = Fabrica.getFabrica().getIListas();
+		Fabrica.getFabrica();
+		ctrLis = Fabrica.getIListas();
 		getContentPane().setLayout(new CardLayout());
 		getContentPane().add(panelSeleccion);
 		getContentPane().add(panelInfo);
@@ -294,8 +293,8 @@ public class ConsultaLista extends JInternalFrame{
 	
 	public void cargarDatos(){
 		
-		fab = Fabrica.getFabrica();
-		ctrUsu = fab.getIUsuariosCanales();		
+		Fabrica.getFabrica();
+		ctrUsu = Fabrica.getIUsuariosCanales();		
 	    String[] usuarios = ctrUsu.listarUsuarios();		
 		modelUsuario.addElement("");
 		for (String usuario : usuarios){
@@ -327,8 +326,8 @@ public class ConsultaLista extends JInternalFrame{
 	
 	public void cargarParticularListas(){
 		listListas.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrLis = fab.getIListas();
+		Fabrica.getFabrica();
+		ctrLis = Fabrica.getIListas();
 		
 		if(modelUsuario.getSelectedItem() != null){
 			
@@ -388,7 +387,8 @@ public class ConsultaLista extends JInternalFrame{
 	}
 	
 	private void cargarVideo() {
-		IVideos ctrVid = Fabrica.getFabrica().getIVideos();
+		Fabrica.getFabrica();
+		IVideos ctrVid = Fabrica.getIVideos();
 		String dueñoVid = null;
 		try {
 			dueñoVid = ctrLis.getDueñoVideo((String)comboBoxUsuario.getSelectedItem(),list.getSelectedValue(), listaVideos.getSelectedValue());

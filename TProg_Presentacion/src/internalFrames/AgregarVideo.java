@@ -2,26 +2,28 @@ package internalFrames;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-import interfaces.*;
-
-import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import interfaces.Fabrica;
+import interfaces.IListas;
+import interfaces.IUsuariosCanales;
+import interfaces.IVideos;
 
 @SuppressWarnings("serial")
 public class AgregarVideo extends JInternalFrame{
@@ -30,7 +32,6 @@ public class AgregarVideo extends JInternalFrame{
 	private IVideos ctrVid;
 	private IListas ctrLis;
 	private ButtonGroup grupoLista = new ButtonGroup();
-	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelUsuObj = new DefaultComboBoxModel<String>();
@@ -48,13 +49,13 @@ public class AgregarVideo extends JInternalFrame{
 		
 		JLabel lblUsuario = new JLabel("Usuario poseedor de la lista");
 		
-		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
+		JComboBox<String> comboBoxUsuario = new JComboBox<String>(modelUsuario);
 		
-		JComboBox comboBoxVideos = new JComboBox(modelVideos);
+		JComboBox<String> comboBoxVideos = new JComboBox<String>(modelVideos);
 
 		comboBoxVideos.setEnabled(false);
 		
-		JComboBox comboBoxUsuObj = new JComboBox(modelUsuObj);
+		JComboBox<String> comboBoxUsuObj = new JComboBox<String>(modelUsuObj);
 
 		comboBoxUsuObj.setEnabled(false);
 		
@@ -137,7 +138,7 @@ public class AgregarVideo extends JInternalFrame{
 					.addContainerGap())
 		);
 		
-		JList list = new JList(listListas);
+		JList<String> list = new JList<String>(listListas);
 
 		list.setEnabled(false);
 		scrollPane.setViewportView(list);
@@ -168,7 +169,7 @@ public class AgregarVideo extends JInternalFrame{
 				}
 				
 				if(checkUsuario){
-					ctrLis = fab.getIListas();
+					ctrLis = Fabrica.getIListas();
 					ctrLis.agregarVideoLista(modelUsuario.getSelectedItem().toString(),modelVideos.getSelectedItem().toString(), 
 							modelUsuObj.getSelectedItem().toString(), 
 							list.getSelectedValue().toString(),rdbtnListasPordefecto.isSelected());
@@ -277,8 +278,7 @@ public class AgregarVideo extends JInternalFrame{
 	
 	public void cargarVideosUsuarios(){
 		
-		fab = Fabrica.getFabrica();
-		ctrVid = fab.getIVideos();
+		ctrVid = Fabrica.getIVideos();
 		 
 		if(modelUsuario.getSelectedItem() != null){
 			
@@ -299,8 +299,7 @@ public class AgregarVideo extends JInternalFrame{
 	
 	public void cargarUsuarioObj(){
 		
-		fab = Fabrica.getFabrica();
-		ctrUsu = fab.getIUsuariosCanales();
+		ctrUsu = Fabrica.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
 		int largou = usuarios.length;
 		modelUsuObj.addElement("");
@@ -312,8 +311,7 @@ public class AgregarVideo extends JInternalFrame{
 	
 	public void cargarDatos(){
 		
-		fab = Fabrica.getFabrica();
-		ctrUsu = fab.getIUsuariosCanales();
+		ctrUsu = Fabrica.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
 		int largou = usuarios.length;
 		modelUsuario.addElement("");
@@ -326,8 +324,7 @@ public class AgregarVideo extends JInternalFrame{
 	
 	public void cargarDefectoListas(){
 		listListas.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrLis = fab.getIListas();
+		ctrLis = Fabrica.getIListas();
 		
 		if(modelUsuObj.getSelectedItem() != null){
 			
@@ -347,8 +344,7 @@ public class AgregarVideo extends JInternalFrame{
 	
 	public void cargarParticularListas(){
 		listListas.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrLis = fab.getIListas();
+		ctrLis = Fabrica.getIListas();
 		
 		if(modelUsuObj.getSelectedItem() != null){
 			

@@ -1,14 +1,25 @@
 package internalFrames;
 
-import java.lang.Exception; //AL CERRAR Y ABRIR VENTANA NO SE REINICIAN LOS PARAMETROS
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import interfaces.*;
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import interfaces.Fabrica;
+import interfaces.IListas;
+import interfaces.IUsuariosCanales;
 
 
 @SuppressWarnings("serial")
@@ -20,7 +31,6 @@ public class CrearListaReproduccion extends JInternalFrame {
 	private IListas ctrLista;
 	private ButtonGroup grupoTipo = new ButtonGroup();
 	private ButtonGroup grupoVisibilidad = new ButtonGroup();
-	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelCategoria = new DefaultComboBoxModel<String>();
 
@@ -48,7 +58,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		lblNombreDeUsuario.setEnabled(false);
 		
 		
-		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
+		JComboBox<String> comboBoxUsuario = new JComboBox<String>(modelUsuario);
 		comboBoxUsuario.setEnabled(false);
 		
 		JRadioButton rdbtnPrivada = new JRadioButton("Privada",true);
@@ -160,8 +170,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				fab = fab.getFabrica();
-				ctrLista = fab.getIListas();
+				ctrLista = Fabrica.getIListas();
 				boolean checkUsuario = true;
 				
 				if(rdbtnParticular.isSelected()){
@@ -218,9 +227,9 @@ public class CrearListaReproduccion extends JInternalFrame {
 	
 	public void cargarDatos(){
 		
-		fab = Fabrica.getFabrica();
+		Fabrica.getFabrica();
 
-		ctrUsu = fab.getIUsuariosCanales();
+		ctrUsu = Fabrica.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
 		int largou = usuarios.length;
 		modelUsuario.addElement("");
@@ -239,8 +248,8 @@ public class CrearListaReproduccion extends JInternalFrame {
 	}
 	
 	boolean isCanalPublico(String usuario){
-		fab = Fabrica.getFabrica();
-		ctrUsu = fab.getIUsuariosCanales();
+		Fabrica.getFabrica();
+		ctrUsu = Fabrica.getIUsuariosCanales();
 		
 		if(!ctrUsu.isCanalPublico(usuario)){
 			JOptionPane.showMessageDialog(null, "La lista se creara como privada", "El canal es privado", JOptionPane.WARNING_MESSAGE);

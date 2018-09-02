@@ -1,21 +1,16 @@
 package internalFrames;
 
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JList;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import paneles.SelectorUsuarios;
 
 @SuppressWarnings("serial")
 public class ConsultaUsuario extends JInternalFrame {

@@ -1,46 +1,30 @@
 package internalFrames;
 
-import java.awt.EventQueue;
-
-import javax.swing.JInternalFrame;
-import java.awt.BorderLayout;
-import javax.swing.JButton;
-import java.awt.FlowLayout;
-import java.awt.Image;
-
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.VolatileImage;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-import clases.Calificacion;
-import clases.Comentario;
-import clases.Usuario;
-import interfaces.Fabrica;
-import interfaces.IUsuariosCanales;
-
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
 import java.io.File;
 import java.io.IOException;
-
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JRadioButton;
-import javax.swing.JTextPane;
-import java.awt.Rectangle;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Button;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
+
+import interfaces.Fabrica;
+import interfaces.IUsuariosCanales;
 
 
 @SuppressWarnings("serial")
@@ -64,13 +48,11 @@ public class AltaUsuario extends JInternalFrame {
 	 * Create the frame.
 	 */
 	private IUsuariosCanales ctrlUsu;
-	private Fabrica fab;
 	private JTextField dia;
 	private JTextField mes;
 	private JTextField ano;
 	
 	
-	@SuppressWarnings("unchecked")
 	public AltaUsuario() {
 		setNormalBounds(new Rectangle(20, 0, 300, 400));
 		setTitle("Alta Usuario");
@@ -359,8 +341,8 @@ public class AltaUsuario extends JInternalFrame {
 	}
 	
 	protected void cmdAltaUsuarioActionPerformed(ActionEvent e){
-		fab = Fabrica.getFabrica();
-		ctrlUsu = fab.getIUsuariosCanales(); 
+		Fabrica.getFabrica();
+		ctrlUsu = Fabrica.getIUsuariosCanales(); 
 		if (ctrlUsu.existeUsuario(textField.getText())) {
 			JOptionPane.showMessageDialog(this, "El usuario ya existe.");
 		}		

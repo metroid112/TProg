@@ -9,7 +9,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Date;
 import java.util.HashSet;
 
 import javax.swing.JFrame;
@@ -17,12 +16,30 @@ import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
-import javax.swing.JScrollPane;
 
-import interfaces.*;
-import internalFrames.*;
+import interfaces.Fabrica;
+import interfaces.ICategorias;
+import interfaces.IListas;
+import interfaces.IUsuariosCanales;
+import interfaces.IVideos;
+import internalFrames.AgregarVideo;
+import internalFrames.AltaCategoria;
+import internalFrames.AltaUsuario;
+import internalFrames.AltaVideo;
+import internalFrames.ConsultaCategoria;
+import internalFrames.ConsultaLista;
+import internalFrames.ConsultaUsuario;
+import internalFrames.ConsultaVideo;
+import internalFrames.CrearListaReproduccion;
+import internalFrames.ListarCategorias;
+import internalFrames.ListarUsuarios;
+import internalFrames.ModificarListaReproduccion;
+import internalFrames.ModificarVideo;
+import internalFrames.QuitarVideo;
+import internalFrames.VerInformacionUsuario;
 
 public class Main {
 
@@ -42,11 +59,10 @@ public class Main {
 	private JFrame frame;
 	private HashSet<JInternalFrame> frames = new HashSet<JInternalFrame>();
 	
-	private Fabrica fabrica = Fabrica.getFabrica();
-	private ICategorias categorias = fabrica.getICategorias();
-	private IListas listas = fabrica.getIListas();
-	private IUsuariosCanales usuariosCanales = fabrica.getIUsuariosCanales();
-	private IVideos videos = fabrica.getIVideos();	
+	private ICategorias categorias = Fabrica.getICategorias();
+	private IListas listas = Fabrica.getIListas();
+	private IUsuariosCanales usuariosCanales = Fabrica.getIUsuariosCanales();
+	private IVideos videos = Fabrica.getIVideos();	
 
 	private AgregarVideo frmAgregarVideo = new AgregarVideo();
 	private AltaCategoria frmAltaCategoria = new AltaCategoria();

@@ -3,7 +3,6 @@ package clases;
 import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListas;

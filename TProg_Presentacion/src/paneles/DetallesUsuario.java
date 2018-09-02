@@ -1,25 +1,8 @@
 package paneles;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.imageio.ImageIO;
-import javax.swing.DefaultListModel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
-
-import javax.swing.SwingConstants;
-
-import dataTypes.DtUsuario;
-
-import javax.swing.JTextPane;
-import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -27,16 +10,27 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.imageio.ImageIO;
+import javax.swing.DefaultListModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
+
+import dataTypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
-import javax.swing.JInternalFrame;
-import javax.swing.JTextField;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
+@SuppressWarnings("serial")
 public class DetallesUsuario extends JPanel {
-	private Fabrica fab = Fabrica.getFabrica();
-	private IUsuariosCanales ctrlUsu = fab.getIUsuariosCanales();
+	private IUsuariosCanales ctrlUsu = Fabrica.getIUsuariosCanales();
 	private String noImagen = "img\\sinImagen.jpg";
 	private DefaultListModel<String> modelListas = new DefaultListModel<>();
 	private JList<String> listasDeReproduccion =  new JList<>(modelListas);
@@ -288,8 +282,7 @@ public class DetallesUsuario extends JPanel {
 	}
 	public void cargarDatosSeguidores(String usuario){
 		modelSeguidores.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrlUsu = fab.getIUsuariosCanales();
+		ctrlUsu = Fabrica.getIUsuariosCanales();
 	
 		String[] Seguidores = ctrlUsu.listarSeguidores(usuario);
 		int largo = Seguidores.length;
@@ -300,8 +293,7 @@ public class DetallesUsuario extends JPanel {
 		}
 	public void cargarDatosSeguidos(String usuario){
 		modelSeguidos.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrlUsu = fab.getIUsuariosCanales();
+		ctrlUsu = Fabrica.getIUsuariosCanales();
 	
 		String[] Seguidos = ctrlUsu.listarSeguidos(usuario);
 		int largo = Seguidos.length;
@@ -312,8 +304,7 @@ public class DetallesUsuario extends JPanel {
 		}
 	public void cargarDatosListas(String usuario){
 		modelListas.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrlUsu = fab.getIUsuariosCanales();
+		ctrlUsu = Fabrica.getIUsuariosCanales();
 	
 		String[] listas = ctrlUsu.listarListasDeReproduccion(usuario);
 		int largo = listas.length;
@@ -342,8 +333,7 @@ public class DetallesUsuario extends JPanel {
 	
 	public void cargarDatosVideos(String usuario){
 		modelVideos.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrlUsu = fab.getIUsuariosCanales();
+		ctrlUsu = Fabrica.getIUsuariosCanales();
 	
 		String[] videosS = ctrlUsu.listarVideos(usuario);
 		int largo = videosS.length;

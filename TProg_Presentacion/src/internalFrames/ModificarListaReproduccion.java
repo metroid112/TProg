@@ -2,11 +2,22 @@ package internalFrames;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import interfaces.*;
+import interfaces.Fabrica;
+import interfaces.IListas;
+import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class ModificarListaReproduccion extends JInternalFrame {
@@ -14,7 +25,6 @@ public class ModificarListaReproduccion extends JInternalFrame {
 	private IUsuariosCanales ctrUsu;
 	private IListas ctrLis;
 	private ButtonGroup grupoVisibilidad = new ButtonGroup();
-	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelLisRep = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelCategoria = new DefaultComboBoxModel<String>();
@@ -37,9 +47,9 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		grupoVisibilidad.add(rdbtnPublica);
 		grupoVisibilidad.add(rdbtnPrivada);
 		
-		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
+		JComboBox<String> comboBoxUsuario = new JComboBox<String>(modelUsuario);
 		
-		JComboBox comboBoxLisRep = new JComboBox(modelLisRep);
+		JComboBox<String> comboBoxLisRep = new JComboBox<String>(modelLisRep);
 		comboBoxLisRep.setEnabled(false);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -135,7 +145,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String usuario = modelUsuario.getSelectedItem().toString();
-				ctrLis = fab.getIListas();
+				ctrLis = Fabrica.getIListas();
 				
 				if(checkUsuario() && checkLista()){
 					if(isCanalPublico(usuario)){
@@ -153,8 +163,8 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		});
 	}
 	public void cargarDatos(){
-		fab = Fabrica.getFabrica();
-		ctrUsu = fab.getIUsuariosCanales();
+		
+		ctrUsu = Fabrica.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
 		int largou = usuarios.length;
 		modelUsuario.addElement("");
@@ -165,8 +175,8 @@ public class ModificarListaReproduccion extends JInternalFrame {
 	}
 	
 	public void cargarListas(){
-		fab = Fabrica.getFabrica();
-		ctrLis = fab.getIListas();
+		
+		ctrLis = Fabrica.getIListas();
 		
 		if(modelUsuario.getSelectedItem() != null){
 			
@@ -209,8 +219,8 @@ public class ModificarListaReproduccion extends JInternalFrame {
 	}
 	
 	boolean isCanalPublico(String usuario){
-		fab = Fabrica.getFabrica();
-		ctrUsu = fab.getIUsuariosCanales();
+		
+		ctrUsu = Fabrica.getIUsuariosCanales();
 		
 		if(!ctrUsu.isCanalPublico(usuario)){
 			JOptionPane.showMessageDialog(null, "No se puede modificar la visibilidad del video poque el canal es privado", "Error", JOptionPane.ERROR_MESSAGE);

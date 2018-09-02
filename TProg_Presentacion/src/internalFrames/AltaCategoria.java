@@ -1,24 +1,23 @@
 package internalFrames;
-import javax.swing.JInternalFrame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.BorderLayout;
-import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import interfaces.Fabrica; 
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import interfaces.Fabrica;
 import interfaces.ICategorias;
 
 @SuppressWarnings("serial")
 public class AltaCategoria extends JInternalFrame{
 	private JTextField textField;
 	private ICategorias ctrlCat;
-	private Fabrica fab;
 	public AltaCategoria() {
 		setTitle("Alta de Categoria");
 		
@@ -83,8 +82,7 @@ public class AltaCategoria extends JInternalFrame{
 		{
 			try
 			{
-				fab = Fabrica.getFabrica();
-				ctrlCat = fab.getICategorias();
+				ctrlCat = Fabrica.getICategorias();
 				String texto = textField.getText();
                 ctrlCat.altaCategoria(texto);		
                 // Muestro éxito de la operación

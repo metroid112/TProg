@@ -31,7 +31,7 @@ public class ListaParticular extends Lista {
 
 	public boolean existeCategoria(Categoria categoria) {
 		if (categoria != null) {
-			return categorias.containsKey(categoria);
+			return categorias.containsKey(categoria.getNombre());
 		}
 		return true;
 	}
@@ -62,7 +62,7 @@ public class ListaParticular extends Lista {
 	}
 
 	public void quitarCategoria(Categoria categoria) {
-		categorias.remove(categoria);
+		categorias.remove(categoria.getNombre());
 	}
 
 	public void setCategorias(HashMap<String, Categoria> categorias) {

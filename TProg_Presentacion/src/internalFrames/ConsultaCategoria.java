@@ -1,28 +1,26 @@
 package internalFrames;
-import java.awt.EventQueue;
-
-import javax.swing.JInternalFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import clases.Categoria;
-import interfaces.Fabrica;
-import interfaces.ICategorias;
-import java.util.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
+import interfaces.Fabrica;
+import interfaces.ICategorias;
+
+@SuppressWarnings("serial")
 public class ConsultaCategoria extends JInternalFrame {
 
 	private ICategorias ctrlCat;
-	private Fabrica fab;
 	private DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
 	private DefaultListModel<String> videos = new DefaultListModel<>();
 	private DefaultListModel<String> listas = new DefaultListModel<>();
@@ -47,7 +45,7 @@ public class ConsultaCategoria extends JInternalFrame {
 		
 		JLabel lblListasDeReproduccion = new JLabel("Listas de reproduccion:");
 		
-		JComboBox comboBox = new JComboBox<>(model);
+		JComboBox<String> comboBox = new JComboBox<>(model);
 		
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -117,8 +115,7 @@ public class ConsultaCategoria extends JInternalFrame {
 	
 	public void cargarDatos(){
 		
-		fab = Fabrica.getFabrica();
-		ctrlCat = fab.getICategorias();
+		ctrlCat = Fabrica.getICategorias();
 		
 	    String[] cats = ctrlCat.listarCategorias();
 		int largo = cats.length;
@@ -137,8 +134,7 @@ public class ConsultaCategoria extends JInternalFrame {
 			String s = o.toString();
 			if (!s.equals(""))
 			{
-				fab = Fabrica.getFabrica();
-				ctrlCat = fab.getICategorias();
+				ctrlCat = Fabrica.getICategorias();
 				
 				String[] infoVideo = ctrlCat.getInfoVideos(s);
 				int largo = infoVideo.length;

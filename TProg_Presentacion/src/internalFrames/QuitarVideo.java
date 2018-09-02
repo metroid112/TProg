@@ -2,27 +2,27 @@ package internalFrames;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-import interfaces.*;
-
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
-import java.awt.ScrollPane;
 import javax.swing.JScrollPane;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import interfaces.Fabrica;
+import interfaces.IListas;
+import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class QuitarVideo extends JInternalFrame{
@@ -30,7 +30,6 @@ public class QuitarVideo extends JInternalFrame{
 	private IUsuariosCanales ctrUsu;
 	private IListas ctrLis;
 	private ButtonGroup grupoLista = new ButtonGroup();
-	private Fabrica fab;
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
 	private DefaultListModel<String> listListas = new DefaultListModel<>();
@@ -50,9 +49,9 @@ public class QuitarVideo extends JInternalFrame{
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		
-		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
+		JComboBox<String> comboBoxUsuario = new JComboBox<String>(modelUsuario);
 		
-		JComboBox comboBoxVideos = new JComboBox(modelVideos);
+		JComboBox<String> comboBoxVideos = new JComboBox<String>(modelVideos);
 		comboBoxVideos.setEnabled(false);
 		
 		JRadioButton rdbtnListasPorDefecto = new JRadioButton("Listas por defecto",true);
@@ -126,7 +125,7 @@ public class QuitarVideo extends JInternalFrame{
 					.addContainerGap(66, Short.MAX_VALUE))
 		);
 		
-		JList list = new JList(listListas);
+		JList<String> list = new JList<String>(listListas);
 		
 		list.addListSelectionListener(new ListSelectionListener() {
 			
@@ -209,7 +208,7 @@ public class QuitarVideo extends JInternalFrame{
 					checkUsuario = false;
 				}
 				if(checkUsuario && checkVideo){
-					ctrLis = fab.getIListas();
+					ctrLis = Fabrica.getIListas();
 					ctrLis.quitarVideoLista(modelUsuario.getSelectedItem().toString(),
 							modelVideos.getSelectedItem().toString(),list.getSelectedValue().toString(),
 							rdbtnListasPorDefecto.isSelected());
@@ -224,8 +223,8 @@ public class QuitarVideo extends JInternalFrame{
 	
 	public void cargarDefectoListas(){
 		listListas.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrLis = fab.getIListas();
+		
+		ctrLis = Fabrica.getIListas();
 		
 		if(modelUsuario.getSelectedItem() != null){
 			
@@ -245,8 +244,8 @@ public class QuitarVideo extends JInternalFrame{
 	
 	public void cargarParticularListas(){
 		listListas.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrLis = fab.getIListas();
+		
+		ctrLis = Fabrica.getIListas();
 		
 		if(modelUsuario.getSelectedItem() != null){
 			
@@ -267,9 +266,9 @@ public class QuitarVideo extends JInternalFrame{
 	
 	public void cargarVideosListas(String usuario,String lista,boolean defecto){
 		
-		fab = Fabrica.getFabrica();
 		
-		ctrUsu = fab.getIUsuariosCanales();
+		
+		ctrUsu = Fabrica.getIUsuariosCanales();
 		
 	    String[] videos = ctrUsu.listarVideosLista(usuario, lista, defecto);
 		int largov = videos.length;
@@ -282,8 +281,8 @@ public class QuitarVideo extends JInternalFrame{
 	}
 	
 	public void cargarDatos(){
-		fab = Fabrica.getFabrica();
-		ctrUsu = fab.getIUsuariosCanales();
+		
+		ctrUsu = Fabrica.getIUsuariosCanales();
 	    String[] usuarios = ctrUsu.listarUsuarios();
 		int largou = usuarios.length;
 		modelUsuario.addElement("");
