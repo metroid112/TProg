@@ -1,15 +1,10 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 public class CtrlUsuariosCanalesTest {
-
-	@Test
-	public void testCtrlUsuariosCanales() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testAltaUsuarioStringStringStringStringDateBufferedImageStringBooleanStringComentarioArrayCalificacionArrayUsuarioArrayUsuarioArray() {
@@ -22,32 +17,7 @@ public class CtrlUsuariosCanalesTest {
 	}
 
 	@Test
-	public void testListarUsuarios() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testListarSeguidos() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testListarSeguidores() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testListarVideos() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testListarListasDeReproduccion() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testExisteUsuario() {
+	public void testAltaUsuarioStringStringStringStringDateStringStringStringBoolean() {
 		fail("Not yet implemented");
 	}
 
@@ -57,7 +27,12 @@ public class CtrlUsuariosCanalesTest {
 	}
 
 	@Test
-	public void testGetNombre() {
+	public void testCtrlUsuariosCanales() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testExisteUsuario() {
 		fail("Not yet implemented");
 	}
 
@@ -67,17 +42,7 @@ public class CtrlUsuariosCanalesTest {
 	}
 
 	@Test
-	public void testGetCorreo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetNacimiento() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetImagen() {
+	public void testGetCalificaciones() {
 		fail("Not yet implemented");
 	}
 
@@ -92,7 +57,37 @@ public class CtrlUsuariosCanalesTest {
 	}
 
 	@Test
-	public void testGetCalificaciones() {
+	public void testGetCorreo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetDescripcionCanal() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetImagen() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetNacimiento() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetNombre() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetNombreCanal() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetPrivado() {
 		fail("Not yet implemented");
 	}
 
@@ -107,27 +102,32 @@ public class CtrlUsuariosCanalesTest {
 	}
 
 	@Test
-	public void testGetPrivado() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetNombreCanal() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDescripcionCanal() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testIsEmailUnique() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAltaUsuarioStringStringStringStringDateStringStringStringBoolean() {
+	public void testListarListasDeReproduccion() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testListarSeguidores() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testListarSeguidos() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testListarUsuarios() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testListarVideos() {
 		fail("Not yet implemented");
 	}
 

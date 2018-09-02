@@ -1,7 +1,6 @@
 package dataTypes;
 
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 
 import clases.Comentario;
 
@@ -9,8 +8,7 @@ public class DtComentario {
 	public LinkedHashMap<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
 	public Integer id;
 	public String texto, Usuario;
-	
-	
+
 	public DtComentario(Comentario comentario) {
 		this.id = comentario.getID();
 		this.texto = comentario.getTexto();
@@ -21,7 +19,7 @@ public class DtComentario {
 			}
 		}
 	}
-	
+
 	public String getString() {
 		return ("(" + this.Usuario + ") " + this.texto);
 	}

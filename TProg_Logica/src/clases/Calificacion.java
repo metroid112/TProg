@@ -8,15 +8,19 @@ public class Calificacion {
 
 	private Usuario usuario;
 	private Video video;
-	
+
 	public Calificacion() {
-		
+
 	}
-	
+
 	public Calificacion(boolean like, Usuario user, Video video) {
 		this.like = like;
 		this.usuario = user;
 		this.video = video;
+	}
+
+	public DtCalificacion getDt() {
+		return new DtCalificacion(this.like, this.usuario.getNick(), this.video.getNombre());
 	}
 
 	public boolean getLike() {
@@ -41,9 +45,5 @@ public class Calificacion {
 
 	public void setVideo(Video video) {
 		this.video = video;
-	}
-
-	public DtCalificacion getDt() {
-		return new DtCalificacion(this.like, this.usuario.getNick(), this.video.getNombre());
 	}
 }

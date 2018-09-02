@@ -9,9 +9,6 @@ public class Fabrica {
 
 	private static Fabrica instancia = null;
 
-	private Fabrica() {
-	}
-
 	public static Fabrica getFabrica() {
 		if (instancia == null) {
 			instancia = new Fabrica();
@@ -19,19 +16,22 @@ public class Fabrica {
 		return instancia;
 	}
 
-	public IVideos getIVideos() {
-		return new CtrlVideos();
+	public static ICategorias getICategorias() {
+		return new CtrlCategorias();
 	}
 
-	public IUsuariosCanales getIUsuariosCanales() {
-		return new CtrlUsuariosCanales();
-	}
-
-	public IListas getIListas() {
+	public static IListas getIListas() {
 		return new CtrlListas();
 	}
 
-	public ICategorias getICategorias() {
-		return new CtrlCategorias();
+	public static IUsuariosCanales getIUsuariosCanales() {
+		return new CtrlUsuariosCanales();
+	}
+
+	public static IVideos getIVideos() {
+		return new CtrlVideos();
+	}
+
+	private Fabrica() {
 	}
 }

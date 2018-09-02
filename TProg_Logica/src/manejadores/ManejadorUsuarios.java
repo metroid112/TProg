@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-
 import clases.Usuario;
 
 public class ManejadorUsuarios {
@@ -28,8 +27,24 @@ public class ManejadorUsuarios {
 		usuarios.put(user.getNick(), user);
 	}
 
+	public void agregarListaDefecto(String nombreListaDefecto) {
+
+		for (Map.Entry<String, Usuario> entry : usuarios.entrySet()) {
+			entry.getValue().getCanal().ingresarListaDefecto(nombreListaDefecto);
+		}
+	}
+
 	public Usuario get(String nick) {
 		return usuarios.get(nick);
+	}
+
+	public boolean isEmailUnique(String email) {
+		for (Entry<String, Usuario> user : usuarios.entrySet()) {
+			if (user.getValue().getCorreo() == email) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public boolean isEmpty() {
@@ -43,18 +58,13 @@ public class ManejadorUsuarios {
 	public boolean isMemberKey(String nick) {
 		return usuarios.containsKey(nick);
 	}
-	
-	public boolean isEmailUnique(String email) {
-		for (Entry<String, Usuario> user : usuarios.entrySet()) {
-			if (user.getValue().getCorreo() == email) {
-				return false;
-			}
-		}
-		return true;
-	}
 
 	public void remove(Usuario user) {
 		usuarios.remove(user.getNick(), user);
+	}
+
+	public void removeAll() {
+		this.usuarios.clear();
 	}
 
 	public int size() {
@@ -63,16 +73,5 @@ public class ManejadorUsuarios {
 
 	public String[] toArray() {
 		return usuarios.keySet().toArray(new String[usuarios.size()]);
-	}
-	
-	public void agregarListaDefecto(String nombreListaDefecto){
-		
-		for(Map.Entry<String, Usuario> entry : usuarios.entrySet()){
-			entry.getValue().getCanal().ingresarListaDefecto(nombreListaDefecto);
-		}
-	}
-	
-	public void removeAll() {
-		this.usuarios.clear();
 	}
 }
