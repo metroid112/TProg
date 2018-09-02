@@ -370,12 +370,12 @@ public class ConsultaLista extends JInternalFrame{
 			for (String vid : dtLista.getVideos()) {
 				modeloVideos.addElement(vid);
 			}
+			listaVideos.setModel(modeloVideos);
 			DefaultListModel<String> modeloCategorias = new DefaultListModel<String>();
 			for (String cat : dtLista.getCategorias()) {
 				modeloCategorias.addElement(cat);
 			}
 			listaCategorias.setModel(modeloCategorias);
-			listaVideos.setModel(modeloVideos);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
