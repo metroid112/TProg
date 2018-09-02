@@ -88,4 +88,5 @@ public class ConsultaUsuario extends JInternalFrame {
 	public void cargarDatos(){
 		panel.cargarDatos();
 	}
+	
 }

@@ -354,6 +354,16 @@ public class Main {
 
 		});
 		
+		/******************* MODIFICAR VIDEO *********************/
+		mntmModificarVideo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!ventanasAbiertas())
+					frmModificarVideo.cargarDatos();
+					frmModificarVideo.setVisible(true);
+			}
+
+		});
+		
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 	}
 	

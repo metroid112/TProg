@@ -31,6 +31,8 @@ import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DetallesUsuario extends JPanel {
 	private Fabrica fab = Fabrica.getFabrica();
@@ -274,6 +276,7 @@ public class DetallesUsuario extends JPanel {
 		
 		scrollPane_Seguidos.setViewportView(listaSeguidos);
 		scrollPane_1.setViewportView(listasDeReproduccion);
+
 		scrollPane.setViewportView(videos);
 		setLayout(groupLayout);
 		
@@ -318,10 +321,23 @@ public class DetallesUsuario extends JPanel {
 			modelListas.addElement(listas[i]);
 		}
 			ctrlUsu = null;
-		}
+	}
+	
 	public String getListaSeleccionada() {
-		return listasDeReproduccion.getSelectedValue();
-		//return model.
+		String res = listasDeReproduccion.getSelectedValue();
+		listasDeReproduccion.setSelectedIndex(-1);
+		return res;
+	}
+	public boolean isListaSelected() {
+		return listasDeReproduccion.getSelectedIndex() != -1;
+	}
+	public String getVideoSeleccionado() {
+		String res = videos.getSelectedValue();
+		videos.setSelectedIndex(-1);
+		return res;
+	}
+	public boolean isVideoSeleccionado() {
+		return !videos.isSelectionEmpty();
 	}
 	
 	public void cargarDatosVideos(String usuario){
@@ -337,8 +353,5 @@ public class DetallesUsuario extends JPanel {
 			ctrlUsu = null;
 		}
 	
-	public String getVideoSeleccionado() {
-		return videos.getSelectedValue();
-		//return model.
-	}
+
 }
