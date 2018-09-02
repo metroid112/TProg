@@ -14,11 +14,7 @@ import clases.Comentario;
 
 public interface IUsuariosCanales {
 	
-	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaDeNacimiento, BufferedImage imagen, 
-			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
-			Usuario[] seguidos) throws Exception;
-	
-	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String nombreCanal, boolean visible);
+	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, BufferedImage imagen, String nombreCanal, String descripcionCanal, boolean visible) throws IOException;
 	
 	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento, String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException;
   

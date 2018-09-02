@@ -46,7 +46,7 @@ public class CtrlVideosTest {
 	@Test
 	public void testListarUsuarios() throws Exception {
 		
-		usuarios.altaUsuario("Pato", "Federico", "Aguilera", "@.com", format.parse("11/04/1993"), "Pato", true);
+		//usuarios.altaUsuario("Pato", "Federico", "Aguilera", "@.com", format.parse("11/04/1993"), "Pato", true);
 		assertArrayEquals(usu, usuarios.listarUsuarios());
 		
 	}
