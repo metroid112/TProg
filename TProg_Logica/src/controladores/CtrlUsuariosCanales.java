@@ -202,7 +202,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		usuario.comentar(texto, fecha, vid);
 	}
 	
-	public void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDueñoVideo, Integer idComentarioPadre) {
-		
+	public void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
+			String nombreDueñoVideo, Integer idComentarioPadre) {
+		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
+		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		usuario.responder(texto, fecha, idComentarioPadre, vid);
 	}
 }
