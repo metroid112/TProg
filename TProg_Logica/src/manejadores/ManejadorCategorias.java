@@ -1,8 +1,7 @@
 package manejadores;
 
 import java.util.HashMap;
-import java.util.*;
-import java.lang.Exception;
+
 import clases.Categoria;
 import excepciones.DuplicateClassException;
 
@@ -27,8 +26,20 @@ public class ManejadorCategorias {
 		categorias.put(categoria.getNombre(), categoria);
 	}
 
+	public void altaCategoria(String nombreCategoria) throws DuplicateClassException {
+		if (!categorias.containsKey(nombreCategoria)) {
+			add(new Categoria(nombreCategoria));
+		} else {
+			throw new DuplicateClassException(new Categoria(nombreCategoria), nombreCategoria);
+		}
+	}
+
 	public Categoria get(String nombreCategoria) {
 		return categorias.get(nombreCategoria);
+	}
+
+	public Categoria getInfoVideos(String s) {
+		return get(s);
 	}
 
 	public boolean isEmpty() {
@@ -47,27 +58,15 @@ public class ManejadorCategorias {
 		categorias.remove(categoria.getNombre(), categoria);
 	}
 
+	public void removeAll() {
+		this.categorias.clear();
+	}
+
 	public int size() {
 		return categorias.size();
 	}
 
 	public String[] toArray() {
 		return categorias.keySet().toArray(new String[categorias.size()]);
-	}
-	
-	public void altaCategoria(String nombreCategoria) throws DuplicateClassException {		
-		if (!categorias.containsKey(nombreCategoria))	{
-			add(new Categoria(nombreCategoria));		
-		} else {
-			throw new DuplicateClassException(new Categoria(nombreCategoria), nombreCategoria);
-		}
-	}
-	
-	public Categoria getInfoVideos(String s){
-		return get(s);
-	}
-	
-	public void removeAll() {
-		this.categorias.clear();
 	}
 }

@@ -1,19 +1,15 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.fail;
 
-import java.awt.image.BufferedImage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import clases.Canal;
-import clases.Categoria;
-import clases.Usuario;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
@@ -23,32 +19,34 @@ import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
 
 public class CtrlVideosTest {
-	
+
+	private String[] arrayCat = { "Deportes", "Musica" };
+	private String[] arrayLis = { "(Pato,Lista1)" };
+	private String[] arrayVid = { "(Pato,Video1)" };
+	private ICategorias categorias = Fabrica.getICategorias();
 	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-	private Fabrica fabrica = Fabrica.getFabrica();
-	private ICategorias categorias = fabrica.getICategorias();
-	private IUsuariosCanales usuarios = fabrica.getIUsuariosCanales();
-	private IListas lista = fabrica.getIListas();
-	private IVideos video = fabrica.getIVideos();
+	private IListas lista = Fabrica.getIListas();
 	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
 	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
-    private String[] arrayCat = {"Deportes", "Musica"};
-	private String[] arrayVid = {"(Pato,Video1)"};
-	private String[] arrayLis = {"(Pato,Lista1)"};
-	private String[] usu = {"Pato"};
-	//Usuario usuario = new Usuario("Pato", "Federico", "Aguilera", "correo@.com", format.parse("11/04/1993"));
-	
+	private String[] usu = { "Pato" };
+	// Usuario usuario = new Usuario("Pato", "Federico", "Aguilera", "correo@.com",
+	// format.parse("11/04/1993"));
+	private IUsuariosCanales usuarios = Fabrica.getIUsuariosCanales();
+	private IVideos video = Fabrica.getIVideos();
+
 	@After
 	public void clear() {
 		manejadorUsuarios.removeAll();
 	}
 
 	@Test
-	public void testListarUsuarios() throws Exception {
-		
-		//usuarios.altaUsuario("Pato", "Federico", "Aguilera", "@.com", format.parse("11/04/1993"), "Pato", true);
-		assertArrayEquals(usu, usuarios.listarUsuarios());
-		
+	public void testAltaVideo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetDtVideo() {
+		fail("Not yet implemented");
 	}
 
 	@Test
@@ -59,8 +57,12 @@ public class CtrlVideosTest {
 	}
 
 	@Test
-	public void testAltaVideo() {
-		fail("Not yet implemented");
+	public void testListarUsuarios() throws Exception {
+
+		// usuarios.altaUsuario("Pato", "Federico", "Aguilera", "@.com",
+		// format.parse("11/04/1993"), "Pato", true);
+		assertArrayEquals(usu, usuarios.listarUsuarios());
+
 	}
 
 	@Test
@@ -68,11 +70,6 @@ public class CtrlVideosTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testGetDtVideo() {
-		fail("Not yet implemented");
-	}
-	
 	@Test
 	public void testModificarVideo() {
 		fail("Not yet implemented");

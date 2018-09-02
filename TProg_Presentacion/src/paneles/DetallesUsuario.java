@@ -15,6 +15,9 @@ import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.SwingConstants;
+
+import dataTypes.DtUsuario;
+
 import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -50,18 +53,19 @@ public class DetallesUsuario extends JPanel {
 	 * Create the panel.
 	 */
 	public DetallesUsuario(String usuario) {
+		DtUsuario dtUsuario = ctrlUsu.getDt(usuario);
 		
-		String nombre = ctrlUsu.getNombre(usuario);
-		String apellido = ctrlUsu.getApellido(usuario);
-		String correo = ctrlUsu.getCorreo(usuario);
-		String canal = ctrlUsu.getNombreCanal(usuario);
-		String descripcionCanal = ctrlUsu.getDescripcionCanal(usuario);
-		BufferedImage imagenF = (BufferedImage) ctrlUsu.getImagen(usuario);
-		Date fechaNacimiento = ctrlUsu.getNacimiento(usuario);
+		String nombre = dtUsuario.nombre;
+		String apellido = dtUsuario.apellido;
+		String correo = dtUsuario.correo;
+		String canal = dtUsuario.canal;
+		String descripcionCanal = dtUsuario.descripcionCanal;
+		BufferedImage imagenF = dtUsuario.imagen;
+		Date fechaNacimiento = dtUsuario.fechaNacimiento;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String fechaParaMostrar = sdf.format(fechaNacimiento);
 		
-		boolean privado = ctrlUsu.getPrivado(usuario);
+		boolean privado = dtUsuario.privado;
 		
 		JPanel imagen = new JPanel();
 		imagen.setBackground(SystemColor.menu);
