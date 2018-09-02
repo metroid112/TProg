@@ -11,8 +11,8 @@ public class ListaDefecto extends Lista {
 	
 	
 	
-	public ListaDefecto(String nombre, Canal canal,LinkedList<Video> videos, LinkedList<Categoria> categoria){
-		super(nombre, canal,videos, categoria);	
+	public ListaDefecto(String nombre, Canal canal,LinkedList<Video> videos){
+		super(nombre, canal,videos);	
 	}
 	
 	public String getNombre(){
@@ -29,7 +29,7 @@ public class ListaDefecto extends Lista {
 		for (Video vid : this.getVideos()){
 			videos.add(vid.getNombre());
 		}
-		return new DtLista(this.getNombre(), "Defecto", false, videos);		
+		return new DtLista(this.getNombre(), "Defecto", false, videos, null);		
 	}
 	
 	

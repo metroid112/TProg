@@ -11,8 +11,8 @@ public class ListaParticular extends Lista {
 	public ListaParticular() {
 	}
 
-	public ListaParticular(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias, boolean visible, LinkedList<Categoria> categoria) {
-		super(nombre, canal, videos, categoria);
+	public ListaParticular(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String,Categoria> categorias, boolean visible) {
+		super(nombre, canal, videos);
 		this.visible = visible;
 		this.categorias = categorias;
 	}
@@ -39,6 +39,10 @@ public class ListaParticular extends Lista {
 		for (Video vid : this.getVideos()){
 			videos.add(vid.getNombre());
 		}
-		return new DtLista(this.getNombre(), "Particular", this.visible, videos);		
+		LinkedList<String> categorias = new LinkedList<String>();
+		for (Categoria cat : this.getCategorias().values()){
+			videos.add(cat.getNombre());
+		}
+		return new DtLista(this.getNombre(), "Particular", this.visible, videos, categorias);		
 	}
 }

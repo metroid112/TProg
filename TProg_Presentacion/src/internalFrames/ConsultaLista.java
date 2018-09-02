@@ -43,6 +43,7 @@ public class ConsultaLista extends JInternalFrame{
 	private JComboBox<String> comboBoxUsuario;
 	private JLabel Lvisible;
 	private InfoVideo infoVid;
+	private JList<String> listaCategorias;
 
 	private DefaultListModel<String> listListas = new DefaultListModel<>();
 	
@@ -118,6 +119,8 @@ public class ConsultaLista extends JInternalFrame{
 				cambioPanel();
 			}
 		});
+		
+		JScrollPane scrollPaneCategorias = new JScrollPane();
 
 		GroupLayout groupLayout = new GroupLayout(panelSeleccion);
 		groupLayout.setHorizontalGroup(
@@ -131,23 +134,25 @@ public class ConsultaLista extends JInternalFrame{
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(17)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(comboBoxUsuario, 0, 125, Short.MAX_VALUE)
+								.addComponent(comboBoxUsuario, 0, 156, Short.MAX_VALUE)
 								.addComponent(rdbtnListasPorDefecto)
 								.addComponent(rdbtnListasParticulares)
-								.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+								.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
 							.addGap(68)))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblVisibilidad)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(Lvisible))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(53)
-							.addComponent(btnConsultarVideo)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnCerrar))
-						.addComponent(scrollPaneVideos, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPaneCategorias)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(lblVisibilidad)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(Lvisible))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(53)
+								.addComponent(btnConsultarVideo)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnCerrar))
+							.addComponent(scrollPaneVideos, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)))
 					.addGap(42))
 		);
 		groupLayout.setVerticalGroup(
@@ -158,24 +163,34 @@ public class ConsultaLista extends JInternalFrame{
 						.addComponent(lblNombreDeUsuario)
 						.addComponent(lblVisibilidad)
 						.addComponent(Lvisible))
-					.addGap(13)
-					.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGap(17)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(comboBoxUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(rdbtnListasPorDefecto)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(rdbtnListasParticulares)
 							.addGap(11)
 							.addComponent(scrollPaneListas, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(scrollPaneCategorias, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+							.addGap(18)
 							.addComponent(scrollPaneVideos, GroupLayout.PREFERRED_SIZE, 212, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+							.addGap(22)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(btnCerrar)
 								.addComponent(btnConsultarVideo))))
 					.addGap(37))
 		);
+		
+		JLabel lblCategorias = new JLabel("Categorias:");
+		lblCategorias.setEnabled(false);
+		scrollPaneCategorias.setColumnHeaderView(lblCategorias);
+		
+		listaCategorias = new JList<String>();
+		scrollPaneCategorias.setViewportView(listaCategorias);
 		
 		listaVideos = new JList<String>();
 		listaVideos.addListSelectionListener(new ListSelectionListener() {
@@ -200,16 +215,24 @@ public class ConsultaLista extends JInternalFrame{
 				if (!list.isSelectionEmpty()) {
 					Lvisible.setEnabled(true);
 					lblVideos.setEnabled(true);
+					lblVisibilidad.setEnabled(true);
+					lblCategorias.setEnabled(true);
 					cargaDatosLista();
 				} else {
+					listaCategorias.setModel(new DefaultListModel<String>());
 					listaVideos.setModel(new DefaultListModel<String>());
 					Lvisible.setEnabled(false);
 					lblVideos.setEnabled(false);
+					lblVisibilidad.setEnabled(false);
+					lblCategorias.setEnabled(false);
 				}
 			}
 		});
 		list.setEnabled(false);
 		scrollPaneListas.setViewportView(list);
+		
+		JLabel lblListas = new JLabel("Listas:");
+		scrollPaneListas.setColumnHeaderView(lblListas);
 		panelSeleccion.setLayout(groupLayout);
 		
 		btnCerrar.addActionListener(new ActionListener() {
@@ -347,6 +370,11 @@ public class ConsultaLista extends JInternalFrame{
 			for (String vid : dtLista.getVideos()) {
 				modeloVideos.addElement(vid);
 			}
+			DefaultListModel<String> modeloCategorias = new DefaultListModel<String>();
+			for (String cat : dtLista.getCategorias()) {
+				modeloCategorias.addElement(cat);
+			}
+			listaCategorias.setModel(modeloCategorias);
 			listaVideos.setModel(modeloVideos);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
