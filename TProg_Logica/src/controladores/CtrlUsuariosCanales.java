@@ -51,6 +51,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento);
 		Canal canal = new Canal(nombreCanal, visible, user);
 		user.setCanal(canal);
+		canal.setUsuario(user);
 		manejadorUsuarios.add(user);
 	};
 	

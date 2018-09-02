@@ -71,11 +71,11 @@ public class ConsultaLista extends JInternalFrame{
 		gl_panelInfo.setHorizontalGroup(
 			gl_panelInfo.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelInfo.createSequentialGroup()
-					.addGap(37)
+					.addGap(18)
 					.addGroup(gl_panelInfo.createParallelGroup(Alignment.TRAILING)
 						.addComponent(btnVolver)
 						.addComponent(infoVid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(37, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_panelInfo.setVerticalGroup(
 			gl_panelInfo.createParallelGroup(Alignment.LEADING)
@@ -84,7 +84,7 @@ public class ConsultaLista extends JInternalFrame{
 					.addComponent(infoVid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnVolver)
-					.addContainerGap(35, Short.MAX_VALUE))
+					.addContainerGap(27, Short.MAX_VALUE))
 		);
 		panelInfo.setLayout(gl_panelInfo);
 		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
@@ -178,6 +178,15 @@ public class ConsultaLista extends JInternalFrame{
 		);
 		
 		listaVideos = new JList<String>();
+		listaVideos.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				if (!listaVideos.isSelectionEmpty()) {
+					btnConsultarVideo.setEnabled(true);
+				} else  {
+					btnConsultarVideo.setEnabled(false);
+				}
+			}
+		});
 		scrollPaneVideos.setViewportView(listaVideos);
 		
 		JLabel lblVideos = new JLabel("Videos:");
@@ -188,10 +197,15 @@ public class ConsultaLista extends JInternalFrame{
 		
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				Lvisible.setEnabled(true);
-				lblVideos.setEnabled(true);
-				btnConsultarVideo.setEnabled(true);
-				cargaDatosLista();
+				if (!list.isSelectionEmpty()) {
+					Lvisible.setEnabled(true);
+					lblVideos.setEnabled(true);
+					cargaDatosLista();
+				} else {
+					listaVideos.setModel(new DefaultListModel<String>());
+					Lvisible.setEnabled(false);
+					lblVideos.setEnabled(false);
+				}
 			}
 		});
 		list.setEnabled(false);
@@ -214,7 +228,7 @@ public class ConsultaLista extends JInternalFrame{
 		});
 		
 		rdbtnListasPorDefecto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {		
+			public void actionPerformed(ActionEvent arg0) {	
 				cargarDefectoListas();
 			}
 		});
@@ -275,8 +289,7 @@ public class ConsultaLista extends JInternalFrame{
 		
 		if(modelUsuario.getSelectedItem() != null){
 			
-			String s = modelUsuario.getSelectedItem().toString();
-			
+			String s = (String) modelUsuario.getSelectedItem();
 		    String[] listas = ctrLis.listarListasDefectoUsuario(s);
 		    
 			int largol = listas.length;
@@ -286,7 +299,7 @@ public class ConsultaLista extends JInternalFrame{
 			}
 		}
 			
-		ctrLis = null;
+		//ctrLis = null;
 	}
 	
 	public void cargarParticularListas(){
@@ -308,7 +321,7 @@ public class ConsultaLista extends JInternalFrame{
 			}
 		}
 			
-		ctrLis = null;
+		//ctrLis = null;
 	}
 	
 	boolean checkUsuario(){
@@ -348,7 +361,13 @@ public class ConsultaLista extends JInternalFrame{
 	
 	private void cargarVideo() {
 		IVideos ctrVid = Fabrica.getFabrica().getIVideos();
-		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue(), (String) comboBoxUsuario.getSelectedItem());
+		String dueñoVid = null;
+		try {
+			dueñoVid = ctrLis.getDueñoVideo((String)comboBoxUsuario.getSelectedItem(),list.getSelectedValue(), listaVideos.getSelectedValue());
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this,"error cargarVid" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue(), dueñoVid);
 		infoVid.cargarDatos(dtVid);
 		
 	}

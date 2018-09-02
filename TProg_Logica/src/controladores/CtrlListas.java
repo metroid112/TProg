@@ -103,6 +103,12 @@ public class CtrlListas implements IListas {
 		
 		return list.getDtLista();
 	}
+
+	@Override
+	public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid) throws Exception {
+		
+		return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVid(nombreVid).getCanal().getUsuario().getNick();
+	}
 	
 	}
 

@@ -101,4 +101,19 @@ public abstract class Lista {
 		}
 		return result;
 	}
+
+	public Video getVid(String nombreVid) throws Exception {
+		boolean encontrado = false;
+		Video video = null;
+		for (Video vid : videos) {
+			if (vid.getNombre().equals(nombreVid)) {
+				encontrado = true;
+				video = vid;
+			}
+		}
+		if (!encontrado) {
+			throw new Exception("Video no existe");
+		}
+		return video;
+	}
 }

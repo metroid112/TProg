@@ -135,10 +135,8 @@ public class Canal {
 
 	public String[] getListaDefectoUsuario() {
 		
-
 		return listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
 		
-		//return Stream.concat(Arrays.stream(listasArrDefecto),Arrays.stream(listasArrParticular)).toArray(String[]::new);
 	}
 	
 	public String[] getListaParticularUsuario() {
