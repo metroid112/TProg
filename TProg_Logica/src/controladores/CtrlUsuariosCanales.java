@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
@@ -123,11 +124,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.get(nick).getCanal();
 	}
 
-	public Comentario[] getComentarios(String nick) {
+	public LinkedList<Comentario> getComentarios(String nick) {
 		return manejadorUsuarios.get(nick).getComentarios();
 	}
 
-	public Calificacion[] getCalificaciones(String nick) {
+	public LinkedList<Calificacion> getCalificaciones(String nick) {
 		return manejadorUsuarios.get(nick).getCalificaciones();
 	}
 
@@ -178,5 +179,34 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	@Override
 	public void seguir(String seguidor, String seguido) {
 		manejadorUsuarios.get(seguidor).seguir(manejadorUsuarios.get(seguido));
+	}
+	
+	public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDueñoVideo) throws Exception {
+		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);	// Puede calificar su propio video?
+		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		usuario.valorarVideo(like, vid);
+	}
+	
+	public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDueñoVideo) {
+		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
+		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		usuario.modificarValoracion(like, vid);
+	}
+	
+	public void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDueñoVideo) {
+		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
+		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		usuario.comentar(texto, fecha, vid);
+	}
+	
+	public void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
+			String nombreDueñoVideo, Integer idComentarioPadre) {
+		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
+		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		usuario.responder(texto, fecha, idComentarioPadre, vid);
 	}
 }

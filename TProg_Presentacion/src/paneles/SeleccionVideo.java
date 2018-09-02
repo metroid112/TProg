@@ -79,6 +79,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 		String[] usuarios = contVideos.listarUsuarios();
 		DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuarios);
 		cBoxUsuarios.setModel(modelU);
+		cBoxUsuarios.setSelectedIndex(-1);
 		updateLista((String) cBoxUsuarios.getSelectedItem());
 	}
 	
@@ -99,7 +100,9 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 	}
 
 	public String getUsuario() {
-		return (String) cBoxUsuarios.getSelectedItem();
+		if (cBoxUsuarios.getSelectedIndex() > -1) {
+			return (String) cBoxUsuarios.getSelectedItem();
+		} else return null;
 	}
 
 }

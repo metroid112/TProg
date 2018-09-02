@@ -98,7 +98,6 @@ public class CtrlListas implements IListas {
 
 	@Override
 	public DtLista getDt(String lista, String usuario) throws Exception {
-		// TODO Cread dt y terminar funcion
 		Lista list = manejadorUsuarios.get(usuario).getCanal().getLista(lista);
 		
 		return list.getDtLista();

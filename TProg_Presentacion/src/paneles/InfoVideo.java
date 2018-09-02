@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.LinkedHashMap;
 
-
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -20,6 +20,7 @@ import javax.swing.tree.TreePath;
 
 import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 
+import dataTypes.DtCalificacion;
 import dataTypes.DtComentario;
 
 import dataTypes.DtVideo;
@@ -29,6 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+import javax.swing.JList;
 
 public class InfoVideo extends JPanel {
 	private IVideos contVideo;
@@ -36,6 +38,7 @@ public class InfoVideo extends JPanel {
 	private JTextArea textVdescripcion;
 	private JTree tree;
 	private JScrollPane scrollPane2;
+	private JList<String> listaValoraciones;
 
 
 	/**
@@ -78,67 +81,79 @@ public class InfoVideo extends JPanel {
 		
 		lblVurl = new JLabel("vURL");
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(17)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNombre)
+								.addComponent(lblDuracion)
+								.addComponent(lblVisibilidad)
+								.addComponent(lblFecha)
+								.addComponent(lblCategoria)
+								.addComponent(lblUrl))
+							.addGap(26)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblVurl)
+								.addComponent(lblVcategoria)
+								.addComponent(lblVfecha)
+								.addComponent(lblVvisibilidad)
+								.addComponent(lblVduracion)
+								.addComponent(lblVnombre))))
 					.addGap(18)
-					.addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-					.addGap(18))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(32)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNombre)
-						.addComponent(lblDuracion)
-						.addComponent(lblVisibilidad)
-						.addComponent(lblFecha)
-						.addComponent(lblCategoria)
-						.addComponent(lblUrl))
-					.addGap(26)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblVurl)
-						.addComponent(lblVcategoria)
-						.addComponent(lblVfecha)
-						.addComponent(lblVvisibilidad)
-						.addComponent(lblVduracion)
-						.addComponent(lblVnombre))
-					.addGap(318))
+						.addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+						.addComponent(scrollPane_1, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(39)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNombre)
-						.addComponent(lblVnombre))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblDuracion)
-						.addComponent(lblVduracion))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblVisibilidad)
-						.addComponent(lblVvisibilidad))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblFecha)
-						.addComponent(lblVfecha))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCategoria)
-						.addComponent(lblVcategoria))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblUrl)
-						.addComponent(lblVurl))
-					.addGap(36)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPane2, Alignment.LEADING)
-						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNombre)
+								.addComponent(lblVnombre))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblDuracion)
+								.addComponent(lblVduracion))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblVisibilidad)
+								.addComponent(lblVvisibilidad))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblFecha)
+								.addComponent(lblVfecha))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblCategoria)
+								.addComponent(lblVcategoria))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblUrl)
+								.addComponent(lblVurl))))
+					.addGap(28)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane2)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
 					.addGap(29))
 		);
+		
+		JLabel lblValoraciones = new JLabel("Valoraciones");
+		scrollPane_1.setColumnHeaderView(lblValoraciones);
+		
+		listaValoraciones = new JList<String>();
+		scrollPane_1.setViewportView(listaValoraciones);
 		
 		JLabel lblDecripcion = new JLabel("Decripcion");
 		scrollPane2.setColumnHeaderView(lblDecripcion);
@@ -173,7 +188,16 @@ public class InfoVideo extends JPanel {
 		lblVduracion.setText(String.format("%d:%02d:%02d", horas, min, seg)); 	// Formato?
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		lblVfecha.setText(dateFormat.format(dtVid.getFecha()));
-
+		
+		DefaultListModel<String> modeloLista = new DefaultListModel<String>();
+		if (!dtVid.getCalificaciones().isEmpty()) {
+			for (DtCalificacion cal : dtVid.getCalificaciones()) {
+				modeloLista.addElement(cal.getUsuario() + " - " + cal.getLikeParsed());
+			}
+		} else {
+			modeloLista.addElement("Sin calificaciones");
+		}
+		listaValoraciones.setModel(modeloLista);
 		
 		DefaultMutableTreeNode raiz = loadComentarios(dtVid.getComents(), dtVid.getNombre());
 		DefaultTreeModel model = new DefaultTreeModel(raiz);

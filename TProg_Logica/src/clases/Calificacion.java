@@ -1,14 +1,14 @@
 package clases;
 
+import dataTypes.DtCalificacion;
+
 public class Calificacion {
 
 	private boolean like;
 
 	private Usuario usuario;
 	private Video video;
-
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
-	// algunos
+	
 	public Calificacion(boolean like, Usuario user, Video video) {
 		this.like = like;
 		this.usuario = user;
@@ -37,5 +37,9 @@ public class Calificacion {
 
 	public void setVideo(Video video) {
 		this.video = video;
+	}
+
+	public DtCalificacion getDt() {
+		return new DtCalificacion(this.like, this.usuario.getNick(), this.video.getNombre());
 	}
 }
