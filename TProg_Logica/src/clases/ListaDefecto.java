@@ -7,8 +7,8 @@ import dataTypes.DtLista;
 public class ListaDefecto extends Lista {
 
 
-	public ListaDefecto(String nombre, Canal canal, LinkedList<Video> videos) {
-		super(nombre, canal, videos);
+	public ListaDefecto(String nombre, Canal canal) {
+		super(nombre, canal);
 	}
 
 	@Override

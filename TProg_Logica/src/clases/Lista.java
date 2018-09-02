@@ -9,15 +9,13 @@ public abstract class Lista {
 	private Canal canal;
 
 	private String nombre;
-	private LinkedList<Video> videos;
+	private LinkedList<Video> videos = new LinkedList<Video>();
 	
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
-	public Lista(String nombre, Canal canal, LinkedList<Video> videos) {
+	public Lista(String nombre, Canal canal) {
 		this.nombre = nombre;
 		this.canal = canal;
-		this.videos = videos;
-
 	}
 
 	public boolean existeVideo(Video video) {
