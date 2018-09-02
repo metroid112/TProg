@@ -435,22 +435,29 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT1H2M2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
-		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("hectorg", "100 años de FING", "XXXXX", Duration.parse("PT1H2M2S"), "https://youtu.be/peGS4TBxSaI", "Noticias", format.parse("99/99/9999"), true);
+		//this.videos.altaVideo("hectorg", "50 años del InCo", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/GzOJSk4urlM", "Noticias", format.parse("99/99/9999"), true);
+		//this.videos.altaVideo("hectorg", "Ingeniería de Muestra 2017", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/RnaYRA1k5j4", "Noticias", format.parse("99/99/9999"), true);
+		//this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("tabarec", "Niño payaso", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tabarec", "Pacheco goles mas recordados", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("cachilas", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("cachilas", "Niño payaso", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("cachilas", "Etapa A contramano Liguilla", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/Es6GRMHXeCQ", "Carnaval", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("cachilas", "Etapa Don Timoteo Liguilla", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/I_spHBU9ZsI", "Carnaval", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("cachilas", "Recoba 20 mejores goles", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("juliob", "Sweet child'o mine", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/1w7OgIMMRc4", "Musica", format.parse("99/99/9999"), true);
+		//this.videos.altaVideo("juliob", "Thriller", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("juliob", "Show de goles", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/g46w4_kD_lA", "Deporte", format.parse("99/99/9999"), true);
+		this.videos.altaVideo("juliob", "Inauguracion Estadio Peñarol", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		//this.videos.altaVideo("kairoh", "Sweet child'o mine", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/1w7OgIMMRc4", "Musica", format.parse("99/99/9999"), true);
+		//this.videos.altaVideo("kairoh", "Dancing in the Dark", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/129kuDCQtHs", "Musica", format.parse("99/99/9999"), true);
+		//this.videos.altaVideo("kairoh", "Thriller", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/sOnqjkJTMaA", "Musica", format.parse("99/99/9999"), true);
+		this.videos.altaVideo("chino", "Recoba 20 mejores goles", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("tonyp", "Pacheco goles mas recordados", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("nicoJ", "Entrevista a director CUTI", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		this.videos.altaVideo("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
+		
 		
 		try {
 			this.listas.altaListaDefecto("Escuchar mas tarde");
@@ -471,9 +478,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		//this.listas.agregarVideo(nombreLista, nombreVideo)
-		
-		//this.usuariosCanales.agregarVideo(nick, nombreVideo)
+		//this.listas.agregarVideoALista(nombreLista, nombreVideo)
 		
 		//this.videos.comentar(nombreVideo, autor, comentarioPadre, comentario, fecha)
 		
