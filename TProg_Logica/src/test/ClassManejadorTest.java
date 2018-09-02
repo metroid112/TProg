@@ -10,7 +10,7 @@ import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
 
 public class ClassManejadorTest {
-	
+
 	private ManejadorCategorias manejadorCategoria = ManejadorCategorias.getManejadorCategorias();
 	private ManejadorListas manejadorLista = ManejadorListas.getManejadorListas();
 	private ManejadorUsuarios manejadorUsuario = ManejadorUsuarios.getManejadorUsuarios();
