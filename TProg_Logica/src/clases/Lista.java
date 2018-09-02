@@ -10,10 +10,7 @@ public abstract class Lista {
 
 	private String nombre;
 	private LinkedList<Video> videos;
-
-	public Lista() {
-	}
-
+	
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
 	public Lista(String nombre, Canal canal, LinkedList<Video> videos) {
