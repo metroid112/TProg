@@ -313,6 +313,7 @@ public class Main {
 					try {
 						logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
 						cargarDatos();
+						mntmCargaDatos.setEnabled(false);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
@@ -436,7 +437,7 @@ public class Main {
 		}
 
 		this.videos.altaVideo("hectorg", "100 años de FING", "XXXXX", Duration.parse("PT1H2M2S"), "https://youtu.be/peGS4TBxSaI", "Noticias", format.parse("99/99/9999"), true);
-		this.videos.altaVideo("hectorg", "50 años del InCo", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/GzOJSk4urlM", "Noticias", format.parse("99/99/9999"), true);
+		this.videos.altaVideo("hectorg", "50 años del InCo", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/GzOJSk4urlM", "Noticias", format.parse("01/01/1990"), true);
 		this.videos.altaVideo("hectorg", "Ingeniería de Muestra 2017", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/RnaYRA1k5j4", "Noticias", format.parse("99/99/9999"), true);
 		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Musica", format.parse("99/99/9999"), false);
 		this.videos.altaVideo("tabarec", "Niño payaso", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("99/99/9999"), false);
@@ -480,8 +481,21 @@ public class Main {
 		
 		//this.listas.agregarVideoALista(nombreLista, nombreVideo)
 		
-		//this.videos.comentar(nombreVideo, autor, comentarioPadre, comentario, fecha)
+		DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
+		this.usuariosCanales.comentarVideo("Fue un gran evento", formatComentario.parse("05/12/2017 14:35"), "nicoJ", "50 años del InCo", "hectorg");
+		this.usuariosCanales.responderComentario("Para el proximo aniversario ofrezco vamo' con los Momo", format.parse("08/12/2017 01:47"), "hrubino", "50 años del InCo", "hectorg", 0);
+		this.usuariosCanales.responderComentario("Yo ofrezco a la banda tb", format.parse("10/12/2017 17:09"), "tabarec", "50 años del InCo", "hectorg", 1);
+		//this.usuariosCanales.comentarVideo("Felicitaciones FING!!!", formatComentario.parse("07/09/2017 04:56"), "nicoJ", "50 años del InCo", "hectorg");
+		//this.usuariosCanales.comentarVideo("Un gusto cubrir eventos como este.", formatComentario.parse("23/10/2017 12:58"), "kairoh", "50 años del InCo", "hectorg");
+		//this.usuariosCanales.comentarVideo("Peñarol peñarol!!!", formatComentario.parse("14/11/2016 05:34"), "kairoh", "50 años del InCo", "hectorg");
+		//this.usuariosCanales.comentarVideo("Rock and Rolllll", formatComentario.parse("30/10/2017 02:17"), "marcelot", "50 años del InCo", "hectorg");
+		//this.usuariosCanales.comentarVideo("Anoche exploto!!!", formatComentario.parse("25/08/2018 18:00"), "marcelot", "50 años del InCo", "hectorg");
+		//this.usuariosCanales.comentarVideo("Me encanta este tema", formatComentario.parse("11/09/2017 03:45"), "marcelot", "Locura celeste", "tabarec");
+		//this.usuariosCanales.responderComentario("Gracias Marce ;)", formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "tabarec", 3);
+		//this.usuariosCanales.comentarVideo("Me encanta este tema", formatComentario.parse("11/09/2017 03:45"), "marcelot", "Locura celeste", "cachilas");
+		//this.usuariosCanales.responderComentario("Gracias Marce ;)", formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "cachilas", 5);
 		
-		//this.videos.calificar(nombreVideo, autor, meGusta)
+		//this.usuariosCanales.valorarVideo(nombreUsuario, like, nombreVideo, nombreDueñoVideo);
+		
 	}
 }
