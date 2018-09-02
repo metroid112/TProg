@@ -56,6 +56,11 @@ public abstract class Lista {
 		videos.add(video);
 	}
 	
+	public void quitarVideo(Video video){
+		
+		videos.remove(video);
+	}
+	
 	public boolean existeCategoria(Categoria categoria){
 		if(categoria != null){
 				return categorias.contains(categoria);
@@ -65,5 +70,31 @@ public abstract class Lista {
 
 	public void insertarCategoria(Categoria categoria){
 		categorias.add(categoria);
+	}
+	
+	public void quitarCategoria(Categoria categoria){
+		categorias.remove(categoria);
+	}
+	
+	public boolean esUnicaCategoria(Categoria categoria){
+		if(categoria != null){
+			for(Video v:videos){
+				if(v.getCategoria() == categoria){
+					return false;
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public String[] getArrayVideos(){
+		String[] result = new String[videos.size()];
+		int i = 0;
+		for(Video v: videos){
+			result[i] = v.getNombre();
+			i++;
+		}
+		return result;
 	}
 }

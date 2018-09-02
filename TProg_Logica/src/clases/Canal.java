@@ -161,7 +161,6 @@ public class Canal {
 
 		return videos.get(video);
 	}
-	//Categoria categoria = videoObj.getCategoria();
 	
 	public void agregarVideoListaDefecto(Video videoObj, String lista){
 		ListaDefecto listaObj = listaDefecto.get(lista);
@@ -188,7 +187,31 @@ public class Canal {
 			}
 	}
 	
-
+	public void quitarVideoListaDefecto(String video,String lista){
+		ListaDefecto listaObj = listaDefecto.get(lista);
+		Video videoObj = videos.get(video);
+		listaObj.quitarVideo(videoObj);
+		Categoria cat = videoObj.getCategoria();
+		
+		if(listaObj.esUnicaCategoria(cat)){
+			listaObj.quitarCategoria(cat);
+		}
+		
+	}
+	
+	public void quitarVideoListaParticular(String video,String lista){
+		ListaParticular listaObj = listaParticulares.get(lista);
+		Video videoObj = videos.get(video);
+		listaObj.quitarVideo(videoObj);
+		Categoria cat = videoObj.getCategoria();
+		
+		
+		if(listaObj.esUnicaCategoria(cat)){
+			listaObj.quitarCategoria(cat);
+		}
+		
+	}
+	
 	public Video altaVideo(String nombre, String descripcion, Duration duracion, String url, Categoria categoria,
 			Date fecha, boolean visible) {
 
@@ -196,5 +219,16 @@ public class Canal {
 		this.videos.put(nombre, video);		
 		return video;
 
+	}
+	
+	public String[] listarVideosLista(String lista,boolean defecto){
+		if(defecto){
+			ListaDefecto listaDef = listaDefecto.get(lista);
+			return listaDef.getArrayVideos();
+		}
+		else{
+			ListaParticular listaPar = listaParticulares.get(lista);
+			return listaPar.getArrayVideos();
+		}
 	}
 }

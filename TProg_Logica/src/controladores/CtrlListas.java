@@ -83,5 +83,16 @@ public class CtrlListas implements IListas {
 
 	}
 	
+	public void quitarVideoLista(String usuario, String video, String lista,boolean defecto){
+		Usuario usuarioObj = manejadorUsuarios.get(usuario);
+		
+		if(defecto){
+			usuarioObj.getCanal().quitarVideoListaDefecto(video,lista);
+		}
+		else{
+			usuarioObj.getCanal().quitarVideoListaParticular(video,lista);
+		}
+	}
+	
 	}
 

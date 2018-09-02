@@ -13,4 +13,6 @@ public interface IListas {
 	public void guardarCambios(String nomLis,String usuario,boolean visible);
 	
 	public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista, boolean defecto);
+	
+	public void quitarVideoLista(String usuario, String video, String lista,boolean deefecto);
 }

@@ -122,11 +122,14 @@ public class QuitarVideo extends JInternalFrame{
 		);
 		
 		JList list = new JList(listListas);
+		
 		list.addListSelectionListener(new ListSelectionListener() {
+			
 			public void valueChanged(ListSelectionEvent arg0) {
 				if(!list.isSelectionEmpty()){
 					comboBoxVideos.setEnabled(true);
-					//listarVideosLista();				
+					modelVideos.removeAllElements();
+						cargarVideosListas(modelUsuario.getSelectedItem().toString(),list.getSelectedValue().toString(),rdbtnListasPorDefecto.isSelected());	
 					}
 				else{
 					comboBoxVideos.setEnabled(false);
@@ -141,6 +144,7 @@ public class QuitarVideo extends JInternalFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				modelUsuario.removeAllElements();				
 				modelVideos.removeAllElements();
+				list.setEnabled(false);
 				setVisible(false);
 			}
 		});
@@ -163,6 +167,7 @@ public class QuitarVideo extends JInternalFrame{
 					}
 				}
 				else{
+					modelVideos.removeAllElements();
 					rdbtnListasPorDefecto.setEnabled(false);
 					rdbtnListasParticulares.setEnabled(false);
 					list.setEnabled(false);
@@ -172,19 +177,19 @@ public class QuitarVideo extends JInternalFrame{
 		
 		rdbtnListasPorDefecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				modelVideos.removeAllElements();
 				cargarDefectoListas();
 			}
 		});
 		
 		rdbtnListasParticulares.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				modelVideos.removeAllElements();
 				cargarParticularListas();
 			}
 		});
 		
-		btnAceptar.addActionListener(new ActionListener() {
+		btnAceptar.addActionListener(new ActionListener() { /////////////////////////////////////////////////////
 			public void actionPerformed(ActionEvent e) {
 				boolean checkUsuario = true;
 				
@@ -194,7 +199,14 @@ public class QuitarVideo extends JInternalFrame{
 						checkUsuario = false;
 				}
 				if(checkUsuario){
-
+					ctrLis = fab.getIListas();
+					ctrLis.quitarVideoLista(modelUsuario.getSelectedItem().toString(),
+							modelVideos.getSelectedItem().toString(),list.getSelectedValue().toString(),
+							rdbtnListasPorDefecto.isSelected());
+					modelUsuario.removeAllElements();				
+					modelVideos.removeAllElements();
+					list.setEnabled(false);
+					setVisible(false);
 				}
 			}
 		});
@@ -241,6 +253,22 @@ public class QuitarVideo extends JInternalFrame{
 		}
 			
 		ctrLis = null;
+	}
+	
+	public void cargarVideosListas(String usuario,String lista,boolean defecto){
+		
+		fab = Fabrica.getFabrica();
+		
+		ctrUsu = fab.getIUsuariosCanales();
+		
+	    String[] videos = ctrUsu.listarVideosLista(usuario, lista, defecto);
+		int largov = videos.length;
+		modelVideos.addElement("");
+		for (int i = 0; i < largov; i++ ){
+		  modelVideos.addElement(videos[i]);
+		}
+		ctrUsu = null;
+		
 	}
 	
 	public void cargarDatos(){
