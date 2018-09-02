@@ -57,7 +57,7 @@ public class CtrlCategoriasTest {
 		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 		usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com", format.parse("11/04/1993"), "Pato", true);
 		video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba", format.parse("11/04/1993"));
-		assertArrayEquals(arrayVid, categorias.getInfoVideos("Prueba"));
+		Assert.assertArrayEquals(arrayVid, categorias.getInfoVideos("Prueba"));
 	}
 
 //	@Test
