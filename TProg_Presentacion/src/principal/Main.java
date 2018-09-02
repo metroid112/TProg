@@ -452,9 +452,24 @@ public class Main {
 		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
 		this.videos.altaVideo("tabarec", "Locura celeste", "XXXXX", Duration.parse("PT2S"), "https://youtu.be/PAfbzKcePx0", "Música", format.parse("99/99/9999"), false);
 		
-		//this.listas.altaListaDefecto(nombre)
+		try {
+			this.listas.altaListaDefecto("Escuchar mas tarde");
+			this.listas.altaListaDefecto("Deporte total");
+			this.listas.altaListaDefecto("Novedades generales");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		//this.listas.altaListaParticular(nombre, categoria, visibilidad)
+		try {
+			this.listas.altaListaParticular("Nostalgia", "kairoh", true);
+			this.listas.altaListaParticular("De fiesta", "tabarec", false);
+			this.listas.altaListaParticular("Novedades FING", "hectorg", true);
+			this.listas.altaListaParticular("De todo un poco", "cachilas", false);
+			this.listas.altaListaParticular("Noticias y CYT", "nicoJ", true);
+			this.listas.altaListaParticular("Solo deportes", "juliob", true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		//this.listas.agregarVideo(nombreLista, nombreVideo)
 		
