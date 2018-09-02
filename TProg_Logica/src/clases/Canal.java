@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import manejadores.ManejadorListas;
+
 public class Canal {
 
 	private Categoria categoria;
@@ -27,6 +29,9 @@ public class Canal {
 		this.descripcion = descripcionCanal;
 		this.visible = visible;
 		this.usuario = user;
+		for (String lista : ManejadorListas.getManejadorListas().toArray()) {
+			listaDefecto.put(lista, new ListaDefecto(lista, this));
+		}
 	}
 
 	public void agregarVideoListaDefecto(Video videoObj, String lista) {
@@ -130,13 +135,13 @@ public class Canal {
 	}
 
 	public void ingresarListaDefecto(String nombre) {
-		ListaDefecto nuevaLista = new ListaDefecto(nombre, this, new LinkedList<Video>());
+		ListaDefecto nuevaLista = new ListaDefecto(nombre, this);
 		listaDefecto.put(nombre, nuevaLista); // puede cambiar la implementacion
 	}
 
 	public void ingresarListaParticular(String nombre, boolean visibilidad) {
 
-		ListaParticular nuevaLista = new ListaParticular(nombre, this, new LinkedList<Video>(),
+		ListaParticular nuevaLista = new ListaParticular(nombre, this,
 				new HashMap<String, Categoria>(), visibilidad);
 		listaParticulares.put(nombre, nuevaLista); // puede cambiar la implementacion
 

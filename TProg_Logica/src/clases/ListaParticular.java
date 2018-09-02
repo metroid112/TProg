@@ -10,9 +10,9 @@ public class ListaParticular extends Lista {
 	private HashMap<String, Categoria> categorias;
 	private boolean visible;
 
-	public ListaParticular(String nombre, Canal canal, LinkedList<Video> videos, HashMap<String, Categoria> categorias,
+	public ListaParticular(String nombre, Canal canal, HashMap<String, Categoria> categorias,
 			boolean visible) {
-		super(nombre, canal, videos);
+		super(nombre, canal);
 		this.visible = visible;
 		this.categorias = categorias;
 	}
