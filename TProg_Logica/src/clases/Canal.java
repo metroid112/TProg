@@ -19,6 +19,10 @@ public class Canal {
 	private HashMap<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
 	private HashMap<String, ListaParticular> listaParticulares = new HashMap<String, ListaParticular>();
 	private Categoria categoria;
+	
+	public Canal() {
+		
+	}
 
 	public Canal(String nombreCanal, String descripcionCanal, boolean visible, Usuario user) {
 		this.nombre = nombreCanal;

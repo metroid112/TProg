@@ -9,6 +9,10 @@ public class Calificacion {
 	private Usuario usuario;
 	private Video video;
 	
+	public Calificacion() {
+		
+	}
+	
 	public Calificacion(boolean like, Usuario user, Video video) {
 		this.like = like;
 		this.usuario = user;

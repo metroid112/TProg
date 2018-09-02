@@ -17,6 +17,10 @@ public class Comentario {
 	private LinkedHashMap<Integer,Comentario> respuestas = new LinkedHashMap<Integer, Comentario>();
 	private int id;	// id de comentario para uso interno
 	private static int idCounter = 0;
+	
+	public Comentario() {
+		
+	}
 
 	/**
 	 * comentario respuesta sin fecha

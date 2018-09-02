@@ -23,9 +23,12 @@ public class Video {
 	private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
 	private LinkedHashMap<Integer,Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
 	// LinkedHashMap mantiene el orden a diferencia del HashMap
+	
+	public Video() {
+		
+	}
 
 	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Canal canal, Date fecha) {
-
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
@@ -37,7 +40,6 @@ public class Video {
 		if (this.categoria != null) {
 			categoria.addVideo(this);
 		}
-		
 	}
 
 	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Date fecha,
