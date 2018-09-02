@@ -138,6 +138,10 @@ public class Canal {
 		ListaDefecto nuevaLista = new ListaDefecto(nombre, this);
 		listaDefecto.put(nombre, nuevaLista); // puede cambiar la implementacion
 	}
+	
+	public void agregarListaDefectoObserver(ListaDefecto listaDefecto) {
+		this.listaDefecto.put(listaDefecto.getNombre(), listaDefecto);
+	}
 
 	public void ingresarListaParticular(String nombre, boolean visibilidad) {
 

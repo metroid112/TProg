@@ -11,7 +11,7 @@ public class ListaDefecto extends Lista {
 	public ListaDefecto(String nombre, Canal canal) {
 		super(nombre, canal);
 		for (String nick : ManejadorUsuarios.getManejadorUsuarios().toArray()) {
-			ManejadorUsuarios.getManejadorUsuarios().get(nick).getCanal().ingresarListaDefecto(nombre);
+			ManejadorUsuarios.getManejadorUsuarios().get(nick).getCanal().agregarListaDefectoObserver(this);
 		}
 	}
 
@@ -21,6 +21,6 @@ public class ListaDefecto extends Lista {
 		for (Video vid : this.getVideos()) {
 			videos.add(vid.getNombre());
 		}
-		return new DtLista(this.getNombre(), "Defecto", false, videos, null);
+		return new DtLista(this.getNombre(), "Defecto", false, videos, new LinkedList<String>());
 	}
 }
