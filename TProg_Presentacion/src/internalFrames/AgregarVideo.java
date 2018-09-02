@@ -42,11 +42,11 @@ public class AgregarVideo extends JInternalFrame{
 		setBounds(0, 0, 640, 480);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
+		JLabel lblNombreDeUsuario = new JLabel("Usuario poseedor del video");
 		
 		JLabel lblVideos = new JLabel("Videos");
 		
-		JLabel lblUsuario = new JLabel("Usuario");
+		JLabel lblUsuario = new JLabel("Usuario poseedor de la lista");
 		
 		JComboBox comboBoxUsuario = new JComboBox(modelUsuario);
 		
@@ -74,6 +74,8 @@ public class AgregarVideo extends JInternalFrame{
 		grupoLista.add(rdbtnListasParticulares);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		JLabel lblListasDelUsuario = new JLabel("Listas del usuario");
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -89,7 +91,8 @@ public class AgregarVideo extends JInternalFrame{
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNombreDeUsuario)
 						.addComponent(lblVideos)
-						.addComponent(lblUsuario))
+						.addComponent(lblUsuario)
+						.addComponent(lblListasDelUsuario))
 					.addGap(28)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
@@ -116,16 +119,21 @@ public class AgregarVideo extends JInternalFrame{
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUsuario)
 						.addComponent(comboBoxUsuObj, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(rdbtnListasPordefecto)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(rdbtnListasParticulares)
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCancelar)
-						.addComponent(btnAceptar))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(rdbtnListasPordefecto)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(rdbtnListasParticulares)
+							.addGap(18)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnCancelar)
+								.addComponent(btnAceptar)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(152)
+							.addComponent(lblListasDelUsuario)))
 					.addContainerGap())
 		);
 		
