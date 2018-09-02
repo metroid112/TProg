@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.*;
 import java.lang.Exception;
 import clases.Categoria;
+import excepciones.DuplicateClassException;
 
 public class ManejadorCategorias {
 
@@ -54,11 +55,11 @@ public class ManejadorCategorias {
 		return categorias.keySet().toArray(new String[categorias.size()]);
 	}
 	
-	public void altaCategoria(String nombreCategoria) throws Exception {		
+	public void altaCategoria(String nombreCategoria) throws DuplicateClassException {		
 		if (!categorias.containsKey(nombreCategoria))	{
 			add(new Categoria(nombreCategoria));		
 		} else {
-			throw new Exception("La categoria ya existe");
+			throw new DuplicateClassException(new Categoria(nombreCategoria), nombreCategoria);
 		}
 	}
 	

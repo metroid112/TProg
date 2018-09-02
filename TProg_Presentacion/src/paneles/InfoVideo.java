@@ -155,7 +155,7 @@ public class InfoVideo extends JPanel {
 		listaValoraciones = new JList<String>();
 		scrollPane_1.setViewportView(listaValoraciones);
 		
-		JLabel lblDecripcion = new JLabel("Decripcion");
+		JLabel lblDecripcion = new JLabel("Descripcion");
 		scrollPane2.setColumnHeaderView(lblDecripcion);
 		
 

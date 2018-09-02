@@ -66,6 +66,10 @@ public class ListaParticular extends Lista {
 		for (Video vid : this.getVideos()){
 			videos.add(vid.getNombre());
 		}
-		return new DtLista(this.getNombre(), "Particular", this.visible, videos);		
+		LinkedList<String> categorias = new LinkedList<String>();
+		for (Categoria cat : this.getCategorias().values()){
+			videos.add(cat.getNombre());
+		}
+		return new DtLista(this.getNombre(), "Particular", this.visible, videos, categorias);		
 	}
 }
