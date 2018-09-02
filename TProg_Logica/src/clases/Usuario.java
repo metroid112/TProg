@@ -6,6 +6,7 @@ import java.awt.image.VolatileImage;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Usuario {
 
@@ -17,7 +18,7 @@ public class Usuario {
 	private BufferedImage imagen;
 	private Canal canal;
 	private Comentario[] comentarios;
-	private Calificacion[] calificaciones;
+	private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
 	private HashMap<String, Usuario> seguidores = new HashMap<String, Usuario>();
 	private HashMap<String, Usuario> seguidos = new HashMap<String, Usuario>();
 
@@ -27,7 +28,7 @@ public class Usuario {
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
 	public Usuario(String nick, String nombre, String apellido, String correo, Date nacimiento, BufferedImage imagen,
-			Canal canal, Comentario[] comentarios, Calificacion[] calificaciones, HashMap<String, Usuario> seguidores,
+			Canal canal, Comentario[] comentarios, LinkedList<Calificacion> calificaciones, HashMap<String, Usuario> seguidores,
 			HashMap<String, Usuario> seguidos) {
 		this.nick = nick;
 		this.nombre = nombre;
@@ -45,9 +46,6 @@ public class Usuario {
 		if (calificaciones != null) {
 			this.calificaciones = calificaciones;
 		}
-		else {
-			this.calificaciones = new Calificacion[0];
-		}		
 		//this.seguidores = seguidores;
 		//this.seguidos = seguidos;
 }
@@ -102,7 +100,7 @@ public class Usuario {
 		return comentarios;
 	}
 
-	public Calificacion[] getCalificaciones() {
+	public LinkedList<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
 
@@ -146,7 +144,7 @@ public class Usuario {
 		this.comentarios = comentarios;
 	}
 
-	public void setCalificaciones(Calificacion[] calificaciones) {
+	public void setCalificaciones(LinkedList<Calificacion> calificaciones) {
 		this.calificaciones = calificaciones;
 	}
 
@@ -162,7 +160,18 @@ public class Usuario {
 		this.seguidos.put(seguido.getNick(), seguido);
 		seguido.addSeguidor(this);
 	}
+	
 	public void addSeguidor(Usuario seguidor) {
 		this.seguidores.put(seguidor.getNick(), seguidor);
+	}
+	
+	public void addCalificacion(Calificacion cal) {
+		this.calificaciones.add(cal);
+	}
+
+	public void valorarVideo(boolean like, Video vid) {
+		Calificacion cal = new Calificacion(like, this, vid);
+		vid.addCalificacion(cal);
+		this.addCalificacion(cal);
 	}
 }
