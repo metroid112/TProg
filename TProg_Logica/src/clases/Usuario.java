@@ -17,7 +17,7 @@ public class Usuario {
 	private Date fechaNacimiento;
 	private BufferedImage imagen;
 	private Canal canal;
-	private Comentario[] comentarios;
+	private LinkedList<Comentario> comentarios = new LinkedList<Comentario>();
 	private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
 	private HashMap<String, Usuario> seguidores = new HashMap<String, Usuario>();
 	private HashMap<String, Usuario> seguidos = new HashMap<String, Usuario>();
@@ -28,7 +28,7 @@ public class Usuario {
 	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
 	// algunos
 	public Usuario(String nick, String nombre, String apellido, String correo, Date nacimiento, BufferedImage imagen,
-			Canal canal, Comentario[] comentarios, LinkedList<Calificacion> calificaciones, HashMap<String, Usuario> seguidores,
+			Canal canal, LinkedList<Comentario> comentarios, LinkedList<Calificacion> calificaciones, HashMap<String, Usuario> seguidores,
 			HashMap<String, Usuario> seguidos) {
 		this.nick = nick;
 		this.nombre = nombre;
@@ -39,9 +39,6 @@ public class Usuario {
 		this.canal = canal;
 		if (comentarios != null) {
 			this.comentarios = comentarios;
-		}
-		else {
-			this.comentarios = new Comentario[0];
 		}
 		if (calificaciones != null) {
 			this.calificaciones = calificaciones;
@@ -96,7 +93,7 @@ public class Usuario {
 		return canal;
 	}
 
-	public Comentario[] getComentarios() {
+	public LinkedList<Comentario> getComentarios() {
 		return comentarios;
 	}
 
@@ -140,7 +137,7 @@ public class Usuario {
 		this.canal = canal;
 	}
 
-	public void setComentarios(Comentario[] comentarios) {
+	public void setComentarios(LinkedList<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
 
@@ -188,4 +185,33 @@ public class Usuario {
 		}
 		return calificado;
 	}
+
+	public void modificarValoracion(boolean like, Video vid) {
+		Calificacion calificacion = null;
+		for (Calificacion cal : this.calificaciones) {
+			if (cal.getVideo().equals(vid)) {
+				calificacion = cal;
+			}
+		}
+		calificacion.setLike(like);
+		
+	}
+	
+	/**
+	 * Comentario padre
+	 */
+	public void comentar(String texto, Date fecha, Video vid) {
+		Comentario comentario = new Comentario(texto, this, vid, fecha);
+		this.comentarios.add(comentario);
+		vid.addComentarioPadre(comentario);
+	}
+
+	public void responder(String texto, Date fecha, Integer idComentarioPadre, Video vid) {
+		Comentario padre = vid.getComentario(idComentarioPadre);
+		Comentario comentario = new Comentario(texto, this, vid, padre, fecha);
+		this.comentarios.add(comentario);
+		
+	}
+	
+	
 }

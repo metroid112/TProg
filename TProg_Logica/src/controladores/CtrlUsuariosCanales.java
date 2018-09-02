@@ -124,7 +124,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.get(nick).getCanal();
 	}
 
-	public Comentario[] getComentarios(String nick) {
+	public LinkedList<Comentario> getComentarios(String nick) {
 		return manejadorUsuarios.get(nick).getComentarios();
 	}
 
@@ -186,5 +186,23 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);	// Puede calificar su propio video?
 		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
 		usuario.valorarVideo(like, vid);
+	}
+	
+	public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDueñoVideo) {
+		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
+		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		usuario.modificarValoracion(like, vid);
+	}
+	
+	public void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDueñoVideo) {
+		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
+		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		usuario.comentar(texto, fecha, vid);
+	}
+	
+	public void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDueñoVideo, Integer idComentarioPadre) {
+		
 	}
 }

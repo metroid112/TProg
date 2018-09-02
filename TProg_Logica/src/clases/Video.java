@@ -149,11 +149,23 @@ public class Video {
 	}
 	
 	public void addCalificacion(Calificacion cal) {
-		this.calificaciones.add(cal); 	// TODO quien crea calificaciones?
+		this.calificaciones.add(cal);
 	}
 	
 	public void addComentarioPadre(Comentario com) {
-		this.comentarios.put(com.getID(), com); 		//TODO quien crea comentarios?
+		this.comentarios.put(com.getID(), com);
+	}
+
+	public Comentario getComentario(Integer idComentarioPadre) {
+		Comentario com;
+		Comentario encontrado = null;
+		for (Comentario comentario : this.comentarios.values()) {
+			com = comentario.getCom(idComentarioPadre);
+			if (com != null) {
+				encontrado = com;
+			}
+		}
+		return encontrado;
 	}
 
 }
