@@ -165,7 +165,6 @@ public class Canal {
 			if(!listaObj.existeVideo(videoObj)){
 				listaObj.insertarVideo(videoObj);
 			}
-
 	}
   
 	public Lista getLista(String lista) throws Exception {
@@ -176,7 +175,6 @@ public class Canal {
 		} else {
 			throw new Exception("No existe lista");
 		}
-		
 	}
 	
 	public void agregarVideoListaParticular(Video videoObj, String lista){
@@ -204,7 +202,6 @@ public class Canal {
 		Video videoObj = videos.get(video);
 		listaObj.quitarVideo(videoObj);
 		Categoria cat = videoObj.getCategoria();
-		
 		
 		if(listaObj.esUnicaCategoria(cat)){
 			listaObj.quitarCategoria(cat);
