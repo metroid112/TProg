@@ -12,13 +12,13 @@ import clases.Comentario;
 
 
 public class DtVideo {
-	private String nombre, URL, descripcion, categoria;
-	private Date fecha;
-	private Duration duracion;
-	private boolean visible;
+	public String nombre, URL, descripcion, categoria;
+	public Date fecha;
+	public Duration duracion;
+	public boolean visible;
 
-	private LinkedHashMap<Integer, DtComentario> comentarios = new LinkedHashMap<Integer, DtComentario>();
-	private LinkedList<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
+	public LinkedHashMap<Integer, DtComentario> comentarios = new LinkedHashMap<Integer, DtComentario>();
+	public LinkedList<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
 	
 	public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha, Duration duracion,
 			boolean visible, LinkedHashMap<Integer, Comentario> comentarios, LinkedList<Calificacion> calificaciones) {
@@ -45,43 +45,5 @@ public class DtVideo {
 		
 
 	}
-	
-	public String getNombre() {
-		return nombre;
-	}
-
-	public String getURL() {
-		return URL;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public Duration getDuracion() {
-		return duracion;
-	}
-
-	public boolean isVisible() {
-		return visible;
-	}
-	
-	public LinkedList<DtCalificacion> getCalificaciones() {
-		return this.calificaciones;
-	}
-
-	
-	public LinkedHashMap<Integer, DtComentario> getComents() {
-		return this.comentarios;
-	}
-
 
 }

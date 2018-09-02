@@ -270,16 +270,16 @@ public class ModificarVideo extends JInternalFrame {
 	private void cargarInfo() {
 		if (seleccionVideo.getUsuario() != null && seleccionVideo.getVideo() != null) {
 			DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());		// Pido info del video para desplegar
-			tfNombre.setText(infoVid.getNombre());
-			textDescripcion.setText(infoVid.getDescripcion());
-			tfURL.setText(infoVid.getURL());
-			if (infoVid.isVisible()) {
+			tfNombre.setText(infoVid.nombre);
+			textDescripcion.setText(infoVid.descripcion);
+			tfURL.setText(infoVid.URL);
+			if (infoVid.visible) {
 				rdbtnPublico.doClick();
 			} else {
 				rdbtnPrivado.doClick();
 			}
 			int horas,min,seg;
-			Duration duracion = infoVid.getDuracion();
+			Duration duracion = infoVid.duracion;
 			horas = (int) duracion.toHours();
 			duracion = duracion.minusHours((long) horas);
 			min = (int) duracion.toMinutes();
@@ -288,25 +288,25 @@ public class ModificarVideo extends JInternalFrame {
 			spinnerHoras.setValue(horas);
 			spinnerMin.setValue(min);
 			spinnerSeg.setValue(seg);
-			datePicker.setDate(infoVid.getFecha());
+			datePicker.setDate(infoVid.fecha);
 			DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(contVid.listarCategorias());
-			if (!infoVid.getCategoria().equals("Sin Categoria")) {
+			if (!infoVid.categoria.equals("Sin Categoria")) {
 				int size = model.getSize();
 				int i = 0;
 				boolean encontrado = false;
 				while (i <= size && !encontrado) {
-					if (model.getElementAt(i).equals(infoVid.getCategoria())) {
+					if (model.getElementAt(i).equals(infoVid.categoria)) {
 						model.setSelectedItem(model.getElementAt(i));
 						encontrado = true;
 					}
 					i++;
 				}
 				if (!encontrado) {
-					System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: " + infoVid.getCategoria()); 	// TODO excepccion
+					System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: " + infoVid.categoria); 	// TODO excepccion
 				}
 			} else {
-				model.addElement(infoVid.getCategoria());	// En caso de decir "Sin Categoria"
-				model.setSelectedItem(infoVid.getCategoria());
+				model.addElement(infoVid.categoria);	// En caso de decir "Sin Categoria"
+				model.setSelectedItem(infoVid.categoria);
 			}
 			cBoxCategoria.setModel(model);
 			
