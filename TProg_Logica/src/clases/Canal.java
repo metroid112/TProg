@@ -19,36 +19,16 @@ public class Canal {
 	private HashMap<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
 	private HashMap<String, ListaParticular> listaParticulares = new HashMap<String, ListaParticular>();
 	private Categoria categoria;
-
+	
 	public Canal() {
-	}
-
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
-	// algunos
-	public Canal(String nombre, String descripcion, boolean visible, Usuario usuario, HashMap<String, Video> videos,
-			HashMap<String, ListaDefecto> listaDefecto, HashMap<String, ListaParticular> listaParticulares, Categoria categoria) {
-		
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.visible = visible;
-		this.usuario = usuario;
-		this.categoria = categoria;
-
 		
 	}
 
-	public Canal(String nombreCanal, boolean visible, Usuario user) {
-		
-		this.nombre = nombreCanal;
-		this.visible = visible;
-		this.usuario = user;
-	}
-
-
-	public Canal(String nombreCanal, String descripcionCanal, boolean visible) {
+	public Canal(String nombreCanal, String descripcionCanal, boolean visible, Usuario user) {
 		this.nombre = nombreCanal;
 		this.descripcion = descripcionCanal;
 		this.visible = visible;
+		this.usuario = user;
 	}
 
 	public String getNombre() {

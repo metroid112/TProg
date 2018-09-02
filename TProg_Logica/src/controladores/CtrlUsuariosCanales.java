@@ -33,28 +33,22 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	
 	@Override
-	public void altaUsuario(String nick, String nombre, String apellido, String correo, Date nacimiento, BufferedImage imagen, 
-			String nombreCanal, boolean privado, String descripcion, Comentario[] comentarios, Calificacion[] calificaciones, Usuario[] seguidores,
-			Usuario[] seguidos) throws Exception {
-		
-			Canal canal = new Canal(nombreCanal, descripcion, privado, null, new HashMap<String, Video>(),
-					new HashMap<String, ListaDefecto>(), new HashMap<String, ListaParticular>(), null);
-			
-			Usuario usu = new Usuario(nick, nombre, apellido, correo, nacimiento);
-			canal.setUsuario(usu);
-			usu.setCanal(canal);
-			manejadorUsuarios.add(usu);
+	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
+			BufferedImage imagen, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
+		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagen);
+		Canal canal = new Canal(nombreCanal, descripcionCanal, visible, user);
+		user.setCanal(canal);
+		manejadorUsuarios.add(user);
 	}
 
 	@Override
 	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			String nombreCanal, boolean visible) {
-		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento);
-		Canal canal = new Canal(nombreCanal, visible, user);
+			String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
+		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)));
+		Canal canal = new Canal(nombreCanal, descripcionCanal, visible, user);
 		user.setCanal(canal);
-		canal.setUsuario(user);
 		manejadorUsuarios.add(user);
-	};
+	}
 	
 	public String[] listarUsuarios() {
 		return manejadorUsuarios.toArray();
@@ -165,15 +159,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	@Override
 	public boolean isEmailUnique(String email) {
 		return manejadorUsuarios.isEmailUnique(email);
-	}
-
-	@Override
-	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
-		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)));
-		Canal canal = new Canal(nombreCanal, visible, user);
-		user.setCanal(canal);
-		manejadorUsuarios.add(user);
 	}
 
 	@Override

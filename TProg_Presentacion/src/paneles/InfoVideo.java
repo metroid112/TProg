@@ -170,16 +170,16 @@ public class InfoVideo extends JPanel {
 	}
 	
 	public void cargarDatos(DtVideo dtVid) {
-		lblVnombre.setText(dtVid.getNombre());
-		textVdescripcion.setText(dtVid.getDescripcion());
-		lblVurl.setText(dtVid.getURL());
-		if (dtVid.isVisible()) {
+		lblVnombre.setText(dtVid.nombre);
+		textVdescripcion.setText(dtVid.descripcion);
+		lblVurl.setText(dtVid.URL);
+		if (dtVid.visible) {
 			lblVvisibilidad.setText("Publico");
 		} else {
 			lblVvisibilidad.setText("Privado");
 		}
-		lblVcategoria.setText(dtVid.getCategoria());
-		Duration duracion = dtVid.getDuracion();
+		lblVcategoria.setText(dtVid.categoria);
+		Duration duracion = dtVid.duracion;
 		int horas = (int) duracion.toHours();
 		duracion = duracion.minusHours((long) horas);
 		int min = (int) duracion.toMinutes();
@@ -187,19 +187,19 @@ public class InfoVideo extends JPanel {
 		int seg = (int) duracion.getSeconds();
 		lblVduracion.setText(String.format("%d:%02d:%02d", horas, min, seg)); 	// Formato?
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		lblVfecha.setText(dateFormat.format(dtVid.getFecha()));
+		lblVfecha.setText(dateFormat.format(dtVid.fecha));
 		
 		DefaultListModel<String> modeloLista = new DefaultListModel<String>();
-		if (!dtVid.getCalificaciones().isEmpty()) {
-			for (DtCalificacion cal : dtVid.getCalificaciones()) {
-				modeloLista.addElement(cal.getUsuario() + " - " + cal.getLikeParsed());
+		if (!dtVid.calificaciones.isEmpty()) {
+			for (DtCalificacion cal : dtVid.calificaciones) {
+				modeloLista.addElement(cal.usuario + " - " + cal.getLikeParsed());
 			}
 		} else {
 			modeloLista.addElement("Sin calificaciones");
 		}
 		listaValoraciones.setModel(modeloLista);
 		
-		DefaultMutableTreeNode raiz = loadComentarios(dtVid.getComents(), dtVid.getNombre());
+		DefaultMutableTreeNode raiz = loadComentarios(dtVid.comentarios, dtVid.nombre);
 		DefaultTreeModel model = new DefaultTreeModel(raiz);
 		tree.setModel(model);
 		
@@ -217,7 +217,7 @@ public class InfoVideo extends JPanel {
 	
 	public DefaultMutableTreeNode getNode(DtComentario comentario) {
 		DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(comentario.getString());
-		for (DtComentario hijo : comentario.getHijos().values()) {
+		for (DtComentario hijo : comentario.hijos.values()) {
 			DefaultMutableTreeNode nodoHijo = getNode(hijo);		// Recursion
 			nodo.add(nodoHijo);
 		}

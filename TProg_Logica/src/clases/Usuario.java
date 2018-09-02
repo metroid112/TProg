@@ -23,38 +23,9 @@ public class Usuario {
 	private HashMap<String, Usuario> seguidos = new HashMap<String, Usuario>();
 
 	public Usuario() {
+		
 	}
-
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
-	// algunos
-	public Usuario(String nick, String nombre, String apellido, String correo, Date nacimiento, BufferedImage imagen,
-			Canal canal, LinkedList<Comentario> comentarios, LinkedList<Calificacion> calificaciones, HashMap<String, Usuario> seguidores,
-			HashMap<String, Usuario> seguidos) {
-		this.nick = nick;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.correo = correo;
-		this.fechaNacimiento = nacimiento;
-		this.imagen = imagen;
-		this.canal = canal;
-		if (comentarios != null) {
-			this.comentarios = comentarios;
-		}
-		if (calificaciones != null) {
-			this.calificaciones = calificaciones;
-		}
-		//this.seguidores = seguidores;
-		//this.seguidos = seguidos;
-}
-
-	public Usuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento) {
-		this.nick = nickname;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.correo = correo;
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
+	
 	public Usuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
 			BufferedImage image) {
 		this.nick = nickname;

@@ -10,14 +10,12 @@ public class Categoria {
 	private LinkedList<Video> videos = new LinkedList<Video>();
 
 	public Categoria() {
+		
 	}
 	
 	public Categoria(String nombre) {
 		this.nombre = nombre;
 	}
-
-	// Pato: Constructor con todos los atributos, posiblemente se precise cortar
-	// algunos
 
 	public String getNombre() {
 		return nombre;
