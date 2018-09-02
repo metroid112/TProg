@@ -3,12 +3,16 @@ package clases;
 import java.util.LinkedList;
 
 import dataTypes.DtLista;
+import manejadores.ManejadorUsuarios;
 
 public class ListaDefecto extends Lista {
 
 
 	public ListaDefecto(String nombre, Canal canal) {
 		super(nombre, canal);
+		for (String nick : ManejadorUsuarios.getManejadorUsuarios().toArray()) {
+			ManejadorUsuarios.getManejadorUsuarios().get(nick).getCanal().ingresarListaDefecto(nombre);
+		}
 	}
 
 	@Override
