@@ -134,16 +134,20 @@ public class ModificarListaReproduccion extends JInternalFrame {
 		
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String usuario = modelUsuario.getSelectedItem().toString();
+				ctrLis = fab.getIListas();
 				
 				if(checkUsuario() && checkLista()){
-					ctrLis.guardarCambios(modelLisRep.getSelectedItem().toString(),modelUsuario.getSelectedItem().toString(),rdbtnPublica.isSelected());
-					setVisible(false);
-					clean();
-					rdbtnPrivada.setSelected(true);
-					rdbtnPublica.setSelected(false);
-					rdbtnPrivada.setEnabled(false);
-					rdbtnPublica.setEnabled(false);
-					comboBoxLisRep.setEnabled(false);
+					if(isCanalPublico(usuario)){
+						ctrLis.guardarCambios(modelLisRep.getSelectedItem().toString(),usuario,rdbtnPublica.isSelected());//Se rompe al llamar la funcion
+						setVisible(false);
+						clean();
+						rdbtnPrivada.setSelected(true);
+						rdbtnPublica.setSelected(false);
+						rdbtnPrivada.setEnabled(false);
+						rdbtnPublica.setEnabled(false);
+						comboBoxLisRep.setEnabled(false);
+					}
 				}
 			}
 		});
@@ -177,7 +181,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 			  modelLisRep.addElement(listas[i]);
 			}
 		}
-		ctrUsu = null;
+		ctrLis = null;
 	}
 	
 	public void clean(){
@@ -199,6 +203,17 @@ public class ModificarListaReproduccion extends JInternalFrame {
 
 		if(modelLisRep.getSelectedItem() == ""){
 			JOptionPane.showMessageDialog(null, "No has seleccionado ninguna lista", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+	
+	boolean isCanalPublico(String usuario){
+		fab = Fabrica.getFabrica();
+		ctrUsu = fab.getIUsuariosCanales();
+		
+		if(!ctrUsu.isCanalPublico(usuario)){
+			JOptionPane.showMessageDialog(null, "No se puede modificar la visibilidad del video poque el canal es privado", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;

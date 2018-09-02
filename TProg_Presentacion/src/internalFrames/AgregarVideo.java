@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 @SuppressWarnings("serial")
 public class AgregarVideo extends JInternalFrame{
@@ -32,7 +34,6 @@ public class AgregarVideo extends JInternalFrame{
 	private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
 	private DefaultComboBoxModel<String> modelUsuObj = new DefaultComboBoxModel<String>();
-	private DefaultComboBoxModel<String> modelListas = new DefaultComboBoxModel<String>();
 	private DefaultListModel<String> listListas = new DefaultListModel<>();
 
 	public AgregarVideo() {
@@ -60,6 +61,7 @@ public class AgregarVideo extends JInternalFrame{
 		JButton btnCancelar = new JButton("Cancelar");
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.setEnabled(false);
 		
 		JRadioButton rdbtnListasPordefecto = new JRadioButton("Listas por defecto",true);
 
@@ -128,6 +130,7 @@ public class AgregarVideo extends JInternalFrame{
 		);
 		
 		JList list = new JList(listListas);
+
 		list.setEnabled(false);
 		scrollPane.setViewportView(list);
 		getContentPane().setLayout(groupLayout);
@@ -137,7 +140,7 @@ public class AgregarVideo extends JInternalFrame{
 				modelUsuario.removeAllElements();
 				modelVideos.removeAllElements();
 				modelUsuObj.removeAllElements();
-				modelListas.removeAllElements();
+				btnAceptar.setEnabled(false);
 				rdbtnListasPordefecto.setEnabled(false);
 				rdbtnListasPordefecto.setSelected(true);
 				rdbtnListasParticulares.setEnabled(false);
@@ -155,14 +158,18 @@ public class AgregarVideo extends JInternalFrame{
 						JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
 						checkUsuario = false;
 				}
+
+				
 				if(checkUsuario){
-					
-					//agregarVideo(String video, String usuario, String lista);
+					ctrLis = fab.getIListas();
+					ctrLis.agregarVideoLista(modelUsuario.getSelectedItem().toString(),modelVideos.getSelectedItem().toString(), 
+							modelUsuObj.getSelectedItem().toString(), 
+							list.getSelectedValue().toString(),rdbtnListasPordefecto.isSelected());
 					
 					modelUsuario.removeAllElements();
 					modelVideos.removeAllElements();
 					modelUsuObj.removeAllElements();
-					modelListas.removeAllElements();
+					btnAceptar.setEnabled(false);
 					rdbtnListasPordefecto.setEnabled(false);
 					rdbtnListasPordefecto.setSelected(true);
 					rdbtnListasParticulares.setEnabled(false);
@@ -239,17 +246,21 @@ public class AgregarVideo extends JInternalFrame{
 		
 		rdbtnListasPordefecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//rdbtnListasParticulares.setSelected(false);
-				
 				cargarDefectoListas();
+				btnAceptar.setEnabled(false);
 			}
 		});
 		
 		rdbtnListasParticulares.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//rdbtnListasPordefecto.setSelected(false);
-				
 				cargarParticularListas();
+				btnAceptar.setEnabled(false);
+			}
+		});
+		
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				btnAceptar.setEnabled(true);
 			}
 		});
 		

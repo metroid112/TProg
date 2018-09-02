@@ -176,8 +176,13 @@ public class CrearListaReproduccion extends JInternalFrame {
 						if(rdbtnPorDefecto.isSelected()){
 							ctrLista.altaListaDefecto(textFieldNombre.getText());
 						}						
-						if(rdbtnParticular.isSelected()){							
-							ctrLista.altaListaParticular(textFieldNombre.getText(), modelUsuario.getSelectedItem().toString(), rdbtnPublica.isSelected()); //Visibilidad publica = true
+						if(rdbtnParticular.isSelected()){
+							boolean publica = rdbtnPublica.isSelected();
+							if(isCanalPublico(modelUsuario.getSelectedItem().toString())){
+								publica = false;
+							}
+							ctrLista.altaListaParticular(textFieldNombre.getText(), modelUsuario.getSelectedItem().toString(), publica); //Visibilidad publica = true
+							
 						}
 		                JOptionPane.showMessageDialog(null, "La lista fue creada con exito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
 		                clean();
@@ -231,7 +236,17 @@ public class CrearListaReproduccion extends JInternalFrame {
 		modelUsuario.removeAllElements();
 		textFieldNombre.setText(null);
 		
+	}
+	
+	boolean isCanalPublico(String usuario){
+		fab = Fabrica.getFabrica();
+		ctrUsu = fab.getIUsuariosCanales();
 		
+		if(!ctrUsu.isCanalPublico(usuario)){
+			JOptionPane.showMessageDialog(null, "La lista se creara como privada", "El canal es privado", JOptionPane.WARNING_MESSAGE);
+			return false;
+		}
+		return true;
 	}
 
 }

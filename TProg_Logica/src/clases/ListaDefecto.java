@@ -3,14 +3,16 @@ package clases;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import dataTypes.DtLista;
+
 public class ListaDefecto extends Lista {
 	
 	private String nombre;
 	
 	
 	
-	public ListaDefecto(String nombre, Canal canal,LinkedList<Video> videos){
-		super(nombre, canal,videos);	
+	public ListaDefecto(String nombre, Canal canal,LinkedList<Video> videos, LinkedList<Categoria> categoria){
+		super(nombre, canal,videos, categoria);	
 	}
 	
 	public String getNombre(){
@@ -19,6 +21,15 @@ public class ListaDefecto extends Lista {
 	
 	public void setNombre(String nombre){
 		this.nombre = nombre;
+	}
+
+	@Override
+	public DtLista getDtLista() {
+		LinkedList<String> videos = new LinkedList<String>();
+		for (Video vid : this.getVideos()){
+			videos.add(vid.getNombre());
+		}
+		return new DtLista(this.getNombre(), "Defecto", false, videos);		
 	}
 	
 	

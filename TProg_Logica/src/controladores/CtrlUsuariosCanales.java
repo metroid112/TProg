@@ -152,6 +152,15 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	}
 	//Fin getters usuario.
 
+	public boolean isCanalPublico(String usuario){
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		return usuarioObjetivo.getCanal().isVisible();
+	}
+	
+	public String[] listarVideosLista(String usuario,String lista, boolean defecto){
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		return usuarioObjetivo.getCanal().listarVideosLista(lista,defecto);
+	}
 	@Override
 	public boolean isEmailUnique(String email) {
 		return manejadorUsuarios.isEmailUnique(email);
