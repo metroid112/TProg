@@ -1,36 +1,26 @@
 package clases;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import dataTypes.DtLista;
+import manejadores.ManejadorUsuarios;
 
 public class ListaDefecto extends Lista {
-	
-	private String nombre;
-	
-	
-	
-	public ListaDefecto(String nombre, Canal canal,LinkedList<Video> videos, LinkedList<Categoria> categoria){
-		super(nombre, canal,videos, categoria);	
-	}
-	
-	public String getNombre(){
-		return this.nombre;
-	}
-	
-	public void setNombre(String nombre){
-		this.nombre = nombre;
+
+
+	public ListaDefecto(String nombre, Canal canal) {
+		super(nombre, canal);
+		for (String nick : ManejadorUsuarios.getManejadorUsuarios().toArray()) {
+			ManejadorUsuarios.getManejadorUsuarios().get(nick).getCanal().agregarListaDefectoObserver(this);
+		}
 	}
 
 	@Override
 	public DtLista getDtLista() {
 		LinkedList<String> videos = new LinkedList<String>();
-		for (Video vid : this.getVideos()){
+		for (Video vid : this.getVideos()) {
 			videos.add(vid.getNombre());
 		}
-		return new DtLista(this.getNombre(), "Defecto", false, videos);		
+		return new DtLista(this.getNombre(), "Defecto", false, videos, new LinkedList<String>());
 	}
-	
-	
 }

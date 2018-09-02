@@ -1,6 +1,7 @@
 package test;
 
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
 import clases.Categoria;
 import clases.Usuario;
@@ -9,7 +10,7 @@ import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;
 
 public class ClassManejadorTest {
-	
+
 	private ManejadorCategorias manejadorCategoria = ManejadorCategorias.getManejadorCategorias();
 	private ManejadorListas manejadorLista = ManejadorListas.getManejadorListas();
 	private ManejadorUsuarios manejadorUsuario = ManejadorUsuarios.getManejadorUsuarios();

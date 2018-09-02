@@ -397,10 +397,6 @@ public class AltaUsuario extends JInternalFrame {
 					descripcion = textPane.getText();
 					nombreCanal = textField_4.getText();
 				}
-				Comentario[] comentarios = null;
-				Calificacion[] calificaciones = null;
-				Usuario[] seguidores = null;
-				Usuario[] seguidos = null;
 				try {
 					String mes2 =(mes.getText().length()==1)?"0"+mes.getText():mes.getText();
 					String dia2 =(dia.getText().length()==1)?"0"+dia.getText():dia.getText();
@@ -411,9 +407,7 @@ public class AltaUsuario extends JInternalFrame {
 				}catch (Exception ex) {
 					throw new Exception("Formato de fecha incorrecto", ex);
 				}
-				ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, 
-						nombreCanal, !privado, descripcion, comentarios, calificaciones, seguidores,
-						seguidos);
+				ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, nombreCanal, descripcion, !privado);
 				
 				JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
 				clean();			   
