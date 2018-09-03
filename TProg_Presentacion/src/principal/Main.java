@@ -479,7 +479,30 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		//this.listas.agregarVideoALista(nombreLista, nombreVideo)
+		this.listas.agregarVideoLista("juliob", "Sweet child'o mine", "kairoh", "Nostalgia", false);
+		this.listas.agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh", "Nostalgia", false);
+		this.listas.agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh", "Nostalgia", false);
+		this.listas.agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
+		this.listas.agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
+		this.listas.agregarVideoLista("tabarec", "Locura celeste", "tabarec", "De fiesta", false);
+		this.listas.agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta", false);
+		this.listas.agregarVideoLista("tabarec", "Niño payaso", "tabarec", "De fiesta", false);
+		this.listas.agregarVideoLista("cachilas", "Niño payaso", "tabarec", "De fiesta", false);
+		this.listas.agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec", "De fiesta", false);
+		this.listas.agregarVideoLista("hectorg", "100 años de FING", "hectorg", "Novedades FING", false);
+		this.listas.agregarVideoLista("hectorg", "50 años del InCo", "hectorg", "Novedades FING", false);
+		this.listas.agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "hectorg", "Novedades FING", false);
+		this.listas.agregarVideoLista("tabarec", "Locura celeste", "cachilas", "De todo un poco", false);
+		this.listas.agregarVideoLista("cachilas", "Locura celeste", "cachilas", "De todo un poco", false);
+		this.listas.agregarVideoLista("tabarec", "Niño payaso", "cachilas", "De todo un poco", false);
+		this.listas.agregarVideoLista("cachilas", "Niño payaso", "cachilas", "De todo un poco", false);
+		this.listas.agregarVideoLista("cachilas", "Etapa A contramano Liguilla", "cachilas", "De todo un poco", false);
+		this.listas.agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas", "De todo un poco", false);
+		this.listas.agregarVideoLista("juliob", "Inauguracion Estadio Peñarol", "cachilas", "De todo un poco", false);
+		this.listas.agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ", "Noticias y CYT", false);
+		this.listas.agregarVideoLista("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros", "nicoJ", "Noticias y CYT", false);
+		this.listas.agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes", false);
+		this.listas.agregarVideoLista("juliob", "Inauguracion Estadio Peñarol", "juliob", "Solo deportes", false);
 		
 		DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
 		this.usuariosCanales.comentarVideo("Fue un gran evento", formatComentario.parse("05/12/2017 14:35"), "nicoJ", "50 años del InCo", "hectorg");

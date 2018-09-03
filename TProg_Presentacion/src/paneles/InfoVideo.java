@@ -65,6 +65,7 @@ public class InfoVideo extends JPanel {
 		lblVnombre = new JLabel("vNombre");
 		
 		textVdescripcion = new JTextArea("vDescripcion");
+		textVdescripcion.setRows(6);
 		textVdescripcion.setWrapStyleWord(true);
 		textVdescripcion.setLineWrap(true);
 		textVdescripcion.setEditable(false);
@@ -109,7 +110,7 @@ public class InfoVideo extends JPanel {
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-						.addComponent(scrollPane_1, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE))
+						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -143,9 +144,9 @@ public class InfoVideo extends JPanel {
 								.addComponent(lblUrl)
 								.addComponent(lblVurl))))
 					.addGap(28)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(scrollPane2)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
 					.addGap(29))
 		);
 		
