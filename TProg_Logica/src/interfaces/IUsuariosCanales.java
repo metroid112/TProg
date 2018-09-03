@@ -44,4 +44,6 @@ public interface IUsuariosCanales {
 
 	void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
 			String nombreDueñoVideo, Integer idComentarioPadre);
+
+	public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
 }

@@ -99,13 +99,14 @@ public class CtrlListas implements IListas {
 	}
 
 	@Override
-	public void quitarVideoLista(String usuario, String video, String lista, boolean defecto) {
+	public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista, boolean defecto) {
 		Usuario usuarioObj = manejadorUsuarios.get(usuario);
+		Usuario owner = manejadorUsuarios.get(ownerVideo);
 
 		if (defecto) {
-			usuarioObj.getCanal().quitarVideoListaDefecto(video, lista);
+			usuarioObj.getCanal().quitarVideoListaDefecto(video, lista, owner);
 		} else {
-			usuarioObj.getCanal().quitarVideoListaParticular(video, lista);
+			usuarioObj.getCanal().quitarVideoListaParticular(video, lista, owner);
 		}
 	}
 
