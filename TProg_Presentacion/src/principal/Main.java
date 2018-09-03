@@ -495,8 +495,21 @@ public class Main {
 		this.usuariosCanales.comentarVideo("Me encanta este tema", formatComentario.parse("11/09/2017 03:45"), "marcelot", "Locura celeste", "cachilas");
 		this.usuariosCanales.responderComentario("Gracias Marce ;)", formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "tabarec", 9);
 		this.usuariosCanales.responderComentario("Gracias Marce ;)", formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "cachilas", 10);
+		try {
+			this.usuariosCanales.valorarVideo("sergiop", false, "50 años del InCo", "hectorg");
+			this.usuariosCanales.valorarVideo("sergiop", true, "Ingenieria de Muestra 2017", "hectorg");
+			this.usuariosCanales.valorarVideo("sergiop", true, "Show de goles", "juliob");
+			this.usuariosCanales.valorarVideo("nicoJ", false, "Locura celeste", "tabarec");		
+			this.usuariosCanales.valorarVideo("nicoJ", false, "Locura celeste", "cachilas");
+			this.usuariosCanales.valorarVideo("nicoJ", true, "50 años del InCo", "hectorg");
+			this.usuariosCanales.valorarVideo("kairoh", true, "50 años del InCo", "hectorg");
+			this.usuariosCanales.valorarVideo("kairoh", true, "Inauguracion Estadio Peñarol", "juliob");
+			this.usuariosCanales.valorarVideo("marcelot", true, "Locura celeste", "tabarec");
+			this.usuariosCanales.valorarVideo("marcelot", true, "Dancing in the Dark", "kairoh");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		//this.usuariosCanales.valorarVideo(nombreUsuario, like, nombreVideo, nombreDueñoVideo);
 		
 	}
 }
