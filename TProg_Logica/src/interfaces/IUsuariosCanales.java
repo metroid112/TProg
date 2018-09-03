@@ -36,14 +36,14 @@ public interface IUsuariosCanales {
 
 	public void seguir(String seguidor, String seguido);
 
-	void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenioVideo) throws Exception;
+	void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo) throws Exception;
 
-	void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDuenioVideo);
+	void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDuenoVideo);
 
-	void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDuenioVideo);
+	void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDuenoVideo);
 
 	void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
-			String nombreDuenioVideo, Integer idComentarioPadre);
+			String nombreDuenoVideo, Integer idComentarioPadre);
 
 	public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
 }

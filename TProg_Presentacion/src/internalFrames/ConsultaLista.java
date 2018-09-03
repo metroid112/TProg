@@ -350,7 +350,7 @@ public class ConsultaLista extends JInternalFrame{
 	boolean checkUsuario(){
 
 		if(modelUsuario.getSelectedItem() == ""){
-			JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "No has seleccionado ningï¿½n usuario", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;
@@ -390,14 +390,14 @@ public class ConsultaLista extends JInternalFrame{
 	private void cargarVideo() {
 		Fabrica.getFabrica();
 		IVideos ctrVid = Fabrica.getIVideos();
-		String duenioVid = null;
+		String duenoVid = null;
 		try {
-			//duenioVid = ctrLis.getDuenioVideo((String)comboBoxUsuario.getSelectedItem(),list.getSelectedValue(), listaVideos.getSelectedValue());
-			duenioVid = listaVideos.getSelectedValue().substring(0, listaVideos.getSelectedValue().indexOf('-'));
+			//dueï¿½oVid = ctrLis.getDueï¿½oVideo((String)comboBoxUsuario.getSelectedItem(),list.getSelectedValue(), listaVideos.getSelectedValue());
+			duenoVid = listaVideos.getSelectedValue().substring(0, listaVideos.getSelectedValue().indexOf('-'));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this,"error cargarVid" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
-		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1), duenioVid);
+		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1), duenoVid);
 		infoVid.cargarDatos(dtVid);
 		
 	}

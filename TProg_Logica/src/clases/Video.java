@@ -93,7 +93,9 @@ public class Video {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.url = url;
+		this.categoria.remove(this);
 		this.categoria = categoria;
+		this.categoria.addVideo(this);
 		this.duracion = duracion;
 		if (!this.visible && visible) {
 			if (this.canal.isVisible()) {

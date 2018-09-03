@@ -55,4 +55,9 @@ public class Categoria {
 	public void addLista(ListaParticular listaParticular) {
 		listas.add(listaParticular);		
 	}
+
+	public void remove(Video video) {
+		this.videos.remove(video);
+		
+	}
 }

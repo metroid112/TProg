@@ -245,7 +245,7 @@ public class AltaVideo extends JInternalFrame {
 		duracion = duracion.plusMinutes((int) spinnerMinutos.getValue());
 		duracion = duracion.plusSeconds((int) spinnerSegundos.getValue());
 		Date fecha = datePicker.getDate();
-		if (datosCorrectos(nick, nombre, url, duracion)) {
+		if (datosCorrectos(nick, nombre, url, duracion,fecha)) {
 			try {
 			contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha); 
 			JOptionPane.showMessageDialog(this, "Video creado con exito!");
@@ -260,8 +260,8 @@ public class AltaVideo extends JInternalFrame {
 		
 	}
 	
-	public boolean datosCorrectos(String nick, String nombre, String url, Duration duracion) {
-		return (nick != null && !(nombre.equals("")) && !(url.equals("")) && !(duracion.isZero()));
+	public boolean datosCorrectos(String nick, String nombre, String url, Duration duracion, Date fecha) {
+		return (nick != null && !(nombre.equals("")) && !(url.equals("")) && !(duracion.isZero()) && !(fecha == null));
 	}
 	
 	private void clearDatos() {
