@@ -1,33 +1,22 @@
 package test;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import interfaces.Fabrica;
+import interfaces.IUsuariosCanales;
+
 public class CtrlUsuariosCanalesTest {
+	private IUsuariosCanales controladorUsuariosCanales = Fabrica.getIUsuariosCanales(); 
 
 	@Test
-	public void testAltaUsuarioStringStringStringStringDateBufferedImageStringBooleanStringComentarioArrayCalificacionArrayUsuarioArrayUsuarioArray() {
+	public void testAltaUsuario() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAltaUsuarioStringStringStringStringDateStringBoolean() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAltaUsuarioStringStringStringStringDateStringStringStringBoolean() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCantidadUsuarios() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCtrlUsuariosCanales() {
+	public void testComentarVideo() {
 		fail("Not yet implemented");
 	}
 
@@ -37,67 +26,12 @@ public class CtrlUsuariosCanalesTest {
 	}
 
 	@Test
-	public void testGetApellido() {
+	public void testGetDt() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetCalificaciones() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetCanal() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetComentarios() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetCorreo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDescripcionCanal() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetImagen() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetNacimiento() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetNombre() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetNombreCanal() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetPrivado() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSeguidores() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSeguidos() {
+	public void testIsCanalPublico() {
 		fail("Not yet implemented");
 	}
 
@@ -117,6 +51,11 @@ public class CtrlUsuariosCanalesTest {
 	}
 
 	@Test
+	public void testValorarVideo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
 	public void testListarSeguidos() {
 		fail("Not yet implemented");
 	}
@@ -128,6 +67,21 @@ public class CtrlUsuariosCanalesTest {
 
 	@Test
 	public void testListarVideos() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testListarVideosLista() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testModificarValoracion() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testResponderComentario() {
 		fail("Not yet implemented");
 	}
 

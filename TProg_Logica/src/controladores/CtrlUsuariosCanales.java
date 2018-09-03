@@ -48,10 +48,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		manejadorUsuarios.add(user);
 	}
 
-	public int cantidadUsuarios() {
-		return manejadorUsuarios.size();
-	}
-
 	public void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo,
 			String nombreDueñoVideo) {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
@@ -65,64 +61,9 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.isMemberKey(nick);
 	}
 
-	public String getApellido(String nick) {
-		return manejadorUsuarios.get(nick).getApellido();
-	}
-
-	public LinkedList<Calificacion> getCalificaciones(String nick) {
-		return manejadorUsuarios.get(nick).getCalificaciones();
-	}
-
-	public Canal getCanal(String nick) {
-		return manejadorUsuarios.get(nick).getCanal();
-	}
-
-	public LinkedList<Comentario> getComentarios(String nick) {
-		return manejadorUsuarios.get(nick).getComentarios();
-	}
-
-	// getters de datos de ususario.
-
-	public String getCorreo(String nick) {
-		return manejadorUsuarios.get(nick).getCorreo();
-	}
-
-	public String getDescripcionCanal(String nick) {
-		return manejadorUsuarios.get(nick).getCanal().getDescripcion();
-	}
-	// Fin getters usuario.
-
 	@Override
 	public DtUsuario getDt(String nick) {
 		return manejadorUsuarios.get(nick).getDt();
-	}
-
-	public Image getImagen(String nick) {
-		return manejadorUsuarios.get(nick).getImagen();
-	}
-
-	public Date getNacimiento(String nick) {
-		return manejadorUsuarios.get(nick).getNacimiento(); // implementar este.
-	}
-
-	public String getNombre(String nick) {
-		return manejadorUsuarios.get(nick).getNombre();
-	}
-
-	public String getNombreCanal(String nick) {
-		return manejadorUsuarios.get(nick).getCanal().getNombre();
-	}
-
-	public boolean getPrivado(String nick) {
-		return !manejadorUsuarios.get(nick).getCanal().isVisible();
-	}
-
-	public HashMap<String, Usuario> getSeguidores(String nick) {
-		return manejadorUsuarios.get(nick).getSeguidores();
-	}
-
-	public HashMap<String, Usuario> getSeguidos(String nick) {
-		return manejadorUsuarios.get(nick).getSeguidos();
 	}
 
 	@Override

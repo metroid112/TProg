@@ -21,33 +21,6 @@ public class Comentario {
 	}
 
 	/**
-	 * comentario padre sin fecha
-	 */
-	public Comentario(String texto, Usuario usuario, Video video) {
-		this.texto = texto;
-		this.usuario = usuario;
-		this.video = video;
-		this.fecha = new Date();
-		this.padre = null;
-		this.id = Comentario.idCounter;
-		Comentario.idCounter++;
-	}
-
-	/**
-	 * comentario respuesta sin fecha
-	 */
-	public Comentario(String texto, Usuario usuario, Video video, Comentario padre) {
-		this.texto = texto;
-		this.usuario = usuario;
-		this.video = video;
-		this.padre = padre;
-		this.fecha = new Date();
-		this.id = Comentario.idCounter;
-		Comentario.idCounter++;
-		padre.addHijo(this);
-	}
-
-	/**
 	 * comentario respuesta con fecha
 	 */
 	public Comentario(String texto, Usuario usuario, Video video, Comentario padre, Date fecha) {
