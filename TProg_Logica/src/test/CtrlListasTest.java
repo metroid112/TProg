@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ import org.junit.Test;
 
 import clases.Categoria;
 import clases.ListaParticular;
+import clases.Video;
 import dataTypes.DtLista;
 import interfaces.Fabrica;
 import interfaces.IListas;
@@ -34,7 +36,7 @@ public class CtrlListasTest {
 
 	@Test
 	public void testAltaListaDefecto() throws Exception {
-		ctrlLista.altaListaDefecto("listaDefecto2");
+		//ctrlLista.altaListaDefecto("listaDefecto2");  Ya esta agregada mas abajo
 		Assert.assertEquals("listaDefecto2", manejadorUsuarios.get("hectorg").getCanal().getListaDefecto().get("listaDefecto2").getNombre());
 	}
 
@@ -51,6 +53,25 @@ public class CtrlListasTest {
 		DtLista lista = ctrlLista.getDt("ListagetDt", "hectorg");
 		DtLista esperado = new DtLista("ListagetDt", "Particular", true, new LinkedList<String>(), new LinkedList<String>());
 		Assert.assertEquals(esperado, lista);
+	}
+	
+/*	@Test
+	public void testAgregarVideoLista() throws Exception {
+		ctrlLista.altaListaParticular("ListaAgregarVid", "hectorg", true);
+		Duration duracion = Duration.ofHours(1);
+		Video vid = new Video("nombreVideo", "", duracion, "urlvid", null, manejadorUsuarios.get("hectorg").getCanal(), new Date(50));
+		
+		manejadorUsuarios.get("hectorg").getCanal().altaVideo("nombreVideo", "", duracion, "urlvid", null, new Date(50));
+		ctrlLista.agregarVideoLista("hectorg", "nombreVideo", "hectorg", "listaAgregarVid", false);
+		Assert.assertTrue(((ListaParticular)manejadorUsuarios.get("hectorg").getCanal().getLista("ListaAgregarVid")).existeVideo(vid));
+	}
+*/	
+	@Test
+	public void testListarListasDefectoUsuario() throws Exception {
+		ctrlLista.altaListaDefecto("listaDefecto2");
+		ctrlLista.listarListasDefectoUsuario("hectorg");
+		String[] esperado = {"listaDefecto2"};
+		Assert.assertArrayEquals(esperado, ctrlLista.listarListasDefectoUsuario("hectorg"));
 	}
 
 

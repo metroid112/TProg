@@ -182,5 +182,12 @@ public class CtrlUsuariosCanalesTest {
 		//Assert.assertEquals(seguidor, user.getSeguidores().get("josefe"));
 		
 	}
+	
+	@Test
+	public void testAltaVideoCanal() {
+		canal.altaVideo("pruebaVideo", "", duracion, "url123", null, new Date(50), false);
+		Video esperado = new Video("pruebaVideo", "", duracion, "url123", null, canal, new Date(50));
+		Assert.assertEquals(esperado, canal.getVideoCanal("pruebaVideo"));
+	}
 
 }
