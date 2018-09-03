@@ -47,10 +47,6 @@ public class ManejadorUsuarios {
 		return true;
 	}
 
-	public boolean isEmpty() {
-		return usuarios.isEmpty();
-	}
-
 	public boolean isMemberKey(String nick) {
 		return usuarios.containsKey(nick);
 	}

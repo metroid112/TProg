@@ -30,10 +30,6 @@ public class ManejadorListas {
 		return true;
 	}
 
-	public boolean isEmpty() {
-		return listasDefecto.isEmpty();
-	}
-
 	public String[] toArray() {
 		return listasDefecto.toArray(new String[listasDefecto.size()]);
 	}

@@ -37,11 +37,7 @@ public class ManejadorCategorias {
 	public Categoria get(String nombreCategoria) {
 		return categorias.get(nombreCategoria);
 	}
-
-	public boolean isEmpty() {
-		return categorias.isEmpty();
-	}
-
+	
 	public void removeAll() {
 		this.categorias.clear();
 	}
