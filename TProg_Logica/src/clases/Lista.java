@@ -42,7 +42,7 @@ public abstract class Lista {
 		return nombre;
 	}
 
-	public Video getVid(String nombreVid) throws Exception {
+	public Video getVideo(String nombreVid) {
 		boolean encontrado = false;
 		Video video = null;
 		for (Video vid : videos) {
@@ -51,9 +51,9 @@ public abstract class Lista {
 				video = vid;
 			}
 		}
-		if (!encontrado) {
+		/*if (!encontrado) {
 			throw new Exception("Video no existe");
-		}
+		}*/
 		return video;
 	}
 
