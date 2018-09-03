@@ -22,7 +22,8 @@ import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
-
+import paneles.DetallesUsuario;
+import paneles.InfoVideo;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -85,10 +86,13 @@ public class VerInformacionUsuario extends JInternalFrame {
 					String VidSel = paneluser.getVideoSeleccionado();
 					verInfo(VidSel, UsrSel);
 				}
+				else {
+					JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un video");
+				}
 			}
 		});
 		
-		JButton verInfoListas = new JButton("Ver info listas");
+		JButton verInfoListas = new JButton("Ver info lista");
 		verInfoListas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//cargar informacion de lista,
@@ -102,6 +106,9 @@ public class VerInformacionUsuario extends JInternalFrame {
 					}
 					cambioPanel();
 					cambioPanel();
+				}
+				else {
+					JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione una lista");
 				}
 				
 			}
@@ -263,8 +270,9 @@ public class VerInformacionUsuario extends JInternalFrame {
 			
 			DtLista dtLista;
 			try {
+				//JOptionPane.showMessageDialog(this, lista + " " + usuario);
 				dtLista = ctrlLis.getDt(lista, usuario);
-			/*if (dtLista.isVisible()) {
+			if (dtLista.isVisible()) {
 				lblNewLabel_2.setText("Publico");
 			} else {
 				lblNewLabel_2.setText("Privado");
@@ -274,7 +282,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 				modeloVideos.addElement(vid);
 			}
 			videosLista.setModel(modeloVideos);
-			lblNewLabel_1.setText(dtLista.getNombre());*/
+			lblNewLabel_1.setText(dtLista.getNombre());
 			
 			//DefaultListModel<String> modeloCategorias = new DefaultListModel<String>();
 			//for (String cat : dtLista.getCategorias()) {
