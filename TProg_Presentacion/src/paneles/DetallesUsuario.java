@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import interfaces.Fabrica;
+import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import javax.swing.JInternalFrame;
 import javax.swing.JTextField;
@@ -37,6 +38,7 @@ import java.awt.event.MouseEvent;
 public class DetallesUsuario extends JPanel {
 	private Fabrica fab = Fabrica.getFabrica();
 	private IUsuariosCanales ctrlUsu = fab.getIUsuariosCanales();
+	private IListas ctrlLis = null;
 	private String noImagen = "img\\sinImagen.jpg";
 	private DefaultListModel<String> modelListas = new DefaultListModel<>();
 	private JList<String> listasDeReproduccion =  new JList<>(modelListas);
@@ -280,7 +282,7 @@ public class DetallesUsuario extends JPanel {
 		scrollPane.setViewportView(videos);
 		setLayout(groupLayout);
 		
-		//cargarDatosListas(usuario);
+		cargarDatosListas(usuario);
 		cargarDatosVideos(usuario);
 		cargarDatosSeguidores(usuario);
 		cargarDatosSeguidos(usuario);
@@ -311,16 +313,31 @@ public class DetallesUsuario extends JPanel {
 			ctrlUsu = null;
 		}
 	public void cargarDatosListas(String usuario){
+		
 		modelListas.removeAllElements();
+		
 		fab = Fabrica.getFabrica();
-		ctrlUsu = fab.getIUsuariosCanales();
-	
-		String[] listas = ctrlUsu.listarListasDeReproduccion(usuario);
-		int largo = listas.length;
-		for (int i = 0; i < largo; i++ ){
-			modelListas.addElement(listas[i]);
+		ctrlLis = fab.getIListas();
+
+		String[] listas = ctrlLis.listarListasParticularUsuario(usuario);
+		    
+		int largol = listas.length;
+		//fab = Fabrica.getFabrica();
+		//ctrlUsu = fab.getIUsuariosCanales();
+		if (largol > 0) {
+			for (int i = 0; i < largol; i++ ){
+				modelListas.addElement(listas[i]);
+			}
 		}
-			ctrlUsu = null;
+		
+		listas = ctrlLis.listarListasDefectoUsuario(usuario);
+		largol = listas.length;
+		if (largol > 0) {
+			for (int i = 0; i < largol; i++ ){
+				modelListas.addElement(listas[i]);
+			}
+		}
+		ctrlLis = null;
 	}
 	
 	public String getListaSeleccionada() {
@@ -329,7 +346,7 @@ public class DetallesUsuario extends JPanel {
 		return res;
 	}
 	public boolean isListaSelected() {
-		return listasDeReproduccion.getSelectedIndex() != -1;
+		return !listasDeReproduccion.isSelectionEmpty();
 	}
 	public String getVideoSeleccionado() {
 		String res = videos.getSelectedValue();
@@ -350,8 +367,7 @@ public class DetallesUsuario extends JPanel {
 		for (int i = 0; i < largo; i++ ){
 			modelVideos.addElement(videosS[i]);
 		}
-			ctrlUsu = null;
-		}
-	
+		ctrlUsu = null;
+	}
 
 }

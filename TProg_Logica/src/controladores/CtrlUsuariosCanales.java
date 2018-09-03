@@ -142,13 +142,15 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		HashMap<String, ListaParticular> ListasParticular = manejadorUsuarios.get(nick).getCanal()
 				.getListaParticulares();
 		String[] listaParticulares = ListasParticular.keySet().toArray(new String[ListasParticular.size()]);
-		int largo = listaDefecto.length + listaParticulares.length + 1;
+		int largo = listaDefecto.length + listaParticulares.length;
 		String[] res = new String[largo];
 		for (int i = 0; i < listaDefecto.length; i++) {
 			res[i] = listaDefecto[i];
 		}
-		for (int i = listaDefecto.length + 1; i < largo; i++) {
-			res[i] = listaParticulares[i];
+		int iter2 = 0;
+		for (int i = listaDefecto.length; i < largo; i++) {
+			res[i] = listaParticulares[iter2];
+			iter2++;
 		}
 		return null;
 	}
