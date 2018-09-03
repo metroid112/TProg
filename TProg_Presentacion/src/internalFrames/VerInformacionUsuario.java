@@ -37,7 +37,7 @@ import java.awt.Font;
 public class VerInformacionUsuario extends JInternalFrame {
 	private DetallesUsuario paneluser = null;
 	private JPanel panel_2;
-	private IListas ctrlLis = null;
+	private IListas ctrlLis = Fabrica.getIListas();
 	private JPanel PanelInfoVideo;
 	private String UsrSel = null;
 	public void SetVisible(boolean b) {

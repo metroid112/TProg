@@ -121,7 +121,7 @@ public class Usuario {
 	private boolean yaCalificado(Video vid) {
 		boolean calificado = false;
 		for (Calificacion cal : this.calificaciones) {
-			if (cal.getVideo().equals(vid)) {
+			if (cal.getVideo() == vid) {
 				calificado = true;
 			}
 		}
@@ -136,6 +136,14 @@ public class Usuario {
 	
 	public Comentario getComentario(int id) {
 		return comentarios.get(id);
+	}
+	
+	public LinkedList<Calificacion> getCalificaciones() {
+		return this.calificaciones;
+	}
+	
+	public Date getFecha() {
+		return this.fechaNacimiento;
 	}
 
 }

@@ -90,7 +90,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 			res[i] = listaParticulares[iter2];
 			iter2++;
 		}
-		return null;
+		return res;
 	}
 
 	@Override

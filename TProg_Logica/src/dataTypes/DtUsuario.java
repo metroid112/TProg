@@ -21,4 +21,10 @@ public class DtUsuario {
 		this.imagen = imagen;
 		this.privado = privado;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		DtUsuario dt = (DtUsuario) o;
+		return (this.nombre.equals(dt.nombre) && this.apellido.equals(dt.apellido) && this.correo.equals(dt.correo) && this.canal.equals(dt.canal) && this.privado == dt.privado);
+	}
 }

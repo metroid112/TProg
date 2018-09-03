@@ -26,4 +26,10 @@ public class Calificacion {
 	public void setLike(boolean like) {
 		this.like = like;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Calificacion cal = (Calificacion) o;
+		return (this.like == cal.like && this.usuario.equals(cal.usuario) && this.video.equals(cal.video));
+	}
 }

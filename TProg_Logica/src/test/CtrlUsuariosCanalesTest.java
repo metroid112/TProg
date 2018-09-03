@@ -14,12 +14,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import clases.Calificacion;
 import clases.Canal;
 import clases.Categoria;
 import clases.Comentario;
 import clases.Usuario;
 import clases.Video;
+import dataTypes.DtUsuario;
+import excepciones.DuplicateClassException;
 import interfaces.Fabrica;
+import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorUsuarios;
 
@@ -29,9 +33,11 @@ public class CtrlUsuariosCanalesTest {
 	private IUsuariosCanales controladorUsuariosCanales = Fabrica.getIUsuariosCanales();
 	private Usuario user = new Usuario("Pato", "Federico", "Aguilera", "correoPrueba", new Date(10), image);
 	private Canal canal = new Canal("Canal", "Descripcion canal", null, true, user);
-	Duration duracion = Duration.ofHours(1);
+	private Duration duracion = Duration.ofHours(1);
 	private Video video = new Video("Video", "Descripcion video", duracion, "URL", null, canal, new Date(10));
 	private Comentario comment = new Comentario("Prueba", user, video, new Date(10));
+	private Comentario respuesta = new Comentario("Prueba1", user, video, comment, new Date(50));
+	private IListas ctrlListas = Fabrica.getIListas();
 	
 	@Before
 	public void setup() {
@@ -61,72 +67,120 @@ public class CtrlUsuariosCanalesTest {
 
 	@Test
 	public void testExisteUsuario() {
-		fail("Not yet implemented");
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		Assert.assertTrue(controladorUsuariosCanales.existeUsuario(user.getNick()));
 	}
 
 	@Test
 	public void testGetDt() {
-		fail("Not yet implemented");
+		DtUsuario dtEsperado =  new DtUsuario("Federico", "Aguilera", user.getCanal().getNombre(), user.getCorreo(), user.getCanal().getDescripcion(), user.getFecha(), user.getImagen(), true);
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		Assert.assertEquals(dtEsperado, controladorUsuariosCanales.getDt(user.getNick()));
 	}
 
 	@Test
 	public void testIsCanalPublico() {
-		fail("Not yet implemented");
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		Assert.assertTrue(controladorUsuariosCanales.isCanalPublico(user.getNick()));
 	}
 
 	@Test
 	public void testIsEmailUnique() {
-		fail("Not yet implemented");
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		Assert.assertFalse(controladorUsuariosCanales.isEmailUnique("correoPrueba"));
 	}
 
 	@Test
 	public void testListarListasDeReproduccion() {
-		fail("Not yet implemented");
+		try {
+			controladorUsuariosCanales.altaUsuario("Pato", "Federico", "Aguilera", "correoPrueba", new Date(10), image, "canalPato", "Descripcioncanal", null, true);
+			ctrlListas.altaListaDefecto("listaDefecto");
+			ctrlListas.altaListaParticular("listaParticular", "Pato", true);
+			String[] esperado = {"listaDefecto2", "listaDefecto", "listaParticular"};		// "listaDefecto2" se crea en otra prueba anteriormente
+			Assert.assertArrayEquals(esperado, controladorUsuariosCanales.listarListasDeReproduccion("Pato"));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	@Test
-	public void testListarSeguidores() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testValorarVideo() {
-		fail("Not yet implemented");
+	public void testValorarVideo() throws Exception {
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		Calificacion calEsperada = new Calificacion(true, user, video);
+		controladorUsuariosCanales.valorarVideo(user.getNick(), true, video.getNombre(), video.getCanal().getUsuario().getNick());
+		Assert.assertEquals(calEsperada, user.getCalificaciones().getFirst());
 	}
 
 	@Test
 	public void testListarSeguidos() {
-		fail("Not yet implemented");
+		Usuario seguidor = new Usuario("josefe", "Jose", "Fernandez", "correoPrueba2", new Date(15), image);
+		Canal canal2 = new Canal("Canal1", "Descripcion canal1", null, true, seguidor);
+		seguidor.setCanal(canal2);
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		ManejadorUsuarios.getManejadorUsuarios().add(seguidor);
+		controladorUsuariosCanales.seguir(seguidor.getNick(), user.getNick());
+		Assert.assertEquals(user.getNick(),controladorUsuariosCanales.listarSeguidos(seguidor.getNick())[0]);
 	}
 
 	@Test
 	public void testListarUsuarios() {
-		fail("Not yet implemented");
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		String[] esperado = {"Pato"};
+		Assert.assertArrayEquals(esperado, controladorUsuariosCanales.listarUsuarios());
 	}
 
 	@Test
 	public void testListarVideos() {
-		fail("Not yet implemented");
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		String[] esperado = {"Video"};
+		Assert.assertArrayEquals(esperado, controladorUsuariosCanales.listarVideos(user.getNick()));
 	}
 
-	@Test
+/*	@Test
 	public void testListarVideosLista() {
-		fail("Not yet implemented");
+		try {
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		controladorUsuariosCanales.altaUsuario("Pato", "Federico", "Aguilera", "correoPrueba", new Date(10), image, "canalPato", "Descripcioncanal", null, true);
+		ctrlListas.altaListaDefecto("listaDefecto");
+		ctrlListas.altaListaParticular("listaParticular", "Pato", true);
+		IListas ctrlLista = Fabrica.getIListas();
+		ctrlLista.agregarVideoLista(user.getNick(), video.getNombre(), "Pato", "listaParticular", false);
+		String[] esperado = {video.getNombre()};
+		Assert.assertArrayEquals(esperado, controladorUsuariosCanales.listarVideosLista(user.getNick(), "listaParticular", false));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
-
+*/
 	@Test
-	public void testModificarValoracion() {
-		fail("Not yet implemented");
+	public void testModificarValoracion() throws Exception {
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		Calificacion calEsperada = new Calificacion(false, user, video);
+		controladorUsuariosCanales.valorarVideo(user.getNick(), true, video.getNombre(), video.getCanal().getUsuario().getNick());
+		controladorUsuariosCanales.modificarValoracion(false, user.getNick(), video.getNombre(), video.getCanal().getUsuario().getNick());
+		Assert.assertEquals(calEsperada, user.getCalificaciones().getFirst());
 	}
 
 	@Test
 	public void testResponderComentario() {
-		fail("Not yet implemented");
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		controladorUsuariosCanales.comentarVideo("Prueba", new Date(10), "Pato", "Video", "Pato");
+		controladorUsuariosCanales.responderComentario("Prueba1", new Date(50), user.getNick(), video.getNombre(), user.getNick(), Comentario.getContador()-1);
+		Comentario recibido = ManejadorUsuarios.getManejadorUsuarios().get("Pato").getCanal().getVideos().get("Video").getComentario(Comentario.getContador() - 2);
+		Assert.assertEquals(comment, recibido);
 	}
 
 	@Test
 	public void testSeguir() {
-		fail("Not yet implemented");
+		Usuario seguidor = new Usuario("josefe", "Jose", "Fernandez", "correoPrueba2", new Date(15), image);
+		Canal canal2 = new Canal("Canal1", "Descripcion canal1", null, true, seguidor);
+		seguidor.setCanal(canal2);
+		ManejadorUsuarios.getManejadorUsuarios().add(user);
+		ManejadorUsuarios.getManejadorUsuarios().add(seguidor);
+		controladorUsuariosCanales.seguir(seguidor.getNick(), user.getNick());
+		Assert.assertEquals(seguidor, user.getSeguidores().get(controladorUsuariosCanales.listarSeguidores(user.getNick())[0]));
+		//Assert.assertEquals(seguidor, user.getSeguidores().get("josefe"));
+		
 	}
 
 }

@@ -37,4 +37,10 @@ public class DtLista {
 	public boolean isVisible() {
 		return visible;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		DtLista dt = (DtLista) o;
+		return (this.visible == dt.visible && this.nombre.equals(dt.nombre) && this.tipo.equals(dt.tipo));
+	}
 }

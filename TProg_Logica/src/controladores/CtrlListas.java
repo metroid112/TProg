@@ -35,7 +35,6 @@ public class CtrlListas implements IListas {
 
 		if (!manejadorListas.existeLista(nombreListaDefecto)) {
 			manejadorListas.add(nombreListaDefecto);
-			// manejadorListas.notifyAll();
 			manejadorUsuarios.agregarListaDefecto(nombreListaDefecto);
 		} else {
 			throw new Exception("Ya existe una lista por defecto con nombre " + nombreListaDefecto);
@@ -52,7 +51,6 @@ public class CtrlListas implements IListas {
 
 		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
 		if (!usuarioObjetivo.getCanal().getListaParticulares().containsKey(nombre)) {
-
 			usuarioObjetivo.getCanal().ingresarListaParticular(nombre, visibilidad);
 		} else {
 			throw new Exception("El usuario " + usuario + " ya posee una lista por defecto con nombre: " + nombre);

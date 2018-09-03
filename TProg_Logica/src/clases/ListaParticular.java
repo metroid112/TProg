@@ -67,4 +67,10 @@ public class ListaParticular extends Lista {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		ListaParticular lis = (ListaParticular) o;
+		return (this.visible == lis.visible && this.getCanal().equals(lis.getCanal()) && this.getNombre().equals(lis.getNombre()));
+	}
 }
