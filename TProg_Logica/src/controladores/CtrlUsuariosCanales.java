@@ -19,6 +19,7 @@ import clases.Usuario;
 import clases.Video;
 import dataTypes.DtUsuario;
 import interfaces.IUsuariosCanales;
+import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
@@ -31,18 +32,18 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
 	@Override
 	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			BufferedImage imagen, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
+			BufferedImage imagen, String nombreCanal, String descripcionCanal, String categoria, boolean visible) throws IOException {
 		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagen);
-		Canal canal = new Canal(nombreCanal, descripcionCanal, visible, user);
+		Canal canal = new Canal(nombreCanal, descripcionCanal, ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
 		user.setCanal(canal);
 		manejadorUsuarios.add(user);
 	}
 
 	@Override
 	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
+			String path, String nombreCanal, String descripcionCanal, String categoria, boolean visible) throws IOException {
 		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)));
-		Canal canal = new Canal(nombreCanal, descripcionCanal, visible, user);
+		Canal canal = new Canal(nombreCanal, descripcionCanal, ManejadorCategorias.getManejadorCategorias().get(categoria),visible, user);
 		user.setCanal(canal);
 		manejadorUsuarios.add(user);
 	}

@@ -18,7 +18,6 @@ public class CtrlListas implements IListas {
 	public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista, boolean defecto) {
 		Usuario uInicial = manejadorUsuarios.get(usuario);
 		Usuario uObjetivo = manejadorUsuarios.get(usuarioObjetivo);
-
 		Video videoObj = uInicial.getCanal().getVideoCanal(video);
 
 		if (defecto) {

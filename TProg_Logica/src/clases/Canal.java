@@ -24,7 +24,7 @@ public class Canal {
 
 	}
 
-	public Canal(String nombreCanal, String descripcionCanal, boolean visible, Usuario user) {
+	public Canal(String nombreCanal, String descripcionCanal, Categoria categoria, boolean visible, Usuario user) {
 		this.nombre = nombreCanal;
 		this.descripcion = descripcionCanal;
 		this.visible = visible;

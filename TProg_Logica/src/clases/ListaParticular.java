@@ -54,7 +54,10 @@ public class ListaParticular extends Lista {
 	}
 
 	public void insertarCategoria(Categoria categoria) {
-		categorias.put(categoria.getNombre(), categoria);
+		if (!categorias.containsKey(categoria.getNombre())) {
+			categorias.put(categoria.getNombre(), categoria);
+			categoria.addLista(this);
+		}
 	}
 
 	public boolean isVisible() {
