@@ -22,6 +22,7 @@ import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
+import javafx.scene.shape.VLineToBuilder;
 import paneles.DetallesUsuario;
 import paneles.InfoVideo;
 
@@ -283,6 +284,8 @@ public class VerInformacionUsuario extends JInternalFrame {
 			}
 			videosLista.setModel(modeloVideos);
 			lblNewLabel_1.setText(dtLista.getNombre());
+			lblVtipolista.setText(dtLista.getTipo());
+			
 			
 			//DefaultListModel<String> modeloCategorias = new DefaultListModel<String>();
 			//for (String cat : dtLista.getCategorias()) {
