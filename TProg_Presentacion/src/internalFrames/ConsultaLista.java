@@ -392,11 +392,12 @@ public class ConsultaLista extends JInternalFrame{
 		IVideos ctrVid = Fabrica.getIVideos();
 		String dueñoVid = null;
 		try {
-			dueñoVid = ctrLis.getDueñoVideo((String)comboBoxUsuario.getSelectedItem(),list.getSelectedValue(), listaVideos.getSelectedValue());
+			//dueñoVid = ctrLis.getDueñoVideo((String)comboBoxUsuario.getSelectedItem(),list.getSelectedValue(), listaVideos.getSelectedValue());
+			dueñoVid = listaVideos.getSelectedValue().substring(0, listaVideos.getSelectedValue().indexOf('-'));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this,"error cargarVid" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
-		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue(), dueñoVid);
+		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1), dueñoVid);
 		infoVid.cargarDatos(dtVid);
 		
 	}

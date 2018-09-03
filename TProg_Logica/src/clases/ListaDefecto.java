@@ -19,7 +19,7 @@ public class ListaDefecto extends Lista {
 	public DtLista getDtLista() {
 		LinkedList<String> videos = new LinkedList<String>();
 		for (Video vid : this.getVideos()) {
-			videos.add(vid.getNombre());
+			videos.add(vid.getCanal().getUsuario().getNick() + "-" + vid.getNombre());
 		}
 		return new DtLista(this.getNombre(), "Defecto", false, videos, new LinkedList<String>());
 	}

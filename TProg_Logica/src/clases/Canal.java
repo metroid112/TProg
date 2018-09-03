@@ -163,6 +163,16 @@ public class Canal {
 			return listaPar.getArrayVideos();
 		}
 	}
+	
+	public String[] listarVideosDuenosLista(String lista, boolean defecto) {
+		if (defecto) {
+			ListaDefecto listaDef = listaDefecto.get(lista);
+			return listaDef.getArrayVideosDuenos();
+		} else {
+			ListaParticular listaPar = listaParticulares.get(lista);
+			return listaPar.getArrayVideosDuenos();
+		}
+	}
 
 	public void modVideo(String nombreOld, String nombre) {
 		Video vid = this.videos.remove(nombreOld);
@@ -170,16 +180,16 @@ public class Canal {
 
 	}
 
-	public void quitarVideoListaDefecto(String video, String lista) {
+	public void quitarVideoListaDefecto(String video, String lista, Usuario ownerVideo) {
 		ListaDefecto listaObj = listaDefecto.get(lista);
-		Video videoObj = listaObj.getVideo(video);
+		Video videoObj = listaObj.getVideo(video, ownerVideo);
 		listaObj.quitarVideo(videoObj);
 
 	}
 
-	public void quitarVideoListaParticular(String video, String lista) {
+	public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
 		ListaParticular listaObj = listaParticulares.get(lista);
-		Video videoObj = listaObj.getVideo(video);
+		Video videoObj = listaObj.getVideo(video, ownerVideo);
 		listaObj.quitarVideo(videoObj);
 		Categoria cat = videoObj.getCategoria();
 

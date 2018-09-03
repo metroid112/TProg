@@ -151,4 +151,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	public void seguir(String seguidor, String seguido) {
 		manejadorUsuarios.get(seguidor).seguir(manejadorUsuarios.get(seguido));
 	}
+
+	@Override
+	public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto) {
+		Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+		return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
+	}
 }

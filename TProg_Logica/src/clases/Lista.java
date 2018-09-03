@@ -31,6 +31,16 @@ public abstract class Lista {
 		}
 		return result;
 	}
+	
+	public String[] getArrayVideosDuenos() {
+		String[] result = new String[videos.size()];
+		int i = 0;
+		for (Video v : videos) {
+			result[i] = v.getCanal().getUsuario().getNick() + "-" + v.getNombre();
+			i++;
+		}
+		return result;
+	}
 
 	public Canal getCanal() {
 		return canal;
@@ -42,11 +52,11 @@ public abstract class Lista {
 		return nombre;
 	}
 
-	public Video getVideo(String nombreVid) {		//TODO FIX!
+	public Video getVideo(String nombreVid, Usuario ownerVideo) {		//TODO FIX!
 		boolean encontrado = false;
 		Video video = null;
 		for (Video vid : videos) {
-			if (vid.getNombre().equals(nombreVid)) {
+			if (vid.getNombre().equals(nombreVid) && (vid.getCanal().getUsuario().getNick() == ownerVideo.getNick())) {
 				encontrado = true;
 				video = vid;
 			}

@@ -209,8 +209,10 @@ public class QuitarVideo extends JInternalFrame{
 				}
 				if(checkUsuario && checkVideo){
 					ctrLis = Fabrica.getIListas();
-					ctrLis.quitarVideoLista(modelUsuario.getSelectedItem().toString(),
-							modelVideos.getSelectedItem().toString(),list.getSelectedValue().toString(),
+					String stringConcatenado = modelVideos.getSelectedItem().toString();
+					String ownerVideo = stringConcatenado.substring(0, stringConcatenado.indexOf('-'));
+					String nombreVideo = stringConcatenado.substring(stringConcatenado.indexOf('-') + 1);
+					ctrLis.quitarVideoLista(modelUsuario.getSelectedItem().toString(), nombreVideo, ownerVideo, list.getSelectedValue().toString(),
 							rdbtnListasPorDefecto.isSelected());
 					modelUsuario.removeAllElements();				
 					modelVideos.removeAllElements();
@@ -270,7 +272,7 @@ public class QuitarVideo extends JInternalFrame{
 		
 		ctrUsu = Fabrica.getIUsuariosCanales();
 		
-	    String[] videos = ctrUsu.listarVideosLista(usuario, lista, defecto);
+	    String[] videos = ctrUsu.listarVideosDuenosLista(usuario, lista, defecto);
 		int largov = videos.length;
 		modelVideos.addElement("");
 		for (int i = 0; i < largov; i++ ){

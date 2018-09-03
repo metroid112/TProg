@@ -65,12 +65,12 @@ public class CtrlListas implements IListas {
 		return list.getDtLista();
 	}
 
-	@Override
+	/*@Override
 	public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid) throws Exception {
 
 		return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVideo(nombreVid).getCanal()
 				.getUsuario().getNick();
-	}
+	}*/
 
 	@Override
 	public void guardarCambios(String nomLis, String usuario, boolean visible) {
@@ -99,13 +99,14 @@ public class CtrlListas implements IListas {
 	}
 
 	@Override
-	public void quitarVideoLista(String usuario, String video, String lista, boolean defecto) {
+	public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista, boolean defecto) {
 		Usuario usuarioObj = manejadorUsuarios.get(usuario);
+		Usuario owner = manejadorUsuarios.get(ownerVideo);
 
 		if (defecto) {
-			usuarioObj.getCanal().quitarVideoListaDefecto(video, lista);
+			usuarioObj.getCanal().quitarVideoListaDefecto(video, lista, owner);
 		} else {
-			usuarioObj.getCanal().quitarVideoListaParticular(video, lista);
+			usuarioObj.getCanal().quitarVideoListaParticular(video, lista, owner);
 		}
 	}
 

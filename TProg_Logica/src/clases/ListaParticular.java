@@ -44,7 +44,7 @@ public class ListaParticular extends Lista {
 	public DtLista getDtLista() {
 		LinkedList<String> videos = new LinkedList<String>();
 		for (Video vid : this.getVideos()) {
-			videos.add(vid.getNombre());
+			videos.add(vid.getCanal().getUsuario().getNick() + "-" + vid.getNombre());
 		}
 		LinkedList<String> categorias = new LinkedList<String>();
 		for (Categoria cat : this.getCategorias().values()) {
