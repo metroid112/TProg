@@ -5,11 +5,13 @@ import static org.junit.Assert.fail;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
+import clases.Usuario;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
@@ -24,13 +26,13 @@ public class CtrlVideosTest {
 	private String[] arrayLis = { "(Pato,Lista1)" };
 	private String[] arrayVid = { "(Pato,Video1)" };
 	private ICategorias categorias = Fabrica.getICategorias();
-	DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+	private DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 	private IListas lista = Fabrica.getIListas();
 	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
 	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 	private String[] usu = { "Pato" };
-	// Usuario usuario = new Usuario("Pato", "Federico", "Aguilera", "correo@.com",
-	// format.parse("11/04/1993"));
+	private Date fecha = new Date();
+	private Usuario usuario = new Usuario("Pato", "Federico", "Aguilera", "correo@.com", fecha, null);
 	private IUsuariosCanales usuarios = Fabrica.getIUsuariosCanales();
 	private IVideos video = Fabrica.getIVideos();
 
@@ -58,10 +60,9 @@ public class CtrlVideosTest {
 
 	@Test
 	public void testListarUsuarios() throws Exception {
-
-		// usuarios.altaUsuario("Pato", "Federico", "Aguilera", "@.com",
-		// format.parse("11/04/1993"), "Pato", true);
-		assertArrayEquals(usu, usuarios.listarUsuarios());
+		manejadorUsuarios.add(usuario);
+		
+		Assert.assertArrayEquals(usu, video.listarUsuarios());
 
 	}
 

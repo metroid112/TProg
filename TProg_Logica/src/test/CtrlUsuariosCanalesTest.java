@@ -29,7 +29,8 @@ public class CtrlUsuariosCanalesTest {
 	private IUsuariosCanales controladorUsuariosCanales = Fabrica.getIUsuariosCanales();
 	private Usuario user = new Usuario("Pato", "Federico", "Aguilera", "correoPrueba", new Date(10), image);
 	private Canal canal = new Canal("Canal", "Descripcion canal", null, true, user);
-	private Video video = new Video("Video", "Descripcion video", null, "URL", null, canal, new Date(10));
+	Duration duracion = Duration.ofHours(1);
+	private Video video = new Video("Video", "Descripcion video", duracion, "URL", null, canal, new Date(10));
 	private Comentario comment = new Comentario("Prueba", user, video, new Date(10));
 	
 	@Before

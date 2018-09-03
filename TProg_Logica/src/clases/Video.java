@@ -111,8 +111,10 @@ public class Video {
 		return this.comentarios.get(id);
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		Video video = (Video) o;
-		return (this.nombre.equals(video.nombre) && this.visible == video.visible && this.canal.equals(video.canal) && this.categoria.equals(video.categoria) && this.descripcion.equals(video.descripcion) && this.duracion.equals(video.duracion) && this.fecha.equals(video.fecha));
+		return (this.nombre.equals(video.nombre) && this.fecha.equals(video.fecha) && this.duracion.equals(video.duracion) && this.visible == video.visible && 
+				this.url.equals(video.url) && this.descripcion.equals(video.descripcion));
 	}
 }
