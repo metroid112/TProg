@@ -71,7 +71,7 @@ public class CtrlListas implements IListas {
 	@Override
 	public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid) throws Exception {
 
-		return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVid(nombreVid).getCanal()
+		return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVideo(nombreVid).getCanal()
 				.getUsuario().getNick();
 	}
 

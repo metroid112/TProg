@@ -176,14 +176,14 @@ public class Canal {
 
 	public void quitarVideoListaDefecto(String video, String lista) {
 		ListaDefecto listaObj = listaDefecto.get(lista);
-		Video videoObj = videos.get(video);
+		Video videoObj = listaObj.getVideo(video);
 		listaObj.quitarVideo(videoObj);
 
 	}
 
 	public void quitarVideoListaParticular(String video, String lista) {
 		ListaParticular listaObj = listaParticulares.get(lista);
-		Video videoObj = videos.get(video);
+		Video videoObj = listaObj.getVideo(video);
 		listaObj.quitarVideo(videoObj);
 		Categoria cat = videoObj.getCategoria();
 
