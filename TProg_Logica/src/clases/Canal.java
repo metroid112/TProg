@@ -188,4 +188,8 @@ public class Canal {
 		}
 
 	}
+	
+	public void agregarVideo(Video video) {
+		this.videos.put(video.getNombre(), video);
+	}
 }

@@ -91,4 +91,13 @@ public class Comentario {
 	public boolean tieneRespuestas() {
 		return !(this.respuestas.isEmpty());
 	}
+	
+	public static int getContador() {
+		return idCounter;
+	}
+	
+	public boolean equals(Object o) {
+		Comentario comment = (Comentario) o;
+		return (this.id == comment.id && this.texto.equals(comment.texto) && this.fecha.equals(comment.fecha) && this.usuario.equals(comment.usuario) && this.video.equals(comment.video));
+	}
 }

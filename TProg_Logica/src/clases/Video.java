@@ -106,4 +106,13 @@ public class Video {
 		}
 		this.fecha = fecha;
 	}
+	
+	public Comentario getComentario(int id) {
+		return this.comentarios.get(id);
+	}
+	
+	public boolean equals(Object o) {
+		Video video = (Video) o;
+		//return (this.nombre.equals(video.nombre))
+	}
 }

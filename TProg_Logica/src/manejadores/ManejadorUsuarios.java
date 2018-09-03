@@ -62,4 +62,8 @@ public class ManejadorUsuarios {
 	public String[] toArray() {
 		return usuarios.keySet().toArray(new String[usuarios.size()]);
 	}
+
+	public void clear() {
+		this.usuarios.clear();		
+	}
 }

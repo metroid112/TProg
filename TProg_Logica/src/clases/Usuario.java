@@ -127,5 +127,15 @@ public class Usuario {
 		}
 		return calificado;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Usuario user = (Usuario) o;
+		return (this.nombre.equals(user.nombre) && this.nick.equals(user.nick) && this.apellido.equals(user.apellido) && this.correo.equals(user.correo) && this.fechaNacimiento.equals(user.fechaNacimiento) && this.imagen == user.imagen);
+	}
+	
+	public Comentario getComentario(int id) {
+		return comentarios.get(id);
+	}
 
 }
