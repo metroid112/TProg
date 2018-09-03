@@ -52,20 +52,8 @@ public class Usuario {
 		vid.addComentarioPadre(comentario);
 	}
 
-	public String getApellido() {
-		return apellido;
-	}
-
-	public LinkedList<Calificacion> getCalificaciones() {
-		return calificaciones;
-	}
-
 	public Canal getCanal() {
 		return canal;
-	}
-
-	public LinkedList<Comentario> getComentarios() {
-		return comentarios;
 	}
 
 	public String getCorreo() {
@@ -81,16 +69,8 @@ public class Usuario {
 		return imagen;
 	}
 
-	public Date getNacimiento() {
-		return fechaNacimiento;
-	}
-
 	public String getNick() {
 		return nick;
-	}
-
-	public String getNombre() {
-		return nombre;
 	}
 
 	public HashMap<String, Usuario> getSeguidores() {
@@ -123,49 +103,9 @@ public class Usuario {
 		this.seguidos.put(seguido.getNick(), seguido);
 		seguido.addSeguidor(this);
 	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public void setCalificaciones(LinkedList<Calificacion> calificaciones) {
-		this.calificaciones = calificaciones;
-	}
-
+	
 	public void setCanal(Canal canal) {
 		this.canal = canal;
-	}
-
-	public void setComentarios(LinkedList<Comentario> comentarios) {
-		this.comentarios = comentarios;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-
-	public void setImagen(BufferedImage imagen) {
-		this.imagen = imagen;
-	}
-
-	public void setNacimiento(Date nacimiento) {
-		this.fechaNacimiento = nacimiento;
-	}
-
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setSeguidores(HashMap<String, Usuario> seguidores) {
-		this.seguidores = seguidores;
-	}
-
-	public void setSeguidos(HashMap<String, Usuario> seguidos) {
-		this.seguidos = seguidos;
 	}
 
 	public void valorarVideo(boolean like, Video vid) throws Exception {

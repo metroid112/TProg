@@ -60,16 +60,8 @@ public class ListaParticular extends Lista {
 		}
 	}
 
-	public boolean isVisible() {
-		return visible;
-	}
-
 	public void quitarCategoria(Categoria categoria) {
 		categorias.remove(categoria.getNombre());
-	}
-
-	public void setCategorias(HashMap<String, Categoria> categorias) {
-		this.categorias = categorias;
 	}
 
 	public void setVisible(boolean visible) {
