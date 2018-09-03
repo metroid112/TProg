@@ -3,7 +3,6 @@ package clases;
 import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListas;
@@ -25,7 +24,7 @@ public class Canal {
 
 	}
 
-	public Canal(String nombreCanal, String descripcionCanal, boolean visible, Usuario user) {
+	public Canal(String nombreCanal, String descripcionCanal, Categoria categoria, boolean visible, Usuario user) {
 		this.nombre = nombreCanal;
 		this.descripcion = descripcionCanal;
 		this.visible = visible;
@@ -76,10 +75,6 @@ public class Canal {
 	public String[] getArrayVideos() {
 
 		return videos.keySet().toArray(new String[videos.size()]);
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
 	}
 
 	public String getDescripcion() {
@@ -177,14 +172,14 @@ public class Canal {
 
 	public void quitarVideoListaDefecto(String video, String lista) {
 		ListaDefecto listaObj = listaDefecto.get(lista);
-		Video videoObj = videos.get(video);
+		Video videoObj = listaObj.getVideo(video);
 		listaObj.quitarVideo(videoObj);
 
 	}
 
 	public void quitarVideoListaParticular(String video, String lista) {
 		ListaParticular listaObj = listaParticulares.get(lista);
-		Video videoObj = videos.get(video);
+		Video videoObj = listaObj.getVideo(video);
 		listaObj.quitarVideo(videoObj);
 		Categoria cat = videoObj.getCategoria();
 
@@ -193,36 +188,8 @@ public class Canal {
 		}
 
 	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public void setListaDefecto(HashMap<String, ListaDefecto> listaDefecto) {
-		this.listaDefecto = listaDefecto;
-	}
-
-	public void setListaParticulares(HashMap<String, ListaParticular> listaParticulares) {
-		this.listaParticulares = listaParticulares;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public void setVideos(HashMap<String, Video> videos) {
-		this.videos = videos;
-	}
-
-	public void setVisible(boolean visible) {
-		this.visible = visible;
+	
+	public void agregarVideo(Video video) {
+		this.videos.put(video.getNombre(), video);
 	}
 }

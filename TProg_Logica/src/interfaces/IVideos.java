@@ -5,6 +5,7 @@ import java.util.Date;
 
 import dataTypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
 
 public interface IVideos {
 	public void altaVideo(String nick, String nombre, String descripcion, Duration duracion, String url,
@@ -22,5 +23,5 @@ public interface IVideos {
 	public String[] listarVideos(String nickname);
 
 	public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion, String url,
-			String categoria, Duration duracion, Boolean visible, Date fecha);
+			String categoria, Duration duracion, Boolean visible, Date fecha) throws InvalidDataException;
 }

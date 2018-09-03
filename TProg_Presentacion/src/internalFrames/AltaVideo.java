@@ -1,35 +1,31 @@
 package internalFrames;
 
-import java.awt.EventQueue;
-
-import javax.swing.JInternalFrame;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JSpinner;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import interfaces.IVideos;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
 import java.util.Date;
-import java.awt.event.ActionEvent;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JTable;
-import org.jdesktop.swingx.JXDatePicker;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SpinnerNumberModel;
+
+import org.jdesktop.swingx.JXDatePicker;
+
+import interfaces.IVideos;
 
 
+@SuppressWarnings("serial")
 public class AltaVideo extends JInternalFrame {
 	private JTextField TextoNombre;
 	private JTextField tFieldURL;

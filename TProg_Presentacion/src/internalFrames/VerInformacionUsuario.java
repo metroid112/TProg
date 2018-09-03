@@ -1,24 +1,20 @@
 package internalFrames;
 
-import java.awt.EventQueue;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-
-import paneles.DetallesUsuario;
-import paneles.InfoVideo;
-import paneles.SeleccionVideo;
-
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.CardLayout;
+import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import dataTypes.DtLista;
@@ -34,6 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import java.awt.Font;
+
 
 @SuppressWarnings("serial")
 public class VerInformacionUsuario extends JInternalFrame {
@@ -57,6 +54,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 	private JLabel lblNewLabel_2 = new JLabel("vPrivacidad");
 	private JList<String> videosLista;
 	private IVideos contVideos = fab.getIVideos();
+
 	//fin 
 	
 	public VerInformacionUsuario() {

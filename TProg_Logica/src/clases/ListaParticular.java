@@ -31,7 +31,7 @@ public class ListaParticular extends Lista {
 
 	public boolean existeCategoria(Categoria categoria) {
 		if (categoria != null) {
-			return categorias.containsKey(categoria);
+			return categorias.containsKey(categoria.getNombre());
 		}
 		return true;
 	}
@@ -54,19 +54,14 @@ public class ListaParticular extends Lista {
 	}
 
 	public void insertarCategoria(Categoria categoria) {
-		categorias.put(categoria.getNombre(), categoria);
-	}
-
-	public boolean isVisible() {
-		return visible;
+		if (!categorias.containsKey(categoria.getNombre())) {
+			categorias.put(categoria.getNombre(), categoria);
+			categoria.addLista(this);
+		}
 	}
 
 	public void quitarCategoria(Categoria categoria) {
-		categorias.remove(categoria);
-	}
-
-	public void setCategorias(HashMap<String, Categoria> categorias) {
-		this.categorias = categorias;
+		categorias.remove(categoria.getNombre());
 	}
 
 	public void setVisible(boolean visible) {

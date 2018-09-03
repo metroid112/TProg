@@ -1,22 +1,24 @@
 package internalFrames;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JSplitPane;
-import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 
+import paneles.SelectorUsuarios;
+
+@SuppressWarnings("serial")
 public class ModificarUsuario extends JInternalFrame {
 
 	/**

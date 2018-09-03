@@ -1,26 +1,22 @@
-package internalFrames;
+package paneles;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ListSelectionModel;
 
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
 
 
 @SuppressWarnings("serial")
 public class SelectorUsuarios extends JPanel {
 	private IUsuariosCanales ctrlUsu;
-	private Fabrica fab;
 	/**
 	 * Launch the application.
 	 */
@@ -65,8 +61,7 @@ public class SelectorUsuarios extends JPanel {
 	}
 	public void cargarDatos(){
 		model.removeAllElements();
-		fab = Fabrica.getFabrica();
-		ctrlUsu = fab.getIUsuariosCanales();
+		ctrlUsu = Fabrica.getIUsuariosCanales();
 	
 		String[] usua = ctrlUsu.listarUsuarios();
 		int largo = usua.length;

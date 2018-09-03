@@ -1,36 +1,37 @@
 package internalFrames;
 
-import java.awt.EventQueue;
-
-import javax.swing.JInternalFrame;
 import java.awt.CardLayout;
-import paneles.SeleccionVideo;
-import interfaces.IVideos;
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.Duration;
+import java.util.Date;
+
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.time.Duration;
-import java.util.Date;
-import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
-import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SpinnerNumberModel;
+
 import org.jdesktop.swingx.JXDatePicker;
 
 import dataTypes.DtVideo;
+import excepciones.InvalidDataException;
+import interfaces.IVideos;
+import paneles.SeleccionVideo;
 
-import javax.swing.JRadioButton;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-
+@SuppressWarnings("serial")
 public class ModificarVideo extends JInternalFrame {
 	private SeleccionVideo seleccionVideo;
 	private IVideos contVid;
@@ -127,7 +128,7 @@ public class ModificarVideo extends JInternalFrame {
 		tfURL = new JTextField();
 		tfURL.setColumns(10);
 		
-		cBoxCategoria = new JComboBox();
+		cBoxCategoria = new JComboBox<String>();
 		
 		datePicker = new JXDatePicker();
 		
@@ -344,11 +345,15 @@ public class ModificarVideo extends JInternalFrame {
 			} else {
 				visible = true;
 			}
-			if (datosCorrectos(nombre, url, duracion ) && duracion.isZero()) {
-				contVid.modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fecha);
-				JOptionPane.showMessageDialog(this, "Datos modificados con exito");
-				setVisible(false);
-				cambioPanel();
+			if (datosCorrectos(nombre, url, duracion)) {
+				try {
+					contVid.modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fecha);
+					JOptionPane.showMessageDialog(this, "Datos modificados con exito");
+					setVisible(false);
+					cambioPanel();
+				} catch (InvalidDataException exception) {
+					JOptionPane.showMessageDialog(this,exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			} else {
 				JOptionPane.showMessageDialog(this,"Datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 			}

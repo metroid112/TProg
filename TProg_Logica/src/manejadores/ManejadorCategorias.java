@@ -38,32 +38,12 @@ public class ManejadorCategorias {
 		return categorias.get(nombreCategoria);
 	}
 
-	public Categoria getInfoVideos(String s) {
-		return get(s);
-	}
-
 	public boolean isEmpty() {
 		return categorias.isEmpty();
 	}
 
-	public boolean isMember(Categoria categoria) {
-		return categorias.containsValue(categoria);
-	}
-
-	public boolean isMemberKey(String nombreCategoria) {
-		return categorias.containsKey(nombreCategoria);
-	}
-
-	public void remove(Categoria categoria) {
-		categorias.remove(categoria.getNombre(), categoria);
-	}
-
 	public void removeAll() {
 		this.categorias.clear();
-	}
-
-	public int size() {
-		return categorias.size();
 	}
 
 	public String[] toArray() {

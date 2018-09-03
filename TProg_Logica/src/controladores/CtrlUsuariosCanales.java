@@ -1,24 +1,21 @@
 package controladores;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-import clases.Calificacion;
 import clases.Canal;
-import clases.Comentario;
 import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import dataTypes.DtUsuario;
 import interfaces.IUsuariosCanales;
+import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
@@ -31,31 +28,27 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
 	@Override
 	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			BufferedImage imagen, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
+			BufferedImage imagen, String nombreCanal, String descripcionCanal, String categoria, boolean visible) throws IOException {
 		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagen);
-		Canal canal = new Canal(nombreCanal, descripcionCanal, visible, user);
+		Canal canal = new Canal(nombreCanal, descripcionCanal, ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
 		user.setCanal(canal);
 		manejadorUsuarios.add(user);
 	}
 
 	@Override
 	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			String path, String nombreCanal, String descripcionCanal, boolean visible) throws IOException {
+			String path, String nombreCanal, String descripcionCanal, String categoria, boolean visible) throws IOException {
 		Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, ImageIO.read(new File(path)));
-		Canal canal = new Canal(nombreCanal, descripcionCanal, visible, user);
+		Canal canal = new Canal(nombreCanal, descripcionCanal, ManejadorCategorias.getManejadorCategorias().get(categoria),visible, user);
 		user.setCanal(canal);
 		manejadorUsuarios.add(user);
 	}
 
-	public int cantidadUsuarios() {
-		return manejadorUsuarios.size();
-	}
-
 	public void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo,
-			String nombreDueñoVideo) {
+			String ownerVideo) {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
-		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		Usuario owner = manejadorUsuarios.get(ownerVideo);
+		Video vid = owner.getCanal().getVideoCanal(nombreVideo);
 		usuario.comentar(texto, fecha, vid);
 	}
 
@@ -64,64 +57,9 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return manejadorUsuarios.isMemberKey(nick);
 	}
 
-	public String getApellido(String nick) {
-		return manejadorUsuarios.get(nick).getApellido();
-	}
-
-	public LinkedList<Calificacion> getCalificaciones(String nick) {
-		return manejadorUsuarios.get(nick).getCalificaciones();
-	}
-
-	public Canal getCanal(String nick) {
-		return manejadorUsuarios.get(nick).getCanal();
-	}
-
-	public LinkedList<Comentario> getComentarios(String nick) {
-		return manejadorUsuarios.get(nick).getComentarios();
-	}
-
-	// getters de datos de ususario.
-
-	public String getCorreo(String nick) {
-		return manejadorUsuarios.get(nick).getCorreo();
-	}
-
-	public String getDescripcionCanal(String nick) {
-		return manejadorUsuarios.get(nick).getCanal().getDescripcion();
-	}
-	// Fin getters usuario.
-
 	@Override
 	public DtUsuario getDt(String nick) {
 		return manejadorUsuarios.get(nick).getDt();
-	}
-
-	public Image getImagen(String nick) {
-		return manejadorUsuarios.get(nick).getImagen();
-	}
-
-	public Date getNacimiento(String nick) {
-		return manejadorUsuarios.get(nick).getNacimiento(); // implementar este.
-	}
-
-	public String getNombre(String nick) {
-		return manejadorUsuarios.get(nick).getNombre();
-	}
-
-	public String getNombreCanal(String nick) {
-		return manejadorUsuarios.get(nick).getCanal().getNombre();
-	}
-
-	public boolean getPrivado(String nick) {
-		return !manejadorUsuarios.get(nick).getCanal().isVisible();
-	}
-
-	public HashMap<String, Usuario> getSeguidores(String nick) {
-		return manejadorUsuarios.get(nick).getSeguidores();
-	}
-
-	public HashMap<String, Usuario> getSeguidos(String nick) {
-		return manejadorUsuarios.get(nick).getSeguidos();
 	}
 
 	@Override

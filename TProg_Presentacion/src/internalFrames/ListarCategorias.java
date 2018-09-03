@@ -1,33 +1,24 @@
 package internalFrames;
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.DefaultListModel;
-import javax.swing.UIManager;
-import java.util.*;
-import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 import interfaces.Fabrica;
 import interfaces.ICategorias;
-
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class ListarCategorias extends JInternalFrame {
 
 	private ICategorias ctrlCat;
-	private Fabrica fab;
 	private DefaultListModel<String> model = new DefaultListModel<>();
-	private JList<String> list;
 	public ListarCategorias() {
 		
 		setTitle("Lista de Categorias");
@@ -87,8 +78,7 @@ public class ListarCategorias extends JInternalFrame {
 	
 	public void cargarDatos(){
 		
-		fab = Fabrica.getFabrica();
-		ctrlCat = fab.getICategorias();
+		ctrlCat = Fabrica.getICategorias();
 		
 	    String[] cats = ctrlCat.listarCategorias();
 		int largo = cats.length;

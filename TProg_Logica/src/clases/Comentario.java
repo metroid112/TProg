@@ -21,33 +21,6 @@ public class Comentario {
 	}
 
 	/**
-	 * comentario padre sin fecha
-	 */
-	public Comentario(String texto, Usuario usuario, Video video) {
-		this.texto = texto;
-		this.usuario = usuario;
-		this.video = video;
-		this.fecha = new Date();
-		this.padre = null;
-		this.id = Comentario.idCounter;
-		Comentario.idCounter++;
-	}
-
-	/**
-	 * comentario respuesta sin fecha
-	 */
-	public Comentario(String texto, Usuario usuario, Video video, Comentario padre) {
-		this.texto = texto;
-		this.usuario = usuario;
-		this.video = video;
-		this.padre = padre;
-		this.fecha = new Date();
-		this.id = Comentario.idCounter;
-		Comentario.idCounter++;
-		padre.addHijo(this);
-	}
-
-	/**
 	 * comentario respuesta con fecha
 	 */
 	public Comentario(String texto, Usuario usuario, Video video, Comentario padre, Date fecha) {
@@ -99,16 +72,8 @@ public class Comentario {
 		return new DtComentario(this);
 	}
 
-	public Date getFecha() {
-		return fecha;
-	}
-
 	public Integer getID() {
 		return this.id;
-	}
-
-	public Comentario getPadre() {
-		return padre;
 	}
 
 	public LinkedHashMap<Integer, Comentario> getRespuestas() {
@@ -122,36 +87,17 @@ public class Comentario {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-
-	public Video getVideo() {
-		return video;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public void setPadre(Comentario padre) {
-		this.padre = padre;
-	}
-
-	public void setRespuestas(LinkedHashMap<Integer, Comentario> respuestas) {
-		this.respuestas = respuestas;
-	}
-
-	public void setTexto(String texto) {
-		this.texto = texto;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public void setVideo(Video video) {
-		this.video = video;
-	}
-
+	
 	public boolean tieneRespuestas() {
 		return !(this.respuestas.isEmpty());
+	}
+	
+	public static int getContador() {
+		return idCounter;
+	}
+	
+	public boolean equals(Object o) {
+		Comentario comment = (Comentario) o;
+		return (this.id == comment.id && this.texto.equals(comment.texto) && this.fecha.equals(comment.fecha) && this.usuario.equals(comment.usuario) && this.video.equals(comment.video));
 	}
 }

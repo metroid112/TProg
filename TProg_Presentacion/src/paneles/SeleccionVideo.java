@@ -1,7 +1,5 @@
 package paneles;
 
-import javax.swing.JPanel;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,15 +7,16 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 import interfaces.IVideos;
 
-import javax.swing.JList;
-import javax.swing.ListSelectionModel;
-
+@SuppressWarnings("serial")
 public class SeleccionVideo extends JPanel implements ActionListener {
 	private JComboBox<String> cBoxUsuarios;
 	private IVideos contVideos;

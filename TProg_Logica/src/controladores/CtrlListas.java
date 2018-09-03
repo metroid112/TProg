@@ -18,7 +18,6 @@ public class CtrlListas implements IListas {
 	public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista, boolean defecto) {
 		Usuario uInicial = manejadorUsuarios.get(usuario);
 		Usuario uObjetivo = manejadorUsuarios.get(usuarioObjetivo);
-
 		Video videoObj = uInicial.getCanal().getVideoCanal(video);
 
 		if (defecto) {
@@ -71,7 +70,7 @@ public class CtrlListas implements IListas {
 	@Override
 	public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid) throws Exception {
 
-		return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVid(nombreVid).getCanal()
+		return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVideo(nombreVid).getCanal()
 				.getUsuario().getNick();
 	}
 
