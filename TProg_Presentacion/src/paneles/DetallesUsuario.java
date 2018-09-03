@@ -26,11 +26,14 @@ import javax.swing.SwingConstants;
 
 import dataTypes.DtUsuario;
 import interfaces.Fabrica;
+import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class DetallesUsuario extends JPanel {
-	private IUsuariosCanales ctrlUsu = Fabrica.getIUsuariosCanales();
+	private Fabrica fab = Fabrica.getFabrica();
+	private IUsuariosCanales ctrlUsu = fab.getIUsuariosCanales();
+	private IListas ctrlLis = null;
 	private String noImagen = "img\\sinImagen.jpg";
 	private DefaultListModel<String> modelListas = new DefaultListModel<>();
 	private JList<String> listasDeReproduccion =  new JList<>(modelListas);
@@ -87,7 +90,7 @@ public class DetallesUsuario extends JPanel {
 			tipoCanal = "Canal privado";
 		}
 		else {
-			tipoCanal = "Canal público";
+			tipoCanal = "Canal pÃºblico";
 		}
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -274,7 +277,7 @@ public class DetallesUsuario extends JPanel {
 		scrollPane.setViewportView(videos);
 		setLayout(groupLayout);
 		
-		//cargarDatosListas(usuario);
+		cargarDatosListas(usuario);
 		cargarDatosVideos(usuario);
 		cargarDatosSeguidores(usuario);
 		cargarDatosSeguidos(usuario);
@@ -303,15 +306,31 @@ public class DetallesUsuario extends JPanel {
 			ctrlUsu = null;
 		}
 	public void cargarDatosListas(String usuario){
+		
 		modelListas.removeAllElements();
-		ctrlUsu = Fabrica.getIUsuariosCanales();
-	
-		String[] listas = ctrlUsu.listarListasDeReproduccion(usuario);
-		int largo = listas.length;
-		for (int i = 0; i < largo; i++ ){
-			modelListas.addElement(listas[i]);
+
+		fab = Fabrica.getFabrica();
+		ctrlLis = fab.getIListas();
+
+		String[] listas = ctrlLis.listarListasParticularUsuario(usuario);
+		    
+		int largol = listas.length;
+		//fab = Fabrica.getFabrica();
+		//ctrlUsu = fab.getIUsuariosCanales();
+		if (largol > 0) {
+			for (int i = 0; i < largol; i++ ){
+				modelListas.addElement(listas[i]);
+			}
 		}
-			ctrlUsu = null;
+		
+		listas = ctrlLis.listarListasDefectoUsuario(usuario);
+		largol = listas.length;
+		if (largol > 0) {
+			for (int i = 0; i < largol; i++ ){
+				modelListas.addElement(listas[i]);
+			}
+		}
+		ctrlLis = null;
 	}
 	
 	public String getListaSeleccionada() {
@@ -320,7 +339,7 @@ public class DetallesUsuario extends JPanel {
 		return res;
 	}
 	public boolean isListaSelected() {
-		return listasDeReproduccion.getSelectedIndex() != -1;
+		return !listasDeReproduccion.isSelectionEmpty();
 	}
 	public String getVideoSeleccionado() {
 		String res = videos.getSelectedValue();
@@ -340,8 +359,7 @@ public class DetallesUsuario extends JPanel {
 		for (int i = 0; i < largo; i++ ){
 			modelVideos.addElement(videosS[i]);
 		}
-			ctrlUsu = null;
-		}
-	
+		ctrlUsu = null;
+	}
 
 }

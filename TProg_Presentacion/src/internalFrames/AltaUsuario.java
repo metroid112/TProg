@@ -32,7 +32,7 @@ import interfaces.IUsuariosCanales;
 @SuppressWarnings("serial")
 public class AltaUsuario extends JInternalFrame {
 	//protected static final String BufferedImage = null;
-	private BufferedImage imagenFile;
+	private BufferedImage imagenFile = null;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -406,7 +406,8 @@ public class AltaUsuario extends JInternalFrame {
 				}catch (Exception ex) {
 					throw new Exception("Formato de fecha incorrecto", ex);
 				}
-				ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, nombreCanal, descripcion, categoria, !privado);
+				ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, nombreCanal, descripcion, categoria, privado);
+
 				
 				JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
 				clean();			   
