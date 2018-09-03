@@ -27,6 +27,7 @@ import javax.swing.SpinnerNumberModel;
 import org.jdesktop.swingx.JXDatePicker;
 
 import dataTypes.DtVideo;
+import excepciones.InvalidDataException;
 import interfaces.IVideos;
 import paneles.SeleccionVideo;
 
@@ -344,11 +345,15 @@ public class ModificarVideo extends JInternalFrame {
 			} else {
 				visible = true;
 			}
-			if (datosCorrectos(nombre, url, duracion ) && duracion.isZero()) {
-				contVid.modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fecha);
-				JOptionPane.showMessageDialog(this, "Datos modificados con exito");
-				setVisible(false);
-				cambioPanel();
+			if (datosCorrectos(nombre, url, duracion)) {
+				try {
+					contVid.modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fecha);
+					JOptionPane.showMessageDialog(this, "Datos modificados con exito");
+					setVisible(false);
+					cambioPanel();
+				} catch (InvalidDataException exception) {
+					JOptionPane.showMessageDialog(this,exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			} else {
 				JOptionPane.showMessageDialog(this,"Datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
 			}

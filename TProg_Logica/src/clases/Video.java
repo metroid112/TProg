@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 import dataTypes.DtVideo;
+import excepciones.InvalidDataException;
 
 public class Video {
 
@@ -120,13 +121,21 @@ public class Video {
 	}
 
 	public void modificarDatos(String nombre, String descripcion, String url, Categoria categoria, Duration duracion,
-			Boolean visible, Date fecha) {
+			Boolean visible, Date fecha) throws InvalidDataException {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.url = url;
 		this.categoria = categoria;
 		this.duracion = duracion;
-		this.visible = visible;
+		if (!this.visible && visible) {
+			if (this.canal.isVisible()) {
+				this.visible = visible;
+			} else {
+				throw new InvalidDataException("privacidad del video");
+			}
+		} else {
+			this.visible = visible;
+		}
 		this.fecha = fecha;
 	}
 

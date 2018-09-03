@@ -8,6 +8,7 @@ import clases.Usuario;
 import clases.Video;
 import dataTypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
 import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -68,7 +69,7 @@ public class CtrlVideos implements IVideos {
 
 	@Override
 	public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion, String url,
-			String categoriaString, Duration duracion, Boolean visible, Date fecha) {
+			String categoriaString, Duration duracion, Boolean visible, Date fecha) throws InvalidDataException {
 		Video vid = mUsu.get(nick).getCanal().getVideoCanal(nombreOld);
 		vid.getCanal().modVideo(nombreOld, nombre);
 		Categoria categoria;

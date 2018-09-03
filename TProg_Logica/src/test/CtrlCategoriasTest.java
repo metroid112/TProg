@@ -15,6 +15,7 @@ import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
+import manejadores.ManejadorListas;
 
 public class CtrlCategoriasTest {
 
@@ -44,10 +45,8 @@ public class CtrlCategoriasTest {
 	public void testGetInfoVideos() throws Exception {
 		categorias.altaCategoria("Prueba");
 		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-		// usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
-		// format.parse("11/04/1993"), "Pato", true);
-		video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
-				format.parse("11/04/1993"));
+		usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com", format.parse("11/04/1993"), "..\\TProg_Presentacion\\img\\null.JPG", "juju", "hola", true);
+		video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba", format.parse("11/04/1993"));
 		Assert.assertArrayEquals(arrayVid, categorias.getInfoVideos("Prueba"));
 	}
 
@@ -58,16 +57,15 @@ public class CtrlCategoriasTest {
 		Assert.assertArrayEquals(arrayCat, categorias.listarCategorias());
 	}
 
-//	@Test
-//	public void testGetInfoListas() throws Exception{
-//		
-//		categorias.altaCategoria("Prueba");
-//		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-//		usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com", format.parse("11/04/1993"), "Pato", true);
-//		video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba", format.parse("11/04/1993"));
-//		lista.altaListaParticular("Lista1", "Pato", true);
-//		lista.
-//		
-//	}
+	@Test
+	public void testGetInfoListas() throws Exception{		
+		categorias.altaCategoria("Prueba");
+		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+		usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com", format.parse("11/04/1993"), "..\\TProg_Presentacion\\img\\null.JPG", "juju", "hola", true);
+		video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba", format.parse("11/04/1993"));
+		lista.altaListaParticular("Lista1", "Pato", true);
+		lista.agregarVideoLista("Pato", "Video1", "Pato", "Lista1", false);
+		Assert.assertArrayEquals(arrayLis, categorias.getInfoListas("Prueba"));
+	}
 
 }
