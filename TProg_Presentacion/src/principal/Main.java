@@ -413,7 +413,7 @@ public class Main {
 		this.usuariosCanales.altaUsuario("novick", "Edgardo", "Novick", "edgardo@novick.com.uy", format.parse("17/07/1952"), "img" + divisor + "null.JPG", "Con la gente", "Preparando las elecciones", "Sin categoria", true);
 		this.usuariosCanales.altaUsuario("sergiop", "Sergio", "Puglia", "puglia@alpanpan.com.uy", format.parse("28/01/1950"), "img" + divisor + "null.JPG", "Puglia invita", "Programas del ciclo y videos de cocina masterchef", "Sin categoria", true);
 		this.usuariosCanales.altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy", format.parse("17/03/1976"), "img" + divisor + "recoba.JPG", "Chino Recoba", "Canal de goles con Nacional ", "Sin categoria", false);
-		this.usuariosCanales.altaUsuario("tonyp", "Antonio", "Pacheco", "eltony@manya.org.uy", format.parse("14/02/1955"), "img" + divisor + "pacheco.JPG", "Tony Pacheco", "Todos los goles con Peñarol", "Sin categoria", false);
+		this.usuariosCanales.altaUsuario("tonyp", "Antonio", "Pacheco", "eltony@manya.org.uy", format.parse("14/02/1955"), "img" + divisor + "pacheco.JPG", "Tony Pacheco", "Todos los goles con Peniarol", "Sin categoria", false);
 		this.usuariosCanales.altaUsuario("nicoJ", "Nicolas", "Jodal", "jodal@artech.com.uy", format.parse("09/08/1960"), "img" + divisor + "null.JPG", "Desde Genexus", "Canal informacion C y T", "Sin categoria", true);
 		
 		this.usuariosCanales.seguir("hrubino", "hectorg");
