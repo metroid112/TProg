@@ -42,5 +42,11 @@ public class DtVideo {
 		}
 
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		DtVideo dt = (DtVideo) o;
+		return (this.nombre.equals(dt.nombre) && this.descripcion.equals(dt.descripcion) && this.visible == dt.visible && this.URL.equals(dt.URL) && this.fecha.equals(dt.fecha)); 
+	}
 
 }
