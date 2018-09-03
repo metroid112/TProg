@@ -53,7 +53,8 @@ public class CtrlUsuariosCanalesTest {
 	public void testComentarVideo() {
 		ManejadorUsuarios.getManejadorUsuarios().add(user);
 		controladorUsuariosCanales.comentarVideo("Prueba", new Date(10), "Pato", "Video", "Pato");
-		Assert.assertEquals(comment, ManejadorUsuarios.getManejadorUsuarios().get("Pato").getCanal().getVideos().get("Video").getComentario(Comentario.getContador() - 1));
+		Comentario recibido = ManejadorUsuarios.getManejadorUsuarios().get("Pato").getCanal().getVideos().get("Video").getComentario(Comentario.getContador() - 1);
+		Assert.assertEquals(comment, recibido);
 		//Assert.assertEquals(comment, ManejadorUsuarios.getManejadorUsuarios().get("Pato").getComentario(0));
 	}
 

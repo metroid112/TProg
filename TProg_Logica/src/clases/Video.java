@@ -113,6 +113,6 @@ public class Video {
 	
 	public boolean equals(Object o) {
 		Video video = (Video) o;
-		//return (this.nombre.equals(video.nombre))
+		return (this.nombre.equals(video.nombre) && this.visible == video.visible && this.canal.equals(video.canal) && this.categoria.equals(video.categoria) && this.descripcion.equals(video.descripcion) && this.duracion.equals(video.duracion) && this.fecha.equals(video.fecha));
 	}
 }
