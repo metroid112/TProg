@@ -9,10 +9,6 @@ public class Categoria {
 	private String nombre;
 	private LinkedList<Video> videos = new LinkedList<Video>();
 
-	public Categoria() {
-
-	}
-
 	public Categoria(String nombre) {
 		this.nombre = nombre;
 	}
@@ -52,32 +48,8 @@ public class Categoria {
 		return infoVideos;
 	}
 
-	public LinkedList<ListaParticular> getListas() {
-		return listas;
-	}
-
 	public String getNombre() {
 		return nombre;
-	}
-
-	public LinkedList<Video> getVideos() {
-		return videos;
-	}
-
-	public void setListas(LinkedList<ListaParticular> listas) {
-		this.listas = listas;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setVideos(LinkedList<Video> videos) {
-		this.videos = videos;
-	}
-
-	public int size() {
-		return videos.size();
 	}
 
 	public void addLista(ListaParticular listaParticular) {

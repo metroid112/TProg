@@ -66,19 +66,6 @@ public abstract class Lista {
 	}
 
 	public void quitarVideo(Video video) {
-
 		videos.remove(video);
-	}
-
-	public void setCanal(Canal canal) {
-		this.canal = canal;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setVideos(LinkedList<Video> videos) {
-		this.videos = videos;
 	}
 }

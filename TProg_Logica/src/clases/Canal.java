@@ -77,10 +77,6 @@ public class Canal {
 		return videos.keySet().toArray(new String[videos.size()]);
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -192,36 +188,8 @@ public class Canal {
 		}
 
 	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public void setListaDefecto(HashMap<String, ListaDefecto> listaDefecto) {
-		this.listaDefecto = listaDefecto;
-	}
-
-	public void setListaParticulares(HashMap<String, ListaParticular> listaParticulares) {
-		this.listaParticulares = listaParticulares;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public void setVideos(HashMap<String, Video> videos) {
-		this.videos = videos;
-	}
-
-	public void setVisible(boolean visible) {
-		this.visible = visible;
+	
+	public void agregarVideo(Video video) {
+		this.videos.put(video.getNombre(), video);
 	}
 }

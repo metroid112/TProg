@@ -1,18 +1,14 @@
 package controladores;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-import clases.Calificacion;
 import clases.Canal;
-import clases.Comentario;
 import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Usuario;
@@ -49,10 +45,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	}
 
 	public void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo,
-			String nombreDueñoVideo) {
+			String ownerVideo) {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
-		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		Usuario owner = manejadorUsuarios.get(ownerVideo);
+		Video vid = owner.getCanal().getVideoCanal(nombreVideo);
 		usuario.comentar(texto, fecha, vid);
 	}
 

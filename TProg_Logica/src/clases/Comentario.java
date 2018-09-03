@@ -72,16 +72,8 @@ public class Comentario {
 		return new DtComentario(this);
 	}
 
-	public Date getFecha() {
-		return fecha;
-	}
-
 	public Integer getID() {
 		return this.id;
-	}
-
-	public Comentario getPadre() {
-		return padre;
 	}
 
 	public LinkedHashMap<Integer, Comentario> getRespuestas() {
@@ -95,36 +87,17 @@ public class Comentario {
 	public Usuario getUsuario() {
 		return usuario;
 	}
-
-	public Video getVideo() {
-		return video;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public void setPadre(Comentario padre) {
-		this.padre = padre;
-	}
-
-	public void setRespuestas(LinkedHashMap<Integer, Comentario> respuestas) {
-		this.respuestas = respuestas;
-	}
-
-	public void setTexto(String texto) {
-		this.texto = texto;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public void setVideo(Video video) {
-		this.video = video;
-	}
-
+	
 	public boolean tieneRespuestas() {
 		return !(this.respuestas.isEmpty());
+	}
+	
+	public static int getContador() {
+		return idCounter;
+	}
+	
+	public boolean equals(Object o) {
+		Comentario comment = (Comentario) o;
+		return (this.id == comment.id && this.texto.equals(comment.texto) && this.fecha.equals(comment.fecha) && this.usuario.equals(comment.usuario) && this.video.equals(comment.video));
 	}
 }

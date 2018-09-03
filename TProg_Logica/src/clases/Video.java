@@ -22,10 +22,6 @@ public class Video {
 	private String url;
 	private boolean visible;
 
-	public Video() {
-
-	}
-
 	public Video(String nombre, String descripcion, Duration duracion, String url, Categoria categoria, Canal canal,
 			Date fecha) {
 		this.nombre = nombre;
@@ -61,10 +57,6 @@ public class Video {
 		this.comentarios.put(com.getID(), com);
 	}
 
-	public LinkedList<Calificacion> getCalificaciones() {
-		return calificaciones;
-	}
-
 	public Canal getCanal() {
 		return canal;
 	}
@@ -85,14 +77,6 @@ public class Video {
 		return encontrado;
 	}
 
-	public LinkedHashMap<Integer, Comentario> getComentarios() {
-		return comentarios;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
 	public DtVideo getDT() {
 
 		return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha, this.duracion,
@@ -100,24 +84,8 @@ public class Video {
 
 	}
 
-	public Duration getDuracion() {
-		return duracion;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
 	public String getNombre() {
 		return nombre;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public boolean isVisible() {
-		return visible;
 	}
 
 	public void modificarDatos(String nombre, String descripcion, String url, Categoria categoria, Duration duracion,
@@ -138,43 +106,13 @@ public class Video {
 		}
 		this.fecha = fecha;
 	}
-
-	public void setCanal(Canal canal) {
-		this.canal = canal;
+	
+	public Comentario getComentario(int id) {
+		return this.comentarios.get(id);
 	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	
+	public boolean equals(Object o) {
+		Video video = (Video) o;
+		//return (this.nombre.equals(video.nombre))
 	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public void setDuracion(Duration duracion) {
-		this.duracion = duracion;
-	}
-
-	public void setDuracion(int hora, int minuto, int segundo) {
-		this.duracion = Duration.ofHours(hora);
-		this.duracion = duracion.plusMinutes(minuto);
-		this.duracion = duracion.plusSeconds(segundo);
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
-
 }

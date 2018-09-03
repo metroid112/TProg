@@ -51,27 +51,19 @@ public class ManejadorUsuarios {
 		return usuarios.isEmpty();
 	}
 
-	public boolean isMember(Usuario user) {
-		return usuarios.containsValue(user);
-	}
-
 	public boolean isMemberKey(String nick) {
 		return usuarios.containsKey(nick);
-	}
-
-	public void remove(Usuario user) {
-		usuarios.remove(user.getNick(), user);
 	}
 
 	public void removeAll() {
 		this.usuarios.clear();
 	}
 
-	public int size() {
-		return usuarios.size();
-	}
-
 	public String[] toArray() {
 		return usuarios.keySet().toArray(new String[usuarios.size()]);
+	}
+
+	public void clear() {
+		this.usuarios.clear();		
 	}
 }
