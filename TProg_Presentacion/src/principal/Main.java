@@ -398,7 +398,7 @@ public class Main {
 	
 	public void cargarDatos() throws ParseException, IOException {
 		DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-		String divisor = "\\";
+		String divisor = "//";
 		
 		this.usuariosCanales.altaUsuario("hrubino", "Horacio", "Rubino", "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"), "img" + divisor + "horacio.JPG", "Canal Horacio", "El canal Horacio es para publicar contenido divertido", "Sin categoria", true);
 		this.usuariosCanales.altaUsuario("mbusca", "Martin", "Buscaglia", "Martin.bus@agadu.org.uy", format.parse("14/06/1972"), "img" + divisor + "martin.JPG", "El bocha", "Mi canal para colgar cosas", "Sin categoria", true);
