@@ -65,12 +65,12 @@ public class CtrlListas implements IListas {
 		return list.getDtLista();
 	}
 
-	@Override
+	/*@Override
 	public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid) throws Exception {
 
 		return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVideo(nombreVid).getCanal()
 				.getUsuario().getNick();
-	}
+	}*/
 
 	@Override
 	public void guardarCambios(String nomLis, String usuario, boolean visible) {

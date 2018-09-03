@@ -12,7 +12,7 @@ public interface IListas {
 
 	public DtLista getDt(String lista, String usuario) throws Exception;
 
-	public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid) throws Exception;
+	//public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid, String algo) throws Exception;
 
 	public void guardarCambios(String nomLis, String usuario, boolean visible);
 
