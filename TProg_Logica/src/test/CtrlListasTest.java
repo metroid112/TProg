@@ -65,6 +65,19 @@ public class CtrlListasTest {
 		ctrlLista.agregarVideoLista("hectorg", "nombreVideo", "hectorg", "ListaAgregarVid", false);
 		Assert.assertTrue(((ListaParticular)manejadorUsuarios.get("hectorg").getCanal().getLista("ListaAgregarVid")).existeVideo(vid));
 	}
+	
+	@Test
+	public void testQuitarVideoLista() throws Exception {
+		ctrlLista.altaListaParticular("ListaAgregarVid", "hectorg", true);
+		Duration duracion = Duration.ofHours(1);
+		Video vid = new Video("nombreVideo", "", duracion, "urlvid", null, manejadorUsuarios.get("hectorg").getCanal(), new Date(50));
+		
+		manejadorUsuarios.get("hectorg").getCanal().altaVideo("nombreVideo", "", duracion, "urlvid", null, new Date(50));
+		ctrlLista.agregarVideoLista("hectorg", "nombreVideo", "hectorg", "ListaAgregarVid", false);
+		
+		ctrlLista.quitarVideoLista("hectorg", "nombreVideo", "ListaAgregarVid", false); 	//TODO terminar
+		//Assert.assertTrue(((ListaParticular)manejadorUsuarios.get("hectorg").getCanal().getLista("ListaAgregarVid")).existeVideo(vid));
+	}
 
 	@Test
 	public void testListarListasDefectoUsuario() throws Exception {

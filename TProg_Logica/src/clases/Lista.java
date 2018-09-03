@@ -42,7 +42,7 @@ public abstract class Lista {
 		return nombre;
 	}
 
-	public Video getVideo(String nombreVid) {
+	public Video getVideo(String nombreVid) {		//TODO FIX!
 		boolean encontrado = false;
 		Video video = null;
 		for (Video vid : videos) {
