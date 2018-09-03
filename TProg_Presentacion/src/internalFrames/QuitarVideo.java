@@ -207,13 +207,19 @@ public class QuitarVideo extends JInternalFrame{
 					JOptionPane.showMessageDialog(null, "No has seleccionado ningún video", "Error", JOptionPane.ERROR_MESSAGE);
 					checkUsuario = false;
 				}
-				if(checkUsuario && checkVideo){
+				if (checkUsuario && checkVideo && !comboBoxVideos.isEnabled()){
+					JOptionPane.showMessageDialog(null, "Debes seleccionar un elemento de la lista", "Error", JOptionPane.ERROR_MESSAGE);
+					checkUsuario = false;
+				}	
+				
+				if(checkUsuario && checkVideo && comboBoxVideos.isEnabled()){
 					ctrLis = Fabrica.getIListas();
 					String stringConcatenado = modelVideos.getSelectedItem().toString();
 					String ownerVideo = stringConcatenado.substring(0, stringConcatenado.indexOf('-'));
 					String nombreVideo = stringConcatenado.substring(stringConcatenado.indexOf('-') + 1);
 					ctrLis.quitarVideoLista(modelUsuario.getSelectedItem().toString(), nombreVideo, ownerVideo, list.getSelectedValue().toString(),
 							rdbtnListasPorDefecto.isSelected());
+					JOptionPane.showMessageDialog(null, "Se ha eliminado el video con exito!");
 					modelUsuario.removeAllElements();				
 					modelVideos.removeAllElements();
 					list.setEnabled(false);
