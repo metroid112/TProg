@@ -14,6 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -26,7 +27,6 @@ import javax.swing.SwingConstants;
 
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
-import javax.swing.JComboBox;
 
 
 @SuppressWarnings("serial")

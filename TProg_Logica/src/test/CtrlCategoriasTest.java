@@ -15,7 +15,6 @@ import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
-import manejadores.ManejadorListas;
 
 public class CtrlCategoriasTest {
 

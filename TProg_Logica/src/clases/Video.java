@@ -155,12 +155,6 @@ public class Video {
 		this.duracion = duracion;
 	}
 
-	public void setDuracion(int hora, int minuto, int segundo) {
-		this.duracion = Duration.ofHours(hora);
-		this.duracion = duracion.plusMinutes(minuto);
-		this.duracion = duracion.plusSeconds(segundo);
-	}
-
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}

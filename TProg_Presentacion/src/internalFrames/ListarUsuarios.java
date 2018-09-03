@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import interfaces.IUsuariosCanales;
 import paneles.SelectorUsuarios;
 
 @SuppressWarnings("serial")

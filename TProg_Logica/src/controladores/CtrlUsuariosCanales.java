@@ -1,18 +1,14 @@
 package controladores;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-import clases.Calificacion;
 import clases.Canal;
-import clases.Comentario;
 import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Usuario;

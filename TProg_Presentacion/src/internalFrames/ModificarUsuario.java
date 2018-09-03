@@ -14,10 +14,9 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 
 import paneles.SelectorUsuarios;
-
-import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class ModificarUsuario extends JInternalFrame {

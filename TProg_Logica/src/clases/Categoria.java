@@ -76,10 +76,6 @@ public class Categoria {
 		this.videos = videos;
 	}
 
-	public int size() {
-		return videos.size();
-	}
-
 	public void addLista(ListaParticular listaParticular) {
 		listas.add(listaParticular);		
 	}

@@ -34,18 +34,6 @@ public class ManejadorListas {
 		return listasDefecto.isEmpty();
 	}
 
-	public boolean isMember(String lista) {
-		return listasDefecto.contains(lista);
-	}
-
-	public void remove(String lista) {
-		listasDefecto.remove(lista);
-	}
-
-	public int size() {
-		return listasDefecto.size();
-	}
-
 	public String[] toArray() {
 		return listasDefecto.toArray(new String[listasDefecto.size()]);
 	}
