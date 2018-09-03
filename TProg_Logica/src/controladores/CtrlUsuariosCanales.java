@@ -100,10 +100,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 	}
 	
 	@Override
-	public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDueñoVideo) throws Exception {
+	public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenioVideo) throws Exception {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);	// Puede calificar su propio video?
-		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		Usuario duenio = manejadorUsuarios.get(nombreDuenioVideo);	// Puede calificar su propio video?
+		Video vid = duenio.getCanal().getVideoCanal(nombreVideo);
 		usuario.valorarVideo(like, vid);
 	}
 
@@ -131,19 +131,19 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 		return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
 	}
 
-	public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDueñoVideo) {
+	public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDuenioVideo) {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
-		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		Usuario duenio = manejadorUsuarios.get(nombreDuenioVideo);
+		Video vid = duenio.getCanal().getVideoCanal(nombreVideo);
 		usuario.modificarValoracion(like, vid);
 	}
 	
 	@Override
 	public void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
-			String nombreDueñoVideo, Integer idComentarioPadre) {
+			String nombreDueniooVideo, Integer idComentarioPadre) {
 		Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-		Usuario dueño = manejadorUsuarios.get(nombreDueñoVideo);
-		Video vid = dueño.getCanal().getVideoCanal(nombreVideo);
+		Usuario duenio = manejadorUsuarios.get(nombreDueniooVideo);
+		Video vid = duenio.getCanal().getVideoCanal(nombreVideo);
 		usuario.responder(texto, fecha, idComentarioPadre, vid);
 	}
 

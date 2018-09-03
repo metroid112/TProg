@@ -390,14 +390,14 @@ public class ConsultaLista extends JInternalFrame{
 	private void cargarVideo() {
 		Fabrica.getFabrica();
 		IVideos ctrVid = Fabrica.getIVideos();
-		String dueñoVid = null;
+		String duenioVid = null;
 		try {
-			//dueñoVid = ctrLis.getDueñoVideo((String)comboBoxUsuario.getSelectedItem(),list.getSelectedValue(), listaVideos.getSelectedValue());
-			dueñoVid = listaVideos.getSelectedValue().substring(0, listaVideos.getSelectedValue().indexOf('-'));
+			//duenioVid = ctrLis.getDuenioVideo((String)comboBoxUsuario.getSelectedItem(),list.getSelectedValue(), listaVideos.getSelectedValue());
+			duenioVid = listaVideos.getSelectedValue().substring(0, listaVideos.getSelectedValue().indexOf('-'));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this,"error cargarVid" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
-		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1), dueñoVid);
+		DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1), duenioVid);
 		infoVid.cargarDatos(dtVid);
 		
 	}

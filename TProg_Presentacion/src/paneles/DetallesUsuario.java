@@ -34,7 +34,7 @@ public class DetallesUsuario extends JPanel {
 	private Fabrica fab = Fabrica.getFabrica();
 	private IUsuariosCanales ctrlUsu = fab.getIUsuariosCanales();
 	private IListas ctrlLis = null;
-	private String noImagen = "img\\sinImagen.jpg";
+	private String noImagen = "img//sinImagen.jpg";
 	private DefaultListModel<String> modelListas = new DefaultListModel<>();
 	private JList<String> listasDeReproduccion =  new JList<>(modelListas);
 	private DefaultListModel<String> modelSeguidores = new DefaultListModel<>();
