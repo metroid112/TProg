@@ -174,7 +174,7 @@ public class InfoVideo extends JPanel {
 		int min = (int) duracion.toMinutes();
 		duracion = duracion.minusMinutes((long) min);
 		int seg = (int) duracion.getSeconds();
-		lblVduracion.setText(String.format("%d:%02d:%02d", horas, min, seg)); 	// Formato?
+		lblVduracion.setText(String.format("%d:%02d:%02d", horas, min, seg));
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		lblVfecha.setText(dateFormat.format(dtVid.fecha));
 		

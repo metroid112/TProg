@@ -118,7 +118,6 @@ public class Main {
 		frames.add(frmConsultaVideo);
 		frames.add(frmAltaVideo);
 		frames.add(frmModificarVideo);
-		//relaciones
 		frmVerInfoUsuario.SetPadre(frmConsultaUsuario);
 		
 		for (JInternalFrame frame: frames) {
@@ -367,16 +366,6 @@ public class Main {
 					frmModificarVideo.cargarDatos();
 					frmModificarVideo.setVisible(true);
 				}
-			}
-
-		});
-		
-		/******************* MODIFICAR VIDEO *********************/
-		mntmModificarVideo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!ventanasAbiertas())
-					frmModificarVideo.cargarDatos();
-					frmModificarVideo.setVisible(true);
 			}
 
 		});

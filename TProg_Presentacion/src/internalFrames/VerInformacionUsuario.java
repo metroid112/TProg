@@ -185,6 +185,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 		JLabel lblNewLabel = new JLabel("Videos");
 		
 		JButton VerInfoVideoDesdeCOnsultaLista = new JButton("Ver info video");
+		// TODO darle proposito
 		
 		JLabel lblDetallesLista = new JLabel("Detalles lista:");
 		lblDetallesLista.setFont(new Font("Tahoma", Font.PLAIN, 15));
