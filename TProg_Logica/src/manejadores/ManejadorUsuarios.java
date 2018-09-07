@@ -40,7 +40,7 @@ public class ManejadorUsuarios {
 
 	public boolean isEmailUnique(String email) {
 		for (Entry<String, Usuario> user : usuarios.entrySet()) {
-			if (user.getValue().getCorreo() == email) {
+			if (user.getValue().getCorreo().equals(email)) {
 				return false;
 			}
 		}

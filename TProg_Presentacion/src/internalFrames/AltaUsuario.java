@@ -431,6 +431,7 @@ public class AltaUsuario extends JInternalFrame {
 		dia.setText("");
 		mes.setText("");
 		ano.setText("");
+		imagenFile = null;
 	}
 	
 	public void cargarDatos() {		
