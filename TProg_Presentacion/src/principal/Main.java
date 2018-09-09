@@ -329,6 +329,7 @@ public class Main {
 					try {
 						logCarga.setText("COMIENZA LA CARGA DE DATOS\n");
 						cargarDatos();
+						logCarga.setText("DATOS CARGADOS");
 						mntmCargaDatos.setEnabled(false);
 					} catch (Exception e1) {
 						e1.printStackTrace();
