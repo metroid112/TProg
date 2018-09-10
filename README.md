@@ -14,3 +14,5 @@ Letra: https://eva.fing.edu.uy/pluginfile.php/44570/mod_resource/content/9/labor
 Datos de prueba: https://eva.fing.edu.uy/pluginfile.php/44572/mod_resource/content/13/DatosPrueba2018_v4.pdf
 
 # Tarea 2
+
+Letra: https://eva.fing.edu.uy/pluginfile.php/47706/mod_resource/content/10/laboratorio/Tarea_2/Tarea2_2018_v5.pdf
