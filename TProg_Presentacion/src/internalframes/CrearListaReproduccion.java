@@ -34,7 +34,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 
   public CrearListaReproduccion() {
 
-    setTitle("Crear lista de reproducci\u00F3n");
+    setTitle("Crear lista de reproduccion");
     setBounds(0, 0, 640, 480);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

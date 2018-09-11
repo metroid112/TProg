@@ -108,7 +108,7 @@ public class AltaUsuario extends JInternalFrame {
     rdbtnNewRadioButton = new JRadioButton("Privado");
     rdbtnNewRadioButton.setSelected(true);
 
-    JRadioButton rdbtnPblico = new JRadioButton("P\u00FAblico");
+    JRadioButton rdbtnPblico = new JRadioButton("Publico");
     rdbtnPblico.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -140,7 +140,7 @@ public class AltaUsuario extends JInternalFrame {
     textField_4.setEnabled(false);
     textField_4.setColumns(10);
 
-    JLabel lblDescripcin = new JLabel("Descripci\u00F3n:");
+    JLabel lblDescripcin = new JLabel("Descripcion:");
     lblDescripcin.setHorizontalAlignment(SwingConstants.TRAILING);
 
     textPane = new JTextPane();

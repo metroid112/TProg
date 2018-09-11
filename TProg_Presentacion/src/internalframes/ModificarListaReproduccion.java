@@ -34,11 +34,11 @@ public class ModificarListaReproduccion extends JInternalFrame {
 
     setBounds(0, 0, 640, 480);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setTitle("Modificar lista de reproducci\u00F3n");
+    setTitle("Modificar lista de reproduccion");
 
     JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 
-    JLabel lblListaDeReproduccin = new JLabel("Lista de reproducci\u00F3n");
+    JLabel lblListaDeReproduccin = new JLabel("Lista de reproduccion");
 
     JRadioButton rdbtnPrivada = new JRadioButton("Privada", true);
     rdbtnPrivada.setEnabled(false);

@@ -107,7 +107,7 @@ public class ModificarUsuario extends JInternalFrame {
     JLabel lblNombreCanal = new JLabel("Nombre canal:");
     lblNombreCanal.setHorizontalAlignment(SwingConstants.TRAILING);
 
-    JLabel lblDescripcinCanal = new JLabel("Descripci\u00F3n canal:");
+    JLabel lblDescripcinCanal = new JLabel("Descripcion canal:");
     lblDescripcinCanal.setHorizontalAlignment(SwingConstants.TRAILING);
 
     txtA = new JTextField();

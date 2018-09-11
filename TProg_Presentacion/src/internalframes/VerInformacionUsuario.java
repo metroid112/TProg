@@ -229,8 +229,8 @@ public class VerInformacionUsuario extends JInternalFrame {
     panel_2.add(paneluser, BorderLayout.CENTER);
   }
 
-  public void verInfo(String VidSel2, String UsrSel) {
-    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(VidSel2, UsrSel));
+  public void verInfo(String vidSel, String userSel) {
+    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel, userSel));
     PanelInfoVideo.add(PanelConsultaVideo, BorderLayout.CENTER);
     cambioPanel(); // Voy al panel de informacion
   }

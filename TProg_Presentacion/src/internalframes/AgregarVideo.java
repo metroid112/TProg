@@ -40,7 +40,7 @@ public class AgregarVideo extends JInternalFrame {
 
   public AgregarVideo() {
 
-    setTitle("Agregar video a lista de reproducci\u00F3n");
+    setTitle("Agregar video a lista de reproduccion");
     setBounds(0, 0, 640, 480);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

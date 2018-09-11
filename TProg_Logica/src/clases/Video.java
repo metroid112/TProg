@@ -77,6 +77,10 @@ public class Video {
     return encontrado;
   }
 
+  public Comentario getComentario(int id) {
+    return this.comentarios.get(id);
+  }
+  
   public DtVideo getDt() {
 
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
@@ -109,10 +113,6 @@ public class Video {
       this.visible = visible;
     }
     this.fecha = fecha;
-  }
-
-  public Comentario getComentario(int id) {
-    return this.comentarios.get(id);
   }
 
   @Override
