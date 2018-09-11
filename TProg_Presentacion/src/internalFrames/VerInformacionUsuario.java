@@ -2,34 +2,28 @@ package internalFrames;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
-
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import dataTypes.DtLista;
 import interfaces.Fabrica;
 import interfaces.IListas;
-import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 import paneles.DetallesUsuario;
 import paneles.InfoVideo;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.JLabel;
-import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class VerInformacionUsuario extends JInternalFrame {

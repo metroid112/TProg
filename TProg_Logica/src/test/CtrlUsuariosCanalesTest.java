@@ -1,11 +1,7 @@
 package test;
 
-import static org.junit.Assert.fail;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
@@ -16,12 +12,10 @@ import org.junit.Test;
 
 import clases.Calificacion;
 import clases.Canal;
-import clases.Categoria;
 import clases.Comentario;
 import clases.Usuario;
 import clases.Video;
 import dataTypes.DtUsuario;
-import excepciones.DuplicateClassException;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;

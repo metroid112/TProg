@@ -1,9 +1,6 @@
 package test;
 
-import static org.junit.Assert.fail;
-
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;

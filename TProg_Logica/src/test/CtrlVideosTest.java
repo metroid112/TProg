@@ -1,8 +1,5 @@
 package test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.fail;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
