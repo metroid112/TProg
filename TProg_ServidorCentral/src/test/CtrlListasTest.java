@@ -83,7 +83,7 @@ public class CtrlListasTest {
         null, new Date(50));
     ctrlLista.agregarVideoLista("hectorg", "nombreVideo", "hectorg", "ListaAgregarVid", false);
 
-    ctrlLista.quitarVideoLista("hectorg", "nombreVideo", "hectorg", "ListaAgregarVid", false); // terminar
+    ctrlLista.quitarVideoLista("hectorg", "nombreVideo", "hectorg", "ListaAgregarVid", false);
     Assert.assertFalse(
         ((ListaParticular) manejadorUsuarios.get("hectorg").getCanal().getLista("ListaAgregarVid"))
             .existeVideo(vid));

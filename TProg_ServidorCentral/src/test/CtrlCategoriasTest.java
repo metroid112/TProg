@@ -45,7 +45,7 @@ public class CtrlCategoriasTest {
     categorias.altaCategoria("Prueba");
     DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
     usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
-        format.parse("11/04/1993"), "..//TProg_Presentacion//img//null.JPG", "juju", "hola",
+        format.parse("11/04/1993"), "..//TProg_Workstation//img//null.JPG", "juju", "hola",
         "catprueba", true);
     video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
         format.parse("11/04/1993"));
@@ -64,7 +64,7 @@ public class CtrlCategoriasTest {
     categorias.altaCategoria("Prueba");
     DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
     usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
-        format.parse("11/04/1993"), "..//TProg_Presentacion//img//null.JPG", "juju", "hola",
+        format.parse("11/04/1993"), "..//TProg_Workstation//img//null.JPG", "juju", "hola",
         "catprueba", true);
     video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
         format.parse("11/04/1993"));
