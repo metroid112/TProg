@@ -24,11 +24,11 @@ hs_err_pid*
 /bin/
 
 # ignore Eclipse project bin
-/TProg_Logica/bin
-/TProg_Presentacion/bin
+/TProg_ServidorCentral/bin
+/TProg_Workstation/bin
 
 # ignore .metadata
 .metadata/
 
 # not ignore libs
-!TProg_Presentacion/lib/*.jar
+!TProg_Workstation/lib/*.jar
