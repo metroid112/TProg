@@ -13,7 +13,8 @@ public class Canal {
   private String descripcion;
   private HashMap<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
 
-  private HashMap<String, ListaParticular> listaParticulares = new HashMap<String, ListaParticular>();
+  private HashMap<String, ListaParticular> listaParticulares =
+      new HashMap<String, ListaParticular>();
 
   private String nombre;
   private Usuario usuario;

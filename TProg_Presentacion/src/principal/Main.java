@@ -73,7 +73,8 @@ public class Main {
   private ConsultaLista frmConsultaLista = new ConsultaLista();
   private CrearListaReproduccion frmCrearListaReproduccion = new CrearListaReproduccion();
   private ListarCategorias frmListarCategorias = new ListarCategorias();
-  private ModificarListaReproduccion frmModificarListaReproduccion = new ModificarListaReproduccion();
+  private ModificarListaReproduccion frmModificarListaReproduccion =
+      new ModificarListaReproduccion();
   private QuitarVideo frmQuitarVideo = new QuitarVideo();
   private VerInformacionUsuario frmVerInfoUsuario = new VerInformacionUsuario();
   private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
@@ -118,7 +119,7 @@ public class Main {
     frames.add(frmConsultaVideo);
     frames.add(frmAltaVideo);
     frames.add(frmModificarVideo);
-    frmVerInfoUsuario.SetPadre(frmConsultaUsuario);
+    frmVerInfoUsuario.setPadre(frmConsultaUsuario);
 
     for (JInternalFrame frame : frames) {
       frame.setVisible(false);

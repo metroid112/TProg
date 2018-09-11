@@ -17,7 +17,8 @@ public class ConsultaUsuario extends JInternalFrame {
   SelectorUsuarios panel = new SelectorUsuarios();
 
   // private JInternalFrame infoUsuario;
-  public void SetVisible(boolean b) {
+  @Override
+  public void setVisible(boolean b) {
     setEnabled(b);
   }
 
@@ -48,7 +49,7 @@ public class ConsultaUsuario extends JInternalFrame {
         if (usuarioSeleccionado != null) {
           // VerInformacionUsuario verInformacion = new
           // VerInformacionUsuario(usuarioSeleccionado);
-          ventanaInfo.CargarInformacionUsuario(usuarioSeleccionado);
+          ventanaInfo.cargarInformacionUsuario(usuarioSeleccionado);
           ventanaInfo.setVisible(true);
           setVisible(false);
         } else {

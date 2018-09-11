@@ -41,7 +41,7 @@ public class CtrlListas implements IListas {
 
   @Override
   public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
-      throws Exception { 
+      throws Exception {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     if (!usuarioObjetivo.getCanal().getListaParticulares().containsKey(nombre)) {
       usuarioObjetivo.getCanal().ingresarListaParticular(nombre, visibilidad);

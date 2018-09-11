@@ -46,7 +46,7 @@ public class DetallesUsuario extends JPanel {
   private boolean editar = false;
   private JTextField textField;
 
-  public void SetEditar(boolean b) {
+  public void setEditar(boolean b) {
     this.editar = b;
   }
 

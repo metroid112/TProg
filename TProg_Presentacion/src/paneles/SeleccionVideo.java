@@ -88,7 +88,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
   }
 
   @Override
-  public void actionPerformed(ActionEvent e) { 
+  public void actionPerformed(ActionEvent e) {
     updateLista((String) cBoxUsuarios.getSelectedItem());
   }
 

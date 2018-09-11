@@ -33,13 +33,14 @@ public class VerInformacionUsuario extends JInternalFrame {
   private JPanel PanelInfoVideo;
   private String UsrSel = null;
 
-  public void SetVisible(boolean b) {
+  @Override
+  public void setVisible(boolean b) {
     setEnabled(b);
   }
 
   private ConsultaUsuario padre = null;
 
-  public void SetPadre(ConsultaUsuario padre) {
+  public void setPadre(ConsultaUsuario padre) {
     this.padre = padre;
   }
 
@@ -222,7 +223,7 @@ public class VerInformacionUsuario extends JInternalFrame {
     // cambioPanel();
   }
 
-  public void CargarInformacionUsuario(String usuario) {
+  public void cargarInformacionUsuario(String usuario) {
     UsrSel = usuario;
     paneluser = new DetallesUsuario(usuario);
     panel_2.add(paneluser, BorderLayout.CENTER);
