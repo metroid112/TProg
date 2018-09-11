@@ -9,197 +9,199 @@ import manejadores.ManejadorListas;
 
 public class Canal {
 
-	private Categoria categoria;
-	private String descripcion;
-	private HashMap<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
+  private Categoria categoria;
+  private String descripcion;
+  private HashMap<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
 
-	private HashMap<String, ListaParticular> listaParticulares = new HashMap<String, ListaParticular>();
+  private HashMap<String, ListaParticular> listaParticulares = new HashMap<String, ListaParticular>();
 
-	private String nombre;
-	private Usuario usuario;
-	private HashMap<String, Video> videos = new HashMap<String, Video>();
-	private boolean visible;
+  private String nombre;
+  private Usuario usuario;
+  private HashMap<String, Video> videos = new HashMap<String, Video>();
+  private boolean visible;
 
-	public Canal() {
+  public Canal() {
 
-	}
+  }
 
-	public Canal(String nombreCanal, String descripcionCanal, Categoria categoria, boolean visible, Usuario user) {
-		this.nombre = nombreCanal;
-		this.descripcion = descripcionCanal;
-		this.visible = visible;
-		this.usuario = user;
-		for (String lista : ManejadorListas.getManejadorListas().toArray()) {
-			listaDefecto.put(lista, new ListaDefecto(lista, this));
-		}
-	}
+  public Canal(String nombreCanal, String descripcionCanal, Categoria categoria, boolean visible,
+      Usuario user) {
+    this.nombre = nombreCanal;
+    this.descripcion = descripcionCanal;
+    this.visible = visible;
+    this.usuario = user;
+    for (String lista : ManejadorListas.getManejadorListas().toArray()) {
+      listaDefecto.put(lista, new ListaDefecto(lista, this));
+    }
+  }
 
-	public void agregarVideoListaDefecto(Video videoObj, String lista) {
-		ListaDefecto listaObj = listaDefecto.get(lista);
-		if (!listaObj.existeVideo(videoObj)) {
-			listaObj.insertarVideo(videoObj);
-		}
-	}
+  public void agregarVideoListaDefecto(Video videoObj, String lista) {
+    ListaDefecto listaObj = listaDefecto.get(lista);
+    if (!listaObj.existeVideo(videoObj)) {
+      listaObj.insertarVideo(videoObj);
+    }
+  }
 
-	public void agregarVideoListaParticular(Video videoObj, String lista) {
-		ListaParticular listaObj = listaParticulares.get(lista);
-		if (!listaObj.existeVideo(videoObj)) {
-			listaObj.insertarVideo(videoObj);
+  public void agregarVideoListaParticular(Video videoObj, String lista) {
+    ListaParticular listaObj = listaParticulares.get(lista);
+    if (!listaObj.existeVideo(videoObj)) {
+      listaObj.insertarVideo(videoObj);
 
-			Categoria categoria = videoObj.getCategoria();
-			if (!listaObj.existeCategoria(categoria)) {
-				listaObj.insertarCategoria(categoria);
-			}
-		}
-		// disparar excepcion
-	}
+      Categoria categoria = videoObj.getCategoria();
+      if (!listaObj.existeCategoria(categoria)) {
+        listaObj.insertarCategoria(categoria);
+      }
+    }
+    // disparar excepcion
+  }
 
-	public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url, Categoria categoria2,
-			Date fecha) throws DuplicateClassException {
-		if (!videos.containsKey(nombre2)) {
-			videos.put(nombre2, new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha));
-		} else {
-			throw new DuplicateClassException(new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha), nombre2);
-		}
-	}
+  public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url,
+      Categoria categoria2, Date fecha) throws DuplicateClassException {
+    if (!videos.containsKey(nombre2)) {
+      videos.put(nombre2, new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha));
+    } else {
+      throw new DuplicateClassException(
+          new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha), nombre2);
+    }
+  }
 
-	public Video altaVideo(String nombre, String descripcion, Duration duracion, String url, Categoria categoria,
-			Date fecha, boolean visible) {
+  public Video altaVideo(String nombre, String descripcion, Duration duracion, String url,
+      Categoria categoria, Date fecha, boolean visible) {
 
-		Video video = new Video(nombre, descripcion, duracion, url, categoria, fecha, visible, this);
-		this.videos.put(nombre, video);
-		return video;
+    Video video = new Video(nombre, descripcion, duracion, url, categoria, fecha, visible, this);
+    this.videos.put(nombre, video);
+    return video;
 
-	}
+  }
 
-	public String[] getArrayVideos() {
+  public String[] getArrayVideos() {
 
-		return videos.keySet().toArray(new String[videos.size()]);
-	}
+    return videos.keySet().toArray(new String[videos.size()]);
+  }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+  public String getDescripcion() {
+    return descripcion;
+  }
 
-	public Lista getLista(String lista) throws Exception {
-		if (this.listaDefecto.containsKey(lista)) {
-			return this.listaDefecto.get(lista);
-		} else if (this.listaParticulares.containsKey(lista)) {
-			return this.listaParticulares.get(lista);
-		} else {
-			throw new Exception("No existe lista");
-		}
-	}
+  public Lista getLista(String lista) throws Exception {
+    if (this.listaDefecto.containsKey(lista)) {
+      return this.listaDefecto.get(lista);
+    } else if (this.listaParticulares.containsKey(lista)) {
+      return this.listaParticulares.get(lista);
+    } else {
+      throw new Exception("No existe lista");
+    }
+  }
 
-	public HashMap<String, ListaDefecto> getListaDefecto() {
-		return listaDefecto;
-	}
+  public HashMap<String, ListaDefecto> getListaDefecto() {
+    return listaDefecto;
+  }
 
-	public String[] getListaDefectoUsuario() {
+  public String[] getListaDefectoUsuario() {
 
-		return listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
+    return listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
 
-	}
+  }
 
-	public HashMap<String, ListaParticular> getListaParticulares() {
-		return listaParticulares;
-	}
+  public HashMap<String, ListaParticular> getListaParticulares() {
+    return listaParticulares;
+  }
 
-	public String[] getListaParticularUsuario() {
+  public String[] getListaParticularUsuario() {
 
-		return listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
+    return listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
 
-	}
+  }
 
-	public String getNombre() {
-		return nombre;
-	}
+  public String getNombre() {
+    return nombre;
+  }
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+  public Usuario getUsuario() {
+    return usuario;
+  }
 
-	public Video getVideoCanal(String video) {
+  public Video getVideoCanal(String video) {
 
-		return videos.get(video);
-	}
+    return videos.get(video);
+  }
 
-	public HashMap<String, Video> getVideos() {
-		return videos;
-	}
+  public HashMap<String, Video> getVideos() {
+    return videos;
+  }
 
-	public void guardarCambios(String nomLis, boolean visible) {
-		ListaParticular listaObjetivo = listaParticulares.get(nomLis);
-		listaObjetivo.setVisible(visible);
-	}
+  public void guardarCambios(String nomLis, boolean visible) {
+    ListaParticular listaObjetivo = listaParticulares.get(nomLis);
+    listaObjetivo.setVisible(visible);
+  }
 
-	public void ingresarListaDefecto(String nombre) {
-		ListaDefecto nuevaLista = new ListaDefecto(nombre, this);
-		listaDefecto.put(nombre, nuevaLista); // puede cambiar la implementacion
-	}
-	
-	public void agregarListaDefectoObserver(ListaDefecto listaDefecto) {
-		this.listaDefecto.put(listaDefecto.getNombre(), listaDefecto);
-	}
+  public void ingresarListaDefecto(String nombre) {
+    ListaDefecto nuevaLista = new ListaDefecto(nombre, this);
+    listaDefecto.put(nombre, nuevaLista); // puede cambiar la implementacion
+  }
 
-	public void ingresarListaParticular(String nombre, boolean visibilidad) {
+  public void agregarListaDefectoObserver(ListaDefecto listaDefecto) {
+    this.listaDefecto.put(listaDefecto.getNombre(), listaDefecto);
+  }
 
-		ListaParticular nuevaLista = new ListaParticular(nombre, this,
-				new HashMap<String, Categoria>(), visibilidad);
-		listaParticulares.put(nombre, nuevaLista); // puede cambiar la implementacion
+  public void ingresarListaParticular(String nombre, boolean visibilidad) {
 
-	}
+    ListaParticular nuevaLista = new ListaParticular(nombre, this, new HashMap<String, Categoria>(),
+        visibilidad);
+    listaParticulares.put(nombre, nuevaLista); // puede cambiar la implementacion
 
-	public boolean isVisible() {
-		return visible;
-	}
+  }
 
-	public String[] listarVideosLista(String lista, boolean defecto) {
-		if (defecto) {
-			ListaDefecto listaDef = listaDefecto.get(lista);
-			return listaDef.getArrayVideos();
-		} else {
-			ListaParticular listaPar = listaParticulares.get(lista);
-			return listaPar.getArrayVideos();
-		}
-	}
-	
-	public String[] listarVideosDuenosLista(String lista, boolean defecto) {
-		if (defecto) {
-			ListaDefecto listaDef = listaDefecto.get(lista);
-			return listaDef.getArrayVideosDuenos();
-		} else {
-			ListaParticular listaPar = listaParticulares.get(lista);
-			return listaPar.getArrayVideosDuenos();
-		}
-	}
+  public boolean isVisible() {
+    return visible;
+  }
 
-	public void modVideo(String nombreOld, String nombre) {
-		Video vid = this.videos.remove(nombreOld);
-		this.videos.put(nombre, vid);
+  public String[] listarVideosLista(String lista, boolean defecto) {
+    if (defecto) {
+      ListaDefecto listaDef = listaDefecto.get(lista);
+      return listaDef.getArrayVideos();
+    } else {
+      ListaParticular listaPar = listaParticulares.get(lista);
+      return listaPar.getArrayVideos();
+    }
+  }
 
-	}
+  public String[] listarVideosDuenosLista(String lista, boolean defecto) {
+    if (defecto) {
+      ListaDefecto listaDef = listaDefecto.get(lista);
+      return listaDef.getArrayVideosDuenos();
+    } else {
+      ListaParticular listaPar = listaParticulares.get(lista);
+      return listaPar.getArrayVideosDuenos();
+    }
+  }
 
-	public void quitarVideoListaDefecto(String video, String lista, Usuario ownerVideo) {
-		ListaDefecto listaObj = listaDefecto.get(lista);
-		Video videoObj = listaObj.getVideo(video, ownerVideo);
-		listaObj.quitarVideo(videoObj);
+  public void modVideo(String nombreOld, String nombre) {
+    Video vid = this.videos.remove(nombreOld);
+    this.videos.put(nombre, vid);
 
-	}
+  }
 
-	public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
-		ListaParticular listaObj = listaParticulares.get(lista);
-		Video videoObj = listaObj.getVideo(video, ownerVideo);
-		listaObj.quitarVideo(videoObj);
-		Categoria cat = videoObj.getCategoria();
+  public void quitarVideoListaDefecto(String video, String lista, Usuario ownerVideo) {
+    ListaDefecto listaObj = listaDefecto.get(lista);
+    Video videoObj = listaObj.getVideo(video, ownerVideo);
+    listaObj.quitarVideo(videoObj);
 
-		if (listaObj.esUnicaCategoria(cat)) {
-			listaObj.quitarCategoria(cat);
-		}
+  }
 
-	}
-	
-	public void agregarVideo(Video video) {
-		this.videos.put(video.getNombre(), video);
-	}
+  public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
+    ListaParticular listaObj = listaParticulares.get(lista);
+    Video videoObj = listaObj.getVideo(video, ownerVideo);
+    listaObj.quitarVideo(videoObj);
+    Categoria cat = videoObj.getCategoria();
+
+    if (listaObj.esUnicaCategoria(cat)) {
+      listaObj.quitarCategoria(cat);
+    }
+
+  }
+
+  public void agregarVideo(Video video) {
+    this.videos.put(video.getNombre(), video);
+  }
 }

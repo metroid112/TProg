@@ -7,43 +7,48 @@ import java.util.Date;
 import dataTypes.DtUsuario;
 
 public interface IUsuariosCanales {
-	
-	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			BufferedImage imagen, String nombreCanal, String descripcionCanal, String categoria, boolean visible) throws IOException;
 
-	public void altaUsuario(String nickname, String nombre, String apellido, String correo, Date fechaNacimiento,
-			String path, String nombreCanal, String descripcionCanal, String categoria, boolean visible) throws IOException;
+  public void altaUsuario(String nickname, String nombre, String apellido, String correo,
+      Date fechaNacimiento, BufferedImage imagen, String nombreCanal, String descripcionCanal,
+      String categoria, boolean visible) throws IOException;
 
-	public boolean existeUsuario(String nick);
+  public void altaUsuario(String nickname, String nombre, String apellido, String correo,
+      Date fechaNacimiento, String path, String nombreCanal, String descripcionCanal,
+      String categoria, boolean visible) throws IOException;
 
-	public DtUsuario getDt(String nick);
+  public boolean existeUsuario(String nick);
 
-	public boolean isCanalPublico(String usuario);
+  public DtUsuario getDt(String nick);
 
-	public boolean isEmailUnique(String email);
+  public boolean isCanalPublico(String usuario);
 
-	public String[] listarListasDeReproduccion(String nick);
+  public boolean isEmailUnique(String email);
 
-	public String[] listarSeguidores(String nick);
+  public String[] listarListasDeReproduccion(String nick);
 
-	public String[] listarSeguidos(String nick);
+  public String[] listarSeguidores(String nick);
 
-	public String[] listarUsuarios();
+  public String[] listarSeguidos(String nick);
 
-	public String[] listarVideos(String nick);
+  public String[] listarUsuarios();
 
-	public String[] listarVideosLista(String usuario, String lista, boolean defecto);
+  public String[] listarVideos(String nick);
 
-	public void seguir(String seguidor, String seguido);
+  public String[] listarVideosLista(String usuario, String lista, boolean defecto);
 
-	void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo) throws Exception;
+  public void seguir(String seguidor, String seguido);
 
-	void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDuenoVideo);
+  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo)
+      throws Exception;
 
-	void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo, String nombreDuenoVideo);
+  void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
+      String nombreDuenoVideo);
 
-	void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
-			String nombreDuenoVideo, Integer idComentarioPadre);
+  void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo,
+      String nombreDuenoVideo);
 
-	public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
+  void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
+      String nombreDuenoVideo, Integer idComentarioPadre);
+
+  public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
 }

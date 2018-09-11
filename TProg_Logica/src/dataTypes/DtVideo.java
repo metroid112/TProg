@@ -10,43 +10,45 @@ import clases.Categoria;
 import clases.Comentario;
 
 public class DtVideo {
-	public LinkedList<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
-	public LinkedHashMap<Integer, DtComentario> comentarios = new LinkedHashMap<Integer, DtComentario>();
-	public Duration duracion;
-	public Date fecha;
+  public LinkedList<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
+  public LinkedHashMap<Integer, DtComentario> comentarios = new LinkedHashMap<Integer, DtComentario>();
+  public Duration duracion;
+  public Date fecha;
 
-	public String nombre, URL, descripcion, categoria;
-	public boolean visible;
+  public String nombre, URL, descripcion, categoria;
+  public boolean visible;
 
-	public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha, Duration duracion,
-			boolean visible, LinkedHashMap<Integer, Comentario> comentarios, LinkedList<Calificacion> calificaciones) {
+  public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
+      Duration duracion, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
+      LinkedList<Calificacion> calificaciones) {
 
-		this.nombre = nombre;
-		this.URL = url;
-		this.descripcion = descripcion;
-		if (categoria != null) {
-			this.categoria = categoria.getNombre();
-		} else {
-			this.categoria = "Sin Categoria";
-		}
-		this.duracion = duracion;
-		this.fecha = fecha;
+    this.nombre = nombre;
+    this.URL = url;
+    this.descripcion = descripcion;
+    if (categoria != null) {
+      this.categoria = categoria.getNombre();
+    } else {
+      this.categoria = "Sin Categoria";
+    }
+    this.duracion = duracion;
+    this.fecha = fecha;
 
-		for (Comentario com : comentarios.values()) {
-			DtComentario dtCom = com.getDT(); // Creo Dt
-			this.comentarios.put(dtCom.id, dtCom); // Lo agrego a la coleccion
-		}
-		this.visible = visible;
-		for (Calificacion cal : calificaciones) {
-			this.calificaciones.add(cal.getDt());
-		}
+    for (Comentario com : comentarios.values()) {
+      DtComentario dtCom = com.getDT(); // Creo Dt
+      this.comentarios.put(dtCom.id, dtCom); // Lo agrego a la coleccion
+    }
+    this.visible = visible;
+    for (Calificacion cal : calificaciones) {
+      this.calificaciones.add(cal.getDt());
+    }
 
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		DtVideo dt = (DtVideo) o;
-		return (this.nombre.equals(dt.nombre) && this.descripcion.equals(dt.descripcion) && this.visible == dt.visible && this.URL.equals(dt.URL) && this.fecha.equals(dt.fecha)); 
-	}
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    DtVideo dt = (DtVideo) o;
+    return (this.nombre.equals(dt.nombre) && this.descripcion.equals(dt.descripcion)
+        && this.visible == dt.visible && this.URL.equals(dt.URL) && this.fecha.equals(dt.fecha));
+  }
 
 }

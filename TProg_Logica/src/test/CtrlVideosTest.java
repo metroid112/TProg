@@ -32,93 +32,93 @@ import manejadores.ManejadorUsuarios;
 
 public class CtrlVideosTest {
 
-	private String[] arrayCat = { "Deportes", "Musica" };
-	private String[] arrayLis = { "(Pato,Lista1)" };
-	private String[] arrayVid = { "(Pato,Video1)" };
-	private ICategorias categorias = Fabrica.getICategorias();
-	private DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-	private IListas lista = Fabrica.getIListas();
-	private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
-	private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
-	private String[] usu = { "Pato" };
-	private Date fecha = new Date();
-	private Usuario usuario = new Usuario("Pato", "Federico", "Aguilera", "correo@.com", fecha, null);
-	private Canal canal = new Canal("canalPato", "descripcionCanal", null, true, usuario);
-	private IUsuariosCanales usuarios = Fabrica.getIUsuariosCanales();
-	private IVideos video = Fabrica.getIVideos();
-	
-	@After
-	public void clear() {
-		manejadorUsuarios.removeAll();
-	}
+  private String[] arrayCat = { "Deportes", "Musica" };
+  private String[] arrayLis = { "(Pato,Lista1)" };
+  private String[] arrayVid = { "(Pato,Video1)" };
+  private ICategorias categorias = Fabrica.getICategorias();
+  private DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+  private IListas lista = Fabrica.getIListas();
+  private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
+  private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
+  private String[] usu = { "Pato" };
+  private Date fecha = new Date();
+  private Usuario usuario = new Usuario("Pato", "Federico", "Aguilera", "correo@.com", fecha, null);
+  private Canal canal = new Canal("canalPato", "descripcionCanal", null, true, usuario);
+  private IUsuariosCanales usuarios = Fabrica.getIUsuariosCanales();
+  private IVideos video = Fabrica.getIVideos();
 
-	@Test
-	public void testAltaVideo() {
-		carga();
-		Duration duracion = Duration.ofMinutes(5);
-		Video vid = new Video("Video1", "Descripcion1", duracion, "url", null, null, fecha);
-		try {
-			video.altaVideo(usuario.getNick(), "Video1", "Descripcion1", duracion, "url", null, fecha);
-		} catch (DuplicateClassException e) {
-			System.out.println(e.getMessage());
-		}
-		Assert.assertEquals(vid, manejadorUsuarios.get("Pato").getCanal().getVideoCanal("Video1"));
-	}
-	
-	
+  @After
+  public void clear() {
+    manejadorUsuarios.removeAll();
+  }
 
-	@Test
-	public void testGetDtVideo() {
-		carga();
-		Duration duracion = Duration.ofMinutes(5);
-		Video vid = new Video("Video1", "Descripcion1", duracion, "url", null, null, fecha);
-		try {
-			video.altaVideo(usuario.getNick(), "Video1", "Descripcion1", duracion, "url", null, fecha);
-		} catch (DuplicateClassException e) {
-			System.out.println(e.getMessage());
-		}
-		DtVideo esperado = new DtVideo("Video1", "Descripcion1", "url", null, fecha, duracion, false, new LinkedHashMap<Integer, Comentario>(), new LinkedList<Calificacion>());
-		Assert.assertEquals(esperado, video.getDtVideo("Video1", "Pato"));
-	}
+  @Test
+  public void testAltaVideo() {
+    carga();
+    Duration duracion = Duration.ofMinutes(5);
+    Video vid = new Video("Video1", "Descripcion1", duracion, "url", null, null, fecha);
+    try {
+      video.altaVideo(usuario.getNick(), "Video1", "Descripcion1", duracion, "url", null, fecha);
+    } catch (DuplicateClassException e) {
+      System.out.println(e.getMessage());
+    }
+    Assert.assertEquals(vid, manejadorUsuarios.get("Pato").getCanal().getVideoCanal("Video1"));
+  }
 
-	@Test
-	public void testListarCategorias() throws Exception {
-		categorias.altaCategoria("Deportes");
-		categorias.altaCategoria("Musica");
-		Assert.assertArrayEquals(arrayCat, video.listarCategorias());
-	}
+  @Test
+  public void testGetDtVideo() {
+    carga();
+    Duration duracion = Duration.ofMinutes(5);
+    Video vid = new Video("Video1", "Descripcion1", duracion, "url", null, null, fecha);
+    try {
+      video.altaVideo(usuario.getNick(), "Video1", "Descripcion1", duracion, "url", null, fecha);
+    } catch (DuplicateClassException e) {
+      System.out.println(e.getMessage());
+    }
+    DtVideo esperado = new DtVideo("Video1", "Descripcion1", "url", null, fecha, duracion, false,
+        new LinkedHashMap<Integer, Comentario>(), new LinkedList<Calificacion>());
+    Assert.assertEquals(esperado, video.getDtVideo("Video1", "Pato"));
+  }
 
-	@Test
-	public void testListarUsuarios() throws Exception {
-		carga();
-		Assert.assertArrayEquals(usu, video.listarUsuarios());
+  @Test
+  public void testListarCategorias() throws Exception {
+    categorias.altaCategoria("Deportes");
+    categorias.altaCategoria("Musica");
+    Assert.assertArrayEquals(arrayCat, video.listarCategorias());
+  }
 
-	}
+  @Test
+  public void testListarUsuarios() throws Exception {
+    carga();
+    Assert.assertArrayEquals(usu, video.listarUsuarios());
 
-	@Test
-	public void testListarVideos() {
-	
-		//Assert.assertArrayEquals(expecteds, actuals);
-	}
+  }
 
-	@Test
-	public void testModificarVideo() {
-		carga();
-		Duration duracion = Duration.ofMinutes(5);
-		Video vid = new Video("Video2", "Descripcion2", duracion, "url2", null, fecha, true, null);
-		try {
-			video.altaVideo(usuario.getNick(), "Video1", "Descripcion1", duracion, "url", null, fecha);
-			video.modificarVideo(usuario.getNick(), "Video1", "Video2", "Descripcion2", "url2", null, duracion, true, fecha);
-		} catch (DuplicateClassException | InvalidDataException e) {
-			System.out.println(e.getMessage());
-		}
-		
-		Assert.assertEquals(vid, manejadorUsuarios.get("Pato").getCanal().getVideoCanal("Video2"));
-	}
-	
-	public void carga() {
-		usuario.setCanal(canal);
-		manejadorUsuarios.add(usuario);
-	}
+  @Test
+  public void testListarVideos() {
+
+    // Assert.assertArrayEquals(expecteds, actuals);
+  }
+
+  @Test
+  public void testModificarVideo() {
+    carga();
+    Duration duracion = Duration.ofMinutes(5);
+    Video vid = new Video("Video2", "Descripcion2", duracion, "url2", null, fecha, true, null);
+    try {
+      video.altaVideo(usuario.getNick(), "Video1", "Descripcion1", duracion, "url", null, fecha);
+      video.modificarVideo(usuario.getNick(), "Video1", "Video2", "Descripcion2", "url2", null,
+          duracion, true, fecha);
+    } catch (DuplicateClassException | InvalidDataException e) {
+      System.out.println(e.getMessage());
+    }
+
+    Assert.assertEquals(vid, manejadorUsuarios.get("Pato").getCanal().getVideoCanal("Video2"));
+  }
+
+  public void carga() {
+    usuario.setCanal(canal);
+    manejadorUsuarios.add(usuario);
+  }
 
 }

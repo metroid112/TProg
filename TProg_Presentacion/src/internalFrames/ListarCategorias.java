@@ -1,4 +1,5 @@
 package internalFrames;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,74 +18,61 @@ import interfaces.ICategorias;
 @SuppressWarnings("serial")
 public class ListarCategorias extends JInternalFrame {
 
-	private ICategorias ctrlCat;
-	private DefaultListModel<String> model = new DefaultListModel<>();
-	public ListarCategorias() {
-		
-		setTitle("Lista de Categorias");
-		setBounds(0, 0, 640, 480);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		
-		
+  private ICategorias ctrlCat;
+  private DefaultListModel<String> model = new DefaultListModel<>();
 
-		
-		//DefaultListModel<String> model = new DefaultListModel<>();
-		JList<String> list = new JList<>(model);
-		list.setEnabled(false);
-		scrollPane.setViewportView(list);
-		list.setVisibleRowCount(4);
-		
-		JButton btnCerrar = new JButton("Cerrar");
-		btnCerrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				model.removeAllElements();
-			}
-		});
-		
-		JLabel lblCategoriasRegistradas = new JLabel("Categorias registradas:");
-		
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(275)
-					.addComponent(btnCerrar)
-					.addContainerGap(286, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(119)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-					.addGap(117))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(239, Short.MAX_VALUE)
-					.addComponent(lblCategoriasRegistradas, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-					.addGap(231))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(61)
-					.addComponent(lblCategoriasRegistradas)
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnCerrar)
-					.addContainerGap(72, Short.MAX_VALUE))
-		);
+  public ListarCategorias() {
 
-		getContentPane().setLayout(groupLayout);
-	}
-	
-	public void cargarDatos(){
-		
-		ctrlCat = Fabrica.getICategorias();
-		
-	    String[] cats = ctrlCat.listarCategorias();
-		int largo = cats.length;
-		for (int i = 0; i < largo; i++ ){
-		  model.addElement(cats[i]);
-		}
-		ctrlCat = null;
-	}
+    setTitle("Lista de Categorias");
+    setBounds(0, 0, 640, 480);
+
+    JScrollPane scrollPane = new JScrollPane();
+
+    // DefaultListModel<String> model = new DefaultListModel<>();
+    JList<String> list = new JList<>(model);
+    list.setEnabled(false);
+    scrollPane.setViewportView(list);
+    list.setVisibleRowCount(4);
+
+    JButton btnCerrar = new JButton("Cerrar");
+    btnCerrar.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent arg0) {
+        setVisible(false);
+        model.removeAllElements();
+      }
+    });
+
+    JLabel lblCategoriasRegistradas = new JLabel("Categorias registradas:");
+
+    GroupLayout groupLayout = new GroupLayout(getContentPane());
+    groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        .addGroup(groupLayout.createSequentialGroup().addGap(275).addComponent(btnCerrar)
+            .addContainerGap(286, Short.MAX_VALUE))
+        .addGroup(groupLayout.createSequentialGroup().addGap(119)
+            .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE).addGap(117))
+        .addGroup(Alignment.TRAILING,
+            groupLayout.createSequentialGroup().addContainerGap(239, Short.MAX_VALUE)
+                .addComponent(lblCategoriasRegistradas, GroupLayout.PREFERRED_SIZE, 154,
+                    GroupLayout.PREFERRED_SIZE)
+                .addGap(231)));
+    groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+        .addGroup(groupLayout.createSequentialGroup().addGap(61)
+            .addComponent(lblCategoriasRegistradas).addGap(18)
+            .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)
+            .addGap(18).addComponent(btnCerrar).addContainerGap(72, Short.MAX_VALUE)));
+
+    getContentPane().setLayout(groupLayout);
+  }
+
+  public void cargarDatos() {
+
+    ctrlCat = Fabrica.getICategorias();
+
+    String[] cats = ctrlCat.listarCategorias();
+    int largo = cats.length;
+    for (int i = 0; i < largo; i++) {
+      model.addElement(cats[i]);
+    }
+    ctrlCat = null;
+  }
 }
