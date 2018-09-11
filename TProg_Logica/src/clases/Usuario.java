@@ -43,9 +43,6 @@ public class Usuario {
     this.seguidores.put(seguidor.getNick(), seguidor);
   }
 
-  /**
-   * Comentario padre
-   */
   public void comentar(String texto, Date fecha, Video vid) {
     Comentario comentario = new Comentario(texto, this, vid, fecha);
     this.comentarios.add(comentario);

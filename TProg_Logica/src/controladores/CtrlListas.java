@@ -30,11 +30,7 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public void altaListaDefecto(String nombreListaDefecto) throws Exception { // Itera en todos los
-                                                                             // usuarios y convoca
-    // ingresarListaDefecto(String nombre)
-    // sobre su canal
-
+  public void altaListaDefecto(String nombreListaDefecto) throws Exception {
     if (!manejadorListas.existeLista(nombreListaDefecto)) {
       manejadorListas.add(nombreListaDefecto);
       manejadorUsuarios.agregarListaDefecto(nombreListaDefecto);
@@ -45,13 +41,7 @@ public class CtrlListas implements IListas {
 
   @Override
   public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
-      throws Exception { // busco el
-    // usuario y
-    // le pido a
-    // su canal
-    // que haga
-    // el resto
-
+      throws Exception { 
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     if (!usuarioObjetivo.getCanal().getListaParticulares().containsKey(nombre)) {
       usuarioObjetivo.getCanal().ingresarListaParticular(nombre, visibilidad);

@@ -54,7 +54,7 @@ public class Video {
   }
 
   public void addComentarioPadre(Comentario com) {
-    this.comentarios.put(com.getID(), com);
+    this.comentarios.put(com.getId(), com);
   }
 
   public Canal getCanal() {
@@ -77,7 +77,7 @@ public class Video {
     return encontrado;
   }
 
-  public DtVideo getDT() {
+  public DtVideo getDt() {
 
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
         this.duracion, this.visible, this.comentarios, this.calificaciones);

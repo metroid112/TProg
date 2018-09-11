@@ -44,7 +44,7 @@ public class CtrlVideos implements IVideos {
   public DtVideo getDtVideo(String video, String usuario) {
 
     Video vid = mUsu.get(usuario).getCanal().getVideoCanal(video);
-    return vid.getDT();
+    return vid.getDt();
 
   }
 

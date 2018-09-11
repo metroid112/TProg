@@ -8,7 +8,7 @@ public class DtUsuario {
   public Date fechaNacimiento;
   public BufferedImage imagen;
   public String nombre;
-  public String apellido; 
+  public String apellido;
   public String canal;
   public String correo;
   public String descripcionCanal;

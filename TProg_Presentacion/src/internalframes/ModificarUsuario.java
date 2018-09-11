@@ -56,7 +56,7 @@ public class ModificarUsuario extends JInternalFrame {
       public void actionPerformed(ActionEvent e) {
         String usuarioSeleccionado = panel.getSelectedItem();
         if (usuarioSeleccionado != null) {
-
+          // TODO something
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un usuario", "Error",
               getDefaultCloseOperation());

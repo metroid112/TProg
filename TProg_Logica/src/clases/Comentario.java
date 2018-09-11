@@ -21,7 +21,7 @@ public class Comentario {
   }
 
   /**
-   * comentario respuesta con fecha
+   * comentario respuesta con fecha.
    */
   public Comentario(String texto, Usuario usuario, Video video, Comentario padre, Date fecha) {
 
@@ -35,9 +35,6 @@ public class Comentario {
     padre.addHijo(this);
   }
 
-  /**
-   * comentario padre
-   */
   public Comentario(String texto, Usuario usuario, Video video, Date fecha) {
     this.texto = texto;
     this.usuario = usuario;
@@ -49,7 +46,7 @@ public class Comentario {
   }
 
   public void addHijo(Comentario hijo) {
-    this.respuestas.put(hijo.getID(), hijo);
+    this.respuestas.put(hijo.getId(), hijo);
   }
 
   public Comentario getCom(Integer idComentario) {
@@ -69,11 +66,11 @@ public class Comentario {
     }
   }
 
-  public DtComentario getDT() {
+  public DtComentario getDt() {
     return new DtComentario(this);
   }
 
-  public Integer getID() {
+  public Integer getId() {
     return this.id;
   }
 

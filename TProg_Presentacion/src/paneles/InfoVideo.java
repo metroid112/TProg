@@ -148,7 +148,7 @@ public class InfoVideo extends JPanel {
   public void cargarDatos(DtVideo dtVid) {
     lblVnombre.setText(dtVid.nombre);
     textVdescripcion.setText(dtVid.descripcion);
-    lblVurl.setText(dtVid.URL);
+    lblVurl.setText(dtVid.Url);
     if (dtVid.visible) {
       lblVvisibilidad.setText("Publico");
     } else {
@@ -183,7 +183,8 @@ public class InfoVideo extends JPanel {
 
   public DefaultMutableTreeNode loadComentarios(LinkedHashMap<Integer, DtComentario> coments,
       String nombreVideo) {
-    DefaultMutableTreeNode nodo, raiz;
+    DefaultMutableTreeNode nodo;
+    DefaultMutableTreeNode raiz;
     raiz = new DefaultMutableTreeNode(nombreVideo);
     for (DtComentario com : coments.values()) {
       nodo = getNode(com);

@@ -98,9 +98,7 @@ public class CtrlUsuariosCanalesTest {
           new Date(10), image, "canalPato", "Descripcioncanal", null, true);
       ctrlListas.altaListaDefecto("listaDefecto");
       ctrlListas.altaListaParticular("listaParticular", "Pato", true);
-      String[] esperado = { "listaDefecto2", "listaDefecto", "listaParticular" }; // "listaDefecto2"
-                                                                                  // se crea en
-      // otra prueba anteriormente
+      String[] esperado = { "listaDefecto2", "listaDefecto", "listaParticular" };
       Assert.assertArrayEquals(esperado,
           controladorUsuariosCanales.listarListasDeReproduccion("Pato"));
     } catch (Exception e) {

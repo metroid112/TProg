@@ -271,20 +271,18 @@ public class ModificarVideo extends JInternalFrame {
 
   private void cargarInfo() {
     if (seleccionVideo.getUsuario() != null && seleccionVideo.getVideo() != null) {
-      DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario()); // Pido
-                                                                                                    // info
-      // del video
-      // para
-      // desplegar
+      DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
       tfNombre.setText(infoVid.nombre);
       textDescripcion.setText(infoVid.descripcion);
-      tfUrl.setText(infoVid.URL);
+      tfUrl.setText(infoVid.Url);
       if (infoVid.visible) {
         rdbtnPublico.doClick();
       } else {
         rdbtnPrivado.doClick();
       }
-      int horas, min, seg;
+      int horas;
+      int min;
+      int seg;
       Duration duracion = infoVid.duracion;
       horas = (int) duracion.toHours();
       duracion = duracion.minusHours(horas);
@@ -332,7 +330,12 @@ public class ModificarVideo extends JInternalFrame {
   private void modificarVideo() {
     // try {
 
-    String nick, nombreOld, nombre, descripcion, url, categoria;
+    String nick;
+    String nombreOld;
+    String nombre;
+    String descripcion;
+    String url;
+    String categoria;
     Duration duracion;
     Boolean visible;
     nick = seleccionVideo.getUsuario();

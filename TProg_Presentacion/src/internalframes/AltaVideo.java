@@ -27,7 +27,7 @@ import interfaces.IVideos;
 @SuppressWarnings("serial")
 public class AltaVideo extends JInternalFrame {
   private JTextField TextoNombre;
-  private JTextField tFieldURL;
+  private JTextField tFieldUrl;
   private JComboBox<String> cBoxUsuarios;
   private JTextArea tAreaDescripcion;
   private JSpinner spinnerHoras;
@@ -88,8 +88,8 @@ public class AltaVideo extends JInternalFrame {
 
     JLabel lblUrl = new JLabel("URL:");
 
-    tFieldURL = new JTextField();
-    tFieldURL.setColumns(10);
+    tFieldUrl = new JTextField();
+    tFieldUrl.setColumns(10);
 
     JLabel lblCategoria = new JLabel("Categoria:");
 
@@ -155,7 +155,7 @@ public class AltaVideo extends JInternalFrame {
                                     .addComponent(btnAceptar).addGap(18).addComponent(btnCancelar))
                                 .addComponent(cBoxCategoria, GroupLayout.PREFERRED_SIZE, 326,
                                     GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(tFieldURL, GroupLayout.PREFERRED_SIZE, 326,
+                        .addComponent(tFieldUrl, GroupLayout.PREFERRED_SIZE, 326,
                             GroupLayout.PREFERRED_SIZE)))
                     .addGroup(groupLayout.createSequentialGroup()
                         .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -199,7 +199,7 @@ public class AltaVideo extends JInternalFrame {
                 .addGroup(groupLayout.createSequentialGroup().addComponent(lblDuracion)
                     .addPreferredGap(ComponentPlacement.RELATED)))
             .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblUrl)
-                .addComponent(tFieldURL, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+                .addComponent(tFieldUrl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(ComponentPlacement.RELATED)
             .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -234,7 +234,11 @@ public class AltaVideo extends JInternalFrame {
   }
 
   public void aceptar() {
-    String nick, nombre, descripcion, url, categoria;
+    String nick;
+    String nombre;
+    String descripcion;
+    String url;
+    String categoria;
     Duration duracion;
     /**
      * recolecto la info del frame
@@ -242,7 +246,7 @@ public class AltaVideo extends JInternalFrame {
     nick = (String) cBoxUsuarios.getSelectedItem();
     nombre = TextoNombre.getText();
     descripcion = tAreaDescripcion.getText();
-    url = tFieldURL.getText();
+    url = tFieldUrl.getText();
     categoria = (String) cBoxCategoria.getSelectedItem();
     if (categoria.equals("Sin Categoria")) { // Chequeo si eligio alguna categoria
       categoria = null;
@@ -282,7 +286,7 @@ public class AltaVideo extends JInternalFrame {
 
   private void clearDatos() {
     TextoNombre.setText(null);
-    tFieldURL.setText(null);
+    tFieldUrl.setText(null);
     tAreaDescripcion.setText(null);
     datePicker.setDate(null);
     cBoxCategoria.setSelectedItem(null);

@@ -7,16 +7,16 @@ import clases.Comentario;
 public class DtComentario {
   public LinkedHashMap<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
   public Integer id;
-  public String texto; 
+  public String texto;
   public String usuario;
 
   public DtComentario(Comentario comentario) {
-    this.id = comentario.getID();
+    this.id = comentario.getId();
     this.texto = comentario.getTexto();
     this.usuario = comentario.getUsuario().getNick();
     if (comentario.tieneRespuestas()) {
       for (Comentario com : comentario.getRespuestas().values()) {
-        this.hijos.put(com.getID(), new DtComentario(com));
+        this.hijos.put(com.getId(), new DtComentario(com));
       }
     }
   }
