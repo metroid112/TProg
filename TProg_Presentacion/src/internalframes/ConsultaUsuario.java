@@ -17,10 +17,6 @@ public class ConsultaUsuario extends JInternalFrame {
   SelectorUsuarios panel = new SelectorUsuarios();
 
   // private JInternalFrame infoUsuario;
-  @Override
-  public void setVisible(boolean b) {
-    setEnabled(b);
-  }
 
   public ConsultaUsuario(VerInformacionUsuario ventanaInfo) {
     /*

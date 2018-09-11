@@ -32,12 +32,6 @@ public class VerInformacionUsuario extends JInternalFrame {
   private IListas ctrlLis = Fabrica.getIListas();
   private JPanel PanelInfoVideo;
   private String UsrSel = null;
-
-  @Override
-  public void setVisible(boolean b) {
-    setEnabled(b);
-  }
-
   private ConsultaUsuario padre = null;
 
   public void setPadre(ConsultaUsuario padre) {
