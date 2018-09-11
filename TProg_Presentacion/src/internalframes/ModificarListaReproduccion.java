@@ -57,6 +57,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
 
     JButton btnGuardar = new JButton("Guardar");
     btnGuardar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
       }
     });
@@ -103,6 +104,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
     getContentPane().setLayout(groupLayout);
 
     btnCancelar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         setVisible(false);
         clean();
@@ -116,6 +118,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
     });
 
     comboBoxUsuario.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (comboBoxUsuario.getSelectedItem() != "") {
 
@@ -134,6 +137,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
     });
 
     btnGuardar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         String usuario = modelUsuario.getSelectedItem().toString();
         ctrLis = Fabrica.getIListas();

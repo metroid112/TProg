@@ -24,7 +24,12 @@ import interfaces.IVideos;
 
 @SuppressWarnings("serial")
 public class InfoVideo extends JPanel {
-  private JLabel lblVnombre, lblVduracion, lblVfecha, lblVvisibilidad, lblVcategoria, lblVurl;
+  private JLabel lblVnombre;
+  private JLabel lblVduracion;
+  private JLabel lblVfecha;
+  private JLabel lblVvisibilidad;
+  private JLabel lblVcategoria;
+  private JLabel lblVurl;
   private JTextArea textVdescripcion;
   private JTree tree;
   private JScrollPane scrollPane2;
@@ -152,9 +157,9 @@ public class InfoVideo extends JPanel {
     lblVcategoria.setText(dtVid.categoria);
     Duration duracion = dtVid.duracion;
     int horas = (int) duracion.toHours();
-    duracion = duracion.minusHours((long) horas);
+    duracion = duracion.minusHours(horas);
     int min = (int) duracion.toMinutes();
-    duracion = duracion.minusMinutes((long) min);
+    duracion = duracion.minusMinutes(min);
     int seg = (int) duracion.getSeconds();
     lblVduracion.setText(String.format("%d:%02d:%02d", horas, min, seg));
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

@@ -45,6 +45,7 @@ public class Main {
 
   public static void main(String[] args) {
     EventQueue.invokeLater(new Runnable() {
+      @Override
       public void run() {
         try {
           Main window = new Main();
@@ -208,6 +209,7 @@ public class Main {
 
     /************************ ALTA USUARIO ************************/
     mntmAltaUsuario.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (!ventanasAbiertas()) {
           frmAltaUsuario.cargarDatos();
@@ -218,6 +220,7 @@ public class Main {
 
     /************************** CONSULTA USUARIO ******************/
     mntmConsultarUsuario.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent ale) {
         if (!ventanasAbiertas()) {
           frmConsultaUsuario.cargarDatos();
@@ -228,6 +231,7 @@ public class Main {
 
     /************************ LISTAR USUARIO ************************/
     mntmListarUsuario.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent ale) {
         if (!ventanasAbiertas()) {
           frmListarUsuarios.cargarDatos();
@@ -238,6 +242,7 @@ public class Main {
 
     /************************ CONSULTA LISTA ************************/
     mntmConsultaLista.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (!ventanasAbiertas()) {
           frmConsultaLista.cargarDatos();
@@ -248,6 +253,7 @@ public class Main {
 
     /************************ QUITAR VIDEO DE LISTA ************************/
     mntmQuitarVideoDe.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (!ventanasAbiertas()) {
           frmQuitarVideo.cargarDatos();
@@ -258,6 +264,7 @@ public class Main {
 
     /************************ AGREGAR VIDEO A LISTA ************************/
     mntmAgregarVideoA.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (!ventanasAbiertas()) {
           frmAgregarVideo.cargarDatos();
@@ -269,6 +276,7 @@ public class Main {
 
     /************************ MODIFICAR LISTA ************************/
     mntmModificarLista.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
 
         if (!ventanasAbiertas()) {
@@ -280,6 +288,7 @@ public class Main {
 
     /************************ ALTA LISTA ************************/
     mntmAltaLista.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         if (!ventanasAbiertas()) {
           frmCrearListaReproduccion.cargarDatos();
@@ -291,6 +300,7 @@ public class Main {
 
     /************************ LISTAR CATEGORIA ************************/
     mntmListarCategoria.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
 
         if (!ventanasAbiertas()) {
@@ -303,6 +313,7 @@ public class Main {
 
     /************************ CONSULTA CATEGORIA ************************/
     mntmConsultaCategoria.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         if (!ventanasAbiertas()) {
           frmConsultaCategoria.cargarDatos();
@@ -314,15 +325,18 @@ public class Main {
 
     /************************ ALTA CATEGORIA ************************/
     mntmAltaCategora.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
-        if (!ventanasAbiertas())
+        if (!ventanasAbiertas()) {
           frmAltaCategoria.setVisible(true);
+        }
       }
 
     });
 
     /************************ CARGA DATOS ************************/
     mntmCargaDatos.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (!ventanasAbiertas()) {
           try {
@@ -339,6 +353,7 @@ public class Main {
 
     /*********************** CONSULTA VIDEO **********************/
     mntmConsultaVideo.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (!ventanasAbiertas()) {
           frmConsultaVideo.cargarDatos();
@@ -350,6 +365,7 @@ public class Main {
 
     /*********************** ALTA VIDEO *************************/
     mntmAltaVideo.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (!ventanasAbiertas()) {
           frmAltaVideo.cargarDatos();
@@ -361,6 +377,7 @@ public class Main {
 
     /******************* MODIFICAR VIDEO *********************/
     mntmModificarVideo.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (!ventanasAbiertas()) {
           frmModificarVideo.cargarDatos();

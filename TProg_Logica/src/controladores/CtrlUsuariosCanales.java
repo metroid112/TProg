@@ -49,6 +49,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     manejadorUsuarios.add(user);
   }
 
+  @Override
   public void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo,
       String ownerVideo) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
@@ -139,6 +140,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
   }
 
+  @Override
   public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
       String nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);

@@ -36,13 +36,16 @@ public class ModificarVideo extends JInternalFrame {
   private SeleccionVideo seleccionVideo;
   private IVideos contVid;
   private JTextField tfNombre;
-  private JTextField tfURL;
+  private JTextField tfUrl;
   private ButtonGroup grupo = new ButtonGroup();
   private JComboBox<String> cBoxCategoria;
-  private JSpinner spinnerHoras, spinnerMin, spinnerSeg;
+  private JSpinner spinnerHoras;
+  private JSpinner spinnerMin;
+  private JSpinner spinnerSeg;
   private JTextArea textDescripcion;
   private JXDatePicker datePicker;
-  private JRadioButton rdbtnPublico, rdbtnPrivado;
+  private JRadioButton rdbtnPublico;
+  private JRadioButton rdbtnPrivado;
 
   /**
    * Create the frame.
@@ -60,6 +63,7 @@ public class ModificarVideo extends JInternalFrame {
 
     JButton btnCancelar = new JButton("Cancelar");
     btnCancelar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         setVisible(false);
       }
@@ -67,6 +71,7 @@ public class ModificarVideo extends JInternalFrame {
 
     JButton btnModificar = new JButton("Modificar");
     btnModificar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         cargarInfo(); // Cambio al siguiente panel
       }
@@ -94,6 +99,7 @@ public class ModificarVideo extends JInternalFrame {
 
     JButton btnVolver = new JButton("Volver");
     btnVolver.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         cambioPanel();
       }
@@ -118,8 +124,8 @@ public class ModificarVideo extends JInternalFrame {
     tfNombre = new JTextField();
     tfNombre.setColumns(10);
 
-    tfURL = new JTextField();
-    tfURL.setColumns(10);
+    tfUrl = new JTextField();
+    tfUrl.setColumns(10);
 
     cBoxCategoria = new JComboBox<String>();
 
@@ -151,6 +157,7 @@ public class ModificarVideo extends JInternalFrame {
 
     JButton btnModificarDatos = new JButton("Modificar datos");
     btnModificarDatos.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         modificarVideo();
       }
@@ -197,7 +204,7 @@ public class ModificarVideo extends JInternalFrame {
                                         GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(ComponentPlacement.RELATED)
                                     .addComponent(lblSeg))
-                                .addComponent(tfURL, GroupLayout.DEFAULT_SIZE, 347,
+                                .addComponent(tfUrl, GroupLayout.DEFAULT_SIZE, 347,
                                     Short.MAX_VALUE)))
                         .addGroup(gl_panelMod.createSequentialGroup()
                             .addContainerGap(272, Short.MAX_VALUE).addComponent(btnModificarDatos)
@@ -237,7 +244,7 @@ public class ModificarVideo extends JInternalFrame {
                     GroupLayout.PREFERRED_SIZE))
             .addGap(18)
             .addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblUrl)
-                .addComponent(tfURL, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+                .addComponent(tfUrl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE))
             .addGap(34).addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE)
                 .addComponent(btnVolver).addComponent(btnModificarDatos))
@@ -271,7 +278,7 @@ public class ModificarVideo extends JInternalFrame {
       // desplegar
       tfNombre.setText(infoVid.nombre);
       textDescripcion.setText(infoVid.descripcion);
-      tfURL.setText(infoVid.URL);
+      tfUrl.setText(infoVid.URL);
       if (infoVid.visible) {
         rdbtnPublico.doClick();
       } else {
@@ -280,9 +287,9 @@ public class ModificarVideo extends JInternalFrame {
       int horas, min, seg;
       Duration duracion = infoVid.duracion;
       horas = (int) duracion.toHours();
-      duracion = duracion.minusHours((long) horas);
+      duracion = duracion.minusHours(horas);
       min = (int) duracion.toMinutes();
-      duracion = duracion.minusMinutes((long) min);
+      duracion = duracion.minusMinutes(min);
       seg = (int) duracion.getSeconds();
       spinnerHoras.setValue(horas);
       spinnerMin.setValue(min);
@@ -332,7 +339,7 @@ public class ModificarVideo extends JInternalFrame {
     nombreOld = seleccionVideo.getVideo();
     nombre = tfNombre.getText();
     descripcion = textDescripcion.getText();
-    url = tfURL.getText();
+    url = tfUrl.getText();
     categoria = (String) cBoxCategoria.getSelectedItem();
     if (categoria.equals("Sin Categoria")) { // Chequeo si eligio alguna categoria
       categoria = null;

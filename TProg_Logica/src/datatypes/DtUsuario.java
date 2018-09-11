@@ -7,7 +7,11 @@ public class DtUsuario {
 
   public Date fechaNacimiento;
   public BufferedImage imagen;
-  public String nombre, apellido, canal, correo, descripcionCanal;
+  public String nombre;
+  public String apellido; 
+  public String canal;
+  public String correo;
+  public String descripcionCanal;
   public boolean privado;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,

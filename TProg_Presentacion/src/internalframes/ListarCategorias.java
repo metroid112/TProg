@@ -36,6 +36,7 @@ public class ListarCategorias extends JInternalFrame {
 
     JButton btnCerrar = new JButton("Cerrar");
     btnCerrar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         setVisible(false);
         model.removeAllElements();

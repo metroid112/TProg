@@ -32,6 +32,7 @@ public class ConsultaUsuario extends JInternalFrame {
 
     JButton btnNewButton = new JButton("Cerrar");
     btnNewButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         setVisible(false);
       }
@@ -39,6 +40,7 @@ public class ConsultaUsuario extends JInternalFrame {
 
     JButton btnSeleccionar = new JButton("Seleccionar");
     btnSeleccionar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent clic) {
         String usuarioSeleccionado = panel.getSelectedItem();
         // JOptionPane.showMessageDialog(getFocusOwner(), "click", "Um suceso",

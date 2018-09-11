@@ -61,6 +61,7 @@ public class AltaUsuario extends JInternalFrame {
 
     JButton btnNewButton = new JButton("Cancelar");
     btnNewButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         dispose();
         clean();
@@ -109,6 +110,7 @@ public class AltaUsuario extends JInternalFrame {
 
     JRadioButton rdbtnPblico = new JRadioButton("P\u00FAblico");
     rdbtnPblico.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         rdbtnNewRadioButton.setSelected(false);
         rdbtnPblico.setSelected(true);
@@ -116,6 +118,7 @@ public class AltaUsuario extends JInternalFrame {
     });
 
     rdbtnNewRadioButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         rdbtnNewRadioButton.setSelected(true);
         rdbtnPblico.setSelected(false);
@@ -146,6 +149,7 @@ public class AltaUsuario extends JInternalFrame {
     // logica editar textos por defecto
 
     rdbtnNo.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         rdbtnNo.setSelected(true);
         rdbtnSi.setSelected(false);
@@ -157,6 +161,7 @@ public class AltaUsuario extends JInternalFrame {
     });
 
     rdbtnSi.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         rdbtnNo.setSelected(false);
         rdbtnSi.setSelected(true);
@@ -167,6 +172,7 @@ public class AltaUsuario extends JInternalFrame {
     });
 
     btnAceptar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         cmdAltaUsuarioActionPerformed(e);
       }
@@ -190,6 +196,7 @@ public class AltaUsuario extends JInternalFrame {
 
     JButton btnSeleccionar = new JButton("Seleccionar archivo");
     btnSeleccionar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         JFileChooser file = new JFileChooser();
         file.showOpenDialog(getFocusOwner());
@@ -374,11 +381,7 @@ public class AltaUsuario extends JInternalFrame {
           "Los campos Nickname, Nombre y Apellido son obligatorios.");
     } else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")) {
       JOptionPane.showMessageDialog(this, "Correo electronico invalido");
-    }
-//		else if ((comboBox.getSelectedIndex() == -1) || (comboBox_1.getSelectedIndex() == -1) || (comboBox_2.getSelectedIndex() == -1)){
-//			JOptionPane.showMessageDialog(this, "Fecha inválida.");
-//		}
-    else {
+    } else {
       try {
 
         String nick = textField.getText();
@@ -402,8 +405,9 @@ public class AltaUsuario extends JInternalFrame {
           String fechaString = dia2 + "/" + mes2 + "/" + ano.getText();
           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
           nacimiento = sdf.parse(fechaString);
-          if (!fechaString.equals(sdf.format(nacimiento)))
+          if (!fechaString.equals(sdf.format(nacimiento))) {
             throw new Exception();
+          }
         } catch (Exception ex) {
           throw new Exception("Formato de fecha incorrecto", ex);
         }

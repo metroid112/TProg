@@ -39,13 +39,14 @@ public class ConsultaLista extends JInternalFrame {
   private ButtonGroup grupoLista = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private JComboBox<String> comboBoxUsuario;
-  private JLabel Lvisible;
+  private JLabel lVisible;
   private InfoVideo infoVid;
   private JList<String> listaCategorias;
 
   private DefaultListModel<String> listListas = new DefaultListModel<>();
 
-  private JList<String> list, listaVideos;
+  private JList<String> list;
+  private JList<String> listaVideos;
 
   public ConsultaLista() {
 
@@ -64,6 +65,7 @@ public class ConsultaLista extends JInternalFrame {
 
     JButton btnVolver = new JButton("Volver");
     btnVolver.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         cambioPanel();
       }
@@ -101,13 +103,14 @@ public class ConsultaLista extends JInternalFrame {
     JLabel lblVisibilidad = new JLabel("Visibilidad:");
     lblVisibilidad.setEnabled(false);
 
-    Lvisible = new JLabel("");
+    lVisible = new JLabel("");
 
     JScrollPane scrollPaneVideos = new JScrollPane();
 
     JButton btnConsultarVideo = new JButton("Consultar Video");
     btnConsultarVideo.setEnabled(false);
     btnConsultarVideo.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         cargarVideo();
         cambioPanel();
@@ -139,7 +142,7 @@ public class ConsultaLista extends JInternalFrame {
                         Short.MAX_VALUE))
                 .addGap(42)).addGroup(
                     groupLayout.createSequentialGroup().addComponent(lblVisibilidad)
-                        .addPreferredGap(ComponentPlacement.UNRELATED).addComponent(Lvisible,
+                        .addPreferredGap(ComponentPlacement.UNRELATED).addComponent(lVisible,
                             GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
                         .addGap(155)))));
     groupLayout
@@ -147,7 +150,7 @@ public class ConsultaLista extends JInternalFrame {
             .addGroup(groupLayout.createSequentialGroup().addGap(25)
                 .addGroup(groupLayout
                     .createParallelGroup(Alignment.BASELINE).addComponent(lblNombreDeUsuario)
-                    .addComponent(lblVisibilidad).addComponent(Lvisible))
+                    .addComponent(lblVisibilidad).addComponent(lVisible))
                 .addGap(17)
                 .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
                     .addGroup(groupLayout.createSequentialGroup()
@@ -180,6 +183,7 @@ public class ConsultaLista extends JInternalFrame {
 
     listaVideos = new JList<String>();
     listaVideos.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent arg0) {
         if (!listaVideos.isSelectionEmpty()) {
           btnConsultarVideo.setEnabled(true);
@@ -197,9 +201,10 @@ public class ConsultaLista extends JInternalFrame {
     list = new JList<String>(listListas);
 
     list.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent arg0) {
         if (!list.isSelectionEmpty()) {
-          Lvisible.setEnabled(true);
+          lVisible.setEnabled(true);
           lblVideos.setEnabled(true);
           lblVisibilidad.setEnabled(true);
           lblCategorias.setEnabled(true);
@@ -207,7 +212,7 @@ public class ConsultaLista extends JInternalFrame {
         } else {
           listaCategorias.setModel(new DefaultListModel<String>());
           listaVideos.setModel(new DefaultListModel<String>());
-          Lvisible.setEnabled(false);
+          lVisible.setEnabled(false);
           lblVideos.setEnabled(false);
           lblVisibilidad.setEnabled(false);
           lblCategorias.setEnabled(false);
@@ -222,6 +227,7 @@ public class ConsultaLista extends JInternalFrame {
     panelSeleccion.setLayout(groupLayout);
 
     btnCerrar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
 
         setVisible(false);
@@ -237,18 +243,21 @@ public class ConsultaLista extends JInternalFrame {
     });
 
     rdbtnListasPorDefecto.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         cargarDefectoListas();
       }
     });
 
     rdbtnListasParticulares.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         cargarParticularListas();
       }
     });
 
     comboBoxUsuario.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (comboBoxUsuario.getSelectedItem() != "") {
 
@@ -345,9 +354,9 @@ public class ConsultaLista extends JInternalFrame {
     try {
       DtLista dtLista = ctrLis.getDt(lista, usuario);
       if (dtLista.isVisible()) {
-        Lvisible.setText("Publico");
+        lVisible.setText("Publico");
       } else {
-        Lvisible.setText("Privado");
+        lVisible.setText("Privado");
       }
       DefaultListModel<String> modeloVideos = new DefaultListModel<String>();
       for (String vid : dtLista.getVideos()) {

@@ -31,6 +31,7 @@ public class ListarUsuarios extends JInternalFrame {
 
     JButton btnNewButton = new JButton("Cerrar");
     btnNewButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         setVisible(false);
         // model.removeAllElements();

@@ -41,6 +41,7 @@ public class ConsultaVideo extends JInternalFrame {
 
     JButton btnVerInfo = new JButton("Ver Info");
     btnVerInfo.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         verInfo();
       }
@@ -71,6 +72,7 @@ public class ConsultaVideo extends JInternalFrame {
 
     JButton btnVolver = new JButton("Volver");
     btnVolver.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         // contVideos.getDtVideo(seleccionVideo.getVideo(),
         // seleccionVideo.getUsuario());
@@ -95,6 +97,7 @@ public class ConsultaVideo extends JInternalFrame {
             .addContainerGap(21, Short.MAX_VALUE)));
     panelInfo.setLayout(gl_panelInfo);
     btnCancelar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         setVisible(false);
       }

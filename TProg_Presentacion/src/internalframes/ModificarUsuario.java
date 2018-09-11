@@ -43,6 +43,7 @@ public class ModificarUsuario extends JInternalFrame {
     JButton btnCerrar = new JButton("Cerrar");
     JButton btnNewButton = new JButton("Cerrar");
     btnNewButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         setVisible(false);
         // model.removeAllElements();
@@ -51,6 +52,7 @@ public class ModificarUsuario extends JInternalFrame {
 
     JButton btnSeleccionar = new JButton("Seleccionar");
     btnSeleccionar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         String usuarioSeleccionado = panel.getSelectedItem();
         if (usuarioSeleccionado != null) {

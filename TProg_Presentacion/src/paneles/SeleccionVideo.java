@@ -87,6 +87,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
     listaVideos.setModel(model);
   }
 
+  @Override
   public void actionPerformed(ActionEvent e) { // El metodo salta cuando hay un elemento
                                                // seleccionado en el combo box
     updateLista((String) cBoxUsuarios.getSelectedItem()); // Llamo updateLista y le paso el nickname
@@ -97,8 +98,9 @@ public class SeleccionVideo extends JPanel implements ActionListener {
   public String getUsuario() {
     if (cBoxUsuarios.getSelectedIndex() > -1) {
       return (String) cBoxUsuarios.getSelectedItem();
-    } else
+    } else {
       return null;
+    }
   }
 
 }

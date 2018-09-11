@@ -64,8 +64,9 @@ public class Comentario {
         }
       }
       return encontrado;
-    } else
+    } else {
       return null;
+    }
   }
 
   public DtComentario getDT() {

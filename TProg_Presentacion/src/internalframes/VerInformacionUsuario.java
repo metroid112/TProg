@@ -63,6 +63,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 
     JButton btnNewButton = new JButton("Cerrar");
     btnNewButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         setVisible(false);
         getContentPane().remove(paneluser);
@@ -77,6 +78,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 
     JButton btnNewButton_1 = new JButton("Ver info video");
     btnNewButton_1.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         if (paneluser.isVideoSeleccionado()) {
           String VidSel = paneluser.getVideoSeleccionado();
@@ -89,6 +91,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 
     JButton verInfoListas = new JButton("Ver info lista");
     verInfoListas.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         // cargar informacion de lista,
         if (paneluser.isListaSelected()) {
@@ -135,6 +138,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 
     JButton btnVolver = new JButton("Volver");
     btnVolver.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         cambioPanel();
         cambioPanel();// se repite porque hay 3 paneles.
@@ -159,6 +163,7 @@ public class VerInformacionUsuario extends JInternalFrame {
 
     JButton button = new JButton("Volver");
     button.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         cambioPanel();
       }

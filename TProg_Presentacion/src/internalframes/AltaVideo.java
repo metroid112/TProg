@@ -97,6 +97,7 @@ public class AltaVideo extends JInternalFrame {
 
     JButton btnAceptar = new JButton("Aceptar");
     btnAceptar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         aceptar();
       }
@@ -106,6 +107,7 @@ public class AltaVideo extends JInternalFrame {
 
     JButton btnCancelar = new JButton("Cancelar");
     btnCancelar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         setVisible(false);
         clearDatos();

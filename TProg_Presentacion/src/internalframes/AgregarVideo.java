@@ -134,6 +134,7 @@ public class AgregarVideo extends JInternalFrame {
     getContentPane().setLayout(groupLayout);
 
     btnCancelar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         modelUsuario.removeAllElements();
         modelVideos.removeAllElements();
@@ -148,6 +149,7 @@ public class AgregarVideo extends JInternalFrame {
     });
 
     btnAceptar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         boolean checkUsuario = true;
 
@@ -178,6 +180,7 @@ public class AgregarVideo extends JInternalFrame {
     });
 
     comboBoxUsuario.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (comboBoxUsuario.getSelectedItem() != "") {
 
@@ -198,6 +201,7 @@ public class AgregarVideo extends JInternalFrame {
     });
 
     comboBoxVideos.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (comboBoxVideos.getSelectedItem() != "") {
 
@@ -216,6 +220,7 @@ public class AgregarVideo extends JInternalFrame {
     });
 
     comboBoxUsuObj.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (comboBoxUsuObj.getSelectedItem() != "") {
           list.setEnabled(true);
@@ -239,6 +244,7 @@ public class AgregarVideo extends JInternalFrame {
     });
 
     rdbtnListasPordefecto.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         cargarDefectoListas();
         btnAceptar.setEnabled(false);
@@ -246,6 +252,7 @@ public class AgregarVideo extends JInternalFrame {
     });
 
     rdbtnListasParticulares.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         cargarParticularListas();
         btnAceptar.setEnabled(false);
@@ -253,6 +260,7 @@ public class AgregarVideo extends JInternalFrame {
     });
 
     list.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent arg0) {
         btnAceptar.setEnabled(true);
       }

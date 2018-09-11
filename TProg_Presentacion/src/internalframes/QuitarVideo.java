@@ -125,6 +125,7 @@ public class QuitarVideo extends JInternalFrame {
 
     list.addListSelectionListener(new ListSelectionListener() {
 
+      @Override
       public void valueChanged(ListSelectionEvent arg0) {
         if (!list.isSelectionEmpty()) {
           comboBoxVideos.setEnabled(true);
@@ -141,6 +142,7 @@ public class QuitarVideo extends JInternalFrame {
     getContentPane().setLayout(groupLayout);
 
     btnCancelar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         modelUsuario.removeAllElements();
         modelVideos.removeAllElements();
@@ -150,6 +152,7 @@ public class QuitarVideo extends JInternalFrame {
     });
 
     comboBoxUsuario.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (comboBoxUsuario.getSelectedItem() != "") {
 
@@ -175,6 +178,7 @@ public class QuitarVideo extends JInternalFrame {
     });
 
     rdbtnListasPorDefecto.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         modelVideos.removeAllElements();
         cargarDefectoListas();
@@ -182,6 +186,7 @@ public class QuitarVideo extends JInternalFrame {
     });
 
     rdbtnListasParticulares.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         modelVideos.removeAllElements();
         cargarParticularListas();
@@ -189,6 +194,7 @@ public class QuitarVideo extends JInternalFrame {
     });
 
     btnAceptar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         boolean checkUsuario = true;
         boolean checkVideo = true;

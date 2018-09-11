@@ -31,6 +31,7 @@ public class AltaCategoria extends JInternalFrame {
 
     JButton btnAceptar = new JButton("Aceptar");
     btnAceptar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         cmdAltaCategcoriaActionPerformed(e);
       }
@@ -38,6 +39,7 @@ public class AltaCategoria extends JInternalFrame {
 
     JButton btnCancelar = new JButton("Cancelar");
     btnCancelar.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         textField.setText("");
         setVisible(false);
@@ -76,9 +78,9 @@ public class AltaCategoria extends JInternalFrame {
   }
 
   protected void cmdAltaCategcoriaActionPerformed(ActionEvent e) {
-    if (textField.getText().isEmpty())
+    if (textField.getText().isEmpty()) {
       JOptionPane.showMessageDialog(this, "La categoria no puede ser vacía");
-    else {
+    } else {
       try {
         ctrlCat = Fabrica.getICategorias();
         String texto = textField.getText();

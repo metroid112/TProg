@@ -22,11 +22,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
-import datatypes.DtUsuario;
-
 import javax.swing.SwingConstants;
 
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -336,7 +334,7 @@ public class DetallesUsuario extends JPanel {
     modelListas.removeAllElements();
 
     fab = Fabrica.getFabrica();
-    ctrlLis = fab.getIListas();
+    ctrlLis = Fabrica.getIListas();
 
     String[] listas = ctrlLis.listarListasParticularUsuario(usuario);
 

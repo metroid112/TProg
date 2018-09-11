@@ -45,7 +45,7 @@ public class CtrlListasTest {
     ListaParticular listaEsperada = new ListaParticular("Lista01",
         manejadorUsuarios.get("hectorg").getCanal(), new HashMap<String, Categoria>(), true);
     Assert.assertEquals(listaEsperada,
-        (ListaParticular) manejadorUsuarios.get("hectorg").getCanal().getLista("Lista01"));
+        manejadorUsuarios.get("hectorg").getCanal().getLista("Lista01"));
   }
 
   @Test

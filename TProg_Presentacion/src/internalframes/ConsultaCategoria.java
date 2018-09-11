@@ -32,6 +32,7 @@ public class ConsultaCategoria extends JInternalFrame {
 
     JButton btnNewButton = new JButton("Cerrar");
     btnNewButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         setVisible(false);
         model.removeAllElements();
@@ -49,6 +50,7 @@ public class ConsultaCategoria extends JInternalFrame {
     JComboBox<String> comboBox = new JComboBox<>(model);
 
     comboBox.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent arg0) {
         Object selected = comboBox.getSelectedItem();
         cmdConsultaCategoriaActionPerformed(selected);
@@ -128,13 +130,15 @@ public class ConsultaCategoria extends JInternalFrame {
 
         String[] infoVideo = ctrlCat.getInfoVideos(s);
         int largo = infoVideo.length;
-        for (int i = 0; i < largo; i++)
+        for (int i = 0; i < largo; i++) {
           videos.addElement(infoVideo[i]);
+        }
 
         String[] infoLista = ctrlCat.getInfoListas(s);
         largo = infoLista.length;
-        for (int i = 0; i < largo; i++)
+        for (int i = 0; i < largo; i++) {
           listas.addElement(infoLista[i]);
+        }
       }
     }
 

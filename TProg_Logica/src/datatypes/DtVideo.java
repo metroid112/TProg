@@ -15,7 +15,10 @@ public class DtVideo {
   public Duration duracion;
   public Date fecha;
 
-  public String nombre, URL, descripcion, categoria;
+  public String nombre;
+  public String URL;
+  public String descripcion;
+  public String categoria;
   public boolean visible;
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
