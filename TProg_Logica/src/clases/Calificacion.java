@@ -1,6 +1,6 @@
 package clases;
 
-import dataTypes.DtCalificacion;
+import datatypes.DtCalificacion;
 
 public class Calificacion {
 

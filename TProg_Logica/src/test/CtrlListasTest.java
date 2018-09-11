@@ -13,7 +13,7 @@ import org.junit.Test;
 import clases.Categoria;
 import clases.ListaParticular;
 import clases.Video;
-import dataTypes.DtLista;
+import datatypes.DtLista;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;

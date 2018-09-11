@@ -3,7 +3,7 @@ package interfaces;
 import java.time.Duration;
 import java.util.Date;
 
-import dataTypes.DtVideo;
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 

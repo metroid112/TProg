@@ -16,7 +16,7 @@ import clases.Canal;
 import clases.Comentario;
 import clases.Usuario;
 import clases.Video;
-import dataTypes.DtVideo;
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import interfaces.Fabrica;

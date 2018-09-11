@@ -1,4 +1,4 @@
-package internalFrames;
+package internalframes;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import dataTypes.DtLista;
+import datatypes.DtLista;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IVideos;

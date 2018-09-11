@@ -2,7 +2,7 @@ package clases;
 
 import java.util.LinkedList;
 
-import dataTypes.DtLista;
+import datatypes.DtLista;
 import manejadores.ManejadorUsuarios;
 
 public class ListaDefecto extends Lista {

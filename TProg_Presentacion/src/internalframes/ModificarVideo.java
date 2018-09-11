@@ -1,4 +1,4 @@
-package internalFrames;
+package internalframes;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -26,7 +26,7 @@ import javax.swing.SpinnerNumberModel;
 
 import org.jdesktop.swingx.JXDatePicker;
 
-import dataTypes.DtVideo;
+import datatypes.DtVideo;
 import excepciones.InvalidDataException;
 import interfaces.IVideos;
 import paneles.SeleccionVideo;

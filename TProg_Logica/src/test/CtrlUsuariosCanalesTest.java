@@ -15,7 +15,7 @@ import clases.Canal;
 import clases.Comentario;
 import clases.Usuario;
 import clases.Video;
-import dataTypes.DtUsuario;
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;

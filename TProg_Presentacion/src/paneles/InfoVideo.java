@@ -17,9 +17,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
-import dataTypes.DtCalificacion;
-import dataTypes.DtComentario;
-import dataTypes.DtVideo;
+import datatypes.DtCalificacion;
+import datatypes.DtComentario;
+import datatypes.DtVideo;
 import interfaces.IVideos;
 
 @SuppressWarnings("serial")

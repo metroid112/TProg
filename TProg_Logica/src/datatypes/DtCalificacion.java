@@ -1,4 +1,4 @@
-package dataTypes;
+package datatypes;
 
 public class DtCalificacion {
   public boolean like;

@@ -3,7 +3,7 @@ package clases;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import dataTypes.DtLista;
+import datatypes.DtLista;
 
 public class ListaParticular extends Lista {
 

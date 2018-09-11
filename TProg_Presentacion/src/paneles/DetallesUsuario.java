@@ -22,9 +22,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import datatypes.DtUsuario;
+
 import javax.swing.SwingConstants;
 
-import dataTypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;

@@ -6,7 +6,7 @@ import java.util.Date;
 import clases.Categoria;
 import clases.Usuario;
 import clases.Video;
-import dataTypes.DtVideo;
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import interfaces.IVideos;

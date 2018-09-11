@@ -2,7 +2,7 @@ package clases;
 
 import java.util.LinkedList;
 
-import dataTypes.DtLista;
+import datatypes.DtLista;
 
 public abstract class Lista {
 

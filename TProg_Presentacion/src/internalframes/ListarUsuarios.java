@@ -1,4 +1,4 @@
-package internalFrames;
+package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

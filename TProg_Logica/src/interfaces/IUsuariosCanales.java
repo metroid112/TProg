@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Date;
 
-import dataTypes.DtUsuario;
+import datatypes.DtUsuario;
 
 public interface IUsuariosCanales {
 

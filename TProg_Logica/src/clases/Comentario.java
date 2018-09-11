@@ -3,7 +3,7 @@ package clases;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
-import dataTypes.DtComentario;
+import datatypes.DtComentario;
 
 public class Comentario {
 

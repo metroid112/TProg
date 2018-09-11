@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
-import dataTypes.DtVideo;
+import datatypes.DtVideo;
 import excepciones.InvalidDataException;
 
 public class Video {

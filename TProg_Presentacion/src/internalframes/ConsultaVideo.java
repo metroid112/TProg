@@ -1,4 +1,4 @@
-package internalFrames;
+package internalframes;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

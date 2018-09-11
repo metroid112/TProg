@@ -1,4 +1,4 @@
-package internalFrames;
+package internalframes;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -23,8 +23,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import dataTypes.DtLista;
-import dataTypes.DtVideo;
+import datatypes.DtLista;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;

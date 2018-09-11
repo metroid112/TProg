@@ -13,7 +13,7 @@ import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
-import dataTypes.DtUsuario;
+import datatypes.DtUsuario;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;

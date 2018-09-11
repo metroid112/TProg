@@ -1,4 +1,4 @@
-package dataTypes;
+package datatypes;
 
 import java.time.Duration;
 import java.util.Date;

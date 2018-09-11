@@ -4,7 +4,7 @@ import clases.Canal;
 import clases.Lista;
 import clases.Usuario;
 import clases.Video;
-import dataTypes.DtLista;
+import datatypes.DtLista;
 import interfaces.IListas;
 import manejadores.ManejadorListas;
 import manejadores.ManejadorUsuarios;

@@ -1,6 +1,6 @@
 package interfaces;
 
-import dataTypes.DtLista;
+import datatypes.DtLista;
 
 public interface IListas {
 

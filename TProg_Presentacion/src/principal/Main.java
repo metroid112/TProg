@@ -25,21 +25,21 @@ import interfaces.ICategorias;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
-import internalFrames.AgregarVideo;
-import internalFrames.AltaCategoria;
-import internalFrames.AltaUsuario;
-import internalFrames.AltaVideo;
-import internalFrames.ConsultaCategoria;
-import internalFrames.ConsultaLista;
-import internalFrames.ConsultaUsuario;
-import internalFrames.ConsultaVideo;
-import internalFrames.CrearListaReproduccion;
-import internalFrames.ListarCategorias;
-import internalFrames.ListarUsuarios;
-import internalFrames.ModificarListaReproduccion;
-import internalFrames.ModificarVideo;
-import internalFrames.QuitarVideo;
-import internalFrames.VerInformacionUsuario;
+import internalframes.AgregarVideo;
+import internalframes.AltaCategoria;
+import internalframes.AltaUsuario;
+import internalframes.AltaVideo;
+import internalframes.ConsultaCategoria;
+import internalframes.ConsultaLista;
+import internalframes.ConsultaUsuario;
+import internalframes.ConsultaVideo;
+import internalframes.CrearListaReproduccion;
+import internalframes.ListarCategorias;
+import internalframes.ListarUsuarios;
+import internalframes.ModificarListaReproduccion;
+import internalframes.ModificarVideo;
+import internalframes.QuitarVideo;
+import internalframes.VerInformacionUsuario;
 
 public class Main {
 
