@@ -1,0 +1,46 @@
+D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\bin/catalina.sh: line 433: /
+.
+.
+Files/Oracle/Java/bin/java: No such file or directory
+D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\bin/catalina.sh: line 433: /
+.
+.
+Files/Oracle/Java/bin/java: No such file or directory
+11-Sep-2018 21:01:35.897 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+11-Sep-2018 21:01:35.897 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jre1.8.0_181
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_181-b13
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         D:\Stuff\Eclipse Java\TProg\Tomcat_Pato
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         D:\Stuff\Eclipse Java\TProg\Tomcat_Pato
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=D:/Stuff/Eclipse Java/TProg/Tomcat_Pato/conf/logging.properties
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=D:/Stuff/Eclipse Java/TProg/Tomcat_Pato
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=D:/Stuff/Eclipse Java/TProg/Tomcat_Pato
+11-Sep-2018 21:01:35.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=D:/Stuff/Eclipse Java/TProg/Tomcat_Pato/temp
+11-Sep-2018 21:01:35.899 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jre1.8.0_181\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\patos\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\patos\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;E:\Program\Mingw\bin;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\GnuWin32\bin\make.exe;C:\Program Files (x86)\GnuWin32\bin;C:\Program Files\nodejs;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Stuff\Eclipse Java\TProg\Tomcat\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;E:\Program\Mingw\bin;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\GnuWin32\bin\make.exe;C:\Program Files (x86)\GnuWin32\bin;C:\Program Files\nodejs;C:\Users\patos\AppData\Local\Programs\Python\Python36\Scripts;C:\Users\patos\AppData\Local\Programs\Python\Python36;C:\Users\patos\AppData\Local\Microsoft\WindowsApps;C:\Users\patos\AppData\Local\GitHubDesktop\bin;E:\Program\FAHClient;C:\Users\patos\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\GnuWin32\bin\make.exe;C:\Program Files (x86)\GnuWin32\bin;C:\Users\patos\AppData\Roaming\npm;C:\Users\patos\adb;C:\Users\patos\AppData\Local\atom\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;.
+11-Sep-2018 21:01:36.054 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+11-Sep-2018 21:01:36.654 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+11-Sep-2018 21:01:36.746 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+11-Sep-2018 21:01:36.747 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+11-Sep-2018 21:01:36.747 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 2978 ms
+11-Sep-2018 21:01:36.955 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+11-Sep-2018 21:01:36.955 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+11-Sep-2018 21:01:36.964 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\docs
+11-Sep-2018 21:01:39.053 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\docs has finished in 2,088 ms
+11-Sep-2018 21:01:39.054 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\examples
+11-Sep-2018 21:01:40.972 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\examples has finished in 1,918 ms
+11-Sep-2018 21:01:40.972 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\host-manager
+11-Sep-2018 21:01:41.029 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\host-manager has finished in 57 ms
+11-Sep-2018 21:01:41.029 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\manager
+11-Sep-2018 21:01:41.067 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\manager has finished in 38 ms
+11-Sep-2018 21:01:41.067 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\ROOT
+11-Sep-2018 21:01:41.190 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory D:\Stuff\Eclipse Java\TProg\Tomcat_Pato\webapps\ROOT has finished in 123 ms
+11-Sep-2018 21:01:41.194 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+11-Sep-2018 21:01:41.199 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+11-Sep-2018 21:01:41.201 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 4453 ms
