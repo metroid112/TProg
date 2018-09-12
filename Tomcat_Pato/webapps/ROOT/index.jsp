@@ -26,7 +26,7 @@ request.setAttribute("tomcatExamplesUrl", "/examples/");
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title><%=request.getServletContext().getServerInfo() %></title>
+        <title>HOLA SOY YO</title>
         <link href="favicon.ico" rel="icon" type="image/x-icon" />
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <link href="tomcat.css" rel="stylesheet" type="text/css" />
@@ -49,7 +49,7 @@ request.setAttribute("tomcatExamplesUrl", "/examples/");
             </div>
             <div id="upper" class="curved container">
                 <div id="congrats" class="curved container">
-                    <h2>If you're seeing this, you've successfully installed Tomcat. Congratulations!</h2>
+                    <h2>JOACO ES PUTO</h2>
                 </div>
                 <div id="notice">
                     <img src="tomcat.png" alt="[tomcat logo]" />

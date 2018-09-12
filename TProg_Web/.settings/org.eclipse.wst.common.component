@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TProg_Web">
+        <wb-resource deploy-path="/" source-path="/UyTube" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="TProg_Web"/>
+        <property name="java-output-path" value="/TProg_Web/build/classes"/>
+    </wb-module>
+</project-modules>
