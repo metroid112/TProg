@@ -16,7 +16,7 @@
 	
 <body>
 
-	<h1 style= "text-align:center">TestsJoaco</h1> 
+
 	
 	Sumas: <%= 5+6 %>
 	<br>
