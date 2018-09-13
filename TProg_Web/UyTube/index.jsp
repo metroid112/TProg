@@ -7,6 +7,13 @@
 
 </head>
 
+	<style>
+		body {
+			background-color: blue;
+			background-image: url("C://Users//joaco//OneDrive//Escritorio//GIT//TProg//TProg_Workstation//img//pacheco.JPG");
+		}
+	</style>
+	
 <body>
 
 	<h1 style= "text-align:center">Tests</h1>
