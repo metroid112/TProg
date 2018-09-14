@@ -6,7 +6,6 @@
 	<style>
 		body {
 			background-color: blue;
-			background-image: url("C://Users//joaco//OneDrive//Escritorio//GIT//TProg//TProg_Workstation//img//pacheco.JPG");
 		}
 	</style>
 <body>
