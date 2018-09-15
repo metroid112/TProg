@@ -1,6 +1,7 @@
 package interfaces;
 
 import controladores.CtrlCategorias;
+import controladores.CtrlDatos;
 import controladores.CtrlListas;
 import controladores.CtrlUsuariosCanales;
 import controladores.CtrlVideos;
@@ -30,6 +31,10 @@ public class Fabrica {
 
   public static IVideos getIVideos() {
     return new CtrlVideos();
+  }
+  
+  public static IDatos getIDatos() {
+    return new CtrlDatos();
   }
 
   private Fabrica() {

@@ -1,7 +1,6 @@
 package controladores;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -42,7 +41,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       Date fechaNacimiento, String path, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible) throws IOException {
     Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento,
-        ImageIO.read(new File(path)));
+        ImageIO.read(this.getClass().getResource(path)));
     Canal canal = new Canal(nombreCanal, descripcionCanal,
         ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
     user.setCanal(canal);
