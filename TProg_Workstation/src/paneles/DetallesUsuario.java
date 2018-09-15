@@ -31,8 +31,7 @@ import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class DetallesUsuario extends JPanel {
-  private Fabrica fab = Fabrica.getFabrica();
-  private IUsuariosCanales ctrlUsu = fab.getIUsuariosCanales();
+  private IUsuariosCanales ctrlUsu = Fabrica.getIUsuariosCanales();
   private IListas ctrlLis = null;
   private String noImagen = "img//sinImagen.jpg";
   private DefaultListModel<String> modelListas = new DefaultListModel<>();
@@ -333,7 +332,6 @@ public class DetallesUsuario extends JPanel {
 
     modelListas.removeAllElements();
 
-    fab = Fabrica.getFabrica();
     ctrlLis = Fabrica.getIListas();
 
     String[] listas = ctrlLis.listarListasParticularUsuario(usuario);

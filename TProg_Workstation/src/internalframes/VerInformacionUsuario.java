@@ -40,12 +40,11 @@ public class VerInformacionUsuario extends JInternalFrame {
 
   // imports para el video
   private InfoVideo PanelConsultaVideo;
-  private Fabrica fab = Fabrica.getFabrica();
   private JLabel lblNewLabel_1 = new JLabel("vNombreLista");
   private JLabel lblVtipolista = new JLabel("vTipoLista");
   private JLabel lblNewLabel_2 = new JLabel("vPrivacidad");
   private JList<String> videosLista;
-  private IVideos contVideos = fab.getIVideos();
+  private IVideos contVideos = Fabrica.getIVideos();
 
   // fin
 
