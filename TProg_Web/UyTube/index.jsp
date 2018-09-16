@@ -1,13 +1,8 @@
-<%@ page import = "java.util.*" %>		<%-- Importo utils --%>
+<%@ page import="java.util.*"%>
 <html>
 <head>
 <title>Prueba</title>
 </head>
-	<style>
-		body {
-			background-color: white;
-		}
-	</style>
 <body>
 	<h1 align="center" style="color: red"> Index </h1>
 	Sumas: <%= 5 + 6 %>
