@@ -33,5 +33,7 @@
 	Informacion del navegador: <%= request.getHeader("User-agent") %>
 	<br>
 	ID de session: <%= request.getSession().getId() %>
+	<br><br>
+	<a href="RegistroUsuarios.jsp"> Registrar Usuario </a>		<%-- para pasar a otra pagina --%>
 </body>
 </html>
