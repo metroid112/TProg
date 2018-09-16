@@ -48,24 +48,24 @@ public class ConsultaVideo extends JInternalFrame {
     });
 
     JButton btnCancelar = new JButton("Cancelar");
-    GroupLayout gl_panelSeleccion = new GroupLayout(panelSeleccion);
-    gl_panelSeleccion.setHorizontalGroup(gl_panelSeleccion.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelSeleccion.createSequentialGroup().addGap(57)
-            .addGroup(gl_panelSeleccion.createParallelGroup(Alignment.TRAILING)
-                .addGroup(gl_panelSeleccion.createSequentialGroup().addComponent(btnVerInfo)
+    GroupLayout glpanelSeleccion = new GroupLayout(panelSeleccion);
+    glpanelSeleccion.setHorizontalGroup(glpanelSeleccion.createParallelGroup(Alignment.LEADING)
+        .addGroup(glpanelSeleccion.createSequentialGroup().addGap(57)
+            .addGroup(glpanelSeleccion.createParallelGroup(Alignment.TRAILING)
+                .addGroup(glpanelSeleccion.createSequentialGroup().addComponent(btnVerInfo)
                     .addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnCancelar))
                 .addComponent(seleccionVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE))
             .addContainerGap(57, Short.MAX_VALUE)));
-    gl_panelSeleccion.setVerticalGroup(gl_panelSeleccion.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelSeleccion.createSequentialGroup().addGap(5)
+    glpanelSeleccion.setVerticalGroup(glpanelSeleccion.createParallelGroup(Alignment.LEADING)
+        .addGroup(glpanelSeleccion.createSequentialGroup().addGap(5)
             .addComponent(
                 seleccionVideo, GroupLayout.PREFERRED_SIZE, 357, GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(ComponentPlacement.RELATED)
-            .addGroup(gl_panelSeleccion.createParallelGroup(Alignment.BASELINE)
+            .addGroup(glpanelSeleccion.createParallelGroup(Alignment.BASELINE)
                 .addComponent(btnCancelar).addComponent(btnVerInfo))
             .addContainerGap(54, Short.MAX_VALUE)));
-    panelSeleccion.setLayout(gl_panelSeleccion);
+    panelSeleccion.setLayout(glpanelSeleccion);
 
     JPanel panelInfo = new JPanel();
     getContentPane().add(panelInfo, "name_1194937185363056");
@@ -82,20 +82,20 @@ public class ConsultaVideo extends JInternalFrame {
     });
 
     infoVideo = new InfoVideo(contVideos);
-    GroupLayout gl_panelInfo = new GroupLayout(panelInfo);
-    gl_panelInfo.setHorizontalGroup(gl_panelInfo.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelInfo.createSequentialGroup().addGroup(gl_panelInfo
+    GroupLayout glpanelInfo = new GroupLayout(panelInfo);
+    glpanelInfo.setHorizontalGroup(glpanelInfo.createParallelGroup(Alignment.LEADING)
+        .addGroup(glpanelInfo.createSequentialGroup().addGroup(glpanelInfo
             .createParallelGroup(Alignment.LEADING)
-            .addGroup(gl_panelInfo.createSequentialGroup().addGap(400).addComponent(btnVolver))
-            .addGroup(gl_panelInfo.createSequentialGroup().addGap(29).addComponent(infoVideo,
+            .addGroup(glpanelInfo.createSequentialGroup().addGap(400).addComponent(btnVolver))
+            .addGroup(glpanelInfo.createSequentialGroup().addGap(29).addComponent(infoVideo,
                 GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
             .addContainerGap(28, Short.MAX_VALUE)));
-    gl_panelInfo.setVerticalGroup(gl_panelInfo.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelInfo.createSequentialGroup().addContainerGap()
+    glpanelInfo.setVerticalGroup(glpanelInfo.createParallelGroup(Alignment.LEADING)
+        .addGroup(glpanelInfo.createSequentialGroup().addContainerGap()
             .addComponent(infoVideo, GroupLayout.PREFERRED_SIZE, 395, GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(ComponentPlacement.RELATED).addComponent(btnVolver)
             .addContainerGap(21, Short.MAX_VALUE)));
-    panelInfo.setLayout(gl_panelInfo);
+    panelInfo.setLayout(glpanelInfo);
     btnCancelar.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent arg0) {

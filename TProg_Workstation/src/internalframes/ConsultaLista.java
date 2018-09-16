@@ -70,20 +70,20 @@ public class ConsultaLista extends JInternalFrame {
         cambioPanel();
       }
     });
-    GroupLayout gl_panelInfo = new GroupLayout(panelInfo);
-    gl_panelInfo.setHorizontalGroup(gl_panelInfo.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelInfo.createSequentialGroup().addGap(18)
-            .addGroup(gl_panelInfo.createParallelGroup(Alignment.TRAILING).addComponent(btnVolver)
+    GroupLayout glPanelInfo = new GroupLayout(panelInfo);
+    glPanelInfo.setHorizontalGroup(glPanelInfo.createParallelGroup(Alignment.LEADING)
+        .addGroup(glPanelInfo.createSequentialGroup().addGap(18)
+            .addGroup(glPanelInfo.createParallelGroup(Alignment.TRAILING).addComponent(btnVolver)
                 .addComponent(infoVid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE))
             .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-    gl_panelInfo.setVerticalGroup(gl_panelInfo.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelInfo.createSequentialGroup().addContainerGap()
+    glPanelInfo.setVerticalGroup(glPanelInfo.createParallelGroup(Alignment.LEADING)
+        .addGroup(glPanelInfo.createSequentialGroup().addContainerGap()
             .addComponent(infoVid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                 GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnVolver)
             .addContainerGap(27, Short.MAX_VALUE)));
-    panelInfo.setLayout(gl_panelInfo);
+    panelInfo.setLayout(glPanelInfo);
     JLabel lblNombreDeUsuario = new JLabel("Nombre de usuario");
 
     comboBoxUsuario = new JComboBox<String>(modelUsuario);

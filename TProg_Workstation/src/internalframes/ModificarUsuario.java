@@ -84,8 +84,8 @@ public class ModificarUsuario extends JInternalFrame {
 
     splitPane.setLeftComponent(panel);
 
-    JPanel panel_1 = new JPanel();
-    splitPane.setRightComponent(panel_1);
+    JPanel panel1 = new JPanel();
+    splitPane.setRightComponent(panel1);
 
     JLabel lblNewLabel = new JLabel("Detalles usuario:");
 
@@ -132,9 +132,9 @@ public class ModificarUsuario extends JInternalFrame {
 
     JTextPane txtpnDesccan = new JTextPane();
     txtpnDesccan.setText("descCan");
-    GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-    gl_panel_1.setHorizontalGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panel_1.createSequentialGroup().addGap(30).addGroup(gl_panel_1
+    GroupLayout glPanel1 = new GroupLayout(panel1);
+    glPanel1.setHorizontalGroup(glPanel1.createParallelGroup(Alignment.LEADING)
+        .addGroup(glPanel1.createSequentialGroup().addGap(30).addGroup(glPanel1
             .createParallelGroup(Alignment.TRAILING)
             .addComponent(lblDescripcinCanal, GroupLayout.PREFERRED_SIZE, 123,
                 GroupLayout.PREFERRED_SIZE)
@@ -146,63 +146,63 @@ public class ModificarUsuario extends JInternalFrame {
             .addComponent(lblNickname, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
             .addComponent(lblNewLabel).addComponent(lblFechaDeNacimineto))
             .addPreferredGap(ComponentPlacement.RELATED).addGroup(
-                gl_panel_1.createParallelGroup(Alignment.LEADING)
-                    .addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_panel_1.createSequentialGroup()
+                glPanel1.createParallelGroup(Alignment.LEADING)
+                    .addGroup(glPanel1.createParallelGroup(Alignment.LEADING)
+                        .addGroup(glPanel1.createSequentialGroup()
                             .addComponent(txtCor, GroupLayout.PREFERRED_SIZE, 160,
                                 GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
-                        .addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-                            .addGroup(gl_panel_1.createSequentialGroup()
+                        .addGroup(glPanel1.createParallelGroup(Alignment.LEADING)
+                            .addGroup(glPanel1.createSequentialGroup()
                                 .addComponent(txtApe, GroupLayout.PREFERRED_SIZE, 160,
                                     GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
-                            .addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-                                .addGroup(gl_panel_1.createSequentialGroup()
+                            .addGroup(glPanel1.createParallelGroup(Alignment.LEADING)
+                                .addGroup(glPanel1.createSequentialGroup()
                                     .addComponent(txtA, GroupLayout.DEFAULT_SIZE, 160,
                                         Short.MAX_VALUE)
                                     .addGap(120))
-                                .addGroup(gl_panel_1.createSequentialGroup()
+                                .addGroup(glPanel1.createSequentialGroup()
                                     .addComponent(txtB, GroupLayout.PREFERRED_SIZE, 160,
                                         GroupLayout.PREFERRED_SIZE)
                                     .addContainerGap()))))
-                    .addGroup(gl_panel_1.createSequentialGroup()
-                        .addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
+                    .addGroup(glPanel1.createSequentialGroup()
+                        .addGroup(glPanel1.createParallelGroup(Alignment.TRAILING, false)
                             .addComponent(txtpnDesccan, Alignment.LEADING).addComponent(txtNomcan,
                                 Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
                         .addContainerGap()))));
-    gl_panel_1
+    glPanel1
         .setVerticalGroup(
-            gl_panel_1.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_panel_1.createSequentialGroup().addContainerGap()
+            glPanel1.createParallelGroup(Alignment.LEADING)
+                .addGroup(glPanel1.createSequentialGroup().addContainerGap()
                     .addComponent(lblNewLabel).addPreferredGap(ComponentPlacement.UNRELATED)
-                    .addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+                    .addGroup(glPanel1.createParallelGroup(Alignment.BASELINE)
                         .addComponent(lblNickname).addComponent(txtA, GroupLayout.PREFERRED_SIZE,
                             GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+                    .addGroup(glPanel1.createParallelGroup(Alignment.BASELINE)
                         .addComponent(lblNombre).addComponent(txtB, GroupLayout.PREFERRED_SIZE,
                             GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+                    .addGroup(glPanel1.createParallelGroup(Alignment.BASELINE)
                         .addComponent(lblApellido).addComponent(txtApe, GroupLayout.PREFERRED_SIZE,
                             GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+                    .addGroup(glPanel1.createParallelGroup(Alignment.BASELINE)
                         .addComponent(lblCorreo).addComponent(txtCor, GroupLayout.PREFERRED_SIZE,
                             GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(ComponentPlacement.RELATED).addComponent(lblFechaDeNacimineto)
                     .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel_1
+                    .addGroup(glPanel1
                         .createParallelGroup(Alignment.BASELINE).addComponent(lblNombreCanal)
                         .addComponent(txtNomcan, GroupLayout.PREFERRED_SIZE,
                             GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+                    .addGroup(glPanel1.createParallelGroup(Alignment.LEADING)
                         .addComponent(lblDescripcinCanal).addComponent(txtpnDesccan,
                             GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(106, Short.MAX_VALUE)));
-    panel_1.setLayout(gl_panel_1);
+    panel1.setLayout(glPanel1);
     getContentPane().setLayout(groupLayout);
 
   }

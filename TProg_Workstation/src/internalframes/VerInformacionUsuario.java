@@ -70,13 +70,13 @@ public class VerInformacionUsuario extends JInternalFrame {
 
     panel_2 = new JPanel();
 
-    JButton btnNewButton_1 = new JButton("Ver info video");
-    btnNewButton_1.addActionListener(new ActionListener() {
+    JButton btnNewButton1 = new JButton("Ver info video");
+    btnNewButton1.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         if (paneluser.isVideoSeleccionado()) {
-          String VidSel = paneluser.getVideoSeleccionado();
-          verInfo(VidSel, UsrSel);
+          String vidSel = paneluser.getVideoSeleccionado();
+          verInfo(vidSel, UsrSel);
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un video");
         }
@@ -89,9 +89,9 @@ public class VerInformacionUsuario extends JInternalFrame {
       public void actionPerformed(ActionEvent arg0) {
         // cargar informacion de lista,
         if (paneluser.isListaSelected()) {
-          String LisSel = paneluser.getListaSeleccionada();
-          if (LisSel != null) {
-            cargaDatosLista(LisSel, UsrSel);
+          String lisSel = paneluser.getListaSeleccionada();
+          if (lisSel != null) {
+            cargaDatosLista(lisSel, UsrSel);
           } else {
             JOptionPane.showInputDialog(this);
           }
@@ -103,27 +103,27 @@ public class VerInformacionUsuario extends JInternalFrame {
 
       }
     });
-    GroupLayout gl_panelInfoUsuario = new GroupLayout(panelInfoUsuario);
-    gl_panelInfoUsuario.setHorizontalGroup(gl_panelInfoUsuario
+    GroupLayout glpanelInfoUsuario = new GroupLayout(panelInfoUsuario);
+    glpanelInfoUsuario.setHorizontalGroup(glpanelInfoUsuario
         .createParallelGroup(Alignment.TRAILING)
         .addComponent(panel_2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 771,
             GroupLayout.PREFERRED_SIZE)
-        .addGroup(gl_panelInfoUsuario.createSequentialGroup().addContainerGap(443, Short.MAX_VALUE)
+        .addGroup(glpanelInfoUsuario.createSequentialGroup().addContainerGap(443, Short.MAX_VALUE)
             .addComponent(verInfoListas, GroupLayout.PREFERRED_SIZE, 111,
                 GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(ComponentPlacement.RELATED).addComponent(btnNewButton_1)
+            .addPreferredGap(ComponentPlacement.RELATED).addComponent(btnNewButton1)
             .addPreferredGap(ComponentPlacement.RELATED)
             .addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
             .addContainerGap()));
-    gl_panelInfoUsuario.setVerticalGroup(gl_panelInfoUsuario.createParallelGroup(Alignment.TRAILING)
-        .addGroup(gl_panelInfoUsuario.createSequentialGroup()
+    glpanelInfoUsuario.setVerticalGroup(glpanelInfoUsuario.createParallelGroup(Alignment.TRAILING)
+        .addGroup(glpanelInfoUsuario.createSequentialGroup()
             .addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 378, GroupLayout.PREFERRED_SIZE)
             .addGap(28)
-            .addGroup(gl_panelInfoUsuario.createParallelGroup(Alignment.BASELINE)
-                .addComponent(btnNewButton).addComponent(btnNewButton_1)
+            .addGroup(glpanelInfoUsuario.createParallelGroup(Alignment.BASELINE)
+                .addComponent(btnNewButton).addComponent(btnNewButton1)
                 .addComponent(verInfoListas))
             .addContainerGap()));
-    panelInfoUsuario.setLayout(gl_panelInfoUsuario);
+    panelInfoUsuario.setLayout(glpanelInfoUsuario);
 
     PanelInfoVideo = new JPanel();
     getContentPane().add(PanelInfoVideo, "name_1341929743838464");
@@ -138,19 +138,19 @@ public class VerInformacionUsuario extends JInternalFrame {
         cambioPanel();// se repite porque hay 3 paneles.
       }
     });
-    GroupLayout gl_PanelInfoVideo = new GroupLayout(PanelInfoVideo);
-    gl_PanelInfoVideo.setHorizontalGroup(gl_PanelInfoVideo.createParallelGroup(Alignment.TRAILING)
+    GroupLayout glPanelInfoVideo = new GroupLayout(PanelInfoVideo);
+    glPanelInfoVideo.setHorizontalGroup(glPanelInfoVideo.createParallelGroup(Alignment.TRAILING)
         .addComponent(PanelConsultaVideo, GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
-        .addGroup(gl_PanelInfoVideo.createSequentialGroup().addContainerGap(672, Short.MAX_VALUE)
+        .addGroup(glPanelInfoVideo.createSequentialGroup().addContainerGap(672, Short.MAX_VALUE)
             .addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
             .addContainerGap()));
-    gl_PanelInfoVideo.setVerticalGroup(gl_PanelInfoVideo.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_PanelInfoVideo.createSequentialGroup()
+    glPanelInfoVideo.setVerticalGroup(glPanelInfoVideo.createParallelGroup(Alignment.LEADING)
+        .addGroup(glPanelInfoVideo.createSequentialGroup()
             .addComponent(PanelConsultaVideo, GroupLayout.PREFERRED_SIZE, 374,
                 GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
             .addComponent(btnVolver).addContainerGap()));
-    PanelInfoVideo.setLayout(gl_PanelInfoVideo);
+    PanelInfoVideo.setLayout(glPanelInfoVideo);
 
     JPanel panelInfoListas = new JPanel();
     getContentPane().add(panelInfoListas, "name_1462766790498547");
@@ -172,47 +172,47 @@ public class VerInformacionUsuario extends JInternalFrame {
 
     JLabel lblDetallesLista = new JLabel("Detalles lista:");
     lblDetallesLista.setFont(new Font("Tahoma", Font.PLAIN, 15));
-    GroupLayout gl_panelInfoListas = new GroupLayout(panelInfoListas);
-    gl_panelInfoListas.setHorizontalGroup(gl_panelInfoListas.createParallelGroup(Alignment.TRAILING)
-        .addGroup(gl_panelInfoListas.createSequentialGroup().addContainerGap(549, Short.MAX_VALUE)
+    GroupLayout glpanelInfoListas = new GroupLayout(panelInfoListas);
+    glpanelInfoListas.setHorizontalGroup(glpanelInfoListas.createParallelGroup(Alignment.TRAILING)
+        .addGroup(glpanelInfoListas.createSequentialGroup().addContainerGap(549, Short.MAX_VALUE)
             .addComponent(VerInfoVideoDesdeCOnsultaLista, GroupLayout.PREFERRED_SIZE, 111,
                 GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(ComponentPlacement.UNRELATED)
             .addComponent(button, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
-        .addGroup(gl_panelInfoListas.createSequentialGroup().addGap(119)
+        .addGroup(glpanelInfoListas.createSequentialGroup().addGap(119)
             .addComponent(lblDetallesLista, GroupLayout.PREFERRED_SIZE, 148,
                 GroupLayout.PREFERRED_SIZE)
             .addContainerGap(504, Short.MAX_VALUE))
-        .addGroup(gl_panelInfoListas.createSequentialGroup().addGap(80)
-            .addGroup(gl_panelInfoListas.createParallelGroup(Alignment.LEADING)
+        .addGroup(glpanelInfoListas.createSequentialGroup().addGap(80)
+            .addGroup(glpanelInfoListas.createParallelGroup(Alignment.LEADING)
                 .addComponent(lblVtipolista, GroupLayout.PREFERRED_SIZE, 77,
                     GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblNewLabel_2).addComponent(lblNewLabel_1))
             .addPreferredGap(ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
-            .addGroup(gl_panelInfoListas.createParallelGroup(Alignment.LEADING)
+            .addGroup(glpanelInfoListas.createParallelGroup(Alignment.LEADING)
                 .addComponent(lblNewLabel).addComponent(VideosDeLista, GroupLayout.PREFERRED_SIZE,
                     227, GroupLayout.PREFERRED_SIZE))
             .addGap(129)));
-    gl_panelInfoListas
-        .setVerticalGroup(gl_panelInfoListas.createParallelGroup(Alignment.TRAILING)
-            .addGroup(gl_panelInfoListas.createSequentialGroup().addGap(30)
+    glpanelInfoListas
+        .setVerticalGroup(glpanelInfoListas.createParallelGroup(Alignment.TRAILING)
+            .addGroup(glpanelInfoListas.createSequentialGroup().addGap(30)
                 .addComponent(lblDetallesLista).addGap(18).addComponent(lblNewLabel)
                 .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(gl_panelInfoListas.createParallelGroup(Alignment.BASELINE)
+                .addGroup(glpanelInfoListas.createParallelGroup(Alignment.BASELINE)
                     .addComponent(VideosDeLista, GroupLayout.PREFERRED_SIZE, 228,
                         GroupLayout.PREFERRED_SIZE)
-                    .addGroup(gl_panelInfoListas.createSequentialGroup().addComponent(lblNewLabel_1)
+                    .addGroup(glpanelInfoListas.createSequentialGroup().addComponent(lblNewLabel_1)
                         .addGap(8).addComponent(lblNewLabel_2)
                         .addPreferredGap(ComponentPlacement.RELATED).addComponent(lblVtipolista)))
                 .addPreferredGap(ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
-                .addGroup(gl_panelInfoListas.createParallelGroup(Alignment.BASELINE)
+                .addGroup(glpanelInfoListas.createParallelGroup(Alignment.BASELINE)
                     .addComponent(button).addComponent(VerInfoVideoDesdeCOnsultaLista))
                 .addContainerGap()));
 
     videosLista = new JList<String>();
     VideosDeLista.setViewportView(videosLista);
-    panelInfoListas.setLayout(gl_panelInfoListas);
+    panelInfoListas.setLayout(glpanelInfoListas);
     // cambioPanel();
   }
 

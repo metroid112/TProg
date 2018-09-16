@@ -76,23 +76,23 @@ public class ModificarVideo extends JInternalFrame {
         cargarInfo(); // Cambio al siguiente panel
       }
     });
-    GroupLayout gl_panelSeleccion = new GroupLayout(panelSeleccion);
-    gl_panelSeleccion.setHorizontalGroup(gl_panelSeleccion.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelSeleccion.createSequentialGroup().addGap(13).addComponent(seleccionVideo,
+    GroupLayout glpanelSeleccion = new GroupLayout(panelSeleccion);
+    glpanelSeleccion.setHorizontalGroup(glpanelSeleccion.createParallelGroup(Alignment.LEADING)
+        .addGroup(glpanelSeleccion.createSequentialGroup().addGap(13).addComponent(seleccionVideo,
             GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         .addGroup(Alignment.TRAILING,
-            gl_panelSeleccion.createSequentialGroup().addContainerGap(285, Short.MAX_VALUE)
+            glpanelSeleccion.createSequentialGroup().addContainerGap(285, Short.MAX_VALUE)
                 .addComponent(btnModificar).addPreferredGap(ComponentPlacement.RELATED)
                 .addComponent(btnCancelar).addContainerGap()));
-    gl_panelSeleccion.setVerticalGroup(gl_panelSeleccion.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelSeleccion.createSequentialGroup().addGap(5)
+    glpanelSeleccion.setVerticalGroup(glpanelSeleccion.createParallelGroup(Alignment.LEADING)
+        .addGroup(glpanelSeleccion.createSequentialGroup().addGap(5)
             .addComponent(seleccionVideo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                 GroupLayout.PREFERRED_SIZE)
             .addGap(18)
-            .addGroup(gl_panelSeleccion.createParallelGroup(Alignment.BASELINE)
+            .addGroup(glpanelSeleccion.createParallelGroup(Alignment.BASELINE)
                 .addComponent(btnCancelar).addComponent(btnModificar))
             .addContainerGap(34, Short.MAX_VALUE)));
-    panelSeleccion.setLayout(gl_panelSeleccion);
+    panelSeleccion.setLayout(glpanelSeleccion);
 
     JPanel panelMod = new JPanel();
     getContentPane().add(panelMod, "name_77608104205516");
@@ -163,35 +163,35 @@ public class ModificarVideo extends JInternalFrame {
       }
     });
 
-    GroupLayout gl_panelMod = new GroupLayout(panelMod);
-    gl_panelMod
+    GroupLayout glpanelMod = new GroupLayout(panelMod);
+    glpanelMod
         .setHorizontalGroup(
-            gl_panelMod
+            glpanelMod
                 .createParallelGroup(
                     Alignment.LEADING)
-                .addGroup(gl_panelMod.createSequentialGroup()
-                    .addGroup(gl_panelMod.createParallelGroup(Alignment.TRAILING)
-                        .addGroup(gl_panelMod
+                .addGroup(glpanelMod.createSequentialGroup()
+                    .addGroup(glpanelMod.createParallelGroup(Alignment.TRAILING)
+                        .addGroup(glpanelMod
                             .createSequentialGroup().addGap(37)
-                            .addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
+                            .addGroup(glpanelMod.createParallelGroup(Alignment.LEADING)
                                 .addComponent(lblDescripcion).addComponent(lblNombre)
                                 .addComponent(
                                     lblDuracion)
                                 .addComponent(lblUrl).addComponent(lblCategoria)
                                 .addComponent(lblFecha).addComponent(lblVisibilidad))
                             .addGap(18)
-                            .addGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
+                            .addGroup(glpanelMod.createParallelGroup(Alignment.LEADING)
                                 .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 347,
                                     Short.MAX_VALUE)
                                 .addGroup(
-                                    gl_panelMod.createSequentialGroup().addComponent(rdbtnPublico)
+                                    glpanelMod.createSequentialGroup().addComponent(rdbtnPublico)
                                         .addGap(18).addComponent(rdbtnPrivado))
                                 .addComponent(datePicker, GroupLayout.PREFERRED_SIZE,
                                     GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cBoxCategoria, 0, 347, Short.MAX_VALUE)
                                 .addComponent(tfNombre, GroupLayout.DEFAULT_SIZE, 347,
                                     Short.MAX_VALUE)
-                                .addGroup(gl_panelMod.createSequentialGroup()
+                                .addGroup(glpanelMod.createSequentialGroup()
                                     .addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE,
                                         GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(ComponentPlacement.RELATED)
@@ -206,22 +206,22 @@ public class ModificarVideo extends JInternalFrame {
                                     .addComponent(lblSeg))
                                 .addComponent(tfUrl, GroupLayout.DEFAULT_SIZE, 347,
                                     Short.MAX_VALUE)))
-                        .addGroup(gl_panelMod.createSequentialGroup()
+                        .addGroup(glpanelMod.createSequentialGroup()
                             .addContainerGap(272, Short.MAX_VALUE).addComponent(btnModificarDatos)
                             .addPreferredGap(ComponentPlacement.UNRELATED).addComponent(btnVolver)))
                     .addContainerGap()));
-    gl_panelMod.setVerticalGroup(gl_panelMod.createParallelGroup(Alignment.LEADING)
-        .addGroup(gl_panelMod.createSequentialGroup().addGap(38)
-            .addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblNombre)
+    glpanelMod.setVerticalGroup(glpanelMod.createParallelGroup(Alignment.LEADING)
+        .addGroup(glpanelMod.createSequentialGroup().addGap(38)
+            .addGroup(glpanelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblNombre)
                 .addComponent(tfNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE))
             .addGap(18)
-            .addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE)
+            .addGroup(glpanelMod.createParallelGroup(Alignment.BASELINE)
                 .addComponent(lblDescripcion).addComponent(scrollPane, GroupLayout.PREFERRED_SIZE,
                     GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE,
                 Short.MAX_VALUE)
-            .addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblDuracion)
+            .addGroup(glpanelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblDuracion)
                 .addComponent(spinnerHoras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblHoras)
@@ -232,21 +232,21 @@ public class ModificarVideo extends JInternalFrame {
                     GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblSeg))
             .addGap(18)
-            .addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE)
+            .addGroup(glpanelMod.createParallelGroup(Alignment.BASELINE)
                 .addComponent(lblVisibilidad).addComponent(rdbtnPublico).addComponent(rdbtnPrivado))
             .addGap(18)
-            .addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblFecha)
+            .addGroup(glpanelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblFecha)
                 .addComponent(datePicker, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE))
             .addGap(18)
-            .addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblCategoria)
+            .addGroup(glpanelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblCategoria)
                 .addComponent(cBoxCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE))
             .addGap(18)
-            .addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblUrl)
+            .addGroup(glpanelMod.createParallelGroup(Alignment.BASELINE).addComponent(lblUrl)
                 .addComponent(tfUrl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                     GroupLayout.PREFERRED_SIZE))
-            .addGap(34).addGroup(gl_panelMod.createParallelGroup(Alignment.BASELINE)
+            .addGap(34).addGroup(glpanelMod.createParallelGroup(Alignment.BASELINE)
                 .addComponent(btnVolver).addComponent(btnModificarDatos))
             .addGap(47)));
 
@@ -255,7 +255,7 @@ public class ModificarVideo extends JInternalFrame {
     textDescripcion.setLineWrap(true);
     textDescripcion.setRows(5);
     scrollPane.setViewportView(textDescripcion);
-    panelMod.setLayout(gl_panelMod);
+    panelMod.setLayout(glpanelMod);
 
   }
 

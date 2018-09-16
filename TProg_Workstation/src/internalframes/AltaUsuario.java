@@ -189,7 +189,7 @@ public class AltaUsuario extends JInternalFrame {
 
     JLabel label = new JLabel("/");
 
-    JLabel label_1 = new JLabel("/");
+    JLabel label1 = new JLabel("/");
 
     JLabel lblImagen = new JLabel("Imagen:");
     lblImagen.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -281,7 +281,7 @@ public class AltaUsuario extends JInternalFrame {
                             .addComponent(mes, GroupLayout.PREFERRED_SIZE, 43,
                                 GroupLayout.PREFERRED_SIZE)
                             .addGap(7)
-                            .addComponent(label_1, GroupLayout.PREFERRED_SIZE, 5,
+                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 5,
                                 GroupLayout.PREFERRED_SIZE)
                             .addGap(6)
                             .addComponent(ano, GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
@@ -331,7 +331,7 @@ public class AltaUsuario extends JInternalFrame {
                         GroupLayout.PREFERRED_SIZE)
                     .addComponent(ano, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                         GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label).addComponent(label_1))
+                    .addComponent(label).addComponent(label1))
                 .addGap(13)
                 .addGroup(
                     groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(rdbtnPblico)
