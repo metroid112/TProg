@@ -9,6 +9,7 @@
 		}
 	</style>
 <body>
+	<h1 align="center" style="color: red"> Index </h1>
 	Sumas: <%= 5 + 6 %>
 	<br>
 	Boolean: <%= 2 * 5 > 11 %>
@@ -28,5 +29,9 @@
 	%>
 	<br>
 	String: <%= getS() %>
+	<br><br>
+	Informacion del navegador: <%= request.getHeader("User-agent") %>
+	<br>
+	ID de session: <%= request.getSession().getId() %>
 </body>
 </html>
