@@ -41,7 +41,7 @@ public class ConsultaCategoria extends JInternalFrame {
 
     JScrollPane scrollPane = new JScrollPane();
 
-    JScrollPane scrollPane_1 = new JScrollPane();
+    JScrollPane scrollPane1 = new JScrollPane();
 
     JLabel lblVideos = new JLabel("Videos:");
 
@@ -74,7 +74,7 @@ public class ConsultaCategoria extends JInternalFrame {
                 .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
                     .addComponent(lblListasDeReproduccion).addComponent(lblVideos)
                     .addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-                        .addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                         .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)))
                 .addGap(107)).addGroup(Alignment.TRAILING,
                     groupLayout.createSequentialGroup().addComponent(btnNewButton).addGap(216)))));
@@ -89,7 +89,7 @@ public class ConsultaCategoria extends JInternalFrame {
                         GroupLayout.PREFERRED_SIZE)
                     .addGap(18).addComponent(lblListasDeReproduccion)
                     .addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                    .addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 110,
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 110,
                         GroupLayout.PREFERRED_SIZE)
                     .addGap(70).addComponent(btnNewButton))
                 .addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
@@ -100,9 +100,9 @@ public class ConsultaCategoria extends JInternalFrame {
     list.setEnabled(false);
     scrollPane.setViewportView(list);
 
-    JList<String> list_1 = new JList<>(listas);
-    list_1.setEnabled(false);
-    scrollPane_1.setViewportView(list_1);
+    JList<String> list1 = new JList<>(listas);
+    list1.setEnabled(false);
+    scrollPane1.setViewportView(list1);
     getContentPane().setLayout(groupLayout);
 
   }

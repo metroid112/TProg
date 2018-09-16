@@ -94,7 +94,7 @@ public class DetallesUsuario extends JPanel {
     }
     JScrollPane scrollPane = new JScrollPane();
 
-    JScrollPane scrollPane_1 = new JScrollPane();
+    JScrollPane scrollPane1 = new JScrollPane();
 
     JLabel lblVideos = new JLabel("Videos");
 
@@ -138,9 +138,9 @@ public class DetallesUsuario extends JPanel {
 
     JTextField lblcanal = new JTextField(canal);
     lblcanal.setEditable(editar);
-    JScrollPane scrollPane_Seguidores = new JScrollPane();
+    JScrollPane scrollPaneSeguidores = new JScrollPane();
 
-    JScrollPane scrollPane_Seguidos = new JScrollPane();
+    JScrollPane scrollPaneSeguidos = new JScrollPane();
 
     JLabel lblUsuariosSeguidos = new JLabel("Seguidos");
 
@@ -152,7 +152,7 @@ public class DetallesUsuario extends JPanel {
     JLabel lblPrivacidadCanal = new JLabel("Visibilidad:");
     lblPrivacidadCanal.setHorizontalAlignment(SwingConstants.TRAILING);
 
-    JScrollPane scrollPane_2 = new JScrollPane();
+    JScrollPane scrollPane2 = new JScrollPane();
     GroupLayout groupLayout = new GroupLayout(this);
     groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
         .addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout
@@ -187,7 +187,7 @@ public class DetallesUsuario extends JPanel {
                         .addComponent(lblDescripcionCanal, GroupLayout.PREFERRED_SIZE, 131,
                             GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(ComponentPlacement.RELATED)
-                        .addComponent(scrollPane_2, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+                        .addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
                     .addGroup(groupLayout.createSequentialGroup()
                         .addComponent(lblPrivacidadCanal, GroupLayout.PREFERRED_SIZE, 131,
                             GroupLayout.PREFERRED_SIZE)
@@ -196,7 +196,7 @@ public class DetallesUsuario extends JPanel {
                 .addPreferredGap(ComponentPlacement.RELATED)
                 .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
                     .addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-                        .addComponent(scrollPane_Seguidos, Alignment.LEADING,
+                        .addComponent(scrollPaneSeguidos, Alignment.LEADING,
                             GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                         .addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 103,
                             Short.MAX_VALUE))
@@ -207,9 +207,9 @@ public class DetallesUsuario extends JPanel {
                         GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblListasDeReproduccion, GroupLayout.PREFERRED_SIZE, 95,
                         GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrollPane_Seguidores, GroupLayout.PREFERRED_SIZE, 101,
+                    .addComponent(scrollPaneSeguidores, GroupLayout.PREFERRED_SIZE, 101,
                         GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 101,
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 101,
                         GroupLayout.PREFERRED_SIZE))
                 .addGap(71))
             .addGroup(groupLayout.createSequentialGroup().addGap(151).addComponent(
@@ -251,7 +251,7 @@ public class DetallesUsuario extends JPanel {
                     .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
                         .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 113,
                             GroupLayout.PREFERRED_SIZE)
-                        .addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 113,
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 113,
                             GroupLayout.PREFERRED_SIZE))
                     .addGap(38)))
             .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -272,12 +272,12 @@ public class DetallesUsuario extends JPanel {
                             GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(ComponentPlacement.RELATED)
                     .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                        .addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 62,
+                        .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 62,
                             GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblDescripcionCanal)))
-                .addComponent(scrollPane_Seguidores, GroupLayout.PREFERRED_SIZE, 113,
+                .addComponent(scrollPaneSeguidores, GroupLayout.PREFERRED_SIZE, 113,
                     GroupLayout.PREFERRED_SIZE)
-                .addComponent(scrollPane_Seguidos, GroupLayout.PREFERRED_SIZE, 113,
+                .addComponent(scrollPaneSeguidos, GroupLayout.PREFERRED_SIZE, 113,
                     GroupLayout.PREFERRED_SIZE))
             .addGap(103)));
 
@@ -285,14 +285,14 @@ public class DetallesUsuario extends JPanel {
     textPane.setText(descripcionCanal);
     textPane.setEditable(false);
     textPane.setBackground(Color.WHITE);
-    scrollPane_2.setViewportView(textPane);
+    scrollPane2.setViewportView(textPane);
     listaSeguidores.setEnabled(false);
 
-    scrollPane_Seguidores.setViewportView(listaSeguidores);
+    scrollPaneSeguidores.setViewportView(listaSeguidores);
     listaSeguidos.setEnabled(false);
 
-    scrollPane_Seguidos.setViewportView(listaSeguidos);
-    scrollPane_1.setViewportView(listasDeReproduccion);
+    scrollPaneSeguidos.setViewportView(listaSeguidos);
+    scrollPane1.setViewportView(listasDeReproduccion);
 
     scrollPane.setViewportView(videos);
     setLayout(groupLayout);
@@ -320,10 +320,10 @@ public class DetallesUsuario extends JPanel {
     modelSeguidos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] Seguidos = ctrlUsu.listarSeguidos(usuario);
-    int largo = Seguidos.length;
+    String[] seguidos = ctrlUsu.listarSeguidos(usuario);
+    int largo = seguidos.length;
     for (int i = 0; i < largo; i++) {
-      modelSeguidos.addElement(Seguidos[i]);
+      modelSeguidos.addElement(seguidos[i]);
     }
     ctrlUsu = null;
   }

@@ -74,7 +74,7 @@ public class InfoVideo extends JPanel {
 
     lblVurl = new JLabel("vURL");
 
-    JScrollPane scrollPane_1 = new JScrollPane();
+    JScrollPane scrollPane1 = new JScrollPane();
 
     GroupLayout groupLayout = new GroupLayout(this);
     groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -93,14 +93,14 @@ public class InfoVideo extends JPanel {
             .addGap(18)
             .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
                 .addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                .addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 239,
+                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 239,
                     GroupLayout.PREFERRED_SIZE))
             .addContainerGap()));
     groupLayout
         .setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
             .addGroup(groupLayout.createSequentialGroup().addGap(39)
                 .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                    .addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 155,
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 155,
                         GroupLayout.PREFERRED_SIZE)
                     .addGroup(groupLayout.createSequentialGroup()
                         .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -127,10 +127,10 @@ public class InfoVideo extends JPanel {
                 .addGap(29)));
 
     JLabel lblValoraciones = new JLabel("Valoraciones");
-    scrollPane_1.setColumnHeaderView(lblValoraciones);
+    scrollPane1.setColumnHeaderView(lblValoraciones);
 
     listaValoraciones = new JList<String>();
-    scrollPane_1.setViewportView(listaValoraciones);
+    scrollPane1.setViewportView(listaValoraciones);
 
     JLabel lblDecripcion = new JLabel("Descripcion");
     scrollPane2.setColumnHeaderView(lblDecripcion);
