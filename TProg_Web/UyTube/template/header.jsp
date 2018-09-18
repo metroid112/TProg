@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<!-- page import="com.gamebook.controllers.Login"% -->
-<!--  %@page import="com.gamebook.model.Usuario"% -->
+<%@page import="clases.Usuario"%>
+<!--  %@page import="sr.gamebook.model.Usuario"% -->
 <div id="header">
     <div class="logo"><a href="/">gamebook</a></div>
     <div class="subtitulo">Porque los gamers necesitaban su red social</div>
