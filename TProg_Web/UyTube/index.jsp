@@ -1,9 +1,11 @@
 <%@ page import="java.util.*"%>
+<%@ page import="clases.*"%>
 <html>
 <head>
 <title>Prueba</title>
 </head>
 <body>
+	<%= new Categoria("hola") %>
 	<h1 align="center" style="color: red"> Index </h1>
 	Sumas: <%= 5 + 6 %>
 	<br>
