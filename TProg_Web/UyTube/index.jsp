@@ -31,6 +31,6 @@
 	<br>
 	ID de session: <%= request.getSession().getId() %>
 	<br><br>
-	<a href="/jsp/registro_usuarios.jsp"> Registrar Usuario </a>		<%-- para pasar a otra pagina --%>
+	<a href="jsp/registro_usuarios.jsp"> Registrar Usuario </a>		<%-- para pasar a otra pagina --%>
 </body>
 </html>
