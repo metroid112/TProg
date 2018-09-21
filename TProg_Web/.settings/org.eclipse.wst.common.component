@@ -2,7 +2,7 @@
     <wb-module deploy-name="TProg_Web">
         <wb-resource deploy-path="/" source-path="/UyTube" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="TProg_Web"/>
         <property name="java-output-path" value="/TProg_Web/build/classes"/>
+        <property name="context-root" value="/"/>
     </wb-module>
 </project-modules>
