@@ -54,5 +54,5 @@ public interface IUsuariosCanales {
 
   void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
-      String categoria, boolean visible, String pass) throws IOException;
+      String categoria, boolean visible, String pass);
 }

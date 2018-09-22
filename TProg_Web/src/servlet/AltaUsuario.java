@@ -63,7 +63,17 @@ public class AltaUsuario extends HttpServlet {
       }
       Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo, fechaNacimiento, imagenPath,
           nombreCanal, descripcionCanal, categoria, visible, passConfirm);
+      response.sendRedirect("/index.jsp");
     }
+    /**
+     * TODO:
+     * chequear usuarios existentes
+     * imagen
+     * embellecer
+     * chequeo de errores con sesion
+     * 
+     * 
+     */
   }
   
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
