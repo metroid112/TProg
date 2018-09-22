@@ -8,8 +8,4 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet-mapping>
-  	<servlet-name>UsuarioServlet</servlet-name>
-  	<url-pattern>/usuarioServlet</url-pattern>
-  </servlet-mapping>
 </web-app>

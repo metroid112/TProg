@@ -9,7 +9,7 @@
 		<br>
 		<%= new DtCalificacion(true, "usu", "vid").getLikeParsed() %> <%-- Arreglar --%>
 		<br>
-		<form action="/usuarioServlet" method="POST">
+		<form action="/UsuarioServlet" method="POST">
 			<input value="Submit" type="button" onclick="submit()" />	
 		</form>
 	</body>
