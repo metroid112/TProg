@@ -20,6 +20,8 @@ public class Usuario {
   private String nombre;
   private HashMap<String, Usuario> seguidores = new HashMap<String, Usuario>();
   private HashMap<String, Usuario> seguidos = new HashMap<String, Usuario>();
+  private String password = "";
+  private String imgPath = "img/usuarios/null.JPG";
 
   public Usuario() {
 
@@ -35,6 +37,21 @@ public class Usuario {
     this.imagen = image;
   }
 
+  public Usuario(String nickname, String nombre, String apellido, String correo,
+      Date fechaNacimiento, String image, String password) {
+    this.nick = nickname;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.correo = correo;
+    this.fechaNacimiento = fechaNacimiento;
+    this.imgPath = image;
+    this.password = password;
+  }
+  
+  public String getImg() {
+    return this.imgPath;
+  }
+  
   public void addCalificacion(Calificacion cal) {
     this.calificaciones.add(cal);
   }

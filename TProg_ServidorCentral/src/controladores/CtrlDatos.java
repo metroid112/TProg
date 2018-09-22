@@ -1,10 +1,14 @@
 package controladores;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+
+import javax.imageio.ImageIO;
 
 import interfaces.Fabrica;
 import interfaces.IDatos;
@@ -15,6 +19,8 @@ public class CtrlDatos implements IDatos {
   public void cargaDatos() throws ParseException, IOException {
     DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
     String divisor = "/";
+    
+    //BufferedImage img = ImageIO.read(new File("../TProg_ServidorCentral/src/res/horacio.JPG"));
 
     Fabrica.getIUsuariosCanales().altaUsuario("hrubino", "Horacio", "Rubino",
         "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"),

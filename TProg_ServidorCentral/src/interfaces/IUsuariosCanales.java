@@ -51,4 +51,8 @@ public interface IUsuariosCanales {
       String nombreDuenoVideo, Integer idComentarioPadre);
 
   public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
+
+  void altaUsuario(String nickname, String nombre, String apellido, String correo,
+      Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
+      String categoria, boolean visible, String pass) throws IOException;
 }

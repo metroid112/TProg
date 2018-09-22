@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-<title>Index</title>
+	<title>Index</title>
 </head>
 <body>
 	<h1>Requerimientos mínimos</h1>
@@ -26,5 +26,6 @@
 	<a href="jsp/listar_usuarios.jsp">Listar Usuarios (WIP)</a>
 	<br>
 	<a href="jsp/quitar_video_lista.jsp">Quitar Video de Lista (WIP)</a>
+	<br>
 </body>
 </html>

@@ -15,17 +15,19 @@ public class UsuarioServlet extends HttpServlet {
     super();
     // TODO Auto-generated constructor stub
   }
-
+  
+  private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    // TODO processRequest
+  }
+  
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    response.getWriter().println("hola");
+    processRequest(request,response);
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    request.getRequestDispatcher("/index.jsp").forward(request, response);
+    processRequest(request,response);
   }
 
 }
