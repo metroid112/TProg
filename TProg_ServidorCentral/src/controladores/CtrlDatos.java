@@ -1,14 +1,10 @@
 package controladores;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-
-import javax.imageio.ImageIO;
 
 import interfaces.Fabrica;
 import interfaces.IDatos;
@@ -19,64 +15,74 @@ public class CtrlDatos implements IDatos {
   public void cargaDatos() throws ParseException, IOException {
     DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
     String divisor = "/";
-    
-    //BufferedImage img = ImageIO.read(new File("../TProg_ServidorCentral/src/res/horacio.JPG"));
 
     Fabrica.getIUsuariosCanales().altaUsuario("hrubino", "Horacio", "Rubino",
         "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"),
-        divisor + "res" + divisor + "horacio.JPG", "Canal Horacio",
-        "El canal Horacio es para publicar contenido divertido", "Sin categoria", true);
+        "img" + divisor + "usuarios" + divisor + "horacio.JPG", "Canal Horacio",
+        "El canal Horacio es para publicar contenido divertido", "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("mbusca", "Martin", "Buscaglia",
         "Martin.bus@agadu.org.uy",
-        format.parse("14/06/1972"), divisor + "res" + divisor + "martin.jpg", "El bocha",
-        "Mi canal para colgar cosas", "Sin categoria", true);
+        format.parse("14/06/1972"), "img" + divisor + "usuarios" + divisor + "martin.jpg",
+        "El bocha",
+        "Mi canal para colgar cosas", "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("hectorg", "H�ctor", "Guido",
         "hector.gui@elgalpon.org.uy",
-        format.parse("07/01/1954"), divisor + "res" + divisor + "null.jpg", "hectorg", "Canal HG",
-        "Sin categoria", true);
+        format.parse("07/01/1954"), "img" + divisor + "usuarios" + divisor + "null.jpg", "hectorg",
+        "Canal HG",
+        "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("tabarec", "Tabare", "Cardozo",
         "tabare.car@agadu.org.uy",
-        format.parse("24/07/1971"), divisor + "res" + divisor + "tabare.jpg", "Tabar�",
-        "Mi musica e ainda mais", "Sin categoria", true);
+        format.parse("24/07/1971"), "img" + divisor + "usuarios" + divisor + "tabare.jpg",
+        "Tabar�",
+        "Mi musica e ainda mais", "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("cachilas", "Waldemar \"Cachila\"", "Silva",
         "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"),
-        divisor + "res" + divisor + "cachila.jpg",
-        "El Cachila", "Para juntar cosas", "Sin categoria", false);
+        "img" + divisor + "usuarios" + divisor + "cachila.jpg",
+        "El Cachila", "Para juntar cosas", "Sin categoria", false, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("juliob", "Julio", "Bocca", "juliobocca@sodre.com.uy",
-        format.parse("16/03/1967"), divisor + "res" + divisor + "null.jpg", "juliob", "Canal de JB",
-        "Sin categoria", true);
+        format.parse("16/03/1967"), "img" + divisor + "usuarios" + divisor + "null.jpg", "juliob",
+        "Canal de JB",
+        "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("diegop", "Diego", "Parodi", "diego@efectocine.com",
-        format.parse("01/01/1975"), divisor + "res" + divisor + "null.jpg", "diegop", "Canal de DP",
-        "Sin categoria", true);
+        format.parse("01/01/1975"), "img" + divisor + "usuarios" + divisor + "null.jpg", "diegop",
+        "Canal de DP",
+        "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("kairoh", "Kairo", "Herrera",
         "kairoher@pilsenrock.com.uy",
-        format.parse("25/04/1840"), divisor + "res" + divisor + "kairo.jpg", "Kairo musica",
-        "Videos de grandes canciones de hoy y siempre", "Sin categoria", true);
+        format.parse("25/04/1840"), "img" + divisor + "usuarios" + divisor + "kairo.jpg",
+        "Kairo musica",
+        "Videos de grandes canciones de hoy y siempre", "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("robinh", "Robin", "Henderson",
         "Robin.h@tinglesa.com.uy",
-        format.parse("03/08/1940"), divisor + "res" + divisor + "null.jpg", "robinh", "Henderson",
-        "Sin categoria", true);
+        format.parse("03/08/1940"), "img" + divisor + "usuarios" + divisor + "null.jpg", "robinh",
+        "Henderson",
+        "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("marcelot", "Marcelo", "Tinelli",
         "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"),
-        divisor + "res" + divisor + "null.jpg",
-        "Tinelli total", "Todo lo que querias y m�s !", "Sin categoria", true);
+        "img" + divisor + "usuarios" + divisor + "null.jpg",
+        "Tinelli total", "Todo lo que querias y m�s !", "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("novick", "Edgardo", "Novick",
         "edgardo@novick.com.uy",
-        format.parse("17/07/1952"), divisor + "res" + divisor + "null.jpg", "Con la gente",
-        "Preparando las elecciones", "Sin categoria", true);
+        format.parse("17/07/1952"), "img" + divisor + "usuarios" + divisor + "null.jpg",
+        "Con la gente",
+        "Preparando las elecciones", "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("sergiop", "Sergio", "Puglia",
         "puglia@alpanpan.com.uy",
-        format.parse("28/01/1950"), divisor + "res" + divisor + "null.jpg", "Puglia invita",
-        "Programas del ciclo y videos de cocina masterchef", "Sin categoria", true);
+        format.parse("28/01/1950"), "img" + divisor + "usuarios" + divisor + "null.jpg",
+        "Puglia invita",
+        "Programas del ciclo y videos de cocina masterchef", "Sin categoria", true, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy",
-        format.parse("17/03/1976"), divisor + "res" + divisor + "recoba.jpg", "Chino Recoba",
-        "Canal de goles con Nacional ", "Sin categoria", false);
+        format.parse("17/03/1976"), "img" + divisor + "usuarios" + divisor + "recoba.jpg",
+        "Chino Recoba",
+        "Canal de goles con Nacional ", "Sin categoria", false, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("tonyp", "Antonio", "Pacheco", "eltony@manya.org.uy",
-        format.parse("14/02/1955"), divisor + "res" + divisor + "pacheco.jpg", "Tony Pacheco",
-        "Todos los goles con Pe�arol", "Sin categoria", false);
+        format.parse("14/02/1955"), "img" + divisor + "usuarios" + divisor + "pacheco.jpg",
+        "Tony Pacheco",
+        "Todos los goles con Pe�arol", "Sin categoria", false, "pass");
     Fabrica.getIUsuariosCanales().altaUsuario("nicoJ", "Nicolas", "Jodal", "jodal@artech.com.uy",
-        format.parse("09/08/1960"), divisor + "res" + divisor + "null.jpg", "Desde Genexus",
-        "Canal informacion C y T", "Sin categoria", true);
+        format.parse("09/08/1960"), "img" + divisor + "usuarios" + divisor + "null.jpg",
+        "Desde Genexus",
+        "Canal informacion C y T", "Sin categoria", true, "pass");
 
     Fabrica.getIUsuariosCanales().seguir("hrubino", "hectorg");
     Fabrica.getIUsuariosCanales().seguir("hrubino", "hectorg");

@@ -12,10 +12,6 @@ public interface IUsuariosCanales {
       Date fechaNacimiento, BufferedImage imagen, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible) throws IOException;
 
-  public void altaUsuario(String nickname, String nombre, String apellido, String correo,
-      Date fechaNacimiento, String path, String nombreCanal, String descripcionCanal,
-      String categoria, boolean visible) throws IOException;
-
   public boolean existeUsuario(String nick);
 
   public DtUsuario getDt(String nick);
