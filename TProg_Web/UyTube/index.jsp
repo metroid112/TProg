@@ -1,3 +1,4 @@
+<%@ page import = "interfaces.*" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
 	<title>Index</title>
 </head>
 <body>
+	<% Fabrica.getIDatos().cargaDatos(); %>
 	<h1>Requerimientos mínimos</h1>
 	<br>
 	<a href="jsp/registro_usuarios.jsp">Prueba "registro usuario"</a>
