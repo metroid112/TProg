@@ -46,22 +46,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     user.setCanal(canal);
     manejadorUsuarios.add(user);
   }
-  
-  
-  /**
-   * Para testeo
-   */
-  @Override
-  public void altaUsuario(String nickname, String nombre, String apellido, String correo,
-      Date fechaNacimiento, String path, String nombreCanal, String descripcionCanal,
-      String categoria, boolean visible) throws IOException {
-    Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento,
-        ImageIO.read(this.getClass().getResource(path)));
-    Canal canal = new Canal(nombreCanal, descripcionCanal,
-        ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
-    user.setCanal(canal);
-    manejadorUsuarios.add(user);
-  }
 
   @Override
   public void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo,
