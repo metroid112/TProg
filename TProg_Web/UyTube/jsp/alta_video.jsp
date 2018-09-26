@@ -10,7 +10,7 @@
 	<form action="/AltaVideo" method="POST" id="formAltaVideo">
 		Nombre: <input type="text" name="nombre" required>*
 		<br>
-		Duración: <input type="number" name="duracion" required>*
+		Duración (H M S): <input type="number" name="duracionH" required><input type="number" name="duracionM" required><input type="number" name="duracionS" required>*
 		<br>
 		Nickname: <input type="text" name="nick" required>*
 		<br>
