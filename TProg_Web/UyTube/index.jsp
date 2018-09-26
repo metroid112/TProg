@@ -29,6 +29,8 @@
 	<br>
 	<a href="jsp/quitar_video_lista.jsp">Quitar Video de Lista (WIP)</a>
 	<br>
+	<a href="jsp/inicio_sesion.jsp">Iniciar Sesion (WIP)</a>
+	<br>
 	<a href="/CargaDatos">Cargar Datos</a>
 </body>
 </html>
