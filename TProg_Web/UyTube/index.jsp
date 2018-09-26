@@ -29,14 +29,6 @@
 	<br>
 	<a href="jsp/quitar_video_lista.jsp">Quitar Video de Lista (WIP)</a>
 	<br>
-	<%
-	String cargaDatos;
-	if (request.getSession().getAttribute("CARGA_DATOS") == null) {
-		cargaDatos = "Carga Datos";
-	} else {
-		cargaDatos = "";
-	}
-	%>
-	<a href="/CargaDatos"><%= cargaDatos %></a>
+	<a href="/CargaDatos">Cargar Datos</a>
 </body>
 </html>

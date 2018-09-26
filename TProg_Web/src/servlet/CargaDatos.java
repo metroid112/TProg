@@ -32,19 +32,12 @@ public class CargaDatos extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    
-    if (request.getSession().getAttribute("CARGA_DATOS") == null) {
-      request.getSession().setAttribute("CARGA_DATOS", false);
-    }
-    
-    if (!(boolean) request.getSession().getAttribute("CARGA_DATOS")) {
-      try {
-        request.getSession().setAttribute("CARGA_DATOS", true);
-        Fabrica.getIDatos().cargaDatos();
-      } catch (ParseException exception) {
-        // TODO Auto-generated catch block
-        exception.printStackTrace();
-      }
+
+    try {
+      Fabrica.getIDatos().cargaDatos();
+    } catch (ParseException exception) {
+      // TODO Auto-generated catch block
+      exception.printStackTrace();
     }
     request.getRequestDispatcher("/index.jsp").forward(request, response);
   }
