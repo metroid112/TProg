@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtVideo;
+
+
+
 /**
  * Servlet implementation class ConsultaVideo
  */
@@ -20,6 +24,12 @@ public class ConsultaVideo extends HttpServlet {
     public ConsultaVideo() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+      
+      
     }
 
 	/**
@@ -36,6 +46,11 @@ public class ConsultaVideo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	static public DtVideo getVideoSeleccionado(HttpServletRequest request){ 
+	  /*esto es temporal (Nombre,Descripcion,url,Categoria,Fecha,Duracion,Visible,Comentarios,Calificaciones)*/
+	  return new DtVideo("nombre","esta muy bueno","sdjfsdjfis",null,null,null,true,null,null);
 	}
 
 }

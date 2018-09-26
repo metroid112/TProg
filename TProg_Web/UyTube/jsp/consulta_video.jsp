@@ -1,3 +1,5 @@
+<%@page import="datatypes.DtVideo"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,15 +10,17 @@
 </head>
 <body>
 
-	<form action="/ConsultaVidea" method="POST" id="formConsultaVideo">
+	 <% DtVideo vid = (DtVideo) request.getAttribute("video"); %> 
 	
 		Nombre: lala
 		 <br>
-		Fecha: 1/1/98
+		 Canal: juancito
+		 <br>
+		Fecha: 1/1/98 
 		 <br>
 		Duracion: 1:14
 		 <br>
-		Categoria: arboles
+		Categoria: arboles 
 		 <br>
 		URL: AlhJsZ1EBIU
 		 <br>
@@ -43,8 +47,6 @@
 		
 		<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 		
-	</form>
-	
 	<form action="/index.jsp">
 	<button>Volver</button>
 
