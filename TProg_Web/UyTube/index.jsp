@@ -8,7 +8,6 @@
 	<title>Index</title>
 </head>
 <body>
-	<% Fabrica.getIDatos().cargaDatos(); %>
 	<h1>Requerimientos mínimos</h1>
 	<br>
 	<a href="jsp/registro_usuarios.jsp">Prueba "registro usuario"</a>
@@ -30,5 +29,14 @@
 	<br>
 	<a href="jsp/quitar_video_lista.jsp">Quitar Video de Lista (WIP)</a>
 	<br>
+	<%
+	String cargaDatos;
+	if (request.getSession().getAttribute("CARGA_DATOS") == null) {
+		cargaDatos = "Carga Datos";
+	} else {
+		cargaDatos = "";
+	}
+	%>
+	<a href="/CargaDatos"><%= cargaDatos %></a>
 </body>
 </html>
