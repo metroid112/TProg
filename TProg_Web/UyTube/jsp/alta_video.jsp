@@ -18,22 +18,22 @@
 		<br>
 		Fecha de nacimiento: <input type="date" name="fecha" required>*
 		<br>
-		Contraseña: <input type="password" name="pass" required>*
+		Contraseï¿½a: <input type="password" name="pass" required>*
 		<br>
-		Confirmar contraseña: <input type="password" name="passConfirm" required>*
+		Confirmar contraseï¿½a: <input type="password" name="passConfirm" required>*
 		<br>
 		Imagen: <input type="file" name="img">
 		<br>
 		Nombre del canal: <input type="text" name="nombreCanal">
 		<br>
-		Descripción del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
+		Descripciï¿½n del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
 		<br>
 		Visibilidad: <input type="radio" name="visibilidad" checked>Privado  <input type="radio" name="visibilidad">Publico
 		<br>
-		Categoría:
+		Categorï¿½a:
 		<select name="categoria">
 			<option value="Deportes">Deportes</option>
-			<option value="Musica">Música</option> <!-- meter jsp aca -->
+			<option value="Musica">Mï¿½sica</option> <!-- meter jsp aca -->
 		</select>
 		<br>
 		<button type="submit">Aceptar</button>
