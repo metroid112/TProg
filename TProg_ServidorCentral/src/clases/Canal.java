@@ -56,23 +56,15 @@ public class Canal {
     // disparar excepcion
   }
 
-  public void altaVideo(String nombre2, String descripcion2, Duration duracion, String url,
-      Categoria categoria2, Date fecha) throws DuplicateClassException {
-    if (!videos.containsKey(nombre2)) {
-      videos.put(nombre2, new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha));
-    } else {
-      throw new DuplicateClassException(
-          new Video(nombre2, descripcion2, duracion, url, categoria2, this, fecha), nombre2);
-    }
-  }
-
   public Video altaVideo(String nombre, String descripcion, Duration duracion, String url,
-      Categoria categoria, Date fecha, boolean visible) {
-
-    Video video = new Video(nombre, descripcion, duracion, url, categoria, fecha, visible, this);
+      Categoria categoria, Date fecha, boolean visible) throws DuplicateClassException {
+    
+    if (videos.containsKey(nombre)) {
+      throw new DuplicateClassException("Video", nombre);
+    }
+    Video video = new Video(nombre, descripcion, duracion, url, categoria, this, fecha, visible);
     this.videos.put(nombre, video);
     return video;
-
   }
 
   public String[] getArrayVideos() {
