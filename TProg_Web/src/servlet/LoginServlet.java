@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import utils.EstadoSesion;
@@ -36,6 +37,8 @@ public class LoginServlet extends HttpServlet {
       if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick)) && IUC.checkLogin(nick, pass)) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
         response.sendRedirect("index.jsp");
+        DtUsuario dtUsuario = IUC.getDt(nick); //TODO chequear el correo tambien
+        request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
       } else {
         request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_INCORRECTO);
         request.getRequestDispatcher("jsp/inicio_sesion_error.jsp").forward(request, response);
