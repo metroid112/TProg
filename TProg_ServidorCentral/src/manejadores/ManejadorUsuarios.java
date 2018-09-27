@@ -37,6 +37,20 @@ public class ManejadorUsuarios {
   public Usuario get(String nick) {
     return usuarios.get(nick);
   }
+  
+  /**
+   * Busca al usuario por su correo
+   * Si no es encontrado devuelve null
+   */
+  public Usuario mailGet(String mail) {
+    Usuario usuario = null;
+    for (Usuario usuarioTemp : usuarios.values()) {
+      if (usuarioTemp.getCorreo().equals(mail)) {
+        usuario = usuarioTemp;
+      }
+    }
+    return usuario;
+  }
 
   public boolean isEmailUnique(String email) {
     for (Entry<String, Usuario> user : usuarios.entrySet()) {

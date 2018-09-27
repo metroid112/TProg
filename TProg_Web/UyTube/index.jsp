@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>Requerimientos mínimos</h1>
+	<div style="float: right"> sesion iniciada?</div>
 	<br>
 	<a href="jsp/registro_usuarios.jsp">Prueba "registro usuario"</a>
 	<br>

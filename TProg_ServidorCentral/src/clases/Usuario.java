@@ -161,5 +161,9 @@ public class Usuario {
   public Date getFecha() {
     return this.fechaNacimiento;
   }
+  
+  public boolean checkPass(String pass) {
+    return (this.password.equals(pass));
+  }
 
 }
