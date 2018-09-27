@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,14 +30,9 @@ public class ConsultaVideo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
       
-      try{
       DtVideo vid = new DtVideo("nombre","esta muy bueno","sdjfsdjfis",null,null,null,true,null,null);
-      request.setAttribute("video", vid);
+      request.setAttribute("videoo", vid);
       request.getRequestDispatcher("/jsp/consulta_video.jsp").forward(request, response);
-      }
-      catch(IOException e){
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
-      }
       
     }
 
@@ -44,16 +40,18 @@ public class ConsultaVideo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	  processRequest(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		//doGet(request, response);
+	  processRequest(request, response);
 	}
 	
 	/*
