@@ -29,6 +29,14 @@ public class ConsultaVideo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
       
+      try{
+      DtVideo vid = new DtVideo("nombre","esta muy bueno","sdjfsdjfis",null,null,null,true,null,null);
+      request.setAttribute("video", vid);
+      request.getRequestDispatcher("/jsp/consulta_video.jsp").forward(request, response);
+      }
+      catch(IOException e){
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
+      }
       
     }
 
@@ -48,9 +56,10 @@ public class ConsultaVideo extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	/*
 	static public DtVideo getVideoSeleccionado(HttpServletRequest request){ 
-	  /*esto es temporal (Nombre,Descripcion,url,Categoria,Fecha,Duracion,Visible,Comentarios,Calificaciones)*/
+	  //esto es temporal (Nombre,Descripcion,url,Categoria,Fecha,Duracion,Visible,Comentarios,Calificaciones)
 	  return new DtVideo("nombre","esta muy bueno","sdjfsdjfis",null,null,null,true,null,null);
 	}
-
+*/
 }

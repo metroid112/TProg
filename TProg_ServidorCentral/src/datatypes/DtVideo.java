@@ -48,6 +48,24 @@ public class DtVideo {
 
   }
 
+  public int getCalificacionesPositivas(){
+    int sum = 0;
+    for(DtCalificacion calif : calificaciones){
+      if(calif.like)
+        sum++;
+    }
+    return sum;
+  }
+  
+  public int getCalificacionesNegativas(){
+    int sum = 0;
+    for(DtCalificacion calif : calificaciones){
+      if(!calif.like)
+        sum++;
+    }
+    return sum;
+  }
+
   @Override
   public boolean equals(Object o) {
     DtVideo dt = (DtVideo) o;

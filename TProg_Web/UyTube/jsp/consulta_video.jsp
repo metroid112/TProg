@@ -12,17 +12,17 @@
 
 	 <% DtVideo vid = (DtVideo) request.getAttribute("video"); %> 
 	
-		Nombre: lala
+		Nombre: lala <%= vid.nombre %>
 		 <br>
-		 Canal: juancito
+		 Canal: juancito 
 		 <br>
 		Fecha: 1/1/98 
 		 <br>
 		Duracion: 1:14
 		 <br>
-		Categoria: arboles 
+		Categoria: arboles
 		 <br>
-		URL: AlhJsZ1EBIU
+		URL: AlhJsZ1EBIU <%= vid.Url %>
 		 <br>
 		Me gusta: 5
 		<br>
@@ -44,7 +44,7 @@
 		<br>
 		Comentario 2
 		<br>
-		
+		</pre>
 		<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 		
 	<form action="/index.jsp">
