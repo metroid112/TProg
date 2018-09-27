@@ -22,7 +22,11 @@ public class LoginServlet extends HttpServlet {
   }
   
   public EstadoSesion getEstado(HttpServletRequest request) {
-    return (EstadoSesion) request.getSession().getAttribute("LOGIN");
+    if (request.getSession().getAttribute("LOGIN") != null) {
+      return (EstadoSesion) request.getSession().getAttribute("LOGIN");
+    } else {
+      return EstadoSesion.NO_LOGIN;
+    }
   }
   
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +41,7 @@ public class LoginServlet extends HttpServlet {
       if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick)) && IUC.checkLogin(nick, pass)) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
         response.sendRedirect("index.jsp");
-        DtUsuario dtUsuario = IUC.getDt(nick); //TODO chequear el correo tambien
+        DtUsuario dtUsuario = IUC.getDt(nick);
         request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
       } else {
         request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_INCORRECTO);

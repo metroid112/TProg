@@ -1,4 +1,4 @@
-<%@ page import = "interfaces.*" %>
+<%@ page import = "interfaces.*, utils.*, datatypes.*" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,7 +10,11 @@
 <body>
 	<h1>Requerimientos mínimos</h1>
 	<div style="float: right">
-		<%= request.getSession().getAttribute("LOGIN") %>
+		<%= session.getAttribute("LOGIN") %>
+		<% if (session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
+			<br>
+			<%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
+		<% } %>
 	</div>
 	<br>
 	<a href="jsp/registro_usuarios.jsp">Prueba "registro usuario"</a>

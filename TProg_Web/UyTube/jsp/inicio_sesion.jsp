@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content="text/html; charset=utf-8">
 <title>UyTube - Iniciar Sesion</title>
 </head>
 <body>

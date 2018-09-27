@@ -72,7 +72,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public DtUsuario getDt(String nick) {
-    return manejadorUsuarios.get(nick).getDt();
+    if(manejadorUsuarios.get(nick) != null) {
+      return manejadorUsuarios.get(nick).getDt();
+    } else {
+      return manejadorUsuarios.mailGet(nick).getDt(); 
+    }
   }
 
   @Override
