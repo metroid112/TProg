@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +34,10 @@ public class ListaServlet extends HttpServlet {
     String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGUEADO")).nick;
     try{
       Fabrica.getIListas().altaListaParticular(nombreLista,nickUsuario,visibilidad);
-      request.setAttribute("OK", "¡La lista se ha creado con éxito!");
-      request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
+      //request.setAttribute("OK", "¡La lista se ha creado con éxito!");
+      response.getWriter().println("¡La lista se ha creado con éxito!");
+      TimeUnit.SECONDS.sleep(5);
+      response.sendRedirect("/index.jsp");
     }
     catch (Exception e){
       request.setAttribute("ERROR", e.getMessage());
