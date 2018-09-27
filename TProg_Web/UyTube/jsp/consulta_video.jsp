@@ -10,25 +10,25 @@
 </head>
 <body>
 
-	 <% String vid = (String) request.getAttribute("DT_VIDEO"); %>
+	 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
 	
-		Nombre: lala <%= vid %>
+		Nombre: <%= vid.nombre %>
 		 <br>
-		Canal: juancito 
+		Canal: juancito
 		 <br>
-		Fecha: 1/1/98 
+		Fecha: <%= vid.fecha %>
 		 <br>
-		Duracion: 1:14
+		Duracion: <%= vid.duracion %>
 		 <br>
-		Descripcion: no esta bueno 
+		Descripcion: <%= vid.descripcion %> 
 		 <br>
-		Categoria: arboles
+		Categoria: <%= vid.categoria %>
 		 <br>
-		URL: AlhJsZ1EBIU
+		URL: <%= vid.Url %>
 		 <br>
-		Me gusta: 5
+		Me gusta: 5 <%= vid.getCalificacionesPositivas()%>
 		<br>
-		No me gusta: 3
+		No me gusta: 3 <%= vid.getCalificacionesNegativas()%>
 		<br>
 		
 		<!-- LA PARTE DE LOS COMENTARIOS -->

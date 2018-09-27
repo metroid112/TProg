@@ -1,12 +1,20 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import clases.Calificacion;
+import clases.Categoria;
+import clases.Comentario;
 import datatypes.DtVideo;
 
 @WebServlet("/ConsultaVideo")
@@ -23,9 +31,9 @@ public class ConsultaVideo extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    //DtVideo vid = new DtVideo("nombre","esta muy bueno","sdjfsdjfis",null,null,null,true,null,null);
-    //<% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %> <%= vid.nombre %>
-	  String vid = "hola";
+	  //(String nombre, String descripcion, String url, Categoria categoria, Date fecha, Duration duracion, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,    LinkedList<Calificacion> calificaciones)
+    DtVideo vid = new DtVideo("lala","esta muy bueno","AlhJsZ1EBIU ",null,null,null,true,new LinkedHashMap<Integer, Comentario>(),new LinkedList<Calificacion>());
+    
     request.setAttribute("DT_VIDEO", vid);
     request.getRequestDispatcher("jsp/consulta_video.jsp").forward(request, response);
     

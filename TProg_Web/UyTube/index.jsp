@@ -22,7 +22,7 @@
 	<br>
 	<a href="jsp/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
 	<br>
-	<a href="jsp/consulta_video.jsp">Consulta Video (WIP)</a>
+	<a href="/ConsultaVideo">Consulta Video (WIP)</a>
 	<br>
 	<!-- Deberia redirigir al servlet -->
 	<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
