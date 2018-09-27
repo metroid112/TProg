@@ -26,7 +26,9 @@ public class LoginServlet extends HttpServlet {
   
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-    if (getEstado(request).equals(EstadoSesion.NO_LOGIN) || getEstado(request) == null) {
+    if (request.getSession().getAttribute("LOGIN") == null || 
+        getEstado(request).equals(EstadoSesion.NO_LOGIN)) {
+      
       String nick = (String) request.getParameter("nickname");
       response.getWriter().println(nick); //asddfasdf
       String pass = (String) request.getParameter("pass");
