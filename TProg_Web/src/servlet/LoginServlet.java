@@ -7,7 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/LoginServlet")
+import datatypes.DtUsuario;
+import interfaces.Fabrica;
+import interfaces.IUsuariosCanales;
+import utils.EstadoSesion;
+
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
@@ -15,17 +20,47 @@ public class LoginServlet extends HttpServlet {
     super();
     // TODO Auto-generated constructor stub
   }
+  
+  public EstadoSesion getEstado(HttpServletRequest request) {
+    if (request.getSession().getAttribute("LOGIN") != null) {
+      return (EstadoSesion) request.getSession().getAttribute("LOGIN");
+    } else {
+      return EstadoSesion.NO_LOGIN;
+    }
+  }
+  
+  private void processRequest(HttpServletRequest request, HttpServletResponse response)
+      throws IOException, ServletException {
+    if (!getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)) {
+      
+      String nick = (String) request.getParameter("nickname");
+      response.getWriter().println(nick); //asddfasdf
+      String pass = (String) request.getParameter("pass");
+      response.getWriter().println(pass); //asdfasdfadsf
+      IUsuariosCanales IUC = Fabrica.getIUsuariosCanales();
+      if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick)) && IUC.checkLogin(nick, pass)) {
+        request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
+        response.sendRedirect("index.jsp");
+        DtUsuario dtUsuario = IUC.getDt(nick);
+        request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
+      } else {
+        request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_INCORRECTO);
+        request.getRequestDispatcher("jsp/inicio_sesion_error.jsp").forward(request, response);
+      } 
+    } else {
+      response.sendRedirect("index.jsp");
+    }
+    
+  }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    response.getWriter().append("Served at: ").append(request.getContextPath());
+    processRequest(request, response);
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    doGet(request, response);
+    processRequest(request, response);
   }
 
 }

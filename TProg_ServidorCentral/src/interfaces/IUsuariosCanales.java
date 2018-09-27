@@ -51,4 +51,8 @@ public interface IUsuariosCanales {
   void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass);
+  
+  public boolean checkLogin(String usr, String pass);
+
+  boolean existeUsuarioMail(String mail);
 }
