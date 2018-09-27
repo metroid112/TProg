@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
         DtUsuario dtUsuario = IUC.getDt(nick);
         request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
       } else {
-        request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_INCORRECTO);
+        request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getRequestDispatcher("jsp/inicio_sesion_error.jsp").forward(request, response);
       } 
     } else {
