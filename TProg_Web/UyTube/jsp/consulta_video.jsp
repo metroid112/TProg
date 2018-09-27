@@ -10,9 +10,9 @@
 </head>
 <body>
 
-	 <% DtVideo vid = (DtVideo) request.getAttribute("videoo"); %> 
+	 <% String vid = (String) request.getAttribute("DT_VIDEO"); %>
 	
-		Nombre: lala <%= vid.nombre %>
+		Nombre: lala <%= vid %>
 		 <br>
 		Canal: juancito 
 		 <br>
@@ -20,11 +20,11 @@
 		 <br>
 		Duracion: 1:14
 		 <br>
-		Descripcion: no esta bueno <%= vid.descripcion %>
+		Descripcion: no esta bueno 
 		 <br>
 		Categoria: arboles
 		 <br>
-		URL: AlhJsZ1EBIU <%= vid.Url %>
+		URL: AlhJsZ1EBIU
 		 <br>
 		Me gusta: 5
 		<br>
