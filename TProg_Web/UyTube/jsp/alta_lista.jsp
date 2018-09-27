@@ -8,10 +8,10 @@
 <title>UyTube - Alta Lista</title>
 </head>
 <body>
-	<h1> <b> Crear lista de reproducción particular </b> </h1>
+	<h1> <b>Crear lista de reproducción particular </b> </h1>
 	<br>
 	<% if (request.getAttribute("ERROR") != null) { %>
-	<h2>
+	<h2 style= "color:red;">
 	<%= request.getAttribute("ERROR") %> 
 	</h2>
 	<% } %>
