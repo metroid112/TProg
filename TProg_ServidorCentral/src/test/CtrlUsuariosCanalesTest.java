@@ -74,7 +74,7 @@ public class CtrlUsuariosCanalesTest {
   public void testGetDt() {
     DtUsuario dtEsperado = new DtUsuario("Federico", "Aguilera", user.getCanal().getNombre(),
         user.getCorreo(), user.getCanal().getDescripcion(), user.getFecha(), user.getImagen(),
-        true);
+        true,user.getNick());
     ManejadorUsuarios.getManejadorUsuarios().add(user);
     Assert.assertEquals(dtEsperado, controladorUsuariosCanales.getDt(user.getNick()));
   }
