@@ -32,4 +32,3 @@ hs_err_pid*
 
 # not ignore libs
 !TProg_Workstation/lib/*.jar
-!TProg_Web/UyTube/WEB-INF/lib/*.jar
