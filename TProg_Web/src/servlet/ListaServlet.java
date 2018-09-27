@@ -22,26 +22,23 @@ public class ListaServlet extends HttpServlet {
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String nombreLista = (String) request.getParameter("nombreLista");
-    Boolean visibilidad; //= (Boolean) request.getParameter("visibilidad");
+    Boolean visibilidad;
     if (request.getParameter("visibilidad").equals("Público")) {
       visibilidad = true;
     }
     else{
       visibilidad = false;
     }
-      
-    //String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGUEADO")).;
+    String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGUEADO")).nick;
     try{
       Fabrica.getIListas().altaListaParticular(nombreLista,nickUsuario,visibilidad);
+      request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
     }
     catch (Exception e){
       request.setAttribute("ERROR", e.getMessage());
-      
-    }
-    //si se creó la lista quiero hacer forward al index
-      request.getRequestDispatcher("/jsp/index.jsp").forward(request, response);
-    //si hubo un error al crear la lista, quiero hacer forward al alta lista, mostrando mensaje de error
       request.getRequestDispatcher("/jsp/alta_lista.jsp").forward(request, response);
+    }
+      
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
