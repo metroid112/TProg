@@ -10,6 +10,11 @@
 <body>
 	<h1> <b> Crear lista de reproducción particular </b> </h1>
 	<br>
+	<% if (request.getAttribute("ERROR") != null) { %>
+	<h2>
+	<%= request.getAttribute("ERROR") %> 
+	</h2>
+	<% } %>
 	<form action="/ListaServlet" method="POST" id="formListaServlet">
 		Nombre de lista particular: <input type="text" name="nombreLista" required>*
 		<br>
