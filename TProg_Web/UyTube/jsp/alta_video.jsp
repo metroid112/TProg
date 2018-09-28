@@ -7,7 +7,12 @@
 <title>UyTube - Alta Video</title>
 </head>
 <body>
+	<%= request.getAttribute("ERROR_1") %>
+	<br>
+	<%= request.getAttribute("ERROR_2") %>
+	<br>
 	<form action="/AltaVideo" method="POST" id="formAltaVideo">
+		<input type="hidden" name="STATE" value="ALTA">
 		Nombre: <input type="text" name="nombre" required>*
 		<br>
 		Duración (H M S): <input type="number" name="duracionH" required><input type="number" name="duracionM" required><input type="number" name="duracionS" required>*
