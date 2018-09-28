@@ -40,15 +40,22 @@ public class LoginServlet extends HttpServlet {
       IUsuariosCanales IUC = Fabrica.getIUsuariosCanales();
       if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick)) && IUC.checkLogin(nick, pass)) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
-        response.sendRedirect("index.jsp");
         DtUsuario dtUsuario = IUC.getDt(nick);
         request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
+        response.sendRedirect("index.jsp");
       } else {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getRequestDispatcher("jsp/inicio_sesion_error.jsp").forward(request, response);
       } 
     } else {
-      response.sendRedirect("index.jsp");
+      if (request.getParameter("CERRAR_SESION") == null) {
+        response.sendRedirect("index.jsp");
+      } else if (request.getParameter("CERRAR_SESION").equals("CONFIRM")) {
+        request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
+        request.getSession().setAttribute("USUARIO_LOGEADO", null);
+        response.sendRedirect("index.jsp");
+      }
+      
     }
     
   }
