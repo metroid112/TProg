@@ -31,12 +31,12 @@ public class ListaServlet extends HttpServlet {
     else{
       visibilidad = false;
     }
-    String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGUEADO")).nick;
+    String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
     try{
       Fabrica.getIListas().altaListaParticular(nombreLista,nickUsuario,visibilidad);
-      response.getWriter().println("¡La lista se ha creado con éxito!");
+      response.getWriter().append("¡La lista se ha creado con éxito!");
       TimeUnit.SECONDS.sleep(5);
-      response.sendRedirect("/index.jsp");
+      response.sendRedirect("index.jsp");
     }
     catch (Exception e){
       request.setAttribute("ERROR", e.getMessage());
