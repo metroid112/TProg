@@ -23,7 +23,10 @@
 	<br>
 	<a href="jsp/alta_usuario.jsp">Alta Usuario (WIP)</a>
 	<br>
-	<a href="jsp/alta_video.jsp">Alta Video (WIP)</a>
+	<form action="/AltaVideo" method="GET">
+		<input type="hidden" name="STATE" value="LOAD">
+		<input type="submit" value="Alta Video (WIP)">
+	</form>
 	<br>
 	<a href="jsp/consulta_lista.jsp">Consulta Lista (WIP)</a>
 	<br>
