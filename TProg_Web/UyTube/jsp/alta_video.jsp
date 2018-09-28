@@ -11,6 +11,8 @@
 	<br>
 	<%= request.getAttribute("ERROR_2") %>
 	<br>
+	<%= request.getAttribute("ERROR_3") %>
+	<br>
 	<form action="/AltaVideo" method="POST" id="formAltaVideo">
 		<input type="hidden" name="STATE" value="ALTA">
 		Nombre: <input type="text" name="nombre" required>*

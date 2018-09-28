@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtUsuario;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
@@ -31,11 +32,21 @@ public class AltaVideo extends HttpServlet {
       response.sendRedirect("/jsp/error500.jsp");
     } else {
       if (request.getParameter("STATE").equals("LOAD")) {
+        DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+        if (user == null) {
+          request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
+          request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
+        }
         // TODO: cargar categorias
         request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
       } else {
         String nick = "";
-        //request.getSession().getAttribute() OBTENER NICK USUARIO
+        DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+        if (user == null) {
+          request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
+          request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
+        }
+        nick = user.nick;
         Date fecha = new Date();
         String nombre = request.getParameter("nombre");
         String url = request.getParameter("url");
