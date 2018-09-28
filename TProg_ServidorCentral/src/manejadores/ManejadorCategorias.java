@@ -30,7 +30,7 @@ public class ManejadorCategorias {
     if (!categorias.containsKey(nombreCategoria)) {
       add(new Categoria(nombreCategoria));
     } else {
-      throw new DuplicateClassException(new Categoria(nombreCategoria), nombreCategoria);
+      throw new DuplicateClassException("Categoria", nombreCategoria);
     }
   }
 
