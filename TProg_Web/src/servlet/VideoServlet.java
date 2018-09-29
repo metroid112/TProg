@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IVideos;
 
@@ -24,10 +25,12 @@ public class VideoServlet extends HttpServlet {
   
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stubca
+    // TODO Auto-generated method stub
     IVideos ctrVideos = Fabrica.getIVideos();
     
-    String[] videosUsuario = ctrVideos.listarVideos(null); //Provisorio
+    DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
+    
+    String[] videosUsuario = ctrVideos.listarVideos(d.nombre);
     int largoVideosUsuario = videosUsuario.length;
     
     request.setAttribute("VIDEOS_USUARIO", videosUsuario);

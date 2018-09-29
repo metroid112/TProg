@@ -25,13 +25,10 @@ public class DtVideo {
   public int idVideo;
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
-<<<<<<< HEAD
+
       Duration duracion,Canal canal, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
       LinkedList<Calificacion> calificaciones) {
-=======
-      Duration duracion, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
-      LinkedList<Calificacion> calificaciones, int idVideo) {
->>>>>>> master
+
 
     this.nombre = nombre;
     this.Url = url;
