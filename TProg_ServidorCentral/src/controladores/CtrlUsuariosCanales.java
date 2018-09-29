@@ -60,10 +60,23 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public boolean existeUsuario(String nick) {
     return manejadorUsuarios.isMemberKey(nick);
   }
+  
+  @Override
+  public boolean existeUsuarioMail(String mail) {
+    if (manejadorUsuarios.mailGet(mail) != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @Override
   public DtUsuario getDt(String nick) {
-    return manejadorUsuarios.get(nick).getDt();
+    if(manejadorUsuarios.get(nick) != null) {
+      return manejadorUsuarios.get(nick).getDt();
+    } else {
+      return manejadorUsuarios.mailGet(nick).getDt(); 
+    }
   }
 
   @Override
@@ -165,5 +178,16 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
+  }
+
+  @Override
+  public boolean checkLogin(String usr, String pass) {
+    
+    if (manejadorUsuarios.get(usr) != null) {
+      return manejadorUsuarios.get(usr).checkPass(pass);
+    } else {
+      return manejadorUsuarios.mailGet(usr).checkPass(pass);
+    }
+    
   }
 }

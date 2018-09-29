@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 
+import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IDatos;
 
@@ -138,100 +140,106 @@ public class CtrlDatos implements IDatos {
         e.printStackTrace();
       }
 
-      Fabrica.getIVideos().altaVideo("hectorg", "100 a�os de FING",
-          "Del Ciclo m�s Universidad realizado por la UdelaR, compartimos con ustedes "
-              + "un audiovisual realizado en 2016 por los 100 a�os de la denominaci�n "
-              + "Facultad de Ingenier�a.\nExtra�do del canal Teleuniversitaria UdelaR",
-          Duration.parse("PT6M26S"), "https://youtu.be/peGS4TBxSaI", "Noticias",
-          format.parse("03/08/2017"), true);
-      Fabrica.getIVideos().altaVideo("hectorg", "50 a�os del InCo",
-          "50 a�os del Instituto de Computaci�n. Facultad de Ingenier�a. UDELAR. "
-              + "22 de noviembre 2017.\nLa mesa de apertura estuvo integrada por Simon, "
-              + "el rector de la Universidad de la Rep�blica (Udelar), Roberto Markarian; "
-              + "la ministra de Industria, Energ�a y Miner�a, Carolina Cosse; el "
-              + "presidente de la C�mara Uruguaya de Tecnolog�as de la Informaci�n "
-              + "(CUTI), Leonardo Loureiro, y el director del Inco, Diego Vallespir.",
-          Duration.parse("PT27M22S"), "https://youtu.be/GzOJSk4urlM", "Noticias",
-          format.parse("24/11/2017"), true);
-      Fabrica.getIVideos().altaVideo("hectorg", "Ingenieria de Muestra 2017",
-          "La muestra m�s grande de la ingenier�a nacional se realiz� el jueves 19, "
-              + "viernes 20 y s�bado 21 de octubre de 2017. Ingenier�a deMuestra fue organizada "
-              + "por la Facultad de Ingenier�a de la Universidad de la "
-              + "Rep�blica y su Fundaci�n Julio Ricaldoni.",
-          Duration.parse("PT1M"), "https://youtu.be/RnaYRA1k5j4", "Noticias",
-          format.parse("25/10/2017"), true);
-      Fabrica.getIVideos().altaVideo("tabarec", "Locura celeste",
-          "Tema Oficial de la cobertura celeste de Monte Carlo Televisi�n Canal 4 para "
-              + "el Mundial de Futbol FIFA Rusia 2018.",
-          Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
-          format.parse("05/06/2018"), false);
-      Fabrica.getIVideos().altaVideo("tabarec", "Ni�o payaso", "", Duration.parse("PT4M18S"),
-          "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
-      Fabrica.getIVideos().altaVideo("tabarec", "Pacheco goles mas recordados", "",
-          Duration.parse("PT5M48S"),
-          "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
-      Fabrica.getIVideos().altaVideo("cachilas", "Locura celeste",
-          "Tema Oficial de la cobertura celeste de Monte Carlo Televisi�n Canal 4 para el "
-              + "Mundial de Futbol FIFA Rusia 2018.",
-          Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
-          format.parse("05/06/2018"), false);
-      Fabrica.getIVideos().altaVideo("cachilas", "Ni�o payaso", "", Duration.parse("PT4M18S"),
-          "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
-      Fabrica.getIVideos().altaVideo("cachilas", "Etapa A contramano Liguilla", "",
-          Duration.parse("PT57M15S"),
-          "https://youtu.be/Es6GRMHXeCQ", "Carnaval", format.parse("17/12/2015"), false);
-      Fabrica.getIVideos().altaVideo("cachilas", "Etapa Don Timoteo Liguilla", "",
-          Duration.parse("PT51M38S"),
-          "https://youtu.be/I_spHBU9ZsI", "Carnaval", format.parse("18/12/2015"), false);
-      Fabrica.getIVideos().altaVideo("cachilas", "Recoba 20 mejores goles",
-          "My Favorites\n\n\"El Chino\"",
-          Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
-          format.parse("14/11/2011"), false);
-      Fabrica.getIVideos().altaVideo("juliob", "Sweet child'o mine",
-          "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
-          Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Musica",
-          format.parse("24/12/2009"), true);
-      Fabrica.getIVideos().altaVideo("juliob", "Thriller",
-          "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
-          Duration.parse("PT13M42S"), "https://youtu.be/PAfbzKcePx0", "Musica",
-          format.parse("02/10/2009"), false);
-      Fabrica.getIVideos().altaVideo("juliob", "Show de goles",
-          "TORNEO CLAUSURA 2018\nFECHA 1.....",
-          Duration.parse("PT4M23S"), "https://youtu.be/g46w4_kD_lA", "Deporte",
-          format.parse("23/07/2018"), true);
-      Fabrica.getIVideos().altaVideo("juliob", "Inauguracion Estadio Pe�arol",
-          "Recordemos la ceremonia de inauguraci�n del Estadio de Pe�arol.\nLlamado \""
-              + "Estadio Campe�n del Siglo\".",
-          Duration.parse("PT3H27M26S"), "https://youtu.be/U6XPJ8Vz72A", "Deporte",
-          format.parse("04/04/2016"), true);
-      Fabrica.getIVideos().altaVideo("kairoh", "Sweet child'o mine",
-          "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
-          Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Musica",
-          format.parse("24/12/2009"), true);
-      Fabrica.getIVideos().altaVideo("kairoh", "Dancing in the Dark",
-          "Bruce Springsteen's official music video for \'Dancing In The Dark\'. Click to listen to Bruce Springsteen on Spotify: http://smarturl.it/BSpringSpot?IQid=B...",
-          Duration.parse("PT3M58S"), "https://youtu.be/129kuDCQtHs", "Musica",
-          format.parse("03/10/2009"), true);
-      Fabrica.getIVideos().altaVideo("kairoh", "Thriller",
-          "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
-          Duration.parse("PT13M42S"), "https://youtu.be/sOnqjkJTMaA", "Musica",
-          format.parse("02/10/2009"), true);
-      Fabrica.getIVideos().altaVideo("chino", "Recoba 20 mejores goles",
-          "My Favorites\n\n\"El Chino\"",
-          Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
-          format.parse("14/11/2011"), false);
-      Fabrica.getIVideos().altaVideo("tonyp", "Pacheco goles mas recordados", "",
-          Duration.parse("PT5M48S"),
-          "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
-      Fabrica.getIVideos().altaVideo("nicoJ", "Entrevista a director CUTI",
-          "Segunda parte de la entrevista realizada por la periodista "
-              + "Paula Echevarr�a al director de CUTI",
-          Duration.parse("PT5M39S"), "https://youtu.be/Eq5uBEzI6qs", "Ciencia y Tecnologia",
-          format.parse("03/04/2017"), true);
-      Fabrica.getIVideos().altaVideo("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros",
-          "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis m�dicos. Los datos se desprenden del Panorama de la Educaci�n 2014 del anuario del Ministerio de Educaci�n y Cultura. Ese a�o egresaron de la Universidad de la Rep�blica 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, seg�n sostienen desde la Facultad de Ingenier�a, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundaci�n Julio Ricaldoni, Mar�a Sim�n.",
-          Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnologia",
-          format.parse("20/07/2016"), true);
+      try {
+        Fabrica.getIVideos().altaVideo("hectorg", "100 a�os de FING",
+            "Del Ciclo m�s Universidad realizado por la UdelaR, compartimos con ustedes "
+                + "un audiovisual realizado en 2016 por los 100 a�os de la denominaci�n "
+                + "Facultad de Ingenier�a.\nExtra�do del canal Teleuniversitaria UdelaR",
+            Duration.parse("PT6M26S"), "https://youtu.be/peGS4TBxSaI", "Noticias",
+            format.parse("03/08/2017"), true);
+        Fabrica.getIVideos().altaVideo("hectorg", "50 a�os del InCo",
+            "50 a�os del Instituto de Computaci�n. Facultad de Ingenier�a. UDELAR. "
+                + "22 de noviembre 2017.\nLa mesa de apertura estuvo integrada por Simon, "
+                + "el rector de la Universidad de la Rep�blica (Udelar), Roberto Markarian; "
+                + "la ministra de Industria, Energ�a y Miner�a, Carolina Cosse; el "
+                + "presidente de la C�mara Uruguaya de Tecnolog�as de la Informaci�n "
+                + "(CUTI), Leonardo Loureiro, y el director del Inco, Diego Vallespir.",
+            Duration.parse("PT27M22S"), "https://youtu.be/GzOJSk4urlM", "Noticias",
+            format.parse("24/11/2017"), true);
+        Fabrica.getIVideos().altaVideo("hectorg", "Ingenieria de Muestra 2017",
+            "La muestra m�s grande de la ingenier�a nacional se realiz� el jueves 19, "
+                + "viernes 20 y s�bado 21 de octubre de 2017. Ingenier�a deMuestra fue organizada "
+                + "por la Facultad de Ingenier�a de la Universidad de la "
+                + "Rep�blica y su Fundaci�n Julio Ricaldoni.",
+            Duration.parse("PT1M"), "https://youtu.be/RnaYRA1k5j4", "Noticias",
+            format.parse("25/10/2017"), true);
+        Fabrica.getIVideos().altaVideo("tabarec", "Locura celeste",
+            "Tema Oficial de la cobertura celeste de Monte Carlo Televisi�n Canal 4 para "
+                + "el Mundial de Futbol FIFA Rusia 2018.",
+            Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
+            format.parse("05/06/2018"), false);
+        Fabrica.getIVideos().altaVideo("tabarec", "Ni�o payaso", "", Duration.parse("PT4M18S"),
+            "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
+        Fabrica.getIVideos().altaVideo("tabarec", "Pacheco goles mas recordados", "",
+            Duration.parse("PT5M48S"),
+            "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
+        Fabrica.getIVideos().altaVideo("cachilas", "Locura celeste",
+            "Tema Oficial de la cobertura celeste de Monte Carlo Televisi�n Canal 4 para el "
+                + "Mundial de Futbol FIFA Rusia 2018.",
+            Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
+            format.parse("05/06/2018"), false);
+        Fabrica.getIVideos().altaVideo("cachilas", "Ni�o payaso", "", Duration.parse("PT4M18S"),
+            "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
+        Fabrica.getIVideos().altaVideo("cachilas", "Etapa A contramano Liguilla", "",
+            Duration.parse("PT57M15S"),
+            "https://youtu.be/Es6GRMHXeCQ", "Carnaval", format.parse("17/12/2015"), false);
+        Fabrica.getIVideos().altaVideo("cachilas", "Etapa Don Timoteo Liguilla", "",
+            Duration.parse("PT51M38S"),
+            "https://youtu.be/I_spHBU9ZsI", "Carnaval", format.parse("18/12/2015"), false);
+        Fabrica.getIVideos().altaVideo("cachilas", "Recoba 20 mejores goles",
+            "My Favorites\n\n\"El Chino\"",
+            Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
+            format.parse("14/11/2011"), false);
+        Fabrica.getIVideos().altaVideo("juliob", "Sweet child'o mine",
+            "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
+            Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Musica",
+            format.parse("24/12/2009"), true);
+        Fabrica.getIVideos().altaVideo("juliob", "Thriller",
+            "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
+            Duration.parse("PT13M42S"), "https://youtu.be/PAfbzKcePx0", "Musica",
+            format.parse("02/10/2009"), false);
+        Fabrica.getIVideos().altaVideo("juliob", "Show de goles",
+            "TORNEO CLAUSURA 2018\nFECHA 1.....",
+            Duration.parse("PT4M23S"), "https://youtu.be/g46w4_kD_lA", "Deporte",
+            format.parse("23/07/2018"), true);
+        Fabrica.getIVideos().altaVideo("juliob", "Inauguracion Estadio Pe�arol",
+            "Recordemos la ceremonia de inauguraci�n del Estadio de Pe�arol.\nLlamado \""
+                + "Estadio Campe�n del Siglo\".",
+            Duration.parse("PT3H27M26S"), "https://youtu.be/U6XPJ8Vz72A", "Deporte",
+            format.parse("04/04/2016"), true);
+        Fabrica.getIVideos().altaVideo("kairoh", "Sweet child'o mine",
+            "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
+            Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Musica",
+            format.parse("24/12/2009"), true);
+        Fabrica.getIVideos().altaVideo("kairoh", "Dancing in the Dark",
+            "Bruce Springsteen's official music video for \'Dancing In The Dark\'. Click to listen to Bruce Springsteen on Spotify: http://smarturl.it/BSpringSpot?IQid=B...",
+            Duration.parse("PT3M58S"), "https://youtu.be/129kuDCQtHs", "Musica",
+            format.parse("03/10/2009"), true);
+        Fabrica.getIVideos().altaVideo("kairoh", "Thriller",
+            "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
+            Duration.parse("PT13M42S"), "https://youtu.be/sOnqjkJTMaA", "Musica",
+            format.parse("02/10/2009"), true);
+        Fabrica.getIVideos().altaVideo("chino", "Recoba 20 mejores goles",
+            "My Favorites\n\n\"El Chino\"",
+            Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
+            format.parse("14/11/2011"), false);
+        Fabrica.getIVideos().altaVideo("tonyp", "Pacheco goles mas recordados", "",
+            Duration.parse("PT5M48S"),
+            "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
+        Fabrica.getIVideos().altaVideo("nicoJ", "Entrevista a director CUTI",
+            "Segunda parte de la entrevista realizada por la periodista "
+                + "Paula Echevarr�a al director de CUTI",
+            Duration.parse("PT5M39S"), "https://youtu.be/Eq5uBEzI6qs", "Ciencia y Tecnologia",
+            format.parse("03/04/2017"), true);
+        Fabrica.getIVideos().altaVideo("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros",
+            "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis m�dicos. Los datos se desprenden del Panorama de la Educaci�n 2014 del anuario del Ministerio de Educaci�n y Cultura. Ese a�o egresaron de la Universidad de la Rep�blica 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, seg�n sostienen desde la Facultad de Ingenier�a, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundaci�n Julio Ricaldoni, Mar�a Sim�n.",
+            Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnologia",
+            format.parse("20/07/2016"), true);
+      } catch (DuplicateClassException exception) {
+        exception.printStackTrace();
+      } catch (NotFoundException exception) {
+        exception.printStackTrace();
+      }
 
       try {
         Fabrica.getIListas().altaListaDefecto("Escuchar mas tarde");

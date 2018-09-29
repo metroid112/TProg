@@ -257,7 +257,7 @@ public class AltaVideo extends JInternalFrame {
     Date fecha = datePicker.getDate();
     if (datosCorrectos(nick, nombre, url, duracion, fecha)) {
       try {
-        contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha);
+        contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha, false);
         JOptionPane.showMessageDialog(this, "Video creado con exito!");
         setVisible(false);
         clearDatos();

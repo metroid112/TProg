@@ -22,10 +22,16 @@ public class DtVideo {
   public String descripcion;
   public String categoria;
   public boolean visible;
+  public int idVideo;
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
+<<<<<<< HEAD
       Duration duracion,Canal canal, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
       LinkedList<Calificacion> calificaciones) {
+=======
+      Duration duracion, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
+      LinkedList<Calificacion> calificaciones, int idVideo) {
+>>>>>>> master
 
     this.nombre = nombre;
     this.Url = url;
@@ -47,7 +53,7 @@ public class DtVideo {
     for (Calificacion cal : calificaciones) {
       this.calificaciones.add(cal.getDt());
     }
-
+    this.idVideo = idVideo;
   }
 
   public int getCalificacionesPositivas(){

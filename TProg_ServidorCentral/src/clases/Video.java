@@ -21,32 +21,26 @@ public class Video {
   private String nombre;
   private String url;
   private boolean visible;
+  private int idVideo;
+  private static int idCounter = 0;
 
   public Video(String nombre, String descripcion, Duration duracion, String url,
-      Categoria categoria, Canal canal, Date fecha) {
+      Categoria categoria, Canal canal, Date fecha, boolean visible) {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.duracion = duracion;
-    this.fecha = fecha; // Chequear fecha?
-    this.url = url;
-    this.visible = false; // Arranca privado
-    this.categoria = categoria;
-    this.canal = canal;
-    if (this.categoria != null) {
-      categoria.addVideo(this);
-    }
-  }
-
-  public Video(String nombre, String descripcion, Duration duracion, String url,
-      Categoria categoria, Date fecha, boolean visible, Canal canal) {
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.duracion = duracion;
-    this.url = url;
-    this.categoria = categoria;
     this.fecha = fecha;
+    this.url = url;
     this.visible = visible;
+    this.categoria = categoria;
     this.canal = canal;
+    categoria.addVideo(this);
+    Video.idCounter++;
+    this.idVideo = Video.idCounter;
+  }
+  
+  public int getId() {
+    return this.idVideo;
   }
 
   public void addCalificacion(Calificacion cal) {
@@ -82,10 +76,15 @@ public class Video {
   }
   
   public DtVideo getDt() {
+<<<<<<< HEAD
 
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha, 
         this.duracion, this.canal, this.visible, this.comentarios, this.calificaciones);
 
+=======
+    return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
+        this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo);
+>>>>>>> master
   }
 
   public String getNombre() {

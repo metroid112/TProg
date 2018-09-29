@@ -6,13 +6,12 @@ import java.util.Date;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
+import excepciones.NotFoundException;
 
 public interface IVideos {
   public void altaVideo(String nick, String nombre, String descripcion, Duration duracion,
-      String url, String categoria, Date fecha) throws DuplicateClassException;
-
-  public void altaVideo(String nick, String nombre, String descripcion, Duration duracion,
-      String url, String categoria, Date fecha, boolean visible);
+      String url, String categoria, Date fecha, boolean visibilidad)
+      throws DuplicateClassException, NotFoundException;
 
   public DtVideo getDtVideo(String video, String usuario);
 
