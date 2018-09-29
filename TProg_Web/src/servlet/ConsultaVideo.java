@@ -20,7 +20,7 @@ import datatypes.DtVideo;
 @WebServlet("/ConsultaVideo")
 public class ConsultaVideo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     
     public ConsultaVideo() {
         super();
         // TODO Auto-generated constructor stub
@@ -31,8 +31,8 @@ public class ConsultaVideo extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	  //(String nombre, String descripcion, String url, Categoria categoria, Date fecha, Duration duracion, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,    LinkedList<Calificacion> calificaciones)
-    DtVideo vid = new DtVideo("lala","esta muy bueno","AlhJsZ1EBIU ",null,null,null,true,new LinkedHashMap<Integer, Comentario>(),new LinkedList<Calificacion>());
+	  
+    DtVideo vid = new DtVideo("lala","esta muy bueno","AlhJsZ1EBIU ",null,null,null,null,true,new LinkedHashMap<Integer, Comentario>(),new LinkedList<Calificacion>());
     
     request.setAttribute("DT_VIDEO", vid);
     request.getRequestDispatcher("jsp/consulta_video.jsp").forward(request, response);

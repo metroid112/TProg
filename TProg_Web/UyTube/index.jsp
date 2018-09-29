@@ -25,6 +25,8 @@
 	<a href="/ConsultaVideo">Consulta Video (WIP)</a>
 	<br>
 	<!-- Deberia redirigir al servlet -->
+	<a href="/VideoServlet">Listar Videos (NO EXISTE CU)</a>
+	<br>
 	<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 	<br>
 	<a href="jsp/quitar_video_lista.jsp">Quitar Video de Lista (WIP)</a>

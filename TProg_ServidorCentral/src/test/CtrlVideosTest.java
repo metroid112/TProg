@@ -72,7 +72,7 @@ public class CtrlVideosTest {
     } catch (DuplicateClassException e) {
       System.out.println(e.getMessage());
     }
-    DtVideo esperado = new DtVideo("Video1", "Descripcion1", "url", null, fecha, duracion, false,
+    DtVideo esperado = new DtVideo("Video1", "Descripcion1", "url", null, fecha, duracion,canal, false,
         new LinkedHashMap<Integer, Comentario>(), new LinkedList<Calificacion>());
     Assert.assertEquals(esperado, video.getDtVideo("Video1", "Pato"));
   }

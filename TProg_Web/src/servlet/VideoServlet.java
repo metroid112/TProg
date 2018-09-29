@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import interfaces.Fabrica;
+import interfaces.IVideos;
+
 @WebServlet("/VideoServlet")
 public class VideoServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -15,17 +18,27 @@ public class VideoServlet extends HttpServlet {
     super();
     // TODO Auto-generated constructor stub
   }
-
+  private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    // TODO processRequest
+  }
+  
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    response.getWriter().append("Served at: ").append(request.getContextPath());
+    // TODO Auto-generated method stubca
+    IVideos ctrVideos = Fabrica.getIVideos();
+    
+    String[] videosUsuario = ctrVideos.listarVideos(null); //Provisorio
+    int largoVideosUsuario = videosUsuario.length;
+    
+    request.setAttribute("VIDEOS_USUARIO", videosUsuario);
+    request.getRequestDispatcher("jsp/listar_videos.jsp").forward(request, response);
+
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     // TODO Auto-generated method stub
-    doGet(request, response);
+    processRequest(request,response);
   }
 
 }

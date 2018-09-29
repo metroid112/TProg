@@ -1,4 +1,6 @@
 <%@page import="datatypes.DtVideo"%>
+<%@page import="datatypes.DtComentario"%>
+<%@page import="java.util.LinkedHashMap" %>
 
 <!doctype html>
 <html lang="en">
@@ -14,7 +16,7 @@
 	
 		Nombre: <%= vid.nombre %>
 		 <br>
-		Canal: juancito
+		Canal: <%= vid.canal %>
 		 <br>
 		Fecha: <%= vid.fecha %>
 		 <br>
@@ -26,26 +28,32 @@
 		 <br>
 		URL: <%= vid.Url %>
 		 <br>
-		Me gusta: 5 <%= vid.getCalificacionesPositivas()%>
+		Me gusta:  <%= vid.getCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
 		<br>
-		No me gusta: 3 <%= vid.getCalificacionesNegativas()%>
+		No me gusta:  <%= vid.getCalificacionesNegativas()%>
 		<br>
 		
 		<!-- LA PARTE DE LOS COMENTARIOS -->
 		
 		Comentarios:
-		<pre>
 		
-		Comentario 1
-		 <br>
-			Comentario 1.1
-		<br>
-			Comentario 1.2
-		<br>
-				Comentario 1.2.1
-		<br>
-		Comentario 2
-		<br>
+		<%! public void printComent(LinkedHashMap<Integer, DtComentario> comentarios, int tab){
+			
+			for(DtComentario comentario : comentarios.values() ){
+				for(int i = 0; i < tab; i++){ %>
+					 <t>
+				<%! }
+				System.out.println(comentario.texto + "\n");
+				
+				if(!comentario.hijos.isEmpty()){
+					printComent(comentario.hijos,tab++);
+				}
+			}
+		} %>
+		
+		<pre>
+		<% printComent(vid.comentarios,0); %>		
+
 		</pre>
 		<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 		
