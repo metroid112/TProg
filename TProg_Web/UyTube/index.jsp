@@ -8,19 +8,8 @@
 	<title>Index</title>
 </head>
 <body>
+	<jsp:include page="jsp/header.jsp"></jsp:include>
 	<h1>Requerimientos mínimos</h1>
-	<div style="float: right">
-		<%= session.getAttribute("LOGIN") %>
-		<% if (session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
-			<br>
-			<%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
-			<br>
-			<form action="/login" method="GET">
-				<input type="hidden" name="CERRAR_SESION" value="CONFIRM">
-				<button type="submit">Cerrar Sesion</button>
-			</form>
-		<% } %>
-	</div>
 	<br>
 	<a href="jsp/registro_usuarios.jsp">Prueba "registro usuario"</a>
 	<br>
