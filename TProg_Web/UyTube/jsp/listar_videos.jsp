@@ -11,7 +11,7 @@
 	<h1>Videos Publicos:</h1>
 	<br>
 
-	<h2>Videos del usuario:</h2>
+	<h1>Videos del usuario:</h1>
 	<br>
 		<% 
 		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
@@ -22,5 +22,7 @@
 	<% }
 	}
 	%>
+	<form action="/index.jsp">
+	<button>Volver</button>
 </body>
 </

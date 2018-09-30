@@ -31,7 +31,7 @@ public class VideoServlet extends HttpServlet {
     DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
     
     if(d != null){
-    String[] videosUsuario = ctrVideos.listarVideos(d.nombre);
+    String[] videosUsuario = ctrVideos.listarVideos(d.nick);
     int largoVideosUsuario = videosUsuario.length;
     
     request.setAttribute("VIDEOS_USUARIO", videosUsuario);
