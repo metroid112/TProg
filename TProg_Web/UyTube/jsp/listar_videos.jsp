@@ -1,3 +1,4 @@
+<%@page import="datatypes.DtUsuario"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,9 +13,14 @@
 
 	<h2>Videos del usuario:</h2>
 	<br>
-		<% for (String v : (String[]) request.getAttribute("VIDEOS_USUARIO")) { %>
+		<% 
+		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
+		if(d != null){
+		for (String v : (String[]) request.getAttribute("VIDEOS_USUARIO")) { %>
 		<%= v %> 
 		<br>
-	<% } %>
+	<% }
+	}
+	%>
 </body>
 </

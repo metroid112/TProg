@@ -30,12 +30,14 @@ public class VideoServlet extends HttpServlet {
     
     DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
     
+    if(d != null){
     String[] videosUsuario = ctrVideos.listarVideos(d.nombre);
     int largoVideosUsuario = videosUsuario.length;
     
     request.setAttribute("VIDEOS_USUARIO", videosUsuario);
+    }
+    
     request.getRequestDispatcher("jsp/listar_videos.jsp").forward(request, response);
-
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
