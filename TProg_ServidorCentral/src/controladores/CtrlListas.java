@@ -47,7 +47,7 @@ public class CtrlListas implements IListas {
       usuarioObjetivo.getCanal().ingresarListaParticular(nombre, visibilidad);
     } else {
       throw new Exception(
-          "El usuario " + usuario + " ya posee una lista por defecto con nombre: " + nombre);
+          "El usuario " + usuario + " ya posee una lista particular con nombre: " + nombre);
     }
 
   }

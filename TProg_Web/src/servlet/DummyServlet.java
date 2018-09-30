@@ -15,16 +15,19 @@ public class DummyServlet extends HttpServlet {
     super();
   }
 
+  private void processRequest(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    response.sendRedirect("index.jsp");
+  }
+  
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    response.getWriter().append("Served at: ").append(request.getContextPath());
+    processRequest(request, response);
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    doGet(request, response);
+    processRequest(request, response);
   }
 
 }

@@ -21,6 +21,9 @@
 		Visibilidad: <input type="radio" name="visibilidad" checked>Privado  <input type="radio" name="visibilidad">Público
 		<br>
 		<button type="submit">Aceptar</button>
+		<button form="formDummyServlet" type="submit">Cancelar</button>
+	</form>
+	<form action="/Inicio" method="GET" id ="formDummyServlet">
 	</form>
 </body>
 </html>
