@@ -3,7 +3,9 @@ package clases;
 import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListas;
 
@@ -173,6 +175,26 @@ public class Canal {
     Video vid = this.videos.remove(nombreOld);
     this.videos.put(nombre, vid);
 
+  }
+  
+  public LinkedList<DtVideo> listaDtVideo(){
+    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
+    for(Video v : videos.values()){
+      DtVideo nuevo = v.getDt();
+      result.add(nuevo);
+    }
+    return result;
+  }
+  
+  public LinkedList<DtVideo> listaPublicoDtVideo(){
+    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
+    for(Video v : videos.values()){
+      if(v.getVisible()){
+        DtVideo nuevo = v.getDt();
+        result.add(nuevo);
+      }
+    }
+    return result;
   }
 
   public void quitarVideoListaDefecto(String video, String lista, Usuario ownerVideo) {

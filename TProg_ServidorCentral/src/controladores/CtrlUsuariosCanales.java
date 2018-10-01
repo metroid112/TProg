@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
@@ -13,6 +14,7 @@ import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -178,6 +180,18 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
+  }
+  
+  public LinkedList<DtVideo> getListaDtVideo(String usuario){
+    Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+    Canal canalObjetivo = usuarioObjetivo.getCanal();
+    return canalObjetivo.listaDtVideo();
+  }
+  
+  public LinkedList<DtVideo> getListaPublicoDtVideo(String usuario){
+    Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+    Canal canalObjetivo = usuarioObjetivo.getCanal();
+    return canalObjetivo.listaPublicoDtVideo();
   }
 
   @Override

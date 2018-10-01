@@ -10,15 +10,19 @@
 <body>
 	<h1>Videos Publicos:</h1>
 	<br>
-
+	aca irian todos los videos publicos
 	<h1>Videos del usuario:</h1>
 	<br>
 		<% 
 		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 		if(d != null){
 		for (String v : (String[]) request.getAttribute("VIDEOS_USUARIO")) { %>
-		<%= v %> 
-		<br>
+		
+			<%= v %> 
+			<form action="/ConsultaVideo" method="POST" id="1">
+			
+			<button type="submit">Consultar</button></form>
+			<br>
 	<% }
 	}
 	%>

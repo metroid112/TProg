@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
-import interfaces.IVideos;
+import interfaces.IUsuariosCanales;
 
 @WebServlet("/VideoServlet")
 public class VideoServlet extends HttpServlet {
@@ -26,13 +29,13 @@ public class VideoServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     // TODO Auto-generated method stub
-    IVideos ctrVideos = Fabrica.getIVideos();
+    IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
     
     DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
     
     if(d != null){
-    String[] videosUsuario = ctrVideos.listarVideos(d.nick);
-    int largoVideosUsuario = videosUsuario.length;
+      LinkedList<DtVideo> videosUsuario = ctrUsuariosCanales.getListaDtVideo(d.nick);
+      int largoVideosUsuario = videosUsuario.size();
     
     request.setAttribute("VIDEOS_USUARIO", videosUsuario);
     }

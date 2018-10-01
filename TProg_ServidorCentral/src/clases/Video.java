@@ -87,6 +87,10 @@ public class Video {
   public String getNombre() {
     return nombre;
   }
+  
+  public boolean getVisible(){
+    return visible;
+  }
 
   public void modificarDatos(String nombre, String descripcion, String url, Categoria categoria,
       Duration duracion, Boolean visible, Date fecha) throws InvalidDataException {
