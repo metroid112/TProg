@@ -6,21 +6,23 @@
 	margin-left: 5px;
 	margin-right: 0px;
 	float: left;
-	background-color: aqua;
+	/*background-color: aqua;*/
 }
 
 #header .buscador {
 	margin-left: 10%;
 	float: left;
-	background-color: lime;
+	/*background-color: lime;*/
 }
 #header .usuario {
 	
-	margin-right: 5%;
-	background-color: red;
+	margin-right: 5px;
+	/*background-color: red;*/
 }
 
 #cuerpo {
-	background-color: yellow;
+	/*background-color: yellow;*/
+	padding: 5px;
+	margin-left: 15px;
 	clear: both;
 }

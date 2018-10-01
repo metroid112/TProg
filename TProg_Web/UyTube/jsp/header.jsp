@@ -3,7 +3,7 @@
 
 <div id="header">
 	<div class="logo">
-		<img alt="UyTube" src="img/logo.png">
+		<img width="20%" height="20%" alt="UyTube" src="img/logo.png">
 	</div>
 	<div class="buscador" align="center">
 	BUSCADOR
