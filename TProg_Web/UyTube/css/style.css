@@ -1,28 +1,61 @@
-#header {
-
+* {
+	margin: 0;
+	padding: 0;
 }
 
-#header .logo {
-	margin-left: 5px;
-	margin-right: 0px;
-	float: left;
-	/*background-color: aqua;*/
+.page {
+	font-family: sans-serif;	
 }
 
-#header .buscador {
-	margin-left: 10%;
-	float: left;
-	/*background-color: lime;*/
-}
-#header .usuario {
-	
-	margin-right: 5px;
-	/*background-color: red;*/
+.header {
+	border-bottom: 1px solid black;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100px;
 }
 
-#cuerpo {
+.head-item {
+	width: 30%;
+	justify-content: center;
+	margin: 10px;
+}
+
+.contenedor {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.contenido {
+	width: 90%;	
+	padding: 10px;
 	/*background-color: yellow;*/
-	padding: 5px;
-	margin-left: 15px;
-	clear: both;
+	
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 10%;
+	padding: 15px;
+	text-align: center;
+}
+
+button {    
+	font-weight: bold; 
+	font-size: 16px;
+	color: white;
+	background-color: lightgray;
+	margin: 7px;
+	padding: 10px 20px;     
+	border-radius: 7px;     
+	border: none;
+	transition-duration: 0.3s;
+}
+
+button:hover {
+	background-color: gray;
 }

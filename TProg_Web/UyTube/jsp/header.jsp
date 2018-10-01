@@ -1,14 +1,14 @@
 <%@page import="datatypes.*" %>
 <%@page import="utils.*" %>
 
-<div id="header">
-	<div class="logo">
-		<img width="20%" height="20%" alt="UyTube" src="img/logo.png">
+<div class="header">
+	<div class="head-item">
+		<img width="30%" alt="UyTube" src="img/logo.png">
 	</div>
-	<div class="buscador" align="center">
-	BUSCADOR
+	<div class="head-item" align="center">
+	Buscador
 	</div>
-	<div class="usuario" align="right">
+	<div class="head-item" align="right">
 		<% if (session.getAttribute("LOGIN") == null || session.getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)) { %>
 			<a href="jsp/inicio_sesion.jsp">Iniciar Sesion (WIP)</a>
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
