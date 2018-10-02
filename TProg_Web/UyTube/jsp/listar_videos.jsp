@@ -1,4 +1,6 @@
 <%@page import="datatypes.DtUsuario"%>
+<%@page import="datatypes.DtVideo"%>
+<%@page import="java.util.LinkedList"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,14 +18,15 @@
 		<% 
 		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 		if(d != null){
-		for (String v : (String[]) request.getAttribute("VIDEOS_USUARIO")) { %>
-		
-			<%= v %> 
-			<form action="/ConsultaVideo" method="POST" id="1">
+			LinkedList<DtVideo> lista = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
+			for (DtVideo v : lista) { %>
 			
-			<button type="submit">Consultar</button></form>
-			<br>
-	<% }
+				<%= v.nombre %> 
+				<form action="/ConsultaVideo" method="POST" id="1">
+				
+				<button type="submit">Consultar</button></form>
+				<br>
+		<% }
 	}
 	%>
 	<form action="/index.jsp">
