@@ -32,7 +32,8 @@ public class ConsultaVideo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  
-    DtVideo vid = new DtVideo("lala","esta muy bueno","AlhJsZ1EBIU",null,null,null,null,true,new LinkedHashMap<Integer, Comentario>(),new LinkedList<Calificacion>());
+   // DtVideo vid = new DtVideo("lala","esta muy bueno","AlhJsZ1EBIU",null,null,null,null,true,new LinkedHashMap<Integer, Comentario>(),new LinkedList<Calificacion>());
+    DtVideo vid = (DtVideo) request.getAttribute("CONSULTA_VIDEO");
     
     request.setAttribute("DT_VIDEO", vid);
     request.getRequestDispatcher("jsp/consulta_video.jsp").forward(request, response);

@@ -21,10 +21,14 @@
 			LinkedList<DtVideo> lista = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
 			for (DtVideo v : lista) { %>
 			
-				<%= v.nombre %> 
-				<form action="/ConsultaVideo" method="POST" id="1">
+				<%= v.nombre %>
 				
-				<button type="submit">Consultar</button></form>
+				<form action="/ConsultaVideo" method="GET">
+				
+					<input type="hidden" id="<%= v.idVideo  %>" name="CONSULTA_VIDEO" value= "<%= v %>" >
+					<button type="submit">Consultar</button>
+					
+				</form>
 				<br>
 		<% }
 	}
