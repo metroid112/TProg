@@ -29,7 +29,12 @@ public class VideoServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     // TODO Auto-generated method stub
+    
     IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
+    
+    LinkedList<DtVideo> videosPublicos = ctrUsuariosCanales.getListaPublicoDtVideo();
+    
+    request.setAttribute("VIDEOS_PUBLICOS", videosPublicos);
     
     DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
     

@@ -52,7 +52,7 @@ public interface IUsuariosCanales {
   
   public LinkedList<DtVideo> getListaDtVideo(String usuario);
   
-  public LinkedList<DtVideo> getListaPublicoDtVideo(String usuario);
+  public LinkedList<DtVideo> getListaPublicoDtVideo();
 
   void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,

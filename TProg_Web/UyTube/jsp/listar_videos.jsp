@@ -13,15 +13,35 @@
 	<h1>Videos Publicos:</h1>
 	<br>
 	<%
-	
+		LinkedList<DtVideo> listaVideosPublicos = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_PUBLICOS");
+		
+		for(DtVideo vp: listaVideosPublicos){ %>
+			<%= vp.nombre %> - 
+			<%= vp.usuario %>
+			<br>
+					<form action="/ConsultaVideo" method="GET">
+				
+					<input type="hidden" id="1" name="VIDEO_NOMBRE" value= "<%= vp.nombre %>" >
+					
+					<input type="hidden" id="2" name="VIDEO_CANAL" value= "<%= vp.usuario %>" >
+			
+					<button type="submit">Consultar</button>
+					
+				</form>
+				<br>
+		<%}
 	%>
+	
+	
+	
+	
 		<h1>Videos del usuario:</h1>
 	<br>
 		<%
 		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 		if(d != null){
-			LinkedList<DtVideo> lista = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
-			for (DtVideo v : lista) { %>
+			LinkedList<DtVideo> listaVideosUsuario = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
+			for (DtVideo v : listaVideosUsuario) { %>
 			
 				<%= v.nombre %>
 				

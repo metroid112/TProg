@@ -53,8 +53,6 @@
 	<br>
 	<a href="jsp/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
 	<br>
-	<a href="/ConsultaVideo">Consulta Video (WIP)</a>
-	<br>
 	<!-- Deberia redirigir al servlet -->
 	<a href="/VideoServlet">Listar Videos (NO EXISTE CU)</a>
 	<br>
