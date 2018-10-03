@@ -28,8 +28,6 @@
 				<br>
 				<a href="jsp/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
 				<br>
-				<a href="jsp/consulta_video.jsp">Consulta Video (WIP)</a>
-				<br>
 				<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 				<br>
 				<a href="jsp/quitar_video_lista.jsp">Quitar Video de Lista (WIP)</a>

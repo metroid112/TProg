@@ -25,11 +25,11 @@
 			
 				<%= v.nombre %>
 				
-				<form action="/ConsultaVideo" method="POST">
+				<form action="/ConsultaVideo" method="GET">
 				
-					<input type="hidden" id="<%= v.usuario  %>" name="VIDEO_NOMBRE" value= "<%= v.nombre %>" >
+					<input type="hidden" id="1" name="VIDEO_NOMBRE" value= "<%= v.nombre %>" >
 					
-					<input type="hidden" id="<%= v.usuario  %>" name="VIDEO_CANAL" value= "<%= v.usuario %>" >
+					<input type="hidden" id="2" name="VIDEO_CANAL" value= "<%= v.usuario %>" >
 			
 					<button type="submit">Consultar</button>
 					

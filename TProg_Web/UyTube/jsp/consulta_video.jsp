@@ -16,7 +16,7 @@
 	
 		Nombre: <%= vid.nombre %>
 		 <br>
-		Canal: <%= vid.canal %>
+		Canal: <%= vid.usuario %>
 		 <br>
 		Fecha: <%= vid.fecha %>
 		 <br>
