@@ -34,9 +34,8 @@ public class ListaServlet extends HttpServlet {
     String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
     try{
       Fabrica.getIListas().altaListaParticular(nombreLista,nickUsuario,visibilidad);
-      response.getWriter().append("¡La lista se ha creado con éxito!");
-      TimeUnit.SECONDS.sleep(5);
-      response.sendRedirect("index.jsp");
+      //response.setHeader("Refresh", "10; URL=http://www.google.com/%22)
+      request.getRequestDispatcher("/jsp/alta_lista_exito.jsp").forward(request,response);
     }
     catch (Exception e){
       request.setAttribute("ERROR", e.getMessage());
