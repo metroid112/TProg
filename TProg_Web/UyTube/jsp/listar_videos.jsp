@@ -12,10 +12,12 @@
 <body>
 	<h1>Videos Publicos:</h1>
 	<br>
-	aca irian todos los videos publicos
-	<h1>Videos del usuario:</h1>
+	<%
+	
+	%>
+		<h1>Videos del usuario:</h1>
 	<br>
-		<% 
+		<%
 		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 		if(d != null){
 			LinkedList<DtVideo> lista = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
@@ -23,7 +25,7 @@
 			
 				<%= v.nombre %>
 				
-				<form action="/ConsultaVideo" method="POST">
+				<form action="/ConsultaVideo" method="GET">
 				
 					<input type="hidden" id="<%= v.idVideo  %>" name="VIDEO_NOMBRE" value= "<%= v.nombre %>" >
 					

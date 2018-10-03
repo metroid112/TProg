@@ -37,7 +37,7 @@ public class ConsultaVideo extends HttpServlet {
     //DtVideo vid = new DtVideo("lala","esta muy bueno","AlhJsZ1EBIU",null,null,null,null,true,new LinkedHashMap<Integer, Comentario>(),new LinkedList<Calificacion>());
 	  
 	  IVideos ctrVideos = Fabrica.getIVideos();
-	  String usuarioNick = (String) request.getAttribute("VIDEO_CANAL");
+	  String usuarioNick = (String) request.getAttribute("VIDEO_CANAL"); //ESTAN LLEGANDO LOS DOS NULL
 	  String nombreVideo = (String) request.getAttribute("VIDEO_NOMBRE");
 	  DtVideo vid = ctrVideos.getDtVideo(nombreVideo, usuarioNick);
     
