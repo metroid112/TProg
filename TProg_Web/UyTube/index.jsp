@@ -8,7 +8,7 @@
 <body>
 	<div class="page">
 		<jsp:include page="jsp/header.jsp"></jsp:include>
-		<div class="contenedor"></div>
+		<div class="contenedor">
 			<div class="sidebar">
 				<h4>Requerimientos mínimos</h4>
 				<br>
@@ -38,5 +38,6 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="jsp/script.jsp" />
 </body>
 </html>
