@@ -16,7 +16,7 @@ public class DtVideo {
       new LinkedHashMap<Integer, DtComentario>();
   public Duration duracion;
   public Date fecha;
-  public Canal canal;
+  public String usuario;
   public String nombre;
   public String Url;
   public String descripcion;
@@ -26,14 +26,14 @@ public class DtVideo {
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 
-      Duration duracion,Canal canal, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
+      Duration duracion,String usuario, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
       LinkedList<Calificacion> calificaciones) {
 
 
     this.nombre = nombre;
     this.Url = url;
     this.descripcion = descripcion;
-    this.canal = canal;
+    this.usuario = usuario;
     if (categoria != null) {
       this.categoria = categoria.getNombre();
     } else {
