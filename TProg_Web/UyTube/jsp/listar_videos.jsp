@@ -57,8 +57,8 @@
 				<br>
 		<% }
 	}
+		else %> No has iniciado sesion <%
 	%>
 	<form action="/index.jsp">
 	<button>Volver</button>
 </body>
-</
