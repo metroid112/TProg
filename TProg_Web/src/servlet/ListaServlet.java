@@ -36,7 +36,7 @@ public class ListaServlet extends HttpServlet {
    else if (request.getParameter("STATE").equals("LOADLISTAS")) {
      //obtener las listas para el usuario
      request.setAttribute("LISTAS", Listas);
-     request.getRequestDispatcher("/quitar_video_lista.jsp").forward(request, response);
+     request.getRequestDispatcher("/WEB-INF/pages/quitar_video_lista.jsp").forward(request, response);
    }
    else {
        if (request.getParameter("visibilidad").equals("Público")) {
