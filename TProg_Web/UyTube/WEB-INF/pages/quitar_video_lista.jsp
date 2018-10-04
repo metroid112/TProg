@@ -15,23 +15,19 @@
 			<br>
 			<br>
 			Por favor seleccione una lista
+		</div>
 			<br>
 			<% for (String u : (String[]) request.getAttribute("LISTAS")) { %>
-				<%= u %> <br>
+				<div class="detalleClickeableLista">		
+				<form action="/ListaServlet" method="GET">
+					<input type="hidden" name="LISTA" value="
+			<%= u %> ">
+					<button><%= u %></button>
+				</form>	
+				</div>
 			<% } %>
 			<br>
-		<form action="/ListaServlet" method="POST" id="formListaServlet">
-			<input type="hidden" name="STATE" value="QUITARVIDEO">
-			Nombre de lista particular: <input type="text" name="nombreLista" required>*
-			<br>
-			Visibilidad: <input type="radio" name="visibilidad" checked>Privado  <input type="radio" name="visibilidad">Público
-			<br>
-			<button type="submit">Aceptar</button>
-			<button form="formDummyServlet" type="submit">Cancelar</button>
 		</form>
-		<form action="/Inicio" method="GET" id ="formDummyServlet">
-		</form>
-		</div>
 		
 	</div>
 	<%@ include file="/WEB-INF/extras/script.jsp" %>
