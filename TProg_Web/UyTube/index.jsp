@@ -66,11 +66,8 @@
 	<a href="jsp/inicio_sesion.jsp">Iniciar Sesion (WIP)</a>
 	<br>
 	<a href="/CargaDatos">Cargar Datos</a>
-=======
-	<jsp:include page="jsp/script.jsp" />
->>>>>>> master
-=======
+
 	<jsp:include page="WEB-INF/extras/script.jsp" />
->>>>>>> master
+
 </body>
 </html>
