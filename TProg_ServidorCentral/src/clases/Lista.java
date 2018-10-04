@@ -1,6 +1,7 @@
 package clases;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import datatypes.DtLista;
 
@@ -9,13 +10,21 @@ public abstract class Lista {
   private Canal canal;
 
   private String nombre;
-  private LinkedList<Video> videos = new LinkedList<Video>();
+  private List<Video> videos = new LinkedList<Video>();
+  private int idLista;
+  private static int idCounter = 0;
 
   // Pato: Constructor con todos los atributos, posiblemente se precise cortar
   // algunos
   public Lista(String nombre, Canal canal) {
     this.nombre = nombre;
     this.canal = canal;
+    Lista.idCounter++;
+    this.idLista = Lista.idCounter;
+  }
+  
+  public int getId() {
+    return this.idLista;
   }
 
   public boolean existeVideo(Video video) {
@@ -53,22 +62,17 @@ public abstract class Lista {
   }
 
   public Video getVideo(String nombreVid, Usuario ownerVideo) { // TODO FIX!
-    boolean encontrado = false;
     Video video = null;
     for (Video vid : videos) {
       if (vid.getNombre().equals(nombreVid)
           && (vid.getCanal().getUsuario().getNick() == ownerVideo.getNick())) {
-        encontrado = true;
         video = vid;
       }
     }
-    /*
-     * if (!encontrado) { throw new Exception("Video no existe"); }
-     */
     return video;
   }
 
-  public LinkedList<Video> getVideos() {
+  public List<Video> getVideos() {
     return videos;
   }
 

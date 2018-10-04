@@ -16,7 +16,8 @@ public class DtUsuario {
   public String nick;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
-      String descripcionCanal, Date fechaNacimiento, BufferedImage imagen, boolean privado, String nick) {
+      String descripcionCanal, Date fechaNacimiento, BufferedImage imagen, boolean privado,
+      String nick) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.canal = canal;

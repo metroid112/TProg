@@ -29,16 +29,16 @@ public class CtrlUsuariosCanalesTest {
       image);
   private Canal canal = new Canal("Canal", "Descripcion canal", null, true, user);
   private Duration duracion = Duration.ofHours(1);
-  //private Video video = new Video("Video", "Descripcion video", duracion, "URL", null, canal,
-  //    new Date(10));
-  //private Comentario comment = new Comentario("Prueba", user, video, new Date(10));
-  //private Comentario respuesta = new Comentario("Prueba1", user, video, comment, new Date(50));
+  // private Video video = new Video("Video", "Descripcion video", duracion, "URL", null, canal,
+  // new Date(10));
+  // private Comentario comment = new Comentario("Prueba", user, video, new Date(10));
+  // private Comentario respuesta = new Comentario("Prueba1", user, video, comment, new Date(50));
   private IListas ctrlListas = Fabrica.getIListas();
 
   @Before
   public void setup() {
     user.setCanal(canal);
-    //canal.agregarVideo(video);
+    // canal.agregarVideo(video);
   }
 
   @After
@@ -59,7 +59,7 @@ public class CtrlUsuariosCanalesTest {
     controladorUsuariosCanales.comentarVideo("Prueba", new Date(10), "Pato", "Video", "Pato");
     Comentario recibido = ManejadorUsuarios.getManejadorUsuarios().get("Pato").getCanal()
         .getVideos().get("Video").getComentario(Comentario.getContador() - 1);
-    //Assert.assertEquals(comment, recibido);
+    // Assert.assertEquals(comment, recibido);
     // Assert.assertEquals(comment,
     // ManejadorUsuarios.getManejadorUsuarios().get("Pato").getComentario(0));
   }
@@ -74,7 +74,7 @@ public class CtrlUsuariosCanalesTest {
   public void testGetDt() {
     DtUsuario dtEsperado = new DtUsuario("Federico", "Aguilera", user.getCanal().getNombre(),
         user.getCorreo(), user.getCanal().getDescripcion(), user.getFecha(), user.getImagen(),
-        true,user.getNick());
+        true, user.getNick());
     ManejadorUsuarios.getManejadorUsuarios().add(user);
     Assert.assertEquals(dtEsperado, controladorUsuariosCanales.getDt(user.getNick()));
   }
@@ -109,10 +109,10 @@ public class CtrlUsuariosCanalesTest {
   @Test
   public void testValorarVideo() throws Exception {
     ManejadorUsuarios.getManejadorUsuarios().add(user);
-    //Calificacion calEsperada = new Calificacion(true, user, video);
-    //controladorUsuariosCanales.valorarVideo(user.getNick(), true, video.getNombre(),
-    //    video.getCanal().getUsuario().getNick());
-    //Assert.assertEquals(calEsperada, user.getCalificaciones().getFirst());
+    // Calificacion calEsperada = new Calificacion(true, user, video);
+    // controladorUsuariosCanales.valorarVideo(user.getNick(), true, video.getNombre(),
+    // video.getCanal().getUsuario().getNick());
+    // Assert.assertEquals(calEsperada, user.getCalificaciones().getFirst());
   }
 
   @Test
@@ -157,23 +157,23 @@ public class CtrlUsuariosCanalesTest {
   @Test
   public void testModificarValoracion() throws Exception {
     ManejadorUsuarios.getManejadorUsuarios().add(user);
-    //Calificacion calEsperada = new Calificacion(false, user, video);
-    //controladorUsuariosCanales.valorarVideo(user.getNick(), true, video.getNombre(),
-    //    video.getCanal().getUsuario().getNick());
-    //controladorUsuariosCanales.modificarValoracion(false, user.getNick(), video.getNombre(),
-    //    video.getCanal().getUsuario().getNick());
-    //Assert.assertEquals(calEsperada, user.getCalificaciones().getFirst());
+    // Calificacion calEsperada = new Calificacion(false, user, video);
+    // controladorUsuariosCanales.valorarVideo(user.getNick(), true, video.getNombre(),
+    // video.getCanal().getUsuario().getNick());
+    // controladorUsuariosCanales.modificarValoracion(false, user.getNick(), video.getNombre(),
+    // video.getCanal().getUsuario().getNick());
+    // Assert.assertEquals(calEsperada, user.getCalificaciones().getFirst());
   }
 
   @Test
   public void testResponderComentario() {
     ManejadorUsuarios.getManejadorUsuarios().add(user);
     controladorUsuariosCanales.comentarVideo("Prueba", new Date(10), "Pato", "Video", "Pato");
-    //controladorUsuariosCanales.responderComentario("Prueba1", new Date(50), user.getNick(),
-    //    video.getNombre(), user.getNick(), Comentario.getContador() - 1);
+    // controladorUsuariosCanales.responderComentario("Prueba1", new Date(50), user.getNick(),
+    // video.getNombre(), user.getNick(), Comentario.getContador() - 1);
     Comentario recibido = ManejadorUsuarios.getManejadorUsuarios().get("Pato").getCanal()
         .getVideos().get("Video").getComentario(Comentario.getContador() - 2);
-    //Assert.assertEquals(comment, recibido);
+    // Assert.assertEquals(comment, recibido);
   }
 
   @Test
@@ -193,9 +193,9 @@ public class CtrlUsuariosCanalesTest {
 
   @Test
   public void testAltaVideoCanal() {
-    //canal.altaVideo("pruebaVideo", "", duracion, "url123", null, new Date(50), false);
-    //Video esperado = new Video("pruebaVideo", "", duracion, "url123", null, canal, new Date(50));
-    //Assert.assertEquals(esperado, canal.getVideoCanal("pruebaVideo"));
+    // canal.altaVideo("pruebaVideo", "", duracion, "url123", null, new Date(50), false);
+    // Video esperado = new Video("pruebaVideo", "", duracion, "url123", null, canal, new Date(50));
+    // Assert.assertEquals(esperado, canal.getVideoCanal("pruebaVideo"));
   }
 
 }
