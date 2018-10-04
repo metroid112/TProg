@@ -10,7 +10,7 @@
 	</div>
 	<div class="head-item" align="right">
 		<% if (session.getAttribute("LOGIN") == null || session.getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)) { %>
-			<a href="jsp/inicio_sesion.jsp">Iniciar Sesion (WIP)</a>
+			<a href="/inicio_sesion.jsp">Iniciar Sesion (WIP)</a>
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
 			Iniciado como <%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
 			<br>

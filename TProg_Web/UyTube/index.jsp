@@ -32,8 +32,10 @@
 				<br>
 				<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 				<br>
-				<a href="jsp/quitar_video_lista.jsp">Quitar Video de Lista (WIP)</a>
-				<br>
+				<form action="/ListaServlet" method="GET">
+					<input type="hidden" name="STATE" value="LOADLISTAS">
+					<button>Quitar Video de Lista (WIP)</button>
+				</form>		<br>
 				<a href="/CargaDatos">Cargar Datos</a>
 			</div>
 		</div>
