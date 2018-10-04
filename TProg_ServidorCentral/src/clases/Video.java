@@ -6,7 +6,9 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 import datatypes.DtVideo;
+import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
+import manejadores.ManejadorVideos;
 
 public class Video {
 
