@@ -2,6 +2,7 @@ package clases;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 import datatypes.DtLista;
 import excepciones.DuplicateClassException;
@@ -9,14 +10,13 @@ import manejadores.ManejadorListasParticulares;
 
 public class ListaParticular extends Lista {
 
-  private HashMap<String, Categoria> categorias;
+  private Map<String, Categoria> categorias = new HashMap<String, Categoria>();
   private boolean visible;
 
-  public ListaParticular(String nombre, Canal canal, HashMap<String, Categoria> categorias,
+  public ListaParticular(String nombre, Canal canal,
       boolean visible) throws DuplicateClassException {
     super(nombre, canal);
     this.visible = visible;
-    this.categorias = categorias;
     ManejadorListasParticulares.getManejadorListasParticulares().add(this);
   }
 
@@ -39,7 +39,7 @@ public class ListaParticular extends Lista {
     return true;
   }
 
-  public HashMap<String, Categoria> getCategorias() {
+  public Map<String, Categoria> getCategorias() {
     return categorias;
   }
 

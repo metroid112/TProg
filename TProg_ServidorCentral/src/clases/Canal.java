@@ -141,7 +141,7 @@ public class Canal {
   public void altaListaParticular(String nombre, boolean visibilidad)
       throws DuplicateClassException {
 
-    ListaParticular nuevaLista = new ListaParticular(nombre, this, new HashMap<String, Categoria>(),
+    ListaParticular nuevaLista = new ListaParticular(nombre, this,
         visibilidad);
     listaParticulares.put(nombre, nuevaLista);
   }

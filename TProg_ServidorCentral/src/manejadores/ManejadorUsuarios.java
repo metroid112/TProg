@@ -17,7 +17,7 @@ public class ManejadorUsuarios {
     return manejador;
   }
 
-  private HashMap<String, Usuario> usuarios = new HashMap<String, Usuario>();
+  private Map<String, Usuario> usuarios = new HashMap<String, Usuario>();
 
   private ManejadorUsuarios() {
 

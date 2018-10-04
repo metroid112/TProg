@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import datatypes.DtUsuario;
 
@@ -12,20 +14,18 @@ public class Usuario {
   private String apellido;
   private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
   private Canal canal;
-  private LinkedList<Comentario> comentarios = new LinkedList<Comentario>();
+  private List<Comentario> comentarios = new LinkedList<Comentario>();
   private String correo;
   private Date fechaNacimiento;
   private BufferedImage imagen;
   private String nick;
   private String nombre;
-  private HashMap<String, Usuario> seguidores = new HashMap<String, Usuario>();
-  private HashMap<String, Usuario> seguidos = new HashMap<String, Usuario>();
+  private Map<String, Usuario> seguidores = new HashMap<String, Usuario>();
+  private Map<String, Usuario> seguidos = new HashMap<String, Usuario>();
   private String password = "";
   private String imgPath = "img/usuarios/null.JPG";
-
-  public Usuario() {
-
-  }
+  private int idUsuario;
+  private static int idCounter = 0;
 
   public Usuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, BufferedImage image) {
@@ -35,6 +35,8 @@ public class Usuario {
     this.correo = correo;
     this.fechaNacimiento = fechaNacimiento;
     this.imagen = image;
+    Usuario.idCounter++;
+    this.idUsuario = Usuario.idCounter;
   }
 
   public Usuario(String nickname, String nombre, String apellido, String correo,
@@ -46,6 +48,8 @@ public class Usuario {
     this.fechaNacimiento = fechaNacimiento;
     this.imgPath = image;
     this.password = password;
+    Usuario.idCounter++;
+    this.idUsuario = Usuario.idCounter;
   }
 
   public String getImg() {
@@ -88,11 +92,11 @@ public class Usuario {
     return nick;
   }
 
-  public HashMap<String, Usuario> getSeguidores() {
+  public Map<String, Usuario> getSeguidores() {
     return seguidores;
   }
 
-  public HashMap<String, Usuario> getSeguidos() {
+  public Map<String, Usuario> getSeguidos() {
     return seguidos;
   }
 
@@ -165,6 +169,10 @@ public class Usuario {
 
   public boolean checkPass(String pass) {
     return (this.password.equals(pass));
+  }
+
+  public Integer getId() {
+    return this.idUsuario;
   }
 
 }
