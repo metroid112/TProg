@@ -27,7 +27,8 @@ public class Video {
   private static int idCounter = 0;
 
   public Video(String nombre, String descripcion, Duration duracion, String url,
-      Categoria categoria, Canal canal, Date fecha, boolean visible) {
+      Categoria categoria, Canal canal, Date fecha, boolean visible)
+      throws DuplicateClassException {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.duracion = duracion;
@@ -39,8 +40,9 @@ public class Video {
     categoria.addVideo(this);
     Video.idCounter++;
     this.idVideo = Video.idCounter;
+    ManejadorVideos.getManejadorVideos().add(this);
   }
-  
+
   public int getId() {
     return this.idVideo;
   }
@@ -76,7 +78,7 @@ public class Video {
   public Comentario getComentario(int id) {
     return this.comentarios.get(id);
   }
-  
+
   public DtVideo getDt() {
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
         this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo);

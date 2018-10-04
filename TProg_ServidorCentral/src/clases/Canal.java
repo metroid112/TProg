@@ -58,7 +58,7 @@ public class Canal {
 
   public Video altaVideo(String nombre, String descripcion, Duration duracion, String url,
       Categoria categoria, Date fecha, boolean visible) throws DuplicateClassException {
-    
+
     if (videos.containsKey(nombre)) {
       throw new DuplicateClassException("Video", nombre);
     }

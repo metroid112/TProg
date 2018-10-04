@@ -47,11 +47,11 @@ public class Usuario {
     this.imgPath = image;
     this.password = password;
   }
-  
+
   public String getImg() {
     return this.imgPath;
   }
-  
+
   public void addCalificacion(Calificacion cal) {
     this.calificaciones.add(cal);
   }
@@ -76,7 +76,8 @@ public class Usuario {
 
   public DtUsuario getDt() {
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
-        this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible(), this.nick);
+        this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible(),
+        this.nick);
   }
 
   public BufferedImage getImagen() {
@@ -161,7 +162,7 @@ public class Usuario {
   public Date getFecha() {
     return this.fechaNacimiento;
   }
-  
+
   public boolean checkPass(String pass) {
     return (this.password.equals(pass));
   }

@@ -40,7 +40,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass) {
-    Usuario user = new Usuario(nickname, nombreCanal, apellido, correo, fechaNacimiento, imagenPath, pass);
+    Usuario user =
+        new Usuario(nickname, nombreCanal, apellido, correo, fechaNacimiento, imagenPath, pass);
     Canal canal = new Canal(nombreCanal, descripcionCanal,
         ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
     user.setCanal(canal);
@@ -60,7 +61,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public boolean existeUsuario(String nick) {
     return manejadorUsuarios.isMemberKey(nick);
   }
-  
+
   @Override
   public boolean existeUsuarioMail(String mail) {
     if (manejadorUsuarios.mailGet(mail) != null) {
@@ -72,10 +73,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public DtUsuario getDt(String nick) {
-    if(manejadorUsuarios.get(nick) != null) {
+    if (manejadorUsuarios.get(nick) != null) {
       return manejadorUsuarios.get(nick).getDt();
     } else {
-      return manejadorUsuarios.mailGet(nick).getDt(); 
+      return manejadorUsuarios.mailGet(nick).getDt();
     }
   }
 
@@ -182,12 +183,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public boolean checkLogin(String usr, String pass) {
-    
+
     if (manejadorUsuarios.get(usr) != null) {
       return manejadorUsuarios.get(usr).checkPass(pass);
     } else {
       return manejadorUsuarios.mailGet(usr).checkPass(pass);
     }
-    
+
   }
 }

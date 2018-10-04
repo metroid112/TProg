@@ -37,10 +37,9 @@ public class ManejadorUsuarios {
   public Usuario get(String nick) {
     return usuarios.get(nick);
   }
-  
+
   /**
-   * Busca al usuario por su correo
-   * Si no es encontrado devuelve null
+   * Busca al usuario por su correo Si no es encontrado devuelve null
    */
   public Usuario mailGet(String mail) {
     Usuario usuario = null;

@@ -15,7 +15,7 @@ public interface IVideos {
       throws DuplicateClassException, NotFoundException;
 
   public DtVideo getDtVideo(int id) throws NotFoundException;
-  
+
   public Map<Integer, DtVideo> getDtVideos();
 
   public String[] listarCategorias();
