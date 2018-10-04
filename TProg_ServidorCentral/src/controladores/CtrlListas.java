@@ -5,6 +5,7 @@ import clases.Lista;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtLista;
+import excepciones.DuplicateClassException;
 import interfaces.IListas;
 import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorUsuarios;
@@ -41,15 +42,9 @@ public class CtrlListas implements IListas {
 
   @Override
   public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
-      throws Exception {
+      throws DuplicateClassException {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
-    if (!usuarioObjetivo.getCanal().getListaParticulares().containsKey(nombre)) {
-      usuarioObjetivo.getCanal().ingresarListaParticular(nombre, visibilidad);
-    } else {
-      throw new Exception(
-          "El usuario " + usuario + " ya posee una lista particular con nombre: " + nombre);
-    }
-
+    usuarioObjetivo.getCanal().altaListaParticular(nombre, visibilidad);
   }
 
   @Override

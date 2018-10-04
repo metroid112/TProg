@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import datatypes.DtLista;
+import excepciones.DuplicateClassException;
+import manejadores.ManejadorListasParticulares;
 
 public class ListaParticular extends Lista {
 
@@ -11,10 +13,11 @@ public class ListaParticular extends Lista {
   private boolean visible;
 
   public ListaParticular(String nombre, Canal canal, HashMap<String, Categoria> categorias,
-      boolean visible) {
+      boolean visible) throws DuplicateClassException {
     super(nombre, canal);
     this.visible = visible;
     this.categorias = categorias;
+    ManejadorListasParticulares.getManejadorListasParticulares().add(this);
   }
 
   public boolean esUnicaCategoria(Categoria categoria) {

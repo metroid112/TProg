@@ -1,6 +1,7 @@
 package interfaces;
 
 import datatypes.DtLista;
+import excepciones.DuplicateClassException;
 
 public interface IListas {
 
@@ -9,8 +10,7 @@ public interface IListas {
 
   public void altaListaDefecto(String nombre) throws Exception;
 
-  public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
-      throws Exception;
+  public void altaListaParticular(String nombre, String usuario, boolean visibilidad) throws DuplicateClassException;
 
   public DtLista getDt(String lista, String usuario) throws Exception;
 

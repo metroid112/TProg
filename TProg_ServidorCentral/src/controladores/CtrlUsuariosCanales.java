@@ -93,10 +93,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public String[] listarListasDeReproduccion(String nick) {
-    HashMap<String, ListaDefecto> listasDefecto = manejadorUsuarios.get(nick).getCanal()
+    HashMap<String, ListaDefecto> listasDefecto = (HashMap<String, ListaDefecto>) manejadorUsuarios.get(nick).getCanal()
         .getListaDefecto();
     String[] listaDefecto = listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
-    HashMap<String, ListaParticular> listasParticular = manejadorUsuarios.get(nick).getCanal()
+    HashMap<String, ListaParticular> listasParticular = (HashMap<String, ListaParticular>) manejadorUsuarios.get(nick).getCanal()
         .getListaParticulares();
     String[] listaParticulares = listasParticular.keySet()
         .toArray(new String[listasParticular.size()]);
@@ -141,7 +141,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public String[] listarVideos(String nick) {
-    HashMap<String, Video> videos = manejadorUsuarios.get(nick).getCanal().getVideos();
+    HashMap<String, Video> videos = (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
     String[] res = videos.keySet().toArray(new String[videos.size()]);
     return res;
   }
