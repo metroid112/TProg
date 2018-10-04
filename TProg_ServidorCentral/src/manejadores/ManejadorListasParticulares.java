@@ -41,7 +41,7 @@ public class ManejadorListasParticulares {
     }
   }
 
-  public Map<Integer, ListaParticular> getListaParticulars() {
+  public Map<Integer, ListaParticular> getListasParticulares() {
     return this.listasParticulares;
   }
 }

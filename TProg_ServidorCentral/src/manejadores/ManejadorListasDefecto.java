@@ -2,6 +2,8 @@ package manejadores;
 
 import java.util.HashSet;
 
+import excepciones.DuplicateClassException;
+
 public class ManejadorListasDefecto {
 
   private static ManejadorListasDefecto manejador = null;
@@ -19,11 +21,15 @@ public class ManejadorListasDefecto {
 
   }
 
-  public void add(String lista) {
-    listasDefecto.add(lista);
+  public void addListaDefecto(String nombreLista) throws DuplicateClassException {
+    if (!this.listasDefecto.contains(nombreLista)) {
+      listasDefecto.add(nombreLista);
+    } else {
+      throw new DuplicateClassException("Lista Defecto", nombreLista);
+    }    
   }
 
-  public boolean existeLista(String nombre) {
+  public boolean existeListaDefecto(String nombre) {
     if (!listasDefecto.contains(nombre)) {
       return false;
     }

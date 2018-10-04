@@ -1,13 +1,20 @@
 package controladores;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import clases.Canal;
 import clases.Lista;
+import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtLista;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import interfaces.IListas;
 import manejadores.ManejadorListasDefecto;
+import manejadores.ManejadorListasParticulares;
 import manejadores.ManejadorUsuarios;
 
 public class CtrlListas implements IListas {
@@ -31,13 +38,9 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public void altaListaDefecto(String nombreListaDefecto) throws Exception {
-    if (!manejadorListas.existeLista(nombreListaDefecto)) {
-      manejadorListas.add(nombreListaDefecto);
-      manejadorUsuarios.agregarListaDefecto(nombreListaDefecto);
-    } else {
-      throw new Exception("Ya existe una lista por defecto con nombre " + nombreListaDefecto);
-    }
+  public void altaListaDefecto(String nombreListaDefecto) throws DuplicateClassException {
+    manejadorListas.addListaDefecto(nombreListaDefecto);
+    manejadorUsuarios.agregarListaDefecto(nombreListaDefecto);
   }
 
   @Override
@@ -45,13 +48,6 @@ public class CtrlListas implements IListas {
       throws DuplicateClassException {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     usuarioObjetivo.getCanal().altaListaParticular(nombre, visibilidad);
-  }
-
-  @Override
-  public DtLista getDt(String lista, String usuario) throws Exception {
-    Lista list = manejadorUsuarios.get(usuario).getCanal().getLista(lista);
-
-    return list.getDtLista();
   }
 
   /*
@@ -99,6 +95,22 @@ public class CtrlListas implements IListas {
     } else {
       usuarioObj.getCanal().quitarVideoListaParticular(video, lista, owner);
     }
+  }
+
+  @Override
+  public DtLista getDt(int id) throws NotFoundException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Map<Integer, DtLista> getDtListas() {
+    Map<Integer, DtLista> listas = new HashMap<Integer, DtLista>();
+    for (Entry<Integer, ListaParticular> lista : ManejadorListasParticulares
+        .getManejadorListasParticulares().getListasParticulares().entrySet()) {
+      listas.put(lista.getKey(), lista.getValue().getDtLista());
+    }
+    return listas;
   }
 
 }
