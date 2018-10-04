@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import excepciones.DuplicateClassException;
-import manejadores.ManejadorListas;
+import manejadores.ManejadorListasDefecto;
 
 public class Canal {
 
@@ -31,7 +31,7 @@ public class Canal {
     this.descripcion = descripcionCanal;
     this.visible = visible;
     this.usuario = user;
-    for (String lista : ManejadorListas.getManejadorListas().toArray()) {
+    for (String lista : ManejadorListasDefecto.getManejadorListas().toArray()) {
       listaDefecto.put(lista, new ListaDefecto(lista, this));
     }
   }

@@ -2,20 +2,20 @@ package manejadores;
 
 import java.util.HashSet;
 
-public class ManejadorListas {
+public class ManejadorListasDefecto {
 
-  private static ManejadorListas manejador = null;
+  private static ManejadorListasDefecto manejador = null;
 
-  public static ManejadorListas getManejadorListas() {
+  public static ManejadorListasDefecto getManejadorListas() {
     if (manejador == null) {
-      manejador = new ManejadorListas();
+      manejador = new ManejadorListasDefecto();
     }
     return manejador;
   }
 
   private HashSet<String> listasDefecto = new HashSet<String>();
 
-  private ManejadorListas() {
+  private ManejadorListasDefecto() {
 
   }
 

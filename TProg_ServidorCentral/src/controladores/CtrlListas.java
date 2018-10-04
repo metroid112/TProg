@@ -6,12 +6,12 @@ import clases.Usuario;
 import clases.Video;
 import datatypes.DtLista;
 import interfaces.IListas;
-import manejadores.ManejadorListas;
+import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorUsuarios;
 
 public class CtrlListas implements IListas {
 
-  private ManejadorListas manejadorListas = ManejadorListas.getManejadorListas();
+  private ManejadorListasDefecto manejadorListas = ManejadorListasDefecto.getManejadorListas();
   private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 
   @Override
