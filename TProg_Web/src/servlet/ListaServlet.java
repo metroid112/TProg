@@ -34,10 +34,10 @@ public class ListaServlet extends HttpServlet {
     try {
       Fabrica.getIListas().altaListaParticular(nombreLista, nickUsuario, visibilidad);
       // response.setHeader("Refresh", "10; URL=http://www.google.com/%22)
-      request.getRequestDispatcher("/jsp/alta_lista_exito.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/pages/alta_lista_exito.jsp").forward(request, response);
     } catch (Exception e) {
       request.setAttribute("ERROR", e.getMessage());
-      request.getRequestDispatcher("/jsp/alta_lista.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/pages/alta_lista.jsp").forward(request, response);
     }
 
   }

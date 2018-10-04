@@ -2,12 +2,12 @@
 <!doctype html>
 <html>
 <head>
-	<jsp:include page="jsp/head.jsp" />
+	<jsp:include page="WEB-INF/extras/head.jsp" />
 	<title>Index</title>
 </head>
 <body>
 	<div class="page">
-		<jsp:include page="jsp/header.jsp"></jsp:include>
+		<jsp:include page="WEB-INF/extras/header.jsp"></jsp:include>
 		<div class="contenedor">
 			<div class="sidebar">
 				<h4>Requerimientos mínimos</h4>
@@ -38,6 +38,6 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="jsp/script.jsp" />
+	<jsp:include page="WEB-INF/extras/script.jsp" />
 </body>
 </html>

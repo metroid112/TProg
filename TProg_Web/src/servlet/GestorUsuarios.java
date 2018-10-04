@@ -32,7 +32,7 @@ public class GestorUsuarios extends HttpServlet {
     int largo = ctrlUsuarios.listarUsuarios().length;
     String[] usuarios = ctrlUsuarios.listarUsuarios();
     request.setAttribute("USUARIOS_REGISTRADOS", usuarios);
-    request.getRequestDispatcher("jsp/listar_usuarios.jsp").forward(request, response);
+    request.getRequestDispatcher("/WEB-INF/pages/listar_usuarios.jsp").forward(request, response);
 
   }
 

@@ -35,10 +35,10 @@ public class AltaVideo extends HttpServlet {
         DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
         if (user == null) {
           request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
-          request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
+          request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
         }
         // TODO: cargar categorias
-        request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
       } else {
         String nick = "";
         DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
@@ -67,10 +67,10 @@ public class AltaVideo extends HttpServlet {
               false);
         } catch (DuplicateClassException exception) {
           request.setAttribute("ERROR_1", exception.getMessage());
-          request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
+          request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
         } catch (NotFoundException exception) {
           request.setAttribute("ERROR_2", exception.getMessage());
-          request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
+          request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
         }
         response.sendRedirect("/index.jsp");
       }

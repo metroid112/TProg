@@ -36,7 +36,7 @@ public class AltaUsuario extends HttpServlet {
       request.getSession().setAttribute("ERROR_REGISTRO", "Contraseñas no coinciden"); // TODO
                                                                                        // terminar
       // Faltan otros checks
-      request.getRequestDispatcher("/jsp/alta_usuario.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/pages/alta_usuario.jsp").forward(request, response);
     } else {
 
       // https://stackoverflow.com/questions/2422468/how-to-upload-files-to-server-using-jsp-servlet
