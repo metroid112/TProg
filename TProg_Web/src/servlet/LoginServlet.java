@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
         response.sendRedirect("index.jsp");
       } else {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
-        request.getRequestDispatcher("jsp/inicio_sesion_error.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/error/inicio_sesion_error.jsp").forward(request, response);
       }
     } else {
       if (request.getParameter("CERRAR_SESION") == null) {
