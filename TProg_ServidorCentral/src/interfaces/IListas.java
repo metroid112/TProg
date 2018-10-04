@@ -1,18 +1,24 @@
 package interfaces;
 
+import java.util.Map;
+
 import datatypes.DtLista;
+import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 
 public interface IListas {
 
   public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
       boolean defecto);
 
-  public void altaListaDefecto(String nombre) throws Exception;
+  public void altaListaDefecto(String nombre) throws DuplicateClassException;
 
   public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
-      throws Exception;
+      throws DuplicateClassException;
 
-  public DtLista getDt(String lista, String usuario) throws Exception;
+  public DtLista getDt(int id) throws NotFoundException;
+
+  public Map<Integer, DtLista> getDtListas();
 
   // public String getDueñoVideo(String dueñoLista, String nombreLista, String
   // nombreVid, String algo) throws Exception;

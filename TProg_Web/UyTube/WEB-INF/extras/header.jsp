@@ -10,7 +10,10 @@
 	</div>
 	<div class="head-item" align="right">
 		<% if (session.getAttribute("LOGIN") == null || session.getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)) { %>
-			<a href="jsp/inicio_sesion.jsp">Iniciar Sesion (WIP)</a>
+			<form action="/login" method="GET">
+				<input type="hidden" name="PANTALLALOGIN" value=TRUE>
+				<button type="submit">Iniciar Sesion (WIP)</button>
+			</form>
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
 			Iniciado como <%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
 			<br>

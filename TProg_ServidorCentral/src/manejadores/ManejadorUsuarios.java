@@ -20,7 +20,7 @@ public class ManejadorUsuarios {
     return manejador;
   }
 
-  private HashMap<String, Usuario> usuarios = new HashMap<String, Usuario>();
+  private Map<String, Usuario> usuarios = new HashMap<String, Usuario>();
 
   private ManejadorUsuarios() {
 
@@ -40,10 +40,9 @@ public class ManejadorUsuarios {
   public Usuario get(String nick) {
     return usuarios.get(nick);
   }
-  
+
   /**
-   * Busca al usuario por su correo
-   * Si no es encontrado devuelve null
+   * Busca al usuario por su correo Si no es encontrado devuelve null
    */
   public Usuario mailGet(String mail) {
     Usuario usuario = null;

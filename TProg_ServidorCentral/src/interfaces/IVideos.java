@@ -2,6 +2,7 @@ package interfaces;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.Map;
 
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
@@ -13,7 +14,9 @@ public interface IVideos {
       String url, String categoria, Date fecha, boolean visibilidad)
       throws DuplicateClassException, NotFoundException;
 
-  public DtVideo getDtVideo(String video, String usuario);
+  public DtVideo getDtVideo(int id) throws NotFoundException;
+
+  public Map<Integer, DtVideo> getDtVideos();
 
   public String[] listarCategorias();
 
