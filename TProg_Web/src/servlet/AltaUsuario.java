@@ -32,12 +32,13 @@ public class AltaUsuario extends HttpServlet {
     String pass = (String) request.getParameter("pass");
     String passConfirm = (String) request.getParameter("passConfirm");
     if (!pass.equals(passConfirm)) {
-      //response.getWriter().println(request.getParameter("categoria"));
-      request.getSession().setAttribute("ERROR_REGISTRO", "Contraseñas no coinciden"); //TODO terminar
+      // response.getWriter().println(request.getParameter("categoria"));
+      request.getSession().setAttribute("ERROR_REGISTRO", "Contraseñas no coinciden"); // TODO
+                                                                                       // terminar
       // Faltan otros checks
       request.getRequestDispatcher("/jsp/alta_usuario.jsp").forward(request, response);
     } else {
-      
+
       // https://stackoverflow.com/questions/2422468/how-to-upload-files-to-server-using-jsp-servlet
       // para la imagen ^^
       String nickname = request.getParameter("nick");
@@ -61,21 +62,18 @@ public class AltaUsuario extends HttpServlet {
       } else {
         visible = true;
       }
-      Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo, fechaNacimiento, imagenPath,
+      Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo, fechaNacimiento,
+          imagenPath,
           nombreCanal, descripcionCanal, categoria, visible, passConfirm);
       response.sendRedirect("/index.jsp");
     }
     /**
-     * TODO:
-     * chequear usuarios existentes
-     * imagen
-     * embellecer
-     * chequeo de errores con sesion
+     * TODO: chequear usuarios existentes imagen embellecer chequeo de errores con sesion
      * 
      * 
      */
   }
-  
+
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     processRequest(request, response);

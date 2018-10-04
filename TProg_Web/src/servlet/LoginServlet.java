@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
     super();
     // TODO Auto-generated constructor stub
   }
-  
+
   public EstadoSesion getEstado(HttpServletRequest request) {
     if (request.getSession().getAttribute("LOGIN") != null) {
       return (EstadoSesion) request.getSession().getAttribute("LOGIN");
@@ -28,15 +28,15 @@ public class LoginServlet extends HttpServlet {
       return EstadoSesion.NO_LOGIN;
     }
   }
-  
+
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     if (!getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)) {
-      
+
       String nick = (String) request.getParameter("nickname");
-      response.getWriter().println(nick); //asddfasdf
+      response.getWriter().println(nick); // asddfasdf
       String pass = (String) request.getParameter("pass");
-      response.getWriter().println(pass); //asdfasdfadsf
+      response.getWriter().println(pass); // asdfasdfadsf
       IUsuariosCanales IUC = Fabrica.getIUsuariosCanales();
       if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick)) && IUC.checkLogin(nick, pass)) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
       } else {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getRequestDispatcher("jsp/inicio_sesion_error.jsp").forward(request, response);
-      } 
+      }
     } else {
       if (request.getParameter("CERRAR_SESION") == null) {
         response.sendRedirect("index.jsp");
@@ -55,9 +55,9 @@ public class LoginServlet extends HttpServlet {
         request.getSession().setAttribute("USUARIO_LOGEADO", null);
         response.sendRedirect("index.jsp");
       }
-      
+
     }
-    
+
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
