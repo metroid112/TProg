@@ -44,11 +44,11 @@ public class CtrlCategoriasTest {
   public void testGetInfoVideos() throws Exception {
     categorias.altaCategoria("Prueba");
     DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-    //usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
-        //format.parse("11/04/1993"), "..//TProg_Workstation//img//null.JPG", "juju", "hola",
-        //"catprueba", true);
-    //video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
-    //    format.parse("11/04/1993"));
+    // usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
+    // format.parse("11/04/1993"), "..//TProg_Workstation//img//null.JPG", "juju", "hola",
+    // "catprueba", true);
+    // video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
+    // format.parse("11/04/1993"));
     Assert.assertArrayEquals(arrayVid, categorias.getInfoVideos("Prueba"));
   }
 
@@ -63,11 +63,11 @@ public class CtrlCategoriasTest {
   public void testGetInfoListas() throws Exception {
     categorias.altaCategoria("Prueba");
     DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-    //usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
-        //format.parse("11/04/1993"), "..//TProg_Workstation//img//null.JPG", "juju", "hola",
-        //"catprueba", true);
-    //video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
-    //    format.parse("11/04/1993"));
+    // usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
+    // format.parse("11/04/1993"), "..//TProg_Workstation//img//null.JPG", "juju", "hola",
+    // "catprueba", true);
+    // video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
+    // format.parse("11/04/1993"));
     lista.altaListaParticular("Lista1", "Pato", true);
     lista.agregarVideoLista("Pato", "Video1", "Pato", "Lista1", false);
     Assert.assertArrayEquals(arrayLis, categorias.getInfoListas("Prueba"));

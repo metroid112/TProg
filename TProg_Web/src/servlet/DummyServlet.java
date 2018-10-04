@@ -19,7 +19,7 @@ public class DummyServlet extends HttpServlet {
       throws ServletException, IOException {
     response.sendRedirect("index.jsp");
   }
-  
+
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     processRequest(request, response);

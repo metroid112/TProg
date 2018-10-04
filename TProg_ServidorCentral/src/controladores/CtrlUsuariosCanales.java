@@ -40,7 +40,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass) {
-    Usuario user = new Usuario(nickname, nombreCanal, apellido, correo, fechaNacimiento, imagenPath, pass);
+    Usuario user =
+        new Usuario(nickname, nombreCanal, apellido, correo, fechaNacimiento, imagenPath, pass);
     Canal canal = new Canal(nombreCanal, descripcionCanal,
         ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
     user.setCanal(canal);
@@ -60,7 +61,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public boolean existeUsuario(String nick) {
     return manejadorUsuarios.isMemberKey(nick);
   }
-  
+
   @Override
   public boolean existeUsuarioMail(String mail) {
     if (manejadorUsuarios.mailGet(mail) != null) {
@@ -72,10 +73,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public DtUsuario getDt(String nick) {
-    if(manejadorUsuarios.get(nick) != null) {
+    if (manejadorUsuarios.get(nick) != null) {
       return manejadorUsuarios.get(nick).getDt();
     } else {
-      return manejadorUsuarios.mailGet(nick).getDt(); 
+      return manejadorUsuarios.mailGet(nick).getDt();
     }
   }
 
@@ -92,10 +93,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public String[] listarListasDeReproduccion(String nick) {
-    HashMap<String, ListaDefecto> listasDefecto = manejadorUsuarios.get(nick).getCanal()
+    HashMap<String, ListaDefecto> listasDefecto = (HashMap<String, ListaDefecto>) manejadorUsuarios.get(nick).getCanal()
         .getListaDefecto();
     String[] listaDefecto = listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
-    HashMap<String, ListaParticular> listasParticular = manejadorUsuarios.get(nick).getCanal()
+    HashMap<String, ListaParticular> listasParticular = (HashMap<String, ListaParticular>) manejadorUsuarios.get(nick).getCanal()
         .getListaParticulares();
     String[] listaParticulares = listasParticular.keySet()
         .toArray(new String[listasParticular.size()]);
@@ -140,7 +141,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public String[] listarVideos(String nick) {
-    HashMap<String, Video> videos = manejadorUsuarios.get(nick).getCanal().getVideos();
+    HashMap<String, Video> videos = (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
     String[] res = videos.keySet().toArray(new String[videos.size()]);
     return res;
   }
@@ -182,12 +183,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public boolean checkLogin(String usr, String pass) {
-    
+
     if (manejadorUsuarios.get(usr) != null) {
       return manejadorUsuarios.get(usr).checkPass(pass);
     } else {
       return manejadorUsuarios.mailGet(usr).checkPass(pass);
     }
-    
+
   }
 }

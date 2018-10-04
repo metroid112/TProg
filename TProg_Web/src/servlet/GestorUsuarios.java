@@ -18,26 +18,27 @@ public class GestorUsuarios extends HttpServlet {
     super();
     // TODO Auto-generated constructor stub
   }
-  
-  private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+  private void processRequest(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
     // TODO processRequest
   }
-  
+
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    //processRequest(request,response);
+    // processRequest(request,response);
     response.getWriter().println("hola");
     IUsuariosCanales ctrlUsuarios = Fabrica.getIUsuariosCanales();
     int largo = ctrlUsuarios.listarUsuarios().length;
     String[] usuarios = ctrlUsuarios.listarUsuarios();
     request.setAttribute("USUARIOS_REGISTRADOS", usuarios);
     request.getRequestDispatcher("jsp/listar_usuarios.jsp").forward(request, response);
-    
+
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request,response);
+    processRequest(request, response);
   }
 
 }

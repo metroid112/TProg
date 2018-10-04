@@ -3,22 +3,23 @@ package clases;
 import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 import excepciones.DuplicateClassException;
-import manejadores.ManejadorListas;
+import manejadores.ManejadorListasDefecto;
 
 public class Canal {
 
   private Categoria categoria;
   private String descripcion;
-  private HashMap<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
+  private Map<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
 
-  private HashMap<String, ListaParticular> listaParticulares =
+  private Map<String, ListaParticular> listaParticulares =
       new HashMap<String, ListaParticular>();
 
   private String nombre;
   private Usuario usuario;
-  private HashMap<String, Video> videos = new HashMap<String, Video>();
+  private Map<String, Video> videos = new HashMap<String, Video>();
   private boolean visible;
 
   public Canal() {
@@ -31,7 +32,7 @@ public class Canal {
     this.descripcion = descripcionCanal;
     this.visible = visible;
     this.usuario = user;
-    for (String lista : ManejadorListas.getManejadorListas().toArray()) {
+    for (String lista : ManejadorListasDefecto.getManejadorListas().toArray()) {
       listaDefecto.put(lista, new ListaDefecto(lista, this));
     }
   }
@@ -58,7 +59,7 @@ public class Canal {
 
   public Video altaVideo(String nombre, String descripcion, Duration duracion, String url,
       Categoria categoria, Date fecha, boolean visible) throws DuplicateClassException {
-    
+
     if (videos.containsKey(nombre)) {
       throw new DuplicateClassException("Video", nombre);
     }
@@ -86,7 +87,7 @@ public class Canal {
     }
   }
 
-  public HashMap<String, ListaDefecto> getListaDefecto() {
+  public Map<String, ListaDefecto> getListaDefecto() {
     return listaDefecto;
   }
 
@@ -96,7 +97,7 @@ public class Canal {
 
   }
 
-  public HashMap<String, ListaParticular> getListaParticulares() {
+  public Map<String, ListaParticular> getListaParticulares() {
     return listaParticulares;
   }
 
@@ -119,7 +120,7 @@ public class Canal {
     return videos.get(video);
   }
 
-  public HashMap<String, Video> getVideos() {
+  public Map<String, Video> getVideos() {
     return videos;
   }
 
@@ -137,12 +138,12 @@ public class Canal {
     this.listaDefecto.put(listaDefecto.getNombre(), listaDefecto);
   }
 
-  public void ingresarListaParticular(String nombre, boolean visibilidad) {
+  public void altaListaParticular(String nombre, boolean visibilidad)
+      throws DuplicateClassException {
 
-    ListaParticular nuevaLista = new ListaParticular(nombre, this, new HashMap<String, Categoria>(),
+    ListaParticular nuevaLista = new ListaParticular(nombre, this,
         visibilidad);
-    listaParticulares.put(nombre, nuevaLista); // puede cambiar la implementacion
-
+    listaParticulares.put(nombre, nuevaLista);
   }
 
   public boolean isVisible() {

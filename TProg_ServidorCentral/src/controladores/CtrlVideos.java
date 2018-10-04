@@ -2,6 +2,9 @@ package controladores;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import clases.Categoria;
 import clases.Usuario;
@@ -13,6 +16,7 @@ import excepciones.NotFoundException;
 import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
+import manejadores.ManejadorVideos;
 
 public class CtrlVideos implements IVideos {
   private ManejadorCategorias manejadorCategoria = ManejadorCategorias.getManejadorCategorias();
@@ -40,9 +44,9 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public DtVideo getDtVideo(String video, String usuario) {
-    Video vid = manejadorUsuario.get(usuario).getCanal().getVideoCanal(video);
-    return vid.getDt();
+  public DtVideo getDtVideo(int id) throws NotFoundException {
+    Video video = ManejadorVideos.getManejadorVideos().getById(id);
+    return video.getDt();
   }
 
   @Override
@@ -79,5 +83,15 @@ public class CtrlVideos implements IVideos {
     }
     vid.modificarDatos(nombre, descripcion, url, categoria, duracion, visible, fecha);
 
+  }
+
+  @Override
+  public Map<Integer, DtVideo> getDtVideos() {
+    Map<Integer, DtVideo> dtVideos = new HashMap<Integer, DtVideo>();
+    for (Entry<Integer, Video> video : ManejadorVideos.getManejadorVideos().getVideos()
+        .entrySet()) {
+      dtVideos.put(video.getKey(), video.getValue().getDt());
+    }
+    return dtVideos;
   }
 }

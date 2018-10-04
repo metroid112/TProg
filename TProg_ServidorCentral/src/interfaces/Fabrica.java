@@ -32,7 +32,7 @@ public class Fabrica {
   public static IVideos getIVideos() {
     return new CtrlVideos();
   }
-  
+
   public static IDatos getIDatos() {
     return new CtrlDatos();
   }
