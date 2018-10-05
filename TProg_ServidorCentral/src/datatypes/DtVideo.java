@@ -25,7 +25,7 @@ public class DtVideo {
   public String categoria;
   public boolean visible;
   public int idVideo;
-  public String usuario;
+  
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 

@@ -1,6 +1,7 @@
 <%@page import="datatypes.DtVideo"%>
 <%@page import="datatypes.DtComentario"%>
-<%@page import="java.util.LinkedHashMap" %>
+<%@page import="java.util.Map" %>
+
 
 <!doctype html>
 <html lang="en">
@@ -41,9 +42,12 @@
 			
 			for(DtComentario comentario : comentarios.values() ){
 				for(int i = 0; i < tab; i++){ %>
-					 <t>
-				<%! }
-				System.out.println(comentario.texto + "\n");
+					 <t> x
+				<%! } %>
+				
+				
+				
+				<%!				
 				
 				if(!comentario.hijos.isEmpty()){
 					printComent(comentario.hijos,tab++);

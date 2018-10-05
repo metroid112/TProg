@@ -17,7 +17,7 @@
 		String cast;
 		for(DtVideo vp: listaVideosPublicos){ 
 		cast = Integer.toString(vp.idVideo);
-		System.out.println(cast);
+		
 		%>
 			
 			<%= vp.nombre %> - 
@@ -47,14 +47,16 @@
 		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 		if(d != null){
 			LinkedList<DtVideo> listaVideosUsuario = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
-			for (DtVideo v : listaVideosUsuario) { %>
-			
+			String cast2;
+			for (DtVideo v : listaVideosUsuario) { 
+				cast2 = Integer.toString(v.idVideo);
+			%>			
 				
 				<%= v.nombre %>
 				
 				<form action="/ConsultaVideo" method="GET">
 				
-					<input type="hidden" id="1" name="VIDEO_NOMBRE" value= "<%= v.nombre %>" >
+					<input type="hidden" id="1" name="VIDEO_NOMBRE" value= "<%= cast2 %>" >
 					
 					<input type="hidden" id="2" name="VIDEO_CANAL" value= "<%= v.usuario %>" >
 			

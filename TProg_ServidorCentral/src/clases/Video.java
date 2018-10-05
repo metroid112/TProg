@@ -81,17 +81,10 @@ public class Video {
   }
 
   public DtVideo getDt() {
-<<<<<<< HEAD
 
-
-    return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha, 
-        this.duracion, this.visible, this.comentarios, this.calificaciones,this.idVideo);
-
-
-=======
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
         this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo, this.canal.getUsuario().getNick());
->>>>>>> master
+
   }
 
   public String getNombre() {
