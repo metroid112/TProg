@@ -1,3 +1,4 @@
+<%@page import="manejadores.ManejadorVideos"%>
 <%@ page import = "interfaces.*, utils.*, datatypes.*" %>
 <!doctype html>
 <html>
@@ -35,6 +36,10 @@
 					<button>Quitar Video de Lista (WIP)</button>
 				</form>		<br>
 				<a href="/CargaDatos">Cargar Datos</a>
+				<br>
+				<form action="/ListarListaServlet" method="GET">
+					<input type="submit" value="Agregar video a lista (WIP)">
+				</form>
 			</div>
 		</div>
 	</div>

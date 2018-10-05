@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
@@ -12,11 +14,10 @@ import manejadores.ManejadorVideos;
 
 public class Video {
 
-  private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
+  private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
   private Canal canal;
   private Categoria categoria;
-  private LinkedHashMap<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
-  // LinkedHashMap mantiene el orden a diferencia del HashMap
+  private Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
   private String descripcion;
   private Duration duracion;
   private Date fecha;
@@ -117,6 +118,10 @@ public class Video {
       this.visible = visible;
     }
     this.fecha = fecha;
+  }
+  
+  public boolean isVisible() {
+    return this.visible;
   }
 
   @Override

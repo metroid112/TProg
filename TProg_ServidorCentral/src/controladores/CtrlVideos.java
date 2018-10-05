@@ -1,9 +1,11 @@
 package controladores;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 import java.util.Map.Entry;
 
 import clases.Categoria;
@@ -69,6 +71,20 @@ public class CtrlVideos implements IVideos {
     }
   }
 
+  @Override
+  public DtVideo[] listarTodosLosVideos(String nick) {
+ 
+    List<DtVideo> listaVideos = new ArrayList<DtVideo>();
+    for (Entry<String, Usuario> usuario: manejadorUsuario.getMap().entrySet()){
+      List<DtVideo> lista = usuario.getValue().getCanal().getVideosPublicos();
+      listaVideos.addAll(lista);
+    }
+    Usuario user = manejadorUsuario.get(nick);
+    List<DtVideo>lista = user.getCanal().getVideosPrivados();
+    listaVideos.addAll(lista);
+    return listaVideos.toArray(new DtVideo[listaVideos.size()]);
+  }
+  
   @Override
   public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion,
       String url, String categoriaString, Duration duracion, Boolean visible, Date fecha)

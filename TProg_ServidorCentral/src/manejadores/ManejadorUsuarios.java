@@ -79,6 +79,10 @@ public class ManejadorUsuarios {
     }
     return true;
   }
+  
+  public Map<String, Usuario> getMap() {
+    return this.usuarios;
+  }
 
   public boolean isMemberKey(String nick) {
     return usuarios.containsKey(nick);
