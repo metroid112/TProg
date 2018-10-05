@@ -12,8 +12,8 @@ import clases.Categoria;
 import clases.Comentario;
 
 public class DtVideo {
-  public LinkedList<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
-  public LinkedHashMap<Integer, DtComentario> comentarios =
+  public List<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
+  public Map<Integer, DtComentario> comentarios =
       new LinkedHashMap<Integer, DtComentario>();
   public Duration duracion;
   public Date fecha;
