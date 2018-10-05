@@ -10,7 +10,7 @@
 	<h1>Usuarios Registrados:</h1>
 	<br>
 	<% for (String u : (String[]) request.getAttribute("USUARIOS_REGISTRADOS")) { %>
-		<%= u %> <br>
+		<%= u %>
 	<% } %>
 </body>
 </html>

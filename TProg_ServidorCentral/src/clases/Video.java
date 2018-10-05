@@ -110,6 +110,10 @@ public class Video {
     }
     this.fecha = fecha;
   }
+  
+  public boolean isVisible() {
+    return this.visible;
+  }
 
   @Override
   public boolean equals(Object o) {

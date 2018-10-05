@@ -1,10 +1,14 @@
 package clases;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.Map.Entry;
 
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
 
@@ -71,6 +75,27 @@ public class Canal {
   public String[] getArrayVideos() {
 
     return videos.keySet().toArray(new String[videos.size()]);
+  }
+  
+  public List<DtVideo> getVideosPublicos() {
+    List<DtVideo> videos = new ArrayList<DtVideo>(); 
+    for(Entry<String, Video> video : this.videos.entrySet()){
+      if (!video.getValue().isVisible()) {
+        videos.add(video.getValue().getDt());
+      }
+    }
+    return videos;
+  }
+  
+  public List<DtVideo> getVideosPrivados() {
+    List<DtVideo> videos = new ArrayList<DtVideo>(); 
+    for(Entry<String, Video> video : this.videos.entrySet()){
+      if (!video.getValue().isVisible()) {
+        videos.add(video.getValue().getDt());
+      }
+     
+    }
+    return videos;
   }
 
   public String getDescripcion() {
