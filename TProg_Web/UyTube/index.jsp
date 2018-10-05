@@ -8,6 +8,14 @@
 <body>
 	<div class="page">
 		<jsp:include page="WEB-INF/extras/header.jsp"></jsp:include>
+		<%
+		try {
+	  	Fabrica.getIDatos().cargaDatos();
+		out.println(Fabrica.getIVideos().getDtVideo(1).nombre);
+		} catch (Exception e) {
+	 	out.println(e.getMessage());
+		}
+		%>
 		<div class="contenedor">
 			<div class="sidebar">
 				<h4>Requerimientos mínimos</h4>

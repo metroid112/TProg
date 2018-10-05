@@ -7,6 +7,7 @@ import java.util.Map;
 
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
+import manejadores.ManejadorVideos;
 
 public class Canal {
 
