@@ -39,6 +39,6 @@ public class CargaDatos extends HttpServlet {
       // TODO Auto-generated catch block
       exception.printStackTrace();
     }
-    request.getRequestDispatcher("/index.jsp").forward(request, response);
+    request.getRequestDispatcher("index.jsp").forward(request, response);
   }
 }

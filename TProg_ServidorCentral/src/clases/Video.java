@@ -40,6 +40,7 @@ public class Video {
     categoria.addVideo(this);
     Video.idCounter++;
     this.idVideo = Video.idCounter;
+    System.out.println(this.idVideo);
     ManejadorVideos.getManejadorVideos().add(this);
   }
 

@@ -45,7 +45,7 @@ public class VideoServlet extends HttpServlet {
     request.setAttribute("VIDEOS_USUARIO", videosUsuario);
     }
     
-    request.getRequestDispatcher("jsp/listar_videos.jsp").forward(request, response);
+    request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -16,12 +16,15 @@
 		LinkedList<DtVideo> listaVideosPublicos = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_PUBLICOS");
 		
 		for(DtVideo vp: listaVideosPublicos){ %>
+			<%= vp.idVideo %>
 			<%= vp.nombre %> - 
 			<%= vp.usuario %>
+			
 			<br>
 					<form action="/ConsultaVideo" method="GET">
 				
-					<input type="hidden" id="1" name="VIDEO_NOMBRE" value= "<%= vp.nombre %>" >
+					
+					<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vp.idVideo %>" >
 					
 					<input type="hidden" id="2" name="VIDEO_CANAL" value= "<%= vp.usuario %>" >
 			

@@ -16,6 +16,7 @@ import clases.Calificacion;
 import clases.Categoria;
 import clases.Comentario;
 import datatypes.DtVideo;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IVideos;
 
@@ -37,12 +38,20 @@ public class ConsultaVideo extends HttpServlet {
     //DtVideo vid = new DtVideo("lala","esta muy bueno","AlhJsZ1EBIU",null,null,null,null,true,new LinkedHashMap<Integer, Comentario>(),new LinkedList<Calificacion>());
 	  
 	  IVideos ctrVideos = Fabrica.getIVideos();
-	  String usuarioNick = (String) request.getParameter("VIDEO_CANAL"); //ESTAN LLEGANDO LOS DOS NULL
-	  String nombreVideo = (String) request.getParameter("VIDEO_NOMBRE");
-	  DtVideo vid = ctrVideos.getDtVideo(nombreVideo, usuarioNick);
+	  //String usuarioNick = (String) request.getParameter("VIDEO_CANAL"); //ESTAN LLEGANDO LOS DOS NULL
+	 // String nombreVideo = (String) request.getParameter("VIDEO_NOMBRE");
+	 // DtVideo vid = ctrVideos.getDtVideo(nombreVideo, usuarioNick);
+	  String videoId = (String) request.getParameter("VIDEO_ID");
+	  int id = Integer.parseInt(videoId);
+	  DtVideo vid;
+    try {
+      vid = ctrVideos.getDtVideo(id);
+      request.setAttribute("DT_VIDEO", vid);
+    } catch (NotFoundException e) {
+      e.printStackTrace();
+    }   
     
-    request.setAttribute("DT_VIDEO", vid);
-    request.getRequestDispatcher("jsp/consulta_video.jsp").forward(request, response);
+    request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
     
 	}
 

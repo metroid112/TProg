@@ -3,11 +3,9 @@ package clases;
 import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
-<<<<<<< HEAD
 import java.util.LinkedList;
-=======
 import java.util.Map;
->>>>>>> master
+
 
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
