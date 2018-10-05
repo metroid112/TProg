@@ -25,11 +25,13 @@ public class DtVideo {
   public String categoria;
   public boolean visible;
   public int idVideo;
+  public String usuario;
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 
       Duration duracion, boolean visible, Map<Integer, Comentario> comentarios,
-      List<Calificacion> calificaciones, int idVideo) {
+      List<Calificacion> calificaciones, int idVideo, String usuario) {
+
 
 
     this.nombre = nombre;
@@ -43,6 +45,7 @@ public class DtVideo {
     }
     this.duracion = duracion;
     this.fecha = fecha;
+    this.usuario = usuario;
 
     for (Comentario com : comentarios.values()) {
       DtComentario dtCom = com.getDt(); // Creo Dt

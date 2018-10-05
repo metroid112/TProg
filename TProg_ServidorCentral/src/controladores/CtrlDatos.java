@@ -260,59 +260,64 @@ public class CtrlDatos implements IDatos {
         e.printStackTrace();
       }
 
-      Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh", "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh", "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh", "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec",
-          "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "100 a�os de FING", "hectorg",
-          "Novedades FING",
-          false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "50 a�os del InCo", "hectorg",
-          "Novedades FING",
-          false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "hectorg",
-          "Novedades FING", false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla", "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
-          "Noticias y CYT", false);
-      Fabrica.getIListas().agregarVideoLista("nicoJ",
-          "Ventana al futuro Uruguay y deficit de ingenieros",
-          "nicoJ", "Noticias y CYT", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
-          false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "juliob",
-          "Solo deportes", false);
+      try {
+        Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh", "Nostalgia",
+            false);
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh", "Nostalgia",
+            false);
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh", "Nostalgia",
+            false);
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
+        Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "tabarec", "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "tabarec", "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "tabarec", "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec",
+            "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("hectorg", "100 a�os de FING", "hectorg",
+            "Novedades FING",
+            false);
+        Fabrica.getIListas().agregarVideoLista("hectorg", "50 a�os del InCo", "hectorg",
+            "Novedades FING",
+            false);
+        Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "hectorg",
+            "Novedades FING", false);
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "cachilas",
+            "De todo un poco",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "cachilas",
+            "De todo un poco",
+            false);
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "cachilas",
+            "De todo un poco", false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "cachilas",
+            "De todo un poco",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla", "cachilas",
+            "De todo un poco", false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
+            "De todo un poco", false);
+        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "cachilas",
+            "De todo un poco", false);
+        Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
+            "Noticias y CYT", false);
+        Fabrica.getIListas().agregarVideoLista("nicoJ",
+            "Ventana al futuro Uruguay y deficit de ingenieros",
+            "nicoJ", "Noticias y CYT", false);
+        Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
+            false);
+        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "juliob",
+            "Solo deportes", false);
+      } catch (DuplicateClassException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+      }
 
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
       Fabrica.getIUsuariosCanales().comentarVideo("Fue un gran evento",

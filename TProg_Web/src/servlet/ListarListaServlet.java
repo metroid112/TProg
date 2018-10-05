@@ -45,7 +45,7 @@ public class ListarListaServlet extends HttpServlet {
         request.setAttribute("LISTAS_POR_DEFECTO", listasPorDefecto);
         DtVideo[] listaDeVideos = ctrlVideos.listarTodosLosVideos(nickUsuario);
         request.setAttribute("LISTA_DE_VIDEOS", listaDeVideos);
-        request.getRequestDispatcher("jsp/agregar_video_a_lista_de_reproduccion.jsp").forward(request, response);  
+        request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp").forward(request, response);  
       }
         
 
