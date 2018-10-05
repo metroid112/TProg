@@ -55,9 +55,9 @@ public class ManejadorUsuarios {
     return usuario;
   }
   
-  public List<DtVideo> getListaPublicoDtVideo(){
-    List<DtVideo> result = new LinkedList<DtVideo>();
-    List<DtVideo> listaUsuario = null;
+  public LinkedList<DtVideo> getListaPublicoDtVideo(){
+    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
+    LinkedList<DtVideo> listaUsuario = null;
     
     for(Usuario usuarioObjetivo: usuarios.values()){
       

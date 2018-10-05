@@ -204,8 +204,8 @@ public class Canal {
 
   }
   
-  public List<DtVideo> listaDtVideo(){
-    List<DtVideo> result = new LinkedList<DtVideo>();
+  public LinkedList<DtVideo> listaDtVideo(){
+    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
     for(Video v : videos.values()){
       DtVideo nuevo = v.getDt();
       result.add(nuevo);
@@ -213,8 +213,8 @@ public class Canal {
     return result;
   }
   
-  public List<DtVideo> listaPublicoDtVideo(){
-    List<DtVideo> result = new LinkedList<DtVideo>();
+  public LinkedList<DtVideo> listaPublicoDtVideo(){
+    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
     for(Video v : videos.values()){
       if(v.getVisible()){
         DtVideo nuevo = v.getDt();

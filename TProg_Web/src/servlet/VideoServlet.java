@@ -33,14 +33,14 @@ public class VideoServlet extends HttpServlet {
     
     IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
     
-    List<DtVideo> videosPublicos = ctrUsuariosCanales.getListaPublicoDtVideo();
+    LinkedList<DtVideo> videosPublicos = (LinkedList<DtVideo>) ctrUsuariosCanales.getListaPublicoDtVideo();
 
     request.setAttribute("VIDEOS_PUBLICOS", videosPublicos);
     
     DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
     
     if(d != null){
-      List<DtVideo> videosUsuario = ctrUsuariosCanales.getListaDtVideo(d.nick);
+      LinkedList<DtVideo> videosUsuario = (LinkedList<DtVideo>) ctrUsuariosCanales.getListaDtVideo(d.nick);
       int largoVideosUsuario = videosUsuario.size();
     
     request.setAttribute("VIDEOS_USUARIO", videosUsuario);
