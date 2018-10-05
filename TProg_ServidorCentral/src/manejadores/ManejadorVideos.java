@@ -16,7 +16,7 @@ public class ManejadorVideos {
 
   public static ManejadorVideos getManejadorVideos() {
     if (manejador == null) {
-      return new ManejadorVideos();
+      manejador = new ManejadorVideos();
     }
     return manejador;
   }
