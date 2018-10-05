@@ -24,8 +24,19 @@ public class AgregarVideoALista extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-      String video = (String) request.getParameter("video");
-      String video = videoMasUsuario.substring(beginIndex, endIndex)
+      String idVideo = (String) request.getParameter("video");
+      String lista = (String) request.getParameter("lista");
+      int largo = lista.length();
+      String tipoLista = lista.valueOf(lista.charAt(0));
+      String nombreLista = lista.substring(1, lista.length() - 1);
+      if tipoLista.equals("D") {
+        
+      }
+      else {
+        
+      }
+     
+      
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
