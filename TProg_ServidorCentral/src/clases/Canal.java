@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
+import manejadores.ManejadorVideos;
 
 public class Canal {
 

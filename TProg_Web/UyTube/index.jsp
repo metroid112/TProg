@@ -1,3 +1,4 @@
+<%@page import="manejadores.ManejadorVideos"%>
 <%@ page import = "interfaces.*, utils.*, datatypes.*" %>
 <!doctype html>
 <html>

@@ -4,14 +4,16 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import clases.Calificacion;
 import clases.Categoria;
 import clases.Comentario;
 
 public class DtVideo {
-  public LinkedList<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
-  public LinkedHashMap<Integer, DtComentario> comentarios =
+  public List<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
+  public Map<Integer, DtComentario> comentarios =
       new LinkedHashMap<Integer, DtComentario>();
   public Duration duracion;
   public Date fecha;
@@ -24,8 +26,8 @@ public class DtVideo {
   public int idVideo;
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
-      Duration duracion, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
-      LinkedList<Calificacion> calificaciones, int idVideo) {
+      Duration duracion, boolean visible, Map<Integer, Comentario> comentarios,
+      List<Calificacion> calificaciones, int idVideo) {
 
     this.nombre = nombre;
     this.Url = url;
