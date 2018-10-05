@@ -37,7 +37,7 @@ public class AgregarVideoALista extends HttpServlet {
       String lista = (String) request.getParameter("lista");
       int largo = lista.length();
       String tipoLista = String.valueOf(lista.charAt(0));
-      String nombreLista = lista.substring(1, lista.length() - 1);
+      String nombreLista = lista.substring(1, lista.length());
       Boolean defecto = tipoLista.equals("D");
       DtVideo video = null;
       try {

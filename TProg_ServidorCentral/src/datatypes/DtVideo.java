@@ -28,8 +28,8 @@ public class DtVideo {
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 
-      Duration duracion, boolean visible, LinkedHashMap<Integer, Comentario> comentarios,
-      LinkedList<Calificacion> calificaciones, int idVideo, String usuario) {
+      Duration duracion, boolean visible, Map<Integer, Comentario> comentarios,
+      List<Calificacion> calificaciones, int idVideo, String usuario) {
 
 
     this.nombre = nombre;
