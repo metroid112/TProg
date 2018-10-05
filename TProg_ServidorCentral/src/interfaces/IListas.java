@@ -9,7 +9,7 @@ import excepciones.NotFoundException;
 public interface IListas {
 
   public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
-      boolean defecto);
+      boolean defecto) throws DuplicateClassException;
 
   public void altaListaDefecto(String nombre) throws DuplicateClassException;
 

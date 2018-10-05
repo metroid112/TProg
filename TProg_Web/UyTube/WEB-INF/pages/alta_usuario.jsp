@@ -8,7 +8,7 @@
 <title>UyTube - Alta Usuario</title>
 </head>
 <body>
-	<!-- <img alt="hola" src="/<%= new Usuario().getImg() %>">   -->
+
 	
 	<form action="/AltaUsuario" method="POST" id="formAltaUsuario">
 		Nombre: <input type="text" name="nombre" required>*

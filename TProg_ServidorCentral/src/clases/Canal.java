@@ -42,10 +42,13 @@ public class Canal {
     }
   }
 
-  public void agregarVideoListaDefecto(Video videoObj, String lista) {
+  public void agregarVideoListaDefecto(Video videoObj, String lista) throws DuplicateClassException {
     ListaDefecto listaObj = listaDefecto.get(lista);
     if (!listaObj.existeVideo(videoObj)) {
       listaObj.insertarVideo(videoObj);
+    }
+    else{
+      throw new DuplicateClassException("Video", videoObj.getNombre());
     }
   }
 
