@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -183,13 +184,13 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
   
-  public LinkedList<DtVideo> getListaDtVideo(String usuario){
+  public List<DtVideo> getListaDtVideo(String usuario){
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
   
-  public LinkedList<DtVideo> getListaPublicoDtVideo(){
+  public List<DtVideo> getListaPublicoDtVideo(){
     
     return manejadorUsuarios.getListaPublicoDtVideo();
   }

@@ -13,7 +13,7 @@
 	<h1>Videos Publicos:</h1>
 	<br>
 	<%
-		LinkedList<DtVideo> listaVideosPublicos = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_PUBLICOS");
+		List<DtVideo> listaVideosPublicos = (List<DtVideo>) request.getAttribute("VIDEOS_PUBLICOS");
 		String cast;
 		for(DtVideo vp: listaVideosPublicos){ 
 		cast = Integer.toString(vp.idVideo);

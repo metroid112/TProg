@@ -1,5 +1,6 @@
 package servlet;
 
+import java.awt.List;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -32,14 +33,14 @@ public class VideoServlet extends HttpServlet {
     
     IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
     
-    LinkedList<DtVideo> videosPublicos = ctrUsuariosCanales.getListaPublicoDtVideo();
+    List<DtVideo> videosPublicos = ctrUsuariosCanales.getListaPublicoDtVideo();
 
     request.setAttribute("VIDEOS_PUBLICOS", videosPublicos);
     
     DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
     
     if(d != null){
-      LinkedList<DtVideo> videosUsuario = ctrUsuariosCanales.getListaDtVideo(d.nick);
+      List<DtVideo> videosUsuario = ctrUsuariosCanales.getListaDtVideo(d.nick);
       int largoVideosUsuario = videosUsuario.size();
     
     request.setAttribute("VIDEOS_USUARIO", videosUsuario);

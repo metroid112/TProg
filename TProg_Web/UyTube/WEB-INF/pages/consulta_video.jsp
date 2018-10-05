@@ -37,7 +37,7 @@
 		
 		Comentarios:
 		
-		<%! public void printComent(LinkedHashMap<Integer, DtComentario> comentarios, int tab){
+		<%! public void printComent(Map<Integer, DtComentario> comentarios, int tab){
 			
 			for(DtComentario comentario : comentarios.values() ){
 				for(int i = 0; i < tab; i++){ %>
