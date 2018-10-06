@@ -17,7 +17,7 @@ public class ManejadorListasParticulares {
 
   public static ManejadorListasParticulares getManejadorListasParticulares() {
     if (manejador == null) {
-      return new ManejadorListasParticulares();
+      manejador = new ManejadorListasParticulares();
     }
     return manejador;
   }

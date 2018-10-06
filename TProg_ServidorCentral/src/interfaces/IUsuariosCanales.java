@@ -3,8 +3,11 @@ package interfaces;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import datatypes.DtUsuario;
+import datatypes.DtVideo;
 
 public interface IUsuariosCanales {
 
@@ -47,6 +50,10 @@ public interface IUsuariosCanales {
       String nombreDuenoVideo, Integer idComentarioPadre);
 
   public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
+  
+  public List<DtVideo> getListaDtVideo(String usuario);
+  
+  public List<DtVideo> getListaPublicoDtVideo();
 
   void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,

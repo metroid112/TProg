@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
@@ -12,11 +14,10 @@ import manejadores.ManejadorVideos;
 
 public class Video {
 
-  private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
+  private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
   private Canal canal;
   private Categoria categoria;
-  private LinkedHashMap<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
-  // LinkedHashMap mantiene el orden a diferencia del HashMap
+  private Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
   private String descripcion;
   private Duration duracion;
   private Date fecha;
@@ -80,12 +81,18 @@ public class Video {
   }
 
   public DtVideo getDt() {
+
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
-        this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo);
+        this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo, this.canal.getUsuario().getNick());
+
   }
 
   public String getNombre() {
     return nombre;
+  }
+  
+  public boolean getVisible(){
+    return visible;
   }
 
   public void modificarDatos(String nombre, String descripcion, String url, Categoria categoria,
@@ -109,6 +116,10 @@ public class Video {
       this.visible = visible;
     }
     this.fecha = fecha;
+  }
+  
+  public boolean isVisible() {
+    return this.visible;
   }
 
   @Override
