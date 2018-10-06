@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     if (!getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)) {
-      if (request.getParameter("PANTALLALOGIN").equals("TRUE")) {
+      if (request.getParameter("PANTALLALOGIN")!=null && request.getParameter("PANTALLALOGIN").equals("TRUE")) {
         request.getRequestDispatcher("/WEB-INF/pages/inicio_sesion.jsp").forward(request, response);
       } else {
       String nick = (String) request.getParameter("nickname");
