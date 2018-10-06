@@ -61,7 +61,10 @@ public class CtrlVideosTest {
   public void testGetDtVideo() {
     carga();
     Duration duracion = Duration.ofMinutes(5);
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     // Video vid = new Video("Video1", "Descripcion1", duracion, "url", null, null, fecha);
     // DtVideo esperado = new DtVideo("Video1", "Descripcion1", "url", null, fecha, duracion, false,
     // new LinkedHashMap<Integer, Comentario>(), new LinkedList<Calificacion>());
