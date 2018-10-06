@@ -124,7 +124,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
-      String nombreDuenoVideo) throws Exception {
+      String nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
     Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo); // Puede calificar su propio video?
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);

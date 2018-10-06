@@ -127,13 +127,11 @@ public class Usuario {
     this.canal = canal;
   }
 
-  public void valorarVideo(boolean like, Video vid) throws Exception {
+  public void valorarVideo(boolean like, Video vid){
     if (!yaCalificado(vid)) {
       Calificacion cal = new Calificacion(like, this, vid);
       vid.addCalificacion(cal);
       this.addCalificacion(cal);
-    } else {
-      throw new Exception("Video ya calificado");
     }
   }
 
