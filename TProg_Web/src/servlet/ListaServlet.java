@@ -30,8 +30,9 @@ public class ListaServlet extends HttpServlet {
     String[] ListasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
     String[] ListasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
     String[] Listas = concatenate(ListasParticulares, ListasPublicas);
-   if (request.getParameter("STATE").equals("QUITARVIDEO")) {
-      
+   if (request.getParameter("STATE").equals("DETALLESLISTA")) {
+     String listaSeleccionada = (String) request.getParameter("LISTA");
+     
    }
    else if (request.getParameter("STATE").equals("LOADLISTAS")) {
      //obtener las listas para el usuario

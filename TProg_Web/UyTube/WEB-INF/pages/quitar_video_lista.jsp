@@ -20,9 +20,9 @@
 			<% for (String u : (String[]) request.getAttribute("LISTAS")) { %>
 				<div class="detalleClickeableLista">		
 				<form action="/ListaServlet" method="GET">
-					<input type="hidden" name="LISTA" value="
-			<%= u %> ">
-					<button><%= u %></button>
+					<input type="hidden" name="STATE" value="DETALLESLISTA">
+					<input type="hidden" name="LISTA" value="<%=u%>">
+					<button class="detalleLista"><%= u %></button>
 				</form>	
 				</div>
 			<% } %>
