@@ -3,6 +3,7 @@
 <%@page import="java.io.Writer"%>
 <%@page import="datatypes.DtVideo"%>
 <%@page import="datatypes.DtComentario"%>
+<%@page import="datatypes.DtUsuario"%>
 <%@page import="java.util.Map" %>
 <%@page import="java.io.Writer"%>
 <%@page import="java.text.DateFormat" %>
@@ -45,7 +46,17 @@
 		 <br><br>
 		URL: <%= vid.Url %>
 		 <br><br>
+				
 		Me gusta: <%= vid.getCantidadCalificacionesPositivas()%>
+		<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
+		if(d != null){ %>
+				<form action="/ConsultaVideo" method="GET">
+			
+					<button type="submit">Valorar</button>
+					
+				</form>
+		
+		<%} %>
 		<br><br>
 		<% List<String> positivos = vid.getCalificacionesPositivas(); 
 		for(String user: positivos){%>
@@ -56,7 +67,14 @@
 		<br><br>
 		
 		No me gusta: <%= vid.getCantidadCalificacionesNegativas()%>
+		<%if(d != null){ %>
+				<form action="/ConsultaVideo" method="GET">
+			
+					<button type="submit">Valorar</button>
+					
+				</form>		
 		
+		<%} %>
 		<br><br>
 		<% List<String> negativos = vid.getCalificacionesNegativas(); 
 		for(String user: negativos){%>

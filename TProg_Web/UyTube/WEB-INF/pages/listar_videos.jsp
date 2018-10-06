@@ -1,6 +1,6 @@
 <%@page import="datatypes.DtUsuario"%>
 <%@page import="datatypes.DtVideo"%>
-<%@page import="java.util.LinkedList"%>
+<%@page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,7 +13,7 @@
 	<h1>Videos Publicos:</h1>
 	<br>
 	<%
-		LinkedList<DtVideo> listaVideosPublicos = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_PUBLICOS");
+		List<DtVideo> listaVideosPublicos = (List<DtVideo>) request.getAttribute("VIDEOS_PUBLICOS");
 		String cast;
 		for(DtVideo vp: listaVideosPublicos){ 
 		cast = Integer.toString(vp.idVideo);
@@ -41,7 +41,7 @@
 		if(d != null){ %>
 		<h1>Videos del usuario:</h1>
 		 <%
-			LinkedList<DtVideo> listaVideosUsuario = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
+			List<DtVideo> listaVideosUsuario = (List<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
 			String cast2;
 			for (DtVideo v : listaVideosUsuario) { 
 				cast2 = Integer.toString(v.idVideo);
