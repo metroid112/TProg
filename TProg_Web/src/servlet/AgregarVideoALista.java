@@ -13,7 +13,9 @@ import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
+import interfaces.IVideos;
 import manejadores.ManejadorVideos;
+import utils.EstadoSesion;
 
 /**
  * Servlet implementation class AgregarVideoALista
@@ -32,35 +34,65 @@ public class AgregarVideoALista extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-      IListas ctrlListas = Fabrica.getIListas();
-      String idVideo = (String) request.getParameter("video");
-      String lista = (String) request.getParameter("lista");
-      int largo = lista.length();
-      String tipoLista = String.valueOf(lista.charAt(0));
-      String nombreLista = lista.substring(1, lista.length());
-      Boolean defecto = tipoLista.equals("D");
-      DtVideo video = null;
-      try {
-        video = Fabrica.getIVideos().getDtVideo(Integer.parseInt(idVideo));
-      } catch (NumberFormatException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (NotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }   
-      String nombreVideo = video.nombre;
-      String nombreOwnerVideo = video.usuario;
-      String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-      try {
-      ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
-      request.setAttribute("EXITO", "¡Se ha agregado el video a la lista seleccionada con éxito!");
-      request.getRequestDispatcher("index.jsp").forward(request, response);
+      if (request.getParameter("agregarVideo") != null) {
+        IListas ctrlListas = Fabrica.getIListas();
+        String idVideo = (String) request.getParameter("video");
+        String lista = (String) request.getParameter("lista");
+        int largo = lista.length();
+        String tipoLista = String.valueOf(lista.charAt(0));
+        String nombreLista = lista.substring(1, lista.length());
+        Boolean defecto = tipoLista.equals("D");
+        DtVideo video = null;
+        try {
+          video = Fabrica.getIVideos().getDtVideo(Integer.parseInt(idVideo));
+        } catch (NumberFormatException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        } catch (NotFoundException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }   
+        String nombreVideo = video.nombre;
+        String nombreOwnerVideo = video.usuario;
+        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
+        try {
+        ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
+        request.setAttribute("EXITO", "¡Se ha agregado el video a la lista seleccionada con éxito!");
+        request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
+        }
+        catch (DuplicateClassException e) {
+          request.setAttribute("ERROR", "El video " + "'" + nombreVideo + "'" +" ya estaba en la lista " + "'" +nombreLista + "'.");
+          IListas ctrlListas2 = Fabrica.getIListas();
+          IVideos ctrlVideos2 = Fabrica.getIVideos();
+          String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
+          String[] listasParticulares = ctrlListas2.listarListasParticularUsuario(nickUsuario);
+          request.setAttribute("LISTAS_PARTICULARES", listasParticulares);
+          String[] listasPorDefecto = ctrlListas2.listarListasDefectoUsuario(nickUsuario);
+          request.setAttribute("LISTAS_POR_DEFECTO", listasPorDefecto);
+          DtVideo[] listaDeVideos = ctrlVideos2.listarTodosLosVideos(nickUsuario);
+          request.setAttribute("LISTA_DE_VIDEOS", listaDeVideos);
+          request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp").forward(request, response);  
+          
+        }
       }
-      catch (DuplicateClassException e) {
-        request.setAttribute("ERROR", e.getMessage());
-        response.sendRedirect("/ListarListaServlet");
+      else {
+        if (request.getSession().getAttribute("LOGIN") == null || request.getSession().getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)){
+          response.sendRedirect("/Inicio");
+        }
+        else{
+          IListas ctrlListas = Fabrica.getIListas();
+          IVideos ctrlVideos = Fabrica.getIVideos();
+          String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
+          String[] listasParticulares = ctrlListas.listarListasParticularUsuario(nickUsuario);
+          request.setAttribute("LISTAS_PARTICULARES", listasParticulares);
+          String[] listasPorDefecto = ctrlListas.listarListasDefectoUsuario(nickUsuario);
+          request.setAttribute("LISTAS_POR_DEFECTO", listasPorDefecto);
+          DtVideo[] listaDeVideos = ctrlVideos.listarTodosLosVideos(nickUsuario);
+          request.setAttribute("LISTA_DE_VIDEOS", listaDeVideos);
+          request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp").forward(request, response);  
+        }
       }
+
       
     }
     

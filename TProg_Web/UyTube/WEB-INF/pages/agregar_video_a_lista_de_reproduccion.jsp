@@ -9,9 +9,9 @@
 <title>UyTube - Agregar video a lista</title>
 </head>
 <body>
-	<% //if (request.getAttribute("ERROR") != null) { %>
-		<h2> <%= request.getAttribute("ERROR") %></h2>
-	<% //} %>
+	<% if (request.getAttribute("ERROR") != null) { %>
+		<h2 style = "color:red;"> <%= request.getAttribute("ERROR") %></h2>
+	<% } %>
 	<form action="/AgregarVideoALista" method="POST">
 		<h1>Videos</h1>
 		<br>
@@ -35,6 +35,7 @@
 		</select>
 		<br>
 		<br>
+		<input type hidden name="agregarVideo" value="">
 		<button type="submit">Aceptar</button>
 		<button form="volver" type="submit">Cancelar</button>
 	</form>

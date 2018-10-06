@@ -37,7 +37,7 @@
 				</form>		<br>
 				<a href="/CargaDatos">Cargar Datos</a>
 				<br>
-				<form action="/ListarListaServlet" method="GET">
+				<form action="/AgregarVideoALista" method="GET">
 					<input type="submit" value="Agregar video a lista (WIP)">
 				</form>
 			</div>
