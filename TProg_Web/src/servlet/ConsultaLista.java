@@ -18,7 +18,7 @@ import manejadores.ManejadorVideos;
 /**
  * Servlet implementation class AgregarVideoALista
  */
-@WebServlet("/QuitarVideoDeLista")
+@WebServlet("/ConsultaLista")
 public class ConsultaLista extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
