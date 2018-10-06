@@ -61,24 +61,12 @@ public class CtrlVideosTest {
   public void testGetDtVideo() {
     carga();
     Duration duracion = Duration.ofMinutes(5);
-<<<<<<< HEAD
 
-    Video vid = new Video("Video1", "Descripcion1", duracion, "url", null, null, fecha);
-    try {
-      video.altaVideo(usuario.getNick(), "Video1", "Descripcion1", duracion, "url", null, fecha);
-    } catch (DuplicateClassException e) {
-      System.out.println(e.getMessage());
-    }
-    DtVideo esperado = new DtVideo("Video1", "Descripcion1", "url", null, fecha, duracion,canal, false,
-        new LinkedHashMap<Integer, Comentario>(), new LinkedList<Calificacion>());
-    Assert.assertEquals(esperado, video.getDtVideo("Video1", "Pato"));
-
-=======
     // Video vid = new Video("Video1", "Descripcion1", duracion, "url", null, null, fecha);
     // DtVideo esperado = new DtVideo("Video1", "Descripcion1", "url", null, fecha, duracion, false,
     // new LinkedHashMap<Integer, Comentario>(), new LinkedList<Calificacion>());
     // Assert.assertEquals(esperado, video.getDtVideo("Video1", "Pato"));
->>>>>>> master
+
   }
 
   @Test

@@ -58,7 +58,7 @@ public class DtVideo {
     this.idVideo = idVideo;
   }
 
-  public int getCalificacionesPositivas(){
+  public int getCantidadCalificacionesPositivas(){
     int sum = 0;
     for(DtCalificacion calif : calificaciones){
       if(calif.like)
@@ -67,7 +67,7 @@ public class DtVideo {
     return sum;
   }
   
-  public int getCalificacionesNegativas(){
+  public int getCantidadCalificacionesNegativas(){
     int sum = 0;
     for(DtCalificacion calif : calificaciones){
       if(!calif.like)
@@ -75,6 +75,33 @@ public class DtVideo {
     }
     return sum;
   }
+  
+  public List<String> getCalificacionesPositivas(){
+    List<String> positivos = new LinkedList<String>();
+    String usuarioObjetivo;
+    
+    for(DtCalificacion calif : calificaciones){
+      if(calif.like){
+      usuarioObjetivo = calif.usuario;
+      positivos.add(usuarioObjetivo);
+      }
+    }
+    return positivos;
+  }
+  
+  public List<String> getCalificacionesNegativas(){
+    List<String> negativos = new LinkedList<String>();
+    String usuarioObjetivo;
+    
+    for(DtCalificacion calif : calificaciones){
+      if(!calif.like){
+      usuarioObjetivo = calif.usuario;
+      negativos.add(usuarioObjetivo);
+      }
+    }
+    return negativos;
+  }
+
 
   @Override
   public boolean equals(Object o) {

@@ -34,9 +34,8 @@
 		 
 		Fecha: <%= format.format(vid.fecha) %> 
 		 <br><br>
-		 <%! DateFormat format2 = new SimpleDateFormat("H:MM:SS");%>
 		 
-		Duracion: <%= format2.format(vid.duracion) %>
+		Duracion: <%= vid.duracion %>
 		 <br><br>
 		Descripcion: <%= vid.descripcion %> 
 		 <br><br>
@@ -44,9 +43,9 @@
 		 <br><br>
 		URL: <%= vid.Url %>
 		 <br><br>
-		Me gusta:  <%= vid.getCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
+		Me gusta:  <%= vid.getCantidadCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
 		<br><br>
-		No me gusta:  <%= vid.getCalificacionesNegativas()%>
+		No me gusta:  <%= vid.getCantidadCalificacionesNegativas()%>
 		<br><br>
 		
 		
