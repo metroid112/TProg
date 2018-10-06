@@ -184,6 +184,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
   
+  public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
+    Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+    return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
+  }
+  
   public LinkedList<DtVideo> getListaDtVideo(String usuario){
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();

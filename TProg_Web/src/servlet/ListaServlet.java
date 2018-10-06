@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 
 @WebServlet("/ListaServlet")
@@ -29,16 +31,20 @@ public class ListaServlet extends HttpServlet {
     String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
     String[] ListasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
     String[] ListasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
-    String[] Listas = concatenate(ListasParticulares, ListasPublicas);
-
    if (request.getParameter("STATE").equals("DETALLESLISTA")) {
      String listaSeleccionada = (String) request.getParameter("LISTA");
-     
+     Boolean listaDefecto = false;
+     if (request.getParameter("LISTAPUBLICA").equals("S")) {
+       listaDefecto = true;
+     }
+     List<DtVideo> videosDeLista = Fabrica.getIUsuariosCanales().listarDtVideosDuenosLista(nickUsuario, listaSeleccionada, listaDefecto);
+     request.setAttribute("VIDEOSLISTA", videosDeLista);
+     request.getRequestDispatcher("/WEB-INF/pages/seleccionar_video.jsp").forward(request, response);
    }
    else if (request.getParameter("STATE").equals("LOADLISTAS")) {
-
      //obtener las listas para el usuario
-     request.setAttribute("LISTAS", Listas);
+     request.setAttribute("LISTASPRIVADAS", ListasParticulares);
+     request.setAttribute("LISTASPUBLICAS", ListasPublicas);
      request.getRequestDispatcher("/WEB-INF/pages/quitar_video_lista.jsp").forward(request, response);
    } else {
        if (request.getParameter("visibilidad").equals("Público")) {

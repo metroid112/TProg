@@ -17,10 +17,22 @@
 			Por favor seleccione una lista
 		</div>
 			<br>
-			<% for (String u : (String[]) request.getAttribute("LISTAS")) { %>
+			<% for (String u : (String[]) request.getAttribute("LISTASPUBLICAS")) { %>
 				<div class="detalleClickeableLista">		
 				<form action="/ListaServlet" method="GET">
 					<input type="hidden" name="STATE" value="DETALLESLISTA">
+					<input type="hidden" name="LISTAPUBLICA" value="S">
+					<input type="hidden" name="LISTA" value="<%=u%>">
+					<button class="detalleLista"><%= u %></button>
+				</form>	
+				</div>
+			<% } %>
+			<br>
+			<% for (String u : (String[]) request.getAttribute("LISTASPRIVADAS")) { %>
+				<div class="detalleClickeableLista">		
+				<form action="/ListaServlet" method="GET">
+					<input type="hidden" name="STATE" value="DETALLESLISTA">
+					<input type="hidden" name="LISTAPUBLICA" value="N">
 					<input type="hidden" name="LISTA" value="<%=u%>">
 					<button class="detalleLista"><%= u %></button>
 				</form>	
