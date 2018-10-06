@@ -1,4 +1,5 @@
 <%@ page import = "clases.*,interfaces.*, utils.*, datatypes.*" %>
+<%@ page import = "java.util.List" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,15 +19,19 @@
 		</div>
 			<br>
 			<div class="eleccionVideoLista">		
-				<form action="/ListaServlet" method="POST">
+				<form action="/QuitarVideoDeLista" method="POST">
 				<br>
 				<select required name="video">
 				<option value="" disabled selected hidden>Seleccione el video que quiere quitar</option>
-				<% for (String video : (String[]) request.getAttribute("VIDEOSLISTA")) { %>
-				<option value="<%= video %>"><%= video %> </option>
+				<% List<DtVideo> listaVideos = (List<DtVideo>) request.getAttribute("VIDEOSLISTA");
+				for (DtVideo video : listaVideos) { %>
+				<option value="<%= video.idVideo %>"><%= video.usuario %>-<%= video.nombre %> </option>
 				<% } %>
-				</select>	
+				</select>
+				<input type="hidden" name="lista" value="<%=request.getAttribute("LISTA")%>">
+				<input type="hidden" name="listapublica" value="<%=request.getAttribute("LISTAPUBLICA")%>">
 				<br>
+				<button type="submit">Aceptar</button>
 				</form>
 			</div>
 	</div>
