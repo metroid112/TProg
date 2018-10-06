@@ -51,6 +51,8 @@ public interface IUsuariosCanales {
 
   public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
   
+  public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto);
+  
   public List<DtVideo> getListaDtVideo(String usuario);
   
   public List<DtVideo> getListaPublicoDtVideo();

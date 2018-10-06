@@ -202,6 +202,16 @@ public class Canal {
       return listaPar.getArrayVideosDuenos();
     }
   }
+  
+  public List<DtVideo> listarDtVideosDuenosLista(String lista, boolean defecto) {
+    if (defecto) {
+      ListaDefecto listaDef = listaDefecto.get(lista);
+      return listaDef.getDtVideos();
+    } else {
+      ListaParticular listaPar = listaParticulares.get(lista);
+      return listaPar.getDtVideos();
+    }
+  }
 
   public void modVideo(String nombreOld, String nombre) {
     Video vid = this.videos.remove(nombreOld);
