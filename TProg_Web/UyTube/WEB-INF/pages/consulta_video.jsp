@@ -1,6 +1,13 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Out"%>
+<%@page import="javax.xml.ws.Response"%>
+<%@page import="java.io.Writer"%>
 <%@page import="datatypes.DtVideo"%>
 <%@page import="datatypes.DtComentario"%>
 <%@page import="java.util.Map" %>
+<%@page import="java.text.DateFormat" %>
+<%@page import= "java.text.ParseException" %>
+<%@page import= "java.text.SimpleDateFormat" %>
+
 
 
 <!doctype html>
@@ -9,6 +16,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
+<form action="">
+
+</form>
+
 <title>UyTube - Consulta Video</title>
 </head>
 <body>
@@ -16,48 +27,43 @@
 	 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
 	
 		Nombre: <%= vid.nombre %>
-		 <br>
+		 <br><br>
 		Canal: <%= vid.usuario %>
-		 <br>
-		Fecha: <%= vid.fecha %>
-		 <br>
-		Duracion: <%= vid.duracion %>
-		 <br>
+		 <br><br>
+		<%! DateFormat format = new SimpleDateFormat("dd/mm/yyyy");%>
+		 
+		Fecha: <%= format.format(vid.fecha) %> 
+		 <br><br>
+		 <%! DateFormat format2 = new SimpleDateFormat("H:MM:SS");%>
+		 
+		Duracion: <%= format2.format(vid.duracion) %>
+		 <br><br>
 		Descripcion: <%= vid.descripcion %> 
-		 <br>
+		 <br><br>
 		Categoria: <%= vid.categoria %>
-		 <br>
+		 <br><br>
 		URL: <%= vid.Url %>
-		 <br>
+		 <br><br>
 		Me gusta:  <%= vid.getCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
-		<br>
+		<br><br>
 		No me gusta:  <%= vid.getCalificacionesNegativas()%>
-		<br>
+		<br><br>
+		
 		
 		<!-- LA PARTE DE LOS COMENTARIOS -->
 		
 		Comentarios:
 		
 		<%! public void printComent(Map<Integer, DtComentario> comentarios, int tab){
-			
 			for(DtComentario comentario : comentarios.values() ){
-				for(int i = 0; i < tab; i++){ %>
-					 <t> x
-				<%! } %>
-				
-				
-				
-				<%!				
-				
-				if(!comentario.hijos.isEmpty()){
-					printComent(comentario.hijos,tab++);
-				}
+				System.out.println(comentario.texto);
 			}
-		} %>
+		}
 		
+		%>
+	
 		<pre>
-		<% printComent(vid.comentarios,0); %>		
-
+			
 		</pre>
 		<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 		
