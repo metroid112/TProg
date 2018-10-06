@@ -49,9 +49,12 @@
 				
 		Me gusta: <%= vid.getCantidadCalificacionesPositivas()%>
 		<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
+		String cast;
+		cast = Integer.toString(vid.idVideo);
 		if(d != null){ %>
 				<form action="/ConsultaVideo" method="GET">
 					<input type="hidden" name="VALORAR" value="POSITIVO">
+					<input type="hidden" id="1" name="VIDEO_ID" value= "<%= cast %>" >
 			
 					<button type="submit">Valorar</button>
 					
@@ -71,7 +74,8 @@
 		<%if(d != null){ %>
 				<form action="/ConsultaVideo" method="GET">
 					<input type="hidden" name="VALORAR" value="NEGATIVO">
-			
+					<input type="hidden" id="1" name="VIDEO_ID" value= "<%= cast %>" >
+					
 					<button type="submit">Valorar</button>
 					
 				</form>		

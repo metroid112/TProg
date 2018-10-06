@@ -21,15 +21,14 @@ public class VideoServlet extends HttpServlet {
 
   public VideoServlet() {
     super();
-    // TODO Auto-generated constructor stub
   }
+  
   private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // TODO processRequest
+
   }
   
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
     
     IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
     
@@ -51,7 +50,6 @@ public class VideoServlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
     processRequest(request,response);
   }
 

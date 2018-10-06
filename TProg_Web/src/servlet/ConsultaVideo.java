@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import clases.Calificacion;
 import clases.Categoria;
 import clases.Comentario;
+import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
+import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 
 @WebServlet("/ConsultaVideo")
@@ -26,21 +28,49 @@ public class ConsultaVideo extends HttpServlet {
      
     public ConsultaVideo() {
         super();
-        // TODO Auto-generated constructor stub
+    
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   // TODO processRequest
+  
+      if (request.getParameter("VALORAR").equals("POSITIVO")) {
+        IVideos ctrVideos = Fabrica.getIVideos();
+
+        String videoId = (String) request.getParameter("VIDEO_ID");
+        int id = Integer.parseInt(videoId);
+        DtVideo vid;
+        try {
+          vid = ctrVideos.getDtVideo(id);
+          request.setAttribute("DT_VIDEO", vid);
+        } catch (NotFoundException e) {
+          e.printStackTrace();
+        }  
+        System.out.println("x");
+
+        request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
+      }
+      if (request.getParameter("VALORAR").equals("NEGATIVO")) {
+        IVideos ctrVideos = Fabrica.getIVideos();
+
+        String videoId = (String) request.getParameter("VIDEO_ID");
+        int id = Integer.parseInt(videoId);
+        DtVideo vid;
+        try {
+          vid = ctrVideos.getDtVideo(id);
+          request.setAttribute("DT_VIDEO", vid);
+        } catch (NotFoundException e) {
+          e.printStackTrace();
+        }  
+        System.out.println("y");
+
+        request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
+      }
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  
-    //DtVideo vid = new DtVideo("lala","esta muy bueno","AlhJsZ1EBIU",null,null,null,null,true,new LinkedHashMap<Integer, Comentario>(),new LinkedList<Calificacion>());
-	  
 	  IVideos ctrVideos = Fabrica.getIVideos();
-	  //String usuarioNick = (String) request.getParameter("VIDEO_CANAL"); //ESTAN LLEGANDO LOS DOS NULL
-	 // String nombreVideo = (String) request.getParameter("VIDEO_NOMBRE");
-	 // DtVideo vid = ctrVideos.getDtVideo(nombreVideo, usuarioNick);
+
 	  String videoId = (String) request.getParameter("VIDEO_ID");
 	  int id = Integer.parseInt(videoId);
 	  DtVideo vid;
