@@ -15,11 +15,7 @@
 				<br>
 				<a href="WEB-INF/pages/registro_usuarios.jsp">Prueba "registro usuario"</a>
 				<br>
-<<<<<<< HEAD
 				<a href="/AltaLista">Alta Lista (WIP)</a>
-=======
-				<a href="WEB-INF/pages/alta_lista.jsp">Alta Lista (WIP)</a>
->>>>>>> 14fab8643d2916e5bceb6de3666855cb0ebe277c
 				<br>
 				<a href="WEB-INF/pages/alta_usuario.jsp">Alta Usuario (WIP)</a>
 				<br>
