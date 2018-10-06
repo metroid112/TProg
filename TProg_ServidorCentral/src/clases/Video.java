@@ -81,12 +81,18 @@ public class Video {
   }
 
   public DtVideo getDt() {
+
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
         this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo, this.canal.getUsuario().getNick());
+
   }
 
   public String getNombre() {
     return nombre;
+  }
+  
+  public boolean getVisible(){
+    return visible;
   }
 
   public void modificarDatos(String nombre, String descripcion, String url, Categoria categoria,

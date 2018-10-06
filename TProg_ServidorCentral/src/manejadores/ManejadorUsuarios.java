@@ -1,10 +1,14 @@
 package manejadores;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import clases.Canal;
 import clases.Usuario;
+import datatypes.DtVideo;
 
 public class ManejadorUsuarios {
 
@@ -49,6 +53,23 @@ public class ManejadorUsuarios {
       }
     }
     return usuario;
+  }
+  
+  public LinkedList<DtVideo> getListaPublicoDtVideo(){
+    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
+    LinkedList<DtVideo> listaUsuario = null;
+    
+    for(Usuario usuarioObjetivo: usuarios.values()){
+      
+      Canal canalObjetivo = usuarioObjetivo.getCanal();
+      listaUsuario = canalObjetivo.listaPublicoDtVideo();
+      
+        for(DtVideo v: listaUsuario){
+          result.add(v);
+        }
+      
+    }
+    return result;
   }
 
   public boolean isEmailUnique(String email) {
