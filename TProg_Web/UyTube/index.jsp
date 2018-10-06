@@ -15,7 +15,7 @@
 				<br>
 				<a href="jsp/registro_usuarios.jsp">Prueba "registro usuario"</a>
 				<br>
-				<a href="jsp/alta_lista.jsp">Alta Lista (WIP)</a>
+				<a href="/AltaLista">Alta Lista (WIP)</a>
 				<br>
 				<a href="jsp/alta_usuario.jsp">Alta Usuario (WIP)</a>
 				<br>
