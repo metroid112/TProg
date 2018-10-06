@@ -51,6 +51,7 @@
 		<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 		if(d != null){ %>
 				<form action="/ConsultaVideo" method="GET">
+					<input type="hidden" id="1" name="VIDEO_NOMBRE" value= "<%= vid.idVideo%>" >
 			
 					<button type="submit">Valorar</button>
 					
@@ -69,6 +70,7 @@
 		No me gusta: <%= vid.getCantidadCalificacionesNegativas()%>
 		<%if(d != null){ %>
 				<form action="/ConsultaVideo" method="GET">
+					<input type="hidden" id="1" name="VIDEO_NOMBRE" value= "<%= vid.idVideo%>" >
 			
 					<button type="submit">Valorar</button>
 					
