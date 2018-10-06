@@ -45,14 +45,15 @@
 		 <br><br>
 		URL: <%= vid.Url %>
 		 <br><br>
-		Me gusta: <%= vid.getCantidadCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
+		Me gusta: <%= vid.getCantidadCalificacionesPositivas()%>
 		<br><br>
 		<% List<String> positivos = vid.getCalificacionesPositivas(); 
 		for(String user: positivos){%>
 			<%= user %>
+			<br>
 		<%}
 		%>
-		
+		<br><br>
 		
 		No me gusta: <%= vid.getCantidadCalificacionesNegativas()%>
 		
@@ -60,9 +61,10 @@
 		<% List<String> negativos = vid.getCalificacionesNegativas(); 
 		for(String user: negativos){%>
 			<%= user %>
+			<br>
 		<%}
 		%>
-		
+		<br><br>
 		
 		<!-- LA PARTE DE LOS COMENTARIOS -->
 		
