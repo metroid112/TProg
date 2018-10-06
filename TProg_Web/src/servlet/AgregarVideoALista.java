@@ -56,10 +56,11 @@ public class AgregarVideoALista extends HttpServlet {
       ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
       }
       catch (DuplicateClassException e) {
-        e.printStackTrace();
+        request.setAttribute("ERROR", e.getMessage());
+        request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp").forward(request, response);
       }
-      request.getRequestDispatcher("/index.jsp").forward(request, response);
-      
+      request.setAttribute("EXITO", "¡Se ha agregado el video a la lista seleccionada con éxito!");
+      request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp").forward(request, response);
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

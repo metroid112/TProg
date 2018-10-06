@@ -9,6 +9,9 @@
 <title>UyTube - Agregar video a lista</title>
 </head>
 <body>
+	<% if (request.getAttribute("ERROR") != null) { %>
+		<h2> <%= request.getAttribute("ERROR") %></h2>
+	<% } %>
 	<form action="/AgregarVideoALista" method="POST">
 		<h1>Videos</h1>
 		<br>
@@ -33,10 +36,9 @@
 		<br>
 		<br>
 		<button type="submit">Aceptar</button>
-		<button form="formDummyServlet" type="submit">Cancelar</button>
+		<button form="volver" type="submit">Cancelar</button>
 	</form>
-	</form>
-		<form action="/Inicio" method="GET" id ="formDummyServlet">
+	<form action="/Inicio" method="GET" id ="volver">
 	</form>
 
 </body>

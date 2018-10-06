@@ -54,7 +54,7 @@ public class Canal {
     }
   }
 
-  public void agregarVideoListaParticular(Video videoObj, String lista) {
+  public void agregarVideoListaParticular(Video videoObj, String lista) throws DuplicateClassException {
     ListaParticular listaObj = listaParticulares.get(lista);
     if (!listaObj.existeVideo(videoObj)) {
       listaObj.insertarVideo(videoObj);
@@ -64,7 +64,9 @@ public class Canal {
         listaObj.insertarCategoria(categoria);
       }
     }
-    // disparar excepcion
+    else {
+      throw new DuplicateClassException("Video", videoObj.getNombre());
+    }
   }
 
   public Video altaVideo(String nombre, String descripcion, Duration duracion, String url,
