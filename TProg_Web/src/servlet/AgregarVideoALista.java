@@ -54,13 +54,14 @@ public class AgregarVideoALista extends HttpServlet {
       String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       try {
       ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
+      request.setAttribute("EXITO", "¡Se ha agregado el video a la lista seleccionada con éxito!");
+      request.getRequestDispatcher("index.jsp").forward(request, response);
       }
       catch (DuplicateClassException e) {
         request.setAttribute("ERROR", e.getMessage());
-        request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp").forward(request, response);
+        response.sendRedirect("/ListarListaServlet");
       }
-      request.setAttribute("EXITO", "¡Se ha agregado el video a la lista seleccionada con éxito!");
-      request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp").forward(request, response);
+      
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
