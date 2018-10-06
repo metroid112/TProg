@@ -1,9 +1,13 @@
 package clases;
 
+import java.time.Duration;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import datatypes.DtLista;
+import datatypes.DtVideo;
 
 public abstract class Lista {
 
@@ -70,6 +74,15 @@ public abstract class Lista {
       }
     }
     return video;
+  }
+  
+  public List<DtVideo> getDtVideos() {
+    List<DtVideo> dtVideos = new LinkedList<DtVideo>();
+    for (Video vid : videos) {
+      DtVideo dtVid = vid.getDt();
+      dtVideos.add(dtVid);
+    }
+    return dtVideos;
   }
 
   public List<Video> getVideos() {
