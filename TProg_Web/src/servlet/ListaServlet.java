@@ -31,6 +31,7 @@ public class ListaServlet extends HttpServlet {
     String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
     String[] ListasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
     String[] ListasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
+    
    if (request.getParameter("STATE").equals("DETALLESLISTA")) {
      String listaSeleccionada = (String) request.getParameter("LISTA");
      Boolean listaDefecto = false;

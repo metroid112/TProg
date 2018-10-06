@@ -52,7 +52,7 @@
 		String cast;
 		cast = Integer.toString(vid.idVideo);
 		if(d != null){ %>
-				<form action="/ConsultaVideo" method="GET">
+				<form action="/ConsultaVideo" method="POST">
 					<input type="hidden" name="VALORAR" value="POSITIVO">
 					<input type="hidden" id="1" name="VIDEO_ID" value= "<%= cast %>" >
 			
@@ -72,7 +72,7 @@
 		
 		No me gusta: <%= vid.getCantidadCalificacionesNegativas()%>
 		<%if(d != null){ %>
-				<form action="/ConsultaVideo" method="GET">
+				<form action="/ConsultaVideo" method="POST">
 					<input type="hidden" name="VALORAR" value="NEGATIVO">
 					<input type="hidden" id="1" name="VIDEO_ID" value= "<%= cast %>" >
 					

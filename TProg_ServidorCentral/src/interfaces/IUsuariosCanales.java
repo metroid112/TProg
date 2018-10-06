@@ -37,8 +37,7 @@ public interface IUsuariosCanales {
 
   public void seguir(String seguidor, String seguido);
 
-  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo)
-      throws Exception;
+  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo);
 
   void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
       String nombreDuenoVideo);

@@ -32,30 +32,35 @@ public class ConsultaVideo extends HttpServlet {
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      
       IVideos ctrVideos = Fabrica.getIVideos();
       IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
       String videoId = (String) request.getParameter("VIDEO_ID");
       int id = Integer.parseInt(videoId);
       DtVideo vid;
+      
       try {
         vid = ctrVideos.getDtVideo(id);
         request.setAttribute("DT_VIDEO", vid);
+  
+        DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
+        
+        if (request.getParameter("VALORAR").equals("POSITIVO")) {
+          
+          ctrUsuariosCanales.valorarVideo(d.nick,true ,vid.nombre, vid.usuario);
+
+          request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
+        }
+        else if (request.getParameter("VALORAR").equals("NEGATIVO")) {
+          
+          ctrUsuariosCanales.valorarVideo(d.nick,false ,vid.nombre, vid.usuario);
+
+               
+          request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
+        }
       } catch (NotFoundException e) {
+       
         e.printStackTrace();
-      }
-      DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
-      
-      if (request.getParameter("VALORAR").equals("POSITIVO")) {
-        
-        ctrUsuariosCanales.valorarVideo(d.nick,true ,vid.nombre, vid.usuario);
-        
-        request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
-      }
-      if (request.getParameter("VALORAR").equals("NEGATIVO")) {
-        
-        ctrUsuariosCanales.valorarVideo(d.nick,false ,vid.nombre, vid.usuario);
-        
-        request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
       }
     }
 
@@ -78,6 +83,7 @@ public class ConsultaVideo extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  System.out.println("x");
 	  processRequest(request, response);
 	}
 
