@@ -4,7 +4,9 @@
 <%@page import="datatypes.DtVideo"%>
 <%@page import="datatypes.DtComentario"%>
 <%@page import="java.util.Map" %>
+<%@page import="java.io.Writer"%>
 <%@page import="java.text.DateFormat" %>
+<%@page import="java.util.List" %>
 <%@page import= "java.text.ParseException" %>
 <%@page import= "java.text.SimpleDateFormat" %>
 
@@ -43,10 +45,23 @@
 		 <br><br>
 		URL: <%= vid.Url %>
 		 <br><br>
-		Me gusta:  <%= vid.getCantidadCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
+		Me gusta: <%= vid.getCantidadCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
 		<br><br>
-		No me gusta:  <%= vid.getCantidadCalificacionesNegativas()%>
+		<% List<String> positivos = vid.getCalificacionesPositivas(); 
+		for(String user: positivos){%>
+			<%= user %>
+		<%}
+		%>
+		
+		
+		No me gusta: <%= vid.getCantidadCalificacionesNegativas()%>
+		
 		<br><br>
+		<% List<String> negativos = vid.getCalificacionesNegativas(); 
+		for(String user: negativos){%>
+			<%= user %>
+		<%}
+		%>
 		
 		
 		<!-- LA PARTE DE LOS COMENTARIOS -->

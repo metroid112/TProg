@@ -26,7 +26,6 @@
 			
 					<form action="/ConsultaVideo" method="GET">
 				
-					
 					<input type="hidden" id="1" name="VIDEO_ID" value= "<%= cast %>" >
 			
 					<button type="submit">Consultar</button>
@@ -41,7 +40,7 @@
 		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 		if(d != null){ %>
 		<h1>Videos del usuario:</h1>
-		 <%
+		 <%s
 			LinkedList<DtVideo> listaVideosUsuario = (LinkedList<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
 			String cast2;
 			for (DtVideo v : listaVideosUsuario) { 
