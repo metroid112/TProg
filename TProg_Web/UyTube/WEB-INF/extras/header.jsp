@@ -5,8 +5,18 @@
 	<div class="head-item">
 		<img width="30%" alt="UyTube" src="img/logo.png">
 	</div>
-	<div class="head-item" align="center">
-	Buscador
+	<div class="head-item busqueda" align="center">
+		<form action="/Busqueda" method="get">
+			<div class="form-group">
+				<div class="input-group-btn">
+					<select required name="tipoBusqueda">
+						<option selected>Video</option>
+					</select>
+					<input type="text" placeholder="Busqueda" name="textoBusqueda">
+					<button>Buscar</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	<div class="head-item" align="right">
 		<% if (session.getAttribute("LOGIN") == null || session.getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)) { %>
