@@ -30,5 +30,5 @@ public interface IListas {
   public String[] listarListasParticularUsuario(String usuario);
 
   public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista,
-      boolean deefecto);
+      boolean defecto);
 }
