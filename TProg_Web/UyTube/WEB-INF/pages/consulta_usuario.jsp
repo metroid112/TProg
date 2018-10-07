@@ -38,7 +38,7 @@
   			<h1> INFO USUARIO </h1>
   			<h2> <%= usuario.nick %> </h2>
   			<br>
-  			<img alt="<%= usuario.imgPath %>" src="<%= usuario.imgPath %>">
+  			<img alt="Imagen de <%= usuario.nick %>" src="<%= usuario.imgPath %>">
   			<br>
   			Nombre: <%= usuario.nombre + " " + usuario.apellido %>
   			<br>

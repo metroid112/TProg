@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="page">
-		<jsp:include page="WEB-INF/extras/header.jsp"></jsp:include>
+		<jsp:include page="WEB-INF/extras/header.jsp"/>
 		<div class="contenedor">
 			<div class="sidebar">
 				<h4>Requerimientos mínimos</h4>
