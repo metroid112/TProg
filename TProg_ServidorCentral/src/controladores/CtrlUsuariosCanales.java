@@ -213,4 +213,13 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     }
 
   }
+
+  @Override
+  public List<String> listarNombresUsuarios() {
+    List<String> resultado = new LinkedList<String>();
+    for (Usuario usuario : manejadorUsuarios.getMap().values()) {
+      resultado.add(usuario.getNick());
+    }
+    return resultado;
+  }
 }

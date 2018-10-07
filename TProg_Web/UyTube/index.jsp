@@ -21,13 +21,15 @@
 				<br>
 				<form action="/AltaVideo" method="GET">
 					<input type="hidden" name="STATE" value="LOAD">
-					<!-- <input type="submit" value="Alta Video (WIP)"> -->
 					<button>Alta Video (WIP)</button>
 				</form>
 				<br>
 				<a href="WEB-INF/pages/consulta_lista.jsp">Consulta Lista (WIP)</a>
 				<br>
-				<a href="/ConsultaUsuario">Consulta Usuario (WIP)</a>
+				<form action="/ConsultaUsuario" method="GET">
+					<input type="hidden" name="STATE" value="LISTAR">
+					<button>Consulta Usuario (WIP)</button>
+				</form>
 				<br>
 				<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 				<br>

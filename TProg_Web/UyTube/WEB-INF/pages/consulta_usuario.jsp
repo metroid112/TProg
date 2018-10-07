@@ -13,10 +13,11 @@
 <jsp:include page="/WEB-INF/extras/header.jsp" />
 <%! @SuppressWarnings("unchecked") %>
 <%
-	List<DtUsuario> listaUsuarios = (LinkedList<DtUsuario>) request.getAttribute("USUARIOS");
-	if (listaUsuarios.isEmpty()) { %>
+	if (request.getAttribute("STATE").equals("LISTAR")) {
+		List<String> listaUsuarios = (LinkedList<String>) request.getAttribute("USUARIOS");
+		if (listaUsuarios.isEmpty()) { %>
 	  <h1>No hay usuarios.</h1>
-<% } else { %>
+<% 		} else { %>
 	  <table class="table">
 	  <thead>
 	    <tr>
@@ -24,20 +25,26 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-<% for (DtUsuario usuario : listaUsuarios) { %>
+<% 			for (String usuario : listaUsuarios) { %>
 		<tr>
 		  <th scope="row"> 
 			<form action="/ConsultaUsuario" method="GET">
-			<input type="hidden" name="ID" value="<%= usuario.nick %>">
-			<button><%= usuario.nick %></button>
+			<input type="hidden" name="ID" value="<%= usuario %>">
+			<button><%= usuario %></button>
 			</form>
 		  </th>
 	    <tr>
-<% } %>
+<% 			} %>
 	  </tbody>
 	</table>
-<% 	}
+<% 		}
+	} else {
+	  
+	}
 %>
+<form action="/Inicio" method="GET">
+	<button>Volver</button>
+</form>
 <jsp:include page="/WEB-INF/extras/script.jsp" />
 </body>
 </html>
