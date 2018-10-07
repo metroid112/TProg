@@ -127,4 +127,12 @@ public class Video {
     Video video = (Video) o;
     return (this.idVideo == video.getId());
   }
+
+  public String getDescripcion() {
+    return this.descripcion;
+  }
+
+  public Date getFecha() {
+    return this.fecha;
+  }
 }

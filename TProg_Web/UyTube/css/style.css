@@ -1,7 +1,4 @@
-* {
-	margin: 0;
-	padding: 0;
-}
+
 
 .page {
 	font-family: sans-serif;	
@@ -18,20 +15,26 @@
 
 .head-item {
 	width: 30%;
+	align-items: center;
 	justify-content: center;
 	margin: 10px;
 }
 
+.busqueda {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+}
+
 .contenedor {
 	display: flex;
-	flex-direction: row-reverse;
+	flex-direction: row;
 	justify-content: space-between;
 }
 
 .contenido {
-	width: 90%;	
+	width: 90%;
 	padding: 10px;
-	/*background-color: yellow;*/
 	
 }
 
@@ -42,6 +45,7 @@
 	width: 12%;
 	padding: 15px;
 	text-align: center;
+	border-right: 1px solid black;
 }
 
 .sidebar button {    

@@ -79,6 +79,17 @@ public class Canal {
     this.videos.put(nombre, video);
     return video;
   }
+  
+  public Date getUltimaActividad() {
+    Date ultimaActividad = null;
+    for (Video vid : this.videos.values()) {
+      if (ultimaActividad == null || vid.getFecha().after(ultimaActividad)) {
+        ultimaActividad = vid.getFecha();
+      }
+    }
+    
+    return ultimaActividad;
+  }
 
   public String[] getArrayVideos() {
 
@@ -216,6 +227,7 @@ public class Canal {
   public void modVideo(String nombreOld, String nombre) {
     Video vid = this.videos.remove(nombreOld);
     this.videos.put(nombre, vid);
+    
 
   }
   
