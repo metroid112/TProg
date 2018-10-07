@@ -16,30 +16,24 @@
 	if (request.getAttribute("STATE").equals("LISTAR")) {
 		List<String> listaUsuarios = (LinkedList<String>) request.getAttribute("USUARIOS");
 		if (listaUsuarios.isEmpty()) { %>
-	  <h1>No hay usuarios.</h1>
+			<h1>No hay usuarios.</h1>
 <% 		} else { %>
-	  <table class="table">
-	  <thead>
-	    <tr>
-	      <th scope="col">Nick</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-<% 			for (String usuario : listaUsuarios) { %>
-		<tr>
-		  <th scope="row"> 
 			<form action="/ConsultaUsuario" method="GET">
-			<input type="hidden" name="ID" value="<%= usuario %>">
-			<button><%= usuario %></button>
-			</form>
-		  </th>
-	    <tr>
+			<select required name="usuario">
+<% 			for (String usuario : listaUsuarios) { %>				
+				<option value="<%= usuario %>"><%= usuario %></option>				
 <% 			} %>
-	  </tbody>
-	</table>
-<% 		}
+			</select>
+			<button>Seleccionar</button>
+			</form>
+<%		}
 	} else {
-	  
+  		DtUsuario usuario = (DtUsuario) request.getAttribute("USUARIO");
+ 		if (usuario == null) { %>
+	  		<h1>Usuario <%= usuario.nick %> no existe</h1>
+<%	  	} else {
+
+		}
 	}
 %>
 <form action="/Inicio" method="GET">

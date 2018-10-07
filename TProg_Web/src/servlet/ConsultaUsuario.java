@@ -22,7 +22,9 @@ public class ConsultaUsuario extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     if (request.getParameter("STATE").equals("LISTAR")) {
+      request.setAttribute("STATE", "LISTAR");
       request.setAttribute("USUARIOS", Fabrica.getIUsuariosCanales().listarNombresUsuarios());
+      request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request, response);
     } else {
       // listar info
     }
