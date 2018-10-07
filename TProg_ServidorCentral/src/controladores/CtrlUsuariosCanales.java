@@ -44,7 +44,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass) {
     Usuario user =
-        new Usuario(nickname, nombreCanal, apellido, correo, fechaNacimiento, imagenPath, pass);
+        new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagenPath, pass);
     Canal canal = new Canal(nombreCanal, descripcionCanal,
         ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
     user.setCanal(canal);

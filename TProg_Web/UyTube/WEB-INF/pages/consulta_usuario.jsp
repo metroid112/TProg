@@ -38,7 +38,7 @@
   			<h1> INFO USUARIO </h1>
   			<h2> <%= usuario.nick %> </h2>
   			<br>
-  			Nombre: <%= usuario.nombre + usuario.apellido %>
+  			Nombre: <%= usuario.nombre + " " + usuario.apellido %>
   			<br>
 			<form action="/ConsultaUsuario" method="GET">
 				<input type="hidden" name="STATE" value="LISTAR">
