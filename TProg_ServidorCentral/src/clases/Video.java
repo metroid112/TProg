@@ -129,4 +129,12 @@ public class Video {
         && this.duracion.equals(video.duracion) && this.visible == video.visible
         && this.url.equals(video.url) && this.descripcion.equals(video.descripcion));
   }
+
+  public String getDescripcion() {
+    return this.descripcion;
+  }
+
+  public Date getFecha() {
+    return this.fecha;
+  }
 }

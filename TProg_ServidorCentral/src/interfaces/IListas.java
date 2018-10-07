@@ -1,7 +1,9 @@
 package interfaces;
 
+import java.util.List;
 import java.util.Map;
 
+import clases.ListaParticular;
 import datatypes.DtLista;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
@@ -31,4 +33,8 @@ public interface IListas {
 
   public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista,
       boolean deefecto);
+
+  List<DtLista> getDtListasPublicas();
+
+  Map<Integer, ListaParticular> getListasPublicas();
 }

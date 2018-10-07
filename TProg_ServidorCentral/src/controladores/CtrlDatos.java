@@ -5,11 +5,25 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
+import clases.Canal;
+import clases.ListaParticular;
+import clases.Usuario;
+import clases.Video;
+import datatypes.DtBusqueda;
+import datatypes.DtLista;
+import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IDatos;
+import manejadores.ManejadorListasParticulares;
+import manejadores.ManejadorUsuarios;
+import manejadores.ManejadorVideos;
 
 public class CtrlDatos implements IDatos {
 
@@ -369,6 +383,36 @@ public class CtrlDatos implements IDatos {
         e.printStackTrace();
       }
     }
+  }
+
+  @Override
+  public DtBusqueda busqueda(String txtBusqueda) {
+    List<DtVideo> videos = new LinkedList<DtVideo>();
+    List<DtLista> listas = new LinkedList<DtLista>();
+    List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
+    for (Video vid : ManejadorVideos.getManejadorVideos().getVideos().values()) {
+      if (vid.isVisible()) {
+        if (vid.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || vid.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          videos.add(vid.getDt());
+        }
+      }
+    }
+    for (ListaParticular lista : Fabrica.getIListas().getListasPublicas().values()) {
+      if (lista.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+        listas.add(lista.getDtLista());
+      }
+    }
+    for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
+      Canal canal = usuario.getCanal();
+      if (canal.isVisible()) {
+        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(),usuario.getCanal().getNombre(), usuario.getPath(), canal.getUltimaActividad());
+          usuarios.add(dtUsuario);
+        }
+      }
+    }
+    DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
+    return resultados;
   }
 
 }

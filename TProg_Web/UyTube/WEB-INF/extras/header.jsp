@@ -9,10 +9,7 @@
 		<form action="/Busqueda" method="get">
 			<div class="form-group">
 				<div class="input-group-btn">
-					<select required name="tipoBusqueda">
-						<option selected>Video</option>
-					</select>
-					<input type="text" placeholder="Busqueda" name="textoBusqueda">
+					<input type="text" placeholder="Busqueda" name="txtBusqueda">
 					<button>Buscar</button>
 				</div>
 			</div>
