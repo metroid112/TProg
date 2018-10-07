@@ -96,11 +96,13 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public String[] listarListasDeReproduccion(String nick) {
-    HashMap<String, ListaDefecto> listasDefecto = (HashMap<String, ListaDefecto>) manejadorUsuarios.get(nick).getCanal()
-        .getListaDefecto();
+    HashMap<String, ListaDefecto> listasDefecto =
+        (HashMap<String, ListaDefecto>) manejadorUsuarios.get(nick).getCanal()
+            .getListaDefecto();
     String[] listaDefecto = listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
-    HashMap<String, ListaParticular> listasParticular = (HashMap<String, ListaParticular>) manejadorUsuarios.get(nick).getCanal()
-        .getListaParticulares();
+    HashMap<String, ListaParticular> listasParticular =
+        (HashMap<String, ListaParticular>) manejadorUsuarios.get(nick).getCanal()
+            .getListaParticulares();
     String[] listaParticulares = listasParticular.keySet()
         .toArray(new String[listasParticular.size()]);
     int largo = listaDefecto.length + listaParticulares.length;
@@ -144,7 +146,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public String[] listarVideos(String nick) {
-    HashMap<String, Video> videos = (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
+    HashMap<String, Video> videos =
+        (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
     String[] res = videos.keySet().toArray(new String[videos.size()]);
     return res;
   }
@@ -183,20 +186,20 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
-  
+
   public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
-  
-  public LinkedList<DtVideo> getListaDtVideo(String usuario){
+
+  public LinkedList<DtVideo> getListaDtVideo(String usuario) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
-  
-  public LinkedList<DtVideo> getListaPublicoDtVideo(){
-    
+
+  public LinkedList<DtVideo> getListaPublicoDtVideo() {
+
     return manejadorUsuarios.getListaPublicoDtVideo();
   }
 

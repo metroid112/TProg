@@ -32,23 +32,26 @@ public class LoginServlet extends HttpServlet {
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     if (!getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)) {
-      if (request.getParameter("PANTALLALOGIN")!=null && request.getParameter("PANTALLALOGIN").equals("TRUE")) {
+      if (request.getParameter("PANTALLALOGIN") != null
+          && request.getParameter("PANTALLALOGIN").equals("TRUE")) {
         request.getRequestDispatcher("/WEB-INF/pages/inicio_sesion.jsp").forward(request, response);
       } else {
-      String nick = (String) request.getParameter("nickname");
-      response.getWriter().println(nick); // asddfasdf
-      String pass = (String) request.getParameter("pass");
-      response.getWriter().println(pass); // asdfasdfadsf
-      IUsuariosCanales IUC = Fabrica.getIUsuariosCanales();
-      if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick)) && IUC.checkLogin(nick, pass)) {
-        request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
-        DtUsuario dtUsuario = IUC.getDt(nick);
-        request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
-        response.sendRedirect("index.jsp");
-      } else {
-        request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
-        request.getRequestDispatcher("/WEB-INF/error/inicio_sesion_error.jsp").forward(request, response);
-      }
+        String nick = (String) request.getParameter("nickname");
+        response.getWriter().println(nick); // asddfasdf
+        String pass = (String) request.getParameter("pass");
+        response.getWriter().println(pass); // asdfasdfadsf
+        IUsuariosCanales iUsuariosCanales = Fabrica.getIUsuariosCanales();
+        if ((iUsuariosCanales.existeUsuario(nick) || iUsuariosCanales.existeUsuarioMail(nick))
+            && iUsuariosCanales.checkLogin(nick, pass)) {
+          request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
+          DtUsuario dtUsuario = iUsuariosCanales.getDt(nick);
+          request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
+          response.sendRedirect("index.jsp");
+        } else {
+          request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
+          request.getRequestDispatcher("/WEB-INF/error/inicio_sesion_error.jsp").forward(request,
+              response);
+        }
       }
     } else {
       if (request.getParameter("CERRAR_SESION") == null) {

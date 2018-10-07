@@ -113,22 +113,24 @@ public class CtrlListas implements IListas {
     }
     return listas;
   }
-  
+
   @Override
-  public Map<Integer, ListaParticular> getListasPublicas(){
+  public Map<Integer, ListaParticular> getListasPublicas() {
     Map<Integer, ListaParticular> listas = new HashMap<Integer, ListaParticular>();
-    for (ListaParticular lista: ManejadorListasParticulares.getManejadorListasParticulares().getListasParticulares().values()) {
+    for (ListaParticular lista : ManejadorListasParticulares.getManejadorListasParticulares()
+        .getListasParticulares().values()) {
       if (lista.isVisible()) {
         listas.put(lista.getId(), lista);
       }
     }
     return listas;
   }
-  
+
   @Override
-  public List<DtLista> getDtListasPublicas(){
+  public List<DtLista> getDtListasPublicas() {
     List<DtLista> listas = new LinkedList<DtLista>();
-    for (ListaParticular lista: ManejadorListasParticulares.getManejadorListasParticulares().getListasParticulares().values()) {
+    for (ListaParticular lista : ManejadorListasParticulares.getManejadorListasParticulares()
+        .getListasParticulares().values()) {
       if (lista.isVisible()) {
         listas.add(lista.getDtLista());
       }

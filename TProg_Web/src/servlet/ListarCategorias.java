@@ -15,32 +15,32 @@ import interfaces.ICategorias;
  */
 @WebServlet("/ListarCategorias")
 public class ListarCategorias extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListarCategorias() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+  private static final long serialVersionUID = 1L;
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-      ICategorias ctrlCategorias = Fabrica.getICategorias();
-      String[] listaCategorias = ctrlCategorias.listarCategorias();
-      request.setAttribute("CATEGORIAS", listaCategorias);
-      request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request, response);
-    }
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-      processRequest(request, response);
-    }
+  /**
+   * @see HttpServlet#HttpServlet()
+   */
+  public ListarCategorias() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-      processRequest(request, response);
-    }
+  private void processRequest(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    ICategorias ctrlCategorias = Fabrica.getICategorias();
+    String[] listaCategorias = ctrlCategorias.listarCategorias();
+    request.setAttribute("CATEGORIAS", listaCategorias);
+    request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request, response);
+  }
+
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    processRequest(request, response);
+  }
 
 }

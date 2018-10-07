@@ -275,11 +275,14 @@ public class CtrlDatos implements IDatos {
       }
 
       try {
-        Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh", "Nostalgia",
+        Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh",
+            "Nostalgia",
             false);
-        Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh", "Nostalgia",
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh",
+            "Nostalgia",
             false);
-        Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh", "Nostalgia",
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh",
+            "Nostalgia",
             false);
         Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
         Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
@@ -313,11 +316,13 @@ public class CtrlDatos implements IDatos {
         Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "cachilas",
             "De todo un poco",
             false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla", "cachilas",
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla",
+            "cachilas",
             "De todo un poco", false);
         Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
             "De todo un poco", false);
-        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "cachilas",
+        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol",
+            "cachilas",
             "De todo un poco", false);
         Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
             "Noticias y CYT", false);
@@ -392,7 +397,8 @@ public class CtrlDatos implements IDatos {
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
     for (Video vid : ManejadorVideos.getManejadorVideos().getVideos().values()) {
       if (vid.isVisible()) {
-        if (vid.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || vid.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+        if (vid.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
+            || vid.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
           videos.add(vid.getDt());
         }
       }
@@ -405,13 +411,15 @@ public class CtrlDatos implements IDatos {
     for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
       Canal canal = usuario.getCanal();
       if (canal.isVisible()) {
-        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(),usuario.getCanal().getNombre(), usuario.getPath(), canal.getUltimaActividad());
+        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
+            || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
+              usuario.getPath(), canal.getUltimaActividad());
           usuarios.add(dtUsuario);
         }
       }
     }
-    DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
+    DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
     return resultados;
   }
 

@@ -73,18 +73,18 @@ public class CtrlVideos implements IVideos {
 
   @Override
   public DtVideo[] listarTodosLosVideos(String nick) {
- 
+
     List<DtVideo> listaVideos = new ArrayList<DtVideo>();
-    for (Entry<String, Usuario> usuario: manejadorUsuario.getMap().entrySet()){
+    for (Entry<String, Usuario> usuario : manejadorUsuario.getMap().entrySet()) {
       List<DtVideo> lista = usuario.getValue().getCanal().getVideosPublicos();
       listaVideos.addAll(lista);
     }
     Usuario user = manejadorUsuario.get(nick);
-    List<DtVideo>lista = user.getCanal().getVideosPrivados();
+    List<DtVideo> lista = user.getCanal().getVideosPrivados();
     listaVideos.addAll(lista);
     return listaVideos.toArray(new DtVideo[listaVideos.size()]);
   }
-  
+
   @Override
   public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion,
       String url, String categoriaString, Duration duracion, Boolean visible, Date fecha)

@@ -25,19 +25,16 @@ public class DtVideo {
   public String categoria;
   public boolean visible;
   public int idVideo;
-  
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 
       Duration duracion, boolean visible, Map<Integer, Comentario> comentarios,
       List<Calificacion> calificaciones, int idVideo, String usuario) {
 
-
-
     this.nombre = nombre;
     this.Url = url;
     this.descripcion = descripcion;
-    
+
     if (categoria != null) {
       this.categoria = categoria.getNombre();
     } else {
@@ -58,20 +55,22 @@ public class DtVideo {
     this.idVideo = idVideo;
   }
 
-  public int getCalificacionesPositivas(){
+  public int getCalificacionesPositivas() {
     int sum = 0;
-    for(DtCalificacion calif : calificaciones){
-      if(calif.like)
+    for (DtCalificacion calif : calificaciones) {
+      if (calif.like) {
         sum++;
+      }        
     }
     return sum;
   }
-  
-  public int getCalificacionesNegativas(){
+
+  public int getCalificacionesNegativas() {
     int sum = 0;
-    for(DtCalificacion calif : calificaciones){
-      if(!calif.like)
+    for (DtCalificacion calif : calificaciones) {
+      if (!calif.like) {
         sum++;
+      }        
     }
     return sum;
   }

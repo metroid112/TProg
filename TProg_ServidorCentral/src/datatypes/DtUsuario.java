@@ -30,7 +30,7 @@ public class DtUsuario {
     this.privado = privado;
     this.nick = nick;
   }
-  
+
   public DtUsuario(String nick, String canal, String path, Date ultimaActividad) {
     this.nick = nick;
     this.canal = canal;

@@ -19,8 +19,7 @@ public class DtLista {
     this.videos = videos;
     this.categorias = categorias;
   }
-  
-  
+
   public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos,
       LinkedList<String> categorias, Date ultimaActividad) {
     this.nombre = nombre;
@@ -30,7 +29,7 @@ public class DtLista {
     this.categorias = categorias;
     this.ultimaActividad = ultimaActividad;
   }
-  
+
   public Date getUltimaActividad() {
     return this.ultimaActividad;
   }

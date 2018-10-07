@@ -26,7 +26,7 @@ public class ManejadorListasDefecto {
       listasDefecto.add(nombreLista);
     } else {
       throw new DuplicateClassException("Lista Defecto", nombreLista);
-    }    
+    }
   }
 
   public boolean existeListaDefecto(String nombre) {

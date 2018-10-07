@@ -21,7 +21,7 @@ public interface IListas {
   public DtLista getDt(int id) throws NotFoundException;
 
   public Map<Integer, DtLista> getDtListas();
-  
+
   // public String getDueñoVideo(String dueñoLista, String nombreLista, String
   // nombreVid, String algo) throws Exception;
 
