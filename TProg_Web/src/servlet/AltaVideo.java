@@ -72,7 +72,8 @@ public class AltaVideo extends HttpServlet {
           request.setAttribute("ERROR_2", exception.getMessage());
           request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
         }
-        response.sendRedirect("/index.jsp");
+        // volver a index
+        response.sendRedirect("/Inicio");
       }
     }
   }

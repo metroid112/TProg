@@ -4,9 +4,11 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.List;
 import java.util.Map.Entry;
+
 
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
@@ -42,14 +44,17 @@ public class Canal {
     }
   }
 
-  public void agregarVideoListaDefecto(Video videoObj, String lista) {
+  public void agregarVideoListaDefecto(Video videoObj, String lista) throws DuplicateClassException {
     ListaDefecto listaObj = listaDefecto.get(lista);
     if (!listaObj.existeVideo(videoObj)) {
       listaObj.insertarVideo(videoObj);
     }
+    else{
+      throw new DuplicateClassException("Video", videoObj.getNombre());
+    }
   }
 
-  public void agregarVideoListaParticular(Video videoObj, String lista) {
+  public void agregarVideoListaParticular(Video videoObj, String lista) throws DuplicateClassException {
     ListaParticular listaObj = listaParticulares.get(lista);
     if (!listaObj.existeVideo(videoObj)) {
       listaObj.insertarVideo(videoObj);
@@ -59,7 +64,9 @@ public class Canal {
         listaObj.insertarCategoria(categoria);
       }
     }
-    // disparar excepcion
+    else {
+      throw new DuplicateClassException("Video", videoObj.getNombre());
+    }
   }
 
   public Video altaVideo(String nombre, String descripcion, Duration duracion, String url,
@@ -71,6 +78,17 @@ public class Canal {
     Video video = new Video(nombre, descripcion, duracion, url, categoria, this, fecha, visible);
     this.videos.put(nombre, video);
     return video;
+  }
+  
+  public Date getUltimaActividad() {
+    Date ultimaActividad = null;
+    for (Video vid : this.videos.values()) {
+      if (ultimaActividad == null || vid.getFecha().after(ultimaActividad)) {
+        ultimaActividad = vid.getFecha();
+      }
+    }
+    
+    return ultimaActividad;
   }
 
   public String[] getArrayVideos() {
@@ -195,11 +213,42 @@ public class Canal {
       return listaPar.getArrayVideosDuenos();
     }
   }
+  
+  public List<DtVideo> listarDtVideosDuenosLista(String lista, boolean defecto) {
+    if (defecto) {
+      ListaDefecto listaDef = listaDefecto.get(lista);
+      return listaDef.getDtVideos();
+    } else {
+      ListaParticular listaPar = listaParticulares.get(lista);
+      return listaPar.getDtVideos();
+    }
+  }
 
   public void modVideo(String nombreOld, String nombre) {
     Video vid = this.videos.remove(nombreOld);
     this.videos.put(nombre, vid);
+    
 
+  }
+  
+  public LinkedList<DtVideo> listaDtVideo(){
+    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
+    for(Video v : videos.values()){
+      DtVideo nuevo = v.getDt();
+      result.add(nuevo);
+    }
+    return result;
+  }
+  
+  public LinkedList<DtVideo> listaPublicoDtVideo(){
+    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
+    for(Video v : videos.values()){
+      if(v.getVisible()){
+        DtVideo nuevo = v.getDt();
+        result.add(nuevo);
+      }
+    }
+    return result;
   }
 
   public void quitarVideoListaDefecto(String video, String lista, Usuario ownerVideo) {

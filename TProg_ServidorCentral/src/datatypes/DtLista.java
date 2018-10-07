@@ -1,5 +1,6 @@
 package datatypes;
 
+import java.util.Date;
 import java.util.LinkedList;
 
 public class DtLista {
@@ -8,6 +9,7 @@ public class DtLista {
   private String tipo;
   private LinkedList<String> videos = new LinkedList<String>();
   private boolean visible;
+  private Date ultimaActividad;
 
   public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos,
       LinkedList<String> categorias) {
@@ -16,6 +18,21 @@ public class DtLista {
     this.visible = visible;
     this.videos = videos;
     this.categorias = categorias;
+  }
+  
+  
+  public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos,
+      LinkedList<String> categorias, Date ultimaActividad) {
+    this.nombre = nombre;
+    this.tipo = tipo;
+    this.visible = visible;
+    this.videos = videos;
+    this.categorias = categorias;
+    this.ultimaActividad = ultimaActividad;
+  }
+  
+  public Date getUltimaActividad() {
+    return this.ultimaActividad;
   }
 
   public LinkedList<String> getCategorias() {

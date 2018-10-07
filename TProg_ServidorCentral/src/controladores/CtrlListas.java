@@ -1,6 +1,8 @@
 package controladores;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -24,7 +26,7 @@ public class CtrlListas implements IListas {
 
   @Override
   public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
-      boolean defecto) {
+      boolean defecto) throws DuplicateClassException {
     Usuario uInicial = manejadorUsuarios.get(usuario);
     Usuario uObjetivo = manejadorUsuarios.get(usuarioObjetivo);
     Video videoObj = uInicial.getCanal().getVideoCanal(video);
@@ -99,8 +101,7 @@ public class CtrlListas implements IListas {
 
   @Override
   public DtLista getDt(int id) throws NotFoundException {
-    // TODO Auto-generated method stub
-    return null;
+    return ManejadorListasParticulares.getManejadorListasParticulares().getById(id).getDtLista();
   }
 
   @Override
@@ -109,6 +110,28 @@ public class CtrlListas implements IListas {
     for (Entry<Integer, ListaParticular> lista : ManejadorListasParticulares
         .getManejadorListasParticulares().getListasParticulares().entrySet()) {
       listas.put(lista.getKey(), lista.getValue().getDtLista());
+    }
+    return listas;
+  }
+  
+  @Override
+  public Map<Integer, ListaParticular> getListasPublicas(){
+    Map<Integer, ListaParticular> listas = new HashMap<Integer, ListaParticular>();
+    for (ListaParticular lista: ManejadorListasParticulares.getManejadorListasParticulares().getListasParticulares().values()) {
+      if (lista.isVisible()) {
+        listas.put(lista.getId(), lista);
+      }
+    }
+    return listas;
+  }
+  
+  @Override
+  public List<DtLista> getDtListasPublicas(){
+    List<DtLista> listas = new LinkedList<DtLista>();
+    for (ListaParticular lista: ManejadorListasParticulares.getManejadorListasParticulares().getListasParticulares().values()) {
+      if (lista.isVisible()) {
+        listas.add(lista.getDtLista());
+      }
     }
     return listas;
   }

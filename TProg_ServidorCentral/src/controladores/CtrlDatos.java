@@ -5,11 +5,25 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
+import clases.Canal;
+import clases.ListaParticular;
+import clases.Usuario;
+import clases.Video;
+import datatypes.DtBusqueda;
+import datatypes.DtLista;
+import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IDatos;
+import manejadores.ManejadorListasParticulares;
+import manejadores.ManejadorUsuarios;
+import manejadores.ManejadorVideos;
 
 public class CtrlDatos implements IDatos {
 
@@ -260,59 +274,64 @@ public class CtrlDatos implements IDatos {
         e.printStackTrace();
       }
 
-      Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh", "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh", "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh", "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec",
-          "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "100 a�os de FING", "hectorg",
-          "Novedades FING",
-          false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "50 a�os del InCo", "hectorg",
-          "Novedades FING",
-          false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "hectorg",
-          "Novedades FING", false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla", "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
-          "Noticias y CYT", false);
-      Fabrica.getIListas().agregarVideoLista("nicoJ",
-          "Ventana al futuro Uruguay y deficit de ingenieros",
-          "nicoJ", "Noticias y CYT", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
-          false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "juliob",
-          "Solo deportes", false);
+      try {
+        Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh", "Nostalgia",
+            false);
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh", "Nostalgia",
+            false);
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh", "Nostalgia",
+            false);
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
+        Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "tabarec", "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "tabarec", "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "tabarec", "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec",
+            "De fiesta",
+            false);
+        Fabrica.getIListas().agregarVideoLista("hectorg", "100 a�os de FING", "hectorg",
+            "Novedades FING",
+            false);
+        Fabrica.getIListas().agregarVideoLista("hectorg", "50 a�os del InCo", "hectorg",
+            "Novedades FING",
+            false);
+        Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "hectorg",
+            "Novedades FING", false);
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "cachilas",
+            "De todo un poco",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "cachilas",
+            "De todo un poco",
+            false);
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "cachilas",
+            "De todo un poco", false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "cachilas",
+            "De todo un poco",
+            false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla", "cachilas",
+            "De todo un poco", false);
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
+            "De todo un poco", false);
+        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "cachilas",
+            "De todo un poco", false);
+        Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
+            "Noticias y CYT", false);
+        Fabrica.getIListas().agregarVideoLista("nicoJ",
+            "Ventana al futuro Uruguay y deficit de ingenieros",
+            "nicoJ", "Noticias y CYT", false);
+        Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
+            false);
+        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "juliob",
+            "Solo deportes", false);
+      } catch (DuplicateClassException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+      }
 
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
       Fabrica.getIUsuariosCanales().comentarVideo("Fue un gran evento",
@@ -364,6 +383,36 @@ public class CtrlDatos implements IDatos {
         e.printStackTrace();
       }
     }
+  }
+
+  @Override
+  public DtBusqueda busqueda(String txtBusqueda) {
+    List<DtVideo> videos = new LinkedList<DtVideo>();
+    List<DtLista> listas = new LinkedList<DtLista>();
+    List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
+    for (Video vid : ManejadorVideos.getManejadorVideos().getVideos().values()) {
+      if (vid.isVisible()) {
+        if (vid.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || vid.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          videos.add(vid.getDt());
+        }
+      }
+    }
+    for (ListaParticular lista : Fabrica.getIListas().getListasPublicas().values()) {
+      if (lista.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+        listas.add(lista.getDtLista());
+      }
+    }
+    for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
+      Canal canal = usuario.getCanal();
+      if (canal.isVisible()) {
+        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(),usuario.getCanal().getNombre(), usuario.getPath(), canal.getUltimaActividad());
+          usuarios.add(dtUsuario);
+        }
+      }
+    }
+    DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
+    return resultados;
   }
 
 }

@@ -32,7 +32,9 @@ public class LoginServlet extends HttpServlet {
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     if (!getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)) {
-
+      if (request.getParameter("PANTALLALOGIN")!=null && request.getParameter("PANTALLALOGIN").equals("TRUE")) {
+        request.getRequestDispatcher("/WEB-INF/pages/inicio_sesion.jsp").forward(request, response);
+      } else {
       String nick = (String) request.getParameter("nickname");
       response.getWriter().println(nick); // asddfasdf
       String pass = (String) request.getParameter("pass");
@@ -46,6 +48,7 @@ public class LoginServlet extends HttpServlet {
       } else {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getRequestDispatcher("/WEB-INF/error/inicio_sesion_error.jsp").forward(request, response);
+      }
       }
     } else {
       if (request.getParameter("CERRAR_SESION") == null) {

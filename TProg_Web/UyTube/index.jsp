@@ -13,11 +13,11 @@
 			<div class="sidebar">
 				<h4>Requerimientos mínimos</h4>
 				<br>
-				<a href="jsp/registro_usuarios.jsp">Prueba "registro usuario"</a>
+				<a href="WEB-INF/pages/registro_usuarios.jsp">Prueba "registro usuario"</a>
 				<br>
-				<a href="jsp/alta_lista.jsp">Alta Lista (WIP)</a>
+				<a href="/AltaLista">Alta Lista (WIP)</a>
 				<br>
-				<a href="jsp/alta_usuario.jsp">Alta Usuario (WIP)</a>
+				<a href="WEB-INF/pages/alta_usuario.jsp">Alta Usuario (WIP)</a>
 				<br>
 				<form action="/AltaVideo" method="GET">
 					<input type="hidden" name="STATE" value="LOAD">
@@ -25,11 +25,9 @@
 					<button>Alta Video (WIP)</button>
 				</form>
 				<br>
-				<a href="jsp/consulta_lista.jsp">Consulta Lista (WIP)</a>
+				<a href="WEB-INF/pages/consulta_lista.jsp">Consulta Lista (WIP)</a>
 				<br>
-				<a href="jsp/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
-				<br>
-				<a href="jsp/consulta_video.jsp">Consulta Video (WIP)</a>
+				<a href="WEB-INF/pages/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
 				<br>
 				<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 				<br>
@@ -39,12 +37,17 @@
 				</form>		<br>
 				<a href="/CargaDatos">Cargar Datos</a>
 				<br>
-				<form action="/ListarListaServlet" method="GET">
+				<form action="/AgregarVideoALista" method="GET">
 					<input type="submit" value="Agregar video a lista (WIP)">
+				</form>
+				<form action="/ListarCategorias" method="GET">
+					<input type="submit" value="Listar categorias (WIP)">
 				</form>
 			</div>
 		</div>
 	</div>
+
 	<jsp:include page="WEB-INF/extras/script.jsp" />
+
 </body>
 </html>

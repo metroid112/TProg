@@ -81,12 +81,18 @@ public class Video {
   }
 
   public DtVideo getDt() {
+
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
-        this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo);
+        this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo, this.canal.getUsuario().getNick());
+
   }
 
   public String getNombre() {
     return nombre;
+  }
+  
+  public boolean getVisible(){
+    return visible;
   }
 
   public void modificarDatos(String nombre, String descripcion, String url, Categoria categoria,
@@ -119,8 +125,14 @@ public class Video {
   @Override
   public boolean equals(Object o) {
     Video video = (Video) o;
-    return (this.nombre.equals(video.nombre) && this.fecha.equals(video.fecha)
-        && this.duracion.equals(video.duracion) && this.visible == video.visible
-        && this.url.equals(video.url) && this.descripcion.equals(video.descripcion));
+    return (this.idVideo == video.getId());
+  }
+
+  public String getDescripcion() {
+    return this.descripcion;
+  }
+
+  public Date getFecha() {
+    return this.fecha;
   }
 }
