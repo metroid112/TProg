@@ -81,7 +81,7 @@ public class Usuario {
   public DtUsuario getDt() {
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
         this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible(),
-        this.nick);
+        this.nick, this.imgPath);
   }
 
   public BufferedImage getImagen() {
