@@ -27,7 +27,7 @@
 				<br>
 				<a href="WEB-INF/pages/consulta_lista.jsp">Consulta Lista (WIP)</a>
 				<br>
-				<a href="WEB-INF/pages/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
+				<a href="/ConsultaUsuario">Consulta Usuario (WIP)</a>
 				<br>
 				<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 				<br>
