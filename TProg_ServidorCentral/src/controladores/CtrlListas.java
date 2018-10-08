@@ -136,4 +136,30 @@ public class CtrlListas implements IListas {
     return listas;
   }
 
+  @Override
+  public List<DtLista> getDtListasParticularesUsuario(String usuario) {
+    // TODO Auto-generated method stub
+    Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+    Canal canalObjetivo = usuarioObjetivo.getCanal();
+    List<DtLista> listas = new LinkedList<DtLista>();
+    Map<String, ListaParticular> listasParticulares = canalObjetivo.getListaParticulares();
+    for (ListaParticular lista: listasParticulares.values()) {
+       listas.add(lista.getDtLista());
+    }
+    return listas;
+  }
+  
+  public List<DtLista> getDtListasPrivadasUsuario(String usuario){
+    Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
+    Canal canalObjetivo = usuarioObjetivo.getCanal();
+    List<DtLista> listas = new LinkedList<DtLista>();
+    Map<String, ListaParticular> listasParticulares = canalObjetivo.getListaParticulares();
+    for (ListaParticular lista: listasParticulares.values()) {
+      if (!lista.isVisible()) {
+        listas.add(lista.getDtLista());        
+      }
+    }
+    return listas;
+  }
+
 }
