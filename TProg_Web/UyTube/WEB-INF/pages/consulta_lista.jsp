@@ -1,3 +1,6 @@
+<%@ page import = "java.util.List" %>
+<%@ page import = "java.util.Map" %>
+<%@ page import = "java.util.Map.Entry" %>
 <%@ page import = "clases.*,interfaces.*, utils.*, datatypes.*" %>
 <!doctype html>
 <html lang="en">
@@ -15,20 +18,33 @@
 			<br>
 			<%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
 			<br>
-			<br>
 			Por favor seleccione una lista
 		</div>
 			<br>
-			<% for (String u : (String[]) request.getAttribute("LISTASPRIVADAS")) { %>
+			<% Map<Integer, ListaParticular> listas = (Map<Integer, ListaParticular>) request.getAttribute("LISTAS");
+			for (Entry<Integer, ListaParticular> Lista : listas.entrySet() ) { %>
 				<div class="detalleClickeableLista">		
-				<form action="/ListaServlet" method="GET">
+				<form action="/ConsultaLista" method="GET">
+					<input type="hidden" name="STATE" value="DETALLESLISTA">
+					<input type="hidden" name="LISTAPUBLICA" value="S">
+					<input type="hidden" name="IDLISTA" value="<%= Lista.getValue().getId() %>">
+					<button class="detalleLista"><%= Lista.getValue().getNombre() %></button>
+				</form>	
+				</div>
+			<% } %>
+			<br>
+			<% List<DtLista> listasPrivadas = (List<DtLista>) request.getAttribute("LISTASPRIVADAS");
+			if (listasPrivadas.size() != 0) {
+			for (DtLista u : listasPrivadas) { %>
+				<div class="detalleClickeableLista">		
+				<form action="/ConsultaLista" method="GET">
 					<input type="hidden" name="STATE" value="DETALLESLISTA">
 					<input type="hidden" name="LISTAPUBLICA" value="N">
 					<input type="hidden" name="LISTA" value="<%=u%>">
 					<button class="detalleLista"><%= u %></button>
 				</form>	
 				</div>
-			<% } %>
+			<% } } %>
 			<br>
 		</form>
 		

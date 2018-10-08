@@ -25,7 +25,10 @@
 					<button>Alta Video (WIP)</button>
 				</form>
 				<br>
-				<a href="WEB-INF/pages/consulta_lista.jsp">Consulta Lista (WIP)</a>
+				<form action="/ConsultaLista" method="GET">
+					<input type="hidden" name="STATE" value="START">
+					<button>Consulta de Lista (WIP)</button>
+				</form>
 				<br>
 				<a href="WEB-INF/pages/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
 				<br>
