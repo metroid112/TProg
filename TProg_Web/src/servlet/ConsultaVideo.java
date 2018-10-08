@@ -49,7 +49,7 @@ public class ConsultaVideo extends HttpServlet {
           
           ctrUsuariosCanales.valorarVideo(d.nick,true ,vid.nombre, vid.usuario);
         }
-        if (request.getParameter("VALORAR1").equals("NEGATIVO")) {
+        if (request.getParameter("VALORAR").equals("NEGATIVO")) {
           
           ctrUsuariosCanales.valorarVideo(d.nick,false ,vid.nombre, vid.usuario);
         }
