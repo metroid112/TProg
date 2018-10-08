@@ -67,8 +67,6 @@
 	<br>
 	<a href="WEB-INF/pages/quitar_video_lista.jsp">Quitar Video de Lista (WIP)</a>
 	<br>
-	<a href="WEB-INF/pages/inicio_sesion.jsp">Iniciar Sesion (WIP)</a>
-	<br>
 	<a href="/CargaDatos">Cargar Datos</a>
 
 	<jsp:include page="WEB-INF/extras/script.jsp" />

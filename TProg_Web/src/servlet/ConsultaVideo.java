@@ -35,7 +35,7 @@ public class ConsultaVideo extends HttpServlet {
       
       IVideos ctrVideos = Fabrica.getIVideos();
       IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
-      String videoId = (String) request.getParameter("VIDEO_ID");
+      String videoId = (String) request.getParameter("VIDEO_ID2");
       int id = Integer.parseInt(videoId);
       DtVideo vid;
       
@@ -48,20 +48,17 @@ public class ConsultaVideo extends HttpServlet {
         if (request.getParameter("VALORAR").equals("POSITIVO")) {
           
           ctrUsuariosCanales.valorarVideo(d.nick,true ,vid.nombre, vid.usuario);
-
-          request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
         }
-        else if (request.getParameter("VALORAR").equals("NEGATIVO")) {
+        if (request.getParameter("VALORAR1").equals("NEGATIVO")) {
           
           ctrUsuariosCanales.valorarVideo(d.nick,false ,vid.nombre, vid.usuario);
-
-               
-          request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
         }
-      } catch (NotFoundException e) {
-       
+        
+             
+      } catch (NotFoundException e) {     
         e.printStackTrace();
       }
+      request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -83,7 +80,7 @@ public class ConsultaVideo extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	  System.out.println("x");
+	  
 	  processRequest(request, response);
 	}
 

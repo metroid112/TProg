@@ -51,7 +51,7 @@
 				
 				<form action="/ConsultaVideo" method="GET">
 				
-					<input type="hidden" id="1" name="VIDEO_NOMBRE" value= "<%= cast2 %>" >
+					<input type="hidden" id="1" name="VIDEO_ID" value= "<%= cast2 %>" >
 			
 					<button type="submit">Consultar</button>
 					
