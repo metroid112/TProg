@@ -34,7 +34,9 @@ public class ListaServlet extends HttpServlet {
     
    if (request.getParameter("STATE").equals("DETALLESLISTA")) {
      String listaSeleccionada = (String) request.getParameter("LISTA");
+     request.setAttribute("LISTA", listaSeleccionada);
      Boolean listaDefecto = false;
+     request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
      if (request.getParameter("LISTAPUBLICA").equals("S")) {
        listaDefecto = true;
      }

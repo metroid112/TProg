@@ -14,6 +14,8 @@ public class DtUsuario {
   public String descripcionCanal;
   public boolean privado;
   public String nick;
+  public String imgPath;
+  private Date ultimaActividad;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
       String descripcionCanal, Date fechaNacimiento, BufferedImage imagen, boolean privado,
@@ -27,6 +29,13 @@ public class DtUsuario {
     this.imagen = imagen;
     this.privado = privado;
     this.nick = nick;
+  }
+  
+  public DtUsuario(String nick, String canal, String path, Date ultimaActividad) {
+    this.nick = nick;
+    this.canal = canal;
+    this.imgPath = path;
+    this.ultimaActividad = ultimaActividad;
   }
 
   @Override

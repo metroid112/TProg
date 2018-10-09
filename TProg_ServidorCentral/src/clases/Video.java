@@ -125,8 +125,14 @@ public class Video {
   @Override
   public boolean equals(Object o) {
     Video video = (Video) o;
-    return (this.nombre.equals(video.nombre) && this.fecha.equals(video.fecha)
-        && this.duracion.equals(video.duracion) && this.visible == video.visible
-        && this.url.equals(video.url) && this.descripcion.equals(video.descripcion));
+    return (this.idVideo == video.getId());
+  }
+
+  public String getDescripcion() {
+    return this.descripcion;
+  }
+
+  public Date getFecha() {
+    return this.fecha;
   }
 }

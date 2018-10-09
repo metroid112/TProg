@@ -1,7 +1,9 @@
 package interfaces;
 
+import java.util.List;
 import java.util.Map;
 
+import clases.ListaParticular;
 import datatypes.DtLista;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
@@ -19,7 +21,7 @@ public interface IListas {
   public DtLista getDt(int id) throws NotFoundException;
 
   public Map<Integer, DtLista> getDtListas();
-
+  
   // public String getDueñoVideo(String dueñoLista, String nombreLista, String
   // nombreVid, String algo) throws Exception;
 
@@ -31,4 +33,12 @@ public interface IListas {
 
   public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista,
       boolean deefecto);
+
+  public List<DtLista> getDtListasPublicas();
+  
+  public List<DtLista> getDtListasParticularesUsuario(String usuario);
+
+  public List<DtLista> getDtListasPrivadasUsuario(String usuario);
+
+  Map<Integer, ListaParticular> getListasPublicas();
 }

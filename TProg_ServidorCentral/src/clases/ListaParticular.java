@@ -1,5 +1,6 @@
 package clases;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -18,6 +19,16 @@ public class ListaParticular extends Lista {
     super(nombre, canal);
     this.visible = visible;
     ManejadorListasParticulares.getManejadorListasParticulares().add(this);
+  }
+  
+  public Date getUltimaActividad() {
+    Date ultimaActividad = null;
+    for (Video vid : this.getVideos()) {
+      if (ultimaActividad == null || vid.getFecha().after(ultimaActividad)) {
+        ultimaActividad = vid.getFecha();
+      }
+    }
+    return ultimaActividad;
   }
 
   public boolean esUnicaCategoria(Categoria categoria) {
@@ -53,7 +64,7 @@ public class ListaParticular extends Lista {
     for (Categoria cat : this.getCategorias().values()) {
       categorias.add(cat.getNombre());
     }
-    return new DtLista(this.getNombre(), "Particular", this.visible, videos, categorias);
+    return new DtLista(this.getNombre(), "Particular", this.visible, videos, categorias, this.getUltimaActividad());
   }
 
   public void insertarCategoria(Categoria categoria) {
@@ -69,6 +80,10 @@ public class ListaParticular extends Lista {
 
   public void setVisible(boolean visible) {
     this.visible = visible;
+  }
+  
+  public boolean isVisible() {
+    return this.visible;
   }
 
   @Override

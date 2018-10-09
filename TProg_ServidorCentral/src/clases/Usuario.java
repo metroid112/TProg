@@ -173,4 +173,8 @@ public class Usuario {
     return this.idUsuario;
   }
 
+  public String getPath() {
+    return this.imgPath;
+  }
+
 }

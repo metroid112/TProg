@@ -25,7 +25,10 @@
 					<button>Alta Video (WIP)</button>
 				</form>
 				<br>
-				<a href="WEB-INF/pages/consulta_lista.jsp">Consulta Lista (WIP)</a>
+				<form action="/ConsultaLista" method="GET">
+					<input type="hidden" name="STATE" value="START">
+					<button>Consulta de Lista (WIP)</button>
+				</form>
 				<br>
 				<a href="WEB-INF/pages/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
 				<br>
@@ -37,13 +40,17 @@
 				</form>		<br>
 				<a href="/CargaDatos">Cargar Datos</a>
 				<br>
-				<form action="/ListarListaServlet" method="GET">
+				<form action="/AgregarVideoALista" method="GET">
 					<input type="submit" value="Agregar video a lista (WIP)">
+				</form>
+				<form action="/ListarCategorias" method="GET">
+					<input type="submit" value="Listar categorias (WIP)">
 				</form>
 			</div>
 		</div>
 	</div>
 
+<<<<<<< HEAD
 	<br>
 	<a href="WEB-INF/pages/registro_usuarios.jsp">Prueba "registro usuario"</a>
 	<br>
@@ -69,6 +76,8 @@
 	<br>
 	<a href="/CargaDatos">Cargar Datos</a>
 
+=======
+>>>>>>> master
 	<jsp:include page="WEB-INF/extras/script.jsp" />
 
 </body>
