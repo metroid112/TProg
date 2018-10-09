@@ -70,6 +70,10 @@ public class ListaParticular extends Lista {
   public void setVisible(boolean visible) {
     this.visible = visible;
   }
+  
+  public boolean isVisible() {
+    return this.visible;
+  }
 
   @Override
   public boolean equals(Object o) {

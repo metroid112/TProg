@@ -40,8 +40,8 @@
 				<form action="/AgregarVideoALista" method="GET">
 					<input type="submit" value="Agregar video a lista (WIP)">
 				</form>
-				<form action="/ListarCategorias" method="GET">
-					<input type="submit" value="Listar categorias (WIP)">
+				<form action="/ConsultaDeCategoria" method="GET">
+					<input type="submit" value="Categorias (WIP)">
 				</form>
 			</div>
 		</div>

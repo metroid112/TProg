@@ -9,22 +9,22 @@
 <title>UyTube - Consulta de categoria </title>
 </head>
 <body>
-	<% String[] listas = (String[]) request.getAttribute("CATEGORIAS");
-		if (listas.length == 0) { %>
-			<h1>No hay categorias en el sistema.</h1>
+	<% String categoria = (String) request.getAttribute("CATEGORIA");%>
+	<h1>Información de <%= "'" + categoria + "'" %></h1>
+	<br>
+	<h2> Videos: </h2>
+		<% for (String infoVideos : (String[]) request.getAttribute("INFO_VIDEOS")) { %>
+			<%= infoVideos %>
 			<br>
-	<% } else { %>	
-		<h1>Categorias</h1>
+		<% } %>
 		<br>
-			<% for (String categorias : (String[]) request.getAttribute("CATEGORIAS")) { %>
-				<form action="/ListarCategorias" method="GET">
-					<input type hidden name="CATEGORIA" value="<%= categorias %>">
-					<button type="submit"><%= categorias %></button>
-				</form>
-			<% } %>
+	<h2> Listas de reproducción: </h2>
+		<% for (String infoListas : (String[]) request.getAttribute("INFO_LISTAS")) { %>
+			<%= infoListas %>
+			<br>
+		<% } %>
 		<br>
-	<% } %>
-	<form action="/Inicio" method="GET">
+	<form action="/ConsultaDeCategoria" method="GET">
 		<button type="submit">Volver</button>
 	</form>
 </body>
