@@ -46,14 +46,22 @@ public class ConsultaVideo extends HttpServlet {
         DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
         
         if (request.getParameter("VALORAR").equals("POSITIVO")) {
-          
+          if(!ctrUsuariosCanales.yaCalificacdo(d.nick, false, vid.nombre, vid.usuario)){
+            
           ctrUsuariosCanales.valorarVideo(d.nick,true ,vid.nombre, vid.usuario);
+          }
+          else{ ctrUsuariosCanales.modificarValoracion(true, d.nick, vid.nombre, vid.usuario);
+          }
         }
         if (request.getParameter("VALORAR").equals("NEGATIVO")) {
-          
+          if(!ctrUsuariosCanales.yaCalificacdo(d.nick, true, vid.nombre, vid.usuario)){
           ctrUsuariosCanales.valorarVideo(d.nick,false ,vid.nombre, vid.usuario);
-        }
-        
+          }
+          else{
+            ctrUsuariosCanales.modificarValoracion(false, d.nick, vid.nombre, vid.usuario);
+            }
+          }
+          
              
       } catch (NotFoundException e) {     
         e.printStackTrace();

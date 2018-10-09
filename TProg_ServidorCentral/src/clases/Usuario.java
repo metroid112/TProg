@@ -128,23 +128,23 @@ public class Usuario {
   }
 
   public void valorarVideo(boolean like, Video vid){
-    if (!yaCalificado(vid)) {
+    if (!yaCalificado(true,vid) && !yaCalificado(false,vid)) {
       Calificacion cal = new Calificacion(like, this, vid);
       vid.addCalificacion(cal);
       this.addCalificacion(cal);
     }
   }
 
-  private boolean yaCalificado(Video vid) {
+  public boolean yaCalificado(boolean calificacion, Video vid) {
     boolean calificado = false;
     for (Calificacion cal : this.calificaciones) {
-      if (cal.getVideo() == vid) {
+      if (cal.getVideo() == vid && cal.getlike() == calificacion) {
         calificado = true;
       }
     }
     return calificado;
   }
-
+  
   @Override
   public boolean equals(Object o) {
     Usuario user = (Usuario) o;

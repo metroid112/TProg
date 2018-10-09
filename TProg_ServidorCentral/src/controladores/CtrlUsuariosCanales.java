@@ -130,7 +130,24 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
     usuario.valorarVideo(like, vid);
   }
+  
+  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo){
+    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
+    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
+    return usuario.yaCalificado(like,vid);
+  }
+  
 
+  @Override
+  public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
+      String nombreDuenoVideo) {
+    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
+    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
+    usuario.modificarValoracion(like, vid);
+  }
+  
   @Override
   public String[] listarSeguidos(String nick) {
     return manejadorUsuarios.get(nick).getSeguidos().keySet()
@@ -153,15 +170,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public String[] listarVideosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
-  }
-
-  @Override
-  public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
-      String nombreDuenoVideo) {
-    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
-    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
-    usuario.modificarValoracion(like, vid);
   }
 
   @Override
