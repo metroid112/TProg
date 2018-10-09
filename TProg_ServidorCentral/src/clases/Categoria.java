@@ -41,7 +41,7 @@ public class Categoria {
       int i = 0;
       for (Video video : videos) {
         String nomVideo = video.getCanal().getUsuario().getNick();
-        infoVideos[i] = "(" + nomVideo + "," + video.getNombre() + ")";
+        infoVideos[i] = "(" + video.getNombre() + "-" + nomVideo + ")";
         i++;
       }
     }

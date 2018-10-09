@@ -27,10 +27,17 @@ public class ListarCategorias extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-      ICategorias ctrlCategorias = Fabrica.getICategorias();
-      String[] listaCategorias = ctrlCategorias.listarCategorias();
-      request.setAttribute("CATEGORIAS", listaCategorias);
-      request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request, response);
+      if (request.getParameter("CATEGORIA") == null) {
+        ICategorias ctrlCategorias = Fabrica.getICategorias();
+        String[] listaCategorias = ctrlCategorias.listarCategorias();
+        request.setAttribute("CATEGORIAS", listaCategorias);
+        request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request, response);
+      }
+      else {
+        String categoria = request.getParameter("CATEGORIA");
+        
+      }
+
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
