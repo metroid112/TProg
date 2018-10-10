@@ -8,14 +8,14 @@
 <body>
 	<div class="page">
 		<%@ include file="/WEB-INF/extras/header.jsp" %>
-		<div class="contenedor">
+		<jsp:include page="WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<div class="contenido">
 			<br>
 			Se muestran las listas de 
 			<%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
 			<br>
 			<br>
 			Por favor seleccione una lista
-		</div>
 			<br>
 			<% for (String u : (String[]) request.getAttribute("LISTASPUBLICAS")) { %>
 				<div class="detalleClickeableLista">		
@@ -40,6 +40,7 @@
 			<% } %>
 			<br>
 		</form>
+		</div>	
 		
 	</div>
 	<%@ include file="/WEB-INF/extras/script.jsp" %>

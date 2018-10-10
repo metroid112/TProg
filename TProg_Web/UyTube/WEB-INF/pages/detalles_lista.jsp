@@ -9,7 +9,8 @@
 <body>
 	<div class="page">
 		<%@ include file="/WEB-INF/extras/header.jsp" %>
-		<div class="contenedor">
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<div class="contenido">
 			<br>
 			Detalles de la lista 
 			<% DtLista lista = ((DtLista) request.getAttribute("DTLISTA")); %>
@@ -17,7 +18,6 @@
 			<br>
 			Videos de la lista:
 			<br>
-		</div>
 			<br>
 			<div class="listaDeVideos">
 				<br>
@@ -47,6 +47,7 @@
 				</form>	
 				<br>
 				<% } %>
+			</div>
 		</div>
 	<%@ include file="/WEB-INF/extras/script.jsp" %>
 </body>
