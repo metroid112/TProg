@@ -26,7 +26,6 @@
 				<div class="detalleClickeableLista">		
 				<form action="/ConsultaLista" method="GET">
 					<input type="hidden" name="STATE" value="DETALLESLISTA">
-					<input type="hidden" name="LISTAPUBLICA" value="S">
 					<input type="hidden" name="IDLISTA" value="<%= Lista.getValue().getId() %>">
 					<button class="detalleLista"><%= Lista.getValue().getNombre() %></button>
 				</form>	
@@ -39,14 +38,12 @@
 				<div class="detalleClickeableLista">		
 				<form action="/ConsultaLista" method="GET">
 					<input type="hidden" name="STATE" value="DETALLESLISTA">
-					<input type="hidden" name="LISTAPUBLICA" value="N">
-					<input type="hidden" name="LISTA" value="<%=u%>">
-					<button class="detalleLista"><%= u %></button>
+					<input type="hidden" name="IDLISTA" value="<%=u.getId()%>">
+					<button class="detalleLista"><%= u.getNombre() %></button>
 				</form>	
 				</div>
 			<% } } %>
 			<br>
-		</form>
 		
 	</div>
 	<%@ include file="/WEB-INF/extras/script.jsp" %>
