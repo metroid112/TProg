@@ -2,14 +2,17 @@ package datatypes;
 
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 public class DtLista {
   private LinkedList<String> categorias = new LinkedList<String>();
   private String nombre;
   private String tipo;
   private LinkedList<String> videos = new LinkedList<String>();
+  private List<DtVideo> dtVideos = null;
   private boolean visible;
   private Date ultimaActividad;
+  private int idLista;
 
   public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos,
       LinkedList<String> categorias) {
@@ -21,10 +24,12 @@ public class DtLista {
   }
   
   
-  public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos,
-      LinkedList<String> categorias, Date ultimaActividad) {
+  public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos, List<DtVideo> dtVideos,
+      LinkedList<String> categorias, Date ultimaActividad, int idLista) {
     this.nombre = nombre;
+    this.idLista = idLista;
     this.tipo = tipo;
+    this.dtVideos = dtVideos;
     this.visible = visible;
     this.videos = videos;
     this.categorias = categorias;
@@ -38,6 +43,10 @@ public class DtLista {
   public LinkedList<String> getCategorias() {
     return categorias;
   }
+  
+  public int getId() {
+    return this.idLista;
+  }
 
   public String getNombre() {
     return nombre;
@@ -49,6 +58,10 @@ public class DtLista {
 
   public LinkedList<String> getVideos() {
     return videos;
+  }
+  
+  public List<DtVideo> getDtVideos() {
+    return dtVideos;
   }
 
   public boolean isVisible() {
