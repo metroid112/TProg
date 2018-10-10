@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
         request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
         DtUsuario dtUsuario = IUC.getDt(nick);
         request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/Inicio");
       } else {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getRequestDispatcher("/WEB-INF/error/inicio_sesion_error.jsp").forward(request, response);
@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
       } else if (request.getParameter("CERRAR_SESION").equals("CONFIRM")) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getSession().setAttribute("USUARIO_LOGEADO", null);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/Inicio");
       }
 
     }

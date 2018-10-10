@@ -76,7 +76,7 @@ public class AltaUsuario extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request, response);
+    request.getRequestDispatcher("WEB-INF/pages/alta_usuario.jsp").forward(request, response);
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
