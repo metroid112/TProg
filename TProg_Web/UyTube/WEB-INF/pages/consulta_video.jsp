@@ -100,19 +100,22 @@
 				<br><br>
 				
 				<!-- LA PARTE DE LOS COMENTARIOS -->
-				
+
 				Comentarios:
 				
-				<%! public void printComent(Map<Integer, DtComentario> comentarios, int tab){
-					for(DtComentario comentario : comentarios.values() ){
-						System.out.println(comentario.texto);
-					}
-				}
-				
-				%>
-			
 				<pre>
+				<%! String x = "hola"; %>
+					<script>
 					
+					function printComent(x){
+						
+						document.write(x);
+					}
+					
+					
+					printComent();
+					
+					</script>
 				</pre>
 				<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 				
