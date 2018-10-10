@@ -64,4 +64,6 @@ public interface IUsuariosCanales {
   public boolean checkLogin(String usr, String pass);
 
   boolean existeUsuarioMail(String mail);
+
+  void dejarSeguir(String seguidor, String seguido);
 }
