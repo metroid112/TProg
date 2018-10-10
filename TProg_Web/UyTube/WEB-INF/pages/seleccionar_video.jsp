@@ -9,14 +9,14 @@
 <body>
 	<div class="page">
 		<%@ include file="/WEB-INF/extras/header.jsp" %>
-		<div class="contenedor">
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<div class="contenido">
 			<br>
 			Se muestran las listas de 
 			<%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
 			<br>
 			<br>
 			Por favor seleccione una lista
-		</div>
 			<br>
 			<div class="eleccionVideoLista">		
 				<form action="/QuitarVideoDeLista" method="POST">
@@ -34,6 +34,7 @@
 				<button type="submit">Aceptar</button>
 				</form>
 			</div>
+		</div>
 	</div>
 	<%@ include file="/WEB-INF/extras/script.jsp" %>
 </body>
