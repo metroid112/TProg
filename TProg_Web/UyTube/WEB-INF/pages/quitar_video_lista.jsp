@@ -8,7 +8,7 @@
 <body>
 	<div class="page">
 		<%@ include file="/WEB-INF/extras/header.jsp" %>
-		<jsp:include page="WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
 		<div class="contenido">
 			<br>
 			Se muestran las listas de 
