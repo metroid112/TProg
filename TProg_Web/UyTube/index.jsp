@@ -1,4 +1,3 @@
-<%@page import="manejadores.ManejadorVideos"%>
 <%@ page import = "interfaces.*, utils.*, datatypes.*" %>
 <!doctype html>
 <html>
@@ -13,13 +12,15 @@
 			<jsp:include page="WEB-INF/extras/sidebar.jsp"></jsp:include>
 		</div>
 	</div>
+<<<<<<< HEAD
 
 
 	<!-- Deberia redirigir al servlet -->
 	<a href="/VideoServlet">Listar Videos (NO EXISTE CU)</a>
 	<br>
 
+=======
+>>>>>>> master
 	<jsp:include page="WEB-INF/extras/script.jsp" />
-
 </body>
 </html>
