@@ -40,4 +40,7 @@
 				<form action="/ConsultaDeCategoria" method="GET">
 					<input type="submit" value="Categorias (WIP)">
 				</form>
+				<form action="/ModificarLista" method="GET">
+					<input type="submit" value="Modificar Lista (WIP)">
+				</form>
 			</div>
