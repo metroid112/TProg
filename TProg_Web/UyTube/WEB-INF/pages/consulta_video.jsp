@@ -71,11 +71,13 @@
 				
 				<%} %>
 				<br><br>
-				<% List<String> positivos = vid.getCalificacionesPositivas(); 
-				for(String user: positivos){%>
-					<%= user %>
+				<% List<String> positivos = vid.getCalificacionesPositivas();
+				if(d != null && vid.usuario == d.nick){
+					for(String user: positivos){%>
+						<%= user %>
 					<br>
 				<%}
+				}
 				%>
 				<br><br>
 				
@@ -92,10 +94,12 @@
 				<%} %>
 				<br><br>
 				<% List<String> negativos = vid.getCalificacionesNegativas(); 
-				for(String user: negativos){%>
-					<%= user %>
+				if(d != null && vid.usuario == d.nick){
+					for(String user: negativos){%>
+						<%= user %>
 					<br>
 				<%}
+				}
 				%>
 				<br><br>
 				
@@ -104,18 +108,7 @@
 				Comentarios:
 				
 				<pre>
-				<%! String x = "hola"; %>
-					<script>
-					
-					function printComent(x){
-						
-						document.write(x);
-					}
-					
-					
-					printComent();
-					
-					</script>
+
 				</pre>
 				<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 				

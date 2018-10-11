@@ -10,5 +10,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="UyTube/WEB-INF/lib/ServidorCentral.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin.DESKTOP-0Q23CA9/Documents/GitHub/TProg/TProg_Web/UyTube/WEB-INF/lib/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
