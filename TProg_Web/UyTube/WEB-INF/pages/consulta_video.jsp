@@ -35,9 +35,9 @@
 		 
 		Fecha: <%= format.format(vid.fecha) %> 
 		 <br><br>
-		 <%! DateFormat format2 = new SimpleDateFormat("H:MM:SS");%>
 		 
-		Duracion: <%= format2.format(vid.duracion) %>
+		 
+		Duracion: <%= vid.duracion %>
 		 <br><br>
 		Descripcion: <%= vid.descripcion %> 
 		 <br><br>
