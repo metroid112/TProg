@@ -34,14 +34,15 @@
 		<div class="contenedor">
 			 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
 
+			<%= vid.nombre %>
+				 <br><br>
 			<iframe width="520" height="365"
 				src="<%= vid.urlWatchtFormat() %> ">
 
 			</iframe>
 			<br>
 					
-				Nombre: <%= vid.nombre %>
-				 <br><br>
+
 				Canal: <%= vid.usuario %>
 				 <br><br>
 				<%! DateFormat format = new SimpleDateFormat("dd/mm/yyyy");%>
@@ -52,13 +53,13 @@
 				Duracion: <%= vid.duracionPrintFormat() %>
 
 				 <br><br>
-				Descripcion: <%= vid.descripcion %> 
-				 <br><br>
+
 				Categoria: <%= vid.categoria %>
 				 <br><br>
 				URL: <%= vid.Url %>
 				 <br><br>
-						
+				Descripcion: <%= vid.descripcion %> 
+				 <br><br>
 				Me gusta: <%= vid.getCantidadCalificacionesPositivas()%>
 				<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 				String cast;
