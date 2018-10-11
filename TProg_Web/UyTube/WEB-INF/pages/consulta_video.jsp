@@ -5,11 +5,7 @@
 <%@page import="datatypes.DtComentario"%>
 <%@page import="datatypes.DtUsuario"%>
 <%@page import="java.util.Map" %>
-<<<<<<< HEAD
-<%@page import="java.io.Writer"%>
-=======
 <%@page import="java.util.List" %>
->>>>>>> master
 <%@page import="java.text.DateFormat" %>
 <%@page import="java.util.List" %>
 <%@page import= "java.text.ParseException" %>
@@ -37,15 +33,10 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp"></jsp:include>
 		<div class="contenedor">
 			 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
-			
-<<<<<<< HEAD
+
 			<iframe width="520" height="365"
 				src="<%= vid.urlWatchtFormat() %> ">
-=======
-			<iframe width="420" he
-			{ñight="315"
-				src="<%= vid.Url %> ">
->>>>>>> master
+
 			</iframe>
 			<br>
 					
@@ -58,11 +49,8 @@
 				Fecha: <%= format.format(vid.fecha) %> 
 				 <br><br>
 				 
-<<<<<<< HEAD
 				Duracion: <%= vid.duracionPrintFormat() %>
-=======
-				Duracion: <%= vid.duracion %>
->>>>>>> master
+
 				 <br><br>
 				Descripcion: <%= vid.descripcion %> 
 				 <br><br>
@@ -119,25 +107,16 @@
 				<br><br>
 				
 				<!-- LA PARTE DE LOS COMENTARIOS -->
-<<<<<<< HEAD
+
 
 				Comentarios:
 				
-=======
->>>>>>> master
-
-				Comentarios:
 				
-				<pre>
 		<br>
 		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
 		<jsp:include page="comentarios.jsp" />
 		<br>
-<<<<<<< HEAD
-				
-=======
-				</pre>
->>>>>>> master
+
 				<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 				
 			<form action="/index.jsp">
