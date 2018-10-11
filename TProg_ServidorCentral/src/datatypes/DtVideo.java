@@ -103,6 +103,26 @@ public class DtVideo {
     return negativos;
   }
 
+  public String duracionPrintFormat(){
+    String resultado = this.duracion.toString();
+    
+    resultado = resultado.substring(2);
+
+    resultado = resultado.replace("M", ":");
+    resultado = resultado.replace("S", "");
+
+    return resultado;
+  }
+  
+  public String urlWatchtFormat(){
+    String resultado = this.Url;
+    
+    resultado = resultado.substring(16);
+    System.out.println(resultado);
+    resultado = "https://www.youtube.com/embed" + resultado;
+    System.out.println(resultado);
+    return resultado;
+  }
 
   public List<DtCalificacion> getCalificaciones() {
     return calificaciones;

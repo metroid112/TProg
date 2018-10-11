@@ -35,9 +35,8 @@
 		<div class="contenedor">
 			 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
 			
-			<iframe width="420" he
-			{ñight="315"
-				src="<%= vid.Url %> ">
+			<iframe width="520" height="365"
+				src="<%= vid.urlWatchtFormat() %> ">
 			</iframe>
 			<br>
 					
@@ -50,7 +49,7 @@
 				Fecha: <%= format.format(vid.fecha) %> 
 				 <br><br>
 				 
-				Duracion: <%= vid.duracion %>
+				Duracion: <%= vid.duracionPrintFormat() %>
 				 <br><br>
 				Descripcion: <%= vid.descripcion %> 
 				 <br><br>
@@ -110,12 +109,12 @@
 
 				Comentarios:
 				
-				<pre>
+
 		<br>
 		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
 		<jsp:include page="comentarios.jsp" />
 		<br>
-				</pre>
+				
 				<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 				
 			<form action="/index.jsp">
