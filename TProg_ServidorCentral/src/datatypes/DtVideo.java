@@ -117,10 +117,10 @@ public class DtVideo {
   public String urlWatchtFormat(){
     String resultado = this.Url;
     
-    resultado = resultado.substring(16);
-    System.out.println(resultado);
+    resultado = resultado.substring(16); //probablemente la implementacion vaya a cambiar
+    
     resultado = "https://www.youtube.com/embed" + resultado;
-    System.out.println(resultado);
+    
     return resultado;
   }
 
