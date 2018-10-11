@@ -10,6 +10,7 @@
 <%@page import="java.util.List" %>
 <%@page import= "java.text.ParseException" %>
 <%@page import= "java.text.SimpleDateFormat" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 
@@ -28,6 +29,7 @@
 <title>UyTube - Consulta Video</title>
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="page">
 		<jsp:include page="/WEB-INF/extras/header.jsp"></jsp:include>
 		<div class="contenedor">
@@ -118,5 +120,49 @@
 			</div>
 	</div>
 	<jsp:include page="/WEB-INF/extras/script.jsp" />
+=======
+
+	 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
+	
+		Nombre: <%= vid.nombre %>
+		 <br><br>
+		Canal: <%= vid.usuario %>
+		 <br><br>
+		<%! DateFormat format = new SimpleDateFormat("dd/mm/yyyy");%>
+		 
+		Fecha: <%= format.format(vid.fecha) %> 
+		 <br><br>
+		 <%! DateFormat format2 = new SimpleDateFormat("H:MM:SS");%>
+		 
+		Duracion: <%= format2.format(vid.duracion) %>
+		 <br><br>
+		Descripcion: <%= vid.descripcion %> 
+		 <br><br>
+		Categoria: <%= vid.categoria %>
+		 <br><br>
+		URL: <%= vid.Url %>
+		 <br><br>
+		Me gusta:  <%= vid.getCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
+		<br><br>
+		No me gusta:  <%= vid.getCalificacionesNegativas()%>
+		<br><br>
+		
+		
+		<!-- LA PARTE DE LOS COMENTARIOS -->
+		
+		Comentarios:
+
+		<br>
+		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
+		<jsp:include page="comentarios.jsp" />
+		<br>
+		Fin comentarios.
+
+		<!-- FIN LA PARTE DE LOS COMENTARIOS -->
+		
+	<form action="/index.jsp">
+	<button>Volver</button>
+	</form>
+>>>>>>> master
 </body>
 </html>

@@ -76,6 +76,7 @@ public class DtVideo {
     return sum;
   }
   
+
   public List<String> getCalificacionesPositivas(){
     List<String> positivos = new LinkedList<String>();
     String usuarioObjetivo;
@@ -100,6 +101,23 @@ public class DtVideo {
       }
     }
     return negativos;
+  }
+
+
+  public List<DtCalificacion> getCalificaciones() {
+    return calificaciones;
+  }
+
+  public void setCalificaciones(List<DtCalificacion> calificaciones) {
+    this.calificaciones = calificaciones;
+  }
+
+  public Map<Integer, DtComentario> getComentarios() {
+    return comentarios;
+  }
+
+  public void setComentarios(Map<Integer, DtComentario> comentarios) {
+    this.comentarios = comentarios;
   }
 
 

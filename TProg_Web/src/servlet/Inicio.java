@@ -30,7 +30,7 @@ public class Inicio extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     iniciar(request, response);
-    response.sendRedirect("index.jsp");
+    request.getRequestDispatcher("index.jsp").forward(request, response);
   }
 
   private void iniciar(HttpServletRequest request, HttpServletResponse response) {
