@@ -3,7 +3,7 @@
 <ul>
 	<c:forEach var="com" items="${comentarios}" >
 		<li>
-			${com.value.texto}
+			${com.value.usuario}: ${com.value.texto}
 			<br>
 			<c:if test="${com.value.tieneHijos()}">
 				<c:set var="comentarios" value="${com.value.hijos}"  scope="request"/>
