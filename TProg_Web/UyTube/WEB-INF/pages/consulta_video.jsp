@@ -1,6 +1,7 @@
 <%@page import="datatypes.DtVideo"%>
 <%@page import="datatypes.DtComentario"%>
 <%@page import="java.util.Map" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!doctype html>
@@ -37,32 +38,15 @@
 		<!-- LA PARTE DE LOS COMENTARIOS -->
 		
 		Comentarios:
-		
-		<%! public void printComent(Map<Integer, DtComentario> comentarios, int tab){
-			
-			for(DtComentario comentario : comentarios.values() ){
-				for(int i = 0; i < tab; i++){ %>
-					 <t> x
-				<%! } %>
-				
-				
-				
-				<%!				
-				
-				if(!comentario.hijos.isEmpty()){
-					printComent(comentario.hijos,tab++);
-				}
-			}
-		} %>
-		
-		<pre>
-		<% printComent(vid.comentarios,0); %>		
-
-		</pre>
+		<br>
+		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
+		<jsp:include page="comentarios.jsp" />
+		<br>
+		Fin comentarios.
 		<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 		
 	<form action="/index.jsp">
 	<button>Volver</button>
-
+	</form>
 </body>
 </html>

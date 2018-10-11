@@ -75,6 +75,22 @@ public class DtVideo {
     }
     return sum;
   }
+  
+  public List<DtCalificacion> getCalificaciones() {
+    return calificaciones;
+  }
+
+  public void setCalificaciones(List<DtCalificacion> calificaciones) {
+    this.calificaciones = calificaciones;
+  }
+
+  public Map<Integer, DtComentario> getComentarios() {
+    return comentarios;
+  }
+
+  public void setComentarios(Map<Integer, DtComentario> comentarios) {
+    this.comentarios = comentarios;
+  }
 
   @Override
   public boolean equals(Object o) {
