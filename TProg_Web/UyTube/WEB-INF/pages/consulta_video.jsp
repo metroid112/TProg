@@ -29,13 +29,14 @@
 <title>UyTube - Consulta Video</title>
 </head>
 <body>
-<<<<<<< HEAD
+
 	<div class="page">
 		<jsp:include page="/WEB-INF/extras/header.jsp"></jsp:include>
 		<div class="contenedor">
 			 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
 			
-			<iframe width="420" height="315"
+			<iframe width="420" he
+			{ñight="315"
 				src="<%= vid.Url %> ">
 			</iframe>
 			<br>
@@ -110,7 +111,10 @@
 				Comentarios:
 				
 				<pre>
-
+		<br>
+		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
+		<jsp:include page="comentarios.jsp" />
+		<br>
 				</pre>
 				<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 				
@@ -120,49 +124,6 @@
 			</div>
 	</div>
 	<jsp:include page="/WEB-INF/extras/script.jsp" />
-=======
 
-	 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
-	
-		Nombre: <%= vid.nombre %>
-		 <br><br>
-		Canal: <%= vid.usuario %>
-		 <br><br>
-		<%! DateFormat format = new SimpleDateFormat("dd/mm/yyyy");%>
-		 
-		Fecha: <%= format.format(vid.fecha) %> 
-		 <br><br>
-		 <%! DateFormat format2 = new SimpleDateFormat("H:MM:SS");%>
-		 
-		Duracion: <%= format2.format(vid.duracion) %>
-		 <br><br>
-		Descripcion: <%= vid.descripcion %> 
-		 <br><br>
-		Categoria: <%= vid.categoria %>
-		 <br><br>
-		URL: <%= vid.Url %>
-		 <br><br>
-		Me gusta:  <%= vid.getCalificacionesPositivas()%> <!-- Falta listar quien hace las calificaciones -->
-		<br><br>
-		No me gusta:  <%= vid.getCalificacionesNegativas()%>
-		<br><br>
-		
-		
-		<!-- LA PARTE DE LOS COMENTARIOS -->
-		
-		Comentarios:
-
-		<br>
-		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
-		<jsp:include page="comentarios.jsp" />
-		<br>
-		Fin comentarios.
-
-		<!-- FIN LA PARTE DE LOS COMENTARIOS -->
-		
-	<form action="/index.jsp">
-	<button>Volver</button>
-	</form>
->>>>>>> master
 </body>
 </html>
