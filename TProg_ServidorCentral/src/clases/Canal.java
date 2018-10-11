@@ -223,6 +223,8 @@ public class Canal {
       return listaPar.getDtVideos();
     }
   }
+  
+
 
   public void modVideo(String nombreOld, String nombre) {
     Video vid = this.videos.remove(nombreOld);
@@ -273,4 +275,14 @@ public class Canal {
   public void agregarVideo(Video video) {
     this.videos.put(video.getNombre(), video);
   }
+
+
+  public List<DtVideo> getDtVideos() {
+    List<DtVideo> videos = new ArrayList<DtVideo>(); 
+    for(Entry<String, Video> video : this.videos.entrySet()){
+        videos.add(video.getValue().getDt());
+    }
+    return videos;
+  }
+  
 }

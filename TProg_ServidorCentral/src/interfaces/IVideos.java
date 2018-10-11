@@ -2,6 +2,7 @@ package interfaces;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import datatypes.DtVideo;
@@ -29,4 +30,6 @@ public interface IVideos {
       throws InvalidDataException;
 
   public DtVideo[] listarTodosLosVideos(String nick);
+
+  public List<DtVideo> getDtVideosPropietario(String nick);
 }

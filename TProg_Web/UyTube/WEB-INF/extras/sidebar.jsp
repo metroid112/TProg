@@ -15,6 +15,9 @@
 		<form action="/AgregarVideoALista" method="GET">
 			<input type="submit" value="Agregar video a lista (WIP)">
 		</form>
+		<form action="/ModificarVideo" method="GET">
+			<input type="submit" value="Modificar video (WIP)">
+		</form>
 	<% } %>
 	<br>
 	<a href="/AltaUsuario">Alta Usuario (WIP)</a>

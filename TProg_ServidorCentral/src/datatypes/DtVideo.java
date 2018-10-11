@@ -140,7 +140,6 @@ public class DtVideo {
     this.comentarios = comentarios;
   }
 
-
   @Override
   public boolean equals(Object o) {
     DtVideo dt = (DtVideo) o;

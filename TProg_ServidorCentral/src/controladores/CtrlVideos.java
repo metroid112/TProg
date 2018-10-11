@@ -70,6 +70,16 @@ public class CtrlVideos implements IVideos {
       return null;
     }
   }
+  
+  @Override
+  public List<DtVideo> getDtVideosPropietario(String nick) {
+    Usuario usuario = manejadorUsuario.get(nick);
+    if (usuario != null) {
+      return usuario.getCanal().getDtVideos();
+    } else {
+      return null;
+    }
+  }
 
   @Override
   public DtVideo[] listarTodosLosVideos(String nick) {
