@@ -13,8 +13,6 @@
 			<jsp:include page="WEB-INF/extras/sidebar.jsp"></jsp:include>
 		</div>
 	</div>
-
 	<jsp:include page="WEB-INF/extras/script.jsp" />
-
 </body>
 </html>
