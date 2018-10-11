@@ -222,4 +222,24 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     }
     return resultado;
   }
+
+  @Override
+  public List<String> getSeguidores(String nombreUsuario) {
+    List<String> seguidores = new LinkedList<String>();
+    for (Usuario seguidor : ManejadorUsuarios.getManejadorUsuarios().get(nombreUsuario)
+        .getSeguidores().values()) {
+      seguidores.add(seguidor.getNick());
+    }
+    return seguidores;
+  }
+
+  @Override
+  public List<String> getSeguidos(String nombreUsuario) {
+    List<String> seguidos = new LinkedList<String>();
+    for (Usuario seguido : ManejadorUsuarios.getManejadorUsuarios().get(nombreUsuario)
+        .getSeguidos().values()) {
+      seguidos.add(seguido.getNick());
+    }
+    return seguidos;
+  }
 }

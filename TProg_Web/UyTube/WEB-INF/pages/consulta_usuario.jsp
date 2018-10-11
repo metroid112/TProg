@@ -1,5 +1,6 @@
 <%@ page import="datatypes.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="utils.*" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,6 +12,9 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/extras/header.jsp" />
+<div class="contenedor">
+	<jsp:include page="/WEB-INF/extras/sidebar.jsp"/>
+	<div class="contenido">
 <%! @SuppressWarnings("unchecked") %>
 <%
 	switch((String) request.getAttribute("STATE")) {
@@ -32,16 +36,68 @@
 		break;
 	case "INFO":
   		DtUsuario usuario = (DtUsuario) request.getAttribute("USUARIO");
+  		List<DtVideo> videos = (List<DtVideo>) request.getAttribute("VIDEOS");
+  		List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS");
+  		List<String> seguidores = (List<String>) request.getAttribute("SEGUIDORES");
+  		List<String> seguidos = (List<String>) request.getAttribute("SEGUIDOS");
  		if (usuario == null) { %>
 	  		<h1>Usuario <%= usuario.nick %> no existe</h1>
 <%	  	} else { %>
   			<h1> INFO USUARIO </h1>
   			<h2> <%= usuario.nick %> </h2>
-  			<br>
   			<img alt="Imagen de <%= usuario.nick %>" src="<%= usuario.imgPath %>">
   			<br>
   			Nombre: <%= usuario.nombre + " " + usuario.apellido %>
   			<br>
+  			Fecha de nacimiento: <%= usuario.fechaNacimiento %>
+  			<br>
+  			<h2>CANAL: <%= usuario.canal %></h2>
+  			Descripción: <%= usuario.descripcionCanal %>
+  			<br>
+  			<h3>VIDEOS PUBLICOS</h3>
+<%			for(DtVideo video : videos) { %>
+	  			<form action="/ConsultaVideo" method="GET">
+	  				<input name="VIDEO_ID" value="<%= video.idVideo %>" hidden>
+	  				<button><%= video.nombre %></button>
+	  			</form>
+	  			<br>
+<%			} %>
+			<h3>LISTAS PUBLICAS</h3>
+<%			for(DtLista lista : listas) { %>
+				<form action="#" method="GET">
+					<input name="" value="" hidden>
+					<button><%= lista.getNombre() %></button>
+				</form>
+				<br>
+<%			} %>
+			<h2>ESTADISTICAS</h2>
+			Seguidores: <%= seguidores.size() %>
+			<br>
+<%			for(String seguidor : seguidores) { %>
+				<%= seguidor %>
+				<br>
+<% 			} %>
+			<br>
+			Seguidos: <%= seguidos.size() %>
+			<br>
+<%			for(String seguido : seguidos) { %>
+				<%= seguido %>
+				<br>
+<% 			} %>
+<% 			if(session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
+  				DtUsuario usuarioLogueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO");
+				if(usuarioLogueado.nick.equals(usuario.nick)) { 
+			  		// MODIFICAR %>
+				  	<form action="/ModificarUsuario" method="GET">	
+				  		<button>MODIFICAR DATOS</button>			  
+					</form>
+<% 				} else {
+					//USUARIO YA SIGUE? %>
+				  	<form action="/SeguirUsuario" method="GET">	
+				  		<button>TEXTO SE MODIFICA SEGUIN SI SIGUE O NO</button>			  
+					</form>
+<%				}
+ 			} %>
 			<form action="/ConsultaUsuario" method="GET">
 				<input type="hidden" name="STATE" value="LISTAR">
 				<button>Consultar otro usuario</button>
@@ -52,9 +108,11 @@
 	  <h1>ERROR</h1>
 <%	}
 %>
-<form action="/Inicio" method="GET">
-	<button>Volver al inicio</button>
-</form>
+	<form action="/Inicio" method="GET">
+		<button>Volver al inicio</button>
+	</form>
+	</div>
+</div>
 <jsp:include page="/WEB-INF/extras/script.jsp" />
 </body>
 </html>

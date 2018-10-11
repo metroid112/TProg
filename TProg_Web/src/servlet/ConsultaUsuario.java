@@ -33,6 +33,14 @@ public class ConsultaUsuario extends HttpServlet {
         request.setAttribute("STATE", "INFO");
         request.setAttribute("USUARIO",
             Fabrica.getIUsuariosCanales().getDt((String) request.getParameter("usuario")));
+        request.setAttribute("VIDEOS",
+            Fabrica.getIVideos().getDtVideosPublicos(request.getParameter("usuario")));
+        request.setAttribute("LISTAS",
+            Fabrica.getIListas().getDtListasParticularesUsuario(request.getParameter("usuario")));
+        request.setAttribute("SEGUIDORES",
+            Fabrica.getIUsuariosCanales().getSeguidores(request.getParameter("usuario")));
+        request.setAttribute("SEGUIDOS",
+            Fabrica.getIUsuariosCanales().getSeguidos(request.getParameter("usuario")));
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);
         break;

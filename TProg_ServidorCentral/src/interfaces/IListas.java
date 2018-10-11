@@ -40,5 +40,5 @@ public interface IListas {
 
   public List<DtLista> getDtListasPrivadasUsuario(String usuario);
 
-  Map<Integer, ListaParticular> getListasPublicas();
+  public Map<Integer, ListaParticular> getListasPublicas();
 }

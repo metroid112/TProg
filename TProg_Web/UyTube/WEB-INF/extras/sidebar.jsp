@@ -27,14 +27,18 @@
 					<button>Consulta de Lista (WIP)</button>
 				</form>
 				<br>
-				<a href="WEB-INF/pages/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
+				<form action="/ConsultaUsuario" method="GET">
+					<input type="hidden" name="STATE" value="LISTAR">
+					<button>Consulta Usuario (WIP)</button>
+				</form>
 				<br>
 				<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 				<br>
 				<form action="/ListaServlet" method="GET">
 					<input type="hidden" name="STATE" value="LOADLISTAS">
 					<button>Quitar Video de Lista (WIP)</button>
-				</form>		<br>
+				</form>		
+				<br>
 				<a href="/CargaDatos">Cargar Datos</a>
 
 				<form action="/ConsultaDeCategoria" method="GET">

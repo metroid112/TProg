@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.List;
 import java.util.Map.Entry;
@@ -109,5 +110,11 @@ public class CtrlVideos implements IVideos {
       dtVideos.put(video.getKey(), video.getValue().getDt());
     }
     return dtVideos;
+  }
+
+  @Override
+  public List<DtVideo> getDtVideosPublicos(String nombreUsuario) {
+    return ManejadorUsuarios.getManejadorUsuarios().get(nombreUsuario).getCanal()
+        .getVideosPublicos();
   }
 }

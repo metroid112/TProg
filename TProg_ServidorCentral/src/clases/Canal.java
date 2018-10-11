@@ -97,9 +97,9 @@ public class Canal {
 
   public List<DtVideo> getVideosPublicos() {
     List<DtVideo> videos = new ArrayList<DtVideo>();
-    for (Entry<String, Video> video : this.videos.entrySet()) {
-      if (!video.getValue().isVisible()) {
-        videos.add(video.getValue().getDt());
+    for (Video video : this.videos.values()) {
+      if (!video.isVisible()) {
+        videos.add(video.getDt());
       }
     }
     return videos;
@@ -107,9 +107,9 @@ public class Canal {
 
   public List<DtVideo> getVideosPrivados() {
     List<DtVideo> videos = new ArrayList<DtVideo>();
-    for (Entry<String, Video> video : this.videos.entrySet()) {
-      if (!video.getValue().isVisible()) {
-        videos.add(video.getValue().getDt());
+    for (Video video : this.videos.values()) {
+      if (!video.isVisible()) {
+        videos.add(video.getDt());
       }
 
     }
