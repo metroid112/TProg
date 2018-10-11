@@ -34,7 +34,11 @@ public interface IListas {
   public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista,
       boolean deefecto);
 
-  List<DtLista> getDtListasPublicas();
+  public List<DtLista> getDtListasPublicas();
+  
+  public List<DtLista> getDtListasParticularesUsuario(String usuario);
+
+  public List<DtLista> getDtListasPrivadasUsuario(String usuario);
 
   Map<Integer, ListaParticular> getListasPublicas();
 }

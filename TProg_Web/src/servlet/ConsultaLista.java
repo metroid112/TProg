@@ -1,12 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtLista;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
@@ -27,33 +30,29 @@ public class ConsultaLista extends HttpServlet {
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     IListas ctrlListas = Fabrica.getIListas();
-    String lista = (String) request.getParameter("lista");
-    String idVideo = (String) request.getParameter("video");
-    Boolean defecto = false;
-    if (request.getParameter("listapublica").equals("S")) {
-      defecto = true;
-    }
-    DtVideo video = null;
-    try {
-      video = Fabrica.getIVideos().getDtVideo(Integer.parseInt(idVideo));
-    } catch (NumberFormatException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (NotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    String nombreVideo = video.nombre;
-    String nombreOwnerVideo = video.usuario;
     String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-    try {
-      ctrlListas.quitarVideoLista(usuario, nombreVideo, nombreOwnerVideo, lista,
-          defecto);
-    } catch (Exception e) {
-      e.printStackTrace();
+    if (request.getParameter("STATE").equals("START")) {
+      // obtener las listas necesarias, todas las listas particulares.
+      request.setAttribute("LISTAS", ctrlListas.getListasPublicas());
+      request.setAttribute("LISTASPRIVADAS", ctrlListas.getDtListasPrivadasUsuario(usuario));
+      request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
+    } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
+      // Boolean listaDefecto = true;
+      request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
+      // List<DtVideo> videosDeLista;
+      int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
+      DtLista dtLista = null;
+      try {
+        dtLista = Fabrica.getIListas().getDt(idLista);
+      } catch (NotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+      request.setAttribute("DTLISTA", dtLista);
+      request.getRequestDispatcher("/WEB-INF/pages/detalles_lista.jsp").forward(request, response);
+    } else {
+      request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
-    request.getRequestDispatcher("/index.jsp").forward(request, response);
-
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)

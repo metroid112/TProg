@@ -40,13 +40,13 @@ public class LoginServlet extends HttpServlet {
         response.getWriter().println(nick); // asddfasdf
         String pass = (String) request.getParameter("pass");
         response.getWriter().println(pass); // asdfasdfadsf
-        IUsuariosCanales iUsuariosCanales = Fabrica.getIUsuariosCanales();
-        if ((iUsuariosCanales.existeUsuario(nick) || iUsuariosCanales.existeUsuarioMail(nick))
-            && iUsuariosCanales.checkLogin(nick, pass)) {
+        IUsuariosCanales IUC = Fabrica.getIUsuariosCanales();
+        if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick))
+            && IUC.checkLogin(nick, pass)) {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
-          DtUsuario dtUsuario = iUsuariosCanales.getDt(nick);
+          DtUsuario dtUsuario = IUC.getDt(nick);
           request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
-          response.sendRedirect("index.jsp");
+          response.sendRedirect("/Inicio");
         } else {
           request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
           request.getRequestDispatcher("/WEB-INF/error/inicio_sesion_error.jsp").forward(request,
@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
       } else if (request.getParameter("CERRAR_SESION").equals("CONFIRM")) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getSession().setAttribute("USUARIO_LOGEADO", null);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("/Inicio");
       }
 
     }

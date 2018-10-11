@@ -38,7 +38,6 @@ public class Video {
     this.visible = visible;
     this.categoria = categoria;
     this.canal = canal;
-    categoria.addVideo(this);
     Video.idCounter++;
     this.idVideo = Video.idCounter;
     ManejadorVideos.getManejadorVideos().add(this);
