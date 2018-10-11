@@ -7,6 +7,7 @@
 <%@page import="java.text.DateFormat" %>
 <%@page import= "java.text.ParseException" %>
 <%@page import= "java.text.SimpleDateFormat" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 
@@ -53,22 +54,17 @@
 		<!-- LA PARTE DE LOS COMENTARIOS -->
 		
 		Comentarios:
-		
-		<%! public void printComent(Map<Integer, DtComentario> comentarios, int tab){
-			for(DtComentario comentario : comentarios.values() ){
-				System.out.println(comentario.texto);
-			}
-		}
-		
-		%>
-	
-		<pre>
-			
-		</pre>
+
+		<br>
+		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
+		<jsp:include page="comentarios.jsp" />
+		<br>
+		Fin comentarios.
+
 		<!-- FIN LA PARTE DE LOS COMENTARIOS -->
 		
 	<form action="/index.jsp">
 	<button>Volver</button>
-
+	</form>
 </body>
 </html>

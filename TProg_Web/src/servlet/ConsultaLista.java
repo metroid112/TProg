@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtLista;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
@@ -42,16 +43,20 @@ public class ConsultaLista extends HttpServlet {
         request.setAttribute("LISTASPRIVADAS", ctrlListas.getDtListasPrivadasUsuario(usuario));
         request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
       } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
-        Boolean listaDefecto = false;
+        //Boolean listaDefecto = true;
         request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
-        if (request.getParameter("LISTAPUBLICA").equals("S")) {
-          listaDefecto = true;
+        //List<DtVideo> videosDeLista;
+        int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
+        DtLista dtLista = null;
+        try {
+          dtLista = Fabrica.getIListas().getDt(idLista);
+        } catch (NotFoundException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
         }
-        String listaSeleccionada = (String) request.getParameter("LISTA");
-        List<DtVideo> videosDeLista = Fabrica.getIUsuariosCanales().listarDtVideosDuenosLista(usuario, listaSeleccionada, listaDefecto);
-        request.setAttribute("VIDEOSLISTA", videosDeLista);
-        request.getRequestDispatcher("/WEB-INF/pages/seleccionar_video.jsp").forward(request, response);
-      } else {
+        request.setAttribute("DTLISTA", dtLista);
+        request.getRequestDispatcher("/WEB-INF/pages/detalles_lista.jsp").forward(request, response);
+        } else {
         request.getRequestDispatcher("/index.jsp").forward(request, response);
       }      
     }

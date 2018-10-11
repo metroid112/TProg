@@ -3,7 +3,9 @@
 
 <div class="header">
 	<div class="head-item">
-		<img width="30%" alt="UyTube" src="img/logo.png">
+		<a href="/Inicio">
+			<img width="30%" alt="UyTube" src="img/logo.png">
+		</a>
 	</div>
 	<div class="head-item busqueda" align="center">
 		<form action="/Busqueda" method="get">
