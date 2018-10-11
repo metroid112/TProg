@@ -17,7 +17,7 @@
 <html lang="en">
 <head>
 
-	
+	<%@ include file="/WEB-INF/extras/head.jsp" %>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -32,35 +32,35 @@
 	<div class="page">
 		<jsp:include page="/WEB-INF/extras/header.jsp"></jsp:include>
 		<div class="contenedor">
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<div class= "contenido">
 			 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
 
-			<%= vid.nombre %>
+			<h1><%= vid.nombre %></h1>
 				 <br><br>
-			<iframe width="520" height="365"
+			<iframe width="700" height="465"
 				src="<%= vid.urlWatchtFormat() %> ">
 
 			</iframe>
 			<br>
-					
-
-				Canal: <%= vid.usuario %>
-				 <br><br>
+				<h4>Canal:</h4> <%= vid.usuario %>
+				 <br>
 				<%! DateFormat format = new SimpleDateFormat("dd/mm/yyyy");%>
 				 
-				Fecha: <%= format.format(vid.fecha) %> 
-				 <br><br>
+				<h4>Fecha:</h4> <%= format.format(vid.fecha) %> 
+				 <br>
 				 
-				Duracion: <%= vid.duracionPrintFormat() %>
+				<h4>Duracion:</h4> <%= vid.duracionPrintFormat() %>
 
-				 <br><br>
+				 <br>
 
-				Categoria: <%= vid.categoria %>
+				<h4>Categoria:</h4> <%= vid.categoria %>
+				 <br>
+				<h4>URL:</h4> <%= vid.Url %>
+				 <br>
+				<h4>Descripcion:</h4> <%= vid.descripcion %> 
 				 <br><br>
-				URL: <%= vid.Url %>
-				 <br><br>
-				Descripcion: <%= vid.descripcion %> 
-				 <br><br>
-				Me gusta: <%= vid.getCantidadCalificacionesPositivas()%>
+				<h5>Me gusta:</h5> <%= vid.getCantidadCalificacionesPositivas()%>
 				<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 				String cast;
 				cast = Integer.toString(vid.idVideo);
@@ -83,9 +83,9 @@
 				<%}
 				}
 				%>
-				<br><br>
+				<br>
 				
-				No me gusta: <%= vid.getCantidadCalificacionesNegativas()%>
+				<h5>No me gusta:</h5> <%= vid.getCantidadCalificacionesNegativas()%>
 				<%if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
 							<input type="hidden" name="VALORAR" value="NEGATIVO">
@@ -105,25 +105,18 @@
 				<%}
 				}
 				%>
-				<br><br>
+				<br>
 				
-				<!-- LA PARTE DE LOS COMENTARIOS -->
-
-
-				Comentarios:
+				<h4>Comentarios:</h4>
 				
-				
-		<br>
+				<%if(vid.comentarios.isEmpty()){ %>
+				No hay comentarios
+				<%} %>
+		
 		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
 		<jsp:include page="comentarios.jsp" />
 		<br>
-
-				<!-- FIN LA PARTE DE LOS COMENTARIOS -->
-				
-			<form action="/index.jsp">
-			<button>Volver</button>
-			</form>
-			</div>
+		</div>
 	</div>
 	<jsp:include page="/WEB-INF/extras/script.jsp" />
 
