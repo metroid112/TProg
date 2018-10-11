@@ -17,7 +17,6 @@ public class CargaDatos extends HttpServlet {
 
   public CargaDatos() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,11 +31,9 @@ public class CargaDatos extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     try {
       Fabrica.getIDatos().cargaDatos();
     } catch (ParseException exception) {
-      // TODO Auto-generated catch block
       exception.printStackTrace();
     }
     request.getRequestDispatcher("index.jsp").forward(request, response);

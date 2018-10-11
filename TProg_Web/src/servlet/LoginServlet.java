@@ -18,7 +18,6 @@ public class LoginServlet extends HttpServlet {
 
   public LoginServlet() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   public EstadoSesion getEstado(HttpServletRequest request) {
@@ -61,9 +60,7 @@ public class LoginServlet extends HttpServlet {
         request.getSession().setAttribute("USUARIO_LOGEADO", null);
         response.sendRedirect("/Inicio");
       }
-
     }
-
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)

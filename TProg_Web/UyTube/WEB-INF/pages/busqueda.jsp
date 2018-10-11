@@ -16,9 +16,7 @@
 			List<DtUsuario> usuarios = resultados.usuarios;
 			List<DtVideo> videos = resultados.videos;
 			int cantResultados = listas.size() + usuarios.size() + videos.size();
-			
 			%>
-			
 			<h3><%= cantResultados %> resultados para <%= request.getParameter("txtBusqueda") %></h3>
 			<br>
 			<h1>Videos</h1>
@@ -28,7 +26,6 @@
 				<br>
 			<% } %>
 			<br>
-			
 			<h1>Canales</h1>
 			<br>
 			<%for (DtUsuario usuario : usuarios) {%>
@@ -36,7 +33,6 @@
 				<br>
 			<% } %>
 			<br>
-			
 			<h1>Listas</h1>
 			<br>
 			<%for (DtLista lista : listas) {%>

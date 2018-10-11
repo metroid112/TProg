@@ -28,12 +28,10 @@ public class Inicio extends HttpServlet {
     if (request.getSession().getAttribute("LOGIN") == null) {
       request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
     }
-
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
   }
-
 }

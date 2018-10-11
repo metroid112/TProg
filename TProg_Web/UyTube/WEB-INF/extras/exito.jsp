@@ -10,10 +10,10 @@
 </head>
 <body>
 	<h1><b><% if (request.getAttribute("EXITO") != null) { %>
-				<%= request.getAttribute("EXITO") %> 
+				<%= request.getAttribute("EXITO") %>
 			<% } %>
 	</b></h1>
 	<br>
-	<h2> <b> Se redirigir· al index en 3 segundos...</b></h2>
+	<h2> <b> Se redirigir√° al inicio en 3 segundos...</b></h2>
 </body>
 </html>

@@ -1,4 +1,3 @@
-<%@page import="manejadores.ManejadorVideos"%>
 <%@ page import = "interfaces.*, utils.*, datatypes.*" %>
 <!doctype html>
 <html>
@@ -13,8 +12,6 @@
 			<jsp:include page="WEB-INF/extras/sidebar.jsp"></jsp:include>
 		</div>
 	</div>
-
 	<jsp:include page="WEB-INF/extras/script.jsp" />
-
 </body>
 </html>
