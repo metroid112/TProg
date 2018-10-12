@@ -5,7 +5,6 @@ import datatypes.DtCalificacion;
 public class Calificacion {
 
   private boolean like;
-
   private Usuario usuario;
   private Video video;
 
@@ -25,7 +24,7 @@ public class Calificacion {
   public boolean getlike(){
     return like;
   }
-  
+
   public void setLike(boolean like) {
     this.like = like;
   }
