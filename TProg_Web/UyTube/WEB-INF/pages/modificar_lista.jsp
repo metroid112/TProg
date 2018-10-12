@@ -31,7 +31,7 @@
 				<br>
 			<% } %>
 			</select>
-			<input type hidden name="modificarLista" value="">
+			<input type="hidden" name="modificarLista" value="">
 			<button type="submit">Aceptar</button>
 			<button form="volver" type="submit">Cancelar</button>
 		</form>

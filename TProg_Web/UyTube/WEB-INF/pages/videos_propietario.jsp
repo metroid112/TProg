@@ -18,7 +18,7 @@
 			<br>
 		<% } %>
 		</select>
-		<input type hidden name="videoSeleccionado" value="">
+		<input type="hidden" name="videoSeleccionado" value="">
 		<button type="submit">Aceptar</button>
 		<button form="volver" type="submit">Cancelar</button>
 	</form>

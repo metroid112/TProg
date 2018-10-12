@@ -15,7 +15,7 @@
 	<br>
 	<form action="/AltaVideo" method="POST" id="formAltaVideo">
 		<input type="hidden" name="STATE" value="ALTA">
-		Nombre: <input type="text" name="nombre" required>*
+		Nombre: <input type="text" value="prueba" name="nombre" required>*
 		<br>
 		Duración (H M S): <input type="number" name="duracionH" required><input type="number" name="duracionM" required><input type="number" name="duracionS" required>*
 		<br>
