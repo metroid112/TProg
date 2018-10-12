@@ -34,7 +34,7 @@ public interface IUsuariosCanales {
   public String[] listarSeguidos(String nick);
 
   public String[] listarUsuarios();
-  
+
   public List<String> listarNombresUsuarios();
 
   public String[] listarVideos(String nick);
@@ -66,8 +66,10 @@ public interface IUsuariosCanales {
   public boolean checkLogin(String usr, String pass);
 
   public boolean existeUsuarioMail(String mail);
-  
+
   public List<String> getSeguidores(String nombreUsuario);
-  
+
   public List<String> getSeguidos(String nombreUsuario);
+
+  public boolean isSeguidor(String seguidor, String seguido);
 }

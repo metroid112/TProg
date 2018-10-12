@@ -242,4 +242,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     }
     return seguidos;
   }
+
+  @Override
+  public boolean isSeguidor(String seguidor, String seguido) {
+    Usuario userSeguidor = ManejadorUsuarios.getManejadorUsuarios().get(seguidor);
+    Usuario userSeguido = ManejadorUsuarios.getManejadorUsuarios().get(seguido);
+    //return ()
+  }
 }
