@@ -55,26 +55,74 @@ public class DtVideo {
     this.idVideo = idVideo;
   }
 
-  public int getCalificacionesPositivas() {
+  public int getCantidadCalificacionesPositivas(){
     int sum = 0;
     for (DtCalificacion calif : calificaciones) {
       if (calif.like) {
         sum++;
-      }        
+      }
     }
     return sum;
   }
 
-  public int getCalificacionesNegativas() {
+  public int getCantidadCalificacionesNegativas(){
     int sum = 0;
     for (DtCalificacion calif : calificaciones) {
       if (!calif.like) {
         sum++;
-      }        
+      }
     }
     return sum;
   }
-  
+
+
+  public List<String> getCalificacionesPositivas(){
+    List<String> positivos = new LinkedList<String>();
+    String usuarioObjetivo;
+
+    for(DtCalificacion calif : calificaciones){
+      if(calif.like){
+      usuarioObjetivo = calif.usuario;
+      positivos.add(usuarioObjetivo);
+      }
+    }
+    return positivos;
+  }
+
+  public List<String> getCalificacionesNegativas(){
+    List<String> negativos = new LinkedList<String>();
+    String usuarioObjetivo;
+
+    for(DtCalificacion calif : calificaciones){
+      if(!calif.like){
+      usuarioObjetivo = calif.usuario;
+      negativos.add(usuarioObjetivo);
+      }
+    }
+    return negativos;
+  }
+
+  public String duracionPrintFormat(){
+    String resultado = this.duracion.toString();
+
+    resultado = resultado.substring(2);
+
+    resultado = resultado.replace("M", ":");
+    resultado = resultado.replace("S", "");
+
+    return resultado;
+  }
+
+  public String urlWatchtFormat(){
+    String resultado = this.Url;
+
+    resultado = resultado.substring(16); //probablemente la implementacion vaya a cambiar
+
+    resultado = "https://www.youtube.com/embed" + resultado;
+
+    return resultado;
+  }
+
   public List<DtCalificacion> getCalificaciones() {
     return calificaciones;
   }
@@ -90,6 +138,7 @@ public class DtVideo {
   public void setComentarios(Map<Integer, DtComentario> comentarios) {
     this.comentarios = comentarios;
   }
+
 
   @Override
   public boolean equals(Object o) {

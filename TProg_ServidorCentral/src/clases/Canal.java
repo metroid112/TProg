@@ -229,19 +229,19 @@ public class Canal {
 
   }
 
-  public LinkedList<DtVideo> listaDtVideo() {
-    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
-    for (Video v : videos.values()) {
+  public List<DtVideo> listaDtVideo(){
+    List<DtVideo> result = new LinkedList<DtVideo>();
+    for(Video v : videos.values()){
       DtVideo nuevo = v.getDt();
       result.add(nuevo);
     }
     return result;
   }
 
-  public LinkedList<DtVideo> listaPublicoDtVideo() {
-    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
-    for (Video v : videos.values()) {
-      if (v.getVisible()) {
+  public List<DtVideo> listaPublicoDtVideo(){
+    List<DtVideo> result = new LinkedList<DtVideo>();
+    for(Video v : videos.values()){
+      if(v.getVisible()){
         DtVideo nuevo = v.getDt();
         result.add(nuevo);
       }

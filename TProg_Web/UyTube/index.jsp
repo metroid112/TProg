@@ -12,6 +12,12 @@
 			<jsp:include page="WEB-INF/extras/sidebar.jsp"></jsp:include>
 		</div>
 	</div>
+
+	<!-- Deberia redirigir al servlet -->
+	<a href="/VideoServlet">Listar Videos (NO EXISTE CU)</a>
+	<br>
+
+
 	<jsp:include page="WEB-INF/extras/script.jsp" />
 </body>
 </html>

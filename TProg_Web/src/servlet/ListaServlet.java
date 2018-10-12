@@ -31,27 +31,26 @@ public class ListaServlet extends HttpServlet {
     String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
     String[] ListasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
     String[] ListasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
-    if (request.getParameter("STATE").equals("DETALLESLISTA")) {
-      String listaSeleccionada = (String) request.getParameter("LISTA");
-      request.setAttribute("LISTA", listaSeleccionada);
-      Boolean listaDefecto = false;
-      request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
-      if (request.getParameter("LISTAPUBLICA").equals("S")) {
-        listaDefecto = true;
-      }
-      List<DtVideo> videosDeLista = Fabrica.getIUsuariosCanales()
-          .listarDtVideosDuenosLista(nickUsuario, listaSeleccionada, listaDefecto);
-      request.setAttribute("VIDEOSLISTA", videosDeLista);
-      request.getRequestDispatcher("/WEB-INF/pages/seleccionar_video.jsp").forward(request,
-          response);
-    } else if (request.getParameter("STATE").equals("LOADLISTAS")) {
-      // obtener las listas para el usuario
-      request.setAttribute("LISTASPRIVADAS", ListasParticulares);
-      request.setAttribute("LISTASPUBLICAS", ListasPublicas);
-      request.getRequestDispatcher("/WEB-INF/pages/quitar_video_lista.jsp").forward(request,
-          response);
-    } else {
-      if (request.getParameter("visibilidad").equals("Público")) {
+
+   if (request.getParameter("STATE").equals("DETALLESLISTA")) {
+     String listaSeleccionada = (String) request.getParameter("LISTA");
+     request.setAttribute("LISTA", listaSeleccionada);
+     Boolean listaDefecto = false;
+     request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
+     if (request.getParameter("LISTAPUBLICA").equals("S")) {
+       listaDefecto = true;
+     }
+     List<DtVideo> videosDeLista = Fabrica.getIUsuariosCanales().listarDtVideosDuenosLista(nickUsuario, listaSeleccionada, listaDefecto);
+     request.setAttribute("VIDEOSLISTA", videosDeLista);
+     request.getRequestDispatcher("/WEB-INF/pages/seleccionar_video.jsp").forward(request, response);
+   }
+   else if (request.getParameter("STATE").equals("LOADLISTAS")) {
+     //obtener las listas para el usuario
+     request.setAttribute("LISTASPRIVADAS", ListasParticulares);
+     request.setAttribute("LISTASPUBLICAS", ListasPublicas);
+     request.getRequestDispatcher("/WEB-INF/pages/quitar_video_lista.jsp").forward(request, response);
+   } else {
+       if (request.getParameter("visibilidad").equals("Pï¿½blico")) {
         visibilidad = true;
       } else {
         visibilidad = false;
@@ -60,7 +59,7 @@ public class ListaServlet extends HttpServlet {
       // request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       try {
         Fabrica.getIListas().altaListaParticular(nombreLista, nickUsuario, visibilidad);
-        request.setAttribute("EXITO", "¡Se ha creado la lista con éxito!");
+        request.setAttribute("EXITO", "ï¿½Se ha creado la lista con ï¿½xito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
       } catch (Exception e) {
         request.setAttribute("ERROR", e.getMessage());

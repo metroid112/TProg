@@ -7,6 +7,7 @@
 <%@page import="java.util.Map" %>
 <%@page import="java.util.List" %>
 <%@page import="java.text.DateFormat" %>
+<%@page import="java.util.List" %>
 <%@page import= "java.text.ParseException" %>
 <%@page import= "java.text.SimpleDateFormat" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,9 +17,7 @@
 <html lang="en">
 <head>
 
-	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<%@ include file="/WEB-INF/extras/head.jsp" %>
 </head>
 <form action="">
 
@@ -31,33 +30,35 @@
 	<div class="page">
 		<jsp:include page="/WEB-INF/extras/header.jsp"></jsp:include>
 		<div class="contenedor">
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<div class= "contenido">
 			 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
-			
-			<iframe width="420" he
-			{ñight="315"
-				src="<%= vid.Url %> ">
+
+			<h1><%= vid.nombre %></h1>
+				 <br><br>
+			<iframe width="700" height="465"
+				src="<%= vid.urlWatchtFormat() %> ">
+
 			</iframe>
 			<br>
-					
-				Nombre: <%= vid.nombre %>
-				 <br><br>
-				Canal: <%= vid.usuario %>
-				 <br><br>
+				<h4>Canal:</h4> <%= vid.usuario %>
+				 <br>
 				<%! DateFormat format = new SimpleDateFormat("dd/mm/yyyy");%>
-				 
-				Fecha: <%= format.format(vid.fecha) %> 
+
+				<h4>Fecha:</h4> <%= format.format(vid.fecha) %>
+				 <br>
+
+				<h4>Duracion:</h4> <%= vid.duracionPrintFormat() %>
+
+				 <br>
+
+				<h4>Categoria:</h4> <%= vid.categoria %>
+				 <br>
+				<h4>URL:</h4> <%= vid.Url %>
+				 <br>
+				<h4>Descripcion:</h4> <%= vid.descripcion %>
 				 <br><br>
-				 
-				Duracion: <%= vid.duracion %>
-				 <br><br>
-				Descripcion: <%= vid.descripcion %> 
-				 <br><br>
-				Categoria: <%= vid.categoria %>
-				 <br><br>
-				URL: <%= vid.Url %>
-				 <br><br>
-						
-				Me gusta: <%= vid.getCantidadCalificacionesPositivas()%>
+				<h5>Me gusta:</h5> <%= vid.getCantidadCalificacionesPositivas()%>
 				<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 				String cast;
 				cast = Integer.toString(vid.idVideo);
@@ -65,11 +66,11 @@
 						<form action="/ConsultaVideo" method="POST">
 							<input type="hidden" name="VALORAR" value="POSITIVO">
 							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= cast %>" >
-					
+
 							<button type="submit">Valorar</button>
-							
+
 						</form>
-				
+
 				<%} %>
 				<br><br>
 				<% List<String> positivos = vid.getCalificacionesPositivas();
@@ -80,21 +81,21 @@
 				<%}
 				}
 				%>
-				<br><br>
-				
-				No me gusta: <%= vid.getCantidadCalificacionesNegativas()%>
+				<br>
+
+				<h5>No me gusta:</h5> <%= vid.getCantidadCalificacionesNegativas()%>
 				<%if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
 							<input type="hidden" name="VALORAR" value="NEGATIVO">
 							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= cast %>" >
-							
+
 							<button type="submit">Valorar</button>
-							
-						</form>		
-				
+
+						</form>
+
 				<%} %>
 				<br><br>
-				<% List<String> negativos = vid.getCalificacionesNegativas(); 
+				<% List<String> negativos = vid.getCalificacionesNegativas();
 				if(d != null && vid.usuario == d.nick){
 					for(String user: negativos){%>
 						<%= user %>
@@ -102,24 +103,18 @@
 				<%}
 				}
 				%>
-				<br><br>
-				
-				<!-- LA PARTE DE LOS COMENTARIOS -->
+				<br>
 
-				Comentarios:
-				
-				<pre>
-		<br>
+				<h4>Comentarios:</h4>
+
+				<%if(vid.comentarios.isEmpty()){ %>
+				No hay comentarios
+				<%} %>
+
 		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
 		<jsp:include page="comentarios.jsp" />
 		<br>
-				</pre>
-				<!-- FIN LA PARTE DE LOS COMENTARIOS -->
-				
-			<form action="/index.jsp">
-			<button>Volver</button>
-			</form>
-			</div>
+		</div>
 	</div>
 	<jsp:include page="/WEB-INF/extras/script.jsp" />
 

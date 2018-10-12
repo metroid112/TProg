@@ -126,11 +126,28 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
-      String nombreDuenoVideo) throws Exception {
+      String nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo); // Puede calificar su propio video?
+    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
     usuario.valorarVideo(like, vid);
+  }
+
+  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo){
+    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
+    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
+    return usuario.yaCalificado(like,vid);
+  }
+
+
+  @Override
+  public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
+      String nombreDuenoVideo) {
+    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
+    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
+    usuario.modificarValoracion(like, vid);
   }
 
   @Override
@@ -159,15 +176,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
-      String nombreDuenoVideo) {
-    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
-    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
-    usuario.modificarValoracion(like, vid);
-  }
-
-  @Override
   public void responderComentario(String texto, Date fecha, String nombreUsuario,
       String nombreVideo, String nombreDuenoVideo, Integer idComentarioPadre) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
@@ -187,18 +195,20 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
 
+
   public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
 
-  public LinkedList<DtVideo> getListaDtVideo(String usuario) {
+  public List<DtVideo> getListaDtVideo(String usuario){
+
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
 
-  public LinkedList<DtVideo> getListaPublicoDtVideo() {
+  public List<DtVideo> getListaPublicoDtVideo(){
 
     return manejadorUsuarios.getListaPublicoDtVideo();
   }

@@ -22,7 +22,10 @@ public class Calificacion {
   public Video getVideo() {
     return video;
   }
-
+  public boolean getlike(){
+    return like;
+  }
+  
   public void setLike(boolean like) {
     this.like = like;
   }

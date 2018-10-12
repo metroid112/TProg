@@ -55,11 +55,11 @@ public class ManejadorUsuarios {
     return usuario;
   }
 
-  public LinkedList<DtVideo> getListaPublicoDtVideo() {
-    LinkedList<DtVideo> result = new LinkedList<DtVideo>();
-    LinkedList<DtVideo> listaUsuario = null;
+  public List<DtVideo> getListaPublicoDtVideo(){
+    List<DtVideo> result = new LinkedList<DtVideo>();
+    List<DtVideo> listaUsuario = null;
 
-    for (Usuario usuarioObjetivo : usuarios.values()) {
+    for(Usuario usuarioObjetivo: usuarios.values()){
 
       Canal canalObjetivo = usuarioObjetivo.getCanal();
       listaUsuario = canalObjetivo.listaPublicoDtVideo();
