@@ -98,7 +98,7 @@ public class Canal {
   public List<DtVideo> getVideosPublicos() {
     List<DtVideo> videos = new ArrayList<DtVideo>();
     for (Video video : this.videos.values()) {
-      if (!video.isVisible()) {
+      if (video.isVisible()) {
         videos.add(video.getDt());
       }
     }
