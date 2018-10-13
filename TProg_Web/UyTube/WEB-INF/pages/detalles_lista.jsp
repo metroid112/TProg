@@ -24,7 +24,7 @@
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">	
 					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="/ConsultaVideo" method="GET">
 						<input type="hidden" name="VIDEO_ID" value="<%=video.idVideo%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.UrlThumbnail%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%= video.UrlThumbnail %>">
 						<br>
 						<header>
 						<%= video.nombre %>
