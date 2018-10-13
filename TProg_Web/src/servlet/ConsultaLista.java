@@ -17,6 +17,7 @@ import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import manejadores.ManejadorVideos;
+import utils.EstadoSesion;
 
 /**
  * Servlet implementation class AgregarVideoALista
@@ -36,11 +37,13 @@ public class ConsultaLista extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
       IListas ctrlListas = Fabrica.getIListas();
-      String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       if (request.getParameter("STATE").equals("START")) {
         //obtener las listas necesarias, todas las listas particulares.
         request.setAttribute("LISTAS", ctrlListas.getListasPublicas());
-        request.setAttribute("LISTASPRIVADAS", ctrlListas.getDtListasPrivadasUsuario(usuario));
+        if (request.getSession().getAttribute("LOGIN") != null && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) { 
+          String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
+          request.setAttribute("LISTASPRIVADAS", ctrlListas.getDtListasPrivadasUsuario(usuario));
+        }
         request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
       } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
         //Boolean listaDefecto = true;

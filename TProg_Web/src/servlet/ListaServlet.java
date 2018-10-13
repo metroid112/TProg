@@ -32,7 +32,7 @@ public class ListaServlet extends HttpServlet {
     String[] ListasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
     String[] ListasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
     
-   if (request.getParameter("STATE").equals("DETALLESLISTA")) {
+   if (request.getParameter("STATE") != null && request.getParameter("STATE").equals("DETALLESLISTA")) {
      String listaSeleccionada = (String) request.getParameter("LISTA");
      request.setAttribute("LISTA", listaSeleccionada);
      Boolean listaDefecto = false;
@@ -44,7 +44,7 @@ public class ListaServlet extends HttpServlet {
      request.setAttribute("VIDEOSLISTA", videosDeLista);
      request.getRequestDispatcher("/WEB-INF/pages/seleccionar_video.jsp").forward(request, response);
    }
-   else if (request.getParameter("STATE").equals("LOADLISTAS")) {
+   else if (request.getParameter("STATE") != null && request.getParameter("STATE").equals("LOADLISTAS")) {
      //obtener las listas para el usuario
      request.setAttribute("LISTASPRIVADAS", ListasParticulares);
      request.setAttribute("LISTASPUBLICAS", ListasPublicas);
