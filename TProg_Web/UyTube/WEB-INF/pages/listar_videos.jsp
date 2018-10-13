@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
+<!-- CUANDO EN EL INDEX SE LISTEN LOS VIDEOS, ESTO SE PUEDE PELAR -->
 <head>
 	<%@ include file="/WEB-INF/extras/head.jsp" %>
 	<meta charset="utf-8">
