@@ -226,7 +226,7 @@ public class Canal {
 
 
   public void modVideo(String nombreOld, String nombre) throws DuplicateClassException {
-    if (!this.videos.containsKey(nombre)) {
+    if (nombreOld.equals(nombre) || !this.videos.containsKey(nombre)) {
       Video vid = this.videos.remove(nombreOld);
       this.videos.put(nombre, vid);      
     } else {
