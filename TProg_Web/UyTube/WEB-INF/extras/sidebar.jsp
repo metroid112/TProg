@@ -15,6 +15,11 @@
 		<form action="/AgregarVideoALista" method="GET">
 			<input type="submit" value="Agregar video a lista (WIP)">
 		</form>
+		<br>
+		<form action="/ListaServlet" method="GET">
+			<input type="hidden" name="STATE" value="LOADLISTAS">
+			<button>Quitar Video de Lista (WIP)</button>
+		</form>
 	<% } %>
 	<br>
 	<a href="/AltaUsuario">Alta Usuario (WIP)</a>
@@ -28,10 +33,6 @@
 	<br>
 	<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 	<br>
-	<form action="/ListaServlet" method="GET">
-		<input type="hidden" name="STATE" value="LOADLISTAS">
-		<button>Quitar Video de Lista (WIP)</button>
-	</form>		<br>
 	<a href="/CargaDatos">Cargar Datos</a>
 	<form action="/ConsultaDeCategoria" method="GET">
 		<input type="submit" value="Categorias (WIP)">
