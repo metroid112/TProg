@@ -24,7 +24,10 @@
 		<button>Consulta de Lista (WIP)</button>
 	</form>
 	<br>
-	<a href="WEB-INF/pages/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
+	<form action="/ConsultaUsuario" method="GET">
+		<input type="hidden" name="STATE" value="LISTAR">
+		<button>Consulta Usuario</button>
+	</form>
 	<br>
 	<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 	<br>

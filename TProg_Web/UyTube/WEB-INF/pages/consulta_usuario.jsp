@@ -55,15 +55,16 @@
   			<h3>VIDEOS PUBLICOS</h3>
      		<% for(DtVideo video : videos) { %>
   				<form action="/ConsultaVideo" method="GET">
-	  				<input name="VIDEO_ID" value="<%= video.idVideo %>" hidden>
+	  				<input name="VIDEO_ID" value="<%= video.idVideo %>" type="hidden">
 	  				<button><%= video.nombre %></button>
 	  			</form>
 	  			<br>
      		<% } %>
 			<h3>LISTAS PUBLICAS</h3>
      		<%	for(DtLista lista : listas) { %>
-					<form action="#" method="GET">
-						<input name="" value="" hidden>
+					<form action="/ConsultaLista" method="GET">
+						<input name="STATE" value="DETALLESLISTA" type="hidden">
+						<input name="IDLISTA" value="<%= lista.getId() %>" type="hidden">
 						<button><%= lista.getNombre() %></button>
 					</form>
 					<br>
