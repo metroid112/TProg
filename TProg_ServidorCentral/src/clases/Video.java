@@ -82,15 +82,16 @@ public class Video {
   public DtVideo getDt() {
 
     return new DtVideo(this.nombre, this.descripcion, this.url, this.categoria, this.fecha,
-        this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo, this.canal.getUsuario().getNick());
+        this.duracion, this.visible, this.comentarios, this.calificaciones, this.idVideo,
+        this.canal.getUsuario().getNick());
 
   }
 
   public String getNombre() {
     return nombre;
   }
-  
-  public boolean getVisible(){
+
+  public boolean getVisible() {
     return visible;
   }
 
@@ -116,7 +117,7 @@ public class Video {
     }
     this.fecha = fecha;
   }
-  
+
   public boolean isVisible() {
     return this.visible;
   }
