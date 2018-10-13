@@ -19,6 +19,8 @@ java.util.Date" %>
 		<h1 style="color:red"><%= request.getAttribute("DUPLICADO") %></h1>
 	<% } else if (request.getAttribute("DURACION") != null) { %>
 		<h1 style="color:red"><%= request.getAttribute("DURACION") %></h1>
+	<% } else if (request.getAttribute("PRIVACIDAD") != null) {%>
+		<h1 style="color:red"><%= request.getAttribute("PRIVACIDAD") %></h1>
 	<% } %>
 	<% DtVideo video = (DtVideo) request.getAttribute("VIDEO"); %>
 	<% String nombreVideo = video.nombre; %>

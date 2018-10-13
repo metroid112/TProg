@@ -101,8 +101,17 @@ public class ModificarVideo extends HttpServlet {
               request.setAttribute("EXITO", "¡Se han modificados los datos del video con exito!");
               request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request,response);
             } catch (InvalidDataException e) {
-              // TODO Auto-generated catch block
-              System.out.println("test");
+              request.setAttribute("PRIVACIDAD", "No se puede cambiar la visibilidad del video porque el canal es privado.");  
+              Categoria cat = ManejadorCategorias.getManejadorCategorias().get(categoria);
+              Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
+              List<Calificacion> calificacion = new LinkedList<Calificacion>();     
+              DtVideo videoTemp = new DtVideo(oldNombre, descripcionVideo, urlVideo, cat, fecha,
+                  duracion, visible, comentarios, calificacion, -1, nick);
+              request.setAttribute("VIDEO", videoTemp);
+              ICategorias ctrlCategorias = Fabrica.getICategorias();
+              String[] listaCategorias = ctrlCategorias.listarCategorias();
+              request.setAttribute("CATEGORIAS", listaCategorias);
+              request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request, response);
               e.printStackTrace();
             } catch (DuplicateClassException f) {
               request.setAttribute("DUPLICADO", "El nombre " + nombreVideo + " ya existe, por favor elegir otro.");  
