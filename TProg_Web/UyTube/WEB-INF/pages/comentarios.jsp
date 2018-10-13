@@ -10,8 +10,9 @@
 
 				<%if(d!=null){ %>
 					<form action="/ConsultaVideo" method="POST">
-						<input type="text" name="COMENTAR">
-						<input type="hidden" id="1" name="COMENTARIO_ID" value= ${ com.value.id} >
+						<input type="hidden" name="ACCION" value="COMENTAR">
+						<input type="text" name="COMENTARIO">
+						<input type="hidden" id="1" name="COMENTARIO_ID" value= "${com.value.id}" >
 					<button type="submit">Comentar</button>
 					</form>
 				<% } %>

@@ -45,7 +45,7 @@ public class ConsultaVideo extends HttpServlet {
   
         DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
         
-        if(request.getParameter("VALORAR").equals("POSITIVO")) {
+        if(request.getParameter("ACCION").equals("VALORAR_POSITIVO")) {
           if(!ctrUsuariosCanales.yaCalificacdo(d.nick, false, vid.nombre, vid.usuario)){
             
           ctrUsuariosCanales.valorarVideo(d.nick,true ,vid.nombre, vid.usuario);
@@ -53,7 +53,7 @@ public class ConsultaVideo extends HttpServlet {
           else{ ctrUsuariosCanales.modificarValoracion(true, d.nick, vid.nombre, vid.usuario);
           }
         }
-        if(request.getParameter("VALORAR").equals("NEGATIVO")) {
+        if(request.getParameter("ACCION").equals("VALORAR_NEGATIVO")) {
           if(!ctrUsuariosCanales.yaCalificacdo(d.nick, true, vid.nombre, vid.usuario)){
           ctrUsuariosCanales.valorarVideo(d.nick,false ,vid.nombre, vid.usuario);
           }
@@ -61,7 +61,9 @@ public class ConsultaVideo extends HttpServlet {
             ctrUsuariosCanales.modificarValoracion(false, d.nick, vid.nombre, vid.usuario);
             }
           }
-         //if(){}
+         if(request.getParameter("ACCION").equals("COMENTAR")){
+           System.out.println("texto != null");
+         }
              
       } catch (NotFoundException e) {     
         e.printStackTrace();

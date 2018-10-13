@@ -63,7 +63,7 @@
 
 				if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
-							<input type="hidden" name="VALORAR" value="POSITIVO">
+							<input type="hidden" name="ACCION" value="VALORAR_POSITIVO">
 							<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
 
 							<button type="submit">Valorar</button>
@@ -85,7 +85,7 @@
 				<h5>No me gusta:</h5> <%= vid.getCantidadCalificacionesNegativas()%>
 				<%if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
-							<input type="hidden" name="VALORAR" value="NEGATIVO">
+							<input type="hidden" name="ACCION" value="VALORAR_NEGATIVO">
 							<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
 
 							<button type="submit">Valorar</button>
@@ -115,7 +115,10 @@
 		<br>
 		<%if(d!=null){ %>
 			<form action="/ConsultaVideo" method="POST">
-				<input type="text" name="COMENTAR">
+				<input type="hidden" name="ACCION" value="COMENTAR">
+				<input type="text" name="COMENTARIO">
+				<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
+				
 				<button type="submit">Comentar</button>
 			</form>
 		<% } %>
