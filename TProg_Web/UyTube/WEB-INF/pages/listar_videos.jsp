@@ -17,24 +17,17 @@
 		String cast;
 		for(DtVideo vp: listaVideosPublicos){ 
 		cast = Integer.toString(vp.idVideo);
-		
-		%>
-			
+		%>			
 			<%= vp.nombre %> - 
 			<%= vp.usuario %>
-			
-			
+						
 					<form action="/ConsultaVideo" method="GET">
-					
 					<input type="hidden" id="1" name="VIDEO_ID" value= "<%= cast %>" >
-			
-					<button type="submit">Consultar</button>
-					
+					<button type="submit">Consultar</button>				
 				</form>
 				<br>
 		<%}
 	%>
-		
 	<br>
 		<%
 		DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");

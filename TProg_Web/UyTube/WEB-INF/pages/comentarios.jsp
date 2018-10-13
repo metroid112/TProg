@@ -2,15 +2,16 @@
 <%@page import="datatypes.DtUsuario"%>
 <br>
 <ul>
+	<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");%>
 	<c:forEach var="com" items="${comentarios}" >
 		<li>
 			<div>
 				${com.value.usuario}: ${com.value.texto} ${com.value.fecha}
-				<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
-				if(d!=null){ %>
-					<form>
-							<input type="hidden" name="COMENTAR" value="POSITIVO">
-							<input type="hidden" id="1" name="COMENTARIO_ID" value= ${ com.value.id} >
+
+				<%if(d!=null){ %>
+					<form action="/ConsultaVideo" method="POST">
+						<input type="text" name="COMENTAR">
+						<input type="hidden" id="1" name="COMENTARIO_ID" value= ${ com.value.id} >
 					<button type="submit">Comentar</button>
 					</form>
 				<% } %>

@@ -64,7 +64,7 @@
 				if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
 							<input type="hidden" name="VALORAR" value="POSITIVO">
-							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= vid.idVideo %>" >
+							<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
 
 							<button type="submit">Valorar</button>
 
@@ -86,7 +86,7 @@
 				<%if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
 							<input type="hidden" name="VALORAR" value="NEGATIVO">
-							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= vid.idVideo %>" >
+							<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
 
 							<button type="submit">Valorar</button>
 
@@ -113,6 +113,12 @@
 		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
 		<jsp:include page="comentarios.jsp" />
 		<br>
+		<%if(d!=null){ %>
+			<form action="/ConsultaVideo" method="POST">
+				<input type="text" name="COMENTAR">
+				<button type="submit">Comentar</button>
+			</form>
+		<% } %>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/extras/script.jsp" />

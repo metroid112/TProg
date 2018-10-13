@@ -35,7 +35,7 @@ public class ConsultaVideo extends HttpServlet {
       
       IVideos ctrVideos = Fabrica.getIVideos();
       IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
-      String videoId = (String) request.getParameter("VIDEO_ID2");
+      String videoId = (String) request.getParameter("VIDEO_ID");
       int id = Integer.parseInt(videoId);
       DtVideo vid;
       
@@ -45,7 +45,7 @@ public class ConsultaVideo extends HttpServlet {
   
         DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
         
-        if (request.getParameter("VALORAR").equals("POSITIVO")) {
+        if(request.getParameter("VALORAR").equals("POSITIVO")) {
           if(!ctrUsuariosCanales.yaCalificacdo(d.nick, false, vid.nombre, vid.usuario)){
             
           ctrUsuariosCanales.valorarVideo(d.nick,true ,vid.nombre, vid.usuario);
@@ -53,7 +53,7 @@ public class ConsultaVideo extends HttpServlet {
           else{ ctrUsuariosCanales.modificarValoracion(true, d.nick, vid.nombre, vid.usuario);
           }
         }
-        if (request.getParameter("VALORAR").equals("NEGATIVO")) {
+        if(request.getParameter("VALORAR").equals("NEGATIVO")) {
           if(!ctrUsuariosCanales.yaCalificacdo(d.nick, true, vid.nombre, vid.usuario)){
           ctrUsuariosCanales.valorarVideo(d.nick,false ,vid.nombre, vid.usuario);
           }
@@ -61,7 +61,7 @@ public class ConsultaVideo extends HttpServlet {
             ctrUsuariosCanales.modificarValoracion(false, d.nick, vid.nombre, vid.usuario);
             }
           }
-          
+         //if(){}
              
       } catch (NotFoundException e) {     
         e.printStackTrace();
