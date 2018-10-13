@@ -232,6 +232,7 @@ public class Canal {
     } else {
       throw new DuplicateClassException ("Video", "El nombre seleccionado ya existe.");
     }
+  }
 
   public List<DtVideo> listaDtVideo(){
     List<DtVideo> result = new LinkedList<DtVideo>();
