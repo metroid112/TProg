@@ -38,8 +38,10 @@
 				<br>
 				Categoría:
 				<select name="categoria">
-					<option value="Deportes">Deportes</option>
-					<option value="Musica">Música</option> <!-- meter jsp aca -->
+				<% for (String cat : (String[]) request.getAttribute("CATEGORIAS")) { %>
+					<option value="<%= cat %>"><%= cat %> </option>
+					<br>
+				<% } %>
 				</select>
 				<br>
 				<button type="submit">Aceptar</button>

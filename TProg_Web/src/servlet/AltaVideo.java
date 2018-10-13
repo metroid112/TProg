@@ -16,6 +16,7 @@ import datatypes.DtUsuario;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
+import interfaces.ICategorias;
 
 @WebServlet("/AltaVideo")
 public class AltaVideo extends HttpServlet {
@@ -80,6 +81,9 @@ public class AltaVideo extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    ICategorias ctrlCategorias = Fabrica.getICategorias();
+    String[] listaCategorias = ctrlCategorias.listarCategorias();
+    request.setAttribute("CATEGORIAS", listaCategorias);
     processRequest(request, response);
   }
 
