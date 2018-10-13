@@ -8,6 +8,7 @@
 	<c:forEach var="com" items="${comentarios}" >
 		<li>
 			<div>
+			
 				${com.value.usuario}: ${com.value.texto} ${com.value.fecha}
 
 				<%if(d!=null){ %>
