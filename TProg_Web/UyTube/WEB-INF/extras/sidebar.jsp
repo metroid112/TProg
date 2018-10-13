@@ -40,8 +40,6 @@
 		<button>Consulta Usuario</button>
 	</form>
 	<br>
-	<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
-	<br>
 	<form action="/ConsultaDeCategoria" method="GET">
 		<button>Listar Categorias</button>
 	</form>

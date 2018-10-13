@@ -5,6 +5,7 @@
 <html lang="en">
 <!-- CUANDO EN EL INDEX SE LISTEN LOS VIDEOS, ESTO SE PUEDE PELAR -->
 <head>
+	<%@ include file="/WEB-INF/extras/head.jsp" %>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -26,7 +27,7 @@
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=vp.idVideo%>').submit();">	
 					<form id="Form<%=vp.idVideo%>" class="detClickeableVideo" action="/ConsultaVideo" method="GET">
 						<input type="hidden" id="1" name="VIDEO_ID" value="<%=cast%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="<%=vp.UrlThumbnail%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%= vp.UrlThumbnail %>">
 						<br>
 						<header>
 						<%= vp.nombre %>

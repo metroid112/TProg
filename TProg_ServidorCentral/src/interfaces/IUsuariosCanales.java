@@ -73,4 +73,6 @@ public interface IUsuariosCanales {
   public List<String> getSeguidos(String nombreUsuario);
 
   public boolean isSeguidor(String seguidor, String seguido);
+
+  public void dejarSeguir(String seguidor, String seguido);
 }
