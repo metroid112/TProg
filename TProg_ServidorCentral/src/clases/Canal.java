@@ -222,12 +222,16 @@ public class Canal {
       return listaPar.getDtVideos();
     }
   }
+  
 
-  public void modVideo(String nombreOld, String nombre) {
-    Video vid = this.videos.remove(nombreOld);
-    this.videos.put(nombre, vid);
 
-  }
+  public void modVideo(String nombreOld, String nombre) throws DuplicateClassException {
+    if (!this.videos.containsKey(nombre)) {
+      Video vid = this.videos.remove(nombreOld);
+      this.videos.put(nombre, vid);      
+    } else {
+      throw new DuplicateClassException ("Video", "El nombre seleccionado ya existe.");
+    }
 
   public List<DtVideo> listaDtVideo(){
     List<DtVideo> result = new LinkedList<DtVideo>();
@@ -271,4 +275,14 @@ public class Canal {
   public void agregarVideo(Video video) {
     this.videos.put(video.getNombre(), video);
   }
+
+
+  public List<DtVideo> getDtVideos() {
+    List<DtVideo> videos = new ArrayList<DtVideo>(); 
+    for(Entry<String, Video> video : this.videos.entrySet()){
+        videos.add(video.getValue().getDt());
+    }
+    return videos;
+  }
+  
 }

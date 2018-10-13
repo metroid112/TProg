@@ -21,6 +21,9 @@
 			<input type="hidden" name="STATE" value="LOADLISTAS">
 			<button>Quitar Video de Lista</button>
 		</form>
+		<form action="/ModificarVideo" method="GET">
+			<input type="submit" value="Modificar video (WIP)">
+		</form>
 	<% } %>
 	<br>
 	<form action="/AltaUsuario" method="GET">
