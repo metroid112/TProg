@@ -46,9 +46,7 @@ public class ConsultaLista extends HttpServlet {
         }
         request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
       } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
-        //Boolean listaDefecto = true;
         request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
-        //List<DtVideo> videosDeLista;
         int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
         DtLista dtLista = null;
         try {

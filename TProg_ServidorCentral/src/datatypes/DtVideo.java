@@ -21,6 +21,7 @@ public class DtVideo {
   public String usuario;
   public String nombre;
   public String Url;
+  public String UrlThumbnail;
   public String descripcion;
   public String categoria;
   public boolean visible;
@@ -56,6 +57,11 @@ public class DtVideo {
       this.calificaciones.add(cal.getDt());
     }
     this.idVideo = idVideo;
+    if (this.Url != null) {
+      this.UrlThumbnail = "https://img.youtube.com/vi/";
+      this.UrlThumbnail += this.Url.substring(17, 28);
+      this.UrlThumbnail += "/0.jpg";
+    }
   }
 
   public int getCantidadCalificacionesPositivas(){
