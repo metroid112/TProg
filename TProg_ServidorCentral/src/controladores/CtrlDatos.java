@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -386,7 +387,7 @@ public class CtrlDatos implements IDatos {
   }
 
   @Override
-  public DtBusqueda busqueda(String txtBusqueda) {
+  public DtBusqueda busquedaGeneral(String txtBusqueda) {
     List<DtVideo> videos = new LinkedList<DtVideo>();
     List<DtLista> listas = new LinkedList<DtLista>();
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
@@ -411,7 +412,56 @@ public class CtrlDatos implements IDatos {
         }
       }
     }
+    videos.sort(Comparator.comparing(DtVideo::getNombre));
     DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
+    return resultados;
+  }
+  
+  @Override
+  public DtBusqueda busquedaVideo(String txtBusqueda) {
+    List<DtVideo> videos = new LinkedList<DtVideo>();
+    List<DtLista> listas = new LinkedList<DtLista>();
+    List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
+    for (Video vid : ManejadorVideos.getManejadorVideos().getVideos().values()) {
+      if (vid.isVisible()) {
+        if (vid.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || vid.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          videos.add(vid.getDt());
+        }
+      }
+    }
+    DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
+    return resultados;
+  }
+  
+  @Override
+  public DtBusqueda busquedaLista(String txtBusqueda) {
+    List<DtVideo> videos = new LinkedList<DtVideo>();
+    List<DtLista> listas = new LinkedList<DtLista>();
+    List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
+    for (ListaParticular lista : Fabrica.getIListas().getListasPublicas().values()) {
+      if (lista.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+        listas.add(lista.getDtLista());
+      }
+    }
+    DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
+    return resultados;
+  }
+  
+  @Override
+  public DtBusqueda busquedaCanales(String txtBusqueda) {
+    List<DtVideo> videos = new LinkedList<DtVideo>();
+    List<DtLista> listas = new LinkedList<DtLista>();
+    List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
+    for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
+      Canal canal = usuario.getCanal();
+      if (canal.isVisible()) {
+        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(),usuario.getCanal().getNombre(), usuario.getPath(), canal.getUltimaActividad());
+          usuarios.add(dtUsuario);
+        }
+      }
+    }
+    DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
     return resultados;
   }
 

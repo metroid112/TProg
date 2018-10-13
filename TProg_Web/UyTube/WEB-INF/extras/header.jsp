@@ -12,6 +12,7 @@
 			<div class="form-group">
 				<div class="input-group-btn">
 					<input type="text" placeholder="Busqueda" name="txtBusqueda">
+					<input type="hidden" name="TIPO_BUSQUEDA" value="TODOS">
 					<button>Buscar</button>
 				</div>
 			</div>

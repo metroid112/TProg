@@ -8,5 +8,8 @@ import datatypes.DtBusqueda;
 
 public interface IDatos {
   public void cargaDatos() throws ParseException, IOException;
-  public DtBusqueda busqueda(String txtBusqueda);
+  public DtBusqueda busquedaGeneral(String txtBusqueda);
+  DtBusqueda busquedaVideo(String txtBusqueda);
+  DtBusqueda busquedaLista(String txtBusqueda);
+  DtBusqueda busquedaCanales(String txtBusqueda);
 }
