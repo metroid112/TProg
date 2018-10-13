@@ -13,20 +13,20 @@
 <div class="contenedor">
 	<jsp:include page="/WEB-INF/extras/sidebar.jsp"/>
 	<div class="contenido">
-<%! @SuppressWarnings("unchecked") %>
+	<%! @SuppressWarnings("unchecked") %>
 		<%
 		switch((String) request.getAttribute("STATE")) {
 			case "LISTAR":
 				List<String> listaUsuarios = (LinkedList<String>) request.getAttribute("USUARIOS");
 				if (listaUsuarios.isEmpty()) { %>
 					<h1>No hay usuarios.</h1>
-		 <% } else { %>
+		 	 <% } else { %>
 					<form action="/ConsultaUsuario" method="GET">
 						<input type="hidden" name="STATE" value="INFO">
 						<select class="form-control form-control-lg" name="usuario" required>
-         <%	for (String usuario : listaUsuarios) { %>
+             		 <% for (String usuario : listaUsuarios) { %>
 							<option value="<%= usuario %>"><%= usuario %></option>
-         <%	} %>
+         				<% } %>
 						</select>
 						<button>Seleccionar</button>
 					</form>
@@ -40,7 +40,7 @@
   		List<String> seguidos = (List<String>) request.getAttribute("SEGUIDOS");
  			if (usuario == null) { %>
   			<h1>Usuario <%= usuario.nick %> no existe</h1>
-   <%	} else { %>
+     <%	} else { %>
   			<h1>INFO USUARIO</h1>
   			<h2><%= usuario.nick %></h2>
   			<img alt="Imagen de <%= usuario.nick %>" src="<%= usuario.imgPath %>">
@@ -53,15 +53,15 @@
   			Descripci�n: <%= usuario.descripcionCanal %>
   			<br>
   			<h3>VIDEOS PUBLICOS</h3>
-     <% for(DtVideo video : videos) { %>
+     		<% for(DtVideo video : videos) { %>
   				<form action="/ConsultaVideo" method="GET">
 	  				<input name="VIDEO_ID" value="<%= video.idVideo %>" hidden>
 	  				<button><%= video.nombre %></button>
 	  			</form>
 	  			<br>
-     <% } %>
-				<h3>LISTAS PUBLICAS</h3>
-     <%	for(DtLista lista : listas) { %>
+     		<% } %>
+			<h3>LISTAS PUBLICAS</h3>
+     		<%	for(DtLista lista : listas) { %>
 					<form action="#" method="GET">
 						<input name="" value="" hidden>
 						<button><%= lista.getNombre() %></button>
@@ -87,11 +87,17 @@
 				if(usuarioLogueado.nick.equals(usuario.nick)) { %>
 				  	<form action="/ModificarUsuario" method="GET">
 				  		<button>MODIFICAR DATOS</button>
-						</form>
-     <% } else { %>
-			  	<form action="/SeguirUsuario" method="GET">
-			  		<button><%= sigue %></button>
 					</form>
+     <% } else { %>
+     			<%
+     			boolean sigue = (boolean) request.getAttribute("SIGUE");
+     			String textoSeguir = sigue ? "Dejar de seguir" : "Seguir";
+     			String metodoSeguir = sigue ? "DEJAR_SEGUIR" : "SEGUIR";
+     			%>
+			  	<form action="/SeguirUsuario" method="GET">
+			  		<input name="ACCION" value="<%= metodoSeguir %>" type="hidden">
+			  		<button><%= textoSeguir %></button>
+				</form>
      <%	}
  			} %>
 			<form action="/ConsultaUsuario" method="GET">

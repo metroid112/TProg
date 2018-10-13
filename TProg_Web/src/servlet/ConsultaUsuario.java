@@ -30,7 +30,7 @@ public class ConsultaUsuario extends HttpServlet {
             response);
         break;
       case "INFO":
-        DtUsuario nombreUsuarioLogueado = (DtUsuario) request.getAttribute("USUARIO_LOGEADO");
+        DtUsuario usuarioLogueado = (DtUsuario) request.getAttribute("USUARIO_LOGEADO");
         String nombreUsuario = (String) request.getParameter("usuario");
         request.setAttribute("STATE", "INFO");
         request.setAttribute("USUARIO",
@@ -45,7 +45,7 @@ public class ConsultaUsuario extends HttpServlet {
             Fabrica.getIUsuariosCanales().getSeguidos(nombreUsuario));
         if (usuarioLogueado != null) {
           request.setAttribute("SIGUE",
-              Fabrica.getIUsuariosCanales().isSeguidor(nombreUsuarioLogueado, nombreUsuario))
+              Fabrica.getIUsuariosCanales().isSeguidor(usuarioLogueado.nombre, nombreUsuario));
         }
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);
