@@ -33,4 +33,5 @@ hs_err_pid*
 # not ignore libs
 !TProg_Workstation/lib/*.jar
 *.jar
-TProg_Web/UyTube/WEB-INF/lib/ServidorCentral.jar
+!TProg_Web/UyTube/WEB-INF/lib/jstl-1.2.jar
+!TProg_Web/UyTube/WEB-INF/lib/ServidorCentral.jar
