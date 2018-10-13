@@ -60,13 +60,11 @@
 				 <br><br>
 				<h5>Me gusta:</h5> <%= vid.getCantidadCalificacionesPositivas()%>
 				<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
-				String cast;
-				cast = Integer.toString(vid.idVideo);
+
 				if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
-							<input type="hidden" name="VALORAR" value="POSITIVO">
-							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= cast %>" >
-
+							<input type="hidden" name="ACCION" value="VALORAR_POSITIVO">
+							<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
 							<button type="submit">Valorar</button>
 
 						</form>
@@ -86,9 +84,8 @@
 				<h5>No me gusta:</h5> <%= vid.getCantidadCalificacionesNegativas()%>
 				<%if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
-							<input type="hidden" name="VALORAR" value="NEGATIVO">
-							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= cast %>" >
-
+							<input type="hidden" name="ACCION" value="VALORAR_NEGATIVO">
+							<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
 							<button type="submit">Valorar</button>
 
 						</form>
@@ -114,6 +111,14 @@
 		<c:set var="comentarios" value="${DT_VIDEO.comentarios}"  scope="request"/>
 		<jsp:include page="comentarios.jsp" />
 		<br>
+		<%if(d!=null){ %>
+			<form action="/ConsultaVideo" method="POST">
+				<input type="hidden" name="ACCION" value="COMENTAR">
+				<input type="text" name="COMENTARIO">
+				<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
+				<button type="submit">Comentar</button>
+			</form>
+		<% } %>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/extras/script.jsp" />
