@@ -59,6 +59,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = owner.getCanal().getVideoCanal(nombreVideo);
     usuario.comentar(texto, fecha, vid);
   }
+  @Override
+  public void responderComentario(String texto, Date fecha, String nombreUsuario,
+      String nombreVideo, String nombreDuenoVideo, Integer idComentarioPadre) {
+    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
+    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
+    usuario.responder(texto, fecha, idComentarioPadre, vid);
+  }
 
   @Override
   public boolean existeUsuario(String nick) {
@@ -170,15 +178,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public String[] listarVideosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
-  }
-
-  @Override
-  public void responderComentario(String texto, Date fecha, String nombreUsuario,
-      String nombreVideo, String nombreDuenoVideo, Integer idComentarioPadre) {
-    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
-    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
-    usuario.responder(texto, fecha, idComentarioPadre, vid);
   }
 
   @Override

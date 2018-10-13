@@ -116,11 +116,16 @@ public class DtVideo {
   
   public String urlWatchtFormat(){
     String resultado = this.Url;
-    
-    resultado = resultado.substring(16); //probablemente la implementacion vaya a cambiar
-    
+
+    if(resultado.substring(0, 16).equals("https://youtu.be")){
+
+    resultado = resultado.substring(16);
     resultado = "https://www.youtube.com/embed" + resultado;
-    
+    }
+    else if(resultado.substring(0,23).equals("https://www.youtube.com")){
+      resultado = resultado.substring(23);
+      resultado = "https://www.youtube.com/embed" + resultado;
+    }
     return resultado;
   }
 

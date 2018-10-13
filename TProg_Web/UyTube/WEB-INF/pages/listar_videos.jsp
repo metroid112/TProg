@@ -11,6 +11,7 @@
 <title>UyTube - Lista de Videos</title>
 </head>
 <body>
+
 	<div class="page">
 		<%@ include file="/WEB-INF/extras/header.jsp" %>
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
@@ -39,7 +40,6 @@
 						<br>
 				<%}
 			%>
-				
 			<br>
 				<%
 				DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
