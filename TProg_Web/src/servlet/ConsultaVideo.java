@@ -62,7 +62,7 @@ public class ConsultaVideo extends HttpServlet {
             }
           }
          if(request.getParameter("ACCION").equals("COMENTAR")){
-           if(request.getParameter("COMENTARIO") != null){
+           if(request.getParameter("COMENTARIO") != ""){
              if(request.getParameter("COMENTARIO_ID") == null){
                ctrUsuariosCanales.comentarVideo(request.getParameter("COMENTARIO"), new Date(), d.nick, vid.nombre, vid.usuario);
              }
@@ -73,10 +73,12 @@ public class ConsultaVideo extends HttpServlet {
              }
            }
          }
-             
+         vid = ctrVideos.getDtVideo(idVideo);
+         request.setAttribute("DT_VIDEO", vid);
       } catch (NotFoundException e) {     
         e.printStackTrace();
       }
+      
       request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
     }
 
