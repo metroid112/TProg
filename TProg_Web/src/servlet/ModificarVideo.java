@@ -102,6 +102,7 @@ public class ModificarVideo extends HttpServlet {
               request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request,response);
             } catch (InvalidDataException e) {
               // TODO Auto-generated catch block
+              System.out.println("test");
               e.printStackTrace();
             } catch (DuplicateClassException f) {
               request.setAttribute("DUPLICADO", "El nombre " + nombreVideo + " ya existe, por favor elegir otro.");  
