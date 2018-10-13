@@ -21,23 +21,21 @@ public class DtVideo {
   public String usuario;
   public String nombre;
   public String Url;
+  public String UrlThumbnail;
   public String descripcion;
   public String categoria;
   public boolean visible;
   public int idVideo;
-  
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 
       Duration duracion, boolean visible, Map<Integer, Comentario> comentarios,
       List<Calificacion> calificaciones, int idVideo, String usuario) {
 
-
-
     this.nombre = nombre;
     this.Url = url;
     this.descripcion = descripcion;
-    
+
     if (categoria != null) {
       this.categoria = categoria.getNombre();
     } else {
@@ -56,31 +54,38 @@ public class DtVideo {
       this.calificaciones.add(cal.getDt());
     }
     this.idVideo = idVideo;
+    if (this.Url != null) {
+      this.UrlThumbnail = "https://img.youtube.com/vi/";
+      this.UrlThumbnail += this.Url.substring(17, 28);
+      this.UrlThumbnail += "/0.jpg";
+    }
   }
 
   public int getCantidadCalificacionesPositivas(){
     int sum = 0;
-    for(DtCalificacion calif : calificaciones){
-      if(calif.like)
+    for (DtCalificacion calif : calificaciones) {
+      if (calif.like) {
         sum++;
+      }
     }
     return sum;
   }
-  
+
   public int getCantidadCalificacionesNegativas(){
     int sum = 0;
-    for(DtCalificacion calif : calificaciones){
-      if(!calif.like)
+    for (DtCalificacion calif : calificaciones) {
+      if (!calif.like) {
         sum++;
+      }
     }
     return sum;
   }
-  
+
 
   public List<String> getCalificacionesPositivas(){
     List<String> positivos = new LinkedList<String>();
     String usuarioObjetivo;
-    
+
     for(DtCalificacion calif : calificaciones){
       if(calif.like){
       usuarioObjetivo = calif.usuario;
@@ -89,11 +94,11 @@ public class DtVideo {
     }
     return positivos;
   }
-  
+
   public List<String> getCalificacionesNegativas(){
     List<String> negativos = new LinkedList<String>();
     String usuarioObjetivo;
-    
+
     for(DtCalificacion calif : calificaciones){
       if(!calif.like){
       usuarioObjetivo = calif.usuario;
@@ -105,7 +110,7 @@ public class DtVideo {
 
   public String duracionPrintFormat(){
     String resultado = this.duracion.toString();
-    
+
     resultado = resultado.substring(2);
 
     resultado = resultado.replace("M", ":");
@@ -113,7 +118,7 @@ public class DtVideo {
 
     return resultado;
   }
-  
+
   public String urlWatchtFormat(){
     String resultado = this.Url;
 
@@ -145,6 +150,21 @@ public class DtVideo {
     this.comentarios = comentarios;
   }
 
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public Date getFecha() {
+    return fecha;
+  }
+
+  public void setFecha(Date fecha) {
+    this.fecha = fecha;
+  }
 
   @Override
   public boolean equals(Object o) {

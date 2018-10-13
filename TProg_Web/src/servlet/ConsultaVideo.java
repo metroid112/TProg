@@ -25,29 +25,29 @@ import interfaces.IVideos;
 @WebServlet("/ConsultaVideo")
 public class ConsultaVideo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     
+
     public ConsultaVideo() {
         super();
-    
+
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      
+
       IVideos ctrVideos = Fabrica.getIVideos();
       IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
       String videoId = (String) request.getParameter("VIDEO_ID");
       int idVideo = Integer.parseInt(videoId);
       DtVideo vid;
-      
+
       try {
         vid = ctrVideos.getDtVideo(idVideo);
         request.setAttribute("DT_VIDEO", vid);
-  
+
         DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
-        
+
         if(request.getParameter("ACCION").equals("VALORAR_POSITIVO")) {
           if(!ctrUsuariosCanales.yaCalificacdo(d.nick, false, vid.nombre, vid.usuario)){
-            
+
           ctrUsuariosCanales.valorarVideo(d.nick,true ,vid.nombre, vid.usuario);
           }
           else{ ctrUsuariosCanales.modificarValoracion(true, d.nick, vid.nombre, vid.usuario);
@@ -83,9 +83,9 @@ public class ConsultaVideo extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	  
+
 	  IVideos ctrVideos = Fabrica.getIVideos();
-	  
+
 	  String videoId = (String) request.getParameter("VIDEO_ID");
 	  int id = Integer.parseInt(videoId);
 	  DtVideo vid;
@@ -94,14 +94,13 @@ public class ConsultaVideo extends HttpServlet {
       request.setAttribute("DT_VIDEO", vid);
     } catch (NotFoundException e) {
       e.printStackTrace();
-    }   
-    
+    }
+
     request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
-    
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	  
+
 	  processRequest(request, response);
 	}
 

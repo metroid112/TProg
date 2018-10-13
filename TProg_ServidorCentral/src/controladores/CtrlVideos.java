@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.List;
 import java.util.Map.Entry;
@@ -70,25 +71,35 @@ public class CtrlVideos implements IVideos {
       return null;
     }
   }
+  
+  @Override
+  public List<DtVideo> getDtVideosPropietario(String nick) {
+    Usuario usuario = manejadorUsuario.get(nick);
+    if (usuario != null) {
+      return usuario.getCanal().getDtVideos();
+    } else {
+      return null;
+    }
+  }
 
   @Override
   public DtVideo[] listarTodosLosVideos(String nick) {
- 
+
     List<DtVideo> listaVideos = new ArrayList<DtVideo>();
-    for (Entry<String, Usuario> usuario: manejadorUsuario.getMap().entrySet()){
+    for (Entry<String, Usuario> usuario : manejadorUsuario.getMap().entrySet()) {
       List<DtVideo> lista = usuario.getValue().getCanal().getVideosPublicos();
       listaVideos.addAll(lista);
     }
     Usuario user = manejadorUsuario.get(nick);
-    List<DtVideo>lista = user.getCanal().getVideosPrivados();
+    List<DtVideo> lista = user.getCanal().getVideosPrivados();
     listaVideos.addAll(lista);
     return listaVideos.toArray(new DtVideo[listaVideos.size()]);
   }
-  
+
   @Override
   public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion,
       String url, String categoriaString, Duration duracion, Boolean visible, Date fecha)
-      throws InvalidDataException {
+      throws InvalidDataException, DuplicateClassException {
     Video vid = manejadorUsuario.get(nick).getCanal().getVideoCanal(nombreOld);
     vid.getCanal().modVideo(nombreOld, nombre);
     Categoria categoria;
@@ -109,5 +120,11 @@ public class CtrlVideos implements IVideos {
       dtVideos.put(video.getKey(), video.getValue().getDt());
     }
     return dtVideos;
+  }
+
+  @Override
+  public List<DtVideo> getDtVideosPublicos(String nombreUsuario) {
+    return ManejadorUsuarios.getManejadorUsuarios().get(nombreUsuario).getCanal()
+        .getVideosPublicos();
   }
 }

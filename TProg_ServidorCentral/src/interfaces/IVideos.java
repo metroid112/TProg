@@ -2,6 +2,7 @@ package interfaces;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import datatypes.DtVideo;
@@ -26,7 +27,11 @@ public interface IVideos {
 
   public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion,
       String url, String categoria, Duration duracion, Boolean visible, Date fecha)
-      throws InvalidDataException;
+      throws InvalidDataException, DuplicateClassException;
 
   public DtVideo[] listarTodosLosVideos(String nick);
+
+  public List<DtVideo> getDtVideosPublicos(String nombreUsuario);
+  
+  public List<DtVideo> getDtVideosPropietario(String nick);
 }

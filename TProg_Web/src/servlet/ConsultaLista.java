@@ -19,21 +19,15 @@ import interfaces.IListas;
 import manejadores.ManejadorVideos;
 import utils.EstadoSesion;
 
-/**
- * Servlet implementation class AgregarVideoALista
- */
 @WebServlet("/ConsultaLista")
 public class ConsultaLista extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ConsultaLista() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+  private static final long serialVersionUID = 1L;
 
+  public ConsultaLista() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+  
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
       IListas ctrlListas = Fabrica.getIListas();
@@ -46,9 +40,7 @@ public class ConsultaLista extends HttpServlet {
         }
         request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
       } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
-        //Boolean listaDefecto = true;
         request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
-        //List<DtVideo> videosDeLista;
         int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
         DtLista dtLista = null;
         try {
@@ -63,15 +55,15 @@ public class ConsultaLista extends HttpServlet {
         request.getRequestDispatcher("/index.jsp").forward(request, response);
       }      
     }
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-      processRequest(request, response);
-    }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-      processRequest(request, response);
-    }
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    processRequest(request, response);
+  }
 
 }

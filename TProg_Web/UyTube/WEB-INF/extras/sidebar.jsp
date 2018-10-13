@@ -21,6 +21,9 @@
 			<input type="hidden" name="STATE" value="LOADLISTAS">
 			<button>Quitar Video de Lista</button>
 		</form>
+		<form action="/ModificarVideo" method="GET">
+			<input type="submit" value="Modificar video (WIP)">
+		</form>
 	<% } %>
 	<br>
 	<form action="/AltaUsuario" method="GET">
@@ -32,9 +35,12 @@
 		<button>Consulta de Lista</button>
 	</form>
 	<br>
-	<form action="/ConsultaUsuarios" method="GET">
+	<form action="/ConsultaUsuario" method="GET">
+		<input type="hidden" name="STATE" value="LISTAR">
 		<button>Consulta Usuario</button>
 	</form>
+	<br>
+	<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
 	<br>
 	<form action="/ConsultaDeCategoria" method="GET">
 		<button>Listar Categorias</button>

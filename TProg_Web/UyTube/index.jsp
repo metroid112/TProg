@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="page">
-		<jsp:include page="WEB-INF/extras/header.jsp"></jsp:include>
+		<jsp:include page="WEB-INF/extras/header.jsp"/>
 		<div class="contenedor">
 			<jsp:include page="WEB-INF/extras/sidebar.jsp"></jsp:include>
 		</div>
