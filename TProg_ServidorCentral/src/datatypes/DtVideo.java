@@ -114,13 +114,17 @@ public class DtVideo {
     return resultado;
   }
   
-  public String urlWatchtFormat(){
+  public String urlWatchtFormat(){  //puede cambiar la implementacion
     String resultado = this.Url;
     
-    resultado = resultado.substring(16); //probablemente la implementacion vaya a cambiar
-    
+    if(resultado.substring(16).equals("https://youtu.be/")){
+    resultado = resultado.substring(16);   
     resultado = "https://www.youtube.com/embed" + resultado;
-    
+    }
+    if(resultado.substring(24).equals("https://www.youtube.com/embed")){
+      resultado = resultado.substring(24);
+      resultado = "https://www.youtube.com/embed" + resultado;
+    }
     return resultado;
   }
 
