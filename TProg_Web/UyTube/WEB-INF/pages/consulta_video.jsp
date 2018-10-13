@@ -60,8 +60,7 @@
 				 <br><br>
 				<h5>Me gusta:</h5> <%= vid.getCantidadCalificacionesPositivas()%>
 				<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
-				String cast;
-				cast = Integer.toString(vid.idVideo);
+
 				if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
 							<input type="hidden" name="VALORAR" value="POSITIVO">
@@ -87,7 +86,7 @@
 				<%if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
 							<input type="hidden" name="VALORAR" value="NEGATIVO">
-							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= cast %>" >
+							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= vid.idVideo %>" >
 
 							<button type="submit">Valorar</button>
 
