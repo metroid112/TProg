@@ -61,10 +61,6 @@ public class CtrlVideosTest {
   public void testGetDtVideo() {
     carga();
     Duration duracion = Duration.ofMinutes(5);
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     // Video vid = new Video("Video1", "Descripcion1", duracion, "url", null, null, fecha);
     // DtVideo esperado = new DtVideo("Video1", "Descripcion1", "url", null, fecha, duracion, false,
     // new LinkedHashMap<Integer, Comentario>(), new LinkedList<Calificacion>());
@@ -98,13 +94,13 @@ public class CtrlVideosTest {
     carga();
     Duration duracion = Duration.ofMinutes(5);
     // Video vid = new Video("Video2", "Descripcion2", duracion, "url2", null, fecha, true, null);
-    try {
+//    try {
       // video.altaVideo(usuario.getNick(), "Video1", "Descripcion1", duracion, "url", null, fecha);
-      video.modificarVideo(usuario.getNick(), "Video1", "Video2", "Descripcion2", "url2", null,
-          duracion, true, fecha);
-    } catch (InvalidDataException e) {
-      System.out.println(e.getMessage());
-    }
+      //video.modificarVideo(usuario.getNick(), "Video1", "Video2", "Descripcion2", "url2", null,
+        //  duracion, true, fecha);
+//    } catch (InvalidDataException e) {
+//      System.out.println(e.getMessage());
+//    }
 
     // Assert.assertEquals(vid, manejadorUsuarios.get("Pato").getCanal().getVideoCanal("Video2"));
   }

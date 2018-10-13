@@ -226,10 +226,14 @@ public class Canal {
   
 
 
-  public void modVideo(String nombreOld, String nombre) {
-    Video vid = this.videos.remove(nombreOld);
-    this.videos.put(nombre, vid);
-    
+  public void modVideo(String nombreOld, String nombre) throws DuplicateClassException {
+    if (!this.videos.containsKey(nombre)) {
+      Video vid = this.videos.remove(nombreOld);
+      this.videos.put(nombre, vid);      
+    } else {
+      throw new DuplicateClassException ("Video", "El nombre seleccionado ya existe.");
+    }
+
 
   }
   

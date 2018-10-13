@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,12 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import clases.Calificacion;
+import clases.Categoria;
+import clases.Comentario;
+import datatypes.DtCalificacion;
+import datatypes.DtComentario;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
+import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IVideos;
+import manejadores.ManejadorCategorias;
 import utils.EstadoSesion;
 
 /**
@@ -52,15 +63,48 @@ public class ModificarVideo extends HttpServlet {
           }
           
         } else if (request.getParameter("modificar") != null) {
-          String nick = (String) request.getSession().getAttribute("USUARIO_LOGEADO").
-          String oldNombre = (String) request.getParameter("oldnombre");
+          DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+          String nick = user.nick;
+          String oldNombre = (String) request.getParameter("oldNombre");
           String nombreVideo = (String) request.getParameter("nombreVideo");
           String urlVideo = (String) request.getParameter("urlVideo");
           String visibilidad = (String) request.getParameter("visibilidad");
           String categoria = (String) request.getParameter("categoria");
           String descripcionVideo = (String) request.getParameter("descripcionVideo");
           Boolean visible = visibilidad.equals("Publico") ? true : false;
-          Fabrica.getIVideos().modificarVideo(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+          String duracionH = request.getParameter("duracionH");
+          String duracionM = request.getParameter("duracionM");
+          String duracionS = request.getParameter("duracionS");
+          Date fecha = new Date();
+          try {
+            fecha = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("fecha"));
+          } catch (ParseException exception) {
+            exception.printStackTrace();
+          }
+          Duration duracion =
+              Duration.parse("PT" + duracionH + "H" + duracionM + "M" + duracionS + "S");
+            try {
+              Fabrica.getIVideos().modificarVideo(nick, oldNombre, nombreVideo, descripcionVideo, urlVideo, categoria, duracion, visible, fecha);
+              request.setAttribute("EXITO", "¡Se han modificados los datos del video con exito!");
+              request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request,response);
+            } catch (InvalidDataException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            } catch (DuplicateClassException f) {
+              request.setAttribute("DUPLICADO", "El nombre " + nombreVideo + " ya existe, por favor elegir otro.");  
+              Categoria cat = ManejadorCategorias.getManejadorCategorias().get(categoria);
+              Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
+              List<Calificacion> calificacion = new LinkedList<Calificacion>();     
+              DtVideo videoTemp = new DtVideo(oldNombre, descripcionVideo, urlVideo, cat, fecha,
+                  duracion, visible, comentarios, calificacion, -1, nick);
+              request.setAttribute("VIDEO", videoTemp);
+              ICategorias ctrlCategorias = Fabrica.getICategorias();
+              String[] listaCategorias = ctrlCategorias.listarCategorias();
+              request.setAttribute("CATEGORIAS", listaCategorias);
+              request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request, response);
+            }
+
+
           
         } else {
           String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
