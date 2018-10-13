@@ -36,11 +36,11 @@ public class ConsultaVideo extends HttpServlet {
       IVideos ctrVideos = Fabrica.getIVideos();
       IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
       String videoId = (String) request.getParameter("VIDEO_ID");
-      int id = Integer.parseInt(videoId);
+      int idVideo = Integer.parseInt(videoId);
       DtVideo vid;
       
       try {
-        vid = ctrVideos.getDtVideo(id);
+        vid = ctrVideos.getDtVideo(idVideo);
         request.setAttribute("DT_VIDEO", vid);
   
         DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
@@ -62,8 +62,15 @@ public class ConsultaVideo extends HttpServlet {
             }
           }
          if(request.getParameter("ACCION").equals("COMENTAR")){
-           if(request.getParameter("COMENTARIO_ID") == null){
-             ctrUsuariosCanales.comentarVideo(request.getParameter("COMENTARIO"), arg1, arg2, arg3, arg4);
+           if(request.getParameter("COMENTARIO") != null){
+             if(request.getParameter("COMENTARIO_ID") == null){
+               ctrUsuariosCanales.comentarVideo(request.getParameter("COMENTARIO"), new Date(), d.nick, vid.nombre, vid.usuario);
+             }
+             else{
+               String idReq = request.getParameter("COMENTARIO_ID");
+               int idComentario = Integer.parseInt(idReq);
+               ctrUsuariosCanales.responderComentario(request.getParameter("COMENTARIO"), new Date(), d.nick, vid.nombre, vid.usuario,idComentario);
+             }
            }
          }
              
