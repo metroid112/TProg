@@ -65,7 +65,7 @@
 				if(d != null){ %>
 						<form action="/ConsultaVideo" method="POST">
 							<input type="hidden" name="VALORAR" value="POSITIVO">
-							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= cast %>" >
+							<input type="hidden" id="1" name="VIDEO_ID2" value= "<%= vid.idVideo %>" >
 
 							<button type="submit">Valorar</button>
 
