@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import interfaces.Fabrica;
+import interfaces.ICategorias;
 
 /**
  * Servlet implementation class AltaUsuario
@@ -76,6 +77,9 @@ public class AltaUsuario extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    ICategorias ctrlCategorias = Fabrica.getICategorias();
+    String[] listaCategorias = ctrlCategorias.listarCategorias();
+    request.setAttribute("CATEGORIAS", listaCategorias);
     request.getRequestDispatcher("WEB-INF/pages/alta_usuario.jsp").forward(request, response);
   }
 
