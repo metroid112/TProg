@@ -17,7 +17,7 @@
 					<select name="TIPO_BUSQUEDA">
 						<option value="TODOS">Todos</option>
 						<option <c:if test="${param.TIPO_BUSQUEDA.equals('VIDEOS')}">selected</c:if> value="VIDEOS">Videos</option>
-						<option <c:if test="${param.TIPO_BUSQUEDA.equals('LISTAS')}">selected</c:if>value="LISTAS">Listas</option>
+						<option <c:if test="${param.TIPO_BUSQUEDA.equals('LISTAS')}">selected</c:if> value="LISTAS">Listas</option>
 						<option <c:if test="${param.TIPO_BUSQUEDA.equals('CANALES')}">selected</c:if> value="CANALES">Canales</option>
 					</select>
 					<select name="ORDEN_BUSQUEDA">
@@ -52,7 +52,7 @@
 				<h1>Canales</h1>
 				<br>
 				<%for (DtUsuario usuario : usuarios) {%>
-					<div><%= usuario.canal %></div>
+					<div> <%= usuario.canal %></div>
 					<br>
 				<% } %>
 			</c:if>

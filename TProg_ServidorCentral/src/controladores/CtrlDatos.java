@@ -412,7 +412,7 @@ public class CtrlDatos implements IDatos {
         }
       }
     }
-    videos.sort(Comparator.comparing(DtVideo::getNombre));
+    
     DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
     return resultados;
   }

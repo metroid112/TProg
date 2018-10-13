@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import datatypes.DtBusqueda;
 import datatypes.DtLista;
+import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import interfaces.Fabrica;
 
@@ -37,10 +38,16 @@ public class Busqueda extends HttpServlet {
       resultados = Fabrica.getIDatos().busquedaCanales(txtBusqueda);
     }
     String ordenBusqueda = request.getParameter("ORDEN_BUSQUEDA");
-    if (ordenBusqueda.equals("ALFABETICO")) {
-      resultados.videos.sort(Comparator.comparing(DtVideo::getNombre));
-      resultados.listas.sort(Comparator.comparing(DtLista::getNombre));
-      resultados.usuarios.sort(Comparator.comparing(DtUsuario::getCanal)); //TODO agregar getter y fecha
+    if (ordenBusqueda != null) {
+      if (ordenBusqueda.equals("ALFABETICO")) {
+        resultados.videos.sort(Comparator.comparing(DtVideo::getNombre));
+        resultados.listas.sort(Comparator.comparing(DtLista::getNombre));
+        resultados.usuarios.sort(Comparator.comparing(DtUsuario::getCanal));
+      } else if (ordenBusqueda.equals("FECHA")) {
+        resultados.videos.sort(Comparator.comparing(DtVideo::getFecha));
+        resultados.listas.sort(Comparator.comparing(DtLista::getUltimaActividad));
+        resultados.usuarios.sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
+      } 
     }
     request.setAttribute("RESULTADO_BUSQUEDA", resultados);
     request.getRequestDispatcher("WEB-INF/pages/busqueda.jsp").forward(request, response);

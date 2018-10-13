@@ -148,6 +148,14 @@ public class DtVideo {
     this.nombre = nombre;
   }
 
+  public Date getFecha() {
+    return fecha;
+  }
+
+  public void setFecha(Date fecha) {
+    this.fecha = fecha;
+  }
+
   @Override
   public boolean equals(Object o) {
     DtVideo dt = (DtVideo) o;

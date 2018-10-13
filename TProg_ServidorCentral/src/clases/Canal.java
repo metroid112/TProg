@@ -81,7 +81,7 @@ public class Canal {
   }
   
   public Date getUltimaActividad() {
-    Date ultimaActividad = null;
+    Date ultimaActividad = new Date(0);
     for (Video vid : this.videos.values()) {
       if (ultimaActividad == null || vid.getFecha().after(ultimaActividad)) {
         ultimaActividad = vid.getFecha();
