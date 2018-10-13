@@ -16,7 +16,9 @@ java.util.Date" %>
 </head>
 <body>
 	<% if (request.getAttribute("DUPLICADO") != null) { %>
-		<h1><%= request.getAttribute("DUPLICADO") %></h1>
+		<h1 style="color:red"><%= request.getAttribute("DUPLICADO") %></h1>
+	<% } else if (request.getAttribute("DURACION") != null) { %>
+		<h1 style="color:red"><%= request.getAttribute("DURACION") %></h1>
 	<% } %>
 	<% DtVideo video = (DtVideo) request.getAttribute("VIDEO"); %>
 	<% String nombreVideo = video.nombre; %>
@@ -32,11 +34,6 @@ java.util.Date" %>
 	String date = format.format(video.fecha);
 	%>
 
-	<script type="text/javascript">
-    function validate() {
-        	alert("La duracion tiene que ser positiva.");
-    }
-    </script>
 	<form action="/ModificarVideo" method="POST">
 		<input type="hidden" name="oldNombre" value="<%= video.nombre %>">
 		Nombre del video: <input type="text" name="nombreVideo" value="<%= video.nombre %>">
@@ -66,8 +63,7 @@ java.util.Date" %>
 			<% } %>
 		</select>
 		<br><br>
-		<input type="number" name="test" min="0" oninput="validity.valid||(value='');">
-		Duracion (H M S): <input type="number" name="duracionH" id="hora" min="0" oninput="validity.valid||(value='');" value="<%= horas %>"required><input type="number" name="duracionM" id="minuto" value="<%= minutos %>"required><input type="number" id="segundo" name="duracionS" value="<%= segundos %>"required>*
+		Duracion (H M S): <input type="number" name="duracionH" id="hora" min="0" oninput="validity.valid||(value='');" value="<%= horas %>"required><input type="number" name="duracionM" id="minuto" min="0" oninput="validity.valid||(value='');" value="<%= minutos %>"required><input type="number" id="segundo" min="0" name="duracionS" oninput="validity.valid||(value='');" value="<%= segundos %>"required>*
 		<br><br>
 		Fecha: <input type="date" value="<%= date %>" name="fecha" required>*
 		<input type="hidden" name="modificar"  value="">

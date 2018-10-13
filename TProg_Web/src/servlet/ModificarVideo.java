@@ -83,6 +83,19 @@ public class ModificarVideo extends HttpServlet {
           }
           Duration duracion =
               Duration.parse("PT" + duracionH + "H" + duracionM + "M" + duracionS + "S");
+          if (duracionH.equals("0") && duracionM.equals("0") && duracionS.equals("0")) {
+            request.setAttribute("DURACION", "La duracion debe ser positiva.");  
+            Categoria cat = ManejadorCategorias.getManejadorCategorias().get(categoria);
+            Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
+            List<Calificacion> calificacion = new LinkedList<Calificacion>();     
+            DtVideo videoTemp = new DtVideo(oldNombre, descripcionVideo, urlVideo, cat, fecha,
+                duracion, visible, comentarios, calificacion, -1, nick);
+            request.setAttribute("VIDEO", videoTemp);
+            ICategorias ctrlCategorias = Fabrica.getICategorias();
+            String[] listaCategorias = ctrlCategorias.listarCategorias();
+            request.setAttribute("CATEGORIAS", listaCategorias);
+            request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request, response);
+          } else {
             try {
               Fabrica.getIVideos().modificarVideo(nick, oldNombre, nombreVideo, descripcionVideo, urlVideo, categoria, duracion, visible, fecha);
               request.setAttribute("EXITO", "¡Se han modificados los datos del video con exito!");
@@ -103,9 +116,7 @@ public class ModificarVideo extends HttpServlet {
               request.setAttribute("CATEGORIAS", listaCategorias);
               request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request, response);
             }
-
-
-          
+          }
         } else {
           String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
           List<DtVideo> listaVideos = ctrlVideos.getDtVideosPropietario(usuario);
