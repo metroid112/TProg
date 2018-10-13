@@ -26,19 +26,16 @@ public class DtVideo {
   public String categoria;
   public boolean visible;
   public int idVideo;
-  
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 
       Duration duracion, boolean visible, Map<Integer, Comentario> comentarios,
       List<Calificacion> calificaciones, int idVideo, String usuario) {
 
-
-
     this.nombre = nombre;
     this.Url = url;
     this.descripcion = descripcion;
-    
+
     if (categoria != null) {
       this.categoria = categoria.getNombre();
     } else {
@@ -66,27 +63,29 @@ public class DtVideo {
 
   public int getCantidadCalificacionesPositivas(){
     int sum = 0;
-    for(DtCalificacion calif : calificaciones){
-      if(calif.like)
+    for (DtCalificacion calif : calificaciones) {
+      if (calif.like) {
         sum++;
+      }
     }
     return sum;
   }
-  
+
   public int getCantidadCalificacionesNegativas(){
     int sum = 0;
-    for(DtCalificacion calif : calificaciones){
-      if(!calif.like)
+    for (DtCalificacion calif : calificaciones) {
+      if (!calif.like) {
         sum++;
+      }
     }
     return sum;
   }
-  
+
 
   public List<String> getCalificacionesPositivas(){
     List<String> positivos = new LinkedList<String>();
     String usuarioObjetivo;
-    
+
     for(DtCalificacion calif : calificaciones){
       if(calif.like){
       usuarioObjetivo = calif.usuario;
@@ -95,11 +94,11 @@ public class DtVideo {
     }
     return positivos;
   }
-  
+
   public List<String> getCalificacionesNegativas(){
     List<String> negativos = new LinkedList<String>();
     String usuarioObjetivo;
-    
+
     for(DtCalificacion calif : calificaciones){
       if(!calif.like){
       usuarioObjetivo = calif.usuario;
@@ -111,7 +110,7 @@ public class DtVideo {
 
   public String duracionPrintFormat(){
     String resultado = this.duracion.toString();
-    
+
     resultado = resultado.substring(2);
 
     resultado = resultado.replace("M", ":");
@@ -119,14 +118,19 @@ public class DtVideo {
 
     return resultado;
   }
-  
+
   public String urlWatchtFormat(){
     String resultado = this.Url;
-    
-    resultado = resultado.substring(16); //probablemente la implementacion vaya a cambiar
-    
+
+    if(resultado.substring(0, 16).equals("https://youtu.be")){
+
+    resultado = resultado.substring(16);
     resultado = "https://www.youtube.com/embed" + resultado;
-    
+    }
+    else if(resultado.substring(0,23).equals("https://www.youtube.com")){
+      resultado = resultado.substring(23);
+      resultado = "https://www.youtube.com/embed" + resultado;
+    }
     return resultado;
   }
 
@@ -146,6 +150,21 @@ public class DtVideo {
     this.comentarios = comentarios;
   }
 
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public Date getFecha() {
+    return fecha;
+  }
+
+  public void setFecha(Date fecha) {
+    this.fecha = fecha;
+  }
 
   @Override
   public boolean equals(Object o) {

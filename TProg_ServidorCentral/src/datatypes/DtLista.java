@@ -22,10 +22,9 @@ public class DtLista {
     this.videos = videos;
     this.categorias = categorias;
   }
-  
-  
-  public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos, List<DtVideo> dtVideos,
-      LinkedList<String> categorias, Date ultimaActividad, int idLista) {
+
+  public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos,
+      List<DtVideo> dtVideos, LinkedList<String> categorias, Date ultimaActividad, int idLista) {
     this.nombre = nombre;
     this.idLista = idLista;
     this.tipo = tipo;
@@ -35,7 +34,7 @@ public class DtLista {
     this.categorias = categorias;
     this.ultimaActividad = ultimaActividad;
   }
-  
+
   public Date getUltimaActividad() {
     return this.ultimaActividad;
   }
@@ -43,7 +42,7 @@ public class DtLista {
   public LinkedList<String> getCategorias() {
     return categorias;
   }
-  
+
   public int getId() {
     return this.idLista;
   }
@@ -59,7 +58,7 @@ public class DtLista {
   public LinkedList<String> getVideos() {
     return videos;
   }
-  
+
   public List<DtVideo> getDtVideos() {
     return dtVideos;
   }

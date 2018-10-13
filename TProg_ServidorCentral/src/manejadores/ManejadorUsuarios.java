@@ -54,20 +54,20 @@ public class ManejadorUsuarios {
     }
     return usuario;
   }
-  
+
   public List<DtVideo> getListaPublicoDtVideo(){
     List<DtVideo> result = new LinkedList<DtVideo>();
     List<DtVideo> listaUsuario = null;
-    
+
     for(Usuario usuarioObjetivo: usuarios.values()){
-      
+
       Canal canalObjetivo = usuarioObjetivo.getCanal();
       listaUsuario = canalObjetivo.listaPublicoDtVideo();
-      
-        for(DtVideo v: listaUsuario){
-          result.add(v);
-        }
-      
+
+      for (DtVideo v : listaUsuario) {
+        result.add(v);
+      }
+
     }
     return result;
   }
@@ -80,7 +80,7 @@ public class ManejadorUsuarios {
     }
     return true;
   }
-  
+
   public Map<String, Usuario> getMap() {
     return this.usuarios;
   }

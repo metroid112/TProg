@@ -20,7 +20,7 @@ public class ListaParticular extends Lista {
     this.visible = visible;
     ManejadorListasParticulares.getManejadorListasParticulares().add(this);
   }
-  
+
   public Date getUltimaActividad() {
     Date ultimaActividad = null;
     for (Video vid : this.getVideos()) {
@@ -64,7 +64,8 @@ public class ListaParticular extends Lista {
     for (Categoria cat : this.getCategorias().values()) {
       categorias.add(cat.getNombre());
     }
-    return new DtLista(this.getNombre(), "Particular", this.visible, videos, this.getDtVideos(), categorias , this.getUltimaActividad(), this.getId());
+    return new DtLista(this.getNombre(), "Particular", this.visible, videos, this.getDtVideos(),
+        categorias, this.getUltimaActividad(), this.getId());
   }
 
   public void insertarCategoria(Categoria categoria) {
@@ -81,7 +82,7 @@ public class ListaParticular extends Lista {
   public void setVisible(boolean visible) {
     this.visible = visible;
   }
-  
+
   public boolean isVisible() {
     return this.visible;
   }

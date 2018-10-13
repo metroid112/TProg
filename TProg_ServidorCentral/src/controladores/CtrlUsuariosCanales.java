@@ -44,7 +44,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass) {
     Usuario user =
-        new Usuario(nickname, nombreCanal, apellido, correo, fechaNacimiento, imagenPath, pass);
+        new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagenPath, pass);
     Canal canal = new Canal(nombreCanal, descripcionCanal,
         ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
     user.setCanal(canal);
@@ -58,6 +58,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario owner = manejadorUsuarios.get(ownerVideo);
     Video vid = owner.getCanal().getVideoCanal(nombreVideo);
     usuario.comentar(texto, fecha, vid);
+  }
+  @Override
+  public void responderComentario(String texto, Date fecha, String nombreUsuario,
+      String nombreVideo, String nombreDuenoVideo, Integer idComentarioPadre) {
+    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
+    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
+    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
+    usuario.responder(texto, fecha, idComentarioPadre, vid);
   }
 
   @Override
@@ -96,11 +104,13 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public String[] listarListasDeReproduccion(String nick) {
-    HashMap<String, ListaDefecto> listasDefecto = (HashMap<String, ListaDefecto>) manejadorUsuarios.get(nick).getCanal()
-        .getListaDefecto();
+    HashMap<String, ListaDefecto> listasDefecto =
+        (HashMap<String, ListaDefecto>) manejadorUsuarios.get(nick).getCanal()
+            .getListaDefecto();
     String[] listaDefecto = listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
-    HashMap<String, ListaParticular> listasParticular = (HashMap<String, ListaParticular>) manejadorUsuarios.get(nick).getCanal()
-        .getListaParticulares();
+    HashMap<String, ListaParticular> listasParticular =
+        (HashMap<String, ListaParticular>) manejadorUsuarios.get(nick).getCanal()
+            .getListaParticulares();
     String[] listaParticulares = listasParticular.keySet()
         .toArray(new String[listasParticular.size()]);
     int largo = listaDefecto.length + listaParticulares.length;
@@ -130,14 +140,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
     usuario.valorarVideo(like, vid);
   }
-  
+
   public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo){
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
     Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
     return usuario.yaCalificado(like,vid);
   }
-  
+
 
   @Override
   public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
@@ -147,7 +157,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
     usuario.modificarValoracion(like, vid);
   }
-  
+
   @Override
   public String[] listarSeguidos(String nick) {
     return manejadorUsuarios.get(nick).getSeguidos().keySet()
@@ -161,7 +171,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public String[] listarVideos(String nick) {
-    HashMap<String, Video> videos = (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
+    HashMap<String, Video> videos =
+        (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
     String[] res = videos.keySet().toArray(new String[videos.size()]);
     return res;
   }
@@ -170,15 +181,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public String[] listarVideosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
-  }
-
-  @Override
-  public void responderComentario(String texto, Date fecha, String nombreUsuario,
-      String nombreVideo, String nombreDuenoVideo, Integer idComentarioPadre) {
-    Usuario usuario = manejadorUsuarios.get(nombreUsuario);
-    Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
-    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
-    usuario.responder(texto, fecha, idComentarioPadre, vid);
   }
 
   @Override
@@ -191,22 +193,22 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
-  
+
 
   public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
-  
+
   public List<DtVideo> getListaDtVideo(String usuario){
 
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
-  
+
   public List<DtVideo> getListaPublicoDtVideo(){
-    
+
     return manejadorUsuarios.getListaPublicoDtVideo();
   }
 
@@ -219,5 +221,41 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       return manejadorUsuarios.mailGet(usr).checkPass(pass);
     }
 
+  }
+
+  @Override
+  public List<String> listarNombresUsuarios() {
+    List<String> resultado = new LinkedList<String>();
+    for (Usuario usuario : manejadorUsuarios.getMap().values()) {
+      resultado.add(usuario.getNick());
+    }
+    return resultado;
+  }
+
+  @Override
+  public List<String> getSeguidores(String nombreUsuario) {
+    List<String> seguidores = new LinkedList<String>();
+    for (Usuario seguidor : ManejadorUsuarios.getManejadorUsuarios().get(nombreUsuario)
+        .getSeguidores().values()) {
+      seguidores.add(seguidor.getNick());
+    }
+    return seguidores;
+  }
+
+  @Override
+  public List<String> getSeguidos(String nombreUsuario) {
+    List<String> seguidos = new LinkedList<String>();
+    for (Usuario seguido : ManejadorUsuarios.getManejadorUsuarios().get(nombreUsuario)
+        .getSeguidos().values()) {
+      seguidos.add(seguido.getNick());
+    }
+    return seguidos;
+  }
+
+  @Override
+  public boolean isSeguidor(String seguidor, String seguido) {
+    Usuario userSeguidor = ManejadorUsuarios.getManejadorUsuarios().get(seguidor);
+    Usuario userSeguido = ManejadorUsuarios.getManejadorUsuarios().get(seguido);
+    return ((userSeguidor.getSeguidos().get(seguido) != null) && (userSeguido.getSeguidores().get(seguidor) != null));
   }
 }

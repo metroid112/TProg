@@ -22,29 +22,31 @@ public class VideoServlet extends HttpServlet {
   public VideoServlet() {
     super();
   }
-  
+
   private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
   }
-  
+
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    
+
     IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
-    
-    LinkedList<DtVideo> videosPublicos = (LinkedList<DtVideo>) ctrUsuariosCanales.getListaPublicoDtVideo();
+
+    LinkedList<DtVideo> videosPublicos =
+        (LinkedList<DtVideo>) ctrUsuariosCanales.getListaPublicoDtVideo();
 
     request.setAttribute("VIDEOS_PUBLICOS", videosPublicos);
-    
-    DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
-    
-    if(d != null){
-      LinkedList<DtVideo> videosUsuario = (LinkedList<DtVideo>) ctrUsuariosCanales.getListaDtVideo(d.nick);
+
+    DtUsuario d = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+
+    if (d != null) {
+      LinkedList<DtVideo> videosUsuario =
+          (LinkedList<DtVideo>) ctrUsuariosCanales.getListaDtVideo(d.nick);
       int largoVideosUsuario = videosUsuario.size();
-    
-    request.setAttribute("VIDEOS_USUARIO", videosUsuario);
+
+      request.setAttribute("VIDEOS_USUARIO", videosUsuario);
     }
-    
+
     request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
   }
 
