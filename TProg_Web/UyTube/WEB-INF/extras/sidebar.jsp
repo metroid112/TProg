@@ -2,42 +2,55 @@
 <%@page import="utils.*" %>
 
 <div class="sidebar">
-	<a href="WEB-INF/pages/registro_usuarios.jsp">Prueba "registro usuario"</a>
 	<% if (session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) { %>
 		<br>
-		<a href="/AltaLista">Alta Lista (WIP)</a>
+		<form action="/AltaLista" method="GET">
+			<button>Alta Lista</button>
+		</form>
 		<br>
 		<form action="/AltaVideo" method="GET">
 			<input type="hidden" name="STATE" value="LOAD">
-			<button>Alta Video (WIP)</button>
+			<button>Alta Video</button>
 		</form>
 		<br>
 		<form action="/AgregarVideoALista" method="GET">
-			<input type="submit" value="Agregar video a lista (WIP)">
+			<button>Agregar video a lista</button>
 		</form>
 		<br>
 		<form action="/ListaServlet" method="GET">
 			<input type="hidden" name="STATE" value="LOADLISTAS">
-			<button>Quitar Video de Lista (WIP)</button>
+			<button>Quitar Video de Lista</button>
 		</form>
 	<% } %>
 	<br>
-	<a href="/AltaUsuario">Alta Usuario (WIP)</a>
+	<form action="/AltaUsuario" method="GET">
+		<button>Alta Usuario</button>
+	</form>
 	<br>
 	<form action="/ConsultaLista" method="GET">
 		<input type="hidden" name="STATE" value="START">
-		<button>Consulta de Lista (WIP)</button>
+		<button>Consulta de Lista</button>
 	</form>
 	<br>
-	<a href="WEB-INF/pages/consulta_usuario.jsp">Consulta Usuario (WIP)</a>
+	<form action="/ConsultaUsuarios" method="GET">
+		<button>Consulta Usuario</button>
+	</form>
 	<br>
-	<a href="/GestorUsuarios">Listar Usuarios (NO EXISTE CU)</a>
-	<br>
-	<a href="/CargaDatos">Cargar Datos</a>
 	<form action="/ConsultaDeCategoria" method="GET">
-		<input type="submit" value="Categorias (WIP)">
+		<button>Listar Categorias</button>
 	</form>
 	<form action="/ModificarLista" method="GET">
-		<input type="submit" value="Modificar Lista (WIP)">
+		<button>Modificar Lista</button>
+	</form>
+	<form action="/VideoServlet" method="GET">
+		<button>Listar Videos</button>
+	</form>
+	<br>
+	<form action="/GestorUsuarios" method="GET">
+		<button>Listar Usuarios</button>
+	</form>
+	<br>
+	<form action="/CargaDatos" method="GET">
+		<button>Cargar Datos</button>
 	</form>
 </div>
