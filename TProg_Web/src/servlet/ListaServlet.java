@@ -31,8 +31,7 @@ public class ListaServlet extends HttpServlet {
     String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
     String[] ListasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
     String[] ListasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
-    
-   if (request.getParameter("STATE").equals("DETALLESLISTA")) {
+   if (request.getParameter("STATE") != null && request.getParameter("STATE").equals("DETALLESLISTA")) {
      String listaSeleccionada = (String) request.getParameter("LISTA");
      request.setAttribute("LISTA", listaSeleccionada);
      Boolean listaDefecto = false;
@@ -44,49 +43,50 @@ public class ListaServlet extends HttpServlet {
      request.setAttribute("VIDEOSLISTA", videosDeLista);
      request.getRequestDispatcher("/WEB-INF/pages/seleccionar_video.jsp").forward(request, response);
    }
-   else if (request.getParameter("STATE").equals("LOADLISTAS")) {
+   else if (request.getParameter("STATE") != null && request.getParameter("STATE").equals("LOADLISTAS")) {
      //obtener las listas para el usuario
      request.setAttribute("LISTASPRIVADAS", ListasParticulares);
      request.setAttribute("LISTASPUBLICAS", ListasPublicas);
      request.getRequestDispatcher("/WEB-INF/pages/quitar_video_lista.jsp").forward(request, response);
    } else {
-       if (request.getParameter("visibilidad").equals("Público")) {
+       if (request.getParameter("visibilidad").equals("Pï¿½blico")) {
         visibilidad = true;
       } else {
         visibilidad = false;
       }
-      //String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
+      // String nickUsuario = ((DtUsuario)
+      // request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       try {
         Fabrica.getIListas().altaListaParticular(nombreLista, nickUsuario, visibilidad);
-        request.setAttribute("EXITO", "¡Se ha creado la lista con éxito!");
+        request.setAttribute("EXITO", "ï¿½Se ha creado la lista con ï¿½xito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
       } catch (Exception e) {
         request.setAttribute("ERROR", e.getMessage());
         request.getRequestDispatcher("/WEB-INF/pages/alta_lista.jsp").forward(request, response);
       }
-  
+
     }
   }
-  
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-      processRequest(request, response);
-    }
-  
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-      processRequest(request, response);
-    }
-public String[] concatenate(String[] a, String[] b) {
-  int aLen = a.length;
-  int bLen = b.length;
 
-  @SuppressWarnings("unchecked")
-  String[] c = (String[]) Array.newInstance(a.getClass().getComponentType(), aLen + bLen);
-  System.arraycopy(a, 0, c, 0, aLen);
-  System.arraycopy(b, 0, c, aLen, bLen);
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    processRequest(request, response);
+  }
 
-  return c;
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    processRequest(request, response);
+  }
+
+  public String[] concatenate(String[] a, String[] b) {
+    int aLen = a.length;
+    int bLen = b.length;
+
+    @SuppressWarnings("unchecked")
+    String[] c = (String[]) Array.newInstance(a.getClass().getComponentType(), aLen + bLen);
+    System.arraycopy(a, 0, c, 0, aLen);
+    System.arraycopy(b, 0, c, aLen, bLen);
+
+    return c;
+  }
 }
-}
-

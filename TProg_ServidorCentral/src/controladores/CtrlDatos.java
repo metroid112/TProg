@@ -43,68 +43,68 @@ public class CtrlDatos implements IDatos {
           "El canal Horacio es para publicar contenido divertido", "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("mbusca", "Martin", "Buscaglia",
           "Martin.bus@agadu.org.uy",
-          format.parse("14/06/1972"), "img" + divisor + "usuarios" + divisor + "martin.jpg",
+          format.parse("14/06/1972"), "img" + divisor + "usuarios" + divisor + "martin.JPG",
           "El bocha",
           "Mi canal para colgar cosas", "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("hectorg", "H�ctor", "Guido",
           "hector.gui@elgalpon.org.uy",
-          format.parse("07/01/1954"), "img" + divisor + "usuarios" + divisor + "null.jpg",
+          format.parse("07/01/1954"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "hectorg",
           "Canal HG",
           "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("tabarec", "Tabare", "Cardozo",
           "tabare.car@agadu.org.uy",
-          format.parse("24/07/1971"), "img" + divisor + "usuarios" + divisor + "tabare.jpg",
+          format.parse("24/07/1971"), "img" + divisor + "usuarios" + divisor + "tabare.JPG",
           "Tabar�",
           "Mi musica e ainda mais", "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("cachilas", "Waldemar \"Cachila\"", "Silva",
           "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"),
-          "img" + divisor + "usuarios" + divisor + "cachila.jpg",
+          "img" + divisor + "usuarios" + divisor + "cachila.JPG",
           "El Cachila", "Para juntar cosas", "Sin categoria", false, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("juliob", "Julio", "Bocca",
           "juliobocca@sodre.com.uy",
-          format.parse("16/03/1967"), "img" + divisor + "usuarios" + divisor + "null.jpg", "juliob",
+          format.parse("16/03/1967"), "img" + divisor + "usuarios" + divisor + "null.JPG", "juliob",
           "Canal de JB",
           "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("diegop", "Diego", "Parodi", "diego@efectocine.com",
-          format.parse("01/01/1975"), "img" + divisor + "usuarios" + divisor + "null.jpg", "diegop",
+          format.parse("01/01/1975"), "img" + divisor + "usuarios" + divisor + "null.JPG", "diegop",
           "Canal de DP",
           "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("kairoh", "Kairo", "Herrera",
           "kairoher@pilsenrock.com.uy",
-          format.parse("25/04/1840"), "img" + divisor + "usuarios" + divisor + "kairo.jpg",
+          format.parse("25/04/1840"), "img" + divisor + "usuarios" + divisor + "kairo.JPG",
           "Kairo musica",
           "Videos de grandes canciones de hoy y siempre", "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("robinh", "Robin", "Henderson",
           "Robin.h@tinglesa.com.uy",
-          format.parse("03/08/1940"), "img" + divisor + "usuarios" + divisor + "null.jpg", "robinh",
+          format.parse("03/08/1940"), "img" + divisor + "usuarios" + divisor + "null.JPG", "robinh",
           "Henderson",
           "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("marcelot", "Marcelo", "Tinelli",
           "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"),
-          "img" + divisor + "usuarios" + divisor + "null.jpg",
+          "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Tinelli total", "Todo lo que querias y m�s !", "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("novick", "Edgardo", "Novick",
           "edgardo@novick.com.uy",
-          format.parse("17/07/1952"), "img" + divisor + "usuarios" + divisor + "null.jpg",
+          format.parse("17/07/1952"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Con la gente",
           "Preparando las elecciones", "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("sergiop", "Sergio", "Puglia",
           "puglia@alpanpan.com.uy",
-          format.parse("28/01/1950"), "img" + divisor + "usuarios" + divisor + "null.jpg",
+          format.parse("28/01/1950"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Puglia invita",
           "Programas del ciclo y videos de cocina masterchef", "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy",
-          format.parse("17/03/1976"), "img" + divisor + "usuarios" + divisor + "recoba.jpg",
+          format.parse("17/03/1976"), "img" + divisor + "usuarios" + divisor + "recoba.JPG",
           "Chino Recoba",
           "Canal de goles con Nacional ", "Sin categoria", false, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("tonyp", "Antonio", "Pacheco",
           "eltony@manya.org.uy",
-          format.parse("14/02/1955"), "img" + divisor + "usuarios" + divisor + "pacheco.jpg",
+          format.parse("14/02/1955"), "img" + divisor + "usuarios" + divisor + "pacheco.JPG",
           "Tony Pacheco",
           "Todos los goles con Pe�arol", "Sin categoria", false, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("nicoJ", "Nicolas", "Jodal", "jodal@artech.com.uy",
-          format.parse("09/08/1960"), "img" + divisor + "usuarios" + divisor + "null.jpg",
+          format.parse("09/08/1960"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Desde Genexus",
           "Canal informacion C y T", "Sin categoria", true, "pass");
 
@@ -276,11 +276,14 @@ public class CtrlDatos implements IDatos {
       }
 
       try {
-        Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh", "Nostalgia",
+        Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh",
+            "Nostalgia",
             false);
-        Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh", "Nostalgia",
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh",
+            "Nostalgia",
             false);
-        Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh", "Nostalgia",
+        Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh",
+            "Nostalgia",
             false);
         Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
         Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
@@ -314,11 +317,13 @@ public class CtrlDatos implements IDatos {
         Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "cachilas",
             "De todo un poco",
             false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla", "cachilas",
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla",
+            "cachilas",
             "De todo un poco", false);
         Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
             "De todo un poco", false);
-        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "cachilas",
+        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol",
+            "cachilas",
             "De todo un poco", false);
         Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
             "Noticias y CYT", false);
@@ -393,7 +398,8 @@ public class CtrlDatos implements IDatos {
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
     for (Video vid : ManejadorVideos.getManejadorVideos().getVideos().values()) {
       if (vid.isVisible()) {
-        if (vid.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || vid.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+        if (vid.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
+            || vid.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
           videos.add(vid.getDt());
         }
       }
@@ -406,14 +412,15 @@ public class CtrlDatos implements IDatos {
     for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
       Canal canal = usuario.getCanal();
       if (canal.isVisible()) {
-        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(),usuario.getCanal().getNombre(), usuario.getPath(), canal.getUltimaActividad());
+        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
+            || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
+              usuario.getPath(), canal.getUltimaActividad());
           usuarios.add(dtUsuario);
         }
       }
     }
-    
-    DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
+    DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
     return resultados;
   }
   

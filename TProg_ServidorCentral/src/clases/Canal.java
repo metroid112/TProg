@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.List;
 import java.util.Map.Entry;
 
-
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
@@ -44,17 +43,18 @@ public class Canal {
     }
   }
 
-  public void agregarVideoListaDefecto(Video videoObj, String lista) throws DuplicateClassException {
+  public void agregarVideoListaDefecto(Video videoObj, String lista)
+      throws DuplicateClassException {
     ListaDefecto listaObj = listaDefecto.get(lista);
     if (!listaObj.existeVideo(videoObj)) {
       listaObj.insertarVideo(videoObj);
-    }
-    else{
+    } else {
       throw new DuplicateClassException("Video", videoObj.getNombre());
     }
   }
 
-  public void agregarVideoListaParticular(Video videoObj, String lista) throws DuplicateClassException {
+  public void agregarVideoListaParticular(Video videoObj, String lista)
+      throws DuplicateClassException {
     ListaParticular listaObj = listaParticulares.get(lista);
     if (!listaObj.existeVideo(videoObj)) {
       listaObj.insertarVideo(videoObj);
@@ -63,8 +63,7 @@ public class Canal {
       if (!listaObj.existeCategoria(categoria)) {
         listaObj.insertarCategoria(categoria);
       }
-    }
-    else {
+    } else {
       throw new DuplicateClassException("Video", videoObj.getNombre());
     }
   }
@@ -79,7 +78,7 @@ public class Canal {
     this.videos.put(nombre, video);
     return video;
   }
-  
+
   public Date getUltimaActividad() {
     Date ultimaActividad = new Date(0);
     for (Video vid : this.videos.values()) {
@@ -87,7 +86,7 @@ public class Canal {
         ultimaActividad = vid.getFecha();
       }
     }
-    
+
     return ultimaActividad;
   }
 
@@ -95,24 +94,24 @@ public class Canal {
 
     return videos.keySet().toArray(new String[videos.size()]);
   }
-  
+
   public List<DtVideo> getVideosPublicos() {
-    List<DtVideo> videos = new ArrayList<DtVideo>(); 
-    for(Entry<String, Video> video : this.videos.entrySet()){
-      if (!video.getValue().isVisible()) {
-        videos.add(video.getValue().getDt());
+    List<DtVideo> videos = new ArrayList<DtVideo>();
+    for (Video video : this.videos.values()) {
+      if (video.isVisible()) {
+        videos.add(video.getDt());
       }
     }
     return videos;
   }
-  
+
   public List<DtVideo> getVideosPrivados() {
-    List<DtVideo> videos = new ArrayList<DtVideo>(); 
-    for(Entry<String, Video> video : this.videos.entrySet()){
-      if (!video.getValue().isVisible()) {
-        videos.add(video.getValue().getDt());
+    List<DtVideo> videos = new ArrayList<DtVideo>();
+    for (Video video : this.videos.values()) {
+      if (!video.isVisible()) {
+        videos.add(video.getDt());
       }
-     
+
     }
     return videos;
   }
@@ -213,7 +212,7 @@ public class Canal {
       return listaPar.getArrayVideosDuenos();
     }
   }
-  
+
   public List<DtVideo> listarDtVideosDuenosLista(String lista, boolean defecto) {
     if (defecto) {
       ListaDefecto listaDef = listaDefecto.get(lista);
@@ -227,10 +226,9 @@ public class Canal {
   public void modVideo(String nombreOld, String nombre) {
     Video vid = this.videos.remove(nombreOld);
     this.videos.put(nombre, vid);
-    
 
   }
-  
+
   public List<DtVideo> listaDtVideo(){
     List<DtVideo> result = new LinkedList<DtVideo>();
     for(Video v : videos.values()){
@@ -239,7 +237,7 @@ public class Canal {
     }
     return result;
   }
-  
+
   public List<DtVideo> listaPublicoDtVideo(){
     List<DtVideo> result = new LinkedList<DtVideo>();
     for(Video v : videos.values()){

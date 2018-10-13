@@ -26,7 +26,7 @@ public abstract class Lista {
     Lista.idCounter++;
     this.idLista = Lista.idCounter;
   }
-  
+
   public int getId() {
     return this.idLista;
   }
@@ -75,7 +75,7 @@ public abstract class Lista {
     }
     return video;
   }
-  
+
   public List<DtVideo> getDtVideos() {
     List<DtVideo> dtVideos = new LinkedList<DtVideo>();
     for (Video vid : videos) {
