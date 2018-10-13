@@ -62,7 +62,9 @@ public class ConsultaVideo extends HttpServlet {
             }
           }
          if(request.getParameter("ACCION").equals("COMENTAR")){
-           System.out.println("texto != null");
+           if(request.getParameter("COMENTARIO_ID") == null){
+             ctrUsuariosCanales.comentarVideo(request.getParameter("COMENTARIO"), arg1, arg2, arg3, arg4);
+           }
          }
              
       } catch (NotFoundException e) {     
