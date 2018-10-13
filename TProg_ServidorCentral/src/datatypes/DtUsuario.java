@@ -36,7 +36,7 @@ public class DtUsuario {
     this.nick = nick;
     this.canal = canal;
     this.imgPath = path;
-    this.ultimaActividad = ultimaActividad;
+    this.setUltimaActividad(ultimaActividad);
   }
 
   @Override
@@ -46,4 +46,30 @@ public class DtUsuario {
         && this.correo.equals(dt.correo) && this.canal.equals(dt.canal)
         && this.privado == dt.privado);
   }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public String getCanal() {
+    return canal;
+  }
+
+  public void setCanal(String canal) {
+    this.canal = canal;
+  }
+
+  public Date getUltimaActividad() {
+    return ultimaActividad;
+  }
+
+  public void setUltimaActividad(Date ultimaActividad) {
+    this.ultimaActividad = ultimaActividad;
+  }
+  
+  
 }

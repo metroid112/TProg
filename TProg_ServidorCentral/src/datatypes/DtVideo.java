@@ -144,6 +144,21 @@ public class DtVideo {
     this.comentarios = comentarios;
   }
 
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public Date getFecha() {
+    return fecha;
+  }
+
+  public void setFecha(Date fecha) {
+    this.fecha = fecha;
+  }
 
   @Override
   public boolean equals(Object o) {
