@@ -44,8 +44,8 @@ public class Busqueda extends HttpServlet {
         resultados.listas.sort(Comparator.comparing(DtLista::getNombre));
         resultados.usuarios.sort(Comparator.comparing(DtUsuario::getCanal));
       } else if (ordenBusqueda.equals("FECHA")) {
-        resultados.videos.sort(Comparator.comparing(DtVideo::getFecha));
-        resultados.listas.sort(Comparator.comparing(DtLista::getUltimaActividad));
+        resultados.videos.sort(Comparator.comparing(DtVideo::getFecha).reversed());
+        resultados.listas.sort(Comparator.comparing(DtLista::getUltimaActividad).reversed());
         resultados.usuarios.sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
       } 
     }
