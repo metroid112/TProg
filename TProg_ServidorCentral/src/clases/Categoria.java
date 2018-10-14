@@ -34,6 +34,21 @@ public class Categoria {
     }
     return infoListas;
   }
+  
+  public String[] getInfoListasPublicas() {
+    String[] infoListas = new String[listas.size()];
+    if (!listas.isEmpty()) {
+      int i = 0;
+      for (ListaParticular lista : listas) {
+        if (lista.isVisible()) {
+          String nomLista = lista.getCanal().getUsuario().getNick();
+          infoListas[i] = "(" + lista.getNombre() + " - " + nomLista + ")";
+          i++;
+        }
+      }
+    }
+    return infoListas;
+  }
 
   public String[] getInfoVideos() {
     String[] infoVideos = new String[videos.size()];
@@ -43,6 +58,21 @@ public class Categoria {
         String nomVideo = video.getCanal().getUsuario().getNick();
         infoVideos[i] = "(" + video.getNombre() + " - " + nomVideo + ")";
         i++;
+      }
+    }
+    return infoVideos;
+  }
+  
+  public String[] getInfoVideosPublicos() {
+    String[] infoVideos = new String[videos.size()];
+    if (!videos.isEmpty()) {
+      int i = 0;
+      for (Video video : videos) {
+        if (video.isVisible()) {
+          String nomVideo = video.getCanal().getUsuario().getNick();
+          infoVideos[i] = "(" + video.getNombre() + " - " + nomVideo + ")";
+          i++;
+        }
       }
     }
     return infoVideos;

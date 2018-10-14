@@ -23,7 +23,7 @@
 				<br>
 					<% for (String categorias : (String[]) request.getAttribute("CATEGORIAS")) { %>
 						<form action="/ConsultaDeCategoria" method="GET">
-							<input type hidden name="CATEGORIA" value="<%= categorias %>">
+							<input type="hidden" name="CATEGORIA" value="<%= categorias %>">
 							<button type="submit"><%= categorias %></button>
 						</form>
 					<% } %>
