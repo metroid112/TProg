@@ -106,6 +106,7 @@ public class DtVideo {
     return negativos;
   }
 
+<<<<<<< HEAD
   public String duracionPrintFormat() {
     String resultado = this.duracion.toString();
 
@@ -127,6 +128,36 @@ public class DtVideo {
     } else if (resultado.substring(0, 23).equals("https://www.youtube.com")) {
       resultado = resultado.substring(23);
       resultado = "https://www.youtube.com/embed" + resultado;
+=======
+  public String duracionPrintFormat(){
+    long seconds = duracion.getSeconds();
+    long absSeconds = Math.abs(seconds);
+    String positive = String.format(
+        "%d:%02d:%02d",
+        absSeconds / 3600,
+        (absSeconds % 3600) / 60,
+        absSeconds % 60);
+    return seconds < 0 ? "-" + positive : positive;
+  }
+
+  public String urlWatchtFormat(){
+    String resultado = this.Url;
+    if(resultado.substring(0, 17).equals("https://youtu.be/")){
+    resultado = resultado.substring(17);
+    resultado = "https://www.youtube.com/embed/" + resultado;
+    }
+    else if(resultado.substring(0,32).equals("https://www.youtube.com/watch?v=")){
+      resultado = resultado.substring(32);
+      resultado = "https://www.youtube.com/embed/" + resultado;
+    }
+    else if(resultado.substring(0,24).equals("https://www.youtube.com/")){
+      resultado = resultado.substring(24);
+      resultado = "https://www.youtube.com/embed/" + resultado;
+    }
+    else if(resultado.substring(0,16).equals("www.youtube.com/")){
+      resultado = resultado.substring(16);
+      resultado = "https://www.youtube.com/embed/" + resultado;
+>>>>>>> categoriaUsuario-agustin
     }
     return resultado;
   }
