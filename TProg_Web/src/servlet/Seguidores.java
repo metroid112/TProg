@@ -10,16 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import interfaces.Fabrica;
 
-/**
- * Servlet implementation class Seguidores
- */
 @WebServlet("/Seguidores")
 public class Seguidores extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   public Seguidores() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)

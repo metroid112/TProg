@@ -15,16 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 
-/**
- * Servlet implementation class AltaUsuario
- */
 @WebServlet("/AltaUsuario")
 public class AltaUsuario extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   public AltaUsuario() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -33,8 +29,8 @@ public class AltaUsuario extends HttpServlet {
     String passConfirm = (String) request.getParameter("passConfirm");
     if (!pass.equals(passConfirm)) {
       // response.getWriter().println(request.getParameter("categoria"));
-      request.getSession().setAttribute("ERROR_REGISTRO", "Contrase�as no coinciden"); // TODO
-                                                                                       // terminar
+      request.getSession().setAttribute("ERROR_REGISTRO", "Contrase�as no coinciden"); 
+      // TODO terminar
       // Faltan otros checks
       request.getRequestDispatcher("/WEB-INF/pages/alta_usuario.jsp").forward(request, response);
     } else {

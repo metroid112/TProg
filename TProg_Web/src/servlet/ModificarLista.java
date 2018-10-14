@@ -15,27 +15,20 @@ import interfaces.Fabrica;
 import interfaces.IListas;
 import utils.EstadoSesion;
 
-/**
- * Servlet implementation class ModificarLista
- */
 @WebServlet("/ModificarLista")
 public class ModificarLista extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  /**
-   * @see HttpServlet#HttpServlet()
-   */
   public ModificarLista() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     IListas ctrlListas = Fabrica.getIListas();
-    if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null) &&
-        (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) &&
-        (request.getParameter("modificarLista") != null)) {
+    if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null) 
+        && (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) 
+        && (request.getParameter("modificarLista") != null)) {
       String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       String idLista = (String) request.getParameter("lista");
       try {
@@ -50,8 +43,8 @@ public class ModificarLista extends HttpServlet {
       } catch (NotFoundException e) {
         e.printStackTrace();
       }
-    } else if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null) &&
-        (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))) {
+    } else if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null) 
+        && (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))) {
       String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       request.setAttribute("LISTAS", ctrlListas.getDtListasParticularesUsuario(usuario));
       request.setAttribute("USUARIO", usuario);

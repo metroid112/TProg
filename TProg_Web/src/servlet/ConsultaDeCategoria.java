@@ -11,19 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 
-/**
- * Servlet implementation class ListarCategorias
- */
 @WebServlet("/ConsultaDeCategoria")
 public class ConsultaDeCategoria extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  /**
-   * @see HttpServlet#HttpServlet()
-   */
   public ConsultaDeCategoria() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)

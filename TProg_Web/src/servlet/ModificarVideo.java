@@ -30,25 +30,18 @@ import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
 import utils.EstadoSesion;
 
-/**
- * Servlet implementation class ModificarVideo
- */
 @WebServlet("/ModificarVideo")
 public class ModificarVideo extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  /**
-   * @see HttpServlet#HttpServlet()
-   */
   public ModificarVideo() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null) &&
-        (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))) {
+    if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null) 
+        && (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))) {
       IVideos ctrlVideos = Fabrica.getIVideos();
       if (request.getParameter("videoSeleccionado") != null) {
         String idVideo = (String) request.getParameter("video");

@@ -28,8 +28,8 @@ public class ListaServlet extends HttpServlet {
     String nombreLista = (String) request.getParameter("nombreLista");
     Boolean visibilidad;
     String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-    String[] ListasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
-    String[] ListasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
+    String[] listasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
+    String[] listasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
     if (request.getParameter("STATE") != null
         && request.getParameter("STATE").equals("DETALLESLISTA")) {
       String listaSeleccionada = (String) request.getParameter("LISTA");
@@ -47,8 +47,8 @@ public class ListaServlet extends HttpServlet {
     } else if (request.getParameter("STATE") != null
         && request.getParameter("STATE").equals("LOADLISTAS")) {
       // obtener las listas para el usuario
-      request.setAttribute("LISTASPRIVADAS", ListasParticulares);
-      request.setAttribute("LISTASPUBLICAS", ListasPublicas);
+      request.setAttribute("LISTASPRIVADAS", listasParticulares);
+      request.setAttribute("LISTASPUBLICAS", listasPublicas);
       request.getRequestDispatcher("/WEB-INF/pages/quitar_video_lista.jsp").forward(request,
           response);
     } else {
@@ -82,13 +82,13 @@ public class ListaServlet extends HttpServlet {
   }
 
   public String[] concatenate(String[] a, String[] b) {
-    int aLen = a.length;
-    int bLen = b.length;
+    int lengthA = a.length;
+    int lengthB = b.length;
 
     @SuppressWarnings("unchecked")
-    String[] c = (String[]) Array.newInstance(a.getClass().getComponentType(), aLen + bLen);
-    System.arraycopy(a, 0, c, 0, aLen);
-    System.arraycopy(b, 0, c, aLen, bLen);
+    String[] c = (String[]) Array.newInstance(a.getClass().getComponentType(), lengthA + lengthB);
+    System.arraycopy(a, 0, c, 0, lengthA);
+    System.arraycopy(b, 0, c, lengthA, lengthB);
 
     return c;
   }
