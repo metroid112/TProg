@@ -9,4 +9,8 @@ public interface ICategorias {
   public String[] getInfoVideos(String s);
 
   public String[] listarCategorias();
+
+  public String[] getInfoVideosPublicos(String s);
+
+  public String[] getInfoListasPublicas(String s);
 }

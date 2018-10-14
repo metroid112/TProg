@@ -5,8 +5,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +20,6 @@ import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IDatos;
-import manejadores.ManejadorListasParticulares;
 import manejadores.ManejadorUsuarios;
 import manejadores.ManejadorVideos;
 
