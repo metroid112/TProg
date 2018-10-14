@@ -106,7 +106,7 @@ public class CtrlListasTest {
     String[] listaTabarec = {"De fiesta"};
     String[] listaTabarecObtenida = iListas.listarListasParticularUsuario("tabarec");
     assertArrayEquals(listaTabarec, listaTabarecObtenida);
-    String[] listaChino = {};
+    String[] listaChino = {"TestTarea2"};
     String[] listaChinoObtenida = iListas.listarListasParticularUsuario("chino");
     assertArrayEquals(listaChino, listaChinoObtenida);
   }
