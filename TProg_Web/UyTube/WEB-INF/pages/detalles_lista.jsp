@@ -3,13 +3,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<%@ include file="/WEB-INF/extras/head.jsp" %>
+	<jsp:include page="/WEB-INF/extras/head.jsp" />
 	<title>Videos de la lista de reproducción</title>
 </head>
 <body>
 	<div class="page">
-		<%@ include file="/WEB-INF/extras/header.jsp" %>
-		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/extras/header.jsp" />
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
 			<br>
 			Detalles de la lista 
@@ -22,7 +22,7 @@
 					<% List<DtVideo> listaVideos = (List<DtVideo>) lista.getDtVideos();
 					for (DtVideo video : listaVideos) { %>			
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">	
-					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="/ConsultaVideo" method="GET">
+					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
 						<input type="hidden" name="VIDEO_ID" value="<%=video.idVideo%>">
 						<img class="icon" width="30%" alt="DetalleVideo" src="<%= video.UrlThumbnail %>">
 						<br>
@@ -43,7 +43,7 @@
 				<% List<String> listaCategorias = (List<String>) lista.getCategorias();
 				for (String cat : listaCategorias) { %>			
 				<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=cat%>').submit();">	
-					<form id="Form<%=cat%>" class="detClickeableCategoria" action="/ConsultaDeCategoria" method="GET">
+					<form id="Form<%=cat%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="GET">
 						<input type="hidden" name="CATEGORIA" value="<%=cat%>">
 						<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
 						<br>
@@ -56,6 +56,7 @@
 				<% } %>
 			</div>
 		</div>
-	<%@ include file="/WEB-INF/extras/script.jsp" %>
+		</div>
+	<jsp:include page="/WEB-INF/extras/script.jsp" />
 </body>
 </html>

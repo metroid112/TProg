@@ -5,16 +5,13 @@
 <html lang="en">
 <!-- CUANDO EN EL INDEX SE LISTEN LOS VIDEOS, ESTO SE PUEDE PELAR -->
 <head>
-	<%@ include file="/WEB-INF/extras/head.jsp" %>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-<title>UyTube - Lista de Videos</title>
+	<jsp:include page="/WEB-INF/extras/head.jsp" />
+	<title>UyTube - Lista de Videos</title>
 </head>
 <body>
 	<div class="page">
-		<%@ include file="/WEB-INF/extras/header.jsp" %>
-		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/extras/header.jsp" />
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
 			<p>Videos Publicos:</p>
 			<div class="highlights">
@@ -25,7 +22,7 @@
 				cast = Integer.toString(vp.idVideo);
 				%>
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=vp.idVideo%>').submit();">	
-					<form id="Form<%=vp.idVideo%>" class="detClickeableVideo" action="/ConsultaVideo" method="GET">
+					<form id="Form<%=vp.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
 						<input type="hidden" id="1" name="VIDEO_ID" value="<%=cast%>">
 						<img class="icon" width="30%" alt="DetalleVideo" src="<%= vp.UrlThumbnail %>">
 						<br>
@@ -50,7 +47,7 @@
 						cast2 = Integer.toString(v.idVideo);
 					%>			
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=v.idVideo%>').submit();">	
-					<form id="Form<%=v.idVideo%>" class="detClickeableVideo" action="/ConsultaVideo" method="GET">
+					<form id="Form<%=v.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
 						<input type="hidden" id="1" name="VIDEO_ID" value="<%=cast2%>">
 						<img class="icon" width="30%" alt="DetalleVideo" src="<%=v.UrlThumbnail%>">
 						<br>
@@ -65,5 +62,5 @@
 				</div>
 		</div>
 	</div>
-<%@ include file="/WEB-INF/extras/script.jsp" %>
+<jsp:include page="/WEB-INF/extras/script.jsp" />
 </body>

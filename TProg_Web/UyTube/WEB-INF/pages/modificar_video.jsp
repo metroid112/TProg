@@ -9,12 +9,12 @@ java.util.Date" %>
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-<title>UyTube - Modificar video</title>
+	<jsp:include page="/WEB-INF/extras/head.jsp" />
+	<title>UyTube - Modificar video</title>
 </head>
 <body>
+		<jsp:include page="/WEB-INF/extras/header.jsp" />
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 	<% if (request.getAttribute("DUPLICADO") != null) { %>
 		<h1 style="color:red"><%= request.getAttribute("DUPLICADO") %></h1>
 	<% } else if (request.getAttribute("DURACION") != null) { %>
@@ -36,7 +36,7 @@ java.util.Date" %>
 	String date = format.format(video.fecha);
 	%>
 
-	<form action="/ModificarVideo" method="POST">
+	<form action="ModificarVideo" method="POST">
 		<input type="hidden" name="oldNombre" value="<%= video.nombre %>">
 		Nombre del video: <input type="text" name="nombreVideo" value="<%= video.nombre %>">
 		<br><br>
@@ -70,8 +70,5 @@ java.util.Date" %>
 		Fecha: <input type="date" value="<%= date %>" name="fecha" required>*
 		<input type="hidden" name="modificar"  value="">
 		<button type="submit" onclick="validate()">Modificar datos</button>
-		<button form="volver" type="submit">Cancelar</button>
-	</form>
-	<form action="/Inicio" method="GET" id ="volver">
 	</form>
 </body>

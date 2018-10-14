@@ -13,7 +13,7 @@
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido" align="center">
 			<div>
-				<form action="/Busqueda" method="get">
+				<form action="Busqueda" method="get">
 					<select name="TIPO_BUSQUEDA">
 						<option value="TODOS">Todos</option>
 						<option <c:if test="${param.TIPO_BUSQUEDA.equals('VIDEOS')}">selected</c:if> value="VIDEOS">Videos</option>
@@ -67,5 +67,6 @@
 			</c:if>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/extras/script.jsp" />
 </body>
 </html>

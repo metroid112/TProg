@@ -14,6 +14,6 @@
 			<% } %>
 	</b></h1>
 	<br>
-	<h2> <b> Se redirigir√° al inicio en 3 segundos...</b></h2>
+	<h2> <b> Se redirigir· al inicio en 3 segundos...</b></h2>
 </body>
 </html>

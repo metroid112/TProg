@@ -11,26 +11,17 @@
 <%@page import= "java.text.ParseException" %>
 <%@page import= "java.text.SimpleDateFormat" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!doctype html>
 <html lang="en">
 <head>
-
-	<%@ include file="/WEB-INF/extras/head.jsp" %>
-</head>
-<form action="">
-
-</form>
-
-<title>UyTube - Consulta Video</title>
+	<jsp:include page="/WEB-INF/extras/head.jsp" />
+	<title>UyTube - Consulta Video</title>
 </head>
 <body>
-
 	<div class="page">
-		<jsp:include page="/WEB-INF/extras/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<div class="contenedor">
-		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class= "contenido">
 			 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
 
@@ -62,7 +53,7 @@
 				<%DtUsuario d = (DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO");
 
 				if(d != null){ %>
-						<form action="/ConsultaVideo" method="POST">
+						<form action="ConsultaVideo" method="POST">
 							<input type="hidden" name="ACCION" value="VALORAR_POSITIVO">
 							<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
 							<button type="submit">Valorar</button>
@@ -83,7 +74,7 @@
 
 				<h5>No me gusta:</h5> <%= vid.getCantidadCalificacionesNegativas()%>
 				<%if(d != null){ %>
-						<form action="/ConsultaVideo" method="POST">
+						<form action="ConsultaVideo" method="POST">
 							<input type="hidden" name="ACCION" value="VALORAR_NEGATIVO">
 							<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
 							<button type="submit">Valorar</button>
@@ -112,7 +103,7 @@
 		<jsp:include page="comentarios.jsp" />
 		<br>
 		<%if(d!=null){ %>
-			<form action="/ConsultaVideo" method="POST">
+			<form action="ConsultaVideo" method="POST">
 				<input type="hidden" name="ACCION" value="COMENTAR">
 				<input type="text" name="COMENTARIO">
 				<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >
@@ -122,6 +113,6 @@
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/extras/script.jsp" />
-
+	</div>
 </body>
 </html>
