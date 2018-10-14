@@ -72,15 +72,6 @@ public class ManejadorUsuarios {
     return result;
   }
 
-  public boolean isEmailUnique(String email) {
-    for (Entry<String, Usuario> user : usuarios.entrySet()) {
-      if (user.getValue().getCorreo().equals(email)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   public Map<String, Usuario> getMap() {
     return this.usuarios;
   }

@@ -11,9 +11,7 @@ import datatypes.DtVideo;
 
 public interface IUsuariosCanales {
 
-  public void altaUsuario(String nickname, String nombre, String apellido, String correo,
-      Date fechaNacimiento, BufferedImage imagen, String nombreCanal, String descripcionCanal,
-      String categoria, boolean visible) throws IOException;
+
 
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
@@ -24,8 +22,6 @@ public interface IUsuariosCanales {
   public DtUsuario getDt(String nick);
 
   public boolean isCanalPublico(String usuario);
-
-  public boolean isEmailUnique(String email);
 
   public List<String> listarNombresUsuarios();
   
