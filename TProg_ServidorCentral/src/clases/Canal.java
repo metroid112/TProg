@@ -40,6 +40,7 @@ public class Canal {
     for (String lista : ManejadorListasDefecto.getManejadorListas().toArray()) {
       listaDefecto.put(lista, new ListaDefecto(lista, this));
     }
+    this.categoria = categoria;
   }
 
   public void agregarVideoListaDefecto(Video videoObj, String lista)
