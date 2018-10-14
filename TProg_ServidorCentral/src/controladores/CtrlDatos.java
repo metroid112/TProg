@@ -78,9 +78,27 @@ public class CtrlDatos implements IDatos {
       MB.pass = "Cookie234";
       MB.mail = "Martin.bus@agadu.org.uy";
       MB.nacimiento = "14/06/1972";
-      MB.nombreCanal = "Canal Horacio";
-      MB.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      MB.visibilidadCanal = true;
+      
+      HG.nick = "hectorg";
+      HG.nombre = "Héctor";
+      HG.apellido = "Guido";
+      HG.pass = "Poncho345";
+      HG.mail = "hector.gui@elgapon.org.uy";
+      HG.nacimiento = "07/01/1954";
+      
+      TC.nick = "tabarec";
+      TC.nombre = "Tabaré";
+      TC.apellido = "Cardozo";
+      TC.pass = "Ketchup1";
+      TC.mail = "tabare.car@agadu.org.uy";
+      TC.nacimiento = "24/07/1971";
+      //-----------------------------
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -88,9 +106,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -98,9 +113,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -108,9 +120,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -118,9 +127,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -128,9 +134,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -138,9 +141,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -148,9 +148,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -158,9 +155,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -168,9 +162,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -178,9 +169,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
@@ -188,39 +176,6 @@ public class CtrlDatos implements IDatos {
       HR.pass = "Rufus123";
       HR.mail = "horacio.rubino@guambia.com.uy";
       HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
-      
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
-      
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
-      
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
-      HR.nombreCanal = "Canal Horacio";
-      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
-      HR.visibilidadCanal = true;
       
 
       Fabrica.getIUsuariosCanales().altaUsuario("hrubino", "Horacio", "Rubino",
