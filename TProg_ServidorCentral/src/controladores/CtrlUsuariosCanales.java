@@ -131,20 +131,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public String[] listarVideos(String nick) {
-    HashMap<String, Video> videos =
-        (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
-    String[] res = videos.keySet().toArray(new String[videos.size()]);
-    return res;
-  }
-
-  @Override
-  public String[] listarVideosLista(String usuario, String lista, boolean defecto) {
-    Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
-    return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
-  }
-
-  @Override
   public void seguir(String seguidor, String seguido) {
     manejadorUsuarios.get(seguidor).seguir(manejadorUsuarios.get(seguido));
   }
