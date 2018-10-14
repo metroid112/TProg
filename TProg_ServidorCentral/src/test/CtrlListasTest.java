@@ -24,11 +24,11 @@ public class CtrlListasTest {
   @Test
   public void testAgregarVideoLista() {
     try {
-      iListas.agregarVideoLista("hectorg", "100 años de FING", "kairoh", "Nostalgia", false);
+      iListas.agregarVideoLista("hectorg", "100 aÃ±os de FING", "kairoh", "Nostalgia", false);
       List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal().getLista("Nostalgia").getVideos();
       boolean pertenece = false;
       for (Video vid : listaVideos) {
-        if (vid.getNombre().equals("100 años de FING")) {
+        if (vid.getNombre().equals("100 aÃ±os de FING")) {
           pertenece = true;
         }
       }
@@ -39,11 +39,11 @@ public class CtrlListasTest {
   
   @Test
   public void testQuitarVideoLista() throws Exception {
-    iListas.quitarVideoLista("kairoh", "100 años de FING", "hectorg", "Nostalgia", false);
+    iListas.quitarVideoLista("kairoh", "100 aÃ±os de FING", "hectorg", "Nostalgia", false);
     List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal().getLista("Nostalgia").getVideos();
     boolean pertenece = false;
     for (Video vid : listaVideos) {
-      if (vid.getNombre().equals("100 años de FING")) {
+      if (vid.getNombre().equals("100 aÃ±os de FING")) {
         pertenece = true;
       }
     }
