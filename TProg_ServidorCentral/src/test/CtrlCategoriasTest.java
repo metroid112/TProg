@@ -24,7 +24,7 @@ public class CtrlCategoriasTest {
   public ICategorias iCategorias = Fabrica.getICategorias();
   
   @Test
-  public void AltaCategoriaTest() {
+  public void altaCategoriaTest() {
     try {
       iCategorias.altaCategoria("TestTarea2");
     } catch (Exception e) {
@@ -33,10 +33,38 @@ public class CtrlCategoriasTest {
     assertEquals(true,ManejadorCategorias.getManejadorCategorias().existeCategoria("TestTarea2"));
   }
   
-  @test
-  public void GetInfoListasTest() {
+  @Test
+  public void getInfoListasTest() {
     String[] esperado = {};
-    String[] infoLista = iCategorias.
+    String[] infoLista = iCategorias.getInfoListas("Viajes y eventos");
+    assertArrayEquals(esperado,infoLista);
+  }
+  
+  @Test
+  public void getInfoListasPublicasTest() {
+    String[] esperado = {};
+    String[] infoLista = iCategorias.getInfoListasPublicas("Viajes y eventos");
+    assertArrayEquals(esperado,infoLista);
   }
 
+  @Test
+  public void getInfoVideosTest() {
+    String[] esperado = {};
+    String[] infoLista = iCategorias.getInfoVideos("Viajes y eventos");
+    assertArrayEquals(esperado,infoLista);
+  }
+  
+  @Test
+  public void getInfoVideosPublicosTest() {
+    String[] esperado = {};
+    String[] infoLista = iCategorias.getInfoVideosPublicos("Viajes y eventos");
+    assertArrayEquals(esperado,infoLista);
+  }
+  
+  @Test
+  public void listarCategoriasTest() {
+    int esperado = 13;
+    String[] infoLista = iCategorias.listarCategorias();
+    assertEquals(esperado,infoLista.length);
+  }
 }
