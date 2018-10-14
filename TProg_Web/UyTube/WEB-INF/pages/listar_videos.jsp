@@ -18,7 +18,7 @@
 			<%
 				List<DtVideo> listaVideosPublicos = (List<DtVideo>) request.getAttribute("VIDEOS_PUBLICOS");
 				String cast;
-				for(DtVideo vp: listaVideosPublicos){ 
+				for(DtVideo vp: listaVideosPublicos) { 
 				cast = Integer.toString(vp.idVideo);
 				%>
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=vp.idVideo%>').submit();">	
