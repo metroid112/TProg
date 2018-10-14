@@ -11,8 +11,6 @@ import datatypes.DtVideo;
 
 public interface IUsuariosCanales {
 
-
-
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass);
@@ -24,7 +22,7 @@ public interface IUsuariosCanales {
   public boolean isCanalPublico(String usuario);
 
   public List<String> listarNombresUsuarios();
-  
+
   public void seguir(String seguidor, String seguido);
 
   void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,

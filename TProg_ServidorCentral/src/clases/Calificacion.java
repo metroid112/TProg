@@ -21,7 +21,8 @@ public class Calificacion {
   public Video getVideo() {
     return video;
   }
-  public boolean getlike(){
+
+  public boolean getlike() {
     return like;
   }
 

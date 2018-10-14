@@ -23,7 +23,7 @@ public class CtrlCategorias implements ICategorias {
     Categoria c = manejadorCategorias.get(s);
     return c.getInfoListas();
   }
-  
+
   @Override
   public String[] getInfoListasPublicas(String s) {
     Categoria c = manejadorCategorias.get(s);
@@ -41,7 +41,7 @@ public class CtrlCategorias implements ICategorias {
     Categoria c = manejadorCategorias.get(s);
     return c.getInfoVideosPublicos();
   }
-  
+
   @Override
   public String[] listarCategorias() {
     return manejadorCategorias.toArray();

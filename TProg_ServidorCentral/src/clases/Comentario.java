@@ -89,9 +89,11 @@ public class Comentario {
   public boolean tieneRespuestas() {
     return !(this.respuestas.isEmpty());
   }
-  public Date getFecha(){
+
+  public Date getFecha() {
     return fecha;
   }
+
   public static int getContador() {
     return idCounter;
   }

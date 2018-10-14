@@ -61,7 +61,7 @@ public class DtVideo {
     }
   }
 
-  public int getCantidadCalificacionesPositivas(){
+  public int getCantidadCalificacionesPositivas() {
     int sum = 0;
     for (DtCalificacion calif : calificaciones) {
       if (calif.like) {
@@ -71,7 +71,7 @@ public class DtVideo {
     return sum;
   }
 
-  public int getCantidadCalificacionesNegativas(){
+  public int getCantidadCalificacionesNegativas() {
     int sum = 0;
     for (DtCalificacion calif : calificaciones) {
       if (!calif.like) {
@@ -81,34 +81,33 @@ public class DtVideo {
     return sum;
   }
 
-
-  public List<String> getCalificacionesPositivas(){
+  public List<String> getCalificacionesPositivas() {
     List<String> positivos = new LinkedList<String>();
     String usuarioObjetivo;
 
-    for(DtCalificacion calif : calificaciones){
-      if(calif.like){
-      usuarioObjetivo = calif.usuario;
-      positivos.add(usuarioObjetivo);
+    for (DtCalificacion calif : calificaciones) {
+      if (calif.like) {
+        usuarioObjetivo = calif.usuario;
+        positivos.add(usuarioObjetivo);
       }
     }
     return positivos;
   }
 
-  public List<String> getCalificacionesNegativas(){
+  public List<String> getCalificacionesNegativas() {
     List<String> negativos = new LinkedList<String>();
     String usuarioObjetivo;
 
-    for(DtCalificacion calif : calificaciones){
-      if(!calif.like){
-      usuarioObjetivo = calif.usuario;
-      negativos.add(usuarioObjetivo);
+    for (DtCalificacion calif : calificaciones) {
+      if (!calif.like) {
+        usuarioObjetivo = calif.usuario;
+        negativos.add(usuarioObjetivo);
       }
     }
     return negativos;
   }
 
-  public String duracionPrintFormat(){
+  public String duracionPrintFormat() {
     String resultado = this.duracion.toString();
 
     resultado = resultado.substring(2);
@@ -119,15 +118,14 @@ public class DtVideo {
     return resultado;
   }
 
-  public String urlWatchtFormat(){
+  public String urlWatchtFormat() {
     String resultado = this.Url;
 
-    if(resultado.substring(0, 16).equals("https://youtu.be")){
+    if (resultado.substring(0, 16).equals("https://youtu.be")) {
 
-    resultado = resultado.substring(16);
-    resultado = "https://www.youtube.com/embed" + resultado;
-    }
-    else if(resultado.substring(0,23).equals("https://www.youtube.com")){
+      resultado = resultado.substring(16);
+      resultado = "https://www.youtube.com/embed" + resultado;
+    } else if (resultado.substring(0, 23).equals("https://www.youtube.com")) {
       resultado = resultado.substring(23);
       resultado = "https://www.youtube.com/embed" + resultado;
     }

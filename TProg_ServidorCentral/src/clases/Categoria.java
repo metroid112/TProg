@@ -34,7 +34,7 @@ public class Categoria {
     }
     return infoListas;
   }
-  
+
   public String[] getInfoListasPublicas() {
     String[] infoListas = new String[listas.size()];
     if (!listas.isEmpty()) {
@@ -62,7 +62,7 @@ public class Categoria {
     }
     return infoVideos;
   }
-  
+
   public String[] getInfoVideosPublicos() {
     String[] infoVideos = new String[videos.size()];
     if (!videos.isEmpty()) {

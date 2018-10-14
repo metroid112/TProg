@@ -35,7 +35,7 @@ public class CtrlVideos implements IVideos {
       throws DuplicateClassException, NotFoundException {
     Categoria categoria = manejadorCategoria.get(nombreCategoria);
     if (categoria == null) {
-      throw new NotFoundException("Categoría " + nombreCategoria);
+      throw new NotFoundException("Categorï¿½a " + nombreCategoria);
     }
     Usuario user = manejadorUsuario.get(nick);
     if (user == null) {
@@ -71,7 +71,7 @@ public class CtrlVideos implements IVideos {
       return null;
     }
   }
-  
+
   @Override
   public List<DtVideo> getDtVideosPropietario(String nick) {
     Usuario usuario = manejadorUsuario.get(nick);

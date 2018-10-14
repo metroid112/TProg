@@ -222,31 +222,29 @@ public class Canal {
       return listaPar.getDtVideos();
     }
   }
-  
-
 
   public void modVideo(String nombreOld, String nombre) throws DuplicateClassException {
     if (nombreOld.equals(nombre) || !this.videos.containsKey(nombre)) {
       Video vid = this.videos.remove(nombreOld);
-      this.videos.put(nombre, vid);      
+      this.videos.put(nombre, vid);
     } else {
-      throw new DuplicateClassException ("Video", "El nombre seleccionado ya existe.");
+      throw new DuplicateClassException("Video", "El nombre seleccionado ya existe.");
     }
   }
 
-  public List<DtVideo> listaDtVideo(){
+  public List<DtVideo> listaDtVideo() {
     List<DtVideo> result = new LinkedList<DtVideo>();
-    for(Video v : videos.values()){
+    for (Video v : videos.values()) {
       DtVideo nuevo = v.getDt();
       result.add(nuevo);
     }
     return result;
   }
 
-  public List<DtVideo> listaPublicoDtVideo(){
+  public List<DtVideo> listaPublicoDtVideo() {
     List<DtVideo> result = new LinkedList<DtVideo>();
-    for(Video v : videos.values()){
-      if(v.getVisible()){
+    for (Video v : videos.values()) {
+      if (v.getVisible()) {
         DtVideo nuevo = v.getDt();
         result.add(nuevo);
       }
@@ -277,13 +275,12 @@ public class Canal {
     this.videos.put(video.getNombre(), video);
   }
 
-
   public List<DtVideo> getDtVideos() {
-    List<DtVideo> videos = new ArrayList<DtVideo>(); 
-    for(Entry<String, Video> video : this.videos.entrySet()){
-        videos.add(video.getValue().getDt());
+    List<DtVideo> videos = new ArrayList<DtVideo>();
+    for (Entry<String, Video> video : this.videos.entrySet()) {
+      videos.add(video.getValue().getDt());
     }
     return videos;
   }
-  
+
 }

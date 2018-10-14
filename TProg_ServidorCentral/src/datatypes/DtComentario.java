@@ -29,7 +29,7 @@ public class DtComentario {
   public String getString() {
     return ("(" + this.usuario + ") " + this.texto);
   }
-  
+
   public boolean tieneHijos() {
     return this.tieneHijos;
   }
@@ -65,11 +65,12 @@ public class DtComentario {
   public void setUsuario(String usuario) {
     this.usuario = usuario;
   }
-  
-  public Date getFecha(){
+
+  public Date getFecha() {
     return fecha;
   }
-  public void setFecha(Date fecha){
+
+  public void setFecha(Date fecha) {
     this.fecha = fecha;
   }
 }

@@ -122,7 +122,7 @@ public class Usuario {
     this.seguidos.put(seguido.getNick(), seguido);
     seguido.addSeguidor(this);
   }
-  
+
   public void dejarSeguir(Usuario seguido) {
     this.seguidos.remove(seguido);
     seguido.removeSeguidor(this);
@@ -130,15 +130,15 @@ public class Usuario {
 
   private void removeSeguidor(Usuario usuario) {
     this.seguidores.remove(usuario);
-    
+
   }
 
   public void setCanal(Canal canal) {
     this.canal = canal;
   }
 
-  public void valorarVideo(boolean like, Video vid){
-    if (!yaCalificado(true,vid) && !yaCalificado(false,vid)) {
+  public void valorarVideo(boolean like, Video vid) {
+    if (!yaCalificado(true, vid) && !yaCalificado(false, vid)) {
       Calificacion cal = new Calificacion(like, this, vid);
       vid.addCalificacion(cal);
       this.addCalificacion(cal);
@@ -154,7 +154,7 @@ public class Usuario {
     }
     return calificado;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     Usuario user = (Usuario) o;

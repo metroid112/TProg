@@ -70,6 +70,5 @@ public class DtUsuario {
   public void setUltimaActividad(Date ultimaActividad) {
     this.ultimaActividad = ultimaActividad;
   }
-  
-  
+
 }

@@ -32,6 +32,6 @@ public interface IVideos {
   public DtVideo[] listarTodosLosVideos(String nick);
 
   public List<DtVideo> getDtVideosPublicos(String nombreUsuario);
-  
+
   public List<DtVideo> getDtVideosPropietario(String nick);
 }

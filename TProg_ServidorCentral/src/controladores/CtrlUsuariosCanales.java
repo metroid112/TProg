@@ -28,8 +28,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   }
 
-
-
   @Override
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
