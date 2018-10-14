@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div style="color: red; background-color: rgb(255,160,160);">
-		Usuario o contraseÃ±a incorrectos
+		Usuario o contraseña incorrectos
 	</div>
 	<jsp:include page="/WEB-INF/pages/inicio_sesion.jsp"/>
 </body>

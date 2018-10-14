@@ -5,8 +5,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +20,6 @@ import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IDatos;
-import manejadores.ManejadorListasParticulares;
 import manejadores.ManejadorUsuarios;
 import manejadores.ManejadorVideos;
 
@@ -37,10 +34,155 @@ public class CtrlDatos implements IDatos {
       DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
       String divisor = "/";
 
+      class UsuarioBean {
+        public String nick;
+        public String nombre;
+        public String apellido;
+        public String pass;
+        public String mail;
+        public String nacimiento;
+        public String nombreCanal;
+        public String descripcionCanal;
+        public boolean visibilidadCanal;
+      };
+
+      UsuarioBean HR = new UsuarioBean();
+      UsuarioBean MB = new UsuarioBean();
+      UsuarioBean HG = new UsuarioBean();
+      UsuarioBean TC = new UsuarioBean();
+      UsuarioBean CS = new UsuarioBean();
+      UsuarioBean JB = new UsuarioBean();
+      UsuarioBean DP = new UsuarioBean();
+      UsuarioBean KH = new UsuarioBean();
+      UsuarioBean RH = new UsuarioBean();
+      UsuarioBean MT = new UsuarioBean();
+      UsuarioBean EN = new UsuarioBean();
+      UsuarioBean SP = new UsuarioBean();
+      UsuarioBean AR = new UsuarioBean();
+      UsuarioBean AP = new UsuarioBean();
+      UsuarioBean NJ = new UsuarioBean();
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal Horacio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      MB.nick = "mbusca";
+      MB.nombre = "Martín";
+      MB.apellido = "Buscaglia";
+      MB.pass = "Cookie234";
+      MB.mail = "Martin.bus@agadu.org.uy";
+      MB.nacimiento = "14/06/1972";
+      
+      HG.nick = "hectorg";
+      HG.nombre = "Héctor";
+      HG.apellido = "Guido";
+      HG.pass = "Poncho345";
+      HG.mail = "hector.gui@elgapon.org.uy";
+      HG.nacimiento = "07/01/1954";
+      
+      TC.nick = "tabarec";
+      TC.nombre = "Tabaré";
+      TC.apellido = "Cardozo";
+      TC.pass = "Ketchup1";
+      TC.mail = "tabare.car@agadu.org.uy";
+      TC.nacimiento = "24/07/1971";
+      //-----------------------------
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      
+
       Fabrica.getIUsuariosCanales().altaUsuario("hrubino", "Horacio", "Rubino",
           "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"),
           "img" + divisor + "usuarios" + divisor + "horacio.JPG", "Canal Horacio",
-          "El canal Horacio es para publicar contenido divertido", "Sin categoria", true, "pass");
+          "El canal Horacio es para publicar contenido divertido", "Sin categoria", true,
+          "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("mbusca", "Martin", "Buscaglia",
           "Martin.bus@agadu.org.uy",
           format.parse("14/06/1972"), "img" + divisor + "usuarios" + divisor + "martin.JPG",
@@ -83,7 +225,7 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIUsuariosCanales().altaUsuario("marcelot", "Marcelo", "Tinelli",
           "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"),
           "img" + divisor + "usuarios" + divisor + "null.JPG",
-          "Tinelli total", "Todo lo que querias y m�s !", "Sin categoria", true, "pass");
+          "Tinelli total", "Todo lo que querias y más !", "Sin categoria", true, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("novick", "Edgardo", "Novick",
           "edgardo@novick.com.uy",
           format.parse("17/07/1952"), "img" + divisor + "usuarios" + divisor + "null.JPG",
@@ -102,7 +244,7 @@ public class CtrlDatos implements IDatos {
           "eltony@manya.org.uy",
           format.parse("14/02/1955"), "img" + divisor + "usuarios" + divisor + "pacheco.JPG",
           "Tony Pacheco",
-          "Todos los goles con Pe�arol", "Sin categoria", false, "pass");
+          "Todos los goles con Peñarol", "Sin categoria", false, "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("nicoJ", "Nicolas", "Jodal", "jodal@artech.com.uy",
           format.parse("09/08/1960"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Desde Genexus",
@@ -156,44 +298,44 @@ public class CtrlDatos implements IDatos {
       }
 
       try {
-        Fabrica.getIVideos().altaVideo("hectorg", "100 a�os de FING",
-            "Del Ciclo m�s Universidad realizado por la UdelaR, compartimos con ustedes "
-                + "un audiovisual realizado en 2016 por los 100 a�os de la denominaci�n "
-                + "Facultad de Ingenier�a.\nExtra�do del canal Teleuniversitaria UdelaR",
+        Fabrica.getIVideos().altaVideo("hectorg", "100 años de FING",
+            "Del Ciclo más Universidad realizado por la UdelaR, compartimos con ustedes "
+                + "un audiovisual realizado en 2016 por los 100 años de la denominación "
+                + "Facultad de Ingeniería.\nExtraído del canal Teleuniversitaria UdelaR",
             Duration.parse("PT6M26S"), "https://youtu.be/peGS4TBxSaI", "Noticias",
             format.parse("03/08/2017"), true);
-        Fabrica.getIVideos().altaVideo("hectorg", "50 a�os del InCo",
-            "50 a�os del Instituto de Computaci�n. Facultad de Ingenier�a. UDELAR. "
+        Fabrica.getIVideos().altaVideo("hectorg", "50 años del InCo",
+            "50 años del Instituto de Computación. Facultad de Ingeniería. UDELAR. "
                 + "22 de noviembre 2017.\nLa mesa de apertura estuvo integrada por Simon, "
-                + "el rector de la Universidad de la Rep�blica (Udelar), Roberto Markarian; "
-                + "la ministra de Industria, Energ�a y Miner�a, Carolina Cosse; el "
-                + "presidente de la C�mara Uruguaya de Tecnolog�as de la Informaci�n "
+                + "el rector de la Universidad de la República (Udelar), Roberto Markarian; "
+                + "la ministra de Industria, Energía y Minería, Carolina Cosse; el "
+                + "presidente de la Cámara Uruguaya de Tecnologías de la Información "
                 + "(CUTI), Leonardo Loureiro, y el director del Inco, Diego Vallespir.",
             Duration.parse("PT27M22S"), "https://youtu.be/GzOJSk4urlM", "Noticias",
             format.parse("24/11/2017"), true);
         Fabrica.getIVideos().altaVideo("hectorg", "Ingenieria de Muestra 2017",
-            "La muestra m�s grande de la ingenier�a nacional se realiz� el jueves 19, "
-                + "viernes 20 y s�bado 21 de octubre de 2017. Ingenier�a deMuestra fue organizada "
-                + "por la Facultad de Ingenier�a de la Universidad de la "
-                + "Rep�blica y su Fundaci�n Julio Ricaldoni.",
+            "La muestra más grande de la Ingeniería nacional se realiza el jueves 19, "
+                + "viernes 20 y sábado 21 de octubre de 2017. Ingeniería deMuestra fue organizada "
+                + "por la Facultad de Ingeniería de la Universidad de la "
+                + "República y su Fundación Julio Ricaldoni.",
             Duration.parse("PT1M"), "https://youtu.be/RnaYRA1k5j4", "Noticias",
             format.parse("25/10/2017"), true);
         Fabrica.getIVideos().altaVideo("tabarec", "Locura celeste",
-            "Tema Oficial de la cobertura celeste de Monte Carlo Televisi�n Canal 4 para "
+            "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para "
                 + "el Mundial de Futbol FIFA Rusia 2018.",
             Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
             format.parse("05/06/2018"), false);
-        Fabrica.getIVideos().altaVideo("tabarec", "Ni�o payaso", "", Duration.parse("PT4M18S"),
+        Fabrica.getIVideos().altaVideo("tabarec", "Niño payaso", "", Duration.parse("PT4M18S"),
             "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
         Fabrica.getIVideos().altaVideo("tabarec", "Pacheco goles mas recordados", "",
             Duration.parse("PT5M48S"),
             "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
         Fabrica.getIVideos().altaVideo("cachilas", "Locura celeste",
-            "Tema Oficial de la cobertura celeste de Monte Carlo Televisi�n Canal 4 para el "
+            "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para el "
                 + "Mundial de Futbol FIFA Rusia 2018.",
             Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
             format.parse("05/06/2018"), false);
-        Fabrica.getIVideos().altaVideo("cachilas", "Ni�o payaso", "", Duration.parse("PT4M18S"),
+        Fabrica.getIVideos().altaVideo("cachilas", "Niño payaso", "", Duration.parse("PT4M18S"),
             "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
         Fabrica.getIVideos().altaVideo("cachilas", "Etapa A contramano Liguilla", "",
             Duration.parse("PT57M15S"),
@@ -217,9 +359,9 @@ public class CtrlDatos implements IDatos {
             "TORNEO CLAUSURA 2018\nFECHA 1.....",
             Duration.parse("PT4M23S"), "https://youtu.be/g46w4_kD_lA", "Deporte",
             format.parse("23/07/2018"), true);
-        Fabrica.getIVideos().altaVideo("juliob", "Inauguracion Estadio Pe�arol",
-            "Recordemos la ceremonia de inauguraci�n del Estadio de Pe�arol.\nLlamado \""
-                + "Estadio Campe�n del Siglo\".",
+        Fabrica.getIVideos().altaVideo("juliob", "Inauguracion Estadio Peñarol",
+            "Recordemos la ceremonia de inauguración del Estadio de Peñarol.\nLlamado \""
+                + "Estadio Campeón del Siglo\".",
             Duration.parse("PT3H27M26S"), "https://youtu.be/U6XPJ8Vz72A", "Deporte",
             format.parse("04/04/2016"), true);
         Fabrica.getIVideos().altaVideo("kairoh", "Sweet child'o mine",
@@ -247,7 +389,7 @@ public class CtrlDatos implements IDatos {
             Duration.parse("PT5M39S"), "https://youtu.be/Eq5uBEzI6qs", "Ciencia y Tecnologia",
             format.parse("03/04/2017"), true);
         Fabrica.getIVideos().altaVideo("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros",
-            "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis m�dicos. Los datos se desprenden del Panorama de la Educaci�n 2014 del anuario del Ministerio de Educaci�n y Cultura. Ese a�o egresaron de la Universidad de la Rep�blica 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, seg�n sostienen desde la Facultad de Ingenier�a, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundaci�n Julio Ricaldoni, Mar�a Sim�n.",
+            "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis medicos. Los datos se desprenden del Panorama de la Educación 2014 del anuario del Ministerio de Educación y Cultura. Ese año egresaron de la Universidad de la República 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, según sostienen desde la Facultad de Ingeniería, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundación Julio Ricaldoni, María Simón.",
             Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnologia",
             format.parse("20/07/2016"), true);
       } catch (DuplicateClassException exception) {
@@ -291,17 +433,17 @@ public class CtrlDatos implements IDatos {
             false);
         Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta",
             false);
-        Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "tabarec", "De fiesta",
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Niño payaso", "tabarec", "De fiesta",
             false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "tabarec", "De fiesta",
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Niño payaso", "tabarec", "De fiesta",
             false);
         Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec",
             "De fiesta",
             false);
-        Fabrica.getIListas().agregarVideoLista("hectorg", "100 a�os de FING", "hectorg",
+        Fabrica.getIListas().agregarVideoLista("hectorg", "100 años de FING", "hectorg",
             "Novedades FING",
             false);
-        Fabrica.getIListas().agregarVideoLista("hectorg", "50 a�os del InCo", "hectorg",
+        Fabrica.getIListas().agregarVideoLista("hectorg", "50 años del InCo", "hectorg",
             "Novedades FING",
             false);
         Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "hectorg",
@@ -312,9 +454,9 @@ public class CtrlDatos implements IDatos {
         Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "cachilas",
             "De todo un poco",
             false);
-        Fabrica.getIListas().agregarVideoLista("tabarec", "Ni�o payaso", "cachilas",
+        Fabrica.getIListas().agregarVideoLista("tabarec", "Niño payaso", "cachilas",
             "De todo un poco", false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Ni�o payaso", "cachilas",
+        Fabrica.getIListas().agregarVideoLista("cachilas", "Niño payaso", "cachilas",
             "De todo un poco",
             false);
         Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla",
@@ -322,7 +464,7 @@ public class CtrlDatos implements IDatos {
             "De todo un poco", false);
         Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
             "De todo un poco", false);
-        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol",
+        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol",
             "cachilas",
             "De todo un poco", false);
         Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
@@ -332,7 +474,7 @@ public class CtrlDatos implements IDatos {
             "nicoJ", "Noticias y CYT", false);
         Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
             false);
-        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Pe�arol", "juliob",
+        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol", "juliob",
             "Solo deportes", false);
       } catch (DuplicateClassException e1) {
         // TODO Auto-generated catch block
@@ -341,20 +483,20 @@ public class CtrlDatos implements IDatos {
 
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
       Fabrica.getIUsuariosCanales().comentarVideo("Fue un gran evento",
-          formatComentario.parse("05/12/2017 14:35"), "nicoJ", "50 a�os del InCo", "hectorg");
+          formatComentario.parse("05/12/2017 14:35"), "nicoJ", "50 años del InCo", "hectorg");
       Fabrica.getIUsuariosCanales().responderComentario(
           "Para el proximo aniversario ofrezco vamo' con los Momo",
           format.parse("08/12/2017 01:47"),
-          "hrubino", "50 a�os del InCo", "hectorg", 0);
+          "hrubino", "50 años del InCo", "hectorg", 0);
       Fabrica.getIUsuariosCanales().responderComentario("Yo ofrezco a la banda tb",
-          format.parse("10/12/2017 17:09"), "tabarec", "50 a�os del InCo", "hectorg", 1);
+          format.parse("10/12/2017 17:09"), "tabarec", "50 años del InCo", "hectorg", 1);
       Fabrica.getIUsuariosCanales().comentarVideo("Felicitaciones FING!!!",
-          formatComentario.parse("07/09/2017 04:56"), "nicoJ", "100 a�os de FING", "hectorg");
+          formatComentario.parse("07/09/2017 04:56"), "nicoJ", "100 años de FING", "hectorg");
       Fabrica.getIUsuariosCanales().comentarVideo("Un gusto cubrir eventos como este.",
           formatComentario.parse("23/10/2017 12:58"), "kairoh", "Ingenieria de Muestra 2017",
           "hectorg");
-      Fabrica.getIUsuariosCanales().comentarVideo("Pe�arol pe�arol!!!",
-          formatComentario.parse("14/11/2016 05:34"), "kairoh", "Inauguracion Estadio Pe�arol",
+      Fabrica.getIUsuariosCanales().comentarVideo("Peñarol Peñarol!!!",
+          formatComentario.parse("14/11/2016 05:34"), "kairoh", "Inauguracion Estadio Peñarol",
           "juliob");
       Fabrica.getIUsuariosCanales().comentarVideo("Rock and Rolllll",
           formatComentario.parse("30/10/2017 02:17"), "marcelot", "Sweet child'o mine", "kairoh");
@@ -371,16 +513,16 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIUsuariosCanales().responderComentario("Gracias Marce ;)",
           formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "cachilas", 10);
       try {
-        Fabrica.getIUsuariosCanales().valorarVideo("sergiop", false, "50 a�os del InCo",
+        Fabrica.getIUsuariosCanales().valorarVideo("sergiop", false, "50 años del InCo",
             "hectorg");
         Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, "Ingenieria de Muestra 2017",
             "hectorg");
         Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, "Show de goles", "juliob");
         Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "tabarec");
         Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "cachilas");
-        Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", true, "50 a�os del InCo", "hectorg");
-        Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "50 a�os del InCo", "hectorg");
-        Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "Inauguracion Estadio Pe�arol",
+        Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", true, "50 años del InCo", "hectorg");
+        Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "50 años del InCo", "hectorg");
+        Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "Inauguracion Estadio Peñarol",
             "juliob");
         Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Locura celeste", "tabarec");
         Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Dancing in the Dark",
@@ -393,6 +535,16 @@ public class CtrlDatos implements IDatos {
 
   @Override
   public DtBusqueda busquedaGeneral(String txtBusqueda) {
+    DtBusqueda busquedaVideos = busquedaVideo(txtBusqueda);
+    DtBusqueda busquedaListas = busquedaLista(txtBusqueda);
+    DtBusqueda busquedaUsuarios = busquedaCanales(txtBusqueda);
+    DtBusqueda resultados =
+        new DtBusqueda(busquedaVideos.videos, busquedaListas.listas, busquedaUsuarios.usuarios);
+    return resultados;
+  }
+
+  @Override
+  public DtBusqueda busquedaVideo(String txtBusqueda) {
     List<DtVideo> videos = new LinkedList<DtVideo>();
     List<DtLista> listas = new LinkedList<DtLista>();
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
@@ -404,42 +556,10 @@ public class CtrlDatos implements IDatos {
         }
       }
     }
-    for (ListaParticular lista : Fabrica.getIListas().getListasPublicas().values()) {
-      if (lista.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-        listas.add(lista.getDtLista());
-      }
-    }
-    for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
-      Canal canal = usuario.getCanal();
-      if (canal.isVisible()) {
-        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
-            || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
-              usuario.getPath(), canal.getUltimaActividad());
-          usuarios.add(dtUsuario);
-        }
-      }
-    }
     DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
     return resultados;
   }
-  
-  @Override
-  public DtBusqueda busquedaVideo(String txtBusqueda) {
-    List<DtVideo> videos = new LinkedList<DtVideo>();
-    List<DtLista> listas = new LinkedList<DtLista>();
-    List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
-    for (Video vid : ManejadorVideos.getManejadorVideos().getVideos().values()) {
-      if (vid.isVisible()) {
-        if (vid.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || vid.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          videos.add(vid.getDt());
-        }
-      }
-    }
-    DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
-    return resultados;
-  }
-  
+
   @Override
   public DtBusqueda busquedaLista(String txtBusqueda) {
     List<DtVideo> videos = new LinkedList<DtVideo>();
@@ -450,10 +570,10 @@ public class CtrlDatos implements IDatos {
         listas.add(lista.getDtLista());
       }
     }
-    DtBusqueda resultados  = new DtBusqueda(videos, listas, usuarios);
+    DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
     return resultados;
   }
-  
+
   @Override
   public DtBusqueda busquedaCanales(String txtBusqueda) {
     List<DtVideo> videos = new LinkedList<DtVideo>();
@@ -462,8 +582,10 @@ public class CtrlDatos implements IDatos {
     for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
       Canal canal = usuario.getCanal();
       if (canal.isVisible()) {
-        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase()) || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(),usuario.getCanal().getNombre(), usuario.getPath(), canal.getUltimaActividad());
+        if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
+            || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
+              usuario.getPath(), canal.getUltimaActividad());
           usuarios.add(dtUsuario);
         }
       }

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,16 +40,18 @@ public class LoginServlet extends HttpServlet {
         response.getWriter().println(nick); // asddfasdf
         String pass = (String) request.getParameter("pass");
         response.getWriter().println(pass); // asdfasdfadsf
-        IUsuariosCanales IUC = Fabrica.getIUsuariosCanales();
-        if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick))
-            && IUC.checkLogin(nick, pass)) {
+        IUsuariosCanales interfazUsuariosCanales = Fabrica.getIUsuariosCanales();
+        if ((interfazUsuariosCanales.existeUsuario(nick)
+            || interfazUsuariosCanales.existeUsuarioMail(nick))
+            && interfazUsuariosCanales.checkLogin(nick, pass)) {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
-          DtUsuario dtUsuario = IUC.getDt(nick);
+          DtUsuario dtUsuario = interfazUsuariosCanales.getDt(nick);
           request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
-          response.sendRedirect("/Inicio");
+          response.sendRedirect("Inicio");
+          response.getWriter().println("entre al if");
         } else {
           request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
-          request.getRequestDispatcher("/WEB-INF/error/inicio_sesion_error.jsp").forward(request,
+          request.getRequestDispatcher("WEB-INF/error/inicio_sesion_error.jsp").forward(request,
               response);
         }
       }
@@ -58,7 +61,7 @@ public class LoginServlet extends HttpServlet {
       } else if (request.getParameter("CERRAR_SESION").equals("CONFIRM")) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getSession().setAttribute("USUARIO_LOGEADO", null);
-        response.sendRedirect("/Inicio");
+        response.sendRedirect("Inicio");
       }
     }
   }

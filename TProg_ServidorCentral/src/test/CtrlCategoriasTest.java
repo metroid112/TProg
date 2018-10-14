@@ -1,76 +1,70 @@
 package test;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
+import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Assert;
+import java.util.List;
+
 import org.junit.Test;
 
 import clases.Categoria;
+import clases.Video;
+import excepciones.DuplicateClassException;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
+import manejadores.ManejadorUsuarios;
 
 public class CtrlCategoriasTest {
-
-  private String[] arrayCat = { "Deportes", "Musica" };
-  private String[] arrayLis = { "(Pato,Lista1)" };
-  private String[] arrayVid = { "(Pato,Video1)" };
-  private Categoria categoria = new Categoria("Prueba");
-  private ICategorias categorias = Fabrica.getICategorias();
-  private IListas lista = Fabrica.getIListas();
-  private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
-  private IUsuariosCanales usuarios = Fabrica.getIUsuariosCanales();
-  private IVideos video = Fabrica.getIVideos();
-
-  @After
-  public void clear() {
-    manejadorCategorias.removeAll();
+  public IUsuariosCanales iUsuarios = Fabrica.getIUsuariosCanales();
+  public IListas iListas = Fabrica.getIListas();
+  public IVideos iVideos = Fabrica.getIVideos();
+  public ICategorias iCategorias = Fabrica.getICategorias();
+  
+  @Test
+  public void altaCategoriaTest() {
+    try {
+      iCategorias.altaCategoria("TestTarea2");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    assertEquals(true,ManejadorCategorias.getManejadorCategorias().existeCategoria("TestTarea2"));
+  }
+  
+  @Test
+  public void getInfoListasTest() {
+    String[] esperado = {};
+    String[] infoLista = iCategorias.getInfoListas("Viajes y eventos");
+    assertArrayEquals(esperado,infoLista);
+  }
+  
+  @Test
+  public void getInfoListasPublicasTest() {
+    String[] esperado = {};
+    String[] infoLista = iCategorias.getInfoListasPublicas("Viajes y eventos");
+    assertArrayEquals(esperado,infoLista);
   }
 
   @Test
-  public void testAltaCategoria() throws Exception {
-    categorias.altaCategoria("Prueba");
-    Categoria categoriaPrueba = manejadorCategorias.get("Prueba");
-    Assert.assertEquals(categoria, categoriaPrueba);
+  public void getInfoVideosTest() {
+    String[] esperado = {};
+    String[] infoLista = iCategorias.getInfoVideos("Viajes y eventos");
+    assertArrayEquals(esperado,infoLista);
   }
-
+  
   @Test
-  public void testGetInfoVideos() throws Exception {
-    categorias.altaCategoria("Prueba");
-    DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-    // usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
-    // format.parse("11/04/1993"), "..//TProg_Workstation//img//null.JPG", "juju", "hola",
-    // "catprueba", true);
-    // video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
-    // format.parse("11/04/1993"));
-    Assert.assertArrayEquals(arrayVid, categorias.getInfoVideos("Prueba"));
+  public void getInfoVideosPublicosTest() {
+    String[] esperado = {};
+    String[] infoLista = iCategorias.getInfoVideosPublicos("Viajes y eventos");
+    assertArrayEquals(esperado,infoLista);
   }
-
+  
   @Test
-  public void testListarCategorias() throws Exception {
-    categorias.altaCategoria("Deportes");
-    categorias.altaCategoria("Musica");
-    Assert.assertArrayEquals(arrayCat, categorias.listarCategorias());
+  public void listarCategoriasTest() {
+    int esperado = 13;
+    String[] infoLista = iCategorias.listarCategorias();
+    assertEquals(esperado,infoLista.length);
   }
-
-  @Test
-  public void testGetInfoListas() throws Exception {
-    categorias.altaCategoria("Prueba");
-    DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-    // usuarios.altaUsuario("Pato", "Federico", "Aguilera", "pato@hotmail.com",
-    // format.parse("11/04/1993"), "..//TProg_Workstation//img//null.JPG", "juju", "hola",
-    // "catprueba", true);
-    // video.altaVideo("Pato", "Video1", "Jeje", Duration.parse("PT2S"), "https:", "Prueba",
-    // format.parse("11/04/1993"));
-    lista.altaListaParticular("Lista1", "Pato", true);
-    lista.agregarVideoLista("Pato", "Video1", "Pato", "Lista1", false);
-    Assert.assertArrayEquals(arrayLis, categorias.getInfoListas("Prueba"));
-  }
-
 }

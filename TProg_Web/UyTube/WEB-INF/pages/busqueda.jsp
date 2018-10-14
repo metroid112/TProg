@@ -13,7 +13,7 @@
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido" align="center">
 			<div>
-				<form action="/Busqueda" method="get">
+				<form action="Busqueda" method="get">
 					<select name="TIPO_BUSQUEDA">
 						<option value="TODOS">Todos</option>
 						<option <c:if test="${param.TIPO_BUSQUEDA.equals('VIDEOS')}">selected</c:if> value="VIDEOS">Videos</option>
@@ -23,7 +23,7 @@
 					<select name="ORDEN_BUSQUEDA">
 						<option selected hidden value="NORMAL">Orden de busqueda</option>
 						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('FECHA')}">selected</c:if> value="FECHA">Fecha: Descendente</option>
-						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('ALFABETICO')}">selected</c:if> value="ALFABETICO">Alfabeticamente: Descendente</option>
+						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('ALFABETICO')}">selected</c:if> value="ALFABETICO">Alfabeticamente: Ascendente</option>
 					</select>
 					<input type="hidden" value="${param.txtBusqueda}" name="txtBusqueda">
 					<button type="submit">Filtrar</button>
@@ -67,5 +67,6 @@
 			</c:if>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/extras/script.jsp" />
 </body>
 </html>

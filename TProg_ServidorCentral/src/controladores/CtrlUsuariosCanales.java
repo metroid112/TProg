@@ -1,17 +1,10 @@
 package controladores;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-
 import clases.Canal;
-import clases.ListaDefecto;
-import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtUsuario;
@@ -26,17 +19,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   public CtrlUsuariosCanales() {
 
-  }
-
-  @Override
-  public void altaUsuario(String nickname, String nombre, String apellido, String correo,
-      Date fechaNacimiento, BufferedImage imagen, String nombreCanal, String descripcionCanal,
-      String categoria, boolean visible) throws IOException {
-    Usuario user = new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagen);
-    Canal canal = new Canal(nombreCanal, descripcionCanal,
-        ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
-    user.setCanal(canal);
-    manejadorUsuarios.add(user);
   }
 
   @Override
@@ -59,6 +41,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = owner.getCanal().getVideoCanal(nombreVideo);
     usuario.comentar(texto, fecha, vid);
   }
+
   @Override
   public void responderComentario(String texto, Date fecha, String nombreUsuario,
       String nombreVideo, String nombreDuenoVideo, Integer idComentarioPadre) {
@@ -98,41 +81,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public boolean isEmailUnique(String email) {
-    return manejadorUsuarios.isEmailUnique(email);
-  }
-
-  @Override
-  public String[] listarListasDeReproduccion(String nick) {
-    HashMap<String, ListaDefecto> listasDefecto =
-        (HashMap<String, ListaDefecto>) manejadorUsuarios.get(nick).getCanal()
-            .getListaDefecto();
-    String[] listaDefecto = listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
-    HashMap<String, ListaParticular> listasParticular =
-        (HashMap<String, ListaParticular>) manejadorUsuarios.get(nick).getCanal()
-            .getListaParticulares();
-    String[] listaParticulares = listasParticular.keySet()
-        .toArray(new String[listasParticular.size()]);
-    int largo = listaDefecto.length + listaParticulares.length;
-    String[] res = new String[largo];
-    for (int i = 0; i < listaDefecto.length; i++) {
-      res[i] = listaDefecto[i];
-    }
-    int iter2 = 0;
-    for (int i = listaDefecto.length; i < largo; i++) {
-      res[i] = listaParticulares[iter2];
-      iter2++;
-    }
-    return res;
-  }
-
-  @Override
-  public String[] listarSeguidores(String nick) {
-    return manejadorUsuarios.get(nick).getSeguidores().keySet()
-        .toArray(new String[manejadorUsuarios.get(nick).getSeguidores().size()]);
-  }
-
-  @Override
   public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
       String nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
@@ -141,13 +89,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     usuario.valorarVideo(like, vid);
   }
 
-  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo){
+  @Override
+  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,
+      String nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
     Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
-    return usuario.yaCalificado(like,vid);
+    return usuario.yaCalificado(like, vid);
   }
-
 
   @Override
   public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
@@ -159,35 +108,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public String[] listarSeguidos(String nick) {
-    return manejadorUsuarios.get(nick).getSeguidos().keySet()
-        .toArray(new String[manejadorUsuarios.get(nick).getSeguidos().size()]);
-  }
-
-  @Override
-  public String[] listarUsuarios() {
-    return manejadorUsuarios.toArray();
-  }
-
-  @Override
-  public String[] listarVideos(String nick) {
-    HashMap<String, Video> videos =
-        (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
-    String[] res = videos.keySet().toArray(new String[videos.size()]);
-    return res;
-  }
-
-  @Override
-  public String[] listarVideosLista(String usuario, String lista, boolean defecto) {
-    Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
-    return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
-  }
-
-  @Override
   public void seguir(String seguidor, String seguido) {
     manejadorUsuarios.get(seguidor).seguir(manejadorUsuarios.get(seguido));
   }
-  
+
   @Override
   public void dejarSeguir(String seguidor, String seguido) {
     manejadorUsuarios.get(seguidor).dejarSeguir(manejadorUsuarios.get(seguido));
@@ -199,20 +123,21 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
 
-
   public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
 
-  public List<DtVideo> getListaDtVideo(String usuario){
+  public List<DtVideo> getListaDtVideo(String usuario) { // CUANDO SE BORRA EL LISTAR VIDEOS.JSP SE
+                                                         // PUEDE BORRAR ESTA FUNCION, YA HAY OTRA
+                                                         // IGUAL EN EL CONTROLADOR VIDEO
 
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
 
-  public List<DtVideo> getListaPublicoDtVideo(){
+  public List<DtVideo> getListaPublicoDtVideo() {
 
     return manejadorUsuarios.getListaPublicoDtVideo();
   }
@@ -261,6 +186,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public boolean isSeguidor(String seguidor, String seguido) {
     Usuario userSeguidor = ManejadorUsuarios.getManejadorUsuarios().get(seguidor);
     Usuario userSeguido = ManejadorUsuarios.getManejadorUsuarios().get(seguido);
-    return ((userSeguidor.getSeguidos().get(seguido) != null) && (userSeguido.getSeguidores().get(seguidor) != null));
+    return (userSeguidor.getSeguidos().containsKey(seguido) && userSeguido.getSeguidores().containsKey(seguidor));
   }
 }

@@ -1,6 +1,7 @@
 package manejadores;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import clases.Categoria;
 import excepciones.DuplicateClassException;
@@ -16,7 +17,7 @@ public class ManejadorCategorias {
     return manejador;
   }
 
-  private HashMap<String, Categoria> categorias = new HashMap<String, Categoria>();
+  private Map<String, Categoria> categorias = new HashMap<String, Categoria>();
 
   private ManejadorCategorias() {
 
@@ -44,5 +45,9 @@ public class ManejadorCategorias {
 
   public String[] toArray() {
     return categorias.keySet().toArray(new String[categorias.size()]);
+  }
+
+  public boolean existeCategoria(String nombre) {
+    return categorias.containsKey(nombre);
   }
 }

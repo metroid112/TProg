@@ -1,6 +1,7 @@
 package manejadores;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import excepciones.DuplicateClassException;
 
@@ -15,7 +16,7 @@ public class ManejadorListasDefecto {
     return manejador;
   }
 
-  private HashSet<String> listasDefecto = new HashSet<String>();
+  private Set<String> listasDefecto = new HashSet<String>();
 
   private ManejadorListasDefecto() {
 

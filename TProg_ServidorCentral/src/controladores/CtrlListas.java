@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import clases.Canal;
-import clases.Lista;
 import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
@@ -27,14 +26,14 @@ public class CtrlListas implements IListas {
   @Override
   public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
       boolean defecto) throws DuplicateClassException {
-    Usuario uInicial = manejadorUsuarios.get(usuario);
-    Usuario uObjetivo = manejadorUsuarios.get(usuarioObjetivo);
-    Video videoObj = uInicial.getCanal().getVideoCanal(video);
+    Usuario usuarioInicial = manejadorUsuarios.get(usuario);
+    Usuario userObjetivo = manejadorUsuarios.get(usuarioObjetivo);
+    Video videoObj = usuarioInicial.getCanal().getVideoCanal(video);
 
     if (defecto) {
-      uObjetivo.getCanal().agregarVideoListaDefecto(videoObj, lista);
+      userObjetivo.getCanal().agregarVideoListaDefecto(videoObj, lista);
     } else {
-      uObjetivo.getCanal().agregarVideoListaParticular(videoObj, lista);
+      userObjetivo.getCanal().agregarVideoListaParticular(videoObj, lista);
     }
 
   }
@@ -53,10 +52,10 @@ public class CtrlListas implements IListas {
   }
 
   /*
-   * @Override public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid)
+   * @Override public String getDueï¿½oVideo(String dueï¿½oLista, String nombreLista, String nombreVid)
    * throws Exception {
    * 
-   * return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVideo(
+   * return manejadorUsuarios.get(dueï¿½oLista).getCanal().getLista(nombreLista).getVideo(
    * nombreVid).getCanal() .getUsuario().getNick(); }
    */
 
@@ -145,23 +144,34 @@ public class CtrlListas implements IListas {
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     List<DtLista> listas = new LinkedList<DtLista>();
     Map<String, ListaParticular> listasParticulares = canalObjetivo.getListaParticulares();
-    for (ListaParticular lista: listasParticulares.values()) {
-       listas.add(lista.getDtLista());
+    for (ListaParticular lista : listasParticulares.values()) {
+      listas.add(lista.getDtLista());
     }
     return listas;
   }
-  
-  public List<DtLista> getDtListasPrivadasUsuario(String usuario){
+
+  public List<DtLista> getDtListasPrivadasUsuario(String usuario) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     List<DtLista> listas = new LinkedList<DtLista>();
     Map<String, ListaParticular> listasParticulares = canalObjetivo.getListaParticulares();
-    for (ListaParticular lista: listasParticulares.values()) {
+    for (ListaParticular lista : listasParticulares.values()) {
       if (!lista.isVisible()) {
-        listas.add(lista.getDtLista());        
+        listas.add(lista.getDtLista());
       }
     }
     return listas;
   }
 
+  @Override
+  public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario) {
+    List<DtLista> listas = new LinkedList<DtLista>();
+    for (ListaParticular lista : ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal()
+        .getListaParticulares().values()) {
+      if (lista.isVisible()) {
+        listas.add(lista.getDtLista());
+      }
+    }
+    return listas;
+  }
 }

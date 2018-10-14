@@ -1,12 +1,9 @@
-<%@ page import="datatypes.*" %>
-<%@ page import="java.util.*" %>
-<%@ page import="utils.*" %>
+<%@ page import="datatypes.*, java.util.*, utils.*, java.text.*" %>
 <!doctype html>
 <html lang="en">
 <head>
 	<jsp:include page="/WEB-INF/extras/head.jsp" />
-</head>
-<title>UyTube - Consulta Usuario</title>
+	<title>UyTube - Consulta Usuario</title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/extras/header.jsp" />
@@ -21,7 +18,7 @@
 				if (listaUsuarios.isEmpty()) { %>
 					<h1>No hay usuarios.</h1>
 		 	 <% } else { %>
-					<form action="/ConsultaUsuario" method="GET">
+					<form action="ConsultaUsuario" method="GET">
 						<input type="hidden" name="STATE" value="INFO">
 						<select class="form-control form-control-lg" name="usuario" required>
              		 <% for (String usuario : listaUsuarios) { %>
@@ -38,6 +35,7 @@
   		List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS");
   		List<String> seguidores = (List<String>) request.getAttribute("SEGUIDORES");
   		List<String> seguidos = (List<String>) request.getAttribute("SEGUIDOS");
+  		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
  			if (usuario == null) { %>
   			<h1>Usuario <%= usuario.nick %> no existe</h1>
      <%	} else { %>
@@ -47,14 +45,15 @@
   			<br>
   			Nombre: <%= usuario.nombre + " " + usuario.apellido %>
   			<br>
-  			Fecha de nacimiento: <%= usuario.fechaNacimiento %>
+  			Fecha de nacimiento: <%= dateFormat.format(usuario.fechaNacimiento) %>
   			<br>
   			<h2>CANAL: <%= usuario.canal %></h2>
-  			Descripciï¿½n: <%= usuario.descripcionCanal %>
+  			Descripción: <%= usuario.descripcionCanal %>
   			<br>
+  			Categoria: <%= usuario.categoria %>
   			<h3>VIDEOS PUBLICOS</h3>
      		<% for(DtVideo video : videos) { %>
-  				<form action="/ConsultaVideo" method="GET">
+  				<form action="ConsultaVideo" method="GET">
 	  				<input name="VIDEO_ID" value="<%= video.idVideo %>" type="hidden">
 	  				<button><%= video.nombre %></button>
 	  			</form>
@@ -62,7 +61,7 @@
      		<% } %>
 			<h3>LISTAS PUBLICAS</h3>
      		<%	for(DtLista lista : listas) { %>
-					<form action="/ConsultaLista" method="GET">
+					<form action="ConsultaLista" method="GET">
 						<input name="STATE" value="DETALLESLISTA" type="hidden">
 						<input name="IDLISTA" value="<%= lista.getId() %>" type="hidden">
 						<button><%= lista.getNombre() %></button>
@@ -86,7 +85,7 @@
    <% if(session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
 				DtUsuario usuarioLogueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO");
 				if(usuarioLogueado.nick.equals(usuario.nick)) { %>
-				  	<form action="/ModificarUsuario" method="GET">
+				  	<form action="ModificarUsuario" method="GET">
 				  		<button>MODIFICAR DATOS</button>
 					</form>
      <% } else { %>
@@ -95,24 +94,17 @@
      			String textoSeguir = sigue ? "Dejar de seguir" : "Seguir";
      			String metodoSeguir = sigue ? "DEJAR_SEGUIR" : "SEGUIR";
      			%>
-			  	<form action="/SeguirUsuario" method="GET">
+			  	<form action="Seguidores" method="GET">
 			  		<input name="ACCION" value="<%= metodoSeguir %>" type="hidden">
 			  		<button><%= textoSeguir %></button>
 				</form>
      <%	}
  			} %>
-			<form action="/ConsultaUsuario" method="GET">
-				<input type="hidden" name="STATE" value="LISTAR">
-				<button>Consultar otro usuario</button>
-			</form>
  <% }
 		break;
 	default: %>
 	  <h1>ERROR</h1>
 <%} %>
-	<form action="/Inicio" method="GET">
-		<button>Volver al inicio</button>
-	</form>
 	</div>
 </div>
 <jsp:include page="/WEB-INF/extras/script.jsp" />
