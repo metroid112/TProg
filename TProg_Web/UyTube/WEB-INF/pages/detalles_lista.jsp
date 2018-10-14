@@ -3,13 +3,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<%@ include file="/WEB-INF/extras/head.jsp" %>
-	<title>Quitar video de lista de reproducción</title>
+	<jsp:include page="/WEB-INF/extras/head.jsp" />
+	<title>Videos de la lista de reproducción</title>
 </head>
 <body>
 	<div class="page">
-		<%@ include file="/WEB-INF/extras/header.jsp" %>
-		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/extras/header.jsp" />
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
 			<br>
 			Detalles de la lista 
@@ -18,37 +18,45 @@
 			<br>
 			Videos de la lista:
 			<br>
-			<br>
-			<div class="listaDeVideos">
-				<br>
-				<% List<DtVideo> listaVideos = (List<DtVideo>) lista.getDtVideos();
-				for (DtVideo video : listaVideos) { %>			
-				<form action="/ConsultaVideo" method="GET">
-				<div class="eleccionVideoLista">		
-					<input type="hidden" name="VIDEO_ID" value="<%=video.idVideo%>">
-					<button class="detalleVideo"><%= video.usuario %>-<%= video.nombre %></button>
+				<div class="highlights">
+					<% List<DtVideo> listaVideos = (List<DtVideo>) lista.getDtVideos();
+					for (DtVideo video : listaVideos) { %>			
+					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">	
+					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
+						<input type="hidden" name="VIDEO_ID" value="<%=video.idVideo%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%= video.UrlThumbnail %>">
+						<br>
+						<header>
+						<%= video.nombre %>
+						<br>
+						User: <%= video.usuario %>
+						</header>
+					</form>	
+					</div>
+					<br>
+					<% } %>
 				</div>
-				</form>	
-				<br>
-				<% } %>
-			</div>
 			<br>
 			Categorias de la lista:
 			<br>
-			<div class="listaDeCategorias">
-				<br>
+			<div class="highlights">
 				<% List<String> listaCategorias = (List<String>) lista.getCategorias();
 				for (String cat : listaCategorias) { %>			
-				<form action="/Inicio" method="GET">
-				<div class="eleccionVideoLista">		
-					<input type="hidden" name="CATEGORIA" value="<%=cat%>">
-					<button class="detalleCategoria"><%= cat %></button>
+				<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=cat%>').submit();">	
+					<form id="Form<%=cat%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="GET">
+						<input type="hidden" name="CATEGORIA" value="<%=cat%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
+						<br>
+						<header>
+						<%= cat %>
+						</header>
+					</form>	
 				</div>
-				</form>	
 				<br>
 				<% } %>
 			</div>
 		</div>
-	<%@ include file="/WEB-INF/extras/script.jsp" %>
+		</div>
+	<jsp:include page="/WEB-INF/extras/script.jsp" />
 </body>
 </html>

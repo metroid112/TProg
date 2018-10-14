@@ -27,9 +27,11 @@ public interface IUsuariosCanales {
   
   public void seguir(String seguidor, String seguido);
 
-  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo);
-  
-  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo);
+  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
+      String nombreDuenoVideo);
+
+  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,
+      String nombreDuenoVideo);
 
   void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
       String nombreDuenoVideo);
@@ -57,4 +59,6 @@ public interface IUsuariosCanales {
   public List<String> getSeguidos(String nombreUsuario);
 
   public boolean isSeguidor(String seguidor, String seguido);
+
+  public void dejarSeguir(String seguidor, String seguido);
 }

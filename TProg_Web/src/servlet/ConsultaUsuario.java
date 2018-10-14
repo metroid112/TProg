@@ -30,7 +30,8 @@ public class ConsultaUsuario extends HttpServlet {
             response);
         break;
       case "INFO":
-        DtUsuario usuarioLogueado = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+        DtUsuario usuarioLogueado =
+            (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
         String nombreUsuario = (String) request.getParameter("usuario");
         request.setAttribute("STATE", "INFO");
         request.setAttribute("USUARIO",
@@ -38,7 +39,7 @@ public class ConsultaUsuario extends HttpServlet {
         request.setAttribute("VIDEOS",
             Fabrica.getIVideos().getDtVideosPublicos(nombreUsuario));
         request.setAttribute("LISTAS",
-            Fabrica.getIListas().getDtListasParticularesUsuario(nombreUsuario));
+            Fabrica.getIListas().getDtListasParticularesPublicasUsuario(nombreUsuario));
         request.setAttribute("SEGUIDORES",
             Fabrica.getIUsuariosCanales().getSeguidores(nombreUsuario));
         request.setAttribute("SEGUIDOS",

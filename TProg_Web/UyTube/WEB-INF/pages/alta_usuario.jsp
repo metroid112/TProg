@@ -1,19 +1,15 @@
-<%@ page import = "clases.*" %>
 <!doctype html>
 <html lang="en">
 <head>
-	<%@ include file="/WEB-INF/extras/head.jsp" %>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-<title>UyTube - Alta Usuario</title>
+	<jsp:include page="/WEB-INF/extras/head.jsp" />
+	<title>UyTube - Alta Usuario</title>
 </head>
 <body>
 	<div class="page">
-		<%@ include file="/WEB-INF/extras/header.jsp" %>
-		<jsp:include page="/WEB-INF/extras/sidebar.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/extras/header.jsp" />
+		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
-				<form action="/AltaUsuario" method="POST" id="formAltaUsuario">
+				<form action="AltaUsuario" method="POST" id="formAltaUsuario">
 				Nombre: <input type="text" name="nombre" required>*
 				<br>
 				Apellido: <input type="text" name="apellido" required>*
@@ -38,18 +34,16 @@
 				<br>
 				Categoría:
 				<select name="categoria">
-					<option value="Deportes">Deportes</option>
-					<option value="Musica">Música</option> <!-- meter jsp aca -->
+				<% for (String cat : (String[]) request.getAttribute("CATEGORIAS")) { %>
+					<option value="<%= cat %>"><%= cat %> </option>
+				<% } %>
 				</select>
 				<br>
 				<button type="submit">Aceptar</button>
 			</form>
 			<br>
-			<form action="/index.jsp">
-				<button>Volver</button>
-			</form>
 		</div>
 	</div>
-<%@ include file="/WEB-INF/extras/script.jsp" %>
+<jsp:include page="/WEB-INF/extras/script.jsp" />
 </body>
 </html>

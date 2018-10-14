@@ -71,6 +71,16 @@ public class CtrlVideos implements IVideos {
       return null;
     }
   }
+  
+  @Override
+  public List<DtVideo> getDtVideosPropietario(String nick) {
+    Usuario usuario = manejadorUsuario.get(nick);
+    if (usuario != null) {
+      return usuario.getCanal().getDtVideos();
+    } else {
+      return null;
+    }
+  }
 
   @Override
   public DtVideo[] listarTodosLosVideos(String nick) {
@@ -89,7 +99,7 @@ public class CtrlVideos implements IVideos {
   @Override
   public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion,
       String url, String categoriaString, Duration duracion, Boolean visible, Date fecha)
-      throws InvalidDataException {
+      throws InvalidDataException, DuplicateClassException {
     Video vid = manejadorUsuario.get(nick).getCanal().getVideoCanal(nombreOld);
     vid.getCanal().modVideo(nombreOld, nombre);
     Categoria categoria;
