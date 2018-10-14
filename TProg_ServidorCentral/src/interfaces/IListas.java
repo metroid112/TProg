@@ -39,6 +39,8 @@ public interface IListas {
   public List<DtLista> getDtListasParticularesUsuario(String usuario);
 
   public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario);
+  
+  public List<DtLista> getDtListasDefectoUsuario(String usuario);
 
   public List<DtLista> getDtListasPrivadasUsuario(String usuario);
 
