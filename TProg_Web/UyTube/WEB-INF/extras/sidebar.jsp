@@ -23,10 +23,12 @@
 		<form action="ModificarLista" method="GET">
 			<button>Modificar Lista</button>
 		</form>
+	<% } else { %>
+		<form action="AltaUsuario" method="GET">
+			<input type="hidden" name="STATE" value="LOAD">
+			<button>Alta Usuario</button>
+		</form>
 	<% } %>
-	<form action="AltaUsuario" method="GET">
-		<button>Alta Usuario</button>
-	</form>
 	<form action="ConsultaLista" method="GET">
 		<input type="hidden" name="STATE" value="START">
 		<button>Consulta de Lista</button>
