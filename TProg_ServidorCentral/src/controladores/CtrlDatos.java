@@ -298,7 +298,7 @@ public class CtrlDatos implements IDatos {
       }
 
       try {
-        Fabrica.getIVideos().altaVideo("hectorg", "100 a�os de FING",
+        Fabrica.getIVideos().altaVideo("hectorg", "100 años de FING",
             "Del Ciclo m�s Universidad realizado por la UdelaR, compartimos con ustedes "
                 + "un audiovisual realizado en 2016 por los 100 a�os de la denominaci�n "
                 + "Facultad de Ingenier�a.\nExtra�do del canal Teleuniversitaria UdelaR",
