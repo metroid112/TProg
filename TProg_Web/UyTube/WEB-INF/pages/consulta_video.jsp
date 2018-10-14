@@ -45,7 +45,7 @@
 
 				<h4>Categoria:</h4> <%= vid.categoria %>
 				 <br>
-				<h4>URL:</h4> <%= vid.Url %>
+				<h4>URL:</h4> <%=vid.urlVideo%>
 				 <br>
 				<h4>Descripcion:</h4> <%= vid.descripcion %>
 				 <br><br>

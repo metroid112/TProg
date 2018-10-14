@@ -26,14 +26,14 @@ public class CtrlListas implements IListas {
   @Override
   public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
       boolean defecto) throws DuplicateClassException {
-    Usuario uInicial = manejadorUsuarios.get(usuario);
-    Usuario uObjetivo = manejadorUsuarios.get(usuarioObjetivo);
-    Video videoObj = uInicial.getCanal().getVideoCanal(video);
+    Usuario usuarioInicial = manejadorUsuarios.get(usuario);
+    Usuario userObjetivo = manejadorUsuarios.get(usuarioObjetivo);
+    Video videoObj = usuarioInicial.getCanal().getVideoCanal(video);
 
     if (defecto) {
-      uObjetivo.getCanal().agregarVideoListaDefecto(videoObj, lista);
+      userObjetivo.getCanal().agregarVideoListaDefecto(videoObj, lista);
     } else {
-      uObjetivo.getCanal().agregarVideoListaParticular(videoObj, lista);
+      userObjetivo.getCanal().agregarVideoListaParticular(videoObj, lista);
     }
 
   }

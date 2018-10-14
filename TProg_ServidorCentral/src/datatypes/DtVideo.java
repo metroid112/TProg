@@ -19,8 +19,8 @@ public class DtVideo {
   public Date fecha;
   public String usuario;
   public String nombre;
-  public String Url;
-  public String UrlThumbnail;
+  public String urlVideo;
+  public String urlThumbnail;
   public String descripcion;
   public String categoria;
   public boolean visible;
@@ -32,7 +32,7 @@ public class DtVideo {
       List<Calificacion> calificaciones, int idVideo, String usuario) {
 
     this.nombre = nombre;
-    this.Url = url;
+    this.urlVideo = url;
     this.descripcion = descripcion;
 
     if (categoria != null) {
@@ -53,10 +53,10 @@ public class DtVideo {
       this.calificaciones.add(cal.getDt());
     }
     this.idVideo = idVideo;
-    if (this.Url != null) {
-      this.UrlThumbnail = "https://img.youtube.com/vi/";
-      this.UrlThumbnail += this.Url.substring(17, 28);
-      this.UrlThumbnail += "/0.jpg";
+    if (this.urlVideo != null) {
+      this.urlThumbnail = "https://img.youtube.com/vi/";
+      this.urlThumbnail += this.urlVideo.substring(17, 28);
+      this.urlThumbnail += "/0.jpg";
     }
   }
 
@@ -118,7 +118,7 @@ public class DtVideo {
   }
 
   public String urlWatchtFormat() {
-    String resultado = this.Url;
+    String resultado = this.urlVideo;
 
     if (resultado.substring(0, 16).equals("https://youtu.be")) {
 
@@ -167,7 +167,8 @@ public class DtVideo {
   public boolean equals(Object o) {
     DtVideo dt = (DtVideo) o;
     return (this.nombre.equals(dt.nombre) && this.descripcion.equals(dt.descripcion)
-        && this.visible == dt.visible && this.Url.equals(dt.Url) && this.fecha.equals(dt.fecha));
+        && this.visible == dt.visible && this.urlVideo.equals(dt.urlVideo)
+        && this.fecha.equals(dt.fecha));
   }
 
 }

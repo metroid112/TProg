@@ -28,10 +28,10 @@ import manejadores.ManejadorVideos;
 
 public class CargaDatosTest {
 
-  public IUsuariosCanales iUsuarios = Fabrica.getIUsuariosCanales();
-  public IListas iListas = Fabrica.getIListas();
-  public IVideos iVideos = Fabrica.getIVideos();
-  public ICategorias iCategorias = Fabrica.getICategorias();
+  public IUsuariosCanales interfazUsuarios = Fabrica.getIUsuariosCanales();
+  public IListas interfazListas = Fabrica.getIListas();
+  public IVideos interfazVideos = Fabrica.getIVideos();
+  public ICategorias interfazCategorias = Fabrica.getICategorias();
   public String[] listaUsuarios = { "hrubino", "mbusca", "hectorg", "tabarec", "cachilas", "juliob",
       "diegop", "kairoh", "robinh",
       "marcelot", "novick", "sergiop", "chino", "tonyp", "nicoJ" };
@@ -52,7 +52,7 @@ public class CargaDatosTest {
   public void testUsuarios() {
     boolean fallo = false;
     for (String nombre : listaUsuarios) {
-      if (!iUsuarios.existeUsuario(nombre)) {
+      if (!interfazUsuarios.existeUsuario(nombre)) {
         fallo = true;
       }
     }
@@ -142,7 +142,7 @@ public class CargaDatosTest {
         "jodal@artech.com.uy" };
     boolean fallo = false;
     for (String mail : mails) {
-      if (!iUsuarios.existeUsuarioMail(mail)) {
+      if (!interfazUsuarios.existeUsuarioMail(mail)) {
         fallo = true;
       }
     }
@@ -156,7 +156,7 @@ public class CargaDatosTest {
     int publicos = 0;
     int privados = 0;
     for (String usuario : listaUsuarios) {
-      if (iUsuarios.isCanalPublico(usuario)) {
+      if (interfazUsuarios.isCanalPublico(usuario)) {
         publicos++;
       } else {
         privados++;
@@ -172,7 +172,7 @@ public class CargaDatosTest {
     int[] seguidores = new int[15];
     int contador = 0;
     for (String usuario : listaUsuarios) {
-      seguidores[contador] = iUsuarios.getSeguidores(usuario).size();
+      seguidores[contador] = interfazUsuarios.getSeguidores(usuario).size();
       contador++;
     }
     assertArrayEquals(seguidoresEsperado, seguidores);
@@ -184,7 +184,7 @@ public class CargaDatosTest {
     int[] seguidos = new int[15];
     int contador = 0;
     for (String usuario : listaUsuarios) {
-      seguidos[contador] = iUsuarios.getSeguidos(usuario).size();
+      seguidos[contador] = interfazUsuarios.getSeguidos(usuario).size();
       contador++;
     }
     assertArrayEquals(seguidosEsperado, seguidos);
@@ -195,7 +195,7 @@ public class CargaDatosTest {
     int contador = 0;
     boolean fallo = false;
     for (String usuario : listaUsuarios) {
-      if (!iUsuarios.checkLogin(usuario, listaPass[contador])) {
+      if (!interfazUsuarios.checkLogin(usuario, listaPass[contador])) {
         fallo = true;
       }
       contador++;
@@ -205,7 +205,7 @@ public class CargaDatosTest {
 
   @Test
   public void testListarNombresUsuarios() {
-    List<String> usuariosListados = iUsuarios.listarNombresUsuarios();
+    List<String> usuariosListados = interfazUsuarios.listarNombresUsuarios();
     boolean fallo = false;
     for (String usuario : listaUsuarios) {
       if (!usuariosListados.contains(usuario)) {

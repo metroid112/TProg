@@ -26,34 +26,52 @@ java.util.Date" %>
 	<% String nombreVideo = video.nombre; %>
 	<% String categoria = video.categoria; %>
 	<% String descripcion = video.descripcion; %>
-	<% String url = video.Url; %>
-	<% String visibilidad = video.visible ? "Publico" : "Privado"; %>
-	<% String horas = Long.toString(video.duracion.toHours()); %>
-	<% String minutos = Long.toString((video.duracion.getSeconds() % (3600)) / 60); %>
-	<% String segundos = Long.toString(video.duracion.getSeconds() % 60); %>
 	<%
-	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	String date = format.format(video.fecha);
+	  String url = video.urlVideo;
+	%>
+	<%
+	  String visibilidad = video.visible ? "Publico" : "Privado";
+	%>
+	<%
+	  String horas = Long.toString(video.duracion.toHours());
+	%>
+	<%
+	  String minutos = Long.toString((video.duracion.getSeconds() % (3600)) / 60);
+	%>
+	<%
+	  String segundos = Long.toString(video.duracion.getSeconds() % 60);
+	%>
+	<%
+	  DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String date = format.format(video.fecha);
 	%>
 
 	<form action="ModificarVideo" method="POST">
-		<input type="hidden" name="oldNombre" value="<%= video.nombre %>">
-		Nombre del video: <input type="text" name="nombreVideo" value="<%= video.nombre %>">
+		<input type="hidden" name="oldNombre" value="<%=video.nombre%>">
+		Nombre del video: <input type="text" name="nombreVideo" value="<%=video.nombre%>">
 		<br><br>
 		Categoria del video: 
 		<select required name="categoria">
-		<option value="<%= video.categoria %>"><%= video.categoria %> </option>
-		<% for (String cat : (String[]) request.getAttribute("CATEGORIAS")) { %>
-			<% if (!cat.equals(video.categoria)) { %>
-				<option value="<%= cat %>"><%= cat %> </option>
+		<option value="<%=video.categoria%>"><%=video.categoria%> </option>
+		<%
+		  for (String cat : (String[]) request.getAttribute("CATEGORIAS")) {
+		%>
+			<%
+			  if (!cat.equals(video.categoria)) {
+			%>
+				<option value="<%=cat%>"><%=cat%> </option>
 				<br>
-			<% } %>
-		<% } %>
+			<%
+			  }
+			%>
+		<%
+		  }
+		%>
 		</select>
 		<br><br>
-		Descripción: <textarea rows="5" cols="35" name="descripcionVideo"><%= video.descripcion %></textarea>
+		Descripción: <textarea rows="5" cols="35" name="descripcionVideo"><%=video.descripcion%></textarea>
 		<br><br>
-		URL: <input type="text" name="urlVideo" value="<%= video.Url %>">
+		URL: <input type="text" name="urlVideo" value="<%=video.urlVideo%>">
 		<br><br>
 		Visibilidad: 
 		<select required name="visibilidad">
