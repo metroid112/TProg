@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +28,8 @@ public class CargaDatosTest {
   public ICategorias iCategorias = Fabrica.getICategorias();
   public String[] listaUsuarios = {"hrubino", "mbusca", "hectorg", "tabarec", "cachilas", "juliob", "diegop", "kairoh", "robinh", 
       "marcelot", "novick", "sergiop", "chino", "tonyp", "nicoJ"};
+  public String[] listaPass = {"Rufus123", "Cookie234", "Pongo345", "Ketchup1", "Sancho456", "Salome56", "Ruffo678", "Corbata15", "Aquiles67",
+      "Mancha890", "Xenon987", "Sultan876", "Laika765", "Kitty543", "Albino80"};
   
 
   @Before
@@ -160,5 +163,41 @@ public class CargaDatosTest {
     assertArrayEquals(seguidoresEsperado, seguidores);
   }
   
+  @Test
+  public void testSeguidos() {
+    int[] seguidosEsperado = {2, 3, 2, 2, 1, 2, 1, 1, 3, 3, 3, 3, 1, 1, 1};
+    int[] seguidos = new int[15];
+    int contador = 0;
+    for (String usuario : listaUsuarios) {
+      seguidos[contador] = iUsuarios.getSeguidos(usuario).size();
+      contador++;
+    }
+    assertArrayEquals(seguidosEsperado, seguidos);
+  }
+  
+  @Test
+  public void testLogin() {
+    int contador = 0;
+    boolean fallo = false;
+    for (String usuario : listaUsuarios) {
+      if (!iUsuarios.checkLogin(usuario, listaPass[contador])) {
+        fallo = true;
+      }
+      contador++;
+    }
+    assertFalse(fallo);
+  }
+  
+  @Test
+  public void testListarNombresUsuarios() {
+    List<String> usuariosListados = iUsuarios.listarNombresUsuarios();
+    boolean fallo = false;
+    for (String usuario : listaUsuarios) {
+      if (!usuariosListados.contains(usuario)) {
+        fallo = true;
+      }
+    }
+    assertFalse(fallo);
+  }
 
 }
