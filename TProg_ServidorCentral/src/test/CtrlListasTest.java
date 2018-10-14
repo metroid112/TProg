@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.sql.Array;
 import java.util.List;
 
 import org.junit.Test;
@@ -48,6 +49,27 @@ public class CtrlListasTest {
       }
     }
     assertFalse(pertenece);
+  }
+  
+  @Test
+  public void testListarListasDefectoUsuario() {
+    String[] listas = {"Escuchar más tarde", "Deporte total", "Novedades generales"};
+    String[] listasObtenidas = iListas.listarListasDefectoUsuario("hectorg");
+    
+    assertEquals(listas.length, listasObtenidas.length);
+  }
+  
+  @Test
+  public void testListarListasParticularUsuario() {
+    String[] listaKairoh = {"Nostalgia"};
+    String[] listaKairohObtenida = iListas.listarListasParticularUsuario("kairoh");
+    assertArrayEquals(listaKairoh, listaKairohObtenida);
+    String[] listaTabarec = {"De fiesta"};
+    String[] listaTabarecObtenida = iListas.listarListasParticularUsuario("tabarec");
+    assertArrayEquals(listaTabarec, listaTabarecObtenida);
+    String[] listaChino = {};
+    String[] listaChinoObtenida = iListas.listarListasParticularUsuario("chino");
+    assertArrayEquals(listaChino, listaChinoObtenida);
   }
 
 }
