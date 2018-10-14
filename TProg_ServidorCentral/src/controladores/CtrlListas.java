@@ -167,8 +167,8 @@ public class CtrlListas implements IListas {
   @Override
   public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario) {
     List<DtLista> listas = new LinkedList<DtLista>();
-    for (ListaParticular lista : ManejadorListasParticulares.getManejadorListasParticulares()
-        .getListasParticulares().values()) {
+    for (ListaParticular lista : ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal()
+        .getListaParticulares().values()) {
       if (lista.isVisible()) {
         listas.add(lista.getDtLista());
       }
