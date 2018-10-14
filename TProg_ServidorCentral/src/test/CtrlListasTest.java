@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import clases.Video;
 import excepciones.DuplicateClassException;
+import manejadores.ManejadorListasDefecto;
+import manejadores.ManejadorListasParticulares;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
@@ -36,6 +38,43 @@ public class CtrlListasTest {
       assertTrue(pertenece);
     } catch (Exception e) {
     }
+  }
+  
+  @Test
+  public void testAltaListaDefecto() {
+    try {
+      iListas.altaListaDefecto("TestTarea2");
+    } catch (DuplicateClassException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    assertTrue(ManejadorListasDefecto.getManejadorListas().existeListaDefecto("TestTarea2"));
+  }
+  
+  @Test
+  public void testAltaListaParticularYListarListasParticularUsuario() {
+    try {
+      iListas.altaListaParticular("TestTarea2","chino",true);
+    } catch (DuplicateClassException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    int esperado = 1;
+    int cantidadListasParticulares = iListas.listarListasParticularUsuario("chino").length;
+    assertEquals(esperado,cantidadListasParticulares);
+  }
+  
+  @Test
+  public void testGuardarCambios() {
+    iListas.guardarCambios("TestTarea2", "chino", false);
+    boolean visible = true;
+    try {
+      visible = ManejadorUsuarios.getManejadorUsuarios().get("chino").getCanal().getLista("TestTarea2").isVisible();
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    assertEquals(false,visible);
   }
   
   @Test

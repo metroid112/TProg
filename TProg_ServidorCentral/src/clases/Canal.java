@@ -120,10 +120,8 @@ public class Canal {
     return descripcion;
   }
 
-  public Lista getLista(String lista) throws Exception {
-    if (this.listaDefecto.containsKey(lista)) {
-      return this.listaDefecto.get(lista);
-    } else if (this.listaParticulares.containsKey(lista)) {
+  public ListaParticular getLista(String lista) throws Exception {
+  if (this.listaParticulares.containsKey(lista)) {
       return this.listaParticulares.get(lista);
     } else {
       throw new Exception("No existe lista");
