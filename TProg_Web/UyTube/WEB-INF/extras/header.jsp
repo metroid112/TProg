@@ -2,7 +2,7 @@
 <%@page import="utils.*" %>
 <div class="header">
 	<div class="head-item">
-		<a href="/Inicio">
+		<a href="Inicio">
 			<img width="30%" alt="UyTube" src="img/logo.png">
 		</a>
 	</div>
