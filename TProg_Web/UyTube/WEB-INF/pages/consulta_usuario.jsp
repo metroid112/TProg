@@ -50,6 +50,7 @@
   			<h2>CANAL: <%= usuario.canal %></h2>
   			Descripción: <%= usuario.descripcionCanal %>
   			<br>
+  			Categoria: <%= usuario.categoria %>
   			<h3>VIDEOS PUBLICOS</h3>
      		<% for(DtVideo video : videos) { %>
   				<form action="ConsultaVideo" method="GET">

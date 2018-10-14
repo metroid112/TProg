@@ -12,7 +12,7 @@ import datatypes.DtUsuario;
 public class Usuario {
 
   private String apellido;
-  private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
+  private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
   private Canal canal;
   private List<Comentario> comentarios = new LinkedList<Comentario>();
   private String correo;
@@ -81,7 +81,7 @@ public class Usuario {
   public DtUsuario getDt() {
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
         this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible(),
-        this.nick, this.imgPath);
+        this.nick, this.imgPath, this.getCanal().getCategoria().getNombre());
   }
 
   public BufferedImage getImagen() {
@@ -122,7 +122,7 @@ public class Usuario {
     this.seguidos.put(seguido.getNick(), seguido);
     seguido.addSeguidor(this);
   }
-  
+
   public void dejarSeguir(Usuario seguido) {
     this.seguidos.remove(seguido.getNick());
     seguido.removeSeguidor(this);
@@ -130,15 +130,14 @@ public class Usuario {
 
   private void removeSeguidor(Usuario usuario) {
     this.seguidores.remove(usuario.getNick());
-    
   }
 
   public void setCanal(Canal canal) {
     this.canal = canal;
   }
 
-  public void valorarVideo(boolean like, Video vid){
-    if (!yaCalificado(true,vid) && !yaCalificado(false,vid)) {
+  public void valorarVideo(boolean like, Video vid) {
+    if (!yaCalificado(true, vid) && !yaCalificado(false, vid)) {
       Calificacion cal = new Calificacion(like, this, vid);
       vid.addCalificacion(cal);
       this.addCalificacion(cal);
@@ -154,7 +153,7 @@ public class Usuario {
     }
     return calificado;
   }
-  
+
   @Override
   public boolean equals(Object o) {
     Usuario user = (Usuario) o;
@@ -167,7 +166,7 @@ public class Usuario {
     return comentarios.get(id);
   }
 
-  public LinkedList<Calificacion> getCalificaciones() {
+  public List<Calificacion> getCalificaciones() {
     return this.calificaciones;
   }
 

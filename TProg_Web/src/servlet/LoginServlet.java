@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,11 +40,12 @@ public class LoginServlet extends HttpServlet {
         response.getWriter().println(nick); // asddfasdf
         String pass = (String) request.getParameter("pass");
         response.getWriter().println(pass); // asdfasdfadsf
-        IUsuariosCanales IUC = Fabrica.getIUsuariosCanales();
-        if ((IUC.existeUsuario(nick) || IUC.existeUsuarioMail(nick))
-            && IUC.checkLogin(nick, pass)) {
+        IUsuariosCanales interfazUsuariosCanales = Fabrica.getIUsuariosCanales();
+        if ((interfazUsuariosCanales.existeUsuario(nick)
+            || interfazUsuariosCanales.existeUsuarioMail(nick))
+            && interfazUsuariosCanales.checkLogin(nick, pass)) {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
-          DtUsuario dtUsuario = IUC.getDt(nick);
+          DtUsuario dtUsuario = interfazUsuariosCanales.getDt(nick);
           request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
           response.sendRedirect("/Inicio");
         } else {

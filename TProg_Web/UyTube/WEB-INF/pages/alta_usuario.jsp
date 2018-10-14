@@ -9,7 +9,16 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
-				<form action="AltaUsuario" method="POST" id="formAltaUsuario">
+				<% if (request.getAttribute("ERROR_PASS") != null && (boolean) request.getAttribute("ERROR_PASS")) { %>
+					<h2>La contraseñas no coinciden.</h2>
+				<% } %>
+				<% if (request.getAttribute("ERROR_NICK") != null && (boolean) request.getAttribute("ERROR_PASS")) { %>
+					<h2>El nick ya esta siendo usado.</h2>
+				<% } %>
+				<% if (request.getAttribute("ERROR_MAIL") != null && (boolean) request.getAttribute("ERROR_PASS")) { %>
+					<h2>El mail ya esta siendo usado.</h2>
+				<% } %>
+				<form action="AltaUsuario" method="POST" id="formAltaUsuario" enctype="multipart/form-data">
 				Nombre: <input type="text" name="nombre" required>*
 				<br>
 				Apellido: <input type="text" name="apellido" required>*
@@ -24,7 +33,7 @@
 				<br>
 				Confirmar contraseña: <input type="password" name="passConfirm" required>*
 				<br>
-				Imagen: <input type="file" name="img">
+				Imagen: <input type="file" name="img" accept="image/*">
 				<br>
 				Nombre del canal: <input type="text" name="nombreCanal">
 				<br>
@@ -39,6 +48,7 @@
 				<% } %>
 				</select>
 				<br>
+				<input type="hidden" name="STATE" value="ALTA">
 				<button type="submit">Aceptar</button>
 			</form>
 			<br>

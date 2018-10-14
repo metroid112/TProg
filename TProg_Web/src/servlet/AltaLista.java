@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ public class AltaLista extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null) 
+    if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null)
         && (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))) {
       request.getRequestDispatcher("/WEB-INF/pages/alta_lista.jsp").forward(request, response);
     } else {

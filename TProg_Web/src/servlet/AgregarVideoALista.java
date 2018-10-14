@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,6 @@ import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IVideos;
-import manejadores.ManejadorVideos;
 import utils.EstadoSesion;
 
 @WebServlet("/AgregarVideoALista")
@@ -52,7 +52,7 @@ public class AgregarVideoALista extends HttpServlet {
       try {
         ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
         request.setAttribute("EXITO",
-            "¡Se ha agregado el video a la lista seleccionada con éxito!");
+            "ï¿½Se ha agregado el video a la lista seleccionada con ï¿½xito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
       } catch (DuplicateClassException e) {
         request.setAttribute("ERROR", "El video " + "'" + nombreVideo + "'"

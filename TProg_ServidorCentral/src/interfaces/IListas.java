@@ -22,7 +22,7 @@ public interface IListas {
 
   public Map<Integer, DtLista> getDtListas();
 
-  // public String getDueñoVideo(String dueñoLista, String nombreLista, String
+  // public String getDueï¿½oVideo(String dueï¿½oLista, String nombreLista, String
   // nombreVid, String algo) throws Exception;
 
   public void guardarCambios(String nomLis, String usuario, boolean visible);
@@ -35,9 +35,9 @@ public interface IListas {
       boolean deefecto);
 
   public List<DtLista> getDtListasPublicas();
-  
+
   public List<DtLista> getDtListasParticularesUsuario(String usuario);
-  
+
   public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario);
 
   public List<DtLista> getDtListasPrivadasUsuario(String usuario);

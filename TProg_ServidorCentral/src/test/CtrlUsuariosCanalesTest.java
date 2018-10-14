@@ -12,38 +12,39 @@ import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 
 public class CtrlUsuariosCanalesTest {
-  
-  public IUsuariosCanales iUsuarios = Fabrica.getIUsuariosCanales();
-  public IListas iListas = Fabrica.getIListas();
-  public IVideos iVideos = Fabrica.getIVideos();
-  public ICategorias iCategorias = Fabrica.getICategorias();
-  public String[] listaUsuarios = {"hrubino", "mbusca", "hectorg", "tabarec", "cachilas", "juliob", "diegop", "kairoh", "robinh", 
-      "marcelot", "novick", "sergiop", "chino", "tonyp", "nicoJ"};
+
+  public IUsuariosCanales interfazUsuarios = Fabrica.getIUsuariosCanales();
+  public IListas interfazListas = Fabrica.getIListas();
+  public IVideos interfazVideos = Fabrica.getIVideos();
+  public ICategorias interfazCategorias = Fabrica.getICategorias();
+  public String[] listaUsuarios = { "hrubino", "mbusca", "hectorg", "tabarec", "cachilas", "juliob",
+      "diegop", "kairoh", "robinh",
+      "marcelot", "novick", "sergiop", "chino", "tonyp", "nicoJ" };
 
   @Test
   public void testIsSeguidor() {
-    assertTrue(iUsuarios.isSeguidor("tabarec", "hrubino"));
-    assertFalse(iUsuarios.isSeguidor("hrubino", "tabarec"));
-    iUsuarios.dejarSeguir("tabarec", "hrubino");
-    assertFalse(iUsuarios.isSeguidor("tabarec", "hrubino"));
+    assertTrue(interfazUsuarios.isSeguidor("tabarec", "hrubino"));
+    assertFalse(interfazUsuarios.isSeguidor("hrubino", "tabarec"));
+    interfazUsuarios.dejarSeguir("tabarec", "hrubino");
+    assertFalse(interfazUsuarios.isSeguidor("tabarec", "hrubino"));
   }
   
   @Test
   public void testYaCalificado() {
-    assertTrue(iUsuarios.yaCalificacdo("sergiop", false, "50 años del InCo", "hectorg"));
-    assertFalse(iUsuarios.yaCalificacdo("hectorg", true, "thriller", "kairoh"));
+    assertTrue(interfazUsuarios.yaCalificacdo("sergiop", false, "50 aÃ±os del InCo", "hectorg"));
+    assertFalse(interfazUsuarios.yaCalificacdo("hectorg", true, "thriller", "kairoh"));
   }
   
   @Test
   public void testModificarValoracion() {
-    iUsuarios.modificarValoracion(true, "sergiop", "50 años del InCo", "hectorg");
-    assertFalse(iUsuarios.yaCalificacdo("sergiop", false, "50 años del InCo", "hectorg"));
-    assertTrue(iUsuarios.yaCalificacdo("sergiop", true, "50 años del InCo", "hectorg"));
+    interfazUsuarios.modificarValoracion(true, "sergiop", "50 aÃ±os del InCo", "hectorg");
+    assertFalse(interfazUsuarios.yaCalificacdo("sergiop", false, "50 aÃ±os del InCo", "hectorg"));
+    assertTrue(interfazUsuarios.yaCalificacdo("sergiop", true, "50 aÃ±os del InCo", "hectorg"));
   }
   
   @Test
   public void testGetDt() {
-    DtUsuario dtUsuario = iUsuarios.getDt("chino");
+    DtUsuario dtUsuario = interfazUsuarios.getDt("chino");
     assertEquals("Alvaro", dtUsuario.getNombre());
     assertEquals("Recoba",dtUsuario.apellido);
     assertEquals("Chino Recoba",dtUsuario.getCanal());
@@ -52,7 +53,7 @@ public class CtrlUsuariosCanalesTest {
   
   @Test
   public void testLoginPorCorreo() {
-    assertTrue(iUsuarios.checkLogin("chino@trico.org.uy", "Laika765"));
+    assertTrue(interfazUsuarios.checkLogin("chino@trico.org.uy", "Laika765"));
   }
 
 }

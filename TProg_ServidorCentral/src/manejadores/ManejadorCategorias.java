@@ -46,7 +46,7 @@ public class ManejadorCategorias {
   public String[] toArray() {
     return categorias.keySet().toArray(new String[categorias.size()]);
   }
-  
+
   public boolean existeCategoria(String nombre) {
     return categorias.containsKey(nombre);
   }

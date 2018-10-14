@@ -6,7 +6,6 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({CargaDatosTest.class, CtrlUsuariosCanalesTest.class, CtrlListasTest.class})
-
 public class TestSuite {
 
 }

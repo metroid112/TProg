@@ -1,17 +1,12 @@
 package interfaces;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 
 public interface IUsuariosCanales {
-
-
 
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
@@ -24,7 +19,7 @@ public interface IUsuariosCanales {
   public boolean isCanalPublico(String usuario);
 
   public List<String> listarNombresUsuarios();
-  
+
   public void seguir(String seguidor, String seguido);
 
   void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,

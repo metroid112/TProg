@@ -22,7 +22,7 @@
 						<input type="hidden" name="listapublica" value="<%=request.getAttribute("LISTAPUBLICA")%>">
 						<input type="hidden" name="lista" value="<%=request.getAttribute("LISTA")%>">
 						<input type="hidden" name="video" value="<%=video.idVideo%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="<%= video.UrlThumbnail %>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.urlThumbnail%>">
 						<br>
 						<header>
 						<%= video.nombre %>

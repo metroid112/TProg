@@ -21,7 +21,8 @@ public class Calificacion {
   public Video getVideo() {
     return video;
   }
-  public boolean getlike(){
+
+  public boolean getlike() {
     return like;
   }
 
@@ -30,8 +31,8 @@ public class Calificacion {
   }
 
   @Override
-  public boolean equals(Object o) {
-    Calificacion cal = (Calificacion) o;
+  public boolean equals(Object object) {
+    Calificacion cal = (Calificacion) object;
     return (this.like == cal.like && this.usuario.equals(cal.usuario)
         && this.video.equals(cal.video));
   }
