@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Comparator;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,13 +17,14 @@ import interfaces.Fabrica;
 
 @WebServlet("/Busqueda")
 public class Busqueda extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
   public Busqueda() {
-      super();
+    super();
   }
 
-  private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  private void processRequest(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
     String tipoBusqueda = request.getParameter("TIPO_BUSQUEDA");
     String txtBusqueda = request.getParameter("txtBusqueda");
     DtBusqueda resultados = null;
@@ -47,17 +47,19 @@ public class Busqueda extends HttpServlet {
         resultados.videos.sort(Comparator.comparing(DtVideo::getFecha).reversed());
         resultados.listas.sort(Comparator.comparing(DtLista::getUltimaActividad).reversed());
         resultados.usuarios.sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
-      } 
+      }
     }
     request.setAttribute("RESULTADO_BUSQUEDA", resultados);
     request.getRequestDispatcher("WEB-INF/pages/busqueda.jsp").forward(request, response);
   }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
-	}
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    processRequest(request, response);
+  }
 
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    doGet(request, response);
+  }
 }

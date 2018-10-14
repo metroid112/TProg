@@ -1,12 +1,11 @@
 package servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map.Entry;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +33,7 @@ public class AltaUsuario extends HttpServlet {
     String passConfirm = (String) request.getParameter("passConfirm");
     if (!pass.equals(passConfirm)) {
       // response.getWriter().println(request.getParameter("categoria"));
-      request.getSession().setAttribute("ERROR_REGISTRO", "Contraseñas no coinciden"); // TODO
+      request.getSession().setAttribute("ERROR_REGISTRO", "Contraseï¿½as no coinciden"); // TODO
                                                                                        // terminar
       // Faltan otros checks
       request.getRequestDispatcher("/WEB-INF/pages/alta_usuario.jsp").forward(request, response);

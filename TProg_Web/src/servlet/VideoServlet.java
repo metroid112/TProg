@@ -1,6 +1,5 @@
 package servlet;
 
-import java.awt.List;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -23,7 +22,8 @@ public class VideoServlet extends HttpServlet {
     super();
   }
 
-  private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  private void processRequest(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
 
   }
 
@@ -52,7 +52,7 @@ public class VideoServlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request,response);
+    processRequest(request, response);
   }
 
 }

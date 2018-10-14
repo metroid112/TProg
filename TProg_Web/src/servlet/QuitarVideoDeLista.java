@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,11 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
-import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
-import manejadores.ManejadorVideos;
 
 @WebServlet("/QuitarVideoDeLista")
 public class QuitarVideoDeLista extends HttpServlet {

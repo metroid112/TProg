@@ -1,10 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import clases.Calificacion;
-import clases.Categoria;
-import clases.Comentario;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.NotFoundException;
