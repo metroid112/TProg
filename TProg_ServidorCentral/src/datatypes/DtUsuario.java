@@ -16,10 +16,11 @@ public class DtUsuario {
   public String nick;
   public String imgPath;
   public Date ultimaActividad;
+  public String categoria;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
       String descripcionCanal, Date fechaNacimiento, BufferedImage imagen, boolean privado,
-      String nick, String imgPath) {
+      String nick, String imgPath, String categoria) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.canal = canal;
@@ -30,6 +31,7 @@ public class DtUsuario {
     this.privado = privado;
     this.nick = nick;
     this.imgPath = imgPath;
+    this.categoria = categoria;
   }
 
   public DtUsuario(String nick, String canal, String path, Date ultimaActividad) {

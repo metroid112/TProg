@@ -34,10 +34,200 @@ public class CtrlDatos implements IDatos {
       DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
       String divisor = "/";
 
+      class UsuarioBean {
+        public String nick;
+        public String nombre;
+        public String apellido;
+        public String pass;
+        public String mail;
+        public String nacimiento;
+        public String nombreCanal;
+        public String descripcionCanal;
+        public boolean visibilidadCanal;
+      };
+
+      UsuarioBean HR = new UsuarioBean();
+      UsuarioBean MB = new UsuarioBean();
+      UsuarioBean HG = new UsuarioBean();
+      UsuarioBean TC = new UsuarioBean();
+      UsuarioBean CS = new UsuarioBean();
+      UsuarioBean JB = new UsuarioBean();
+      UsuarioBean DP = new UsuarioBean();
+      UsuarioBean KH = new UsuarioBean();
+      UsuarioBean RH = new UsuarioBean();
+      UsuarioBean MT = new UsuarioBean();
+      UsuarioBean EN = new UsuarioBean();
+      UsuarioBean SP = new UsuarioBean();
+      UsuarioBean AR = new UsuarioBean();
+      UsuarioBean AP = new UsuarioBean();
+      UsuarioBean NJ = new UsuarioBean();
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal Horacio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      MB.nick = "mbusca";
+      MB.nombre = "Martín";
+      MB.apellido = "Buscaglia";
+      MB.pass = "Cookie234";
+      MB.mail = "Martin.bus@agadu.org.uy";
+      MB.nacimiento = "14/06/1972";
+      MB.nombreCanal = "Canal Horacio";
+      MB.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      MB.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+      HR.nick = "hrubino";
+      HR.nombre = "Horacio";
+      HR.apellido = "Rubino";
+      HR.pass = "Rufus123";
+      HR.mail = "horacio.rubino@guambia.com.uy";
+      HR.nacimiento = "25/02/1962";
+      HR.nombreCanal = "Canal Horacio";
+      HR.descripcionCanal = "El canal HOracio es para publicar contenido divertido";
+      HR.visibilidadCanal = true;
+      
+
       Fabrica.getIUsuariosCanales().altaUsuario("hrubino", "Horacio", "Rubino",
           "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"),
           "img" + divisor + "usuarios" + divisor + "horacio.JPG", "Canal Horacio",
-          "El canal Horacio es para publicar contenido divertido", "Sin categoria", true, "pass");
+          "El canal Horacio es para publicar contenido divertido", "Sin categoria", true,
+          "pass");
       Fabrica.getIUsuariosCanales().altaUsuario("mbusca", "Martin", "Buscaglia",
           "Martin.bus@agadu.org.uy",
           format.parse("14/06/1972"), "img" + divisor + "usuarios" + divisor + "martin.JPG",

@@ -281,5 +281,9 @@ public class Canal {
     }
     return videos;
   }
+  
+  public Categoria getCategoria() {
+    return this.categoria;
+  }
 
 }
