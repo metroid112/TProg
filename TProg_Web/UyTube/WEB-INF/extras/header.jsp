@@ -1,6 +1,5 @@
 <%@page import="datatypes.*" %>
 <%@page import="utils.*" %>
-
 <div class="header">
 	<div class="head-item">
 		<a href="/Inicio">
@@ -28,7 +27,9 @@
 				<button type="submit">Iniciar Sesion (WIP)</button>
 			</form>
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
-			Iniciado como <%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
+			<% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
+			<img width="100" height="100" class="rounded-circle" src="<%= logueado.imgPath %>">	
+			Iniciado como <a href="ModificarUsuario"><%= logueado.nick %></a>
 			<br>
 			<form action="login" method="GET">
 				<input type="hidden" name="CERRAR_SESION" value="CONFIRM">

@@ -10,7 +10,7 @@
 		<div class="contenedor">
 			<jsp:include page="WEB-INF/extras/sidebar.jsp" />
 		</div>
-	</div>
-	<jsp:include page="WEB-INF/extras/script.jsp" />
+		<jsp:include page="WEB-INF/extras/script.jsp" />
+	</div>	
 </body>
 </html>
