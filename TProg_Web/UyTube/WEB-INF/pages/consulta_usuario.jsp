@@ -1,6 +1,4 @@
-<%@ page import="datatypes.*" %>
-<%@ page import="java.util.*" %>
-<%@ page import="utils.*" %>
+<%@ page import="datatypes.*, java.util.*, utils.*, java.text.*" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,6 +35,7 @@
   		List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS");
   		List<String> seguidores = (List<String>) request.getAttribute("SEGUIDORES");
   		List<String> seguidos = (List<String>) request.getAttribute("SEGUIDOS");
+  		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
  			if (usuario == null) { %>
   			<h1>Usuario <%= usuario.nick %> no existe</h1>
      <%	} else { %>
@@ -46,10 +45,10 @@
   			<br>
   			Nombre: <%= usuario.nombre + " " + usuario.apellido %>
   			<br>
-  			Fecha de nacimiento: <%= usuario.fechaNacimiento %>
+  			Fecha de nacimiento: <%= dateFormat.format(usuario.fechaNacimiento) %>
   			<br>
   			<h2>CANAL: <%= usuario.canal %></h2>
-  			Descripciï¿½n: <%= usuario.descripcionCanal %>
+  			Descripción: <%= usuario.descripcionCanal %>
   			<br>
   			<h3>VIDEOS PUBLICOS</h3>
      		<% for(DtVideo video : videos) { %>

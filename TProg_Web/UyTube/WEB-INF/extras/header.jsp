@@ -19,6 +19,9 @@
 		</form>
 	</div>
 	<div class="head-item" align="right">
+		<% if (session.getAttribute("USUARIO_LOGEADO") == null) {
+		  session.setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
+		} %>
 		<% if (session.getAttribute("LOGIN") == null || session.getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)) { %>
 			<form action="login" method="GET">
 				<input type="hidden" name="PANTALLALOGIN" value=TRUE>

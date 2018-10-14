@@ -30,7 +30,8 @@ public class ConsultaUsuario extends HttpServlet {
             response);
         break;
       case "INFO":
-        DtUsuario usuarioLogueado = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+        DtUsuario usuarioLogueado =
+            (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
         String nombreUsuario = (String) request.getParameter("usuario");
         request.setAttribute("STATE", "INFO");
         request.setAttribute("USUARIO",
