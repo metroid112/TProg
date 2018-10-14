@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import clases.Canal;
 import clases.Usuario;
@@ -42,9 +41,6 @@ public class ManejadorUsuarios {
     return usuarios.get(nick);
   }
 
-  /**
-   * Busca al usuario por su correo Si no es encontrado devuelve null
-   */
   public Usuario mailGet(String mail) {
     Usuario usuario = null;
     for (Usuario usuarioTemp : usuarios.values()) {

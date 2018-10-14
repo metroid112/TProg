@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import clases.Canal;
-import clases.Lista;
 import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
@@ -53,10 +52,10 @@ public class CtrlListas implements IListas {
   }
 
   /*
-   * @Override public String getDueñoVideo(String dueñoLista, String nombreLista, String nombreVid)
+   * @Override public String getDueï¿½oVideo(String dueï¿½oLista, String nombreLista, String nombreVid)
    * throws Exception {
    * 
-   * return manejadorUsuarios.get(dueñoLista).getCanal().getLista(nombreLista).getVideo(
+   * return manejadorUsuarios.get(dueï¿½oLista).getCanal().getLista(nombreLista).getVideo(
    * nombreVid).getCanal() .getUsuario().getNick(); }
    */
 

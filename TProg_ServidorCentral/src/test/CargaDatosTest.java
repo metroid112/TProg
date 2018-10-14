@@ -1,6 +1,9 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,9 +16,12 @@ import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtBusqueda;
-import interfaces.*;
+import interfaces.Fabrica;
+import interfaces.ICategorias;
+import interfaces.IListas;
+import interfaces.IUsuariosCanales;
+import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
-import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorListasParticulares;
 import manejadores.ManejadorUsuarios;
 import manejadores.ManejadorVideos;

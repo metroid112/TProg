@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import clases.Calificacion;
-import clases.Canal;
 import clases.Categoria;
 import clases.Comentario;
 
