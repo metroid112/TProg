@@ -5,8 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CtrlCategoriasTest.class, CtrlListasTest.class, CtrlUsuariosCanalesTest.class,
-    CtrlVideosTest.class })
+@SuiteClasses({ })
 public class TestSuite {
 
 }

@@ -39,7 +39,7 @@ public class ConsultaUsuario extends HttpServlet {
         request.setAttribute("VIDEOS",
             Fabrica.getIVideos().getDtVideosPublicos(nombreUsuario));
         request.setAttribute("LISTAS",
-            Fabrica.getIListas().getDtListasParticularesUsuario(nombreUsuario));
+            Fabrica.getIListas().getDtListasParticularesPublicasUsuario(nombreUsuario));
         request.setAttribute("SEGUIDORES",
             Fabrica.getIUsuariosCanales().getSeguidores(nombreUsuario));
         request.setAttribute("SEGUIDOS",

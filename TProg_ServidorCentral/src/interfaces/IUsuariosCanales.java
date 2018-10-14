@@ -27,12 +27,6 @@ public interface IUsuariosCanales {
 
   public boolean isEmailUnique(String email);
 
-  public String[] listarListasDeReproduccion(String nick);
-
-  public String[] listarSeguidores(String nick);
-
-  public String[] listarSeguidos(String nick);
-
   public String[] listarUsuarios();
 
   public List<String> listarNombresUsuarios();
@@ -43,9 +37,11 @@ public interface IUsuariosCanales {
 
   public void seguir(String seguidor, String seguido);
 
-  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo);
-  
-  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo);
+  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
+      String nombreDuenoVideo);
+
+  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,
+      String nombreDuenoVideo);
 
   void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
       String nombreDuenoVideo);
