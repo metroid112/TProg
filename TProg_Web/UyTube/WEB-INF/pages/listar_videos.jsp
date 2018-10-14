@@ -29,7 +29,7 @@
 						<header>
 						<%= vp.nombre %>
 						<br>
-						User: <%= vp.usuario %>
+						Usuario: <%= vp.usuario %>
 						</header>
 					</form>	
 					</div>
