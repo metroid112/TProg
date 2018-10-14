@@ -1,13 +1,14 @@
 package clases;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Categoria {
 
-  private LinkedList<ListaParticular> listas = new LinkedList<ListaParticular>();
+  private List<ListaParticular> listas = new LinkedList<ListaParticular>();
 
   private String nombre;
-  private LinkedList<Video> videos = new LinkedList<Video>();
+  private List<Video> videos = new LinkedList<Video>();
 
   public Categoria(String nombre) {
     this.nombre = nombre;

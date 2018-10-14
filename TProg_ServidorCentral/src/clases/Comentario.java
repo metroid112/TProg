@@ -2,6 +2,7 @@ package clases;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import datatypes.DtComentario;
 
@@ -11,7 +12,7 @@ public class Comentario {
   private Date fecha;
   private int id; // id de comentario para uso interno
   private Comentario padre;
-  private LinkedHashMap<Integer, Comentario> respuestas = new LinkedHashMap<Integer, Comentario>();
+  private Map<Integer, Comentario> respuestas = new LinkedHashMap<Integer, Comentario>();
   private String texto;
   private Usuario usuario;
   private Video video;
@@ -74,7 +75,7 @@ public class Comentario {
     return this.id;
   }
 
-  public LinkedHashMap<Integer, Comentario> getRespuestas() {
+  public Map<Integer, Comentario> getRespuestas() {
     return respuestas;
   }
 

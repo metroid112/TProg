@@ -12,7 +12,7 @@ import datatypes.DtUsuario;
 public class Usuario {
 
   private String apellido;
-  private LinkedList<Calificacion> calificaciones = new LinkedList<Calificacion>();
+  private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
   private Canal canal;
   private List<Comentario> comentarios = new LinkedList<Comentario>();
   private String correo;
@@ -167,7 +167,7 @@ public class Usuario {
     return comentarios.get(id);
   }
 
-  public LinkedList<Calificacion> getCalificaciones() {
+  public List<Calificacion> getCalificaciones() {
     return this.calificaciones;
   }
 

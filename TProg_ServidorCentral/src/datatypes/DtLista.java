@@ -5,17 +5,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DtLista {
-  private LinkedList<String> categorias = new LinkedList<String>();
+  private List<String> categorias = new LinkedList<String>();
   private String nombre;
   private String tipo;
-  private LinkedList<String> videos = new LinkedList<String>();
+  private List<String> videos = new LinkedList<String>();
   private List<DtVideo> dtVideos = null;
   private boolean visible;
   private Date ultimaActividad;
   private int idLista;
 
-  public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos,
-      LinkedList<String> categorias) {
+  public DtLista(String nombre, String tipo, boolean visible, List<String> videos,
+      List<String> categorias) {
     this.nombre = nombre;
     this.tipo = tipo;
     this.visible = visible;
@@ -23,8 +23,8 @@ public class DtLista {
     this.categorias = categorias;
   }
 
-  public DtLista(String nombre, String tipo, boolean visible, LinkedList<String> videos,
-      List<DtVideo> dtVideos, LinkedList<String> categorias, Date ultimaActividad, int idLista) {
+  public DtLista(String nombre, String tipo, boolean visible, List<String> videos,
+      List<DtVideo> dtVideos, List<String> categorias, Date ultimaActividad, int idLista) {
     this.nombre = nombre;
     this.idLista = idLista;
     this.tipo = tipo;
@@ -39,7 +39,7 @@ public class DtLista {
     return this.ultimaActividad;
   }
 
-  public LinkedList<String> getCategorias() {
+  public List<String> getCategorias() {
     return categorias;
   }
 
@@ -55,7 +55,7 @@ public class DtLista {
     return tipo;
   }
 
-  public LinkedList<String> getVideos() {
+  public List<String> getVideos() {
     return videos;
   }
 
