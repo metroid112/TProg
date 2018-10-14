@@ -89,41 +89,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public boolean isEmailUnique(String email) {
-    return manejadorUsuarios.isEmailUnique(email);
-  }
-
-  @Override
-  public String[] listarListasDeReproduccion(String nick) {
-    HashMap<String, ListaDefecto> listasDefecto =
-        (HashMap<String, ListaDefecto>) manejadorUsuarios.get(nick).getCanal()
-            .getListaDefecto();
-    String[] listaDefecto = listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
-    HashMap<String, ListaParticular> listasParticular =
-        (HashMap<String, ListaParticular>) manejadorUsuarios.get(nick).getCanal()
-            .getListaParticulares();
-    String[] listaParticulares = listasParticular.keySet()
-        .toArray(new String[listasParticular.size()]);
-    int largo = listaDefecto.length + listaParticulares.length;
-    String[] res = new String[largo];
-    for (int i = 0; i < listaDefecto.length; i++) {
-      res[i] = listaDefecto[i];
-    }
-    int iter2 = 0;
-    for (int i = listaDefecto.length; i < largo; i++) {
-      res[i] = listaParticulares[iter2];
-      iter2++;
-    }
-    return res;
-  }
-
-  @Override
-  public String[] listarSeguidores(String nick) {
-    return manejadorUsuarios.get(nick).getSeguidores().keySet()
-        .toArray(new String[manejadorUsuarios.get(nick).getSeguidores().size()]);
-  }
-
-  @Override
   public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
       String nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
@@ -131,8 +96,9 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
     usuario.valorarVideo(like, vid);
   }
-
-  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo){
+  
+  @Override
+  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo){   // Se usa?
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
     Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
@@ -147,31 +113,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
     usuario.modificarValoracion(like, vid);
-  }
-
-  @Override
-  public String[] listarSeguidos(String nick) {
-    return manejadorUsuarios.get(nick).getSeguidos().keySet()
-        .toArray(new String[manejadorUsuarios.get(nick).getSeguidos().size()]);
-  }
-
-  @Override
-  public String[] listarUsuarios() {
-    return manejadorUsuarios.toArray();
-  }
-
-  @Override
-  public String[] listarVideos(String nick) {
-    HashMap<String, Video> videos =
-        (HashMap<String, Video>) manejadorUsuarios.get(nick).getCanal().getVideos();
-    String[] res = videos.keySet().toArray(new String[videos.size()]);
-    return res;
-  }
-
-  @Override
-  public String[] listarVideosLista(String usuario, String lista, boolean defecto) {
-    Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
-    return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
   }
 
   @Override

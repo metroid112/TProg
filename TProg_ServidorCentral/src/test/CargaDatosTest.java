@@ -116,5 +116,49 @@ public class CargaDatosTest {
     assertEquals(esperado, cantidadResultados);
   }
   
+  @Test
+  public void testMails() {
+    String[] mails = {"horacio.rubino@guambia.com.uy", "Martin.bus@agadu.org.uy", "hector.gui@elgalpon.org.uy", "tabare.car@agadu.org.uy",
+        "Cachila.sil@c1080.org.uy", "juliobocca@sodre.com.uy", "diego@efectocine.com", "kairoher@pilsenrock.com.uy", "Robin.h@tinglesa.com.uy",
+        "marcelot@ideasdelsur.com.ar", "edgardo@novick.com.uy", "puglia@alpanpan.com.uy", "chino@trico.org.uy", "eltony@manya.org.uy",
+        "jodal@artech.com.uy"};
+    boolean fallo = false;
+    for (String mail : mails) {
+     if (!iUsuarios.existeUsuarioMail(mail)) {
+       fallo = true;
+     }
+    }
+    assertFalse(fallo);
+  }
+  
+  @Test
+  public void testCanalesPublicos() {
+    int esperadoPub = 12;
+    int esperadoPri = 3;
+    int publicos = 0;
+    int privados = 0;
+    for (String usuario : listaUsuarios) {
+      if (iUsuarios.isCanalPublico(usuario)) {
+        publicos++;
+      } else {
+        privados++;
+      }
+    }
+    assertEquals(esperadoPub, publicos);
+    assertEquals(esperadoPri, privados);
+  }
+  
+  @Test
+  public void testSeguidores() {
+    int[] seguidoresEsperado = {3, 3, 3, 2, 4, 4, 5, 2, 0, 0, 0, 1, 1, 1, 0};
+    int[] seguidores = new int[15];
+    int contador = 0;
+    for (String usuario : listaUsuarios) {     
+      seguidores[contador] = iUsuarios.getSeguidores(usuario).size();
+      contador++;
+    }
+    assertArrayEquals(seguidoresEsperado, seguidores);
+  }
+  
 
 }

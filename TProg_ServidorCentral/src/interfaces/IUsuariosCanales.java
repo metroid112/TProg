@@ -23,22 +23,8 @@ public interface IUsuariosCanales {
 
   public boolean isCanalPublico(String usuario);
 
-  public boolean isEmailUnique(String email);
-
-  public String[] listarListasDeReproduccion(String nick);
-
-  public String[] listarSeguidores(String nick);
-
-  public String[] listarSeguidos(String nick);
-
-  public String[] listarUsuarios();
-
   public List<String> listarNombresUsuarios();
-
-  public String[] listarVideos(String nick);
-
-  public String[] listarVideosLista(String usuario, String lista, boolean defecto);
-
+  
   public void seguir(String seguidor, String seguido);
 
   void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo);
