@@ -24,7 +24,7 @@
 		<% if (session.getAttribute("LOGIN") == null || session.getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)) { %>
 			<form action="login" method="GET">
 				<input type="hidden" name="PANTALLALOGIN" value=TRUE>
-				<button type="submit">Iniciar Sesion (WIP)</button>
+				<button type="submit">Iniciar Sesion</button>
 			</form>
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
 			<% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
