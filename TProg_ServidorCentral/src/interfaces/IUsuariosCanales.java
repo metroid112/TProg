@@ -27,8 +27,6 @@ public interface IUsuariosCanales {
 
   public boolean isEmailUnique(String email);
 
-  public String[] listarUsuarios();
-
   public List<String> listarNombresUsuarios();
 
   public String[] listarVideos(String nick);

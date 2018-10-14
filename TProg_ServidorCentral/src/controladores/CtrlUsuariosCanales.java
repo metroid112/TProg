@@ -59,6 +59,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = owner.getCanal().getVideoCanal(nombreVideo);
     usuario.comentar(texto, fecha, vid);
   }
+
   @Override
   public void responderComentario(String texto, Date fecha, String nombreUsuario,
       String nombreVideo, String nombreDuenoVideo, Integer idComentarioPadre) {
@@ -111,13 +112,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     usuario.valorarVideo(like, vid);
   }
 
-  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,String nombreDuenoVideo){
+  @Override
+  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,
+      String nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.get(nombreUsuario);
     Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
-    return usuario.yaCalificado(like,vid);
+    return usuario.yaCalificado(like, vid);
   }
-
 
   @Override
   public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
@@ -126,11 +128,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario dueno = manejadorUsuarios.get(nombreDuenoVideo);
     Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
     usuario.modificarValoracion(like, vid);
-  }
-
-  @Override
-  public String[] listarUsuarios() {
-    return manejadorUsuarios.toArray();
   }
 
   @Override
@@ -151,7 +148,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public void seguir(String seguidor, String seguido) {
     manejadorUsuarios.get(seguidor).seguir(manejadorUsuarios.get(seguido));
   }
-  
+
   @Override
   public void dejarSeguir(String seguidor, String seguido) {
     manejadorUsuarios.get(seguidor).dejarSeguir(manejadorUsuarios.get(seguido));
@@ -163,20 +160,21 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
 
-
   public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
 
-  public List<DtVideo> getListaDtVideo(String usuario){ //CUANDO SE BORRA EL LISTAR VIDEOS.JSP SE PUEDE BORRAR ESTA FUNCION, YA HAY OTRA IGUAL EN EL CONTROLADOR VIDEO
+  public List<DtVideo> getListaDtVideo(String usuario) { // CUANDO SE BORRA EL LISTAR VIDEOS.JSP SE
+                                                         // PUEDE BORRAR ESTA FUNCION, YA HAY OTRA
+                                                         // IGUAL EN EL CONTROLADOR VIDEO
 
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
 
-  public List<DtVideo> getListaPublicoDtVideo(){
+  public List<DtVideo> getListaPublicoDtVideo() {
 
     return manejadorUsuarios.getListaPublicoDtVideo();
   }
@@ -225,6 +223,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public boolean isSeguidor(String seguidor, String seguido) {
     Usuario userSeguidor = ManejadorUsuarios.getManejadorUsuarios().get(seguidor);
     Usuario userSeguido = ManejadorUsuarios.getManejadorUsuarios().get(seguido);
-    return ((userSeguidor.getSeguidos().get(seguido) != null) && (userSeguido.getSeguidores().get(seguidor) != null));
+    return ((userSeguidor.getSeguidos().get(seguido) != null)
+        && (userSeguido.getSeguidores().get(seguidor) != null));
   }
 }
