@@ -9,12 +9,18 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
+		<%if(request.getAttribute("ERROR_1") != null){%>
 			<%= request.getAttribute("ERROR_1") %>
-			<br>
+		<br>
+		<%}
+		if(request.getAttribute("ERROR_2") != null){%>
 			<%= request.getAttribute("ERROR_2") %>
-			<br>
+		<br>
+		<%}
+		if(request.getAttribute("ERROR_3") != null){%>
 			<%= request.getAttribute("ERROR_3") %>
-			<br>
+		<br>
+		<%} %>
 			<form action="AltaVideo" method="POST" id="formAltaVideo">
 				<input type="hidden" name="STATE" value="ALTA">
 				Nombre: <input type="text" name="nombre" required>*
