@@ -124,13 +124,12 @@ public class Usuario {
   }
 
   public void dejarSeguir(Usuario seguido) {
-    this.seguidos.remove(seguido);
+    this.seguidos.remove(seguido.getNick());
     seguido.removeSeguidor(this);
   }
 
   private void removeSeguidor(Usuario usuario) {
-    this.seguidores.remove(usuario);
-
+    this.seguidores.remove(usuario.getNick());
   }
 
   public void setCanal(Canal canal) {

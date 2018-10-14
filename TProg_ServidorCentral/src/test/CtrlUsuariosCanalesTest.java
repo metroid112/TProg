@@ -1,7 +1,10 @@
 package test;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
@@ -19,8 +22,38 @@ public class CtrlUsuariosCanalesTest {
       "marcelot", "novick", "sergiop", "chino", "tonyp", "nicoJ" };
 
   @Test
-  public void test() {
-
+  public void testIsSeguidor() {
+    assertTrue(interfazUsuarios.isSeguidor("tabarec", "hrubino"));
+    assertFalse(interfazUsuarios.isSeguidor("hrubino", "tabarec"));
+    interfazUsuarios.dejarSeguir("tabarec", "hrubino");
+    assertFalse(interfazUsuarios.isSeguidor("tabarec", "hrubino"));
+  }
+  
+  @Test
+  public void testYaCalificado() {
+    assertTrue(interfazUsuarios.yaCalificacdo("sergiop", false, "50 años del InCo", "hectorg"));
+    assertFalse(interfazUsuarios.yaCalificacdo("hectorg", true, "thriller", "kairoh"));
+  }
+  
+  @Test
+  public void testModificarValoracion() {
+    interfazUsuarios.modificarValoracion(true, "sergiop", "50 años del InCo", "hectorg");
+    assertFalse(interfazUsuarios.yaCalificacdo("sergiop", false, "50 años del InCo", "hectorg"));
+    assertTrue(interfazUsuarios.yaCalificacdo("sergiop", true, "50 años del InCo", "hectorg"));
+  }
+  
+  @Test
+  public void testGetDt() {
+    DtUsuario dtUsuario = interfazUsuarios.getDt("chino");
+    assertEquals("Alvaro", dtUsuario.getNombre());
+    assertEquals("Recoba",dtUsuario.apellido);
+    assertEquals("Chino Recoba",dtUsuario.getCanal());
+    assertEquals("chino@trico.org.uy",dtUsuario.correo);
+  }
+  
+  @Test
+  public void testLoginPorCorreo() {
+    assertTrue(interfazUsuarios.checkLogin("chino@trico.org.uy", "Laika765"));
   }
 
 }
