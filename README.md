@@ -16,3 +16,11 @@ Datos de prueba: https://eva.fing.edu.uy/pluginfile.php/44572/mod_resource/conte
 # Tarea 2
 
 Letra: https://eva.fing.edu.uy/pluginfile.php/47706/mod_resource/content/10/laboratorio/Tarea_2/Tarea2_2018_v5.pdf
+
+Datos de prueba: https://eva.fing.edu.uy/pluginfile.php/97305/mod_resource/content/4/DatosPrueba2018_T2_V2.pdf
+
+# Tarea 3
+
+Letra:
+
+Datos de prueba: 
