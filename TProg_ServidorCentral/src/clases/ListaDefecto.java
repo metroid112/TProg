@@ -1,8 +1,11 @@
 package clases;
 
+import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 import datatypes.DtLista;
+import datatypes.DtVideo;
 import manejadores.ManejadorUsuarios;
 
 public class ListaDefecto extends Lista {
@@ -18,9 +21,11 @@ public class ListaDefecto extends Lista {
   @Override
   public DtLista getDtLista() {
     LinkedList<String> videos = new LinkedList<String>();
+    List<DtVideo> dtVideos = new LinkedList<DtVideo>();
     for (Video vid : this.getVideos()) {
       videos.add(vid.getCanal().getUsuario().getNick() + "-" + vid.getNombre());
+      dtVideos.add(vid.getDt());
     }
-    return new DtLista(this.getNombre(), "Defecto", false, videos, new LinkedList<String>());
+    return new DtLista(this.getNombre(), "Defecto", false, videos, dtVideos, new LinkedList<String>(), new Date(), 0);
   }
 }

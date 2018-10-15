@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import clases.Canal;
+import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
@@ -102,6 +103,11 @@ public class CtrlListas implements IListas {
   public DtLista getDt(int id) throws NotFoundException {
     return ManejadorListasParticulares.getManejadorListasParticulares().getById(id).getDtLista();
   }
+  
+  @Override
+  public DtLista getDtDefecto(String usuario, String nombreListaDefecto) {
+    return ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal().getDtListaDefecto(nombreListaDefecto);
+  }
 
   @Override
   public Map<Integer, DtLista> getDtListas() {
@@ -173,5 +179,14 @@ public class CtrlListas implements IListas {
       }
     }
     return listas;
+  }
+
+  @Override
+  public List<DtLista> getDtListasDefectoUsuario(String usuario) {
+    List<DtLista> listasDefecto = new LinkedList<DtLista>();
+    for(ListaDefecto lista : ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal().getListaDefecto().values()) {
+      listasDefecto.add(lista.getDtLista());
+    }
+    return listasDefecto;
   }
 }

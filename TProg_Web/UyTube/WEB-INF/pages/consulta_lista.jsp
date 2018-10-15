@@ -36,6 +36,7 @@
 			<br>
 			<% if (session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
 			List<DtLista> listasPrivadas = (List<DtLista>) request.getAttribute("LISTASPRIVADAS");
+			List<DtLista> listasDefecto = (List<DtLista>) request.getAttribute("LISTASDEFECTO");
 			if (listasPrivadas.size() != 0) {
 			for (DtLista u : listasPrivadas) { %>
 				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=u.getId()%>').submit();">		
@@ -50,6 +51,23 @@
 					<br>
 				</form>	
 				</div>
+			<% } }
+			if (listasDefecto.size() != 0) {
+			  for(DtLista lista : listasDefecto) { %>
+  				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
+				<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ConsultaLista" method="GET">
+					<input type="hidden" name="STATE" value="DETALLESLISTA">
+					<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
+					<input type="hidden" name="IDLISTA" value="<%=lista.getId()%>">
+					<input type="hidden" name="NOMBRELISTADEFECTO" value="<%= lista.getNombre() %>">
+					<br>
+					<header>
+					<%= lista.getNombre() %>
+					</header>
+					<br>
+				</form>	
+				</div>
+			  
 			<% } } } %>
 			<br>
 			</div>

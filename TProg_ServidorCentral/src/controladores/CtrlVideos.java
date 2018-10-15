@@ -97,7 +97,7 @@ public class CtrlVideos implements IVideos {
 
   @Override
   public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion,
-      String url, String categoriaString, Duration duracion, Boolean visible, Date fecha)
+      String url, String categoriaString, Duration duracion, boolean visible, Date fecha)
       throws InvalidDataException, DuplicateClassException {
     Video vid = manejadorUsuario.get(nick).getCanal().getVideoCanal(nombreOld);
     vid.getCanal().modVideo(nombreOld, nombre);

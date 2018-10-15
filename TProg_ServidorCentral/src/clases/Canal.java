@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import datatypes.DtLista;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
@@ -121,9 +122,7 @@ public class Canal {
   }
 
   public Lista getLista(String lista) throws Exception {
-    if (this.listaDefecto.containsKey(lista)) {
-      return this.listaDefecto.get(lista);
-    } else if (this.listaParticulares.containsKey(lista)) {
+  if (this.listaParticulares.containsKey(lista)) {
       return this.listaParticulares.get(lista);
     } else {
       throw new Exception("No existe lista");
@@ -285,6 +284,10 @@ public class Canal {
   
   public Categoria getCategoria() {
     return this.categoria;
+  }
+
+  public DtLista getDtListaDefecto(String nombreListaDefecto) {
+    return this.listaDefecto.get(nombreListaDefecto).getDtLista();
   }
 
 }
