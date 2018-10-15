@@ -26,6 +26,6 @@ public class ListaDefecto extends Lista {
       videos.add(vid.getCanal().getUsuario().getNick() + "-" + vid.getNombre());
       dtVideos.add(vid.getDt());
     }
-    return new DtLista(this.getNombre(), "Defecto", false, videos, dtVideos, new LinkedList<String>(), new Date(), 0);
+    return new DtLista(this.getNombre(), "Defecto", false, videos, dtVideos, new LinkedList<String>(), new Date(), this.getId());
   }
 }

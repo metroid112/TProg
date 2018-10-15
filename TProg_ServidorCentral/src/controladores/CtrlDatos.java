@@ -82,7 +82,7 @@ public class CtrlDatos implements IDatos {
       HR.visibilidadCanal = true;
 
       MB.nick = "mbusca";
-      MB.nombre = "Martín";
+      MB.nombre = "Mart\u00edn";
       MB.apellido = "Buscaglia";
       MB.pass = "Cookie234";
       MB.mail = "Martin.bus@agadu.org.uy";
@@ -411,7 +411,7 @@ public class CtrlDatos implements IDatos {
       }
 
       try {
-        Fabrica.getIListas().altaListaDefecto("Escuchar más tarde");
+        Fabrica.getIListas().altaListaDefecto("Escuchar m\u00e1s tarde");
         Fabrica.getIListas().altaListaDefecto("Deporte total");
         Fabrica.getIListas().altaListaDefecto("Novedades generales");
       } catch (Exception e) {

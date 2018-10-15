@@ -41,9 +41,9 @@ public class ConsultaLista extends HttpServlet {
       request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
       DtLista dtLista = null;
-      if (idLista == 0) { // LISTA DEFECTO
-        dtLista = Fabrica.getIListas().getDtDefecto(((DtUsuario) 
-            request.getSession().getAttribute("USUARIO_LOGEADO")).nick, 
+      if (request.getParameter("NOMBRELISTADEFECTO") != null) { // LISTA DEFECTO
+        System.out.println(((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick + " ---- " + request.getParameter("NOMBRELISTADEFECTO"));
+        dtLista = Fabrica.getIListas().getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).nick, 
             request.getParameter("NOMBRELISTADEFECTO"));
       } else {
         try {
@@ -54,7 +54,7 @@ public class ConsultaLista extends HttpServlet {
         }
       }
       request.setAttribute("DTLISTA", dtLista);
-      request.getRequestDispatcher("/WEB-INF/pages/detalles_lista.jsp").forward(request, response);
+      request.getRequestDispatcher("WEB-INF/pages/detalles_lista.jsp").forward(request, response);
     } else {
       request.getRequestDispatcher("/index.jsp").forward(request, response);
     }

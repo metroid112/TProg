@@ -55,7 +55,7 @@
 			if (listasDefecto.size() != 0) {
 			  for(DtLista lista : listasDefecto) { %>
   				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
-				<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ConsultaLista" method="GET">
+				<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ConsultaLista" method="POST">
 					<input type="hidden" name="STATE" value="DETALLESLISTA">
 					<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
 					<input type="hidden" name="IDLISTA" value="<%=lista.getId()%>">
