@@ -28,7 +28,7 @@
 			</form>
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
 			<% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
-			<img width="100" height="100" class="rounded-circle" src="<%= logueado.imgPath %>">	
+			<img width="100" height="100" class="img-fluid rounded-circle" src="<%= logueado.imgPath %>">	
 			Iniciado como <a href="ModificarUsuario"><%= logueado.nick %></a>
 			<br>
 			<form action="login" method="GET">
