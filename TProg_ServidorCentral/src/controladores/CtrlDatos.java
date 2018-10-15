@@ -419,7 +419,7 @@ public class CtrlDatos implements IDatos {
       V6.owner = HG.nick;
       
       V7.nombre = "50 años del InCo";
-      V7.nombre = HG.nick;
+      V7.owner = HG.nick;
       
       V8.nombre = "Ingeniería de Muestra 2017";
       V8.owner = HG.nick;
