@@ -37,6 +37,7 @@
 					<% } %>
 				</div>
 			<br>
+			<% if(lista.getTipo() == "Particular") { %>
 			Categorias de la lista:
 			<br>
 			<div class="highlights">
@@ -53,7 +54,7 @@
 					</form>	
 				</div>
 				<br>
-				<% } %>
+				<% } } %>
 			</div>
 		</div>
 		</div>

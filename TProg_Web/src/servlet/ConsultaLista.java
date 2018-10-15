@@ -41,11 +41,17 @@ public class ConsultaLista extends HttpServlet {
       request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
       DtLista dtLista = null;
-      try {
-        dtLista = Fabrica.getIListas().getDt(idLista);
-      } catch (NotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
+      if (idLista == 0) { // LISTA DEFECTO
+        dtLista = Fabrica.getIListas().getDtDefecto(((DtUsuario) 
+            request.getSession().getAttribute("USUARIO_LOGEADO")).nick, 
+            request.getParameter("NOMBRELISTADEFECTO"));
+      } else {
+        try {
+          dtLista = Fabrica.getIListas().getDt(idLista);
+        } catch (NotFoundException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
       }
       request.setAttribute("DTLISTA", dtLista);
       request.getRequestDispatcher("/WEB-INF/pages/detalles_lista.jsp").forward(request, response);

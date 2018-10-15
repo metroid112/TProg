@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import datatypes.DtLista;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
@@ -283,6 +284,10 @@ public class Canal {
   
   public Categoria getCategoria() {
     return this.categoria;
+  }
+
+  public DtLista getDtListaDefecto(String nombreListaDefecto) {
+    return this.listaDefecto.get(nombreListaDefecto).getDtLista();
   }
 
 }

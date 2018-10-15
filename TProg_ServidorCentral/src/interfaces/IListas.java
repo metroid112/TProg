@@ -19,6 +19,8 @@ public interface IListas {
       throws DuplicateClassException;
 
   public DtLista getDt(int id) throws NotFoundException;
+  
+  public DtLista getDtDefecto(String usuario, String nombreListaDefecto);
 
   public Map<Integer, DtLista> getDtListas();
 
