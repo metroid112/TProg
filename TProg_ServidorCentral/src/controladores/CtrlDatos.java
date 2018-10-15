@@ -92,91 +92,83 @@ public class CtrlDatos implements IDatos {
       TC.pass = "Ketchup1";
       TC.mail = "tabare.car@agadu.org.uy";
       TC.nacimiento = "24/07/1971";
-      //-----------------------------
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+
+      CS.nick = "cachilas";
+      CS.nombre = "Waldemar \"Cachila\"";
+      CS.apellido = "Silva";
+      CS.pass = "Sancho456";
+      CS.mail = "Cachila.sil@c1080.org.uy";
+      CS.nacimiento = "01/01/1947";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      JB.nick = "juliob";
+      JB.nombre = "Julio";
+      JB.apellido = "Bocca";
+      JB.pass = "Salome56";
+      JB.mail = "juliobocca@sodre.com.uy";
+      JB.nacimiento = "16/03/1967";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      DP.nick = "diegop";
+      DP.nombre = "Diego";
+      DP.apellido = "Parodi";
+      DP.pass = "Ruffo678";
+      DP.mail = "diego@efectocine.com";
+      DP.nacimiento = "01/01/1975";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      KH.nick = "kairoh";
+      KH.nombre = "Kairo";
+      KH.apellido = "Herrera";
+      KH.pass = "Corbata15";
+      KH.mail = "kairoher@pilsenrock.com.uy";
+      KH.nacimiento = "25/04/1840";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      RH.nick = "robinh";
+      RH.nombre = "Robin";
+      RH.apellido = "Henderson";
+      RH.pass = "Aquiles67";
+      RH.mail = "Robin.h@tinglesa.com.uy";
+      RH.nacimiento = "03/08/1940";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      MT.nick = "marcelot";
+      MT.nombre = "Marcelo";
+      MT.apellido = "Tinelli";
+      MT.pass = "Mancha890";
+      MT.mail = "marcelot@ideasdelsur.com.ar";
+      MT.nacimiento = "01/04/1960";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      EN.nick = "novick";
+      EN.nombre = "Edgardo";
+      EN.apellido = "Novick";
+      EN.pass = "Xenon987";
+      EN.mail = "edgardo@novick.com.uy";
+      EN.nacimiento = "17/07/1952";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      SP.nick = "sergiop";
+      SP.nombre = "Sergio";
+      SP.apellido = "Puglia";
+      SP.pass = "Sultan876";
+      SP.mail = "puglia@alpanpan.com.uy";
+      SP.nacimiento = "28/01/1950";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      AR.nick = "chino";
+      AR.nombre = "Alvaro";
+      AR.apellido = "Recoba";
+      AR.pass = "Laika765";
+      AR.mail = "chino@trico.org.uy";
+      AR.nacimiento = "17/03/1976";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
+      AP.nick = "tonyp";
+      AP.nombre = "Antonio";
+      AP.apellido = "Pacheco";
+      AP.pass = "Kitty543";
+      AP.mail = "eltony@manya.org.uy";
+      AP.nacimiento = "14/02/1955";
       
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
-      
-      HR.nick = "hrubino";
-      HR.nombre = "Horacio";
-      HR.apellido = "Rubino";
-      HR.pass = "Rufus123";
-      HR.mail = "horacio.rubino@guambia.com.uy";
-      HR.nacimiento = "25/02/1962";
-      
+      NJ.nick = "nicoJ";
+      NJ.nombre = "Nicolás";
+      NJ.apellido = "Jodal";
+      NJ.pass = "Albino80";
+      NJ.mail = "jodal@artech.com.uy";
+      NJ.nacimiento = "09/08/1960";      
 
       Fabrica.getIUsuariosCanales().altaUsuario("hrubino", "Horacio", "Rubino",
           "horacio.rubino@guambia.com.uy", format.parse("25/02/1962"),
