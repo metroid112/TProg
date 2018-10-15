@@ -3,12 +3,15 @@ package test;
 import static org.junit.Assert.*;
 
 import java.sql.Array;
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.Test;
 
+import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Video;
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorListasParticulares;
@@ -37,7 +40,13 @@ public class CtrlListasTest {
         }
       }
       assertTrue(pertenece);
+      iListas.agregarVideoLista("hectorg", "100 años de FING", "kairoh", "Escuchar más tarde", true);
+      ListaDefecto listaVideos2 = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal().getListaDefecto().get("Escuchar más tarde");
+      
+      Video vid = listaVideos2.getVideo("100 años de FING", ManejadorUsuarios.getManejadorUsuarios().get("hectorg"));
+      assertTrue(vid != null);
     } catch (Exception e) {
+      e.printStackTrace();
     }
   }
   
