@@ -40,7 +40,7 @@ public class CargaDatosTest {
       "Mancha890", "Xenon987", "Sultan876", "Laika765", "Kitty543", "Albino80" };
 
   @Before
-  public void carga() {
+  public void carga() throws Exception {
     try {
       Fabrica.getIDatos().cargaDatos();
     } catch (ParseException | IOException e) {
