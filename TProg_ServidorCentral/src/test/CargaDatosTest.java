@@ -168,19 +168,20 @@ public class CargaDatosTest {
 
   @Test
   public void testSeguidores() {
-    int[] seguidoresEsperado = { 3, 3, 3, 2, 4, 4, 5, 2, 0, 0, 0, 1, 1, 1, 0 };
+    int[] seguidoresEsperado = {3, 3, 3, 2, 4, 4, 5, 2, 0, 0, 0, 1, 1, 1, 0};
     int[] seguidores = new int[15];
     int contador = 0;
     for (String usuario : listaUsuarios) {
       seguidores[contador] = interfazUsuarios.getSeguidores(usuario).size();
-      contador++;
+      System.out.println(seguidores[contador]);
+      contador++;      
     }
     assertArrayEquals(seguidoresEsperado, seguidores);
   }
 
   @Test
   public void testSeguidos() {
-    int[] seguidosEsperado = { 2, 3, 2, 2, 1, 2, 1, 1, 3, 3, 3, 3, 1, 1, 1 };
+    int[] seguidosEsperado = {2, 3, 2, 2, 1, 2, 1, 1, 3, 3, 3, 3, 1, 1, 1};
     int[] seguidos = new int[15];
     int contador = 0;
     for (String usuario : listaUsuarios) {
