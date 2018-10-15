@@ -28,10 +28,10 @@
 			</form>
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
 			<% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
+
 			<div class="thumbnail">
   				<img src="<%= logueado.imgPath %>" alt="Image"/>
 			</div>
-			Iniciado como <%= logueado.nick %>
 			<br>
 			<form action="login" method="GET">
 				<input type="hidden" name="CERRAR_SESION" value="CONFIRM">

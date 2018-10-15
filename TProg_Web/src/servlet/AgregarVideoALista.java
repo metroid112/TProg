@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
@@ -50,9 +51,14 @@ public class AgregarVideoALista extends HttpServlet {
       String nombreOwnerVideo = video.usuario;
       String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       try {
-        ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
+        try {
+          ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
+        } catch (InvalidDataException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
         request.setAttribute("EXITO",
-            "�Se ha agregado el video a la lista seleccionada con �xito!");
+            "¡Se ha agregado el video a la lista seleccionada con éxito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
       } catch (DuplicateClassException e) {
         request.setAttribute("ERROR", "El video " + "'" + nombreVideo + "'"

@@ -4,10 +4,12 @@ import static org.junit.Assert.*;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 
 import clases.Video;
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
@@ -61,6 +63,25 @@ public class CtrlVideosTest {
         new Date(), true);
     assertEquals(cantVideosHectorg + 1, interfazVideos.listarVideos("hectorg").length);
     
+  }
+  
+  @Test
+  public void testDtVideo() throws NotFoundException {
+   List<DtVideo> listaDtVideos = interfazVideos.getDtVideosPropietario("nicoJ");
+   DtVideo vid = listaDtVideos.get(0);
+   assertTrue(vid.urlWatchtFormat().contains("https://www.youtube.com/embed/"));
+   assertEquals("0:05:39", vid.duracionPrintFormat());
+   assertEquals(0, vid.getCantidadCalificacionesNegativas());
+   assertEquals(0, vid.getCantidadCalificacionesPositivas());
+   interfazUsuarios.valorarVideo("kairoh", true, "Entrevista a director CUTI", "nicoJ");
+   interfazUsuarios.valorarVideo("hectorg", true, "Entrevista a director CUTI", "nicoJ");
+   interfazUsuarios.valorarVideo("chino", false, "Entrevista a director CUTI", "nicoJ");
+   int id = vid.idVideo;
+   vid = interfazVideos.getDtVideo(id);
+   assertEquals(2, vid.getCalificacionesPositivas().size());
+   assertEquals(1, vid.getCalificacionesNegativas().size());
+   
+   
   }
 
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 
 @WebServlet("/Seguidores")
@@ -30,18 +31,24 @@ public class Seguidores extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response) {
     if (request.getParameter("ACCION").equals("SEGUIR")) {
-      String seguidor = request.getParameter("USUARIO_LOGEADO");
-      String seguido = request.getParameter("USUARIO_SEGUIDO"); // TODO chequear el usuario al que
-                                                                // se va a seguir
+      String seguidor = request.getParameter("USUARIO_SEGUIDOR");
+      String seguido = request.getParameter("USUARIO_SEGUIDO");
       Fabrica.getIUsuariosCanales().seguir(seguidor, seguido);
-      // TODO forward
+      try {
+        response.sendRedirect("Inicio");
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     } else if (request.getParameter("ACCION").equals("DEJAR_SEGUIR")) {
-      String seguidor = request.getParameter("USUARIO_LOGEADO");
-      String seguido = request.getParameter("USUARIO_SEGUIDO"); // TODO chequear el usuario al que
-                                                                // se va a seguir
+      String seguidor = request.getParameter("USUARIO_SEGUIDOR");
+      String seguido = request.getParameter("USUARIO_SEGUIDO");
       Fabrica.getIUsuariosCanales().dejarSeguir(seguidor, seguido);
-      // TODO forward
-    } // TODO else excepccion
+      try {
+        response.sendRedirect("Inicio");
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
 
   }
 
