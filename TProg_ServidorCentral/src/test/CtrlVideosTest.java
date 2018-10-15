@@ -10,6 +10,7 @@ import org.junit.Test;
 import clases.Video;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
@@ -41,9 +42,25 @@ public class CtrlVideosTest {
   
   @Test
   public void testModificarVideo() throws InvalidDataException, DuplicateClassException {
-    interfazVideos.modificarVideo("tabarec", "Locura celeste", "test", "testDescripcion", "testUrl", "Noticias", Duration.parse("PT1H"),
+    interfazVideos.modificarVideo("tabarec", "Locura celeste", "test", "testDescripcion", "https://youtu.be/zBR2pnASlQE", "Noticias", Duration.parse("PT1H"),
         true, new Date());
      
+  }
+  
+  @Test
+  public void testListarCategorias() {
+    int cantidadCategorias = 13;
+    int cantCategoriasObtenidas = interfazVideos.listarCategorias().length;
+    assertEquals(cantidadCategorias, cantCategoriasObtenidas);
+  }
+  
+  @Test
+  public void testAltaVideo() throws DuplicateClassException, NotFoundException {
+    int cantVideosHectorg = interfazVideos.listarVideos("hectorg").length;
+    interfazVideos.altaVideo("hectorg", "TestVideo", "testDescripcion", Duration.parse("PT1H"), "https://youtu.be/GzOJSk4urlM", "Noticias",
+        new Date(), true);
+    assertEquals(cantVideosHectorg + 1, interfazVideos.listarVideos("hectorg").length);
+    
   }
 
 }

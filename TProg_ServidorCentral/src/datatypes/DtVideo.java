@@ -55,7 +55,7 @@ public class DtVideo {
     this.idVideo = idVideo;
     if (this.urlVideo != null) {
       this.urlThumbnail = "https://img.youtube.com/vi/";
-      this.urlThumbnail += this.urlVideo.substring(17, 28);
+      this.urlThumbnail += this.urlVideo.substring(17, urlVideo.length());
       this.urlThumbnail += "/0.jpg";
     }
   }

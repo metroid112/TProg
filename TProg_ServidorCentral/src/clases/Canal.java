@@ -121,7 +121,7 @@ public class Canal {
     return descripcion;
   }
 
-  public ListaParticular getLista(String lista) throws Exception {
+  public Lista getLista(String lista) throws Exception {
   if (this.listaParticulares.containsKey(lista)) {
       return this.listaParticulares.get(lista);
     } else {

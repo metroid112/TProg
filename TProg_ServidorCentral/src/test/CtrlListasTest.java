@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import clases.ListaParticular;
 import clases.Video;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
@@ -67,14 +68,14 @@ public class CtrlListasTest {
   @Test
   public void testGuardarCambios() {
     iListas.guardarCambios("TestTarea2", "chino", false);
-    boolean visible = true;
     try {
-      visible = ManejadorUsuarios.getManejadorUsuarios().get("chino").getCanal().getLista("TestTarea2").isVisible();
+      ListaParticular listaParticular = (ListaParticular) ManejadorUsuarios.getManejadorUsuarios().get("chino").getCanal().getLista("TestTarea2");
+      Boolean esVisible = listaParticular.isVisible();
+      assertEquals(false,esVisible);
     } catch (Exception e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    assertEquals(false,visible);
+
   }
   
   @Test
@@ -106,7 +107,7 @@ public class CtrlListasTest {
     String[] listaTabarec = {"De fiesta"};
     String[] listaTabarecObtenida = iListas.listarListasParticularUsuario("tabarec");
     assertArrayEquals(listaTabarec, listaTabarecObtenida);
-    String[] listaChino = {};
+    String[] listaChino = {"TestTarea2"};
     String[] listaChinoObtenida = iListas.listarListasParticularUsuario("chino");
     assertArrayEquals(listaChino, listaChinoObtenida);
   }
