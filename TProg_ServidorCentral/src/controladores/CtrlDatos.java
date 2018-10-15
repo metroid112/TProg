@@ -399,7 +399,7 @@ public class CtrlDatos implements IDatos {
       }
 
       try {
-        Fabrica.getIListas().altaListaDefecto("Escuchar mas tarde");
+        Fabrica.getIListas().altaListaDefecto("Escuchar más tarde");
         Fabrica.getIListas().altaListaDefecto("Deporte total");
         Fabrica.getIListas().altaListaDefecto("Novedades generales");
       } catch (Exception e) {
@@ -476,7 +476,7 @@ public class CtrlDatos implements IDatos {
             false);
         Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol", "juliob",
             "Solo deportes", false);
-      } catch (DuplicateClassException e1) {
+      } catch (Exception e1 ) {
         // TODO Auto-generated catch block
         e1.printStackTrace();
       }
