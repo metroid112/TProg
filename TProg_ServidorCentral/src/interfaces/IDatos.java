@@ -6,7 +6,7 @@ import java.text.ParseException;
 import datatypes.DtBusqueda;
 
 public interface IDatos {
-  public void cargaDatos() throws ParseException, IOException;
+  public void cargaDatos() throws ParseException, IOException, Exception;
 
   public DtBusqueda busquedaGeneral(String txtBusqueda);
 
