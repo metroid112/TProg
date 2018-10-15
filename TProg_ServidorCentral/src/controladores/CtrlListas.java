@@ -13,6 +13,7 @@ import clases.Usuario;
 import clases.Video;
 import datatypes.DtLista;
 import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
 import interfaces.IListas;
 import manejadores.ManejadorListasDefecto;
@@ -26,16 +27,18 @@ public class CtrlListas implements IListas {
 
   @Override
   public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
-      boolean defecto) throws DuplicateClassException {
+      boolean defecto) throws DuplicateClassException, InvalidDataException {
     Usuario usuarioInicial = manejadorUsuarios.get(usuario);
     Usuario userObjetivo = manejadorUsuarios.get(usuarioObjetivo);
     Video videoObj = usuarioInicial.getCanal().getVideoCanal(video);
-
-    if (defecto) {
-      userObjetivo.getCanal().agregarVideoListaDefecto(videoObj, lista);
-    } else {
-      userObjetivo.getCanal().agregarVideoListaParticular(videoObj, lista);
-    }
+    
+    if (videoObj != null) {
+      if (defecto) {
+        userObjetivo.getCanal().agregarVideoListaDefecto(videoObj, lista);
+      } else {
+        userObjetivo.getCanal().agregarVideoListaParticular(videoObj, lista);
+      } 
+    } else throw new InvalidDataException("Video null");
 
   }
 

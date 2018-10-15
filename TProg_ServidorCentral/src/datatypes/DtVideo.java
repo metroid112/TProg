@@ -171,13 +171,4 @@ public class DtVideo {
   public void setFecha(Date fecha) {
     this.fecha = fecha;
   }
-
-  @Override
-  public boolean equals(Object o) {
-    DtVideo dt = (DtVideo) o;
-    return (this.nombre.equals(dt.nombre) && this.descripcion.equals(dt.descripcion)
-        && this.visible == dt.visible && this.urlVideo.equals(dt.urlVideo)
-        && this.fecha.equals(dt.fecha));
-  }
-
 }

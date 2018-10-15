@@ -38,13 +38,17 @@ public class CtrlCategoriasTest {
     String[] esperado = {};
     String[] infoLista = iCategorias.getInfoListas("Viajes y eventos");
     assertArrayEquals(esperado,infoLista);
+    int cantInfoLista = iCategorias.getInfoListas("Noticias").length;
+    assertEquals(3, cantInfoLista);
   }
   
   @Test
   public void getInfoListasPublicasTest() {
     String[] esperado = {};
     String[] infoLista = iCategorias.getInfoListasPublicas("Viajes y eventos");
-    assertArrayEquals(esperado,infoLista);
+    int cantInfoLista = iCategorias.getInfoListasPublicas("Noticias").length;
+    assertEquals(3, cantInfoLista);
+    
   }
 
   @Test
@@ -52,6 +56,8 @@ public class CtrlCategoriasTest {
     String[] esperado = {};
     String[] infoLista = iCategorias.getInfoVideos("Viajes y eventos");
     assertArrayEquals(esperado,infoLista);
+    int cant = iCategorias.getInfoVideos("Noticias").length;
+    assertEquals(3, cant);
   }
   
   @Test
@@ -59,6 +65,8 @@ public class CtrlCategoriasTest {
     String[] esperado = {};
     String[] infoLista = iCategorias.getInfoVideosPublicos("Viajes y eventos");
     assertArrayEquals(esperado,infoLista);
+    int cant = iCategorias.getInfoVideosPublicos("Noticias").length;
+    assertEquals(3, cant);
   }
   
   @Test
