@@ -13,7 +13,7 @@
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
 			<div>
-				<form action="Busqueda" method="get">
+				<form action="Busqueda" method="post">
 					<select name="TIPO_BUSQUEDA">
 						<option value="TODOS">Todos</option>
 						<option <c:if test="${param.TIPO_BUSQUEDA.equals('VIDEOS')}">selected</c:if> value="VIDEOS">Videos</option>
@@ -65,7 +65,7 @@
 				<div class="highlights">
 				<%for (DtUsuario usuario : usuarios) {%>
 					<div class="detalleClickeableUsuario">		
-					<form class="detClickeableUsuario" action="ConsultaLista" method="GET" >
+					<form class="detClickeableUsuario" action="ConsultaLista" method="POST" >
 						<input type="hidden" name="STATE" value="DETALLESLISTA">
 						<div class="thumbnail">
 							<img class="icon" width="30%" alt="Lista de reproduccion" src="<%= usuario.imgPath %>">

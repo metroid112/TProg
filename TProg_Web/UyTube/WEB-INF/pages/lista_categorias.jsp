@@ -20,7 +20,7 @@
 					<div class="highlights">	
 					<% for (String categorias : (String[]) request.getAttribute("CATEGORIAS")) { %>
 							<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=categorias%>').submit();">	
-								<form id="Form<%=categorias%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="GET">
+								<form id="Form<%=categorias%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="POST">
 									<input type="hidden" name="CATEGORIA" value="<%=categorias%>">
 									<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
 									<header>

@@ -176,10 +176,6 @@ public class Canal {
     listaDefecto.put(nombre, nuevaLista); // puede cambiar la implementacion
   }
 
-  public void agregarListaDefectoObserver(ListaDefecto listaDefecto) {
-    this.listaDefecto.put(listaDefecto.getNombre(), listaDefecto);
-  }
-
   public void altaListaParticular(String nombre, boolean visibilidad)
       throws DuplicateClassException {
 
