@@ -14,7 +14,7 @@
 				<br>
 				Contraseña: <input type="password" name="pass">
 				<br>
-				<button type="submit">Iniciar</button>
+				<input type="submit" value=Iniciar>
 			</form>
 		</div>
 	</div>

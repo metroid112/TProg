@@ -15,6 +15,7 @@ java.util.Date" %>
 <body>
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
+		<div class="contenido">
 	<% if (request.getAttribute("DUPLICADO") != null) { %>
 		<h1 style="color:red"><%= request.getAttribute("DUPLICADO") %></h1>
 	<% } else if (request.getAttribute("DURACION") != null) { %>
@@ -48,9 +49,9 @@ java.util.Date" %>
 
 	<form action="ModificarVideo" method="POST">
 		<input type="hidden" name="oldNombre" value="<%=video.nombre%>">
-		Nombre del video: <input type="text" name="nombreVideo" value="<%=video.nombre%>">
-		<br><br>
-		Categoria del video: 
+		Nombre del video: <br> <input type="text" name="nombreVideo" value="<%=video.nombre%>">
+		<br>
+		Categoria del video: <br>
 		<select required name="categoria">
 		<option value="<%=video.categoria%>"><%=video.categoria%> </option>
 		<%
@@ -68,12 +69,13 @@ java.util.Date" %>
 		  }
 		%>
 		</select>
-		<br><br>
-		Descripción: <textarea rows="5" cols="35" name="descripcionVideo"><%=video.descripcion%></textarea>
-		<br><br>
-		URL: <input type="text" name="urlVideo" value="<%=video.urlVideo%>">
-		<br><br>
-		Visibilidad: 
+		<br>
+		Descripción: <br>
+		<textarea rows="5" cols="35" name="descripcionVideo"><%=video.descripcion%></textarea>
+		<br>
+		URL: <br> <input type="text" name="urlVideo" value="<%=video.urlVideo%>">
+		<br>
+		Visibilidad: <br>
 		<select required name="visibilidad">
 			<option value="<%= visibilidad %>"><%= visibilidad %> </option>
 			<% if (visibilidad.equals("Publico")) { %>
@@ -82,11 +84,13 @@ java.util.Date" %>
 				<option value="Publico">Publico</option>
 			<% } %>
 		</select>
-		<br><br>
-		Duracion (H M S): <input type="number" name="duracionH" id="hora" min="0" oninput="validity.valid||(value='');" value="<%= horas %>"required><input type="number" name="duracionM" id="minuto" min="0" oninput="validity.valid||(value='');" value="<%= minutos %>"required><input type="number" id="segundo" min="0" name="duracionS" oninput="validity.valid||(value='');" value="<%= segundos %>"required>*
-		<br><br>
-		Fecha: <input type="date" value="<%= date %>" name="fecha" required>*
+		<br>
+		Duracion (H M S): <br> <input type="number" name="duracionH" id="hora" min="0" oninput="validity.valid||(value='');" value="<%= horas %>"required><input type="number" name="duracionM" id="minuto" min="0" oninput="validity.valid||(value='');" value="<%= minutos %>"required><input type="number" id="segundo" min="0" name="duracionS" oninput="validity.valid||(value='');" value="<%= segundos %>"required>*
+		<br>
+		Fecha: <br> <input type="date" value="<%= date %>" name="fecha" required>*
 		<input type="hidden" name="modificar"  value="">
-		<button type="submit" onclick="validate()">Modificar datos</button>
+		<br>
+		<input type="submit" onclick="validate()" value="Modificar datos">
+		</div>
 	</form>
 </body>

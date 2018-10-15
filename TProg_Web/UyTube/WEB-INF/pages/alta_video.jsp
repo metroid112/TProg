@@ -23,24 +23,24 @@
 		<%} %>
 			<form action="AltaVideo" method="POST" id="formAltaVideo">
 				<input type="hidden" name="STATE" value="ALTA">
-				Nombre: <input type="text" name="nombre" required>*
+				Nombre: <br> <input type="text" name="nombre" required>*
 				<br>
-				Duración (H M S): <input type="number" name="duracionH" required><input type="number" name="duracionM" required><input type="number" name="duracionS" required>*
+				Duración (H M S): <br> <input type="number" name="duracionH" required><input type="number" name="duracionM" required><input type="number" name="duracionS" required>*
 				<br>
-				URL: <input type="url" name="url" required>*
+				URL: <br> <input type="url" name="url" required>*
 				<br>
-				Descripción: <textarea rows="5" cols="35" form="formAltaVideo" name="descripcion" required></textarea>*
+				Descripción: <br> <textarea rows="5" cols="35" form="formAltaVideo" name="descripcion" required></textarea>*
 				<br>
 				Fecha: <input type="date" name="fecha" required>*
 				<br>
-				Categoría:
+				Categoría: <br>
 				<select name="categoria">
 				<% for (String cat : (String[]) request.getAttribute("CATEGORIAS")) { %>
 					<option value="<%= cat %>"><%= cat %> </option>
 				<% } %>
 				</select>
 				<br>
-				<button type="submit">Aceptar</button>
+				<input type="submit" value="Aceptar">
 			</form>
 			<br>
 		</div>
