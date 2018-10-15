@@ -1,9 +1,9 @@
 <%@page import="datatypes.*" %>
 <%@page import="utils.*" %>
 <div class="header">
-	<div class="head-item">
+	<div class="head-item1">
 		<a href="Inicio">
-			<img width="30%" alt="UyTube" src="img/logo.png">
+			<img class="icono" width="200px" alt="UyTube" src="img/logo.png">
 		</a>
 	</div>
 	<div class="head-item busqueda" align="center">
@@ -28,12 +28,14 @@
 			</form>
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
 			<% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
-			<img width="100" height="100" class="rounded-circle" src="<%= logueado.imgPath %>">	
-			Iniciado como <a href="ModificarUsuario"><%= logueado.nick %></a>
+			<div class="thumbnail">
+  				<img src="<%= logueado.imgPath %>" alt="Image"/>
+			</div>
+			Iniciado como <%= logueado.nick %>
 			<br>
 			<form action="login" method="GET">
 				<input type="hidden" name="CERRAR_SESION" value="CONFIRM">
-				<button type="submit">Cerrar Sesion</button>
+				<button class="btnHeader" type="submit">Cerrar Sesion</button>
 			</form>
 		<% } %>
 	</div>
