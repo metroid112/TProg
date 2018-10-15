@@ -40,11 +40,7 @@ public class AgregarVideoALista extends HttpServlet {
       DtVideo video = null;
       try {
         video = Fabrica.getIVideos().getDtVideo(Integer.parseInt(idVideo));
-      } catch (NumberFormatException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (NotFoundException e) {
-        // TODO Auto-generated catch block
+      } catch (Exception e) {
         e.printStackTrace();
       }
       String nombreVideo = video.nombre;
