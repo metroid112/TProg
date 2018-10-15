@@ -348,18 +348,18 @@ public class CtrlDatos implements IDatos {
       MAS.nombre = "Mascotas y animales";
       VIA.nombre = "Viajes y eventos";
 
-      ctrlCategorias.altaCategoria("Musica");
-      ctrlCategorias.altaCategoria("Deporte");
-      ctrlCategorias.altaCategoria("Carnaval");
-      ctrlCategorias.altaCategoria("Noticias");
-      ctrlCategorias.altaCategoria("Entretenimiento");
-      ctrlCategorias.altaCategoria("Comida");
-      ctrlCategorias.altaCategoria("Videojuegos");
-      ctrlCategorias.altaCategoria("Ciencia y Tecnologia");
-      ctrlCategorias.altaCategoria("ONG y activismo");
-      ctrlCategorias.altaCategoria("Gente y blogs");
-      ctrlCategorias.altaCategoria("Mascotas y animales");
-      ctrlCategorias.altaCategoria("Viajes y eventos");
+      ctrlCategorias.altaCategoria(MUS.nombre);
+      ctrlCategorias.altaCategoria(DEP.nombre);
+      ctrlCategorias.altaCategoria(CAR.nombre);
+      ctrlCategorias.altaCategoria(NOT.nombre);
+      ctrlCategorias.altaCategoria(ENT.nombre);
+      ctrlCategorias.altaCategoria(COM.nombre);
+      ctrlCategorias.altaCategoria(JUE.nombre);
+      ctrlCategorias.altaCategoria(CYT.nombre);
+      ctrlCategorias.altaCategoria(ONG.nombre);
+      ctrlCategorias.altaCategoria(GEN.nombre);
+      ctrlCategorias.altaCategoria(MAS.nombre);
+      ctrlCategorias.altaCategoria(VIA.nombre);
 
       class VideoBean {
         public String nombre;
@@ -401,7 +401,9 @@ public class CtrlDatos implements IDatos {
       
       V9.nombre = "Etapa A contramano Liguilla";
       
-      V10.nombre = "Show de goles";
+      V10.nombre = "Etapa Don Timoteo Liguilla";
+      
+      V11.nombre = "Show de goles";
       
       
       Fabrica.getIVideos().altaVideo("hectorg", "100 años de FING",
