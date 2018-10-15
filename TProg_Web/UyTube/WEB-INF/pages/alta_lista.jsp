@@ -33,9 +33,7 @@
 						<span class="focus-input3"></span>
 					</div>
 					<div class="container-contact3-form-btn">
-						<button class="contact3-form-btn">
-							Aceptar
-						</button>
+						<input type="submit" class="contact3-form-btn" value="Aceptar">
 					</div>
 				</form>
 			</div>
