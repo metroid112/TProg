@@ -33,7 +33,7 @@ public class CargaDatos extends HttpServlet {
       throws ServletException, IOException {
     try {
       Fabrica.getIDatos().cargaDatos();
-    } catch (ParseException exception) {
+    } catch (Exception exception) {
       exception.printStackTrace();
     }
     request.getRequestDispatcher("index.jsp").forward(request, response);

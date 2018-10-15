@@ -17,12 +17,20 @@
 			<% } else { %>	
 				<h1>Categorias</h1>
 				<br>
+					<div class="highlights">	
 					<% for (String categorias : (String[]) request.getAttribute("CATEGORIAS")) { %>
-						<form action="ConsultaDeCategoria" method="GET">
-							<input type="hidden" name="CATEGORIA" value="<%= categorias %>">
-							<button type="submit"><%= categorias %></button>
-						</form>
+							<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=categorias%>').submit();">	
+								<form id="Form<%=categorias%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="GET">
+									<input type="hidden" name="CATEGORIA" value="<%=categorias%>">
+									<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
+									<header>
+									<%= categorias %>
+									</header>
+								</form>	
+							</div>
+							<br>
 					<% } %>
+						</div>
 				<br>
 			<% } %>
 		</div>
