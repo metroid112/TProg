@@ -12,27 +12,45 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
+			<div class="highlights">
 			<% List<DtLista> checkeoLista = (List<DtLista>) request.getAttribute("LISTAS"); %>
 			<% if (checkeoLista.isEmpty()) { %>
 				<% String usuario = (String) request.getAttribute("USUARIO"); %>
 				<h1>El usuario <%= usuario %> no tiene listas particulares.</h1>
 				<br>
 			<% } else {  %>
-				<form action="ModificarLista" method="POST">
-					<select required name="lista">
-					<option value="" disabled selected hidden>Seleccione una lista</option>
+					<p>Seleccione una lista</p>
 					<% for (DtLista lista : (List<DtLista>) request.getAttribute("LISTAS")) { %>
 						<% if (lista.isVisible()) { %>
-							<option value="<%= lista.getId() %>"><%= lista.getNombre() + " - " + "Publica" %> </option>
+							<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
+							<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ModificarLista" method="POST" >
+								<input type="hidden" name="lista" value="<%= lista.getId() %>">
+								<input type="hidden" name="modificarLista" value="">
+								<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
+								<br>
+								<header>
+								<%= lista.getNombre() %>
+								</header>
+								<br>
+							</form>	
+							</div>
 						<% } else { %>
-							<option value="<%= lista.getId() %>"><%= lista.getNombre() + " - " + "Privada" %> </option>
+							<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
+							<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ModificarLista" method="POST" >
+								<input type="hidden" name="lista" value="<%= lista.getId() %>">
+								<input type="hidden" name="modificarLista" value="">
+								<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
+								<br>
+								<header>
+								<%= lista.getNombre() %>
+								</header>
+								<br>
+							</form>	
+							</div>
 						<% } %>
 					<% } %>
-					</select>
-					<input type="hidden" name="modificarLista" value="">
-					<button type="submit">Aceptar</button>
-				</form>
 			<% } %>
+			</div>
 		</div>
 	</div>
 <jsp:include page="/WEB-INF/extras/script.jsp" />
