@@ -51,12 +51,7 @@ public class AgregarVideoALista extends HttpServlet {
       String nombreOwnerVideo = video.usuario;
       String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       try {
-        try {
-          ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
-        } catch (InvalidDataException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
+        ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
         request.setAttribute("EXITO",
             "¡Se ha agregado el video a la lista seleccionada con éxito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
