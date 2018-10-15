@@ -55,7 +55,7 @@ public class AgregarVideoALista extends HttpServlet {
         request.setAttribute("EXITO",
             "¡Se ha agregado el video a la lista seleccionada con éxito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
-      } catch (DuplicateClassException e) {
+      } catch (Exception e) {
         request.setAttribute("ERROR", "El video " + "'" + nombreVideo + "'"
             + " ya estaba en la lista " + "'" + nombreLista + "'.");
         IListas ctrlListas2 = Fabrica.getIListas();
