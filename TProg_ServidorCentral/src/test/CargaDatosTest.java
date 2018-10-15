@@ -35,7 +35,7 @@ public class CargaDatosTest {
   public String[] listaUsuarios = { "hrubino", "mbusca", "hectorg", "tabarec", "cachilas", "juliob",
       "diegop", "kairoh", "robinh",
       "marcelot", "novick", "sergiop", "chino", "tonyp", "nicoJ" };
-  public String[] listaPass = { "Rufus123", "Cookie234", "Pongo345", "Ketchup1", "Sancho456",
+  public String[] listaPass = { "Rufus123", "Cookie234", "Poncho345", "Ketchup1", "Sancho456",
       "Salome56", "Ruffo678", "Corbata15", "Aquiles67",
       "Mancha890", "Xenon987", "Sultan876", "Laika765", "Kitty543", "Albino80" };
 
@@ -197,6 +197,7 @@ public class CargaDatosTest {
     for (String usuario : listaUsuarios) {
       if (!interfazUsuarios.checkLogin(usuario, listaPass[contador])) {
         fallo = true;
+        System.out.println(listaPass[contador]);
       }
       contador++;
     }
