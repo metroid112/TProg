@@ -41,7 +41,11 @@
      <%	} else { %>
   			<h1>INFO USUARIO</h1>
   			<h2><%= usuario.nick %></h2>
-  			<img alt="Imagen de <%= usuario.nick %>" src="<%= usuario.imgPath %>">
+  			<div class="head-item" align="right">
+  				<div class="thumbnail2">
+  					<img alt="Imagen de <%= usuario.nick %>" src="<%= usuario.imgPath %>">
+  				</div>
+  			</div>
   			<br>
   			Nombre: <%= usuario.nombre + " " + usuario.apellido %>
   			<br>
@@ -96,6 +100,8 @@
      			%>
 			  	<form action="Seguidores" method="GET">
 			  		<input name="ACCION" value="<%= metodoSeguir %>" type="hidden">
+			  		<input name="USUARIO_SEGUIDO" value="<%= usuario.nick %>" type="hidden">
+			  		<input name="USUARIO_SEGUIDOR" value="<%= usuarioLogueado.nick %>" type="hidden">
 			  		<button><%= textoSeguir %></button>
 				</form>
      <%	}

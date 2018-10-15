@@ -25,7 +25,6 @@
 					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
 						<input type="hidden" name="VIDEO_ID" value="<%=video.idVideo%>">
 						<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.urlThumbnail%>">
-						<br>
 						<header>
 						<%= video.nombre %>
 						<br>
@@ -47,7 +46,6 @@
 					<form id="Form<%=cat%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="GET">
 						<input type="hidden" name="CATEGORIA" value="<%=cat%>">
 						<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
-						<br>
 						<header>
 						<%= cat %>
 						</header>

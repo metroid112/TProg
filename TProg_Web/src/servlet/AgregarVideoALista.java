@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
@@ -39,11 +40,7 @@ public class AgregarVideoALista extends HttpServlet {
       DtVideo video = null;
       try {
         video = Fabrica.getIVideos().getDtVideo(Integer.parseInt(idVideo));
-      } catch (NumberFormatException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (NotFoundException e) {
-        // TODO Auto-generated catch block
+      } catch (Exception e) {
         e.printStackTrace();
       }
       String nombreVideo = video.nombre;
@@ -52,9 +49,9 @@ public class AgregarVideoALista extends HttpServlet {
       try {
         ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
         request.setAttribute("EXITO",
-            "�Se ha agregado el video a la lista seleccionada con �xito!");
+            "¡Se ha agregado el video a la lista seleccionada con éxito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
-      } catch (DuplicateClassException e) {
+      } catch (Exception e) {
         request.setAttribute("ERROR", "El video " + "'" + nombreVideo + "'"
             + " ya estaba en la lista " + "'" + nombreLista + "'.");
         IListas ctrlListas2 = Fabrica.getIListas();

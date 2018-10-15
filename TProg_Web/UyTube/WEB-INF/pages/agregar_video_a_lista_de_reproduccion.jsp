@@ -37,7 +37,7 @@
 				<br>
 				<br>
 				<input type="hidden" name="agregarVideo" value="">
-				<button type="submit">Aceptar</button>
+				<input type="submit" value="Aceptar">
 			</form>
 		</div>
 	</div>

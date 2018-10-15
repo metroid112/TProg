@@ -8,17 +8,28 @@
 	<title>UyTube - Videos del propietario</title>
 </head>
 <body>
-		<jsp:include page="/WEB-INF/extras/header.jsp" />
-		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
-	<form action="ModificarVideo" method="POST">
-		<select required name="video">
-		<option value="" disabled selected hidden>Seleccione un video</option>
-		<% for (DtVideo video : (List<DtVideo>) request.getAttribute("VIDEOS")) { %>
-			<option value="<%= video.idVideo %>"><%= video.nombre %> </option>
-			<br>
-		<% } %>
-		</select>
-		<input type="hidden" name="videoSeleccionado" value="">
-		<button type="submit">Aceptar</button>
-	</form>
+	<jsp:include page="/WEB-INF/extras/header.jsp" />
+	<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
+	<div class="contenido">
+		<br>
+		<p>   Seleccione un video para modificarlo</p>
+		<br>
+		<div class="highlights">
+			<% for (DtVideo video : (List<DtVideo>) request.getAttribute("VIDEOS")) { %>
+				<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">
+					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="ModificarVideo" method="POST">
+					<input type="hidden" name="video" value="<%=video.idVideo%>">
+					<input type="hidden" name="videoSeleccionado" value="">
+					<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.urlThumbnail%>">
+					<br>
+					<header>
+					<%= video.nombre %>
+					<br>
+					User: <%= video.usuario %>
+					</header>
+					</form>	
+				</div>
+			<% } %>
+		</div>
+	</div>
 </body>
