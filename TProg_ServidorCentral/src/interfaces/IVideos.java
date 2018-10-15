@@ -15,7 +15,7 @@ public interface IVideos {
       String url, String categoria, Date fecha, boolean visibilidad)
       throws DuplicateClassException, NotFoundException;
 
-  public DtVideo getDtVideo(int id) throws NotFoundException;
+  public DtVideo getDtVideo(int idVideo) throws NotFoundException;
 
   public Map<Integer, DtVideo> getDtVideos();
 

@@ -79,7 +79,8 @@ public class Usuario {
   }
 
   public DtUsuario getDt() {
-    String categoria = this.getCanal().getCategoria() == null ? "Sin Categoria" : this.getCanal().getCategoria().getNombre();
+    String categoria = this.getCanal().getCategoria() == null ? "Sin Categoria"
+        : this.getCanal().getCategoria().getNombre();
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
         this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible(),
         this.nick, this.imgPath, categoria);
@@ -156,15 +157,15 @@ public class Usuario {
   }
 
   @Override
-  public boolean equals(Object o) {
-    Usuario user = (Usuario) o;
+  public boolean equals(Object object) {
+    Usuario user = (Usuario) object;
     return (this.nombre.equals(user.nombre) && this.nick.equals(user.nick)
         && this.apellido.equals(user.apellido) && this.correo.equals(user.correo)
         && this.fechaNacimiento.equals(user.fechaNacimiento) && this.imagen == user.imagen);
   }
 
-  public Comentario getComentario(int id) {
-    return comentarios.get(id);
+  public Comentario getComentario(int idComentario) {
+    return comentarios.get(idComentario);
   }
 
   public List<Calificacion> getCalificaciones() {

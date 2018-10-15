@@ -33,11 +33,11 @@ public class ManejadorListasParticulares {
     }
   }
 
-  public ListaParticular getById(int id) throws NotFoundException {
-    if (this.listasParticulares.get(id) != null) {
-      return this.listasParticulares.get(id);
+  public ListaParticular getById(int idLista) throws NotFoundException {
+    if (this.listasParticulares.get(idLista) != null) {
+      return this.listasParticulares.get(idLista);
     } else {
-      throw new NotFoundException("la id: " + id);
+      throw new NotFoundException("la id: " + idLista);
     }
   }
 

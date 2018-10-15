@@ -14,8 +14,8 @@ public class Categoria {
     this.nombre = nombre;
   }
 
-  public void addVideo(Video v) {
-    videos.add(v);
+  public void addVideo(Video video) {
+    videos.add(video);
   }
 
   @Override
@@ -26,11 +26,11 @@ public class Categoria {
   public String[] getInfoListas() {
     String[] infoListas = new String[listas.size()];
     if (!listas.isEmpty()) {
-      int i = 0;
+      int contador = 0;
       for (Lista lista : listas) {
         String nomLista = lista.getCanal().getUsuario().getNick();
-        infoListas[i] = "(" + lista.getNombre() + " - " + nomLista + ")";
-        i++;
+        infoListas[contador] = "(" + lista.getNombre() + " - " + nomLista + ")";
+        contador++;
       }
     }
     return infoListas;
@@ -39,12 +39,12 @@ public class Categoria {
   public String[] getInfoListasPublicas() {
     String[] infoListas = new String[listas.size()];
     if (!listas.isEmpty()) {
-      int i = 0;
+      int contador = 0;
       for (ListaParticular lista : listas) {
         if (lista.isVisible()) {
           String nomLista = lista.getCanal().getUsuario().getNick();
-          infoListas[i] = "(" + lista.getNombre() + " - " + nomLista + ")";
-          i++;
+          infoListas[contador] = "(" + lista.getNombre() + " - " + nomLista + ")";
+          contador++;
         }
       }
     }
@@ -54,11 +54,11 @@ public class Categoria {
   public String[] getInfoVideos() {
     String[] infoVideos = new String[videos.size()];
     if (!videos.isEmpty()) {
-      int i = 0;
+      int contador = 0;
       for (Video video : videos) {
         String nomVideo = video.getCanal().getUsuario().getNick();
-        infoVideos[i] = "(" + video.getNombre() + " - " + nomVideo + ")";
-        i++;
+        infoVideos[contador] = "(" + video.getNombre() + " - " + nomVideo + ")";
+        contador++;
       }
     }
     return infoVideos;
@@ -67,12 +67,12 @@ public class Categoria {
   public String[] getInfoVideosPublicos() {
     String[] infoVideos = new String[videos.size()];
     if (!videos.isEmpty()) {
-      int i = 0;
+      int contador = 0;
       for (Video video : videos) {
         if (video.isVisible()) {
           String nomVideo = video.getCanal().getUsuario().getNick();
-          infoVideos[i] = "(" + video.getNombre() + " - " + nomVideo + ")";
-          i++;
+          infoVideos[contador] = "(" + video.getNombre() + " - " + nomVideo + ")";
+          contador++;
         }
       }
     }

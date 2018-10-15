@@ -10,8 +10,8 @@ public class Comentario {
 
   private static int idCounter = 0;
   private Date fecha;
-  private int id; // id de comentario para uso interno
-  private Comentario padre;
+  private int idComentario; // id de comentario para uso interno
+  public Comentario padre;
   private Map<Integer, Comentario> respuestas = new LinkedHashMap<Integer, Comentario>();
   private String texto;
   private Usuario usuario;
@@ -31,7 +31,7 @@ public class Comentario {
     this.video = video;
     this.padre = padre;
     this.fecha = fecha;
-    this.id = Comentario.idCounter;
+    this.idComentario = Comentario.idCounter;
     Comentario.idCounter++;
     padre.addHijo(this);
   }
@@ -42,7 +42,7 @@ public class Comentario {
     this.video = video;
     this.fecha = fecha;
     this.padre = null;
-    this.id = Comentario.idCounter;
+    this.idComentario = Comentario.idCounter;
     Comentario.idCounter++;
   }
 
@@ -51,7 +51,7 @@ public class Comentario {
   }
 
   public Comentario getCom(Integer idComentario) {
-    if (this.id == idComentario) {
+    if (this.idComentario == idComentario) {
       return this;
     } else if (!this.respuestas.isEmpty()) {
       Comentario encontrado = null;
@@ -72,7 +72,7 @@ public class Comentario {
   }
 
   public Integer getId() {
-    return this.id;
+    return this.idComentario;
   }
 
   public Map<Integer, Comentario> getRespuestas() {
@@ -100,8 +100,8 @@ public class Comentario {
   }
 
   @Override
-  public boolean equals(Object o) {
-    Comentario comment = (Comentario) o;
+  public boolean equals(Object object) {
+    Comentario comment = (Comentario) object;
     return (this.texto.equals(comment.texto) && this.usuario.equals(comment.usuario)
         && this.video.equals(comment.video));
   }

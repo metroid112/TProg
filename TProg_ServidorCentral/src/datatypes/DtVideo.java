@@ -46,7 +46,7 @@ public class DtVideo {
 
     for (Comentario com : comentarios.values()) {
       DtComentario dtCom = com.getDt(); // Creo Dt
-      this.comentarios.put(dtCom.id, dtCom); // Lo agrego a la coleccion
+      this.comentarios.put(dtCom.idComentario, dtCom); // Lo agrego a la coleccion
     }
     this.visible = visible;
     for (Calificacion cal : calificaciones) {
@@ -106,8 +106,7 @@ public class DtVideo {
     return negativos;
   }
 
-
-  public String duracionPrintFormat(){
+  public String duracionPrintFormat() {
     long seconds = duracion.getSeconds();
     long absSeconds = Math.abs(seconds);
     String positive = String.format(
@@ -118,21 +117,18 @@ public class DtVideo {
     return seconds < 0 ? "-" + positive : positive;
   }
 
-  public String urlWatchtFormat(){
+  public String urlWatchtFormat() {
     String resultado = this.urlVideo;
-    if(resultado.substring(0, 17).equals("https://youtu.be/")){
-    resultado = resultado.substring(17);
-    resultado = "https://www.youtube.com/embed/" + resultado;
-    }
-    else if(resultado.substring(0,32).equals("https://www.youtube.com/watch?v=")){
+    if (resultado.substring(0, 17).equals("https://youtu.be/")) {
+      resultado = resultado.substring(17);
+      resultado = "https://www.youtube.com/embed/" + resultado;
+    } else if (resultado.substring(0, 32).equals("https://www.youtube.com/watch?v=")) {
       resultado = resultado.substring(32);
       resultado = "https://www.youtube.com/embed/" + resultado;
-    }
-    else if(resultado.substring(0,24).equals("https://www.youtube.com/")){
+    } else if (resultado.substring(0, 24).equals("https://www.youtube.com/")) {
       resultado = resultado.substring(24);
       resultado = "https://www.youtube.com/embed/" + resultado;
-    }
-    else if(resultado.substring(0,16).equals("www.youtube.com/")){
+    } else if (resultado.substring(0, 16).equals("www.youtube.com/")) {
       resultado = resultado.substring(16);
       resultado = "https://www.youtube.com/embed/" + resultado;
 

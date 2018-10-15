@@ -42,11 +42,11 @@ public class DtUsuario {
   }
 
   @Override
-  public boolean equals(Object o) {
-    DtUsuario dt = (DtUsuario) o;
-    return (this.nombre.equals(dt.nombre) && this.apellido.equals(dt.apellido)
-        && this.correo.equals(dt.correo) && this.canal.equals(dt.canal)
-        && this.privado == dt.privado);
+  public boolean equals(Object object) {
+    DtUsuario dtUsuario = (DtUsuario) object;
+    return (this.nombre.equals(dtUsuario.nombre) && this.apellido.equals(dtUsuario.apellido)
+        && this.correo.equals(dtUsuario.correo) && this.canal.equals(dtUsuario.canal)
+        && this.privado == dtUsuario.privado);
   }
 
   public String getNombre() {

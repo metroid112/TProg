@@ -68,9 +68,9 @@ public class DtLista {
   }
 
   @Override
-  public boolean equals(Object o) {
-    DtLista dt = (DtLista) o;
-    return (this.visible == dt.visible && this.nombre.equals(dt.nombre)
-        && this.tipo.equals(dt.tipo));
+  public boolean equals(Object object) {
+    DtLista dtLista = (DtLista) object;
+    return (this.visible == dtLista.visible && this.nombre.equals(dtLista.nombre)
+        && this.tipo.equals(dtLista.tipo));
   }
 }

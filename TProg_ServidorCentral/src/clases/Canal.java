@@ -122,7 +122,7 @@ public class Canal {
   }
 
   public Lista getLista(String lista) throws Exception {
-  if (this.listaParticulares.containsKey(lista)) {
+    if (this.listaParticulares.containsKey(lista)) {
       return this.listaParticulares.get(lista);
     } else {
       throw new Exception("No existe lista");
@@ -277,7 +277,7 @@ public class Canal {
     }
     return videos;
   }
-  
+
   public Categoria getCategoria() {
     return this.categoria;
   }

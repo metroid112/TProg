@@ -31,14 +31,15 @@ public class CtrlListas implements IListas {
     Usuario usuarioInicial = manejadorUsuarios.get(usuario);
     Usuario userObjetivo = manejadorUsuarios.get(usuarioObjetivo);
     Video videoObj = usuarioInicial.getCanal().getVideoCanal(video);
-    
+
     if (videoObj != null) {
       if (defecto) {
         userObjetivo.getCanal().agregarVideoListaDefecto(videoObj, lista);
       } else {
         userObjetivo.getCanal().agregarVideoListaParticular(videoObj, lista);
-      } 
-    } else throw new InvalidDataException("Video null");
+      }
+    } else
+      throw new InvalidDataException("Video null");
 
   }
 
@@ -103,13 +104,15 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public DtLista getDt(int id) throws NotFoundException {
-    return ManejadorListasParticulares.getManejadorListasParticulares().getById(id).getDtLista();
+  public DtLista getDt(int idLista) throws NotFoundException {
+    return ManejadorListasParticulares.getManejadorListasParticulares().getById(idLista)
+        .getDtLista();
   }
-  
+
   @Override
   public DtLista getDtDefecto(String usuario, String nombreListaDefecto) {
-    return ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal().getDtListaDefecto(nombreListaDefecto);
+    return ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal()
+        .getDtListaDefecto(nombreListaDefecto);
   }
 
   @Override
@@ -187,7 +190,8 @@ public class CtrlListas implements IListas {
   @Override
   public List<DtLista> getDtListasDefectoUsuario(String usuario) {
     List<DtLista> listasDefecto = new LinkedList<DtLista>();
-    for(ListaDefecto lista : ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal().getListaDefecto().values()) {
+    for (ListaDefecto lista : ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal()
+        .getListaDefecto().values()) {
       listasDefecto.add(lista.getDtLista());
     }
     return listasDefecto;

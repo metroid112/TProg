@@ -46,8 +46,8 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public DtVideo getDtVideo(int id) throws NotFoundException {
-    Video video = ManejadorVideos.getManejadorVideos().getById(id);
+  public DtVideo getDtVideo(int idVideo) throws NotFoundException {
+    Video video = ManejadorVideos.getManejadorVideos().getById(idVideo);
     return video.getDt();
   }
 

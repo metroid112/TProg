@@ -2,19 +2,20 @@ package datatypes;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import clases.Comentario;
 
 public class DtComentario {
-  public LinkedHashMap<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
-  public Integer id;
+  public Map<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
+  public Integer idComentario;
   public String texto;
   public String usuario;
   public Date fecha;
   private boolean tieneHijos = false;
 
   public DtComentario(Comentario comentario) {
-    this.id = comentario.getId();
+    this.idComentario = comentario.getId();
     this.texto = comentario.getTexto();
     this.usuario = comentario.getUsuario().getNick();
     this.fecha = comentario.getFecha();
@@ -34,20 +35,20 @@ public class DtComentario {
     return this.tieneHijos;
   }
 
-  public LinkedHashMap<Integer, DtComentario> getHijos() {
+  public Map<Integer, DtComentario> getHijos() {
     return hijos;
   }
 
-  public void setHijos(LinkedHashMap<Integer, DtComentario> hijos) {
+  public void setHijos(Map<Integer, DtComentario> hijos) {
     this.hijos = hijos;
   }
 
   public Integer getId() {
-    return id;
+    return idComentario;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
+  public void setId(Integer idComentario) {
+    this.idComentario = idComentario;
   }
 
   public String getTexto() {

@@ -6,7 +6,6 @@ import java.util.List;
 
 import datatypes.DtLista;
 import datatypes.DtVideo;
-import manejadores.ManejadorUsuarios;
 
 public class ListaDefecto extends Lista {
 
@@ -22,6 +21,7 @@ public class ListaDefecto extends Lista {
       videos.add(vid.getCanal().getUsuario().getNick() + "-" + vid.getNombre());
       dtVideos.add(vid.getDt());
     }
-    return new DtLista(this.getNombre(), "Defecto", false, videos, dtVideos, new LinkedList<String>(), new Date(), this.getId());
+    return new DtLista(this.getNombre(), "Defecto", false, videos, dtVideos,
+        new LinkedList<String>(), new Date(), this.getId());
   }
 }

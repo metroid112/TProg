@@ -75,8 +75,8 @@ public class Video {
     return encontrado;
   }
 
-  public Comentario getComentario(int id) {
-    return this.comentarios.get(id);
+  public Comentario getComentario(int idComentario) {
+    return this.comentarios.get(idComentario);
   }
 
   public DtVideo getDt() {
@@ -123,8 +123,8 @@ public class Video {
   }
 
   @Override
-  public boolean equals(Object o) {
-    Video video = (Video) o;
+  public boolean equals(Object object) {
+    Video video = (Video) object;
     return (this.idVideo == video.getId());
   }
 

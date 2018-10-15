@@ -32,11 +32,11 @@ public class ManejadorVideos {
     }
   }
 
-  public Video getById(int id) throws NotFoundException {
-    if (this.videos.get(id) != null) {
-      return this.videos.get(id);
+  public Video getById(int idVideo) throws NotFoundException {
+    if (this.videos.get(idVideo) != null) {
+      return this.videos.get(idVideo);
     } else {
-      throw new NotFoundException("la id: " + id);
+      throw new NotFoundException("la id: " + idVideo);
     }
   }
 

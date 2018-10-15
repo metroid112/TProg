@@ -19,27 +19,27 @@ public class CtrlCategorias implements ICategorias {
   }
 
   @Override
-  public String[] getInfoListas(String s) {
-    Categoria c = manejadorCategorias.get(s);
-    return c.getInfoListas();
+  public String[] getInfoListas(String categoria) {
+    Categoria categ = manejadorCategorias.get(categoria);
+    return categ.getInfoListas();
   }
 
   @Override
-  public String[] getInfoListasPublicas(String s) {
-    Categoria c = manejadorCategorias.get(s);
-    return c.getInfoListasPublicas();
+  public String[] getInfoListasPublicas(String categoria) {
+    Categoria categ = manejadorCategorias.get(categoria);
+    return categ.getInfoListasPublicas();
   }
 
   @Override
-  public String[] getInfoVideos(String s) {
-    Categoria c = manejadorCategorias.get(s);
-    return c.getInfoVideos();
+  public String[] getInfoVideos(String categoria) {
+    Categoria categ = manejadorCategorias.get(categoria);
+    return categ.getInfoVideos();
   }
 
   @Override
-  public String[] getInfoVideosPublicos(String s) {
-    Categoria c = manejadorCategorias.get(s);
-    return c.getInfoVideosPublicos();
+  public String[] getInfoVideosPublicos(String categoria) {
+    Categoria categ = manejadorCategorias.get(categoria);
+    return categ.getInfoVideosPublicos();
   }
 
   @Override

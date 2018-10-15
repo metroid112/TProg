@@ -186,6 +186,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public boolean isSeguidor(String seguidor, String seguido) {
     Usuario userSeguidor = ManejadorUsuarios.getManejadorUsuarios().get(seguidor);
     Usuario userSeguido = ManejadorUsuarios.getManejadorUsuarios().get(seguido);
-    return (userSeguidor.getSeguidos().containsKey(seguido) && userSeguido.getSeguidores().containsKey(seguidor));
+    return (userSeguidor.getSeguidos().containsKey(seguido)
+        && userSeguido.getSeguidores().containsKey(seguidor));
   }
 }

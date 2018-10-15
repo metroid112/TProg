@@ -1,8 +1,6 @@
 package controladores;
 
-import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.LinkedList;
@@ -16,8 +14,6 @@ import datatypes.DtBusqueda;
 import datatypes.DtLista;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
-import excepciones.DuplicateClassException;
-import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IDatos;
@@ -52,7 +48,8 @@ public class CtrlDatos implements IDatos {
         public String nombreCanal;
         public String descripcionCanal;
         public boolean visibilidadCanal;
-      };
+      }
+      ;
 
       UsuarioBean HR = new UsuarioBean();
       UsuarioBean MB = new UsuarioBean();
@@ -316,11 +313,11 @@ public class CtrlDatos implements IDatos {
       ctrlUsuarios.seguir(AR.nick, AP.nick);
       ctrlUsuarios.seguir(AP.nick, AR.nick);
       ctrlUsuarios.seguir(NJ.nick, DP.nick);
-      
+
       class CategoriaBean {
         public String nombre;
       }
-      
+
       CategoriaBean MUS = new CategoriaBean();
       CategoriaBean DEP = new CategoriaBean();
       CategoriaBean CAR = new CategoriaBean();
@@ -332,8 +329,8 @@ public class CtrlDatos implements IDatos {
       CategoriaBean ONG = new CategoriaBean();
       CategoriaBean GEN = new CategoriaBean();
       CategoriaBean MAS = new CategoriaBean();
-      CategoriaBean VIA = new CategoriaBean();   
-      
+      CategoriaBean VIA = new CategoriaBean();
+
       MUS.nombre = "Música";
       DEP.nombre = "Deporte";
       CAR.nombre = "Carnaval";
@@ -364,7 +361,7 @@ public class CtrlDatos implements IDatos {
         public String nombre;
         public String owner;
       }
-      
+
       VideoBean V1a = new VideoBean();
       VideoBean V1b = new VideoBean();
       VideoBean V2a = new VideoBean();
@@ -387,73 +384,73 @@ public class CtrlDatos implements IDatos {
       VideoBean V14b = new VideoBean();
       VideoBean V15 = new VideoBean();
       VideoBean V16 = new VideoBean();
-      
+
       V1a.nombre = "Locura celeste";
       V1a.owner = TC.nick;
-      
+
       V1b.nombre = "Locura celeste";
       V1b.owner = CS.nick;
 
       V2a.nombre = "Niño payaso";
       V2a.owner = TC.nick;
-      
+
       V2b.nombre = "Niño payaso";
       V2b.owner = CS.nick;
-      
+
       V3a.nombre = "Sweet child'o mine";
       V3a.owner = JB.nick;
-      
+
       V3b.nombre = "Sweet child'o mine";
       V3b.owner = KH.nick;
-      
+
       V4.nombre = "Dancing in the Dark";
       V4.owner = KH.nick;
-      
+
       V5a.nombre = "Thriller";
       V5a.owner = JB.nick;
-      
+
       V5b.nombre = "Thriller";
       V5b.owner = KH.nick;
-      
+
       V6.nombre = "100 años de FING";
       V6.owner = HG.nick;
-      
+
       V7.nombre = "50 años del InCo";
       V7.owner = HG.nick;
-      
+
       V8.nombre = "Ingeniería de Muestra 2017";
       V8.owner = HG.nick;
-      
+
       V9.nombre = "Etapa A contramano Liguilla";
       V9.owner = CS.nick;
-      
+
       V10.nombre = "Etapa Don Timoteo Liguilla";
       V10.owner = CS.nick;
-      
+
       V11.nombre = "Show de goles";
       V11.owner = JB.nick;
-      
+
       V12a.nombre = "Pacheco goles más recordados";
       V12a.owner = TC.nick;
-      
+
       V12b.nombre = "Pacheco goles más recordados";
       V12b.owner = AP.nick;
-      
+
       V13.nombre = "Inauguración Estadio Peñarol";
       V13.owner = JB.nick;
-      
+
       V14a.nombre = "Recoba 20 mejores goles";
       V14a.owner = CS.nick;
-      
+
       V14b.nombre = "Recoba 20 mejores goles";
       V14b.owner = AR.nick;
-      
+
       V15.nombre = "Entrevista a director CUTI";
       V15.owner = NJ.nick;
-      
+
       V16.nombre = "Ventana al futuro Uruguay y déficit de ingenieros";
       V16.owner = NJ.nick;
-      
+
       Fabrica.getIVideos().altaVideo(HG.nick, V6.nombre,
           "Del Ciclo más Universidad realizado por la UdelaR, compartimos con ustedes "
               + "un audiovisual realizado en 2016 por los 100 años de la denominación "
@@ -548,19 +545,19 @@ public class CtrlDatos implements IDatos {
           "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis medicos. Los datos se desprenden del Panorama de la Educación 2014 del anuario del Ministerio de Educación y Cultura. Ese año egresaron de la Universidad de la República 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, según sostienen desde la Facultad de Ingeniería, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundación Julio Ricaldoni, María Simón.",
           Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnología",
           format.parse("20/07/2016"), true);
-      
+
       class ListaDefectoBean {
         public String nombre;
       }
-      
+
       ListaDefectoBean LD1 = new ListaDefectoBean();
       ListaDefectoBean LD2 = new ListaDefectoBean();
       ListaDefectoBean LD3 = new ListaDefectoBean();
-      
+
       LD1.nombre = "Escuchar más tarde";
       LD2.nombre = "Deporte total";
       LD3.nombre = "Novedades generales";
-        
+
       Fabrica.getIListas().altaListaDefecto(LD1.nombre);
       Fabrica.getIListas().altaListaDefecto(LD2.nombre);
       Fabrica.getIListas().altaListaDefecto(LD3.nombre);
@@ -569,39 +566,39 @@ public class CtrlDatos implements IDatos {
         public String nombre;
         public String owner;
       }
-      
+
       ListaParticularBean LP1 = new ListaParticularBean();
       ListaParticularBean LP2 = new ListaParticularBean();
       ListaParticularBean LP3 = new ListaParticularBean();
       ListaParticularBean LP4 = new ListaParticularBean();
       ListaParticularBean LP5 = new ListaParticularBean();
       ListaParticularBean LP6 = new ListaParticularBean();
-      
+
       LP1.nombre = "Nostalgia";
       LP1.owner = KH.nick;
-      
+
       LP2.nombre = "De fiesta";
       LP2.owner = TC.nick;
-      
+
       LP3.nombre = "Novedades FING";
       LP3.owner = HG.nick;
-      
+
       LP4.nombre = "De todo un poco";
       LP4.owner = CS.nick;
-      
+
       LP5.nombre = "Noticias y CYT";
       LP5.owner = NJ.nick;
-      
+
       LP6.nombre = "Solo deportes";
       LP6.owner = JB.nick;
-      
+
       Fabrica.getIListas().altaListaParticular(LP1.nombre, LP1.owner, true);
       Fabrica.getIListas().altaListaParticular(LP2.nombre, LP2.owner, false);
       Fabrica.getIListas().altaListaParticular(LP3.nombre, LP3.owner, true);
       Fabrica.getIListas().altaListaParticular(LP4.nombre, LP4.owner, false);
       Fabrica.getIListas().altaListaParticular(LP5.nombre, LP5.owner, true);
       Fabrica.getIListas().altaListaParticular(LP6.nombre, LP6.owner, true);
-      
+
       Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh",
           "Nostalgia",
           false);
@@ -692,7 +689,7 @@ public class CtrlDatos implements IDatos {
           formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "tabarec", 9);
       Fabrica.getIUsuariosCanales().responderComentario("Gracias Marce ;)",
           formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "cachilas", 10);
-      
+
       Fabrica.getIUsuariosCanales().valorarVideo("sergiop", false, V7.nombre,
           "hectorg");
       Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, V8.nombre,

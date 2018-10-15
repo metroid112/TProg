@@ -34,20 +34,20 @@ public abstract class Lista {
 
   public String[] getArrayVideos() {
     String[] result = new String[videos.size()];
-    int i = 0;
+    int contador = 0;
     for (Video v : videos) {
-      result[i] = v.getNombre();
-      i++;
+      result[contador] = v.getNombre();
+      contador++;
     }
     return result;
   }
 
   public String[] getArrayVideosDuenos() {
     String[] result = new String[videos.size()];
-    int i = 0;
+    int contador = 0;
     for (Video v : videos) {
-      result[i] = v.getCanal().getUsuario().getNick() + "-" + v.getNombre();
-      i++;
+      result[contador] = v.getCanal().getUsuario().getNick() + "-" + v.getNombre();
+      contador++;
     }
     return result;
   }

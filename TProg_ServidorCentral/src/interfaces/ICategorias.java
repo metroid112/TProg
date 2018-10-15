@@ -4,13 +4,13 @@ public interface ICategorias {
 
   public void altaCategoria(String nombreCategoria) throws Exception;
 
-  public String[] getInfoListas(String s);
+  public String[] getInfoListas(String categoria);
 
-  public String[] getInfoVideos(String s);
+  public String[] getInfoVideos(String categoria);
 
   public String[] listarCategorias();
 
-  public String[] getInfoVideosPublicos(String s);
+  public String[] getInfoVideosPublicos(String categoria);
 
-  public String[] getInfoListasPublicas(String s);
+  public String[] getInfoListasPublicas(String categoria);
 }

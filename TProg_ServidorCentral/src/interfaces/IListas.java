@@ -19,8 +19,8 @@ public interface IListas {
   public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
       throws DuplicateClassException;
 
-  public DtLista getDt(int id) throws NotFoundException;
-  
+  public DtLista getDt(int idLista) throws NotFoundException;
+
   public DtLista getDtDefecto(String usuario, String nombreListaDefecto);
 
   public Map<Integer, DtLista> getDtListas();
@@ -42,7 +42,7 @@ public interface IListas {
   public List<DtLista> getDtListasParticularesUsuario(String usuario);
 
   public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario);
-  
+
   public List<DtLista> getDtListasDefectoUsuario(String usuario);
 
   public List<DtLista> getDtListasPrivadasUsuario(String usuario);

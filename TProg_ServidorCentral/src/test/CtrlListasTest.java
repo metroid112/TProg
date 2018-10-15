@@ -1,9 +1,10 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import java.sql.Array;
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.Test;
@@ -11,15 +12,13 @@ import org.junit.Test;
 import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Video;
-import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
-import manejadores.ManejadorListasDefecto;
-import manejadores.ManejadorListasParticulares;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
+import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorUsuarios;
 
 public class CtrlListasTest {
@@ -32,7 +31,8 @@ public class CtrlListasTest {
   public void testAgregarVideoLista() {
     try {
       iListas.agregarVideoLista("hectorg", "100 años de FING", "kairoh", "Nostalgia", false);
-      List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal().getLista("Nostalgia").getVideos();
+      List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal()
+          .getLista("Nostalgia").getVideos();
       boolean pertenece = false;
       for (Video vid : listaVideos) {
         if (vid.getNombre().equals("100 años de FING")) {
@@ -40,16 +40,19 @@ public class CtrlListasTest {
         }
       }
       assertTrue(pertenece);
-      iListas.agregarVideoLista("hectorg", "100 años de FING", "kairoh", "Escuchar más tarde", true);
-      ListaDefecto listaVideos2 = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal().getListaDefecto().get("Escuchar más tarde");
-      
-      Video vid = listaVideos2.getVideo("100 años de FING", ManejadorUsuarios.getManejadorUsuarios().get("hectorg"));
+      iListas.agregarVideoLista("hectorg", "100 años de FING", "kairoh", "Escuchar más tarde",
+          true);
+      ListaDefecto listaVideos2 = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal()
+          .getListaDefecto().get("Escuchar más tarde");
+
+      Video vid = listaVideos2.getVideo("100 años de FING",
+          ManejadorUsuarios.getManejadorUsuarios().get("hectorg"));
       assertTrue(vid != null);
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
-  
+
   @Test
   public void testAltaListaDefecto() {
     try {
@@ -60,37 +63,39 @@ public class CtrlListasTest {
     }
     assertTrue(ManejadorListasDefecto.getManejadorListas().existeListaDefecto("TestTarea2"));
   }
-  
+
   @Test
   public void testAltaListaParticularYListarListasParticularUsuario() {
     try {
-      iListas.altaListaParticular("TestTarea2","chino",true);
+      iListas.altaListaParticular("TestTarea2", "chino", true);
     } catch (DuplicateClassException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
     int esperado = 1;
     int cantidadListasParticulares = iListas.listarListasParticularUsuario("chino").length;
-    assertEquals(esperado,cantidadListasParticulares);
+    assertEquals(esperado, cantidadListasParticulares);
   }
-  
+
   @Test
   public void testGuardarCambios() {
     iListas.guardarCambios("TestTarea2", "chino", false);
     try {
-      ListaParticular listaParticular = (ListaParticular) ManejadorUsuarios.getManejadorUsuarios().get("chino").getCanal().getLista("TestTarea2");
+      ListaParticular listaParticular = (ListaParticular) ManejadorUsuarios.getManejadorUsuarios()
+          .get("chino").getCanal().getLista("TestTarea2");
       Boolean esVisible = listaParticular.isVisible();
-      assertEquals(false,esVisible);
+      assertEquals(false, esVisible);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
   }
-  
+
   @Test
   public void testQuitarVideoLista() throws Exception {
     iListas.quitarVideoLista("kairoh", "100 años de FING", "hectorg", "Nostalgia", false);
-    List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal().getLista("Nostalgia").getVideos();
+    List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal()
+        .getLista("Nostalgia").getVideos();
     boolean pertenece = false;
     for (Video vid : listaVideos) {
       if (vid.getNombre().equals("100 años de FING")) {
@@ -99,24 +104,24 @@ public class CtrlListasTest {
     }
     assertFalse(pertenece);
   }
-  
+
   @Test
   public void testListarListasDefectoUsuario() {
-    String[] listas = {"Escuchar más tarde", "Deporte total", "Novedades generales"};
+    String[] listas = { "Escuchar más tarde", "Deporte total", "Novedades generales" };
     String[] listasObtenidas = iListas.listarListasDefectoUsuario("hectorg");
-    
+
     assertEquals(listas.length, listasObtenidas.length);
   }
-  
+
   @Test
   public void testListarListasParticularUsuario() {
-    String[] listaKairoh = {"Nostalgia"};
+    String[] listaKairoh = { "Nostalgia" };
     String[] listaKairohObtenida = iListas.listarListasParticularUsuario("kairoh");
     assertArrayEquals(listaKairoh, listaKairohObtenida);
-    String[] listaTabarec = {"De fiesta"};
+    String[] listaTabarec = { "De fiesta" };
     String[] listaTabarecObtenida = iListas.listarListasParticularUsuario("tabarec");
     assertArrayEquals(listaTabarec, listaTabarecObtenida);
-    String[] listaChino = {"TestTarea2"};
+    String[] listaChino = { "TestTarea2" };
     String[] listaChinoObtenida = iListas.listarListasParticularUsuario("chino");
     assertArrayEquals(listaChino, listaChinoObtenida);
   }

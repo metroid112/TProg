@@ -88,8 +88,8 @@ public class ListaParticular extends Lista {
   }
 
   @Override
-  public boolean equals(Object o) {
-    ListaParticular lis = (ListaParticular) o;
+  public boolean equals(Object object) {
+    ListaParticular lis = (ListaParticular) object;
     return (this.visible == lis.visible && this.getCanal().equals(lis.getCanal())
         && this.getNombre().equals(lis.getNombre()));
   }
