@@ -96,6 +96,8 @@
      			%>
 			  	<form action="Seguidores" method="GET">
 			  		<input name="ACCION" value="<%= metodoSeguir %>" type="hidden">
+			  		<input name="USUARIO_SEGUIDO" value="<%= usuario.nick %>" type="hidden">
+			  		<input name="USUARIO_SEGUIDOR" value="<%= usuarioLogueado.nick %>" type="hidden">
 			  		<button><%= textoSeguir %></button>
 				</form>
      <%	}
