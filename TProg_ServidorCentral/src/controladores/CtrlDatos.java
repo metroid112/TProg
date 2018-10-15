@@ -32,7 +32,7 @@ public class CtrlDatos implements IDatos {
   private static boolean cargaDatos = false;
 
   @Override
-  public void cargaDatos() throws ParseException, IOException {
+  public void cargaDatos() throws Exception {
     if (!cargaDatos) {
       CtrlDatos.cargaDatos = true;
       DateFormat format = new SimpleDateFormat("dd/mm/yyyy");
@@ -52,8 +52,7 @@ public class CtrlDatos implements IDatos {
         public String nombreCanal;
         public String descripcionCanal;
         public boolean visibilidadCanal;
-      }
-      ;
+      };
 
       UsuarioBean HR = new UsuarioBean();
       UsuarioBean MB = new UsuarioBean();
@@ -82,7 +81,7 @@ public class CtrlDatos implements IDatos {
       HR.visibilidadCanal = true;
 
       MB.nick = "mbusca";
-      MB.nombre = "Mart\u00edn";
+      MB.nombre = "Martín";
       MB.apellido = "Buscaglia";
       MB.pass = "Cookie234";
       MB.mail = "Martin.bus@agadu.org.uy";
@@ -99,7 +98,7 @@ public class CtrlDatos implements IDatos {
       HG.nacimiento = "07/01/1954";
       HG.nombreCanal = "hectorg";
       HG.descripcionCanal = "Canal HG";
-      HG.visibilidadCanal = true;      
+      HG.visibilidadCanal = true;
 
       TC.nick = "tabarec";
       TC.nombre = "Tabaré";
@@ -137,6 +136,9 @@ public class CtrlDatos implements IDatos {
       DP.pass = "Ruffo678";
       DP.mail = "diego@efectocine.com";
       DP.nacimiento = "01/01/1975";
+      DP.nombreCanal = "diegop";
+      DP.descripcionCanal = "Canal de DP";
+      DP.visibilidadCanal = true;
 
       KH.nick = "kairoh";
       KH.nombre = "Kairo";
@@ -144,6 +146,9 @@ public class CtrlDatos implements IDatos {
       KH.pass = "Corbata15";
       KH.mail = "kairoher@pilsenrock.com.uy";
       KH.nacimiento = "25/04/1840";
+      KH.nombreCanal = "Kairo música";
+      KH.descripcionCanal = "Videos de grandes canciones de hoy y siempre";
+      KH.visibilidadCanal = true;
 
       RH.nick = "robinh";
       RH.nombre = "Robin";
@@ -151,6 +156,9 @@ public class CtrlDatos implements IDatos {
       RH.pass = "Aquiles67";
       RH.mail = "Robin.h@tinglesa.com.uy";
       RH.nacimiento = "03/08/1940";
+      RH.nombreCanal = "robinh";
+      RH.descripcionCanal = "Henderson";
+      RH.visibilidadCanal = true;
 
       MT.nick = "marcelot";
       MT.nombre = "Marcelo";
@@ -158,6 +166,9 @@ public class CtrlDatos implements IDatos {
       MT.pass = "Mancha890";
       MT.mail = "marcelot@ideasdelsur.com.ar";
       MT.nacimiento = "01/04/1960";
+      MT.nombreCanal = "Tinelli total";
+      MT.descripcionCanal = "Todo lo que querías y más!";
+      MT.visibilidadCanal = true;
 
       EN.nick = "novick";
       EN.nombre = "Edgardo";
@@ -165,6 +176,9 @@ public class CtrlDatos implements IDatos {
       EN.pass = "Xenon987";
       EN.mail = "edgardo@novick.com.uy";
       EN.nacimiento = "17/07/1952";
+      EN.nombreCanal = "Con la gente";
+      EN.descripcionCanal = "Preparando las elecciones";
+      EN.visibilidadCanal = true;
 
       SP.nick = "sergiop";
       SP.nombre = "Sergio";
@@ -172,6 +186,9 @@ public class CtrlDatos implements IDatos {
       SP.pass = "Sultan876";
       SP.mail = "puglia@alpanpan.com.uy";
       SP.nacimiento = "28/01/1950";
+      SP.nombreCanal = "Puglia invita";
+      SP.descripcionCanal = "Programas del ciclo y videos de cocina masterchef";
+      SP.visibilidadCanal = true;
 
       AR.nick = "chino";
       AR.nombre = "Alvaro";
@@ -179,6 +196,9 @@ public class CtrlDatos implements IDatos {
       AR.pass = "Laika765";
       AR.mail = "chino@trico.org.uy";
       AR.nacimiento = "17/03/1976";
+      AR.nombreCanal = "Chino Recoba";
+      AR.descripcionCanal = "Canal de goles con Nacional";
+      AR.visibilidadCanal = false;
 
       AP.nick = "tonyp";
       AP.nombre = "Antonio";
@@ -186,6 +206,9 @@ public class CtrlDatos implements IDatos {
       AP.pass = "Kitty543";
       AP.mail = "eltony@manya.org.uy";
       AP.nacimiento = "14/02/1955";
+      AP.nombreCanal = "Tony Pacheco";
+      AP.descripcionCanal = "Todos los goles con Peñarol";
+      AP.visibilidadCanal = false;
 
       NJ.nick = "nicoJ";
       NJ.nombre = "Nicolás";
@@ -193,305 +216,359 @@ public class CtrlDatos implements IDatos {
       NJ.pass = "Albino80";
       NJ.mail = "jodal@artech.com.uy";
       NJ.nacimiento = "09/08/1960";
+      NJ.nombreCanal = "Desde Genexus";
+      NJ.descripcionCanal = "Canal información C y T";
+      NJ.visibilidadCanal = true;
 
-      ctrlUsuarios.altaUsuario(HR.nick, HR.nombre, HR.apellido, HR.mail, format.parse(HR.nacimiento), "img" + divisor + "usuarios" + divisor + "horacio.JPG", "Canal Horacio","El canal Horacio es para publicar contenido divertido", "Sin categoria", true, "pass");
-      ctrlUsuarios.altaUsuario("mbusca", "Martin", "Buscaglia",
-          "Martin.bus@agadu.org.uy",
-          format.parse("14/06/1972"), "img" + divisor + "usuarios" + divisor + "martin.JPG",
-          "El bocha",
-          "Mi canal para colgar cosas", "Sin categoria", true, "pass");
+      ctrlUsuarios.altaUsuario(HR.nick, HR.nombre, HR.apellido, HR.mail,
+          format.parse(HR.nacimiento), "img" + divisor + "usuarios" + divisor + "horacio.JPG",
+          HR.nombreCanal, HR.descripcionCanal, "Sin categoria", HR.visibilidadCanal, HR.pass);
+      ctrlUsuarios.altaUsuario(MB.nick, MB.nombre, MB.apellido, MB.mail,
+          format.parse(MB.nacimiento), "img" + divisor + "usuarios" + divisor + "martin.JPG",
+          MB.nombreCanal, MB.descripcionCanal, "Sin categoria", true, MB.pass);
       ctrlUsuarios.altaUsuario("hectorg", "Héctor", "Guido",
           "hector.gui@elgalpon.org.uy",
           format.parse("07/01/1954"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "hectorg",
           "Canal HG",
-          "Sin categoria", true, "pass");
+          "Sin categoria", true, HG.pass);
       ctrlUsuarios.altaUsuario("tabarec", "Tabare", "Cardozo",
           "tabare.car@agadu.org.uy",
           format.parse("24/07/1971"), "img" + divisor + "usuarios" + divisor + "tabare.JPG",
           "Tabar�",
-          "Mi musica e ainda mais", "Sin categoria", true, "pass");
+          "Mi musica e ainda mais", "Sin categoria", true, TC.pass);
       ctrlUsuarios.altaUsuario("cachilas", "Waldemar \"Cachila\"", "Silva",
           "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"),
           "img" + divisor + "usuarios" + divisor + "cachila.JPG",
-          "El Cachila", "Para juntar cosas", "Sin categoria", false, "pass");
+          "El Cachila", "Para juntar cosas", "Sin categoria", false, CS.pass);
       ctrlUsuarios.altaUsuario("juliob", "Julio", "Bocca",
           "juliobocca@sodre.com.uy",
           format.parse("16/03/1967"), "img" + divisor + "usuarios" + divisor + "null.JPG", "juliob",
           "Canal de JB",
-          "Sin categoria", true, "pass");
+          "Sin categoria", true, JB.pass);
       ctrlUsuarios.altaUsuario("diegop", "Diego", "Parodi", "diego@efectocine.com",
           format.parse("01/01/1975"), "img" + divisor + "usuarios" + divisor + "null.JPG", "diegop",
           "Canal de DP",
-          "Sin categoria", true, "pass");
+          "Sin categoria", true, DP.pass);
       ctrlUsuarios.altaUsuario("kairoh", "Kairo", "Herrera",
           "kairoher@pilsenrock.com.uy",
           format.parse("25/04/1840"), "img" + divisor + "usuarios" + divisor + "kairo.JPG",
           "Kairo musica",
-          "Videos de grandes canciones de hoy y siempre", "Sin categoria", true, "pass");
+          "Videos de grandes canciones de hoy y siempre", "Sin categoria", true, KH.pass);
       ctrlUsuarios.altaUsuario("robinh", "Robin", "Henderson",
           "Robin.h@tinglesa.com.uy",
           format.parse("03/08/1940"), "img" + divisor + "usuarios" + divisor + "null.JPG", "robinh",
           "Henderson",
-          "Sin categoria", true, "pass");
+          "Sin categoria", true, RH.pass);
       ctrlUsuarios.altaUsuario("marcelot", "Marcelo", "Tinelli",
           "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"),
           "img" + divisor + "usuarios" + divisor + "null.JPG",
-          "Tinelli total", "Todo lo que querias y más !", "Sin categoria", true, "pass");
+          "Tinelli total", "Todo lo que querias y más !", "Sin categoria", true, MT.pass);
       ctrlUsuarios.altaUsuario("novick", "Edgardo", "Novick",
           "edgardo@novick.com.uy",
           format.parse("17/07/1952"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Con la gente",
-          "Preparando las elecciones", "Sin categoria", true, "pass");
+          "Preparando las elecciones", "Sin categoria", true, EN.pass);
       ctrlUsuarios.altaUsuario("sergiop", "Sergio", "Puglia",
           "puglia@alpanpan.com.uy",
           format.parse("28/01/1950"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Puglia invita",
-          "Programas del ciclo y videos de cocina masterchef", "Sin categoria", true, "pass");
+          "Programas del ciclo y videos de cocina masterchef", "Sin categoria", true, SP.pass);
       ctrlUsuarios.altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy",
           format.parse("17/03/1976"), "img" + divisor + "usuarios" + divisor + "recoba.JPG",
           "Chino Recoba",
-          "Canal de goles con Nacional ", "Sin categoria", false, "pass");
+          "Canal de goles con Nacional ", "Sin categoria", false, AR.pass);
       ctrlUsuarios.altaUsuario("tonyp", "Antonio", "Pacheco",
           "eltony@manya.org.uy",
           format.parse("14/02/1955"), "img" + divisor + "usuarios" + divisor + "pacheco.JPG",
           "Tony Pacheco",
-          "Todos los goles con Peñarol", "Sin categoria", false, "pass");
+          "Todos los goles con Peñarol", "Sin categoria", false, AP.pass);
       ctrlUsuarios.altaUsuario("nicoJ", "Nicolas", "Jodal", "jodal@artech.com.uy",
           format.parse("09/08/1960"), "img" + divisor + "usuarios" + divisor + "null.JPG",
-          "Desde Genexus",
-          "Canal informacion C y T", "Sin categoria", true, "pass");
+          "Desde Genexus", "Canal informacion C y T", "Sin categoria", true, NJ.pass);
 
-      ctrlUsuarios.seguir("hrubino", "hectorg");
-      ctrlUsuarios.seguir("hrubino", "hectorg");
-      ctrlUsuarios.seguir("mbusca", "tabarec");
-      ctrlUsuarios.seguir("mbusca", "cachilas");
-      ctrlUsuarios.seguir("mbusca", "kairoh");
-      ctrlUsuarios.seguir("hectorg", "mbusca");
-      ctrlUsuarios.seguir("hectorg", "juliob");
-      ctrlUsuarios.seguir("tabarec", "hrubino");
-      ctrlUsuarios.seguir("tabarec", "cachilas");
-      ctrlUsuarios.seguir("cachilas", "hrubino");
-      ctrlUsuarios.seguir("juliob", "mbusca");
-      ctrlUsuarios.seguir("juliob", "diegop");
-      ctrlUsuarios.seguir("diegop", "hectorg");
-      ctrlUsuarios.seguir("kairoh", "sergiop");
-      ctrlUsuarios.seguir("robinh", "hectorg");
-      ctrlUsuarios.seguir("robinh", "juliob");
-      ctrlUsuarios.seguir("robinh", "diegop");
-      ctrlUsuarios.seguir("marcelot", "cachilas");
-      ctrlUsuarios.seguir("marcelot", "juliob");
-      ctrlUsuarios.seguir("marcelot", "kairoh");
-      ctrlUsuarios.seguir("novick", "hrubino");
-      ctrlUsuarios.seguir("novick", "cachilas");
-      ctrlUsuarios.seguir("novick", "juliob");
-      ctrlUsuarios.seguir("sergiop", "mbusca");
-      ctrlUsuarios.seguir("sergiop", "juliob");
-      ctrlUsuarios.seguir("sergiop", "kairoh");
-      ctrlUsuarios.seguir("chino", "tonyp");
-      ctrlUsuarios.seguir("tonyp", "chino");
-      ctrlUsuarios.seguir("nicoJ", "diegop");
-
-      try {
-        Fabrica.getICategorias().altaCategoria("Musica");
-        Fabrica.getICategorias().altaCategoria("Deporte");
-        Fabrica.getICategorias().altaCategoria("Carnaval");
-        Fabrica.getICategorias().altaCategoria("Noticias");
-        Fabrica.getICategorias().altaCategoria("Entretenimiento");
-        Fabrica.getICategorias().altaCategoria("Comida");
-        Fabrica.getICategorias().altaCategoria("Videojuegos");
-        Fabrica.getICategorias().altaCategoria("Ciencia y Tecnologia");
-        Fabrica.getICategorias().altaCategoria("ONG y activismo");
-        Fabrica.getICategorias().altaCategoria("Gente y blogs");
-        Fabrica.getICategorias().altaCategoria("Mascotas y animales");
-        Fabrica.getICategorias().altaCategoria("Viajes y eventos");
-      } catch (Exception e) {
-        e.printStackTrace();
+      ctrlUsuarios.seguir(HR.nick, HG.nick);
+      ctrlUsuarios.seguir(HR.nick, DP.nick);
+      ctrlUsuarios.seguir(MB.nick, TC.nick);
+      ctrlUsuarios.seguir(MB.nick, CS.nick);
+      ctrlUsuarios.seguir(MB.nick, KH.nick);
+      ctrlUsuarios.seguir(HG.nick, MB.nick);
+      ctrlUsuarios.seguir(HG.nick, JB.nick);
+      ctrlUsuarios.seguir(TC.nick, HR.nick);
+      ctrlUsuarios.seguir(TC.nick, CS.nick);
+      ctrlUsuarios.seguir(CS.nick, HR.nick);
+      ctrlUsuarios.seguir(JB.nick, MB.nick);
+      ctrlUsuarios.seguir(JB.nick, DP.nick);
+      ctrlUsuarios.seguir(DP.nick, HG.nick);
+      ctrlUsuarios.seguir(KH.nick, SP.nick);
+      ctrlUsuarios.seguir(RH.nick, HG.nick);
+      ctrlUsuarios.seguir(RH.nick, JB.nick);
+      ctrlUsuarios.seguir(RH.nick, DP.nick);
+      ctrlUsuarios.seguir(MT.nick, CS.nick);
+      ctrlUsuarios.seguir(MT.nick, JB.nick);
+      ctrlUsuarios.seguir(MT.nick, KH.nick);
+      ctrlUsuarios.seguir(EN.nick, HR.nick);
+      ctrlUsuarios.seguir(EN.nick, TC.nick);
+      ctrlUsuarios.seguir(EN.nick, JB.nick);
+      ctrlUsuarios.seguir(SP.nick, MB.nick);
+      ctrlUsuarios.seguir(SP.nick, JB.nick);
+      ctrlUsuarios.seguir(SP.nick, DP.nick);
+      ctrlUsuarios.seguir(AR.nick, AP.nick);
+      ctrlUsuarios.seguir(AP.nick, AR.nick);
+      ctrlUsuarios.seguir(NJ.nick, DP.nick);
+      
+      class CategoriaBean {
+        public String nombre;
       }
+      
+      CategoriaBean MUS = new CategoriaBean();
+      CategoriaBean DEP = new CategoriaBean();
+      CategoriaBean CAR = new CategoriaBean();
+      CategoriaBean NOT = new CategoriaBean();
+      CategoriaBean ENT = new CategoriaBean();
+      CategoriaBean COM = new CategoriaBean();
+      CategoriaBean JUE = new CategoriaBean();
+      CategoriaBean CYT = new CategoriaBean();
+      CategoriaBean ONG = new CategoriaBean();
+      CategoriaBean GEN = new CategoriaBean();
+      CategoriaBean MAS = new CategoriaBean();
+      CategoriaBean VIA = new CategoriaBean();   
+      
+      MUS.nombre = "Música";
+      DEP.nombre = "Deporte";
+      CAR.nombre = "Carnaval";
+      NOT.nombre = "Noticias";
+      ENT.nombre = "Entretenimiento";
+      COM.nombre = "Comida";
+      JUE.nombre = "Videojuegos";
+      CYT.nombre = "Ciencia y Tecnología";
+      ONG.nombre = "ONG y activismo";
+      GEN.nombre = "Gente y blogs";
+      MAS.nombre = "Mascotas y animales";
+      VIA.nombre = "Viajes y eventos";
 
-      try {
-        Fabrica.getIVideos().altaVideo("hectorg", "100 años de FING",
-            "Del Ciclo más Universidad realizado por la UdelaR, compartimos con ustedes "
-                + "un audiovisual realizado en 2016 por los 100 años de la denominación "
-                + "Facultad de Ingeniería.\nExtraído del canal Teleuniversitaria UdelaR",
-            Duration.parse("PT6M26S"), "https://youtu.be/peGS4TBxSaI", "Noticias",
-            format.parse("03/08/2017"), true);
-        Fabrica.getIVideos().altaVideo("hectorg", "50 años del InCo",
-            "50 años del Instituto de Computación. Facultad de Ingeniería. UDELAR. "
-                + "22 de noviembre 2017.\nLa mesa de apertura estuvo integrada por Simon, "
-                + "el rector de la Universidad de la República (Udelar), Roberto Markarian; "
-                + "la ministra de Industria, Energía y Minería, Carolina Cosse; el "
-                + "presidente de la Cámara Uruguaya de Tecnologías de la Información "
-                + "(CUTI), Leonardo Loureiro, y el director del Inco, Diego Vallespir.",
-            Duration.parse("PT27M22S"), "https://youtu.be/GzOJSk4urlM", "Noticias",
-            format.parse("24/11/2017"), true);
-        Fabrica.getIVideos().altaVideo("hectorg", "Ingenieria de Muestra 2017",
-            "La muestra más grande de la Ingeniería nacional se realiza el jueves 19, "
-                + "viernes 20 y sábado 21 de octubre de 2017. Ingeniería deMuestra fue organizada "
-                + "por la Facultad de Ingeniería de la Universidad de la "
-                + "República y su Fundación Julio Ricaldoni.",
-            Duration.parse("PT1M"), "https://youtu.be/RnaYRA1k5j4", "Noticias",
-            format.parse("25/10/2017"), true);
-        Fabrica.getIVideos().altaVideo("tabarec", "Locura celeste",
-            "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para "
-                + "el Mundial de Futbol FIFA Rusia 2018.",
-            Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
-            format.parse("05/06/2018"), false);
-        Fabrica.getIVideos().altaVideo("tabarec", "Niño payaso", "", Duration.parse("PT4M18S"),
-            "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
-        Fabrica.getIVideos().altaVideo("tabarec", "Pacheco goles mas recordados", "",
-            Duration.parse("PT5M48S"),
-            "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
-        Fabrica.getIVideos().altaVideo("cachilas", "Locura celeste",
-            "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para el "
-                + "Mundial de Futbol FIFA Rusia 2018.",
-            Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
-            format.parse("05/06/2018"), false);
-        Fabrica.getIVideos().altaVideo("cachilas", "Niño payaso", "", Duration.parse("PT4M18S"),
-            "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
-        Fabrica.getIVideos().altaVideo("cachilas", "Etapa A contramano Liguilla", "",
-            Duration.parse("PT57M15S"),
-            "https://youtu.be/Es6GRMHXeCQ", "Carnaval", format.parse("17/12/2015"), false);
-        Fabrica.getIVideos().altaVideo("cachilas", "Etapa Don Timoteo Liguilla", "",
-            Duration.parse("PT51M38S"),
-            "https://youtu.be/I_spHBU9ZsI", "Carnaval", format.parse("18/12/2015"), false);
-        Fabrica.getIVideos().altaVideo("cachilas", "Recoba 20 mejores goles",
-            "My Favorites\n\n\"El Chino\"",
-            Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
-            format.parse("14/11/2011"), false);
-        Fabrica.getIVideos().altaVideo("juliob", "Sweet child'o mine",
-            "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
-            Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Musica",
-            format.parse("24/12/2009"), true);
-        Fabrica.getIVideos().altaVideo("juliob", "Thriller",
-            "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
-            Duration.parse("PT13M42S"), "https://youtu.be/PAfbzKcePx0", "Musica",
-            format.parse("02/10/2009"), false);
-        Fabrica.getIVideos().altaVideo("juliob", "Show de goles",
-            "TORNEO CLAUSURA 2018\nFECHA 1.....",
-            Duration.parse("PT4M23S"), "https://youtu.be/g46w4_kD_lA", "Deporte",
-            format.parse("23/07/2018"), true);
-        Fabrica.getIVideos().altaVideo("juliob", "Inauguracion Estadio Peñarol",
-            "Recordemos la ceremonia de inauguración del Estadio de Peñarol.\nLlamado \""
-                + "Estadio Campeón del Siglo\".",
-            Duration.parse("PT3H27M26S"), "https://youtu.be/U6XPJ8Vz72A", "Deporte",
-            format.parse("04/04/2016"), true);
-        Fabrica.getIVideos().altaVideo("kairoh", "Sweet child'o mine",
-            "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
-            Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Musica",
-            format.parse("24/12/2009"), true);
-        Fabrica.getIVideos().altaVideo("kairoh", "Dancing in the Dark",
-            "Bruce Springsteen's official music video for \'Dancing In The Dark\'. Click to listen to Bruce Springsteen on Spotify: http://smarturl.it/BSpringSpot?IQid=B...",
-            Duration.parse("PT3M58S"), "https://youtu.be/129kuDCQtHs", "Musica",
-            format.parse("03/10/2009"), true);
-        Fabrica.getIVideos().altaVideo("kairoh", "Thriller",
-            "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
-            Duration.parse("PT13M42S"), "https://youtu.be/sOnqjkJTMaA", "Musica",
-            format.parse("02/10/2009"), true);
-        Fabrica.getIVideos().altaVideo("chino", "Recoba 20 mejores goles",
-            "My Favorites\n\n\"El Chino\"",
-            Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
-            format.parse("14/11/2011"), false);
-        Fabrica.getIVideos().altaVideo("tonyp", "Pacheco goles mas recordados", "",
-            Duration.parse("PT5M48S"),
-            "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
-        Fabrica.getIVideos().altaVideo("nicoJ", "Entrevista a director CUTI",
-            "Segunda parte de la entrevista realizada por la periodista "
-                + "Paula Echevarr�a al director de CUTI",
-            Duration.parse("PT5M39S"), "https://youtu.be/Eq5uBEzI6qs", "Ciencia y Tecnologia",
-            format.parse("03/04/2017"), true);
-        Fabrica.getIVideos().altaVideo("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros",
-            "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis medicos. Los datos se desprenden del Panorama de la Educación 2014 del anuario del Ministerio de Educación y Cultura. Ese año egresaron de la Universidad de la República 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, según sostienen desde la Facultad de Ingeniería, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundación Julio Ricaldoni, María Simón.",
-            Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnologia",
-            format.parse("20/07/2016"), true);
-      } catch (DuplicateClassException exception) {
-        exception.printStackTrace();
-      } catch (NotFoundException exception) {
-        exception.printStackTrace();
-      }
+      ctrlCategorias.altaCategoria(MUS.nombre);
+      ctrlCategorias.altaCategoria(DEP.nombre);
+      ctrlCategorias.altaCategoria(CAR.nombre);
+      ctrlCategorias.altaCategoria(NOT.nombre);
+      ctrlCategorias.altaCategoria(ENT.nombre);
+      ctrlCategorias.altaCategoria(COM.nombre);
+      ctrlCategorias.altaCategoria(JUE.nombre);
+      ctrlCategorias.altaCategoria(CYT.nombre);
+      ctrlCategorias.altaCategoria(ONG.nombre);
+      ctrlCategorias.altaCategoria(GEN.nombre);
+      ctrlCategorias.altaCategoria(MAS.nombre);
+      ctrlCategorias.altaCategoria(VIA.nombre);
 
-      try {
-        Fabrica.getIListas().altaListaDefecto("Escuchar m\u00e1s tarde");
-        Fabrica.getIListas().altaListaDefecto("Deporte total");
-        Fabrica.getIListas().altaListaDefecto("Novedades generales");
-      } catch (Exception e) {
-        e.printStackTrace();
+      class VideoBean {
+        public String nombre;
+        public String owner;
       }
+      
+      VideoBean V1 = new VideoBean();
+      VideoBean V2 = new VideoBean();
+      VideoBean V3 = new VideoBean();
+      VideoBean V4 = new VideoBean();
+      VideoBean V5 = new VideoBean();
+      VideoBean V6 = new VideoBean();
+      VideoBean V7 = new VideoBean();
+      VideoBean V8 = new VideoBean();
+      VideoBean V9 = new VideoBean();
+      VideoBean V10 = new VideoBean();
+      VideoBean V11 = new VideoBean();
+      VideoBean V12 = new VideoBean();
+      VideoBean V13 = new VideoBean();
+      VideoBean V14 = new VideoBean();
+      VideoBean V15 = new VideoBean();
+      VideoBean V16 = new VideoBean();
+      
+      V1.nombre = "Locura celeste";
 
-      try {
-        Fabrica.getIListas().altaListaParticular("Nostalgia", "kairoh", true);
-        Fabrica.getIListas().altaListaParticular("De fiesta", "tabarec", false);
-        Fabrica.getIListas().altaListaParticular("Novedades FING", "hectorg", true);
-        Fabrica.getIListas().altaListaParticular("De todo un poco", "cachilas", false);
-        Fabrica.getIListas().altaListaParticular("Noticias y CYT", "nicoJ", true);
-        Fabrica.getIListas().altaListaParticular("Solo deportes", "juliob", true);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
+      V2.nombre = "Niño payaso";
+      
+      V3.nombre = "Sweet child'o mine";
+      
+      V4.nombre = "Dancing in the Dark";
+      
+      V5.nombre = "Thriller";
+      
+      V6.nombre = "100 años de FING";
+      
+      V7.nombre = "50 años del InCo";
+      
+      V8.nombre = "Ingeniería de Muestra 2017";
+      
+      V9.nombre = "Etapa A contramano Liguilla";
+      
+      V10.nombre = "Etapa Don Timoteo Liguilla";
+      
+      V11.nombre = "Show de goles";
+      
+      
+      Fabrica.getIVideos().altaVideo("hectorg", "100 años de FING",
+          "Del Ciclo más Universidad realizado por la UdelaR, compartimos con ustedes "
+              + "un audiovisual realizado en 2016 por los 100 años de la denominación "
+              + "Facultad de Ingeniería.\nExtraído del canal Teleuniversitaria UdelaR",
+          Duration.parse("PT6M26S"), "https://youtu.be/peGS4TBxSaI", "Noticias",
+          format.parse("03/08/2017"), true);
+      Fabrica.getIVideos().altaVideo("hectorg", "50 años del InCo",
+          "50 años del Instituto de Computación. Facultad de Ingeniería. UDELAR. "
+              + "22 de noviembre 2017.\nLa mesa de apertura estuvo integrada por Simon, "
+              + "el rector de la Universidad de la República (Udelar), Roberto Markarian; "
+              + "la ministra de Industria, Energía y Minería, Carolina Cosse; el "
+              + "presidente de la Cámara Uruguaya de Tecnologías de la Información "
+              + "(CUTI), Leonardo Loureiro, y el director del Inco, Diego Vallespir.",
+          Duration.parse("PT27M22S"), "https://youtu.be/GzOJSk4urlM", "Noticias",
+          format.parse("24/11/2017"), true);
+      Fabrica.getIVideos().altaVideo("hectorg", "Ingenieria de Muestra 2017",
+          "La muestra más grande de la Ingeniería nacional se realiza el jueves 19, "
+              + "viernes 20 y sábado 21 de octubre de 2017. Ingeniería deMuestra fue organizada "
+              + "por la Facultad de Ingeniería de la Universidad de la "
+              + "República y su Fundación Julio Ricaldoni.",
+          Duration.parse("PT1M"), "https://youtu.be/RnaYRA1k5j4", "Noticias",
+          format.parse("25/10/2017"), true);
+      Fabrica.getIVideos().altaVideo("tabarec", "Locura celeste",
+          "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para "
+              + "el Mundial de Futbol FIFA Rusia 2018.",
+          Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
+          format.parse("05/06/2018"), false);
+      Fabrica.getIVideos().altaVideo("tabarec", "Niño payaso", "", Duration.parse("PT4M18S"),
+          "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
+      Fabrica.getIVideos().altaVideo("tabarec", "Pacheco goles mas recordados", "",
+          Duration.parse("PT5M48S"),
+          "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
+      Fabrica.getIVideos().altaVideo("cachilas", "Locura celeste",
+          "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para el "
+              + "Mundial de Futbol FIFA Rusia 2018.",
+          Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", "Musica",
+          format.parse("05/06/2018"), false);
+      Fabrica.getIVideos().altaVideo("cachilas", "Niño payaso", "", Duration.parse("PT4M18S"),
+          "https://youtu.be/K-uEIUnyZPg", "Musica", format.parse("20/10/2016"), false);
+      Fabrica.getIVideos().altaVideo("cachilas", "Etapa A contramano Liguilla", "",
+          Duration.parse("PT57M15S"),
+          "https://youtu.be/Es6GRMHXeCQ", "Carnaval", format.parse("17/12/2015"), false);
+      Fabrica.getIVideos().altaVideo("cachilas", "Etapa Don Timoteo Liguilla", "",
+          Duration.parse("PT51M38S"),
+          "https://youtu.be/I_spHBU9ZsI", "Carnaval", format.parse("18/12/2015"), false);
+      Fabrica.getIVideos().altaVideo("cachilas", "Recoba 20 mejores goles",
+          "My Favorites\n\n\"El Chino\"",
+          Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
+          format.parse("14/11/2011"), false);
+      Fabrica.getIVideos().altaVideo("juliob", "Sweet child'o mine",
+          "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
+          Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Musica",
+          format.parse("24/12/2009"), true);
+      Fabrica.getIVideos().altaVideo("juliob", "Thriller",
+          "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
+          Duration.parse("PT13M42S"), "https://youtu.be/PAfbzKcePx0", "Musica",
+          format.parse("02/10/2009"), false);
+      Fabrica.getIVideos().altaVideo("juliob", "Show de goles",
+          "TORNEO CLAUSURA 2018\nFECHA 1.....",
+          Duration.parse("PT4M23S"), "https://youtu.be/g46w4_kD_lA", "Deporte",
+          format.parse("23/07/2018"), true);
+      Fabrica.getIVideos().altaVideo("juliob", "Inauguracion Estadio Peñarol",
+          "Recordemos la ceremonia de inauguración del Estadio de Peñarol.\nLlamado \""
+              + "Estadio Campeón del Siglo\".",
+          Duration.parse("PT3H27M26S"), "https://youtu.be/U6XPJ8Vz72A", "Deporte",
+          format.parse("04/04/2016"), true);
+      Fabrica.getIVideos().altaVideo("kairoh", "Sweet child'o mine",
+          "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
+          Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Musica",
+          format.parse("24/12/2009"), true);
+      Fabrica.getIVideos().altaVideo("kairoh", "Dancing in the Dark",
+          "Bruce Springsteen's official music video for \'Dancing In The Dark\'. Click to listen to Bruce Springsteen on Spotify: http://smarturl.it/BSpringSpot?IQid=B...",
+          Duration.parse("PT3M58S"), "https://youtu.be/129kuDCQtHs", "Musica",
+          format.parse("03/10/2009"), true);
+      Fabrica.getIVideos().altaVideo("kairoh", "Thriller",
+          "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
+          Duration.parse("PT13M42S"), "https://youtu.be/sOnqjkJTMaA", "Musica",
+          format.parse("02/10/2009"), true);
+      Fabrica.getIVideos().altaVideo("chino", "Recoba 20 mejores goles",
+          "My Favorites\n\n\"El Chino\"",
+          Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
+          format.parse("14/11/2011"), false);
+      Fabrica.getIVideos().altaVideo("tonyp", "Pacheco goles mas recordados", "",
+          Duration.parse("PT5M48S"),
+          "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
+      Fabrica.getIVideos().altaVideo("nicoJ", "Entrevista a director CUTI",
+          "Segunda parte de la entrevista realizada por la periodista "
+              + "Paula Echevarr�a al director de CUTI",
+          Duration.parse("PT5M39S"), "https://youtu.be/Eq5uBEzI6qs", "Ciencia y Tecnologia",
+          format.parse("03/04/2017"), true);
+      Fabrica.getIVideos().altaVideo("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros",
+          "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis medicos. Los datos se desprenden del Panorama de la Educación 2014 del anuario del Ministerio de Educación y Cultura. Ese año egresaron de la Universidad de la República 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, según sostienen desde la Facultad de Ingeniería, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundación Julio Ricaldoni, María Simón.",
+          Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnologia",
+          format.parse("20/07/2016"), true);
+        
+      Fabrica.getIListas().altaListaDefecto("Escuchar más tarde");
+      Fabrica.getIListas().altaListaDefecto("Deporte total");
+      Fabrica.getIListas().altaListaDefecto("Novedades generales");
 
-      try {
-        Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh",
-            "Nostalgia",
-            false);
-        Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh",
-            "Nostalgia",
-            false);
-        Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh",
-            "Nostalgia",
-            false);
-        Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
-        Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
-        Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "tabarec", "De fiesta",
-            false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta",
-            false);
-        Fabrica.getIListas().agregarVideoLista("tabarec", "Niño payaso", "tabarec", "De fiesta",
-            false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Niño payaso", "tabarec", "De fiesta",
-            false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec",
-            "De fiesta",
-            false);
-        Fabrica.getIListas().agregarVideoLista("hectorg", "100 años de FING", "hectorg",
-            "Novedades FING",
-            false);
-        Fabrica.getIListas().agregarVideoLista("hectorg", "50 años del InCo", "hectorg",
-            "Novedades FING",
-            false);
-        Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "hectorg",
-            "Novedades FING", false);
-        Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "cachilas",
-            "De todo un poco",
-            false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "cachilas",
-            "De todo un poco",
-            false);
-        Fabrica.getIListas().agregarVideoLista("tabarec", "Niño payaso", "cachilas",
-            "De todo un poco", false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Niño payaso", "cachilas",
-            "De todo un poco",
-            false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla",
-            "cachilas",
-            "De todo un poco", false);
-        Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
-            "De todo un poco", false);
-        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol",
-            "cachilas",
-            "De todo un poco", false);
-        Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
-            "Noticias y CYT", false);
-        Fabrica.getIListas().agregarVideoLista("nicoJ",
-            "Ventana al futuro Uruguay y deficit de ingenieros",
-            "nicoJ", "Noticias y CYT", false);
-        Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
-            false);
-        Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol", "juliob",
-            "Solo deportes", false);
-      } catch (Exception e1 ) {
-        // TODO Auto-generated catch block
-        e1.printStackTrace();
-      }
+      Fabrica.getIListas().altaListaParticular("Nostalgia", "kairoh", true);
+      Fabrica.getIListas().altaListaParticular("De fiesta", "tabarec", false);
+      Fabrica.getIListas().altaListaParticular("Novedades FING", "hectorg", true);
+      Fabrica.getIListas().altaListaParticular("De todo un poco", "cachilas", false);
+      Fabrica.getIListas().altaListaParticular("Noticias y CYT", "nicoJ", true);
+      Fabrica.getIListas().altaListaParticular("Solo deportes", "juliob", true);
+
+      Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh",
+          "Nostalgia",
+          false);
+      Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh",
+          "Nostalgia",
+          false);
+      Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh",
+          "Nostalgia",
+          false);
+      Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
+      Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
+      Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "tabarec", "De fiesta",
+          false);
+      Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta",
+          false);
+      Fabrica.getIListas().agregarVideoLista("tabarec", "Niño payaso", "tabarec", "De fiesta",
+          false);
+      Fabrica.getIListas().agregarVideoLista("cachilas", "Niño payaso", "tabarec", "De fiesta",
+          false);
+      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec",
+          "De fiesta",
+          false);
+      Fabrica.getIListas().agregarVideoLista("hectorg", "100 años de FING", "hectorg",
+          "Novedades FING",
+          false);
+      Fabrica.getIListas().agregarVideoLista("hectorg", "50 años del InCo", "hectorg",
+          "Novedades FING",
+          false);
+      Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "hectorg",
+          "Novedades FING", false);
+      Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "cachilas",
+          "De todo un poco",
+          false);
+      Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "cachilas",
+          "De todo un poco",
+          false);
+      Fabrica.getIListas().agregarVideoLista("tabarec", "Niño payaso", "cachilas",
+          "De todo un poco", false);
+      Fabrica.getIListas().agregarVideoLista("cachilas", "Niño payaso", "cachilas",
+          "De todo un poco",
+          false);
+      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla",
+          "cachilas",
+          "De todo un poco", false);
+      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
+          "De todo un poco", false);
+      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol",
+          "cachilas",
+          "De todo un poco", false);
+      Fabrica.getIListas().agregarVideoLista("hectorg", "Ingenieria de Muestra 2017", "nicoJ",
+          "Noticias y CYT", false);
+      Fabrica.getIListas().agregarVideoLista("nicoJ",
+          "Ventana al futuro Uruguay y deficit de ingenieros",
+          "nicoJ", "Noticias y CYT", false);
+      Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
+          false);
+      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol", "juliob",
+          "Solo deportes", false);
 
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
       Fabrica.getIUsuariosCanales().comentarVideo("Fue un gran evento",
@@ -524,24 +601,21 @@ public class CtrlDatos implements IDatos {
           formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "tabarec", 9);
       Fabrica.getIUsuariosCanales().responderComentario("Gracias Marce ;)",
           formatComentario.parse("15/09/2018 12:29"), "tabarec", "Locura celeste", "cachilas", 10);
-      try {
-        Fabrica.getIUsuariosCanales().valorarVideo("sergiop", false, "50 años del InCo",
-            "hectorg");
-        Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, "Ingenieria de Muestra 2017",
-            "hectorg");
-        Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, "Show de goles", "juliob");
-        Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "tabarec");
-        Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "cachilas");
-        Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", true, "50 años del InCo", "hectorg");
-        Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "50 años del InCo", "hectorg");
-        Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "Inauguracion Estadio Peñarol",
-            "juliob");
-        Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Locura celeste", "tabarec");
-        Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Dancing in the Dark",
-            "kairoh");
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
+      
+      Fabrica.getIUsuariosCanales().valorarVideo("sergiop", false, "50 años del InCo",
+          "hectorg");
+      Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, "Ingenieria de Muestra 2017",
+          "hectorg");
+      Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, "Show de goles", "juliob");
+      Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "tabarec");
+      Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "cachilas");
+      Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", true, "50 años del InCo", "hectorg");
+      Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "50 años del InCo", "hectorg");
+      Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "Inauguracion Estadio Peñarol",
+          "juliob");
+      Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Locura celeste", "tabarec");
+      Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Dancing in the Dark",
+          "kairoh");
     }
   }
 
