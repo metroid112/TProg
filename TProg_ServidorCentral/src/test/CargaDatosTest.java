@@ -61,8 +61,8 @@ public class CargaDatosTest {
 
   @Test
   public void testCategorias() {
-    String[] cats = { "Musica", "Deporte", "Carnaval", "Noticias", "Entretenimiento", "Comida",
-        "Videojuegos", "Ciencia y Tecnologia",
+    String[] cats = { "Música", "Deporte", "Carnaval", "Noticias", "Entretenimiento", "Comida",
+        "Videojuegos", "Ciencia y Tecnología",
         "ONG y activismo", "Gente y blogs", "Mascotas y animales", "Viajes y eventos" };
     boolean fallo = false;
     for (String nombre : cats) {
@@ -173,7 +173,6 @@ public class CargaDatosTest {
     int contador = 0;
     for (String usuario : listaUsuarios) {
       seguidores[contador] = interfazUsuarios.getSeguidores(usuario).size();
-      System.out.println(seguidores[contador]);
       contador++;      
     }
     assertArrayEquals(seguidoresEsperado, seguidores);

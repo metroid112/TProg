@@ -309,7 +309,7 @@ public class CtrlDatos implements IDatos {
       ctrlUsuarios.seguir(MT.nick, KH.nick);
       ctrlUsuarios.seguir(EN.nick, HR.nick);
       ctrlUsuarios.seguir(EN.nick, TC.nick);
-      ctrlUsuarios.seguir(EN.nick, JB.nick);
+      ctrlUsuarios.seguir(EN.nick, CS.nick);
       ctrlUsuarios.seguir(SP.nick, MB.nick);
       ctrlUsuarios.seguir(SP.nick, JB.nick);
       ctrlUsuarios.seguir(SP.nick, DP.nick);
