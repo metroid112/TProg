@@ -15,10 +15,76 @@
 }
 
 .head-item {
-	width: 30%;
+	width: 20%;
 	align-items: center;
 	justify-content: center;
 	margin: 10px;
+}
+
+.head-item1 {
+	width: 20%;
+	align-items: center;
+	justify-content: center;
+	margin: 10px;
+}
+
+.head-item button{
+	width: 40%;
+	font-weight: bold; 
+	font-size: 12px;
+	float: right;
+	color: white;
+	background-color: #B7B7B7;
+	margin: 7px;
+	padding: 10px 10px;     
+	border-radius: 7px;     
+	border: none;
+	transition-duration: 0.3s;
+}
+
+.head-item button:hover {
+	background-color: gray;
+}
+
+.head-item .thumbnail {
+  position: relative;
+  width: 80px;
+  float: left;
+  border-radius: 50%;
+  height: 80px;
+  overflow: hidden;
+}
+
+.head-item .thumbnail2 {
+  position: relative;
+  width: 300px;
+  border-radius: 50%;
+  height: 300px;
+  overflow: hidden;
+}
+.head-item .thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.head-item .thumbnail2 img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.head-item .thumbnail img.portrait {
+  width: 100%;
+  height: auto;
 }
 
 .busqueda {
@@ -200,6 +266,30 @@ box-shadow:inset 500px 100px 10px 10px #F2F2F2;
   .highlights > :nth-child(3n + 1),
   .highlights > :nth-child(3n) {
     width: calc(60% + -0.5rem); }
+      .highlights .detalleClickeableUsuario {
+    border-radius: 4px;
+    height: 100px;
+    width: 70%;
+    padding: 1rem;
+    text-align: center;
+    float: right; }
+    .highlights .detalleClickeableUsuario .thumbnail {
+  position: relative;
+  width: 80px;
+  float: left;
+  border-radius: 50%;
+  height: 80px;
+  overflow: hidden; }
+  .highlights .detalleClickeableUsuario .thumbnail .icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
   .highlights .detalleClickeableLista {
     border-radius: 4px;
     height: 100px;
@@ -234,7 +324,7 @@ box-shadow:inset 500px 100px 10px 10px #F2F2F2;
     .highlights .detalleClickeableCategoria .icon {
       float: left;
       width: auto;
-      height: 80px;
+      height: 48px;
       font-size: 5rem; }
    .highlights .detalleClickeableVideoABorrar {
     border-radius: 4px;
@@ -366,5 +456,15 @@ box-shadow:inset 500px 100px 10px 10px #F2F2F2;
 }
 
 .highlights .detalleClickeableCategoria:hover {
+	background: #E2D88F;
+}
+
+.highlights .detalleClickeableUsuario {
+  background: #F5F5F5;
+  transition-duration: 0.3s;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.025);
+}
+
+.highlights .detalleClickeableUsuario:hover {
 	background: #E2D88F;
 }

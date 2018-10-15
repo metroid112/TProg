@@ -11,7 +11,7 @@
 	<jsp:include page="/WEB-INF/extras/header.jsp"></jsp:include>
 	<div class="contenedor">
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
-		<div class="contenido" align="center">
+		<div class="contenido">
 			<div>
 				<form action="Busqueda" method="get">
 					<select name="TIPO_BUSQUEDA">
@@ -41,29 +41,65 @@
 				<br>
 				<h1>Videos</h1>
 				<br>
+				<div class="highlights">
 				<%for (DtVideo vid : videos) {%>
-					<div><%= vid.nombre %></div>
-					<br>
+				<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=vid.idVideo%>').submit();">	
+					<form id="Form<%=vid.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
+						<input type="hidden" name="VIDEO_ID" value="<%=vid.idVideo%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%=vid.urlThumbnail%>">
+						<header>
+						<%= vid.nombre %>
+						<br>
+						User: <%= vid.usuario %>
+						</header>
+					</form>	
+				</div>
 				<% } %>
+				</div>
 			</c:if>
 			
 			<c:if test="${param.TIPO_BUSQUEDA.equals('TODOS') || param.TIPO_BUSQUEDA.equals('CANALES')}">
 				<br>
 				<h1>Canales</h1>
 				<br>
+				<div class="highlights">
 				<%for (DtUsuario usuario : usuarios) {%>
-					<div> <%= usuario.canal %></div>
-					<br>
+					<div class="detalleClickeableUsuario">		
+					<form class="detClickeableUsuario" action="ConsultaLista" method="GET" >
+						<input type="hidden" name="STATE" value="DETALLESLISTA">
+						<div class="thumbnail">
+							<img class="icon" width="30%" alt="Lista de reproduccion" src="<%= usuario.imgPath %>">
+						</div>
+						<br>
+						<header>
+						<%= usuario.canal %>
+						</header>
+						<br>
+					</form>	
+				</div>
 				<% } %>
+				</div>
 			</c:if>
 			<c:if test="${param.TIPO_BUSQUEDA.equals('TODOS') || param.TIPO_BUSQUEDA.equals('LISTAS')}">
 				<br>
 				<h1>Listas</h1>
 				<br>
+				<div class="highlights">
 				<%for (DtLista lista : listas) {%>
-					<div><%= lista.getNombre() %></div>
-					<br>
+				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
+					<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ConsultaLista" method="GET" >
+						<input type="hidden" name="STATE" value="DETALLESLISTA">
+						<input type="hidden" name="IDLISTA" value="<%= lista.getId() %>">
+						<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
+						<br>
+						<header>
+						<%= lista.getNombre() %>
+						</header>
+						<br>
+					</form>	
+				</div>
 				<% } %>
+				</div>
 			</c:if>
 		</div>
 	</div>
