@@ -52,7 +52,7 @@ public class ListaServlet extends HttpServlet {
       request.getRequestDispatcher("/WEB-INF/pages/quitar_video_lista.jsp").forward(request,
           response);
     } else {
-      if (request.getParameter("visibilidad").equals("P�blico")) {
+      if (request.getParameter("visibilidad").equals("Público")) {
         visibilidad = true;
       } else {
         visibilidad = false;
@@ -61,7 +61,7 @@ public class ListaServlet extends HttpServlet {
       // request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       try {
         Fabrica.getIListas().altaListaParticular(nombreLista, nickUsuario, visibilidad);
-        request.setAttribute("EXITO", "�Se ha creado la lista con �xito!");
+        request.setAttribute("EXITO", "¡Se ha creado la lista con éxito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
       } catch (Exception e) {
         request.setAttribute("ERROR", e.getMessage());

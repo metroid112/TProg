@@ -81,14 +81,19 @@ public class AltaUsuario extends HttpServlet {
         } else {
           String nombre = request.getParameter("nombre");
           String apellido = request.getParameter("apellido");
-          DateFormat formatoFecha = new SimpleDateFormat("yyyy-mm-dd");
+          DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
           Date fechaNacimiento = null;
           try {
             fechaNacimiento = formatoFecha.parse(request.getParameter("fecha"));
           } catch (ParseException e) {
             // TODO excepcion
           }
-          String nombreCanal = request.getParameter("nombreCanal");
+          String nombreCanal;
+          if (request.getParameter("nombreCanal").equals("")) {
+            nombreCanal = nickname;
+          } else {
+            nombreCanal = request.getParameter("nombreCanal");
+          }
           String descripcionCanal = request.getParameter("descripcion");
           String categoria = request.getParameter("categoria");
           Boolean visible;

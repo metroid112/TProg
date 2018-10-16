@@ -79,7 +79,7 @@ public class AltaVideo extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/pages/alta_video.jsp").forward(request, response);
           }
         // volver a index
-        response.sendRedirect("/Inicio");
+        response.sendRedirect("Inicio");
         }
 
       }

@@ -1,0 +1,536 @@
+15-Oct-2018 10:07:39.891 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 10:07:39.894 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 10:07:39.895 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 10:07:39.895 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 10:07:39.895 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 10:07:39.896 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 10:07:39.896 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 10:07:39.897 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 10:07:39.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 10:07:39.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 10:07:39.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 10:07:39.900 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 10:07:39.901 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 10:07:39.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 10:07:39.903 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 10:07:39.903 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 10:07:39.904 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 10:07:39.905 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 10:07:40.056 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+15-Oct-2018 10:07:40.090 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 10:07:40.098 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 10:07:40.099 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 10:07:40.099 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1152 ms
+15-Oct-2018 10:07:40.129 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 10:07:40.129 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 10:07:40.154 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 10:07:40.943 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 788 ms
+15-Oct-2018 10:07:40.943 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 10:07:40.991 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 48 ms
+15-Oct-2018 10:07:40.992 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 10:07:41.744 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 751 ms
+15-Oct-2018 10:07:41.745 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 10:07:41.806 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 62 ms
+15-Oct-2018 10:07:41.808 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 10:07:41.876 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 68 ms
+15-Oct-2018 10:07:41.879 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+15-Oct-2018 10:07:41.886 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 10:07:41.888 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1788 ms
+15-Oct-2018 10:09:21.115 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 10:09:21.116 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+15-Oct-2018 10:09:21.119 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 10:09:21.120 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 10:09:21.193 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+15-Oct-2018 10:09:21.200 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 10:09:21.200 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+15-Oct-2018 10:09:21.202 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 10:13:28.347 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 10:13:28.348 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 10:13:28.348 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 10:13:28.348 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 10:13:28.348 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 10:13:28.348 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 10:13:28.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 10:13:28.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 10:13:28.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 10:13:28.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 10:13:28.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 10:13:28.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 10:13:28.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 10:13:28.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 10:13:28.350 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 10:13:28.350 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 10:13:28.350 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 10:13:28.350 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 10:13:28.403 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 10:13:28.418 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 10:13:28.420 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 10:13:28.420 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 10:13:28.421 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 377 ms
+15-Oct-2018 10:13:28.446 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 10:13:28.446 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 10:13:28.455 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 10:13:28.715 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 260 ms
+15-Oct-2018 10:13:28.716 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 10:13:28.735 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 20 ms
+15-Oct-2018 10:13:28.735 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 10:13:29.290 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 554 ms
+15-Oct-2018 10:13:29.290 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 10:13:29.336 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 46 ms
+15-Oct-2018 10:13:29.336 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 10:13:29.375 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 39 ms
+15-Oct-2018 10:13:29.377 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 10:13:29.382 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 10:13:29.383 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 961 ms
+15-Oct-2018 10:15:23.685 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 10:15:23.686 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 10:15:23.738 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 10:15:23.788 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 10:15:23.816 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 10:15:23.823 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 10:15:23.824 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 10:15:23.825 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:10:43.668 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 11:10:43.669 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 11:10:43.669 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 11:10:43.669 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 11:10:43.669 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 11:10:43.669 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 11:10:43.669 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 11:10:43.669 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 11:10:43.670 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 11:10:43.670 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:10:43.670 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:10:43.670 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 11:10:43.671 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 11:10:43.671 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 11:10:43.671 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:10:43.671 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:10:43.671 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 11:10:43.671 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 11:10:43.739 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:10:43.757 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:10:43.760 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:10:43.761 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:10:43.762 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 403 ms
+15-Oct-2018 11:10:43.784 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 11:10:43.784 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 11:10:43.793 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 11:10:44.098 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 304 ms
+15-Oct-2018 11:10:44.098 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 11:10:44.119 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 21 ms
+15-Oct-2018 11:10:44.120 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 11:10:44.598 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 478 ms
+15-Oct-2018 11:10:44.598 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 11:10:44.628 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 30 ms
+15-Oct-2018 11:10:44.628 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 11:10:44.655 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 27 ms
+15-Oct-2018 11:10:44.655 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 11:10:44.889 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 11:10:44.904 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 248 ms
+15-Oct-2018 11:10:44.906 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 11:10:44.918 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 11:10:44.920 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1157 ms
+kairoh ---- Escuchar más tarde
+kairoh ---- Deporte total
+kairoh ---- Novedades generales
+15-Oct-2018 11:16:43.753 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 11:16:43.754 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:16:43.807 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:16:43.858 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 11:16:43.896 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:16:43.898 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:16:43.899 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:16:43.899 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:16:47.451 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:16:47.453 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:16:47.454 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 11:16:47.454 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 11:16:47.454 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 11:16:47.454 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:16:47.454 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:16:47.454 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 11:16:47.454 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 11:16:47.522 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:16:47.539 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:16:47.541 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:16:47.543 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:16:47.543 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 416 ms
+15-Oct-2018 11:16:47.563 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 11:16:47.564 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 11:16:47.573 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 11:16:47.839 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 265 ms
+15-Oct-2018 11:16:47.839 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 11:16:47.857 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 18 ms
+15-Oct-2018 11:16:47.858 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 11:16:48.331 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 473 ms
+15-Oct-2018 11:16:48.332 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 11:16:48.381 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 50 ms
+15-Oct-2018 11:16:48.382 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 11:16:48.407 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 25 ms
+15-Oct-2018 11:16:48.408 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 11:16:48.632 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 11:16:48.719 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 311 ms
+15-Oct-2018 11:16:48.721 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 11:16:48.726 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 11:16:48.726 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1183 ms
+15-Oct-2018 11:17:33.463 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 11:17:33.464 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:17:33.517 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:17:33.568 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 11:17:33.603 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:17:33.604 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:17:33.605 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:17:33.605 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:18:02.017 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:18:02.018 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:18:02.019 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 11:18:02.019 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 11:18:02.019 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 11:18:02.019 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:18:02.019 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:18:02.019 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 11:18:02.019 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 11:18:02.072 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:18:02.091 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:18:02.093 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:18:02.094 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:18:02.094 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 403 ms
+15-Oct-2018 11:18:02.113 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 11:18:02.113 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 11:18:02.124 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 11:18:02.388 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 264 ms
+15-Oct-2018 11:18:02.388 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 11:18:02.404 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 16 ms
+15-Oct-2018 11:18:02.405 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 11:18:02.709 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 304 ms
+15-Oct-2018 11:18:02.710 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 11:18:02.735 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 25 ms
+15-Oct-2018 11:18:02.735 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 11:18:02.759 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 24 ms
+15-Oct-2018 11:18:02.759 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 11:18:02.924 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 11:18:02.996 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 237 ms
+15-Oct-2018 11:18:02.998 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 11:18:03.002 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 11:18:03.003 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 908 ms
+15-Oct-2018 11:18:50.726 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 11:18:50.727 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:18:50.779 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:18:50.830 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 11:18:50.862 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:18:50.864 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:18:50.864 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:18:50.865 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:18:52.396 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 11:18:52.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 11:18:52.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 11:18:52.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 11:18:52.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 11:18:52.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 11:18:52.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 11:18:52.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 11:18:52.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 11:18:52.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:18:52.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:18:52.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 11:18:52.400 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 11:18:52.400 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 11:18:52.400 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:18:52.400 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:18:52.400 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 11:18:52.401 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 11:18:52.465 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:18:52.483 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:18:52.485 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:18:52.486 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:18:52.487 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 393 ms
+15-Oct-2018 11:18:52.509 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 11:18:52.510 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 11:18:52.521 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 11:18:52.821 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 299 ms
+15-Oct-2018 11:18:52.821 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 11:18:52.840 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 19 ms
+15-Oct-2018 11:18:52.841 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 11:18:53.098 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 257 ms
+15-Oct-2018 11:18:53.099 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 11:18:53.137 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 37 ms
+15-Oct-2018 11:18:53.137 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 11:18:53.155 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 18 ms
+15-Oct-2018 11:18:53.156 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 11:18:53.321 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 11:18:53.398 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 241 ms
+15-Oct-2018 11:18:53.400 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 11:18:53.404 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 11:18:53.404 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 917 ms
+15-Oct-2018 11:23:01.941 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 11:23:01.942 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:23:01.994 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:23:02.045 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 11:23:02.083 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:23:02.084 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:23:02.085 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:23:02.085 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:23:03.749 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 11:23:03.751 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 11:23:03.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 11:23:03.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 11:23:03.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 11:23:03.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 11:23:03.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 11:23:03.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 11:23:03.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 11:23:03.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:23:03.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:23:03.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 11:23:03.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 11:23:03.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 11:23:03.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:23:03.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:23:03.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 11:23:03.753 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 11:23:03.816 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:23:03.832 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:23:03.834 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:23:03.835 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:23:03.835 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 411 ms
+15-Oct-2018 11:23:03.859 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 11:23:03.859 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 11:23:03.870 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 11:23:04.149 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 280 ms
+15-Oct-2018 11:23:04.150 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 11:23:04.170 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 20 ms
+15-Oct-2018 11:23:04.170 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 11:23:04.741 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 571 ms
+15-Oct-2018 11:23:04.741 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 11:23:04.768 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 27 ms
+15-Oct-2018 11:23:04.768 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 11:23:04.795 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 27 ms
+15-Oct-2018 11:23:04.795 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 11:23:05.140 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 11:23:05.236 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 441 ms
+15-Oct-2018 11:23:05.239 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 11:23:05.247 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 11:23:05.247 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1411 ms
+15-Oct-2018 11:40:49.892 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 11:40:49.893 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:40:49.946 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:40:49.996 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 11:40:50.032 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:40:50.033 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:40:50.034 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:40:50.035 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:40:51.910 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 11:40:51.911 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 11:40:51.911 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 11:40:51.911 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 11:40:51.911 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 11:40:51.912 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 11:40:51.912 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 11:40:51.912 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 11:40:51.912 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 11:40:51.912 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:40:51.912 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:40:51.912 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 11:40:51.912 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 11:40:51.913 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 11:40:51.913 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:40:51.913 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:40:51.913 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 11:40:51.913 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 11:40:51.986 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:40:52.005 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:40:52.007 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:40:52.008 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:40:52.008 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 398 ms
+15-Oct-2018 11:40:52.028 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 11:40:52.028 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 11:40:52.037 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 11:40:52.303 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 265 ms
+15-Oct-2018 11:40:52.303 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 11:40:52.323 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 20 ms
+15-Oct-2018 11:40:52.323 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 11:40:52.839 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 515 ms
+15-Oct-2018 11:40:52.839 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 11:40:52.867 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 28 ms
+15-Oct-2018 11:40:52.867 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 11:40:52.889 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 22 ms
+15-Oct-2018 11:40:52.890 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 11:40:53.170 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 11:40:53.239 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 350 ms
+15-Oct-2018 11:40:53.242 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 11:40:53.247 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 11:40:53.247 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1238 ms
+15-Oct-2018 11:56:36.605 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 11:56:36.606 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:56:36.659 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:56:36.710 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 11:56:36.746 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:56:36.748 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:56:36.748 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:56:36.749 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:56:38.419 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 11:56:38.421 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 11:56:38.421 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 11:56:38.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 11:56:38.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 11:56:38.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 11:56:38.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 11:56:38.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 11:56:38.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 11:56:38.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:56:38.422 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:56:38.423 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 11:56:38.423 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 11:56:38.423 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 11:56:38.423 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:56:38.424 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 11:56:38.424 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 11:56:38.424 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 11:56:38.491 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 11:56:38.511 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:56:38.514 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 11:56:38.516 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 11:56:38.516 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 408 ms
+15-Oct-2018 11:56:38.539 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 11:56:38.540 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 11:56:38.552 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 11:56:38.814 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 261 ms
+15-Oct-2018 11:56:38.814 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 11:56:38.833 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 19 ms
+15-Oct-2018 11:56:38.833 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 11:56:39.325 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 491 ms
+15-Oct-2018 11:56:39.325 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 11:56:39.361 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 36 ms
+15-Oct-2018 11:56:39.362 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 11:56:39.383 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 21 ms
+15-Oct-2018 11:56:39.383 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 11:56:39.634 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 11:56:39.708 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 325 ms
+15-Oct-2018 11:56:39.711 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 11:56:39.715 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 11:56:39.715 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1198 ms
+15-Oct-2018 12:07:21.266 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 12:07:21.268 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:07:21.320 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:07:21.370 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 12:07:21.405 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:07:21.407 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:07:21.408 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:07:21.409 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:07:22.741 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 12:07:22.742 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 12:07:22.742 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 12:07:22.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 12:07:22.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 12:07:22.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 12:07:22.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 12:07:22.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 12:07:22.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 12:07:22.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 12:07:22.743 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 12:07:22.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 12:07:22.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 12:07:22.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 12:07:22.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 12:07:22.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 12:07:22.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 12:07:22.744 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 12:07:22.835 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:07:22.853 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 12:07:22.855 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:07:22.856 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 12:07:22.856 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 415 ms
+15-Oct-2018 12:07:22.876 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 12:07:22.876 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 12:07:22.886 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 12:07:23.184 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 298 ms
+15-Oct-2018 12:07:23.185 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 12:07:23.205 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 20 ms
+15-Oct-2018 12:07:23.205 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 12:07:23.759 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 553 ms
+15-Oct-2018 12:07:23.759 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 12:07:23.796 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 37 ms
+15-Oct-2018 12:07:23.797 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 12:07:23.818 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 21 ms
+15-Oct-2018 12:07:23.819 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 12:07:24.105 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 12:07:24.198 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 380 ms
+15-Oct-2018 12:07:24.201 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 12:07:24.207 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 12:07:24.207 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1351 ms
+15-Oct-2018 12:13:54.185 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 12:13:54.186 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:13:54.239 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:13:54.290 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 12:13:54.328 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:13:54.330 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:13:54.331 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:13:54.336 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:13:56.032 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.4
+15-Oct-2018 12:13:56.034 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2016 08:43:30 UTC
+15-Oct-2018 12:13:56.034 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.4.0
+15-Oct-2018 12:13:56.034 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Oct-2018 12:13:56.034 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.12.14-200.fc25.x86_64
+15-Oct-2018 12:13:56.034 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Oct-2018 12:13:56.034 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-3.b16.fc25.x86_64/jre
+15-Oct-2018 12:13:56.034 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b16
+15-Oct-2018 12:13:56.035 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+15-Oct-2018 12:13:56.035 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 12:13:56.035 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 12:13:56.035 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/conf/logging.properties
+15-Oct-2018 12:13:56.035 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Oct-2018 12:13:56.035 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Oct-2018 12:13:56.036 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 12:13:56.036 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4
+15-Oct-2018 12:13:56.036 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/temp
+15-Oct-2018 12:13:56.036 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+15-Oct-2018 12:13:56.103 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:13:56.122 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 12:13:56.125 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:13:56.127 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+15-Oct-2018 12:13:56.127 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 415 ms
+15-Oct-2018 12:13:56.154 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+15-Oct-2018 12:13:56.154 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.4
+15-Oct-2018 12:13:56.163 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT
+15-Oct-2018 12:13:56.456 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/ROOT has finished in 292 ms
+15-Oct-2018 12:13:56.456 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs
+15-Oct-2018 12:13:56.475 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/docs has finished in 19 ms
+15-Oct-2018 12:13:56.475 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples
+15-Oct-2018 12:13:57.034 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/examples has finished in 558 ms
+15-Oct-2018 12:13:57.034 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager
+15-Oct-2018 12:13:57.060 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/host-manager has finished in 26 ms
+15-Oct-2018 12:13:57.061 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager
+15-Oct-2018 12:13:57.086 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/manager has finished in 26 ms
+15-Oct-2018 12:13:57.086 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube
+15-Oct-2018 12:13:57.315 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Oct-2018 12:13:57.421 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /ens/home01/f/francisco.crocamo/Desktop/apache-tomcat-8.5.4/webapps/UyTube has finished in 335 ms
+15-Oct-2018 12:13:57.426 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-10035]
+15-Oct-2018 12:13:57.432 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+15-Oct-2018 12:13:57.432 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1305 ms
+15-Oct-2018 12:14:25.515 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Oct-2018 12:14:25.517 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:14:25.519 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:14:25.520 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+15-Oct-2018 12:14:25.553 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:14:25.556 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+15-Oct-2018 12:14:25.557 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-10035"]
+15-Oct-2018 12:14:25.558 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
