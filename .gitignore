@@ -32,8 +32,7 @@ hs_err_pid*
 
 # not ignore libs
 !TProg_Workstation/lib/*.jar
-!TProg_Web/UyTube/WEB-INF/lib/jstl-1.2.jar
-!TProg_Web/UyTube/WEB-INF/lib/ServidorCentral.jar
+!TProg_Web/UyTube/WEB-INF/lib/*
 !apache-tomcat-8.5.4/bin/*
 !apache-tomcat-8.5.4/conf/*
 !apache-tomcat-8.5.4/lib/*
