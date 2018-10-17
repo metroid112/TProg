@@ -21,7 +21,7 @@
 				<div class="highlights">
 					<% List<DtVideo> listaVideos = (List<DtVideo>) lista.getDtVideos();
 					for (DtVideo video : listaVideos) {
-						if (video.visible == true) { %>
+						if (video.visible) { %>
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">
 					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
 						<input type="hidden" name="VIDEO_ID" value="<%=video.idVideo%>">
