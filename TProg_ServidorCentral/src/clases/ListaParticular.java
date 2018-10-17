@@ -68,7 +68,7 @@ public class ListaParticular extends Lista {
         categorias, this.getUltimaActividad(), this.getId());
   }
 
-  public void insertarCategoria(Categoria categoria) {
+  public void agregarCategoria(Categoria categoria) {
     if (!categorias.containsKey(categoria.getNombre())) {
       categorias.put(categoria.getNombre(), categoria);
       categoria.addLista(this);

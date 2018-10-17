@@ -41,40 +41,34 @@ public class Canal {
     this.categoria = categoria;
   }
 
-  public void agregarVideoListaDefecto(Video video, String idListaDefecto)
+  public void agregarVideoListaDefecto(Video video, int idListaDefecto)
       throws DuplicateClassException {
     ListaDefecto lista = listasDefecto.get(idListaDefecto);
-    if (!lista.existeVideo(video)) {
-      lista.insertarVideo(video);
+    if (!lista.existeVideo(video.getId())) {
+      lista.agregarVideo(video);
     } else {
       throw new DuplicateClassException("Video", video.getNombre());
     }
   }
 
-  public void agregarVideoListaParticular(Video videoObj, String lista)
+  public void agregarVideoListaParticular(Video video, int idListaParticular)
       throws DuplicateClassException {
-    ListaParticular listaObj = listasParticulares.get(lista);
-    if (!listaObj.existeVideo(videoObj)) {
-      listaObj.insertarVideo(videoObj);
-
-      Categoria categoria = videoObj.getCategoria();
-      if (!listaObj.existeCategoria(categoria)) {
-        listaObj.insertarCategoria(categoria);
-      }
+    ListaParticular lista = listasParticulares.get(idListaParticular);
+    if (!lista.existeVideo(video.getId())) {
+      lista.agregarVideo(video);
+      Categoria categoria = video.getCategoria();
+      lista.agregarCategoria(categoria);
     } else {
-      throw new DuplicateClassException("Video", videoObj.getNombre());
+      throw new DuplicateClassException("Video", video.getNombre());
     }
   }
 
-  public Video altaVideo(String nombre, String descripcion, Duration duracion, String url,
-      Categoria categoria, Date fecha, boolean visible) throws DuplicateClassException {
-
-    if (videos.containsKey(nombre)) {
-      throw new DuplicateClassException("Video", nombre);
+  public void altaVideo(Video video) throws DuplicateClassException {
+    if (videos.containsKey(video.getId())) {
+      throw new DuplicateClassException("Video", video.getNombre());
+    } else {
+      this.videos.put(video.getId(), video);      
     }
-    Video video = new Video(nombre, descripcion, duracion, url, categoria, this, fecha, visible);
-    this.videos.put(nombre, video);
-    return video;
   }
 
   public Date getUltimaActividad() {
@@ -84,32 +78,29 @@ public class Canal {
         ultimaActividad = vid.getFecha();
       }
     }
-
     return ultimaActividad;
   }
 
-  public String[] getArrayVideos() {
-
-    return videos.keySet().toArray(new String[videos.size()]);
+  public Map<Integer, Video> getVideos() {
+    return this.videos;
   }
-
-  public List<DtVideo> getVideosPublicos() {
-    List<DtVideo> videos = new ArrayList<DtVideo>();
+  
+  public Map<Integer, Video> getVideosPublicos() {
+    Map<Integer, Video> videos = new HashMap<Integer, Video>();
     for (Video video : this.videos.values()) {
       if (video.isVisible()) {
-        videos.add(video.getDt());
+        videos.put(video.getId(), video);
       }
     }
     return videos;
   }
 
-  public List<DtVideo> getDtVideosPrivados() {
-    List<DtVideo> videos = new ArrayList<DtVideo>();
+  public Map<Integer, Video> getVideosPrivados() {
+    Map<Integer, Video> videos = new HashMap<Integer, Video>();
     for (Video video : this.videos.values()) {
       if (!video.isVisible()) {
-        videos.add(video.getDt());
+        videos.put(video.getId(), video);
       }
-
     }
     return videos;
   }

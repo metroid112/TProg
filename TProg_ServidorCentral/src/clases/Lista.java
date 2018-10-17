@@ -86,7 +86,7 @@ public abstract class Lista {
     return videos;
   }
 
-  public void insertarVideo(Video video) {
+  public void agregarVideo(Video video) {
     videos.add(video);
   }
 
