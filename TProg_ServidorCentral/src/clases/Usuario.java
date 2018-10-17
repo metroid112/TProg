@@ -25,7 +25,7 @@ public class Usuario {
   private BufferedImage img;  
   
   private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
-  private List<Comentario> comentarios = new LinkedList<Comentario>();
+  private Map<Integer, Comentario> comentarios = new HashMap<Integer, Comentario>();
   private Map<String, Usuario> seguidores = new HashMap<String, Usuario>();
   private Map<String, Usuario> seguidos = new HashMap<String, Usuario>();
   
@@ -59,7 +59,7 @@ public class Usuario {
 
   public void comentar(String texto, Date fecha, Video vid) {
     Comentario comentario = new Comentario(texto, this, vid, fecha);
-    this.comentarios.add(comentario);
+    this.comentarios.put(comentario.getId(), comentario);
     vid.addComentarioPadre(comentario);
   }
 
@@ -74,8 +74,7 @@ public class Usuario {
   public DtUsuario getDt() {
     String categoria = this.getCanal().getCategoria() == null ? "Sin Categoria"
         : this.getCanal().getCategoria().getNombre();
-    return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
-        this.canal.getDescripcion(), this.fechaNacimiento, this.canal.isVisible(),
+    return new DtUsuario(this.nombre, this.apellido, this.canal, this.correo, this.fechaNacimiento,
         this.nick, this.imgPath, categoria);
   }
 
@@ -180,7 +179,7 @@ public class Usuario {
   @Override
   public boolean equals(Object object) {
     Usuario user = (Usuario) object;
-    return (this.nick = user.nick)
+    return (this.nick.equals(user.nick));
   }
 
 }
