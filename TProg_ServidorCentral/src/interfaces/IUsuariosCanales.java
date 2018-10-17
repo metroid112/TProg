@@ -5,7 +5,6 @@ import java.util.List;
 
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
-import excepciones.DuplicateClassException;
 
 public interface IUsuariosCanales {
 
@@ -58,6 +57,5 @@ public interface IUsuariosCanales {
 
   public void dejarSeguir(String seguidor, String seguido);
 
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal)
-      throws DuplicateClassException;
+  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws DuplicateClassException;
 }

@@ -9,7 +9,6 @@ import clases.Usuario;
 import clases.Video;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
-import excepciones.DuplicateClassException;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -135,7 +134,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
 
-  public List<DtVideo> getListaDtVideo(String usuario) {
+  public List<DtVideo> getListaDtVideo(String usuario) { // CUANDO SE BORRA EL LISTAR VIDEOS.JSP SE
+                                                         // PUEDE BORRAR ESTA FUNCION, YA HAY OTRA
+                                                         // IGUAL EN EL CONTROLADOR VIDEO
+
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
@@ -195,17 +197,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal)
-      throws DuplicateClassException {
-    if (!usuarioModificado.nick.equals(usuarioOriginal.nick)
-        && manejadorUsuarios.get(usuarioModificado.nick) != null) {
+  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws DuplicateClassException {
+    if(!usuarioModificado.nick.equals(usuarioOriginal.nick) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.nick);
     }
-    if (!usuarioModificado.correo.equals(usuarioOriginal.correo)
-        && manejadorUsuarios.mailGet(usuarioModificado.correo) != null) {
-      throw new DuplicateClassException("Usuario", usuarioModificado.correo);
+    if(!usuarioModificado.mail.equals(usuarioOriginal.mail) && manejadorUsuarios.mailGet(usuarioModificado.mail) != null) {
+      throw new DuplicateClassException("Usuario", usuarioModificado.mail);
     }
     Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
-    usuario.modificarUsuario(usuarioModificado);
+    
   }
 }

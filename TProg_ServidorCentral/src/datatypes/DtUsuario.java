@@ -5,21 +5,21 @@ import java.util.Date;
 
 public class DtUsuario {
 
-  private String nick;
-  private String correo;
-  private String nombre;
-  private String apellido;
-  private Date fechaNacimiento;
-  private String canal;
-  private String descripcionCanal;
-  private String categoria;
-  private boolean privado;
-  private Date ultimaActividad;
-  private String imgPath;
-  private BufferedImage imagen;
+  public Date fechaNacimiento;
+  public BufferedImage imagen;
+  public String nombre;
+  public String apellido;
+  public String canal;
+  public String correo;
+  public String descripcionCanal;
+  public boolean privado;
+  public String nick;
+  public String imgPath;
+  public Date ultimaActividad;
+  public String categoria;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
-      String descripcionCanal, Date fechaNacimiento, boolean privado,
+      String descripcionCanal, Date fechaNacimiento, BufferedImage imagen, boolean privado,
       String nick, String imgPath, String categoria) {
     this.nombre = nombre;
     this.apellido = apellido;
@@ -27,6 +27,7 @@ public class DtUsuario {
     this.correo = correo;
     this.descripcionCanal = descripcionCanal;
     this.fechaNacimiento = fechaNacimiento;
+    this.imagen = imagen;
     this.privado = privado;
     this.nick = nick;
     this.imgPath = imgPath;
@@ -37,11 +38,39 @@ public class DtUsuario {
     this.nick = nick;
     this.canal = canal;
     this.imgPath = path;
-    this.ultimaActividad = ultimaActividad;
+    this.setUltimaActividad(ultimaActividad);
   }
 
   @Override
   public boolean equals(Object object) {
     DtUsuario dtUsuario = (DtUsuario) object;
-    return (this.nick.equals(dtUsuario.nick) && this.correo.equals(dtUsuario.correo); 
+    return (this.nombre.equals(dtUsuario.nombre) && this.apellido.equals(dtUsuario.apellido)
+        && this.correo.equals(dtUsuario.correo) && this.canal.equals(dtUsuario.canal)
+        && this.privado == dtUsuario.privado);
   }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public String getCanal() {
+    return canal;
+  }
+
+  public void setCanal(String canal) {
+    this.canal = canal;
+  }
+
+  public Date getUltimaActividad() {
+    return ultimaActividad;
+  }
+
+  public void setUltimaActividad(Date ultimaActividad) {
+    this.ultimaActividad = ultimaActividad;
+  }
+
+}

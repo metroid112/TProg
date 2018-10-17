@@ -1,6 +1,5 @@
 package clases;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,29 +7,37 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
-
 import datatypes.DtUsuario;
 
 public class Usuario {
 
-  private String nick;
-  private String password = "";
-  private String correo;
-  private String nombre;
   private String apellido;
-  private Date fechaNacimiento;
-  private Canal canal;
-  private String imgPath = "img/usuarios/null.JPG";
-  private BufferedImage img;  
-  
   private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
+  private Canal canal;
   private List<Comentario> comentarios = new LinkedList<Comentario>();
+  private String correo;
+  private Date fechaNacimiento;
+  private BufferedImage imagen;
+  private String nick;
+  private String nombre;
   private Map<String, Usuario> seguidores = new HashMap<String, Usuario>();
   private Map<String, Usuario> seguidos = new HashMap<String, Usuario>();
-  
+  private String password = "";
+  private String imgPath = "img/usuarios/null.JPG";
   private int idUsuario;
   private static int idCounter = 0;
+
+  public Usuario(String nickname, String nombre, String apellido, String correo,
+      Date fechaNacimiento, BufferedImage image) {
+    this.nick = nickname;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.correo = correo;
+    this.fechaNacimiento = fechaNacimiento;
+    this.imagen = image;
+    Usuario.idCounter++;
+    this.idUsuario = Usuario.idCounter;
+  }
 
   public Usuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String image, String password) {
@@ -75,12 +82,12 @@ public class Usuario {
     String categoria = this.getCanal().getCategoria() == null ? "Sin Categoria"
         : this.getCanal().getCategoria().getNombre();
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
-        this.canal.getDescripcion(), this.fechaNacimiento, this.canal.isVisible(),
+        this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible(),
         this.nick, this.imgPath, categoria);
   }
 
   public BufferedImage getImagen() {
-    return this.img;
+    return imagen;
   }
 
   public String getNick() {
@@ -149,6 +156,14 @@ public class Usuario {
     return calificado;
   }
 
+  @Override
+  public boolean equals(Object object) {
+    Usuario user = (Usuario) object;
+    return (this.nombre.equals(user.nombre) && this.nick.equals(user.nick)
+        && this.apellido.equals(user.apellido) && this.correo.equals(user.correo)
+        && this.fechaNacimiento.equals(user.fechaNacimiento) && this.imagen == user.imagen);
+  }
+
   public Comentario getComentario(int idComentario) {
     return comentarios.get(idComentario);
   }
@@ -171,16 +186,6 @@ public class Usuario {
 
   public String getPath() {
     return this.imgPath;
-  }
-
-  public void modificarUsuario(DtUsuario usuarioModificado) {
-    
-  }
-  
-  @Override
-  public boolean equals(Object object) {
-    Usuario user = (Usuario) object;
-    return (this.nick = user.nick)
   }
 
 }
