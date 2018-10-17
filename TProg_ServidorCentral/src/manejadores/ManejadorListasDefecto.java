@@ -14,7 +14,7 @@ public class ManejadorListasDefecto {
 
   }
 
-  public static ManejadorListasDefecto getManejadorListas() {    
+  public static ManejadorListasDefecto getManejadorListasDefecto() {    
     if (manejador == null) {
       manejador = new ManejadorListasDefecto();
     }

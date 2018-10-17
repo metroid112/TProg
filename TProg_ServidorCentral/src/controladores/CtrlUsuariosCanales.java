@@ -35,7 +35,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       descCanal = descripcionCanal;
     }
     Canal canal = new Canal(nombreCanal, descCanal,
-        ManejadorCategorias.getManejadorCategorias().get(categoria), visible, user);
+        ManejadorCategorias.getManejadorCategorias().getCategoria(categoria), visible, user);
     user.setCanal(canal);
     manejadorUsuarios.addUsuario(user);
   }

@@ -15,30 +15,30 @@ public class CtrlCategorias implements ICategorias {
 
   @Override
   public void altaCategoria(String nombreCategoria) throws DuplicateClassException {
-    manejadorCategorias.altaCategoria(nombreCategoria);
+    manejadorCategorias.addCategoria(nombreCategoria);
   }
 
   @Override
   public String[] getInfoListas(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
+    Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoListas();
   }
 
   @Override
   public String[] getInfoListasPublicas(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
+    Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoListasPublicas();
   }
 
   @Override
   public String[] getInfoVideos(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
+    Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoVideos();
   }
 
   @Override
   public String[] getInfoVideosPublicos(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
+    Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoVideosPublicos();
   }
 

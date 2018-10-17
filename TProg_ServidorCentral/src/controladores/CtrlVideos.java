@@ -32,7 +32,7 @@ public class CtrlVideos implements IVideos {
   public void altaVideo(String nick, String nombre, String descripcion, Duration duracion,
       String url, String nombreCategoria, Date fecha, boolean visibilidad)
       throws DuplicateClassException, NotFoundException {
-    Categoria categoria = manejadorCategoria.get(nombreCategoria);
+    Categoria categoria = manejadorCategoria.getCategoria(nombreCategoria);
     if (categoria == null) {
       throw new NotFoundException("Categor�a " + nombreCategoria);
     }
@@ -82,15 +82,14 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public DtVideo[] listarTodosLosVideos(String nick) {
-
+  public DtVideo[] listarTodosLosVideos(int idUsuario) {
     List<DtVideo> listaVideos = new ArrayList<DtVideo>();
-    for (Entry<String, Usuario> usuario : manejadorUsuario.getUsuarios().entrySet()) {
-      List<DtVideo> lista = usuario.getValue().getCanal().getVideosPublicos();
+    for (Usuario usuario : manejadorUsuario.getUsuarios().values()) {
+      List<DtVideo> lista = usuario.getCanal().getVideosPublicos();
       listaVideos.addAll(lista);
     }
-    Usuario user = manejadorUsuario.getUsuario(nick);
-    List<DtVideo> lista = user.getCanal().getVideosPrivados();
+    Usuario user = manejadorUsuario.getUsuario(idUsuario);
+    List<DtVideo> lista = user.getCanal().getDtVideosPrivados();
     listaVideos.addAll(lista);
     return listaVideos.toArray(new DtVideo[listaVideos.size()]);
   }
@@ -103,7 +102,7 @@ public class CtrlVideos implements IVideos {
     vid.getCanal().modVideo(nombreOld, nombre);
     Categoria categoria;
     if (categoriaString != null) {
-      categoria = manejadorCategoria.get(categoriaString);
+      categoria = manejadorCategoria.getCategoria(categoriaString);
     } else {
       categoria = null;
     }

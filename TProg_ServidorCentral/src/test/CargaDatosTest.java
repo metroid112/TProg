@@ -97,7 +97,8 @@ public class CargaDatosTest {
     int esperado = listaUsuarios.length * 3;
     for (String usuario : listaUsuarios) {
       contador +=
-          ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal().getListaDefecto().size();
+          ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal().getListaDefecto()
+              .size();
     }
     assertEquals(contador, esperado);
   }

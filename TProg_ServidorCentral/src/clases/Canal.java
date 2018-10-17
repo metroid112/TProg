@@ -23,10 +23,10 @@ public class Canal {
   private boolean visible;
   private Date ultimaActividad;
   private Usuario usuario;
-  private Map<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
-  private Map<String, ListaParticular> listaParticulares =
-      new HashMap<String, ListaParticular>();
-  private Map<String, Video> videos = new HashMap<String, Video>();
+  private Map<Integer, ListaDefecto> listasDefecto = new HashMap<Integer, ListaDefecto>();
+  private Map<Integer, ListaParticular> listasParticulares =
+      new HashMap<Integer, ListaParticular>();
+  private Map<Integer, Video> videos = new HashMap<Integer, Video>();
 
   public Canal(String nombreCanal, String descripcionCanal, Categoria categoria, boolean visible,
       Usuario user) {
@@ -34,25 +34,26 @@ public class Canal {
     this.descripcionCanal = descripcionCanal;
     this.visible = visible;
     this.usuario = user;
-    for (String lista : ManejadorListasDefecto.getManejadorListas().toArray()) {
-      listaDefecto.put(lista, new ListaDefecto(lista, this));
+    for (String lista : ManejadorListasDefecto.getManejadorListasDefecto().getListasDefecto()) {
+      ListaDefecto listaDefecto = new ListaDefecto(lista, this);
+      this.listasDefecto.put(listaDefecto.getId(), listaDefecto);
     }
     this.categoria = categoria;
   }
 
-  public void agregarVideoListaDefecto(Video videoObj, String lista)
+  public void agregarVideoListaDefecto(Video video, String idListaDefecto)
       throws DuplicateClassException {
-    ListaDefecto listaObj = listaDefecto.get(lista);
-    if (!listaObj.existeVideo(videoObj)) {
-      listaObj.insertarVideo(videoObj);
+    ListaDefecto lista = listasDefecto.get(idListaDefecto);
+    if (!lista.existeVideo(video)) {
+      lista.insertarVideo(video);
     } else {
-      throw new DuplicateClassException("Video", videoObj.getNombre());
+      throw new DuplicateClassException("Video", video.getNombre());
     }
   }
 
   public void agregarVideoListaParticular(Video videoObj, String lista)
       throws DuplicateClassException {
-    ListaParticular listaObj = listaParticulares.get(lista);
+    ListaParticular listaObj = listasParticulares.get(lista);
     if (!listaObj.existeVideo(videoObj)) {
       listaObj.insertarVideo(videoObj);
 
@@ -102,7 +103,7 @@ public class Canal {
     return videos;
   }
 
-  public List<DtVideo> getVideosPrivados() {
+  public List<DtVideo> getDtVideosPrivados() {
     List<DtVideo> videos = new ArrayList<DtVideo>();
     for (Video video : this.videos.values()) {
       if (!video.isVisible()) {
@@ -118,30 +119,30 @@ public class Canal {
   }
 
   public Lista getLista(String lista) throws Exception {
-    if (this.listaParticulares.containsKey(lista)) {
-      return this.listaParticulares.get(lista);
+    if (this.listasParticulares.containsKey(lista)) {
+      return this.listasParticulares.get(lista);
     } else {
       throw new Exception("No existe lista");
     }
   }
 
   public Map<String, ListaDefecto> getListaDefecto() {
-    return listaDefecto;
+    return listasDefecto;
   }
 
   public String[] getListaDefectoUsuario() {
 
-    return listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
+    return listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
 
   }
 
   public Map<String, ListaParticular> getListaParticulares() {
-    return listaParticulares;
+    return listasParticulares;
   }
 
   public String[] getListaParticularUsuario() {
 
-    return listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
+    return listasParticulares.keySet().toArray(new String[listasParticulares.size()]);
 
   }
 
@@ -163,13 +164,13 @@ public class Canal {
   }
 
   public void guardarCambios(String nomLis, boolean visible) {
-    ListaParticular listaObjetivo = listaParticulares.get(nomLis);
+    ListaParticular listaObjetivo = listasParticulares.get(nomLis);
     listaObjetivo.setVisible(visible);
   }
 
   public void ingresarListaDefecto(String nombre) {
     ListaDefecto nuevaLista = new ListaDefecto(nombre, this);
-    listaDefecto.put(nombre, nuevaLista); // puede cambiar la implementacion
+    listasDefecto.put(nombre, nuevaLista); // puede cambiar la implementacion
   }
 
   public void altaListaParticular(String nombre, boolean visibilidad)
@@ -177,7 +178,7 @@ public class Canal {
 
     ListaParticular nuevaLista = new ListaParticular(nombre, this,
         visibilidad);
-    listaParticulares.put(nombre, nuevaLista);
+    listasParticulares.put(nombre, nuevaLista);
   }
 
   public boolean isVisible() {
@@ -186,30 +187,30 @@ public class Canal {
 
   public String[] listarVideosLista(String lista, boolean defecto) {
     if (defecto) {
-      ListaDefecto listaDef = listaDefecto.get(lista);
+      ListaDefecto listaDef = listasDefecto.get(lista);
       return listaDef.getArrayVideos();
     } else {
-      ListaParticular listaPar = listaParticulares.get(lista);
+      ListaParticular listaPar = listasParticulares.get(lista);
       return listaPar.getArrayVideos();
     }
   }
 
   public String[] listarVideosDuenosLista(String lista, boolean defecto) {
     if (defecto) {
-      ListaDefecto listaDef = listaDefecto.get(lista);
+      ListaDefecto listaDef = listasDefecto.get(lista);
       return listaDef.getArrayVideosDuenos();
     } else {
-      ListaParticular listaPar = listaParticulares.get(lista);
+      ListaParticular listaPar = listasParticulares.get(lista);
       return listaPar.getArrayVideosDuenos();
     }
   }
 
   public List<DtVideo> listarDtVideosDuenosLista(String lista, boolean defecto) {
     if (defecto) {
-      ListaDefecto listaDef = listaDefecto.get(lista);
+      ListaDefecto listaDef = listasDefecto.get(lista);
       return listaDef.getDtVideos();
     } else {
-      ListaParticular listaPar = listaParticulares.get(lista);
+      ListaParticular listaPar = listasParticulares.get(lista);
       return listaPar.getDtVideos();
     }
   }
@@ -244,14 +245,14 @@ public class Canal {
   }
 
   public void quitarVideoListaDefecto(String video, String lista, Usuario ownerVideo) {
-    ListaDefecto listaObj = listaDefecto.get(lista);
+    ListaDefecto listaObj = listasDefecto.get(lista);
     Video videoObj = listaObj.getVideo(video, ownerVideo);
     listaObj.quitarVideo(videoObj);
 
   }
 
   public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
-    ListaParticular listaObj = listaParticulares.get(lista);
+    ListaParticular listaObj = listasParticulares.get(lista);
     Video videoObj = listaObj.getVideo(video, ownerVideo);
     listaObj.quitarVideo(videoObj);
     Categoria cat = videoObj.getCategoria();
@@ -279,7 +280,7 @@ public class Canal {
   }
 
   public DtLista getDtListaDefecto(String nombreListaDefecto) {
-    return this.listaDefecto.get(nombreListaDefecto).getDtLista();
+    return this.listasDefecto.get(nombreListaDefecto).getDtLista();
   }
 
   public DtCanal getDt() {
