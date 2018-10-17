@@ -24,7 +24,6 @@ public class AgregarVideoALista extends HttpServlet {
 
   public AgregarVideoALista() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
