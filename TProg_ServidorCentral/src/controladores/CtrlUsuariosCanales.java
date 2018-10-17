@@ -195,4 +195,16 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return (userSeguidor.getSeguidos().containsKey(seguido)
         && userSeguido.getSeguidores().containsKey(seguidor));
   }
+
+  @Override
+  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws DuplicateClassException {
+    if(!usuarioModificado.nick.equals(usuarioOriginal.nick) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
+      throw new DuplicateClassException("Usuario", usuarioModificado.nick);
+    }
+    if(!usuarioModificado.mail.equals(usuarioOriginal.mail) && manejadorUsuarios.mailGet(usuarioModificado.mail) != null) {
+      throw new DuplicateClassException("Usuario", usuarioModificado.mail);
+    }
+    Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
+    
+  }
 }
