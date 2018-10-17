@@ -5,10 +5,9 @@ import java.util.List;
 
 public class Categoria {
 
-  private List<ListaParticular> listas = new LinkedList<ListaParticular>();
-
   private String nombre;
   private List<Video> videos = new LinkedList<Video>();
+  private List<ListaParticular> listas = new LinkedList<ListaParticular>();
 
   public Categoria(String nombre) {
     this.nombre = nombre;

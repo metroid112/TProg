@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import datatypes.DtCanal;
 import datatypes.DtLista;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
@@ -16,26 +17,21 @@ import manejadores.ManejadorListasDefecto;
 
 public class Canal {
 
+  private String nombreCanal;
+  private String descripcionCanal;
   private Categoria categoria;
-  private String descripcion;
+  private boolean visible;
+  private Date ultimaActividad;
+  private Usuario usuario;
   private Map<String, ListaDefecto> listaDefecto = new HashMap<String, ListaDefecto>();
-
   private Map<String, ListaParticular> listaParticulares =
       new HashMap<String, ListaParticular>();
-
-  private String nombre;
-  private Usuario usuario;
   private Map<String, Video> videos = new HashMap<String, Video>();
-  private boolean visible;
-
-  public Canal() {
-
-  }
 
   public Canal(String nombreCanal, String descripcionCanal, Categoria categoria, boolean visible,
       Usuario user) {
-    this.nombre = nombreCanal;
-    this.descripcion = descripcionCanal;
+    this.nombreCanal = nombreCanal;
+    this.descripcionCanal = descripcionCanal;
     this.visible = visible;
     this.usuario = user;
     for (String lista : ManejadorListasDefecto.getManejadorListas().toArray()) {
@@ -118,7 +114,7 @@ public class Canal {
   }
 
   public String getDescripcion() {
-    return descripcion;
+    return descripcionCanal;
   }
 
   public Lista getLista(String lista) throws Exception {
@@ -150,7 +146,7 @@ public class Canal {
   }
 
   public String getNombre() {
-    return nombre;
+    return nombreCanal;
   }
 
   public Usuario getUsuario() {
@@ -284,6 +280,10 @@ public class Canal {
 
   public DtLista getDtListaDefecto(String nombreListaDefecto) {
     return this.listaDefecto.get(nombreListaDefecto).getDtLista();
+  }
+
+  public DtCanal getDt() {
+    return new DtCanal(this.nombreCanal, this.descripcionCanal, this.visible, this.ultimaActividad);
   }
 
 }

@@ -8,18 +8,17 @@ import excepciones.DuplicateClassException;
 public class ManejadorListasDefecto {
 
   private static ManejadorListasDefecto manejador = null;
+  private Set<String> listasDefecto = new HashSet<String>();
+  
+  private ManejadorListasDefecto() {
 
-  public static ManejadorListasDefecto getManejadorListas() {
+  }
+
+  public static ManejadorListasDefecto getManejadorListas() {    
     if (manejador == null) {
       manejador = new ManejadorListasDefecto();
     }
     return manejador;
-  }
-
-  private Set<String> listasDefecto = new HashSet<String>();
-
-  private ManejadorListasDefecto() {
-
   }
 
   public void addListaDefecto(String nombreLista) throws DuplicateClassException {
@@ -30,14 +29,11 @@ public class ManejadorListasDefecto {
     }
   }
 
-  public boolean existeListaDefecto(String nombre) {
-    if (!listasDefecto.contains(nombre)) {
-      return false;
-    }
-    return true;
+  public boolean existeListaDefecto(String nombreLista) {
+    return (listasDefecto.contains(nombreLista));
   }
-
-  public String[] toArray() {
-    return listasDefecto.toArray(new String[listasDefecto.size()]);
+  
+  public Set<String> getListasDefecto() {
+    return this.listasDefecto;
   }
 }

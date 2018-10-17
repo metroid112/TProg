@@ -11,6 +11,7 @@ import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtBusqueda;
+import datatypes.DtCanal;
 import datatypes.DtLista;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
@@ -753,13 +754,15 @@ public class CtrlDatos implements IDatos {
     List<DtVideo> videos = new LinkedList<DtVideo>();
     List<DtLista> listas = new LinkedList<DtLista>();
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
-    for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
+    for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getUsuarios().values()) {
       Canal canal = usuario.getCanal();
       if (canal.isVisible()) {
         if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
             || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
-              usuario.getPath(), canal.getUltimaActividad());
+          DtCanal dtCanal = new DtCanal(canal.getNombre(), canal.getDescripcion(),
+              canal.isVisible(), canal.getUltimaActividad());
+          DtUsuario dtUsuario = new DtUsuario(usuario.getId(), usuario.getNick(), dtCanal);
+          dtUsuario.setImgPath(usuario.getPath());
           usuarios.add(dtUsuario);
         }
       }

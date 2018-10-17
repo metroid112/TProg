@@ -3,8 +3,6 @@ package datatypes;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 
-import clases.Canal;
-
 public class DtUsuario {
 
   private int idUsuario;
@@ -15,12 +13,11 @@ public class DtUsuario {
   private String apellido;
   private Date fechaNacimiento;
   private DtCanal canal;
-  private String imgPath = "img/usuarios/null.JPG";
+  private String imgPath;
   private BufferedImage imagen;
 
-
-  public DtUsuario(int idUsuario, String nick, String password, String correo, String nombre, String apellido,
-      Date fechaNacimiento, DtCanal canal, String imgPath) {
+  public DtUsuario(int idUsuario, String nick, String password, String correo, String nombre,
+      String apellido, Date fechaNacimiento, String imgPath) {
     this.idUsuario = idUsuario;
     this.nick = nick;
     this.password = password;
@@ -28,7 +25,6 @@ public class DtUsuario {
     this.nombre = nombre;
     this.apellido = apellido;
     this.fechaNacimiento = fechaNacimiento;
-    this.canal = canal;
     this.imgPath = imgPath;
   }
 
@@ -44,6 +40,10 @@ public class DtUsuario {
 
   public String getNick() {
     return this.nick;
+  }
+
+  public String getPassword() {
+    return this.password;
   }
 
   public String getCorreo() {
@@ -82,6 +82,10 @@ public class DtUsuario {
     this.nick = nick;
   }
 
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
   public void setCorreo(String correo) {
     this.correo = correo;
   }
@@ -113,6 +117,6 @@ public class DtUsuario {
   @Override
   public boolean equals(Object object) {
     DtUsuario dtUsuario = (DtUsuario) object;
-    return (this.nick.equals(dtUsuario.nick) && this.correo.equals(dtUsuario.correo)); 
+    return (this.nick.equals(dtUsuario.nick) && this.correo.equals(dtUsuario.correo));
   }
 }

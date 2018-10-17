@@ -1,6 +1,5 @@
 package clases;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,12 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import javax.imageio.ImageIO;
-
 import datatypes.DtUsuario;
 
 public class Usuario {
 
+  private int idUsuario;
   private String nick;
   private String password = "";
   private String correo;
@@ -22,14 +20,13 @@ public class Usuario {
   private Date fechaNacimiento;
   private Canal canal;
   private String imgPath = "img/usuarios/null.JPG";
-  private BufferedImage img;  
-  
+  private BufferedImage img;
+
   private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
   private Map<Integer, Comentario> comentarios = new HashMap<Integer, Comentario>();
   private Map<String, Usuario> seguidores = new HashMap<String, Usuario>();
   private Map<String, Usuario> seguidos = new HashMap<String, Usuario>();
-  
-  private int idUsuario;
+
   private static int idCounter = 0;
 
   public Usuario(String nickname, String nombre, String apellido, String correo,
@@ -72,10 +69,8 @@ public class Usuario {
   }
 
   public DtUsuario getDt() {
-    String categoria = this.getCanal().getCategoria() == null ? "Sin Categoria"
-        : this.getCanal().getCategoria().getNombre();
-    return new DtUsuario(this.nombre, this.apellido, this.canal, this.correo, this.fechaNacimiento,
-        this.nick, this.imgPath, categoria);
+    return new DtUsuario(this.idUsuario, this.nick, this.password, this.correo, this.nombre,
+        this.apellido, this.fechaNacimiento, this.imgPath);
   }
 
   public BufferedImage getImagen() {
@@ -108,7 +103,7 @@ public class Usuario {
   public void responder(String texto, Date fecha, Integer idComentarioPadre, Video vid) {
     Comentario padre = vid.getComentario(idComentarioPadre);
     Comentario comentario = new Comentario(texto, this, vid, padre, fecha);
-    this.comentarios.add(comentario);
+    this.comentarios.put(comentario.getId(), comentario);
 
   }
 
@@ -122,7 +117,7 @@ public class Usuario {
     seguido.removeSeguidor(this);
   }
 
-  private void removeSeguidor(Usuario usuario) {
+  public void removeSeguidor(Usuario usuario) {
     this.seguidores.remove(usuario.getNick());
   }
 
@@ -173,9 +168,9 @@ public class Usuario {
   }
 
   public void modificarUsuario(DtUsuario usuarioModificado) {
-    
+
   }
-  
+
   @Override
   public boolean equals(Object object) {
     Usuario user = (Usuario) object;

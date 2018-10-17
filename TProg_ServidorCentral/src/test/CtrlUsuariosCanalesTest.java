@@ -48,9 +48,9 @@ public class CtrlUsuariosCanalesTest {
   public void testGetDt() {
     DtUsuario dtUsuario = interfazUsuarios.getDt("chino");
     assertEquals("Alvaro", dtUsuario.getNombre());
-    assertEquals("Recoba", dtUsuario.apellido);
+    assertEquals("Recoba", dtUsuario.getApellido());
     assertEquals("Chino Recoba", dtUsuario.getCanal());
-    assertEquals("chino@trico.org.uy", dtUsuario.correo);
+    assertEquals("chino@trico.org.uy", dtUsuario.getCorreo());
   }
 
   @Test

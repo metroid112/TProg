@@ -18,7 +18,7 @@ public class ListaParticular extends Lista {
       boolean visible) throws DuplicateClassException {
     super(nombre, canal);
     this.visible = visible;
-    ManejadorListasParticulares.getManejadorListasParticulares().add(this);
+    ManejadorListasParticulares.getManejadorListasParticulares().addListaParticular(this);
   }
 
   public Date getUltimaActividad() {
