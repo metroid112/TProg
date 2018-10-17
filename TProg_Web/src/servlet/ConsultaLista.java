@@ -21,7 +21,6 @@ public class ConsultaLista extends HttpServlet {
 
   public ConsultaLista() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -42,8 +41,7 @@ public class ConsultaLista extends HttpServlet {
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
       DtLista dtLista = null;
       if (request.getParameter("NOMBRELISTADEFECTO") != null) { // LISTA DEFECTO
-        System.out.println(((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick + " ---- " + request.getParameter("NOMBRELISTADEFECTO"));
-        dtLista = Fabrica.getIListas().getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).nick, 
+        dtLista = Fabrica.getIListas().getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).nick,
             request.getParameter("NOMBRELISTADEFECTO"));
       } else {
         try {
