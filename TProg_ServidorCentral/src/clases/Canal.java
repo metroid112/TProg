@@ -13,6 +13,7 @@ import datatypes.DtCanal;
 import datatypes.DtLista;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import manejadores.ManejadorListasDefecto;
 
 public class Canal {
@@ -41,6 +42,14 @@ public class Canal {
     this.categoria = categoria;
   }
 
+  public void altaVideo(Video video) throws DuplicateClassException {
+    if (videos.containsKey(video.getId())) {
+      throw new DuplicateClassException("Video", video.getNombre());
+    } else {
+      this.videos.put(video.getId(), video);
+    }
+  }
+
   public void agregarVideoListaDefecto(Video video, int idListaDefecto)
       throws DuplicateClassException {
     ListaDefecto lista = listasDefecto.get(idListaDefecto);
@@ -63,11 +72,20 @@ public class Canal {
     }
   }
 
-  public void altaVideo(Video video) throws DuplicateClassException {
-    if (videos.containsKey(video.getId())) {
-      throw new DuplicateClassException("Video", video.getNombre());
+  public void agregarListaDefecto(ListaDefecto listaDefecto) throws DuplicateClassException {
+    if (this.listasDefecto.containsKey(listaDefecto.getId())) {
+      throw new DuplicateClassException("Lista", listaDefecto.getNombre());
     } else {
-      this.videos.put(video.getId(), video);      
+      this.listasDefecto.put(listaDefecto.getId(), listaDefecto);
+    }
+  }
+
+  public void agregarListaParticular(ListaParticular listaParticular)
+      throws DuplicateClassException {
+    if (this.listasParticulares.containsKey(listaParticular.getId())) {
+      throw new DuplicateClassException("Lista", listaParticular.getNombre());
+    } else {
+      this.listasParticulares.put(listaParticular.getId(), listaParticular);
     }
   }
 
@@ -84,7 +102,7 @@ public class Canal {
   public Map<Integer, Video> getVideos() {
     return this.videos;
   }
-  
+
   public Map<Integer, Video> getVideosPublicos() {
     Map<Integer, Video> videos = new HashMap<Integer, Video>();
     for (Video video : this.videos.values()) {
@@ -105,36 +123,28 @@ public class Canal {
     return videos;
   }
 
-  public String getDescripcion() {
-    return descripcionCanal;
-  }
-
-  public Lista getLista(String lista) throws Exception {
-    if (this.listasParticulares.containsKey(lista)) {
-      return this.listasParticulares.get(lista);
-    } else {
-      throw new Exception("No existe lista");
-    }
-  }
-
-  public Map<String, ListaDefecto> getListaDefecto() {
+  public Map<Integer, ListaDefecto> getListasDefecto() {
     return listasDefecto;
   }
 
-  public String[] getListaDefectoUsuario() {
-
-    return listasDefecto.keySet().toArray(new String[listasDefecto.size()]);
-
-  }
-
-  public Map<String, ListaParticular> getListaParticulares() {
+  public Map<Integer, ListaParticular> getListasParticulares() {
     return listasParticulares;
   }
 
-  public String[] getListaParticularUsuario() {
+  public ListaDefecto getListaDefecto(int idListaDefecto) throws NotFoundException {
+    if (this.listasDefecto.containsKey(idListaDefecto)) {
+      return this.listasDefecto.get(idListaDefecto);
+    } else {
+      throw new NotFoundException("Lista Defecto id: " + idListaDefecto);
+    }
+  }
 
-    return listasParticulares.keySet().toArray(new String[listasParticulares.size()]);
-
+  public ListaParticular getListaParticular(int idListaParticular) throws NotFoundException {
+    if (this.listasParticulares.containsKey(idListaParticular)) {
+      return this.listasParticulares.get(idListaParticular);
+    } else {
+      throw new NotFoundException("Lista Particular id: " + idListaParticular);
+    }
   }
 
   public String getNombre() {
@@ -145,31 +155,12 @@ public class Canal {
     return usuario;
   }
 
-  public Video getVideoCanal(String video) {
-
-    return videos.get(video);
+  public String getDescripcion() {
+    return descripcionCanal;
   }
 
-  public Map<String, Video> getVideos() {
-    return videos;
-  }
-
-  public void guardarCambios(String nomLis, boolean visible) {
-    ListaParticular listaObjetivo = listasParticulares.get(nomLis);
-    listaObjetivo.setVisible(visible);
-  }
-
-  public void ingresarListaDefecto(String nombre) {
-    ListaDefecto nuevaLista = new ListaDefecto(nombre, this);
-    listasDefecto.put(nombre, nuevaLista); // puede cambiar la implementacion
-  }
-
-  public void altaListaParticular(String nombre, boolean visibilidad)
-      throws DuplicateClassException {
-
-    ListaParticular nuevaLista = new ListaParticular(nombre, this,
-        visibilidad);
-    listasParticulares.put(nombre, nuevaLista);
+  public Video getVideo(int idVideo) {
+    return videos.get(idVideo);
   }
 
   public boolean isVisible() {

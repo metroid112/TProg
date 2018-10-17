@@ -3,6 +3,8 @@ package manejadores;
 import java.util.HashSet;
 import java.util.Set;
 
+import clases.ListaDefecto;
+import clases.Usuario;
 import excepciones.DuplicateClassException;
 
 public class ManejadorListasDefecto {
@@ -24,6 +26,9 @@ public class ManejadorListasDefecto {
   public void addListaDefecto(String nombreLista) throws DuplicateClassException {
     if (!this.listasDefecto.contains(nombreLista)) {
       listasDefecto.add(nombreLista);
+      for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getUsuarios().values()) {
+        usuario.getCanal().agregarListaDefecto(new ListaDefecto(nombreLista, usuario.getCanal()));
+      }
     } else {
       throw new DuplicateClassException("Lista Defecto", nombreLista);
     }

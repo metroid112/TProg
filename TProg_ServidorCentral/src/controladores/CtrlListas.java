@@ -155,7 +155,7 @@ public class CtrlListas implements IListas {
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     List<DtLista> listas = new LinkedList<DtLista>();
-    Map<String, ListaParticular> listasParticulares = canalObjetivo.getListaParticulares();
+    Map<String, ListaParticular> listasParticulares = canalObjetivo.getListasParticulares();
     for (ListaParticular lista : listasParticulares.values()) {
       listas.add(lista.getDtLista());
     }
@@ -166,7 +166,7 @@ public class CtrlListas implements IListas {
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     List<DtLista> listas = new LinkedList<DtLista>();
-    Map<String, ListaParticular> listasParticulares = canalObjetivo.getListaParticulares();
+    Map<String, ListaParticular> listasParticulares = canalObjetivo.getListasParticulares();
     for (ListaParticular lista : listasParticulares.values()) {
       if (!lista.isVisible()) {
         listas.add(lista.getDtLista());
@@ -179,7 +179,7 @@ public class CtrlListas implements IListas {
   public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario) {
     List<DtLista> listas = new LinkedList<DtLista>();
     for (ListaParticular lista : ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal()
-        .getListaParticulares().values()) {
+        .getListasParticulares().values()) {
       if (lista.isVisible()) {
         listas.add(lista.getDtLista());
       }
@@ -191,7 +191,7 @@ public class CtrlListas implements IListas {
   public List<DtLista> getDtListasDefectoUsuario(String usuario) {
     List<DtLista> listasDefecto = new LinkedList<DtLista>();
     for (ListaDefecto lista : ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal()
-        .getListaDefecto().values()) {
+        .getListasDefecto().values()) {
       listasDefecto.add(lista.getDtLista());
     }
     return listasDefecto;

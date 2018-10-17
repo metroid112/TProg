@@ -86,7 +86,7 @@ public class CargaDatosTest {
     int contador = 0;
     for (String usuario : listaUsuarios) {
       contador += ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal()
-          .getListaParticulares().size();
+          .getListasParticulares().size();
     }
     assertTrue(contador == 6);
   }
@@ -97,7 +97,7 @@ public class CargaDatosTest {
     int esperado = listaUsuarios.length * 3;
     for (String usuario : listaUsuarios) {
       contador +=
-          ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal().getListaDefecto()
+          ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal().getListasDefecto()
               .size();
     }
     assertEquals(contador, esperado);
