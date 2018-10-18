@@ -13,10 +13,13 @@ import excepciones.DuplicateClassException;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
+import manejadores.ManejadorVideos;
+
 
 public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
+  private ManejadorVideos manejadorVideos = ManejadorVideos.getManejadorVideos();
 
   public CtrlUsuariosCanales() {
 
@@ -73,16 +76,17 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public DtUsuario getDt(String nick) {
-    if (manejadorUsuarios.getUsuario(nick) != null) {
-      return manejadorUsuarios.getUsuario(nick).getDt();
+  public DtUsuario getDt(int nick) {
+    Usuario resultadoObjetivo = manejadorUsuarios.getUsuario(nick);
+    if (resultadoObjetivo != null) {
+      return resultadoObjetivo.getDt();
     } else {
       return manejadorUsuarios.mailGet(nick).getDt();
     }
   }
 
   @Override
-  public boolean isCanalPublico(String usuario) {
+  public boolean isCanalPublico(int usuario) {
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
     return usuarioObjetivo.getCanal().isVisible();
   }
@@ -97,20 +101,20 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,
-      String nombreDuenoVideo) {
+  public boolean yaCalificacdo(int nombreUsuario, boolean like, int nombreVideo,
+      int nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.getUsuario(nombreUsuario);
     Usuario dueno = manejadorUsuarios.getUsuario(nombreDuenoVideo);
-    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
+    Video vid = manejadorVideos.getVideo(nombreVideo);
     return usuario.yaCalificado(like, vid);
   }
 
   @Override
-  public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
-      String nombreDuenoVideo) {
-    Usuario usuario = manejadorUsuarios.getUsuario(nombreUsuario);
-    Usuario dueno = manejadorUsuarios.getUsuario(nombreDuenoVideo);
-    Video vid = dueno.getCanal().getVideoCanal(nombreVideo);
+  public void modificarValoracion(boolean like, int idUsuario, int nombreVideo,
+      int idDuenoVideo) {
+    Usuario usuario = manejadorUsuarios.getUsuario(idUsuario);
+    Usuario dueno = manejadorUsuarios.getUsuario(idDuenoVideo);
+    Video vid = manejadorVideos.getVideo(nombreVideo);
     usuario.modificarValoracion(like, vid);
   }
 

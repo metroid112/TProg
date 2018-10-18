@@ -13,9 +13,9 @@ public interface IUsuariosCanales {
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass);
 
-  public boolean existeUsuario(String nick);
+  public boolean existeUsuario(int nick);
 
-  public DtUsuario getDt(String nick);
+  public DtUsuario getDt(int nick);
 
   public boolean isCanalPublico(String usuario);
 
@@ -26,11 +26,11 @@ public interface IUsuariosCanales {
   void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
       String nombreDuenoVideo);
 
-  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,
-      String nombreDuenoVideo);
+  public boolean yaCalificacdo(int nombreUsuario, boolean like, int nombreVideo,
+      int nombreDuenoVideo);
 
-  void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
-      String nombreDuenoVideo);
+  void modificarValoracion(boolean like, int idUsuario, int nombreVideo,
+      int idDuenoVideo);
 
   void comentarVideo(String texto, Date fecha, int nombreUsuario, String nombreVideo,
       String nombreDuenoVideo);
