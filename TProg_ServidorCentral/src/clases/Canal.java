@@ -53,7 +53,7 @@ public class Canal {
   public void agregarVideoListaDefecto(Video video, int idListaDefecto)
       throws DuplicateClassException {
     ListaDefecto lista = listasDefecto.get(idListaDefecto);
-    if (!lista.existeVideo(video.getId())) {
+    if (!lista.existeVideo(video)) {
       lista.agregarVideo(video);
     } else {
       throw new DuplicateClassException("Video", video.getNombre());
@@ -63,7 +63,7 @@ public class Canal {
   public void agregarVideoListaParticular(Video video, int idListaParticular)
       throws DuplicateClassException {
     ListaParticular lista = listasParticulares.get(idListaParticular);
-    if (!lista.existeVideo(video.getId())) {
+    if (!lista.existeVideo(video)) {
       lista.agregarVideo(video);
       Categoria categoria = video.getCategoria();
       lista.agregarCategoria(categoria);
@@ -246,12 +246,12 @@ public class Canal {
   }
 
   public void agregarVideo(Video video) {
-    this.videos.put(video.getNombre(), video);
+    this.videos.put(video.getId(), video);
   }
 
   public List<DtVideo> getDtVideos() {
     List<DtVideo> videos = new ArrayList<DtVideo>();
-    for (Entry<String, Video> video : this.videos.entrySet()) {
+    for (Entry<int, Video> video : this.videos.entrySet()) {
       videos.add(video.getValue().getDt());
     }
     return videos;

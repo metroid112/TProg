@@ -29,16 +29,16 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public void altaVideo(String nick, String nombre, String descripcion, Duration duracion,
+  public void altaVideo(int idUsuario, String nombre, String descripcion, Duration duracion,
       String url, String nombreCategoria, Date fecha, boolean visibilidad)
       throws DuplicateClassException, NotFoundException {
     Categoria categoria = manejadorCategoria.getCategoria(nombreCategoria);
     if (categoria == null) {
       throw new NotFoundException("Categor�a " + nombreCategoria);
     }
-    Usuario user = manejadorUsuario.getUsuario(nick);
+    Usuario user = manejadorUsuario.getUsuario(idUsuario);
     if (user == null) {
-      throw new NotFoundException("Usuario " + nick);
+      throw new NotFoundException("Usuario " + user.getNombre()); 
     }
     Video video = user.getCanal().altaVideo(nombre, descripcion, duracion, url, categoria,
         fecha, visibilidad);
@@ -62,8 +62,8 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public String[] listarVideos(String nick) {
-    Usuario usuario = manejadorUsuario.getUsuario(nick);
+  public String[] listarVideos(int idUsuario) {
+    Usuario usuario = manejadorUsuario.getUsuario(idUsuario);
     if (usuario != null) {
       return usuario.getCanal().getArrayVideos();
     } else {
@@ -72,8 +72,8 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public List<DtVideo> getDtVideosPropietario(String nick) {
-    Usuario usuario = manejadorUsuario.getUsuario(nick);
+  public List<DtVideo> getDtVideosPropietario(int idUsuario) {
+    Usuario usuario = manejadorUsuario.getUsuario(idUsuario);
     if (usuario != null) {
       return usuario.getCanal().getDtVideos();
     } else {
@@ -81,7 +81,7 @@ public class CtrlVideos implements IVideos {
     }
   }
 
-  @Override
+
   public DtVideo[] listarTodosLosVideos(int idUsuario) {
     List<DtVideo> listaVideos = new ArrayList<DtVideo>();
     for (Usuario usuario : manejadorUsuario.getUsuarios().values()) {
@@ -95,10 +95,10 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion,
+  public void modificarVideo(int idUsuario, String nombreOld, String nombre, String descripcion,
       String url, String categoriaString, Duration duracion, boolean visible, Date fecha)
       throws InvalidDataException, DuplicateClassException {
-    Video vid = manejadorUsuario.getUsuario(nick).getCanal().getVideoCanal(nombreOld);
+    Video vid = manejadorUsuario.getUsuario(idUsuario).getCanal().getVideoCanal(nombreOld);
     vid.getCanal().modVideo(nombreOld, nombre);
     Categoria categoria;
     if (categoriaString != null) {
@@ -121,8 +121,8 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public List<DtVideo> getDtVideosPublicos(String nombreUsuario) {
-    return ManejadorUsuarios.getManejadorUsuarios().getUsuario(nombreUsuario).getCanal()
+  public List<DtVideo> getDtVideosPublicos(int idUsuario) {
+    return ManejadorUsuarios.getManejadorUsuarios().getUsuario(idUsuario).getCanal()
         .getVideosPublicos();
   }
 }
