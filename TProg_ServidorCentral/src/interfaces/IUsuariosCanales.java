@@ -32,15 +32,15 @@ public interface IUsuariosCanales {
   void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
       String nombreDuenoVideo);
 
-  void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo,
+  void comentarVideo(String texto, Date fecha, int nombreUsuario, String nombreVideo,
       String nombreDuenoVideo);
 
-  void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
+  void responderComentario(String texto, Date fecha, int nombreUsuario, int nombreVideo,
       String nombreDuenoVideo, Integer idComentarioPadre);
 
-  public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
+  public String[] listarVideosDuenosLista(int usuario, String lista, boolean defecto);
 
-  public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto);
+  public List<DtVideo> listarDtVideosDuenosLista(int usuario, String lista, boolean defecto);
 
   public List<DtVideo> getListaDtVideo(String usuario);
 
@@ -50,13 +50,13 @@ public interface IUsuariosCanales {
 
   public boolean existeUsuarioMail(String mail);
 
-  public List<String> getSeguidores(String nombreUsuario);
+  public List<String> getSeguidores(int idUsuario);
 
-  public List<String> getSeguidos(String nombreUsuario);
+  public List<String> getSeguidos(int idUsuario);
 
-  public boolean isSeguidor(String seguidor, String seguido);
+  public boolean isSeguidor(int seguidor, int seguido);
 
-  public void dejarSeguir(String seguidor, String seguido);
+  Spublic void dejarSeguir(int idSeguidor, int idSeguido);
 
   public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal)
       throws DuplicateClassException;

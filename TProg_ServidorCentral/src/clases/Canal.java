@@ -197,10 +197,10 @@ public class Canal {
     }
   }
 
-  public void modVideo(String nombreOld, String nombre) throws DuplicateClassException {
-    if (nombreOld.equals(nombre) || !this.videos.containsKey(nombre)) {
+  public void modVideo(String nombreOld, int idVideo) throws DuplicateClassException {
+    if (nombreOld.equals(idVideo) || !this.videos.containsKey(idVideo)) {
       Video vid = this.videos.remove(nombreOld);
-      this.videos.put(nombre, vid);
+      this.videos.put(idVideo, vid);
     } else {
       throw new DuplicateClassException("Video", "El nombre seleccionado ya existe.");
     }

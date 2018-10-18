@@ -88,7 +88,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
+  public void valorarVideo(int nombreUsuario, boolean like, int nombreVideo,
       String nombreDuenoVideo) {
     Usuario usuario = manejadorUsuarios.getUsuario(nombreUsuario);
     Usuario dueno = manejadorUsuarios.getUsuario(nombreDuenoVideo);
@@ -120,23 +120,23 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void dejarSeguir(String seguidor, String seguido) {
-    manejadorUsuarios.getUsuario(seguidor).dejarSeguir(manejadorUsuarios.getUsuario(seguido));
+  public void dejarSeguir(int idSeguidor, int idSeguido) {
+    manejadorUsuarios.getUsuario(idSeguidor).dejarSeguir(manejadorUsuarios.getUsuario(idSeguido));
   }
 
   @Override
   public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto) {
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
 
-  public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
+  public List<DtVideo> listarDtVideosDuenosLista(int idUsuario, String lista, boolean defecto) {
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
 
-  public List<DtVideo> getListaDtVideo(String usuario) {
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
+  public List<DtVideo> getListaDtVideo(int idUsuario) {
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
@@ -167,9 +167,9 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public List<String> getSeguidores(String nombreUsuario) {
+  public List<String> getSeguidores(int idUsuario) {
     List<String> seguidores = new LinkedList<String>();
-    for (Usuario seguidor : ManejadorUsuarios.getManejadorUsuarios().getUsuario(nombreUsuario)
+    for (Usuario seguidor : ManejadorUsuarios.getManejadorUsuarios().getUsuario(idUsuario)
         .getSeguidores().values()) {
       seguidores.add(seguidor.getNick());
     }
@@ -177,9 +177,9 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public List<String> getSeguidos(String nombreUsuario) {
+  public List<String> getSeguidos(int idUsuario) {
     List<String> seguidos = new LinkedList<String>();
-    for (Usuario seguido : ManejadorUsuarios.getManejadorUsuarios().getUsuario(nombreUsuario)
+    for (Usuario seguido : ManejadorUsuarios.getManejadorUsuarios().getUsuario(idUsuario)
         .getSeguidos().values()) {
       seguidos.add(seguido.getNick());
     }
@@ -187,7 +187,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public boolean isSeguidor(String seguidor, String seguido) {
+  public boolean isSeguidor(int seguidor, int seguido) {
     Usuario userSeguidor = ManejadorUsuarios.getManejadorUsuarios().getUsuario(seguidor);
     Usuario userSeguido = ManejadorUsuarios.getManejadorUsuarios().getUsuario(seguido);
     return (userSeguidor.getSeguidos().containsKey(seguido)
