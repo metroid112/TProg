@@ -45,7 +45,7 @@
 				<% List<String> listaCategorias = (List<String>) lista.getCategorias();
 				for (String cat : listaCategorias) { %>
 				<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=cat%>').submit();">
-					<form id="Form<%=cat%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="GET">
+					<form id="Form<%=cat%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="POST">
 						<input type="hidden" name="CATEGORIA" value="<%=cat%>">
 						<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
 						<header>
