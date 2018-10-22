@@ -30,6 +30,18 @@ public class Usuario {
   private static int idCounter = 0;
 
   public Usuario(String nickname, String nombre, String apellido, String correo,
+      Date fechaNacimiento, BufferedImage image) {
+    this.nick = nickname;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.correo = correo;
+    this.fechaNacimiento = fechaNacimiento;
+    this.imagen = image;
+    Usuario.idCounter++;
+    this.idUsuario = Usuario.idCounter;
+  }
+
+  public Usuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String image, String password) {
     this.nick = nickname;
     this.nombre = nombre;
@@ -74,7 +86,7 @@ public class Usuario {
   }
 
   public BufferedImage getImagen() {
-    return this.img;
+    return imagen;
   }
 
   public String getNick() {
@@ -141,6 +153,14 @@ public class Usuario {
       }
     }
     return calificado;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    Usuario user = (Usuario) object;
+    return (this.nombre.equals(user.nombre) && this.nick.equals(user.nick)
+        && this.apellido.equals(user.apellido) && this.correo.equals(user.correo)
+        && this.fechaNacimiento.equals(user.fechaNacimiento) && this.imagen == user.imagen);
   }
 
   public Comentario getComentario(int idComentario) {

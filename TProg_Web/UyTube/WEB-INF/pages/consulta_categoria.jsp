@@ -11,7 +11,7 @@
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
 			<% String categoria = (String) request.getAttribute("CATEGORIA");%>
-			<h1>Información de <%= "'" + categoria + "'" %></h1>
+			<h1>InformaciÃ³n de <%= "'" + categoria + "'" %></h1>
 			<br>
 			<h2> Videos: </h2>
 				<% for (String infoVideos : (String[]) request.getAttribute("INFO_VIDEOS")) { %>
@@ -19,7 +19,7 @@
 					<br>
 				<% } %>
 				<br>
-			<h2> Listas de reproducción: </h2>
+			<h2> Listas de reproducciÃ³n: </h2>
 				<% for (String infoListas : (String[]) request.getAttribute("INFO_LISTAS")) { %>
 					<%= infoListas %>
 					<br>
