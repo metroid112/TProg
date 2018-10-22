@@ -13,7 +13,8 @@
 		<div class="contenido">
 			<br>
 			Detalles de la lista
-			<% DtLista lista = ((DtLista) request.getAttribute("DTLISTA")); %>
+			<% DtLista lista = (DtLista) request.getAttribute("DTLISTA"); %>
+			<% DtUsuario owner = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO"); %>
 			<%= lista.getNombre() %>
 			<br>
 			Videos de la lista:
@@ -21,7 +22,7 @@
 				<div class="highlights">
 					<% List<DtVideo> listaVideos = (List<DtVideo>) lista.getDtVideos();
 					for (DtVideo video : listaVideos) {
-						if (video.visible) { %>
+						if (video.visible || (owner != null && video.usuario.equals(owner))) { %>
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">
 					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
 						<input type="hidden" name="VIDEO_ID" value="<%=video.idVideo%>">
