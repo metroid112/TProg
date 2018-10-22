@@ -269,4 +269,9 @@ public class Canal {
     return new DtCanal(this.nombreCanal, this.descripcionCanal, this.visible, this.ultimaActividad);
   }
 
+  @Override
+  public boolean equals(Object object) {
+    Canal canal = (Canal) object;
+    return this.usuario.equals(canal.usuario);
+  }
 }

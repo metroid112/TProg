@@ -5,21 +5,21 @@ import java.util.List;
 
 public class Categoria {
 
+  private int idCategoria;
   private String nombre;
   private List<Video> videos = new LinkedList<Video>();
   private List<ListaParticular> listas = new LinkedList<ListaParticular>();
 
+  private static int idCounter = 0;
+
   public Categoria(String nombre) {
     this.nombre = nombre;
+    Categoria.idCounter++;
+    this.idCategoria = Categoria.idCounter;
   }
 
   public void addVideo(Video video) {
     videos.add(video);
-  }
-
-  @Override
-  public boolean equals(Object categoria) {
-    return (this.nombre.equals(((Categoria) categoria).getNombre()));
   }
 
   public String[] getInfoListas() {
@@ -88,6 +88,11 @@ public class Categoria {
 
   public void remove(Video video) {
     this.videos.remove(video);
+  }
 
+  @Override
+  public boolean equals(Object object) {
+    Categoria categoria = (Categoria) object;
+    return this.nombre.equals(categoria.nombre) || this.idCategoria == categoria.idCategoria;
   }
 }

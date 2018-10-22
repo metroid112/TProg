@@ -8,14 +8,15 @@ import datatypes.DtComentario;
 
 public class Comentario {
 
-  private static int idCounter = 0;
   private Date fecha;
-  private int idComentario; // id de comentario para uso interno
+  private int idComentario;
   public Comentario padre;
   private Map<Integer, Comentario> respuestas = new LinkedHashMap<Integer, Comentario>();
   private String texto;
   private Usuario usuario;
   private Video video;
+
+  private static int idCounter = 0;
 
   public Comentario() {
 
