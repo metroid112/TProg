@@ -18,22 +18,14 @@ public class Comentario {
 
   private static int idCounter = 0;
 
-  public Comentario() {
-
-  }
-
-  /**
-   * comentario respuesta con fecha.
-   */
   public Comentario(String texto, Usuario usuario, Video video, Comentario padre, Date fecha) {
-
     this.texto = texto;
     this.usuario = usuario;
     this.video = video;
     this.padre = padre;
     this.fecha = fecha;
-    this.idComentario = Comentario.idCounter;
     Comentario.idCounter++;
+    this.idComentario = Comentario.idCounter;
     padre.addHijo(this);
   }
 
@@ -43,8 +35,8 @@ public class Comentario {
     this.video = video;
     this.fecha = fecha;
     this.padre = null;
-    this.idComentario = Comentario.idCounter;
     Comentario.idCounter++;
+    this.idComentario = Comentario.idCounter;
   }
 
   public void addHijo(Comentario hijo) {
@@ -103,7 +95,6 @@ public class Comentario {
   @Override
   public boolean equals(Object object) {
     Comentario comment = (Comentario) object;
-    return (this.texto.equals(comment.texto) && this.usuario.equals(comment.usuario)
-        && this.video.equals(comment.video));
+    return this.idComentario == comment.idComentario;
   }
 }
