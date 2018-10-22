@@ -7,6 +7,8 @@ Estándar de entrega: https://eva.fing.edu.uy/pluginfile.php/44567/mod_resource/
 
 Calendario: https://eva.fing.edu.uy/mod/page/view.php?id=18800
 
+Trello: https://trello.com/b/3MoDsvey/tprog
+
 # Tarea 1
 
 Letra: https://eva.fing.edu.uy/pluginfile.php/44570/mod_resource/content/9/laboratorio/Tarea_1/Tarea1_2018_v3.pdf
@@ -21,6 +23,6 @@ Datos de prueba: https://eva.fing.edu.uy/pluginfile.php/97305/mod_resource/conte
 
 # Tarea 3
 
-Letra:
+Letra: https://eva.fing.edu.uy/pluginfile.php/49554/mod_resource/content/7/laboratorio/Tarea_3/Tarea3_2018_v6.pdf
 
 Datos de prueba: 
