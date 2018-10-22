@@ -21,6 +21,6 @@ Datos de prueba: https://eva.fing.edu.uy/pluginfile.php/97305/mod_resource/conte
 
 # Tarea 3
 
-Letra:
+Letra: https://eva.fing.edu.uy/pluginfile.php/49554/mod_resource/content/7/laboratorio/Tarea_3/Tarea3_2018_v6.pdf
 
 Datos de prueba: 
