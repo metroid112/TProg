@@ -129,7 +129,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto) {
+  public String[] listarVideosDuenosLista(int idUsuario, String lista, boolean defecto) {
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
@@ -202,7 +202,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal)
       throws DuplicateClassException {
     if (!usuarioModificado.nick.equals(usuarioOriginal.nick)
-        && manejadorUsuarios.getUsuario(usuarioModificado.nick) != null) {
+        && manejadorUsuarios.getUsuario(usuarioModificado.idUsuario) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.nick);
     }
     if (!usuarioModificado.correo.equals(usuarioOriginal.correo)
