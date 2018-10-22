@@ -72,7 +72,7 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public List<DtVideo> getDtVideosPropietario(int idUsuario) {
+  public List<DtVideo> getDtVideosPropietario(int idUsuario) throws NotFoundException{
     Usuario usuario = manejadorUsuario.getUsuario(idUsuario);
     if (usuario != null) {
       return usuario.getCanal().getDtVideos();

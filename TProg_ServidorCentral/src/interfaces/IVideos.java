@@ -33,5 +33,5 @@ public interface IVideos {
 
   public List<DtVideo> getDtVideosPublicos(int idUsuario);
 
-  public List<DtVideo> getDtVideosPropietario(int idUsuario);
+  public List<DtVideo> getDtVideosPropietario(int idUsuario) throws NotFoundException;
 }
