@@ -25,15 +25,15 @@
 				<input type="hidden" name="STATE" value="ALTA">
 				Nombre: <br> <input type="text" name="nombre" required>*
 				<br>
-				Duración (H M S): <br> <input type="number" name="duracionH" required><input type="number" name="duracionM" required><input type="number" name="duracionS" required>*
+				DuraciÃ³n (H M S): <br> <input type="number" name="duracionH" min="0" required><input type="number" name="duracionM" min="0" required><input type="number" name="duracionS" min="0" required>*
 				<br>
 				URL: <br> <input type="url" name="url" required>*
 				<br>
-				Descripción: <br> <textarea rows="5" cols="35" form="formAltaVideo" name="descripcion" required></textarea>*
+				DescripciÃ³n: <br> <textarea rows="5" cols="35" form="formAltaVideo" name="descripcion"></textarea>
 				<br>
 				Fecha: <input type="date" name="fecha" required>*
 				<br>
-				Categoría: <br>
+				CategorÃ­a: <br>
 				<select name="categoria">
 				<% for (String cat : (String[]) request.getAttribute("CATEGORIAS")) { %>
 					<option value="<%= cat %>"><%= cat %> </option>
