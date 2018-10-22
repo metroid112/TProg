@@ -19,7 +19,7 @@
 					<br>
 				<% } %>
 				<br>
-			<h2> Listas de reproducci�n: </h2>
+			<h2> Listas de reproducción: </h2>
 				<% for (String infoListas : (String[]) request.getAttribute("INFO_LISTAS")) { %>
 					<%= infoListas %>
 					<br>
