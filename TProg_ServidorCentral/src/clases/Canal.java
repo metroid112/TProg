@@ -94,13 +94,7 @@ public class Canal {
   }
 
   public Date getUltimaActividad() {
-    Date ultimaActividad = new Date(0);
-    for (Video vid : this.videos.values()) {
-      if (ultimaActividad == null || vid.getFecha().after(ultimaActividad)) {
-        ultimaActividad = vid.getFecha();
-      }
-    }
-    return ultimaActividad;
+    return this.ultimaActividad;
   }
 
   public Map<Integer, Video> getVideos() {
