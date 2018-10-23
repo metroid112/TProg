@@ -19,18 +19,19 @@ import interfaces.IListas;
 import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorListasParticulares;
 import manejadores.ManejadorUsuarios;
+import manejadores.ManejadorVideos;
 
 public class CtrlListas implements IListas {
 
   private ManejadorListasDefecto manejadorListas = ManejadorListasDefecto.getManejadorListas();
   private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
+  private ManejadorVideos manejadorVideos = ManejadorVideos.getManejadorVideos();
 
   @Override
-  public void agregarVideoLista(int usuario, String video, String usuarioObjetivo, String lista,
+  public void agregarVideoLista(int idVideo, int idUsuario, String lista,
       boolean defecto) throws DuplicateClassException, InvalidDataException {
-    Usuario usuarioInicial = manejadorUsuarios.getUsuario(usuario);
-    Usuario userObjetivo = manejadorUsuarios.getUsuario(usuarioObjetivo);
-    Video videoObj = usuarioInicial.getCanal().getVideoCanal(video);
+    Usuario userObjetivo = manejadorUsuarios.getUsuario(idUsuario);
+    Video videoObj = manejadorVideos.getVideo(idVideo);
 
     if (videoObj != null) {
       if (defecto) {
