@@ -5,19 +5,20 @@ import java.util.List;
 
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
+import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 
 public interface IUsuariosCanales {
 
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
-      String categoria, boolean visible, String pass) throws NotFoundException;
+      String categoria, boolean visible, String pass) throws NotFoundException, DuplicateClassException;
 
   public boolean existeUsuario(int nick);
 
   public DtUsuario getDt(int nick);
 
-  public boolean isCanalPublico(String usuario);
+  public boolean isCanalPublico(int idUsuario) throws NotFoundException;
 
   public List<String> listarNombresUsuarios();
 
@@ -29,11 +30,10 @@ public interface IUsuariosCanales {
   public boolean yaCalificacdo(int nombreUsuario, boolean like, int nombreVideo,
       int nombreDuenoVideo) throws NotFoundException;
 
-  void modificarValoracion(boolean like, int idUsuario, int nombreVideo,
-      int idDuenoVideo) throws NotFoundException;
+  void modificarValoracion(boolean like, int idUsuario, int idVideo) throws NotFoundException;
 
-  void comentarVideo(String texto, Date fecha, int nombreUsuario, String nombreVideo,
-      String nombreDuenoVideo) throws NotFoundException;
+  void comentarVideo(String texto, Date fecha, int nombreUsuario, int idVideo,
+      int idOwnerVideo) throws NotFoundException;
 
   void responderComentario(String texto, Date fecha, int nombreUsuario, int nombreVideo,
       String nombreDuenoVideo, Integer idComentarioPadre)throws NotFoundException;
@@ -46,7 +46,7 @@ public interface IUsuariosCanales {
 
   public List<DtVideo> getListaPublicoDtVideo();
 
-  public boolean checkLogin(String usr, String pass);
+  public boolean checkLogin(int idUsuario, String pass) throws NotFoundException;
 
   public boolean existeUsuarioMail(String mail);
 

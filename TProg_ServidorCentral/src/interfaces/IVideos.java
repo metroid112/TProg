@@ -25,9 +25,9 @@ public interface IVideos {
 
   public String[] listarVideos(int idUsuario);
 
-  public void modificarVideo(int idUsuario, String nombreOld, String nombre, String descripcion,
+  public void modificarVideo(int idUsuario, int nombreOld, String nombre, String descripcion,
       String url, String categoria, Duration duracion, boolean visible, Date fecha)
-      throws InvalidDataException, DuplicateClassException;
+      throws InvalidDataException, DuplicateClassException, NotFoundException;
 
   public DtVideo[] listarTodosLosVideos(String nick);
 

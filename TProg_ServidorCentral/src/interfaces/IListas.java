@@ -11,39 +11,36 @@ import excepciones.NotFoundException;
 
 public interface IListas {
 
-  public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
+  public void agregarVideoLista(int idVideo, int idUsuario, String lista,
       boolean defecto) throws DuplicateClassException, InvalidDataException;
 
-  public void altaListaDefecto(String nombre) throws DuplicateClassException;
+  public void altaListaDefecto(String nombreListaDefecto) throws DuplicateClassException;
 
-  public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
+  public void altaListaParticular(String nombreListaDefecto, int idUsuario, boolean visibilidad)
       throws DuplicateClassException;
 
   public DtLista getDt(int idLista) throws NotFoundException;
 
-  public DtLista getDtDefecto(String usuario, String nombreListaDefecto);
+  public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto);
 
   public Map<Integer, DtLista> getDtListas();
 
-  // public String getDue�oVideo(String due�oLista, String nombreLista, String
-  // nombreVid, String algo) throws Exception;
+  public void guardarCambios(String nomLis, int idUsuario, boolean visible) throws NotFoundException ;
 
-  public void guardarCambios(String nomLis, String usuario, boolean visible);
+  public String[] listarListasDefectoUsuario(int idUsuario) throws NotFoundException ;
 
-  public String[] listarListasDefectoUsuario(String usuario);
+  public String[] listarListasParticularUsuario(int idUsuario) throws NotFoundException ;
 
-  public String[] listarListasParticularUsuario(String usuario);
-
-  public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista,
-      boolean deefecto);
+  public void quitarVideoLista(int idUsuario, String nombreVideo, int ownerVideo, String lista,
+      boolean deefecto) throws NotFoundException ;
 
   public List<DtLista> getDtListasPublicas();
 
-  public List<DtLista> getDtListasParticularesUsuario(String usuario);
+  public List<DtLista> getDtListasParticularesUsuario(int idUsuario);
 
-  public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario);
+  public List<DtLista> getDtListasParticularesPublicasUsuario(int idUsuario);
 
-  public List<DtLista> getDtListasDefectoUsuario(String usuario);
+  public List<DtLista> getDtListasDefectoUsuario(int idUsuario);
 
   public List<DtLista> getDtListasPrivadasUsuario(String usuario);
 

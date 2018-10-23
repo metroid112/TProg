@@ -26,7 +26,7 @@ public class CtrlListas implements IListas {
   private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
 
   @Override
-  public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
+  public void agregarVideoLista(int usuario, String video, String usuarioObjetivo, String lista,
       boolean defecto) throws DuplicateClassException, InvalidDataException {
     Usuario usuarioInicial = manejadorUsuarios.getUsuario(usuario);
     Usuario userObjetivo = manejadorUsuarios.getUsuario(usuarioObjetivo);
@@ -50,30 +50,22 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
+  public void altaListaParticular(String nombreLista, int idUsuario, boolean visibilidad)
       throws DuplicateClassException {
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
-    usuarioObjetivo.getCanal().altaListaParticular(nombre, visibilidad);
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
+    usuarioObjetivo.getCanal().altaListaParticular(nombreLista, visibilidad);
   }
 
-  /*
-   * @Override public String getDue�oVideo(String due�oLista, String nombreLista, String nombreVid)
-   * throws Exception {
-   * 
-   * return manejadorUsuarios.get(due�oLista).getCanal().getLista(nombreLista).getVideo(
-   * nombreVid).getCanal() .getUsuario().getNick(); }
-   */
-
   @Override
-  public void guardarCambios(String nomLis, String usuario, boolean visible) {
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
+  public void guardarCambios(String nomLis, int idUsuario, boolean visible) throws NotFoundException {
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     usuarioObjetivo.getCanal().guardarCambios(nomLis, visible);
   }
 
   @Override
-  public String[] listarListasDefectoUsuario(String usuario) {
+  public String[] listarListasDefectoUsuario(int idUsuario) throws NotFoundException {
 
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
 
     return canalObjetivo.getListaDefectoUsuario();
@@ -81,9 +73,9 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public String[] listarListasParticularUsuario(String usuario) {
+  public String[] listarListasParticularUsuario(int idUsuario) throws NotFoundException {
 
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
 
     return canalObjetivo.getListaParticularUsuario();
@@ -91,15 +83,15 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista,
-      boolean defecto) {
-    Usuario usuarioObj = manejadorUsuarios.getUsuario(usuario);
+  public void quitarVideoLista(int idUsuario, String nombreVideo, int ownerVideo, String lista,
+      boolean defecto) throws NotFoundException  {
+    Usuario usuarioObj = manejadorUsuarios.getUsuario(idUsuario);
     Usuario owner = manejadorUsuarios.getUsuario(ownerVideo);
 
     if (defecto) {
-      usuarioObj.getCanal().quitarVideoListaDefecto(video, lista, owner);
+      usuarioObj.getCanal().quitarVideoListaDefecto(nombreVideo, lista, owner);
     } else {
-      usuarioObj.getCanal().quitarVideoListaParticular(video, lista, owner);
+      usuarioObj.getCanal().quitarVideoListaParticular(nombreVideo, lista, owner);
     }
   }
 
@@ -110,8 +102,8 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public DtLista getDtDefecto(String usuario, String nombreListaDefecto) {
-    return ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal()
+  public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto) {
+    return manejadorUsuarios.getUsuario(idUsuario).getCanal()
         .getDtListaDefecto(nombreListaDefecto);
   }
 
@@ -150,9 +142,9 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public List<DtLista> getDtListasParticularesUsuario(String usuario) {
+  public List<DtLista> getDtListasParticularesUsuario(int idUsuario) {
     // TODO Auto-generated method stub
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     List<DtLista> listas = new LinkedList<DtLista>();
     Map<String, ListaParticular> listasParticulares = canalObjetivo.getListasParticulares();
@@ -162,8 +154,8 @@ public class CtrlListas implements IListas {
     return listas;
   }
 
-  public List<DtLista> getDtListasPrivadasUsuario(String usuario) {
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(usuario);
+  public List<DtLista> getDtListasPrivadasUsuario(int idUsuario) {
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     List<DtLista> listas = new LinkedList<DtLista>();
     Map<String, ListaParticular> listasParticulares = canalObjetivo.getListasParticulares();
@@ -176,9 +168,9 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario) {
+  public List<DtLista> getDtListasParticularesPublicasUsuario(int idUsuario) {
     List<DtLista> listas = new LinkedList<DtLista>();
-    for (ListaParticular lista : ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal()
+    for (ListaParticular lista : manejadorUsuarios.getUsuario(idUsuario).getCanal()
         .getListasParticulares().values()) {
       if (lista.isVisible()) {
         listas.add(lista.getDtLista());
@@ -188,9 +180,9 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public List<DtLista> getDtListasDefectoUsuario(String usuario) {
+  public List<DtLista> getDtListasDefectoUsuario(int idUsuario) {
     List<DtLista> listasDefecto = new LinkedList<DtLista>();
-    for (ListaDefecto lista : ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal()
+    for (ListaDefecto lista : manejadorUsuarios.getUsuario(idUsuario).getCanal()
         .getListasDefecto().values()) {
       listasDefecto.add(lista.getDtLista());
     }

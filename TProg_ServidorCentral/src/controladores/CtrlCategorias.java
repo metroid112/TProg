@@ -2,6 +2,7 @@ package controladores;
 
 import clases.Categoria;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import interfaces.ICategorias;
 import manejadores.ManejadorCategorias;
 
@@ -19,25 +20,25 @@ public class CtrlCategorias implements ICategorias {
   }
 
   @Override
-  public String[] getInfoListas(String categoria) {
+  public String[] getInfoListas(String categoria) throws NotFoundException {
     Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoListas();
   }
 
   @Override
-  public String[] getInfoListasPublicas(String categoria) {
+  public String[] getInfoListasPublicas(String categoria) throws NotFoundException  {
     Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoListasPublicas();
   }
 
   @Override
-  public String[] getInfoVideos(String categoria) {
+  public String[] getInfoVideos(String categoria) throws NotFoundException  {
     Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoVideos();
   }
 
   @Override
-  public String[] getInfoVideosPublicos(String categoria) {
+  public String[] getInfoVideosPublicos(String categoria) throws NotFoundException  {
     Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoVideosPublicos();
   }
