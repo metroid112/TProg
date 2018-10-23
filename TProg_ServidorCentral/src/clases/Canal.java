@@ -48,10 +48,7 @@ public class Canal {
       throw new DuplicateClassException("Video", video.getNombre());
     } else {
       this.videos.put(video.getId(), video);
-      if (this.ultimaActividad == null) {
-        this.ultimaActividad = video.getFecha();
-      }
-      if (video.getFecha().after(this.ultimaActividad)) {
+      if (this.ultimaActividad == null || video.getFecha().after(this.ultimaActividad)) {
         this.ultimaActividad = video.getFecha();
       }
     }
