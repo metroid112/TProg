@@ -32,18 +32,13 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       String categoria, boolean visible, String pass) throws NotFoundException, DuplicateClassException{
     Usuario user =
         new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagenPath, pass);
-    String descCanal;
-    if (descripcionCanal.equals("") || descripcionCanal == null) {
-      descCanal = nickname;
-    } else {
-      descCanal = descripcionCanal;
-    }
-
+    String descCanal = nombreCanal.equals("") || nombreCanal == null ? nickname : nombreCanal;
     Canal canal = new Canal(nombreCanal, descCanal,
-        ManejadorCategorias.getManejadorCategorias().getCategoria(categoria), visible, user);
-        user.setCanal(canal);
-        manejadorUsuarios.addUsuario(user);
+    ManejadorCategorias.getManejadorCategorias().getCategoria(categoria), visible, user);
+    user.setCanal(canal);
+    manejadorUsuarios.addUsuario(user);
   }
+
   @Override
   public void comentarVideo(String texto, Date fecha, int idUsuario, int idVideo,
       int idOwnerVideo) throws NotFoundException{
