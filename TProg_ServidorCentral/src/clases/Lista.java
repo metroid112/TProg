@@ -51,8 +51,12 @@ public abstract class Lista {
     }
   }
 
-  public void agregarVideo(Video video) {
-    videos.put(video.getId(), video);
+  public void agregarVideo(Video video) throws InvalidDataException {
+    if (video != null) {
+      videos.put(video.getId(), video);
+    } else {
+      throw new InvalidDataException();
+    }
   }
 
   public void quitarVideo(int idVideo) { // TODO: Cambiar a funciones de MAP
