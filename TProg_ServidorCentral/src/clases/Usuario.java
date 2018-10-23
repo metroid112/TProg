@@ -20,7 +20,7 @@ public class Usuario {
   private Date fechaNacimiento;
   private Canal canal;
   private String imgPath = "img/usuarios/null.JPG";
-  private BufferedImage img;
+  private BufferedImage imagen;
 
   private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
   private Map<Integer, Comentario> comentarios = new HashMap<Integer, Comentario>();
@@ -190,11 +190,11 @@ public class Usuario {
   public void modificarUsuario(DtUsuario usuarioModificado) {
 
   }
-
+/*
   @Override
   public boolean equals(Object object) {
     Usuario user = (Usuario) object;
     return (this.nick.equals(user.nick));
-  }
+  }*/
 
 }

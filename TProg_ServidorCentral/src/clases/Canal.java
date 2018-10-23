@@ -251,7 +251,7 @@ public class Canal {
 
   public List<DtVideo> getDtVideos() {
     List<DtVideo> videos = new ArrayList<DtVideo>();
-    for (Entry<int, Video> video : this.videos.entrySet()) {
+    for (Entry<Integer, Video> video : this.videos.entrySet()) {
       videos.add(video.getValue().getDt());
     }
     return videos;
