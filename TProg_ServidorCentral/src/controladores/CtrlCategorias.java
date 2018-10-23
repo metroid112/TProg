@@ -16,7 +16,8 @@ public class CtrlCategorias implements ICategorias {
 
   @Override
   public void altaCategoria(String nombreCategoria) throws DuplicateClassException {
-    manejadorCategorias.addCategoria(nombreCategoria);
+    Categoria nuevaCategoria = new Categoria(nombreCategoria);
+    manejadorCategorias.addCategoria(nuevaCategoria);
   }
 
   @Override
@@ -42,9 +43,9 @@ public class CtrlCategorias implements ICategorias {
     Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoVideosPublicos();
   }
-
+/*
   @Override
   public String[] listarCategorias() {
     return manejadorCategorias.toArray();
-  }
+  }*/
 }

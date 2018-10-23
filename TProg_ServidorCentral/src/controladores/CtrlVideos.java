@@ -41,8 +41,8 @@ public class CtrlVideos implements IVideos {
     if (user == null) {
       throw new NotFoundException("Usuario " + user.getNombre()); 
     }
-    Video video = user.getCanal().altaVideo(nombre, descripcion, duracion, url, categoria,
-        fecha, visibilidad);
+    Video video = new Video(nombre, descripcion, duracion, url, categoria,user.getCanal(), fecha, visibilidad);
+    user.getCanal().altaVideo(video);
     categoria.addVideo(video);
   }
 
@@ -51,7 +51,7 @@ public class CtrlVideos implements IVideos {
     Video video = ManejadorVideos.getManejadorVideos().getVideo(idVideo);
     return video.getDt();
   }
-
+/*
   @Override
   public String[] listarCategorias() {
     return manejadorCategoria.toArray();
@@ -61,7 +61,7 @@ public class CtrlVideos implements IVideos {
   public String[] listarUsuarios() {
     return manejadorUsuario.toArray();
   }
-
+*/
   @Override
   public String[] listarVideos(int idUsuario) {
     Usuario usuario = manejadorUsuario.getUsuario(idUsuario);

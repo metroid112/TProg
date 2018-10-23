@@ -18,11 +18,11 @@ public interface IVideos {
   public DtVideo getDtVideo(int idVideo) throws NotFoundException;
 
   public Map<Integer, DtVideo> getDtVideos();
-
+/*
   public String[] listarCategorias();
 
   public String[] listarUsuarios();
-
+*/
   public String[] listarVideos(int idUsuario);
 
   public void modificarVideo(int idUsuario, int nombreOld, String nombre, String descripcion,
