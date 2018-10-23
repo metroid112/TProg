@@ -23,6 +23,7 @@ import manejadores.ManejadorVideos;
 public class CtrlVideos implements IVideos {
   private ManejadorCategorias manejadorCategoria = ManejadorCategorias.getManejadorCategorias();
   private ManejadorUsuarios manejadorUsuario = ManejadorUsuarios.getManejadorUsuarios();
+  private ManejadorVideos  manejadorVideo = ManejadorVideos.getManejadorVideos();
 
   public CtrlVideos() {
 
@@ -95,11 +96,11 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public void modificarVideo(int idUsuario, String nombreOld, String nombre, String descripcion,
+  public void modificarVideo(int idUsuario, int idVideo, String nombre, String descripcion,
       String url, String categoriaString, Duration duracion, boolean visible, Date fecha)
-      throws InvalidDataException, DuplicateClassException {
-    Video vid = manejadorUsuario.getUsuario(idUsuario).getCanal().getVideoCanal(nombreOld);
-    vid.getCanal().modVideo(nombreOld, nombre);
+      throws InvalidDataException, DuplicateClassException, NotFoundException {
+    Video vid = manejadorVideo.getVideo(idVideo);
+    vid.getCanal().modVideo(nombre,idVideo);
     Categoria categoria;
     if (categoriaString != null) {
       categoria = manejadorCategoria.getCategoria(categoriaString);
@@ -122,7 +123,6 @@ public class CtrlVideos implements IVideos {
 
   @Override
   public List<DtVideo> getDtVideosPublicos(int idUsuario) {
-    return ManejadorUsuarios.getManejadorUsuarios().getUsuario(idUsuario).getCanal()
-        .getVideosPublicos();
+    return manejadorUsuario.getUsuario(idUsuario).getCanal().getVideosPublicos();
   }
 }
