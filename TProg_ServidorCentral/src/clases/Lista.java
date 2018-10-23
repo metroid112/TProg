@@ -51,7 +51,7 @@ public abstract class Lista {
     videos.put(video.getId(), video);
   }
 
-  public void quitarVideo(Video video) { //Cambiar a MAP
+  public void quitarVideo(Video video) { // TODO: Cambiar a MAP
     videos.remove(video);
   }
 }
