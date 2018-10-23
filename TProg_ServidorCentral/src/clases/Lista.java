@@ -28,7 +28,7 @@ public abstract class Lista {
   }
 
   public boolean existeVideo(int idVideo) {
-    return videos.contains(video);
+    return videos.contains(idVideo);
   }
 
   public Map<Integer, Video> getVideos() {
@@ -43,15 +43,19 @@ public abstract class Lista {
     return nombre;
   }
 
-  public Video getVideo(int idVideo) {
-    return this.videos.get(idVideo);
+  public Video getVideo(int idVideo) throws NotFoundException {
+    if (this.videos.containsKey(idVideo)) {
+      return this.videos.get(idVideo);
+    } else {
+      throw new NotFoundException();
+    }
   }
 
   public void agregarVideo(Video video) {
     videos.put(video.getId(), video);
   }
 
-  public void quitarVideo(Video video) { // TODO: Cambiar a MAP
+  public void quitarVideo(int idVideo) { // TODO: Cambiar a funciones de MAP
     videos.remove(video);
   }
 }
