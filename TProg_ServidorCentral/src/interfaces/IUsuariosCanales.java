@@ -5,6 +5,7 @@ import java.util.List;
 
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
+import excepciones.DuplicateClassException;
 
 public interface IUsuariosCanales {
 

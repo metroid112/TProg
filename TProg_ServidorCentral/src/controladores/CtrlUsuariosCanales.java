@@ -9,6 +9,7 @@ import clases.Usuario;
 import clases.Video;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
+import excepciones.DuplicateClassException;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -201,8 +202,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     if(!usuarioModificado.nick.equals(usuarioOriginal.nick) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.nick);
     }
-    if(!usuarioModificado.mail.equals(usuarioOriginal.mail) && manejadorUsuarios.mailGet(usuarioModificado.mail) != null) {
-      throw new DuplicateClassException("Usuario", usuarioModificado.mail);
+    if(!usuarioModificado.correo.equals(usuarioOriginal.correo) && manejadorUsuarios.mailGet(usuarioModificado.correo) != null) {
+      throw new DuplicateClassException("Usuario", usuarioModificado.correo);
     }
     Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
     
