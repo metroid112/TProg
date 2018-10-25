@@ -84,29 +84,4 @@ public class ManejadorUsuarios {
   public Map<Integer, Usuario> getUsuarios() {
     return this.usuarios;
   }
-
-  // TODO: Repensar lista defecto
-  public void agregarListaDefecto(String nombreListaDefecto) {
-    for (Usuario usuario : usuarios.values()) {
-      usuario.getCanal().ingresarListaDefecto(nombreListaDefecto);
-    }
-  }
-
-  // TODO: Repensar esta funcion en controlador
-  public List<DtVideo> getListaPublicoDtVideo() {
-    List<DtVideo> result = new LinkedList<DtVideo>();
-    List<DtVideo> listaUsuario = null;
-
-    for (Usuario usuarioObjetivo : usuarios.values()) {
-
-      Canal canalObjetivo = usuarioObjetivo.getCanal();
-      listaUsuario = canalObjetivo.listaPublicoDtVideo();
-
-      for (DtVideo v : listaUsuario) {
-        result.add(v);
-      }
-
-    }
-    return result;
-  }
 }

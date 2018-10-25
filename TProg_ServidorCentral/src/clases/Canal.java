@@ -49,7 +49,24 @@ public class Canal {
       this.videos.put(video.getId(), video);
     }
   }
+  
+  public void agregarListaDefecto(ListaDefecto listaDefecto) throws DuplicateClassException {
+    if (this.listasDefecto.containsKey(listaDefecto.getId())) {
+      throw new DuplicateClassException("Lista", listaDefecto.getNombre());
+    } else {
+      this.listasDefecto.put(listaDefecto.getId(), listaDefecto);
+    }
+  }
 
+  public void agregarListaParticular(ListaParticular listaParticular)
+      throws DuplicateClassException {
+    if (this.listasParticulares.containsKey(listaParticular.getId())) {
+      throw new DuplicateClassException("Lista", listaParticular.getNombre());
+    } else {
+      this.listasParticulares.put(listaParticular.getId(), listaParticular);
+    }
+  }
+  
   public void agregarVideoListaDefecto(Video video, int idListaDefecto)
       throws DuplicateClassException {
     ListaDefecto lista = listasDefecto.get(idListaDefecto);
@@ -69,23 +86,6 @@ public class Canal {
       lista.agregarCategoria(categoria);
     } else {
       throw new DuplicateClassException("Video", video.getNombre());
-    }
-  }
-
-  public void agregarListaDefecto(ListaDefecto listaDefecto) throws DuplicateClassException {
-    if (this.listasDefecto.containsKey(listaDefecto.getId())) {
-      throw new DuplicateClassException("Lista", listaDefecto.getNombre());
-    } else {
-      this.listasDefecto.put(listaDefecto.getId(), listaDefecto);
-    }
-  }
-
-  public void agregarListaParticular(ListaParticular listaParticular)
-      throws DuplicateClassException {
-    if (this.listasParticulares.containsKey(listaParticular.getId())) {
-      throw new DuplicateClassException("Lista", listaParticular.getNombre());
-    } else {
-      this.listasParticulares.put(listaParticular.getId(), listaParticular);
     }
   }
 
@@ -206,11 +206,18 @@ public class Canal {
     }
   }
 
+  public List<DtVideo> getDtVideos() {
+    List<DtVideo> videos = new ArrayList<DtVideo>();
+    for (Entry<Integer, Video> video : this.videos.entrySet()) {
+      videos.add(video.getValue().getDt());
+    }
+    return videos;
+  }
+  
   public List<DtVideo> listaDtVideo() {
     List<DtVideo> result = new LinkedList<DtVideo>();
     for (Video v : videos.values()) {
-      DtVideo nuevo = v.getDt();
-      result.add(nuevo);
+      result.add(v.getDt());
     }
     return result;
   }
@@ -247,14 +254,6 @@ public class Canal {
 
   public void agregarVideo(Video video) {
     this.videos.put(video.getId(), video);
-  }
-
-  public List<DtVideo> getDtVideos() {
-    List<DtVideo> videos = new ArrayList<DtVideo>();
-    for (Entry<Integer, Video> video : this.videos.entrySet()) {
-      videos.add(video.getValue().getDt());
-    }
-    return videos;
   }
 
   public Categoria getCategoria() {

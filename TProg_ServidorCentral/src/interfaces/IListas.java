@@ -11,17 +11,17 @@ import excepciones.NotFoundException;
 
 public interface IListas {
 
-  public void agregarVideoLista(int idVideo, int idUsuario, String lista,
-      boolean defecto) throws DuplicateClassException, InvalidDataException;
+  public void agregarVideoLista(int idVideo, int idUsuario, int idLista,
+      boolean defecto) throws DuplicateClassException, InvalidDataException, NotFoundException ;
 
   public void altaListaDefecto(String nombreListaDefecto) throws DuplicateClassException;
 
   public void altaListaParticular(String nombreListaDefecto, int idUsuario, boolean visibilidad)
-      throws DuplicateClassException;
+      throws DuplicateClassException, NotFoundException ;
 
   public DtLista getDt(int idLista) throws NotFoundException;
 
-  public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto);
+  public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto)throws NotFoundException ;
 
   public Map<Integer, DtLista> getDtListas();
 
@@ -38,7 +38,7 @@ public interface IListas {
 
   public List<DtLista> getDtListasParticularesUsuario(int idUsuario);
 
-  public List<DtLista> getDtListasParticularesPublicasUsuario(int idUsuario);
+  public List<DtLista> getDtListasParticularesPublicasUsuario(int idUsuario)throws NotFoundException ;
 
   public List<DtLista> getDtListasDefectoUsuario(int idUsuario);
 

@@ -29,9 +29,9 @@ public interface IVideos {
       String url, String categoria, Duration duracion, boolean visible, Date fecha)
       throws InvalidDataException, DuplicateClassException, NotFoundException;
 
-  public DtVideo[] listarTodosLosVideos(String nick);
+  public DtVideo[] listarTodosLosVideos(int idUsuario);
 
-  public List<DtVideo> getDtVideosPublicos(int idUsuario);
+  public List<DtVideo> getDtVideosPublicos();
 
   public List<DtVideo> getDtVideosPropietario(int idUsuario) throws NotFoundException;
 }

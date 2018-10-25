@@ -11,7 +11,9 @@ import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
+import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
+import interfaces.IVideos;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
 import manejadores.ManejadorVideos;
@@ -21,11 +23,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
   private ManejadorVideos manejadorVideos = ManejadorVideos.getManejadorVideos();
+  private IVideos controladorVideos = Fabrica.getIVideos();
 
   public CtrlUsuariosCanales() {
-
   }
-
+  
   @Override
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
@@ -44,6 +46,83 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
         user.setCanal(canal);
         manejadorUsuarios.addUsuario(user);
   }
+  
+  @Override
+  public boolean existeUsuario(int idUsuario) {
+    return manejadorUsuarios.existeUsuarioId(idUsuario);
+  }
+  
+  @Override
+  public boolean existeUsuarioMail(String mail) throws NotFoundException { // Se borra?
+    if (manejadorUsuarios.getUsuarioCorreo(mail) != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  @Override
+  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws NotFoundException, DuplicateClassException{
+    if (!usuarioModificado.getNick().equals(usuarioOriginal.getNick())
+        && manejadorUsuarios.getUsuario(usuarioModificado.getIdUsuario()) != null) {
+      throw new DuplicateClassException("Usuario", usuarioModificado.getNick());
+    }
+    if(!usuarioModificado.getCorreo().equals(usuarioOriginal.getCorreo()) && manejadorUsuarios.getUsuarioCorreo(usuarioModificado.getCorreo()) != null) {
+      throw new DuplicateClassException("Usuario", usuarioModificado.getCorreo());
+    }
+    Usuario usuario = manejadorUsuarios.getUsuario(usuarioOriginal.getIdUsuario());
+    usuario.modificarUsuario(usuarioModificado);
+  }
+  
+  @Override
+  public DtUsuario getDt(int idUsuario) throws NotFoundException{
+    return manejadorUsuarios.getUsuario(idUsuario).getDt();    
+  }
+  
+  @Override
+  public List<String> listarNombresUsuarios(){
+    List<String> resultado = new LinkedList<String>();
+    for (Usuario usuario : manejadorUsuarios.getUsuarios().values()) {
+      resultado.add(usuario.getNick());
+    }
+    return resultado;
+  }
+  
+  @Override
+  public boolean checkLogin(int idUsuario, String pass) throws NotFoundException {
+    return manejadorUsuarios.getUsuario(idUsuario).checkPass(pass);
+  }
+  
+  @Override
+  public boolean isCanalPublico(int idUsuario) throws NotFoundException{
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
+    return usuarioObjetivo.getCanal().isVisible();
+  }
+  
+  @Override
+  public String[] listarVideosDuenosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
+    return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
+  }
+  
+  @Override
+  public List<DtVideo> listarDtVideosDuenosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
+    return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
+  }
+
+  @Override
+  public List<DtVideo> getListaDtVideo(int idUsuario) throws NotFoundException {
+    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
+    Canal canalObjetivo = usuarioObjetivo.getCanal();
+    return canalObjetivo.listaDtVideo();
+  }
+  
+  @Override
+  public List<DtVideo> getListaPublicoDtVideo() {
+    return controladorVideos.getDtVideosPublicos();
+  }
+  
   @Override
   public void comentarVideo(String texto, Date fecha, int idUsuario, int idVideo,
       int idOwnerVideo) throws NotFoundException{
@@ -59,40 +138,9 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario usuario = manejadorUsuarios.getUsuario(idUsuario);
     Video vid = manejadorVideos.getVideo(idVideo);
     usuario.responder(texto, fecha, idComentarioPadre, vid);
-
   }
 
   @Override
-  public boolean existeUsuario(int idUsuario) {
-    return manejadorUsuarios.existeUsuarioId(idUsuario);
-  }
-
-  @Override
-  public boolean existeUsuarioMail(String mail) { // Se borra?
-    if (manejadorUsuarios.mailGet(mail) != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  @Override
-  public DtUsuario getDt(int idUsuario) {
-    Usuario resultadoObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    if (resultadoObjetivo != null) {
-      return resultadoObjetivo.getDt();
-    } else {
-      return manejadorUsuarios.mailGet(nick).getDt();
-    }
-  }
-
-  @Override
-  public boolean isCanalPublico(int idUsuario) throws NotFoundException{
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    return usuarioObjetivo.getCanal().isVisible();
-  }
-
-
   public void valorarVideo(int idUsuario, boolean like, int nombreVideo) throws NotFoundException {
     Usuario usuario = manejadorUsuarios.getUsuario(idUsuario);
     Video vid = manejadorVideos.getVideo(nombreVideo);
@@ -107,6 +155,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = manejadorVideos.getVideo(idVideo);
     return usuario.yaCalificado(like, vid);
   }
+  
   @Override
   public void modificarValoracion(boolean like, int idUsuario, int idVideo) throws NotFoundException {
     Usuario usuario = manejadorUsuarios.getUsuario(idUsuario);
@@ -114,6 +163,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     usuario.modificarValoracion(like, vid);
   }
 
+  @Override
   public void seguir(int idUsuarioSeguidor, int idUsuarioSeguido) throws NotFoundException {
     manejadorUsuarios.getUsuario(idUsuarioSeguidor).seguir(manejadorUsuarios.getUsuario(idUsuarioSeguido));
   }
@@ -121,46 +171,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   @Override
   public void dejarSeguir(int idUsuarioSeguidor, int idUsuarioSeguido) throws NotFoundException {
     manejadorUsuarios.getUsuario(idUsuarioSeguidor).dejarSeguir(manejadorUsuarios.getUsuario(idUsuarioSeguido));
-  }
-
-  @Override
-  public String[] listarVideosDuenosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
-  }
-  @Override
-  public List<DtVideo> listarDtVideosDuenosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
-  }
-
-  public List<DtVideo> getListaDtVideo(int idUsuario) throws NotFoundException {
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    Canal canalObjetivo = usuarioObjetivo.getCanal();
-    return canalObjetivo.listaDtVideo();
-  }
-  @Override
-  public List<DtVideo> getListaPublicoDtVideo() {
-
-    return manejadorUsuarios.getListaPublicoDtVideo();
-  }
-  @Override
-  public boolean checkLogin(int idUsuario, String pass){
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    if(usuarioObjetivo != null) {
-      return usuarioObjetivo.checkPass(pass);
-    } else {
-      return manejadorUsuarios.mailGet(usr).checkPass(pass);
-    }
-  }
-
-  @Override
-  public List<String> listarNombresUsuarios(){
-    List<String> resultado = new LinkedList<String>();
-    for (Usuario usuario : manejadorUsuarios.getUsuarios().values()) {
-      resultado.add(usuario.getNick());
-    }
-    return resultado;
   }
 
   @Override
@@ -189,18 +199,5 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario userSeguido = manejadorUsuarios.getUsuario(seguido);
     return (userSeguidor.getSeguidos().containsKey(seguido)
         && userSeguido.getSeguidores().containsKey(seguidor));
-  }
-
-  @Override
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal){
-    if (!usuarioModificado.getNick().equals(usuarioOriginal.getNick())
-        && manejadorUsuarios.getUsuario(usuarioModificado.getIdUsuario()) != null) {
-      throw new DuplicateClassException("Usuario", usuarioModificado.getNick());
-    }
-    if(!usuarioModificado.getCorreo().equals(usuarioOriginal.getCorreo()) && manejadorUsuarios.mailGet(usuarioModificado.getCorreo()) != null) {
-      throw new DuplicateClassException("Usuario", usuarioModificado.getCorreo());
-    }
-    Usuario usuario = manejadorUsuarios.getUsuario(usuarioOriginal.getIdUsuario());
-    usuario.modificarUsuario(usuarioModificado);
   }
 }
