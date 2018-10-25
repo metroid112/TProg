@@ -10,7 +10,7 @@ public interface ICategorias {
 
   public String[] getInfoVideos(String categoria) throws NotFoundException ;
 
-  public String[] listarCategorias();
+//  public String[] listarCategorias();
 
   public String[] getInfoVideosPublicos(String categoria) throws NotFoundException ;
 

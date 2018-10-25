@@ -16,40 +16,41 @@ public interface IUsuariosCanales {
 
   public boolean existeUsuario(int nick);
 
-  public DtUsuario getDt(int nick);
-
-  public boolean isCanalPublico(int idUsuario) throws NotFoundException;
+  public boolean existeUsuarioMail(String mail) throws NotFoundException;
+  
+  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws NotFoundException, DuplicateClassException ;
+  
+  public DtUsuario getDt(int nick) throws NotFoundException;
 
   public List<String> listarNombresUsuarios();
-
-  public void seguir(String seguidor, String seguido) throws NotFoundException;
-
-  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
-      String nombreDuenoVideo);
-
-  public boolean yaCalificacdo(int nombreUsuario, boolean like, int nombreVideo,
-      int nombreDuenoVideo) throws NotFoundException;
-
-  void modificarValoracion(boolean like, int idUsuario, int idVideo) throws NotFoundException;
-
-  void comentarVideo(String texto, Date fecha, int nombreUsuario, int idVideo,
-      int idOwnerVideo) throws NotFoundException;
-
-  void responderComentario(String texto, Date fecha, int nombreUsuario, int nombreVideo,
-      String nombreDuenoVideo, Integer idComentarioPadre)throws NotFoundException;
+  
+  public boolean checkLogin(int idUsuario, String pass) throws NotFoundException;
+  
+  public boolean isCanalPublico(int idUsuario) throws NotFoundException;
 
   public String[] listarVideosDuenosLista(int usuario, String lista, boolean defecto) throws NotFoundException;
 
   public List<DtVideo> listarDtVideosDuenosLista(int usuario, String lista, boolean defecto) throws NotFoundException;
 
-  public List<DtVideo> getListaDtVideo(String usuario);
+  public List<DtVideo> getListaDtVideo(int idUsuario) throws NotFoundException;
 
   public List<DtVideo> getListaPublicoDtVideo();
 
-  public boolean checkLogin(int idUsuario, String pass) throws NotFoundException;
+  void comentarVideo(String texto, Date fecha, int nombreUsuario, int idVideo,
+      int idOwnerVideo) throws NotFoundException;
 
-  public boolean existeUsuarioMail(String mail);
+  void responderComentario(String texto, Date fecha, int nombreUsuario, int nombreVideo,
+      String nombreDuenoVideo, Integer idComentarioPadre) throws NotFoundException;
+  
+  void valorarVideo(int idUsuario, boolean like, int nombreVideo) throws NotFoundException;
 
+  public boolean yaCalificacdo(int nombreUsuario, boolean like, int nombreVideo,
+      int nombreDuenoVideo) throws NotFoundException;
+
+  void modificarValoracion(boolean like, int idUsuario, int idVideo) throws NotFoundException;
+  
+  public void seguir(int idUsuarioSeguidor, int idUsuarioSeguido) throws NotFoundException;
+  
   public List<String> getSeguidores(int idUsuario) throws NotFoundException;
 
   public List<String> getSeguidos(int idUsuario) throws NotFoundException;
@@ -58,5 +59,4 @@ public interface IUsuariosCanales {
 
   public void dejarSeguir(int idSeguidor, int idSeguido) throws NotFoundException;
 
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal);
 }

@@ -4,10 +4,12 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import clases.Canal;
 import clases.Categoria;
 import clases.Usuario;
 import clases.Video;
@@ -30,7 +32,7 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public void altaVideo(int idUsuario, String nombre, String descripcion, Duration duracion,
+  public void altaVideo(int idUsuario, String nombreVideo, String descripcion, Duration duracion,
       String url, String nombreCategoria, Date fecha, boolean visibilidad)
       throws DuplicateClassException, NotFoundException {
     Categoria categoria = manejadorCategoria.getCategoria(nombreCategoria);
@@ -39,10 +41,10 @@ public class CtrlVideos implements IVideos {
     }
     Usuario user = manejadorUsuario.getUsuario(idUsuario);
     if (user == null) {
-      throw new NotFoundException("Usuario " + user.getNombre()); 
+      throw new NotFoundException("Usuario no encontrado"); 
     }
-    Video video = user.getCanal().altaVideo(nombre, descripcion, duracion, url, categoria,
-        fecha, visibilidad);
+    Video video = new Video(nombreVideo, descripcion, duracion, url, categoria,user.getCanal(), fecha, visibilidad);
+    user.getCanal().altaVideo(video);
     categoria.addVideo(video);
   }
 
@@ -51,7 +53,7 @@ public class CtrlVideos implements IVideos {
     Video video = ManejadorVideos.getManejadorVideos().getVideo(idVideo);
     return video.getDt();
   }
-
+/*
   @Override
   public String[] listarCategorias() {
     return manejadorCategoria.toArray();
@@ -61,7 +63,7 @@ public class CtrlVideos implements IVideos {
   public String[] listarUsuarios() {
     return manejadorUsuario.toArray();
   }
-
+*/
   @Override
   public String[] listarVideos(int idUsuario) {
     Usuario usuario = manejadorUsuario.getUsuario(idUsuario);
@@ -82,11 +84,11 @@ public class CtrlVideos implements IVideos {
     }
   }
 
-
+  @Override
   public DtVideo[] listarTodosLosVideos(int idUsuario) {
     List<DtVideo> listaVideos = new ArrayList<DtVideo>();
     for (Usuario usuario : manejadorUsuario.getUsuarios().values()) {
-      List<DtVideo> lista = usuario.getCanal().getVideosPublicos();
+      List<DtVideo> lista = usuario.getCanal().listaPublicoDtVideo();
       listaVideos.addAll(lista);
     }
     Usuario user = manejadorUsuario.getUsuario(idUsuario);
@@ -122,7 +124,20 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public List<DtVideo> getDtVideosPublicos(int idUsuario) {
-    return manejadorUsuario.getUsuario(idUsuario).getCanal().getVideosPublicos();
+  public List<DtVideo> getDtVideosPublicos() {
+    List<DtVideo> result = new LinkedList<DtVideo>();
+    List<DtVideo> listaUsuario = null;
+
+    for (Usuario usuarioObjetivo : manejadorUsuario.getUsuarios().values()) {
+
+      Canal canalObjetivo = usuarioObjetivo.getCanal();
+      listaUsuario = canalObjetivo.listaPublicoDtVideo();
+
+      for (DtVideo v : listaUsuario) {
+        result.add(v);
+      }
+
+    }
+    return result;
   }
 }
