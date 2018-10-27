@@ -25,6 +25,11 @@ public class Publicador {
   
   @WebMethod
   public String prueba(String texto) {
-    return "Texto: " + texto;
+    return "Tevmhvmnvnm mnhmxto: " + texto;
+  }
+  
+  @WebMethod
+  public String prueba2() {
+    return "prueba 2";
   }
 }
