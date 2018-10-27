@@ -37,3 +37,6 @@ hs_err_pid*
 !apache-tomcat-8.5.4/conf/*
 !apache-tomcat-8.5.4/lib/*
 !apache-tomcat-8.5.4/webapps/*
+apache-tomcat-8.5.4/Catalina/*
+apache-tomcat-8.5.4/work/*
+
