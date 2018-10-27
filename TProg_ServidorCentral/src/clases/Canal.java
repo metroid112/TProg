@@ -74,7 +74,7 @@ public class Canal {
   public void agregarVideoListaDefecto(Video video, int idListaDefecto)
       throws DuplicateClassException {
     ListaDefecto lista = listasDefecto.get(idListaDefecto);
-    if (!lista.existeVideo(video)) {
+    if (!lista.existeVideo(video.getId())) {
       lista.agregarVideo(video);
     } else {
       throw new DuplicateClassException("Video", video.getNombre());
@@ -84,7 +84,7 @@ public class Canal {
   public void agregarVideoListaParticular(Video video, int idListaParticular)
       throws DuplicateClassException {
     ListaParticular lista = listasParticulares.get(idListaParticular);
-    if (!lista.existeVideo(video)) {
+    if (!lista.existeVideo(video.getId())) {
       lista.agregarVideo(video);
       Categoria categoria = video.getCategoria();
       lista.agregarCategoria(categoria);
@@ -226,14 +226,14 @@ public class Canal {
   public void quitarVideoListaDefecto(String video, String lista, Usuario ownerVideo) {
     ListaDefecto listaObj = listasDefecto.get(lista);
     Video videoObj = listaObj.getVideo(video, ownerVideo);
-    listaObj.quitarVideo(videoObj);
+    listaObj.quitarVideo(videoObj.getId());
 
   }
 
   public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
     ListaParticular listaObj = listasParticulares.get(lista);
     Video videoObj = listaObj.getVideo(video, ownerVideo);
-    listaObj.quitarVideo(videoObj);
+    listaObj.quitarVideo(videoObj.getId());
     Categoria cat = videoObj.getCategoria();
 
     if (listaObj.esUnicaCategoria(cat)) {
