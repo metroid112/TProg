@@ -35,11 +35,12 @@ public class Canal {
     this.descripcionCanal = descripcionCanal;
     this.visible = visible;
     this.usuario = user;
+    this.categoria = categoria;
+
     for (String lista : ManejadorListasDefecto.getManejadorListasDefecto().getListasDefecto()) {
       ListaDefecto listaDefecto = new ListaDefecto(lista, this);
       this.listasDefecto.put(listaDefecto.getId(), listaDefecto);
     }
-    this.categoria = categoria;
   }
 
   public void altaVideo(Video video) throws DuplicateClassException {
@@ -47,6 +48,9 @@ public class Canal {
       throw new DuplicateClassException("Video", video.getNombre());
     } else {
       this.videos.put(video.getId(), video);
+      if (this.ultimaActividad == null || video.getFecha().after(this.ultimaActividad)) {
+        this.ultimaActividad = video.getFecha();
+      }
     }
   }
   
@@ -90,13 +94,7 @@ public class Canal {
   }
 
   public Date getUltimaActividad() {
-    Date ultimaActividad = new Date(0);
-    for (Video vid : this.videos.values()) {
-      if (ultimaActividad == null || vid.getFecha().after(ultimaActividad)) {
-        ultimaActividad = vid.getFecha();
-      }
-    }
-    return ultimaActividad;
+    return this.ultimaActividad;
   }
 
   public Map<Integer, Video> getVideos() {
@@ -260,4 +258,9 @@ public class Canal {
     return new DtCanal(this.nombreCanal, this.descripcionCanal, this.visible, this.ultimaActividad);
   }
 
+  @Override
+  public boolean equals(Object object) {
+    Canal canal = (Canal) object;
+    return this.usuario.equals(canal.usuario);
+  }
 }

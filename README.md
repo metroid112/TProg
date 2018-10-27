@@ -1,3 +1,13 @@
+# Dependencies
+
+Apache Tomcat 8.5.4: https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.4/bin/apache-tomcat-8.5.4.zip
+
+CXF 3.2.6: https://www.apache.org/dyn/closer.lua/cxf/3.2.6/apache-cxf-3.2.6.zip
+
+JSTL 1.2: http://central.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar
+
+SwingX 1.6.5-1: http://central.maven.org/maven2/org/swinglabs/swingx/swingx-core/1.6.5-1/swingx-core-1.6.5-1.jar
+
 # TProg
 Taller de Progamación
 

@@ -11,7 +11,7 @@
 			<div>
 				<b>${com.value.usuario}</b>: ${com.value.texto} (<f:formatDate value="${com.value.fecha}" pattern="dd-MM-yyyy HH:mm"/>)
 				<%if(d!=null){ %>
-					<form action="/ConsultaVideo" method="POST">
+					<form action="ConsultaVideo" method="POST">
 						<input type="hidden" name="ACCION" value="COMENTAR">
 						<input type="text" name="COMENTARIO">
 						<input type="hidden" id="1" name="VIDEO_ID" value= "<%= vid.idVideo %>" >

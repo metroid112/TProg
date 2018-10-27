@@ -27,31 +27,25 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   public CtrlUsuariosCanales() {
   }
-  
+
   @Override
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass) throws NotFoundException, DuplicateClassException{
     Usuario user =
         new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagenPath, pass);
-    String descCanal;
-    if (descripcionCanal.equals("") || descripcionCanal == null) {
-      descCanal = nickname;
-    } else {
-      descCanal = descripcionCanal;
-    }
-
+    String descCanal = nombreCanal.equals("") || nombreCanal == null ? nickname : nombreCanal;
     Canal canal = new Canal(nombreCanal, descCanal,
-        ManejadorCategorias.getManejadorCategorias().getCategoria(categoria), visible, user);
-        user.setCanal(canal);
-        manejadorUsuarios.addUsuario(user);
+    ManejadorCategorias.getManejadorCategorias().getCategoria(categoria), visible, user);
+    user.setCanal(canal);
+    manejadorUsuarios.addUsuario(user);
   }
-  
+
   @Override
   public boolean existeUsuario(int idUsuario) {
     return manejadorUsuarios.existeUsuarioId(idUsuario);
   }
-  
+
   @Override
   public boolean existeUsuarioMail(String mail) throws NotFoundException { // Se borra?
     if (manejadorUsuarios.getUsuarioCorreo(mail) != null) {
@@ -60,7 +54,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       return false;
     }
   }
-  
+
   @Override
   public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws NotFoundException, DuplicateClassException{
     if (!usuarioModificado.getNick().equals(usuarioOriginal.getNick())
@@ -73,12 +67,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario usuario = manejadorUsuarios.getUsuario(usuarioOriginal.getIdUsuario());
     usuario.modificarUsuario(usuarioModificado);
   }
-  
+
   @Override
   public DtUsuario getDt(int idUsuario) throws NotFoundException{
-    return manejadorUsuarios.getUsuario(idUsuario).getDt();    
+    return manejadorUsuarios.getUsuario(idUsuario).getDt();
   }
-  
+
   @Override
   public List<String> listarNombresUsuarios(){
     List<String> resultado = new LinkedList<String>();
@@ -87,24 +81,24 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     }
     return resultado;
   }
-  
+
   @Override
   public boolean checkLogin(int idUsuario, String pass) throws NotFoundException {
     return manejadorUsuarios.getUsuario(idUsuario).checkPass(pass);
   }
-  
+
   @Override
   public boolean isCanalPublico(int idUsuario) throws NotFoundException{
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().isVisible();
   }
-  
+
   @Override
   public String[] listarVideosDuenosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
-  
+
   @Override
   public List<DtVideo> listarDtVideosDuenosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
@@ -117,12 +111,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
-  
+
   @Override
   public List<DtVideo> getListaPublicoDtVideo() {
     return controladorVideos.getDtVideosPublicos();
   }
-  
+
   @Override
   public void comentarVideo(String texto, Date fecha, int idUsuario, int idVideo,
       int idOwnerVideo) throws NotFoundException{
@@ -155,7 +149,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Video vid = manejadorVideos.getVideo(idVideo);
     return usuario.yaCalificado(like, vid);
   }
-  
+
   @Override
   public void modificarValoracion(boolean like, int idUsuario, int idVideo) throws NotFoundException {
     Usuario usuario = manejadorUsuarios.getUsuario(idUsuario);

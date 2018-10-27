@@ -1,9 +1,0 @@
-- Cambio la siguiente linea
-
-La fecha es: <%= (1/0) %>
-
-por 
-
-La fecha es: <%= (1/10) %>
-
-Eso probocaba error y hacia que ninguna de las dos paginas del ejemplo se cargaran.
