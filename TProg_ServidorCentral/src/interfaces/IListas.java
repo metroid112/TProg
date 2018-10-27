@@ -3,6 +3,7 @@ package interfaces;
 import java.util.List;
 import java.util.Map;
 
+import clases.ListaDefecto;
 import clases.ListaParticular;
 import datatypes.DtLista;
 import excepciones.DuplicateClassException;
@@ -27,22 +28,22 @@ public interface IListas {
 
   public void guardarCambios(String nomLis, int idUsuario, boolean visible) throws NotFoundException ;
 
-  public String[] listarListasDefectoUsuario(int idUsuario) throws NotFoundException ;
+  public Map<Integer, ListaDefecto> listarListasDefectoUsuario(int idUsuario) throws NotFoundException ;
 
-  public String[] listarListasParticularUsuario(int idUsuario) throws NotFoundException ;
+  public Map<Integer, ListaParticular> listarListasParticularUsuario(int idUsuario) throws NotFoundException ;
 
   public void quitarVideoLista(int idUsuario, String nombreVideo, int ownerVideo, String lista,
       boolean deefecto) throws NotFoundException ;
 
   public List<DtLista> getDtListasPublicas();
 
-  public List<DtLista> getDtListasParticularesUsuario(int idUsuario);
+  public List<DtLista> getDtListasParticularesUsuario(int idUsuario) throws NotFoundException ;
 
   public List<DtLista> getDtListasParticularesPublicasUsuario(int idUsuario)throws NotFoundException ;
 
-  public List<DtLista> getDtListasDefectoUsuario(int idUsuario);
+  public List<DtLista> getDtListasDefectoUsuario(int idUsuario) throws NotFoundException ;
 
-  public List<DtLista> getDtListasPrivadasUsuario(String usuario);
+  public List<DtLista> getDtListasPrivadasUsuario(int idUsuario) throws NotFoundException ;
 
   public Map<Integer, ListaParticular> getListasPublicas();
 }

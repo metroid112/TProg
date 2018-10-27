@@ -53,39 +53,19 @@ public class CtrlVideos implements IVideos {
     Video video = ManejadorVideos.getManejadorVideos().getVideo(idVideo);
     return video.getDt();
   }
-/*
+  
   @Override
-  public String[] listarCategorias() {
-    return manejadorCategoria.toArray();
-  }
-
-  @Override
-  public String[] listarUsuarios() {
-    return manejadorUsuario.toArray();
-  }
-*/
-  @Override
-  public String[] listarVideos(int idUsuario) {
+  public List<DtVideo> listarVideos(int idUsuario) throws NotFoundException{
     Usuario usuario = manejadorUsuario.getUsuario(idUsuario);
     if (usuario != null) {
-      return usuario.getCanal().getArrayVideos();
+      return usuario.getCanal().listaDtVideo();
     } else {
       return null;
     }
   }
 
   @Override
-  public List<DtVideo> getDtVideosPropietario(int idUsuario) throws NotFoundException{
-    Usuario usuario = manejadorUsuario.getUsuario(idUsuario);
-    if (usuario != null) {
-      return usuario.getCanal().getDtVideos();
-    } else {
-      return null;
-    }
-  }
-
-  @Override
-  public DtVideo[] listarTodosLosVideos(int idUsuario) {
+  public DtVideo[] listarTodosLosVideos(int idUsuario) { //se necesita?
     List<DtVideo> listaVideos = new ArrayList<DtVideo>();
     for (Usuario usuario : manejadorUsuario.getUsuarios().values()) {
       List<DtVideo> lista = usuario.getCanal().listaPublicoDtVideo();

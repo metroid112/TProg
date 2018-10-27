@@ -68,22 +68,22 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public String[] listarListasDefectoUsuario(int idUsuario) throws NotFoundException {
+  public Map<Integer, ListaDefecto> listarListasDefectoUsuario(int idUsuario) throws NotFoundException {
 
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
 
-    return canalObjetivo.getListaDefectoUsuario();
+    return canalObjetivo.getListasDefecto();
 
   }
 
   @Override
-  public String[] listarListasParticularUsuario(int idUsuario) throws NotFoundException {
+  public Map<Integer, ListaParticular> listarListasParticularUsuario(int idUsuario) throws NotFoundException {
 
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
 
-    return canalObjetivo.getListaParticularUsuario();
+    return canalObjetivo.getListasParticulares();
 
   }
 
@@ -147,11 +147,11 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public List<DtLista> getDtListasParticularesUsuario(int idUsuario) {
+  public List<DtLista> getDtListasParticularesUsuario(int idUsuario) throws NotFoundException {
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     List<DtLista> listas = new LinkedList<DtLista>();
-    Map<String, ListaParticular> listasParticulares = canalObjetivo.getListasParticulares();
+    Map<Integer, ListaParticular> listasParticulares = canalObjetivo.getListasParticulares();
     for (ListaParticular lista : listasParticulares.values()) {
       listas.add(lista.getDtLista());
     }
@@ -159,11 +159,11 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public List<DtLista> getDtListasPrivadasUsuario(int idUsuario) {
+  public List<DtLista> getDtListasPrivadasUsuario(int idUsuario) throws NotFoundException {
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     List<DtLista> listas = new LinkedList<DtLista>();
-    Map<String, ListaParticular> listasParticulares = canalObjetivo.getListasParticulares();
+    Map<Integer, ListaParticular> listasParticulares = canalObjetivo.getListasParticulares();
     for (ListaParticular lista : listasParticulares.values()) {
       if (!lista.isVisible()) {
         listas.add(lista.getDtLista());
@@ -185,7 +185,7 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public List<DtLista> getDtListasDefectoUsuario(int idUsuario) {
+  public List<DtLista> getDtListasDefectoUsuario(int idUsuario) throws NotFoundException {
     List<DtLista> listasDefecto = new LinkedList<DtLista>();
     for (ListaDefecto lista : manejadorUsuarios.getUsuario(idUsuario).getCanal()
         .getListasDefecto().values()) {

@@ -122,15 +122,7 @@ public class Canal {
     }
     return videos;
   }
-
-  public Map<Integer, ListaDefecto> getListasDefecto() {
-    return listasDefecto;
-  }
-
-  public Map<Integer, ListaParticular> getListasParticulares() {
-    return listasParticulares;
-  }
-
+  
   public ListaDefecto getListaDefecto(int idListaDefecto) throws NotFoundException {
     if (this.listasDefecto.containsKey(idListaDefecto)) {
       return this.listasDefecto.get(idListaDefecto);
@@ -145,6 +137,14 @@ public class Canal {
     } else {
       throw new NotFoundException("Lista Particular id: " + idListaParticular);
     }
+  }
+  
+  public Map<Integer, ListaDefecto> getListasDefecto() {
+    return listasDefecto;
+  }
+
+  public Map<Integer, ListaParticular> getListasParticulares() {
+    return listasParticulares;
   }
 
   public String getNombre() {
@@ -177,7 +177,7 @@ public class Canal {
     }
   }
 
-  public String[] listarVideosDuenosLista(String lista, boolean defecto) {
+  public String[] listarVideosDuenosLista(String lista, boolean defecto) { //capaz ya no sea necesaria
     if (defecto) {
       ListaDefecto listaDef = listasDefecto.get(lista);
       return listaDef.getArrayVideosDuenos();
@@ -204,14 +204,6 @@ public class Canal {
     } else {
       throw new DuplicateClassException("Video", "El nombre seleccionado ya existe.");
     }
-  }
-
-  public List<DtVideo> getDtVideos() {
-    List<DtVideo> videos = new ArrayList<DtVideo>();
-    for (Entry<Integer, Video> video : this.videos.entrySet()) {
-      videos.add(video.getValue().getDt());
-    }
-    return videos;
   }
   
   public List<DtVideo> listaDtVideo() {
