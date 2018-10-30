@@ -95,7 +95,12 @@ public class AltaUsuario extends HttpServlet {
             nombreCanal = request.getParameter("nombreCanal");
           }
           String descripcionCanal = request.getParameter("descripcion");
-          String categoria = request.getParameter("categoria");
+          String categoria;
+          if (request.getParameter("categoria") == "Sin categoría") {
+            categoria = null;
+          } else { 
+            categoria = request.getParameter("categoria");
+          }
           Boolean visible;
           if (request.getParameter("visibilidad").equals("Privado")) {
             visible = false;

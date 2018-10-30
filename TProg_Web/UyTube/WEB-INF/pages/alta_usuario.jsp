@@ -37,13 +37,13 @@
 				<br>
 				Nombre del canal: <input type="text" name="nombreCanal">
 				<br>
-				DescripciÃ³n del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
+				Descripción del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
 				<br>
 				Visibilidad: <input type="radio" name="visibilidad" checked>Privado  <input type="radio" name="visibilidad">Publico
 				<br>
-				CategorÃ­a:
+				Categoría:
 				<select name="categoria">
-					<option disabled selected value></option>
+					<option disabled selected value>Sin categoría</option>
 				<% for (String cat : (String[]) request.getAttribute("CATEGORIAS")) { %>
 					<option value="<%= cat %>"><%= cat %> </option>
 				<% } %>
