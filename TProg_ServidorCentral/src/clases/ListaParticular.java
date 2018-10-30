@@ -23,7 +23,7 @@ public class ListaParticular extends Lista {
 
   public Date getUltimaActividad() {
     Date ultimaActividad = null;
-    for (Video vid : this.getVideos()) {
+    for (Video vid : this.getVideos().values()) {
       if (ultimaActividad == null || vid.getFecha().after(ultimaActividad)) {
         ultimaActividad = vid.getFecha();
       }
@@ -33,7 +33,7 @@ public class ListaParticular extends Lista {
 
   public boolean esUnicaCategoria(Categoria categoria) {
     if (categoria != null) {
-      for (Video v : super.getVideos()) {
+      for (Video v : super.getVideos().values()) {
         if (v.getCategoria() == categoria) {
           return false;
         }
@@ -57,7 +57,7 @@ public class ListaParticular extends Lista {
   @Override
   public DtLista getDtLista() {
     LinkedList<String> videos = new LinkedList<String>();
-    for (Video vid : this.getVideos()) {
+    for (Video vid : this.getVideos().values()) {
       videos.add(vid.getCanal().getUsuario().getNick() + "-" + vid.getNombre());
     }
     LinkedList<String> categorias = new LinkedList<String>();

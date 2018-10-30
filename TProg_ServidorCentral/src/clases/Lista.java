@@ -1,10 +1,14 @@
 package clases;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import datatypes.DtLista;
 import datatypes.DtVideo;
+import excepciones.InvalidDataException;
+import excepciones.NotFoundException;
 
 public abstract class Lista {
 
@@ -28,7 +32,7 @@ public abstract class Lista {
   }
 
   public boolean existeVideo(int idVideo) {
-    return videos.contains(idVideo);
+    return videos.containsKey(idVideo);
   }
 
   public Map<Integer, Video> getVideos() {
@@ -47,7 +51,7 @@ public abstract class Lista {
     if (this.videos.containsKey(idVideo)) {
       return this.videos.get(idVideo);
     } else {
-      throw new NotFoundException();
+      throw new NotFoundException("");
     }
   }
 
@@ -55,11 +59,11 @@ public abstract class Lista {
     if (video != null) {
       videos.put(video.getId(), video);
     } else {
-      throw new InvalidDataException();
+      throw new InvalidDataException("");
     }
   }
 
-  public void quitarVideo(int idVideo) { // TODO: Cambiar a funciones de MAP
-    videos.remove(video);
+  public void quitarVideo(int idVideo) {
+    videos.remove(idVideo);
   }
 }
