@@ -13,6 +13,7 @@ import datatypes.DtCanal;
 import datatypes.DtLista;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
 import manejadores.ManejadorListasDefecto;
 
@@ -72,7 +73,7 @@ public class Canal {
   }
   
   public void agregarVideoListaDefecto(Video video, int idListaDefecto)
-      throws DuplicateClassException {
+      throws DuplicateClassException, InvalidDataException {
     ListaDefecto lista = listasDefecto.get(idListaDefecto);
     if (!lista.existeVideo(video.getId())) {
       lista.agregarVideo(video);
@@ -82,7 +83,7 @@ public class Canal {
   }
 
   public void agregarVideoListaParticular(Video video, int idListaParticular)
-      throws DuplicateClassException {
+      throws DuplicateClassException, InvalidDataException {
     ListaParticular lista = listasParticulares.get(idListaParticular);
     if (!lista.existeVideo(video.getId())) {
       lista.agregarVideo(video);
@@ -223,17 +224,16 @@ public class Canal {
     return result;
   }
 
-  public void quitarVideoListaDefecto(String video, String lista, Usuario ownerVideo) {
+  public void quitarVideoListaDefecto(int video, String lista) {
     ListaDefecto listaObj = listasDefecto.get(lista);
-    Video videoObj = listaObj.getVideo(video, ownerVideo);
-    listaObj.quitarVideo(videoObj.getId());
+    listaObj.quitarVideo(video);
 
   }
 
-  public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
+  public void quitarVideoListaParticular(int video, String lista) throws NotFoundException {
     ListaParticular listaObj = listasParticulares.get(lista);
-    Video videoObj = listaObj.getVideo(video, ownerVideo);
-    listaObj.quitarVideo(videoObj.getId());
+    Video videoObj = listaObj.getVideo(video);
+    listaObj.quitarVideo(video);
     Categoria cat = videoObj.getCategoria();
 
     if (listaObj.esUnicaCategoria(cat)) {
