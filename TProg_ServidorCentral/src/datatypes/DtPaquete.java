@@ -5,19 +5,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtPaquete {
-  private Object contenido;
+  private DtUniversal contenido;
   
   public DtPaquete() {}
   
-  public Object getContenido() {
+  public DtUniversal getContenido() {
     return this.contenido;
   }
-  
-  /**
-   * prueba
-   * @param contenido
-   */
-  public void setContenido(Object contenido) {
+
+  public void setContenido(DtUniversal contenido) {
     this.contenido = contenido;
   }
 }

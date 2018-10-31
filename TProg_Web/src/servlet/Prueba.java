@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtBusqueda;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -31,8 +32,10 @@ public class Prueba extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PublicadorService service = new PublicadorService();
 		Publicador port = service.getPublicadorPort();
-		String texto = port.prueba2();
-		response.getWriter().append(texto);
+	//	DtBusqueda res = (DtBusqueda) port.getPaquete("").getContenido();
+		//int texto = res.getVideos().size();
+		//String text = Integer.toString(texto);
+		//response.getWriter().append(text);
 		
 	}
 

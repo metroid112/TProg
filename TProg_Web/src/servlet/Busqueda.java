@@ -14,6 +14,8 @@ import datatypes.DtLista;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import interfaces.Fabrica;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/Busqueda")
 public class Busqueda extends HttpServlet {
@@ -27,26 +29,29 @@ public class Busqueda extends HttpServlet {
       throws ServletException, IOException {
     String tipoBusqueda = request.getParameter("TIPO_BUSQUEDA");
     String txtBusqueda = request.getParameter("txtBusqueda");
-    DtBusqueda resultados = null;
+    servicios.DtBusqueda resultados = null;
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
     if (tipoBusqueda == null || tipoBusqueda.equals("TODOS")) {
-      resultados = Fabrica.getIDatos().busquedaGeneral(txtBusqueda);
+      resultados = (servicios.DtBusqueda) port.getPaquete(txtBusqueda).getContenido();
+      //resultados = Fabrica.getIDatos().busquedaGeneral(txtBusqueda);
     } else if (tipoBusqueda.equals("VIDEOS")) {
-      resultados = Fabrica.getIDatos().busquedaVideo(txtBusqueda);
+      //resultados = Fabrica.getIDatos().busquedaVideo(txtBusqueda);
     } else if (tipoBusqueda.equals("LISTAS")) {
-      resultados = Fabrica.getIDatos().busquedaLista(txtBusqueda);
+      //resultados = Fabrica.getIDatos().busquedaLista(txtBusqueda);
     } else if (tipoBusqueda.equals("CANALES")) {
-      resultados = Fabrica.getIDatos().busquedaCanales(txtBusqueda);
+      //resultados = Fabrica.getIDatos().busquedaCanales(txtBusqueda);
     }
     String ordenBusqueda = request.getParameter("ORDEN_BUSQUEDA");
     if (ordenBusqueda != null) {
       if (ordenBusqueda.equals("ALFABETICO")) {
-        resultados.videos.sort(Comparator.comparing(DtVideo::getNombre));
-        resultados.listas.sort(Comparator.comparing(DtLista::getNombre));
-        resultados.usuarios.sort(Comparator.comparing(DtUsuario::getCanal));
+//        resultados.getVideos().sort(Comparator.comparing(DtVideo::getNombre));
+//        resultados.getListas().sort(Comparator.comparing(DtLista::getNombre));
+//        resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getCanal));
       } else if (ordenBusqueda.equals("FECHA")) {
-        resultados.videos.sort(Comparator.comparing(DtVideo::getFecha).reversed());
-        resultados.listas.sort(Comparator.comparing(DtLista::getUltimaActividad).reversed());
-        resultados.usuarios.sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
+//        resultados.getVideos().sort(Comparator.comparing(DtVideo::getFecha).reversed());
+//        resultados.getListas().sort(Comparator.comparing(DtLista::getUltimaActividad).reversed());
+//        resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
       }
     }
     request.setAttribute("RESULTADO_BUSQUEDA", resultados);
