@@ -187,8 +187,14 @@ public class Usuario {
     return this.imgPath;
   }
 
+  // TODO: completar funcion
   public void modificarUsuario(DtUsuario usuarioModificado) {
-
+    this.nombre = usuarioModificado.getNombre();
+    this.apellido = usuarioModificado.get();
+    this.fechaNacimiento = usuarioModificado.get();
+    this.correo = usuarioModificado.get();
+    this.password = usuarioModificado.get();
+    this.img or imgpath = usuarioModificado.get();
   }
 /*
   @Override

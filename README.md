@@ -8,6 +8,8 @@ JSTL 1.2: http://central.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar
 
 SwingX 1.6.5-1: http://central.maven.org/maven2/org/swinglabs/swingx/swingx-core/1.6.5-1/swingx-core-1.6.5-1.jar
 
+H2 1.4.197: http://www.h2database.com/h2-2018-03-18.zip
+
 # TProg
 Taller de Progamación
 
