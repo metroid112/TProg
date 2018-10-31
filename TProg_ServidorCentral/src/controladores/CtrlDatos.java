@@ -713,7 +713,7 @@ public class CtrlDatos implements IDatos {
     DtBusqueda busquedaListas = busquedaLista(txtBusqueda);
     DtBusqueda busquedaUsuarios = busquedaCanales(txtBusqueda);
     DtBusqueda resultados =
-        new DtBusqueda(busquedaVideos.videos, busquedaListas.listas, busquedaUsuarios.usuarios);
+        new DtBusqueda(busquedaVideos.getVideos(), busquedaListas.getListas(), busquedaUsuarios.getUsuarios());
     return resultados;
   }
 

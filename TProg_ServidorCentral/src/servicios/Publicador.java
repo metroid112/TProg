@@ -9,6 +9,8 @@ import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.xml.ws.Endpoint;
 
+import datatypes.DtBusqueda;
+import datatypes.DtPaquete;
 import interfaces.Fabrica;
 
 @WebService
@@ -52,4 +54,31 @@ public class Publicador {
       e.printStackTrace();
     }
   }
+  
+//  @WebMethod
+//  public DtBusqueda busquedaGeneral(String txtBusqueda) {
+//    return Fabrica.getIDatos().busquedaGeneral(txtBusqueda);
+//  }
+//  
+//  @WebMethod
+//  public DtBusqueda busquedaVideo(String txtBusqueda) {
+//    return Fabrica.getIDatos().busquedaVideo(txtBusqueda);
+//  }
+//  
+//  @WebMethod
+//  public DtBusqueda busquedaLista(String txtBusqueda) {
+//    return Fabrica.getIDatos().busquedaLista(txtBusqueda);
+//  }
+//  
+//  @WebMethod
+//  public DtBusqueda busquedaCanales(String txtBusqueda) {
+//    return Fabrica.getIDatos().busquedaCanales(txtBusqueda);
+//  }
+  
+    @WebMethod
+    public DtPaquete getPaquete(String txtBusqueda) {
+      DtPaquete pack = new DtPaquete();
+      pack.setContenido(Fabrica.getIDatos().busquedaGeneral(txtBusqueda));
+      return pack;
+    }
 }
