@@ -7,10 +7,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
 import clases.Calificacion;
 import clases.Categoria;
 import clases.Comentario;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtVideo {
   public List<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
   public Map<Integer, DtComentario> comentarios =

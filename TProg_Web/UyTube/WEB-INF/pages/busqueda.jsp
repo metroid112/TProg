@@ -1,4 +1,5 @@
-<%@ page import="datatypes.*" %>
+<%@ page import="servicios.*" %>
+
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -21,9 +22,9 @@
 						<option <c:if test="${param.TIPO_BUSQUEDA.equals('CANALES')}">selected</c:if> value="CANALES">Canales</option>
 					</select>
 					<select name="ORDEN_BUSQUEDA">
-						<option selected hidden value="NORMAL">Orden de busqueda</option>
-						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('FECHA')}">selected</c:if> value="FECHA">Fecha: Descendente</option>
-						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('ALFABETICO')}">selected</c:if> value="ALFABETICO">Alfabeticamente: Ascendente</option>
+						<option selected hidden value="0">Orden de busqueda</option>
+						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('1')}">selected</c:if> value="1">Fecha: Descendente</option>
+						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('2')}">selected</c:if> value="2">Alfabeticamente: Ascendente</option>
 					</select>
 					<input type="hidden" value="${param.txtBusqueda}" name="txtBusqueda">
 					<button type="submit">Filtrar</button>
@@ -31,9 +32,9 @@
 			</div>
 			<%
 			DtBusqueda resultados = (DtBusqueda) request.getAttribute("RESULTADO_BUSQUEDA");
-			List<DtLista> listas = resultados.listas;
-			List<DtUsuario> usuarios = resultados.usuarios;
-			List<DtVideo> videos = resultados.videos;
+			List<DtLista> listas = resultados.getListas();
+			List<DtUsuario> usuarios = resultados.getUsuarios();
+			List<DtVideo> videos = resultados.getVideos();
 			int cantResultados = listas.size() + usuarios.size() + videos.size();
 			%>
 			<h3><%= cantResultados %> resultados para <%= request.getParameter("txtBusqueda") %></h3>
@@ -43,14 +44,14 @@
 				<br>
 				<div class="highlights">
 				<%for (DtVideo vid : videos) {%>
-				<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=vid.idVideo%>').submit();">	
-					<form id="Form<%=vid.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
-						<input type="hidden" name="VIDEO_ID" value="<%=vid.idVideo%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="<%=vid.urlThumbnail%>">
+				<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=vid.getIdVideo()%>').submit();">	
+					<form id="Form<%=vid.getIdVideo()%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
+						<input type="hidden" name="VIDEO_ID" value="<%=vid.getIdVideo()%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%=vid.getUrlThumbnail()%>">
 						<header>
-						<%= vid.nombre %>
+						<%= vid.getNombre() %>
 						<br>
-						User: <%= vid.usuario %>
+						User: <%= vid.getUsuario() %>
 						</header>
 					</form>	
 				</div>
@@ -64,16 +65,16 @@
 				<br>
 				<div class="highlights">
 				<%for (DtUsuario usuario : usuarios) {%>
-					<div class="detalleClickeableUsuario" onclick="document.getElementById('Form<%=usuario.nick%>').submit();">		
-					<form id="Form<%= usuario.nick %>" class="detClickeableUsuario" action="ConsultaUsuario" method="POST" >
+					<div class="detalleClickeableUsuario" onclick="document.getElementById('Form<%=usuario.getNick()%>').submit();">		
+					<form id="Form<%= usuario.getNick() %>" class="detClickeableUsuario" action="ConsultaUsuario" method="POST" >
 						<input type="hidden" name="STATE" value="INFO">
-						<input type="hidden" name="usuario" value="<%= usuario.nick %>">
+						<input type="hidden" name="usuario" value="<%= usuario.getNick() %>">
 						<div class="thumbnail">
-							<img class="icon" width="30%" alt="Lista de reproduccion" src="<%= usuario.imgPath %>">
+							<img class="icon" width="30%" alt="Lista de reproduccion" src="<%= usuario.getImgPath() %>">
 						</div>
 						<br>
 						<header>
-						<%= usuario.canal %>
+						<%= usuario.getCanal() %>
 						</header>
 						<br>
 					</form>	
@@ -87,10 +88,10 @@
 				<br>
 				<div class="highlights">
 				<%for (DtLista lista : listas) {%>
-				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
-					<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ConsultaLista" method="GET" >
+				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getIdLista()%>').submit();">		
+					<form id="Form<%=lista.getIdLista()%>" class="detClickeableLista" action="ConsultaLista" method="GET" >
 						<input type="hidden" name="STATE" value="DETALLESLISTA">
-						<input type="hidden" name="IDLISTA" value="<%= lista.getId() %>">
+						<input type="hidden" name="IDLISTA" value="<%= lista.getIdLista() %>">
 						<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
 						<br>
 						<header>
