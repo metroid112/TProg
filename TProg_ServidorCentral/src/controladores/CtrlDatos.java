@@ -3,6 +3,7 @@ package controladores;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -708,17 +709,17 @@ public class CtrlDatos implements IDatos {
   }
 
   @Override
-  public DtBusqueda busquedaGeneral(String txtBusqueda) {
-    DtBusqueda busquedaVideos = busquedaVideo(txtBusqueda);
-    DtBusqueda busquedaListas = busquedaLista(txtBusqueda);
-    DtBusqueda busquedaUsuarios = busquedaCanales(txtBusqueda);
+  public DtBusqueda busquedaGeneral(String txtBusqueda, int orden) {
+    DtBusqueda busquedaVideos = busquedaVideo(txtBusqueda, orden);
+    DtBusqueda busquedaListas = busquedaLista(txtBusqueda, orden);
+    DtBusqueda busquedaUsuarios = busquedaCanales(txtBusqueda, orden);
     DtBusqueda resultados =
         new DtBusqueda(busquedaVideos.getVideos(), busquedaListas.getListas(), busquedaUsuarios.getUsuarios());
     return resultados;
   }
 
   @Override
-  public DtBusqueda busquedaVideo(String txtBusqueda) {
+  public DtBusqueda busquedaVideo(String txtBusqueda, int orden) {
     List<DtVideo> videos = new LinkedList<DtVideo>();
     List<DtLista> listas = new LinkedList<DtLista>();
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
@@ -731,11 +732,18 @@ public class CtrlDatos implements IDatos {
       }
     }
     DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
+    switch (orden) {
+      case 1: resultados.getVideos().sort(Comparator.comparing(DtVideo::getFecha).reversed());
+        break;
+      case 2: resultados.getVideos().sort(Comparator.comparing(DtVideo::getNombre));
+        break;
+    }
+    
     return resultados;
   }
 
   @Override
-  public DtBusqueda busquedaLista(String txtBusqueda) {
+  public DtBusqueda busquedaLista(String txtBusqueda, int orden) {
     List<DtVideo> videos = new LinkedList<DtVideo>();
     List<DtLista> listas = new LinkedList<DtLista>();
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
@@ -745,11 +753,18 @@ public class CtrlDatos implements IDatos {
       }
     }
     DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
+    switch (orden) {
+      case 1: resultados.getListas().sort(Comparator.comparing(DtLista::getUltimaActividad).reversed());
+        break;
+      case 2: resultados.getListas().sort(Comparator.comparing(DtLista::getNombre));
+        break;
+    }
+    
     return resultados;
   }
 
   @Override
-  public DtBusqueda busquedaCanales(String txtBusqueda) {
+  public DtBusqueda busquedaCanales(String txtBusqueda, int orden) {
     List<DtVideo> videos = new LinkedList<DtVideo>();
     List<DtLista> listas = new LinkedList<DtLista>();
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
@@ -765,6 +780,12 @@ public class CtrlDatos implements IDatos {
       }
     }
     DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
+    switch (orden) {
+      case 1: resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
+        break;
+      case 2: resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getCanal));
+        break;
+    }
     return resultados;
   }
 

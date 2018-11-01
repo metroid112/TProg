@@ -1,5 +1,6 @@
 package datatypes;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -41,7 +42,20 @@ public class DtBusqueda extends DtUniversal{
   public void setUsuarios(List<DtUsuario> usuarios) {
     this.usuarios = usuarios;
   }
+
+  public DtBusqueda sortAlfabetico() {
+    getVideos().sort(Comparator.comparing(DtVideo::getNombre));
+    getListas().sort(Comparator.comparing(DtLista::getNombre));
+    getUsuarios().sort(Comparator.comparing(DtUsuario::getCanal));
+    return this;
+  }
   
+  public DtBusqueda sortFecha() {
+    getVideos().sort(Comparator.comparing(DtVideo::getFecha).reversed());
+    getListas().sort(Comparator.comparing(DtLista::getUltimaActividad).reversed());
+    getUsuarios().sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
+    return this;
+  }
   
 
 }

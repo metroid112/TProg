@@ -125,7 +125,7 @@ public class CargaDatosTest {
         esperado++;
       }
     }
-    DtBusqueda resultados = Fabrica.getIDatos().busquedaGeneral(textoBusqueda);
+    DtBusqueda resultados = Fabrica.getIDatos().busquedaGeneral(textoBusqueda, 0);
     int cantidadResultados =
         resultados.getListas().size() + resultados.getVideos().size() + resultados.getUsuarios().size();
     assertEquals(esperado, cantidadResultados);

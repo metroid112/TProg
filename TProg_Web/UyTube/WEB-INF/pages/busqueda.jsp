@@ -22,9 +22,9 @@
 						<option <c:if test="${param.TIPO_BUSQUEDA.equals('CANALES')}">selected</c:if> value="CANALES">Canales</option>
 					</select>
 					<select name="ORDEN_BUSQUEDA">
-						<option selected hidden value="NORMAL">Orden de busqueda</option>
-						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('FECHA')}">selected</c:if> value="FECHA">Fecha: Descendente</option>
-						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('ALFABETICO')}">selected</c:if> value="ALFABETICO">Alfabeticamente: Ascendente</option>
+						<option selected hidden value="0">Orden de busqueda</option>
+						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('1')}">selected</c:if> value="1">Fecha: Descendente</option>
+						<option <c:if test="${param.ORDEN_BUSQUEDA.equals('2')}">selected</c:if> value="2">Alfabeticamente: Ascendente</option>
 					</select>
 					<input type="hidden" value="${param.txtBusqueda}" name="txtBusqueda">
 					<button type="submit">Filtrar</button>

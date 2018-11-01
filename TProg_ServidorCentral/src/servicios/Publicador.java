@@ -11,6 +11,7 @@ import javax.xml.ws.Endpoint;
 
 import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
+import datatypes.DtUniversal;
 import interfaces.Fabrica;
 
 @WebService
@@ -55,30 +56,31 @@ public class Publicador {
     }
   }
   
-//  @WebMethod
-//  public DtBusqueda busquedaGeneral(String txtBusqueda) {
-//    return Fabrica.getIDatos().busquedaGeneral(txtBusqueda);
-//  }
-//  
-//  @WebMethod
-//  public DtBusqueda busquedaVideo(String txtBusqueda) {
-//    return Fabrica.getIDatos().busquedaVideo(txtBusqueda);
-//  }
-//  
-//  @WebMethod
-//  public DtBusqueda busquedaLista(String txtBusqueda) {
-//    return Fabrica.getIDatos().busquedaLista(txtBusqueda);
-//  }
-//  
-//  @WebMethod
-//  public DtBusqueda busquedaCanales(String txtBusqueda) {
-//    return Fabrica.getIDatos().busquedaCanales(txtBusqueda);
-//  }
+  @WebMethod
+  public DtPaquete busquedaGeneral(String txtBusqueda, int orden) {
+    return empaquetar(Fabrica.getIDatos().busquedaGeneral(txtBusqueda, orden));
+  }
   
-    @WebMethod
-    public DtPaquete getPaquete(String txtBusqueda) {
-      DtPaquete pack = new DtPaquete();
-      pack.setContenido(Fabrica.getIDatos().busquedaGeneral(txtBusqueda));
-      return pack;
-    }
+  @WebMethod
+  public DtPaquete busquedaVideo(String txtBusqueda, int orden) {
+    return empaquetar(Fabrica.getIDatos().busquedaVideo(txtBusqueda, orden));
+  }
+  
+  @WebMethod
+  public DtPaquete busquedaLista(String txtBusqueda, int orden) {
+    return empaquetar(Fabrica.getIDatos().busquedaLista(txtBusqueda, orden));
+  }
+  
+  @WebMethod
+  public DtPaquete busquedaCanales(String txtBusqueda, int orden) {
+    return empaquetar(Fabrica.getIDatos().busquedaCanales(txtBusqueda, orden));
+  }
+    
+  @WebMethod(exclude = true)
+  public DtPaquete empaquetar(DtUniversal contenido) {
+    DtPaquete pack = new DtPaquete();
+    pack.setContenido(contenido);
+    return pack;
+  }
+    
 }
