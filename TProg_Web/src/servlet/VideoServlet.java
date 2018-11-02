@@ -22,11 +22,6 @@ public class VideoServlet extends HttpServlet {
     super();
   }
 
-  private void processRequest(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-
-  }
-
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
@@ -52,7 +47,7 @@ public class VideoServlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request, response);
+    doGet(request, response);
   }
 
 }

@@ -4,8 +4,12 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
 import clases.Comentario;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DtComentario {
   public Map<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
   public Integer idComentario;
