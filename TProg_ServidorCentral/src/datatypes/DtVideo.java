@@ -15,16 +15,16 @@ public class DtVideo {
   public List<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
   public Map<Integer, DtComentario> comentarios =
       new LinkedHashMap<Integer, DtComentario>();
-  public Duration duracion;
-  public Date fecha;
-  public String usuario;
-  public String nombre;
-  public String urlVideo;
-  public String urlThumbnail;
-  public String descripcion;
-  public String categoria;
-  public boolean visible;
-  public int idVideo;
+  private Duration duracion;
+  private Date fecha;
+  private String usuario;
+  private String nombre;
+  private String urlVideo;
+  private String urlThumbnail;
+  private String descripcion;
+  private String categoria;
+  private boolean visible;
+  private int idVideo;
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 
@@ -134,6 +134,9 @@ public class DtVideo {
 
     }
     return resultado;
+  }
+  public int getId(){
+    return idVideo;
   }
 
   public List<DtCalificacion> getCalificaciones() {

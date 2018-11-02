@@ -1,5 +1,7 @@
 package internalframes;
 
+import java.util.List;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,6 +23,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -32,6 +36,8 @@ public class AgregarVideo extends JInternalFrame {
   private IUsuariosCanales ctrUsu;
   private IVideos ctrVid;
   private IListas ctrLis;
+  private List<DtVideo> videos = ctrVid.getDtVideosPublicos(); //de un usuario?
+  private List<DtUsuario> usuarios = ctrUsu.listarDtUsuarios();
   private ButtonGroup grupoLista = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
@@ -161,8 +167,19 @@ public class AgregarVideo extends JInternalFrame {
 
         if (checkUsuario) {
           ctrLis = Fabrica.getIListas();
-          ctrLis.agregarVideoLista(modelUsuario.getSelectedItem().toString(),
-              modelVideos.getSelectedItem().toString(), modelUsuObj.getSelectedItem().toString(),
+          int idUsuario;
+          for(DtUsuario usuario : usuarios){
+            if(usuario.getNick() == modelUsuario.getSelectedItem().toString()){
+              idUsuario = usuario.getIdUsuario();
+            }
+          }
+          int idVideo;
+          for(DtVideo video : videos){
+            if(video.getNombre() == modelVideos.getSelectedItem().toString()){
+              idVideo = video.getId();
+            }
+          }
+          ctrLis.agregarVideoLista(idUsuario, idVideo,
               list.getSelectedValue().toString(), rdbtnListasPordefecto.isSelected());
 
           modelUsuario.removeAllElements();
@@ -276,13 +293,9 @@ public class AgregarVideo extends JInternalFrame {
 
       String s = modelUsuario.getSelectedItem().toString();
 
-      String[] videos = ctrVid.listarVideos(s);
-
-      int largov = videos.length;
-
       modelVideos.addElement("");
-      for (int i = 0; i < largov; i++) {
-        modelVideos.addElement(videos[i]);
+      for (DtVideo video : videos) {
+        modelVideos.addElement(video.getNombre());
       }
     }
     ctrVid = null;
@@ -292,11 +305,10 @@ public class AgregarVideo extends JInternalFrame {
   public void cargarUsuarioObj() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    
     modelUsuObj.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuObj.addElement(usuarios[i]);
+    for (DtUsuario usuario: usuarios) {
+      modelUsuObj.addElement(usuario.getNick());
     }
     ctrUsu = null;
   }
@@ -304,14 +316,12 @@ public class AgregarVideo extends JInternalFrame {
   public void cargarDatos() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+
     modelUsuario.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuario.addElement(usuarios[i]);
+    for (DtUsuario usuario: usuarios) {
+      modelUsuario.addElement(usuario.getNick());
     }
     ctrUsu = null;
-
   }
 
   public void cargarDefectoListas() {

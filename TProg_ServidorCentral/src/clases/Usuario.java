@@ -187,7 +187,7 @@ public class Usuario {
     return this.imgPath;
   }
 
-  // TODO: completar funcion
+
   public void modificarUsuario(DtUsuario usuarioModificado) {
     this.nombre = usuarioModificado.getNombre();
     this.apellido = usuarioModificado.get();

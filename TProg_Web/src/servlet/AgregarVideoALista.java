@@ -54,13 +54,13 @@ public class AgregarVideoALista extends HttpServlet {
             + " ya estaba en la lista " + "'" + nombreLista + "'.");
         IListas ctrlListas2 = Fabrica.getIListas();
         IVideos ctrlVideos2 = Fabrica.getIVideos();
-        String nickUsuario =
-            ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-        String[] listasParticulares = ctrlListas2.listarListasParticularUsuario(nickUsuario);
+        String idUsuario =
+            ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).idUsuario;
+        String[] listasParticulares = ctrlListas2.listarListasParticularUsuario(idUsuario);
         request.setAttribute("LISTAS_PARTICULARES", listasParticulares);
-        String[] listasPorDefecto = ctrlListas2.listarListasDefectoUsuario(nickUsuario);
+        String[] listasPorDefecto = ctrlListas2.listarListasDefectoUsuario(idUsuario);
         request.setAttribute("LISTAS_POR_DEFECTO", listasPorDefecto);
-        DtVideo[] listaDeVideos = ctrlVideos2.listarTodosLosVideos(nickUsuario);
+        DtVideo[] listaDeVideos = ctrlVideos2.listarTodosLosVideos(idUsuario);
         request.setAttribute("LISTA_DE_VIDEOS", listaDeVideos);
         request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp")
             .forward(request, response);

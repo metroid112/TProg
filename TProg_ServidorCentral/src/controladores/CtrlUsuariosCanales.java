@@ -74,10 +74,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public List<String> listarNombresUsuarios(){
-    List<String> resultado = new LinkedList<String>();
+  public List<DtUsuario> listarDtUsuarios(){
+    List<DtUsuario> resultado = new LinkedList<DtUsuario>();
     for (Usuario usuario : manejadorUsuarios.getUsuarios().values()) {
-      resultado.add(usuario.getNick());
+      
+      resultado.add(usuario.getDt());
     }
     return resultado;
   }

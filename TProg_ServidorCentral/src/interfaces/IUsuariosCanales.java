@@ -22,7 +22,7 @@ public interface IUsuariosCanales {
   
   public DtUsuario getDt(int nick) throws NotFoundException;
 
-  public List<String> listarNombresUsuarios();
+  public List<DtUsuario> listarDtUsuarios();
   
   public boolean checkLogin(int idUsuario, String pass) throws NotFoundException;
   

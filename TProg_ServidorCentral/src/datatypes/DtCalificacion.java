@@ -1,9 +1,9 @@
 package datatypes;
 
 public class DtCalificacion {
-  public boolean like;
-  public String usuario;
-  public String video;
+  private boolean like;
+  private String usuario;
+  private String video;
 
   public DtCalificacion(boolean like, String usuario, String video) {
     this.like = like;
