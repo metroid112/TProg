@@ -1,5 +1,7 @@
 package interfaces;
 
+import datatypes.DtCategoria;
+
 public interface ICategorias {
 
   public void altaCategoria(String nombreCategoria) throws Exception;
@@ -8,7 +10,7 @@ public interface ICategorias {
 
   public String[] getInfoVideos(String categoria);
 
-  public String[] listarCategorias();
+  public DtCategoria listarCategorias();
 
   public String[] getInfoVideosPublicos(String categoria);
 

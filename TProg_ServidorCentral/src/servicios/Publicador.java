@@ -75,6 +75,11 @@ public class Publicador {
   public DtPaquete busquedaCanales(String txtBusqueda, int orden) {
     return empaquetar(Fabrica.getIDatos().busquedaCanales(txtBusqueda, orden));
   }
+  
+  @WebMethod
+  public DtPaquete listarCategorias() {
+    return empaquetar(Fabrica.getICategorias().listarCategorias());
+  }
     
   @WebMethod(exclude = true)
   public DtPaquete empaquetar(DtUniversal contenido) {

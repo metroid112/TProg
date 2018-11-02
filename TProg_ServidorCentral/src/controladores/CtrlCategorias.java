@@ -1,6 +1,7 @@
 package controladores;
 
 import clases.Categoria;
+import datatypes.DtCategoria;
 import excepciones.DuplicateClassException;
 import interfaces.ICategorias;
 import manejadores.ManejadorCategorias;
@@ -43,7 +44,7 @@ public class CtrlCategorias implements ICategorias {
   }
 
   @Override
-  public String[] listarCategorias() {
-    return manejadorCategorias.toArray();
+  public DtCategoria listarCategorias() {
+    return manejadorCategorias.toList();
   }
 }

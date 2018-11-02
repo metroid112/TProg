@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import interfaces.Fabrica;
 import interfaces.ICategorias;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/ListarCategorias")
 public class ListarCategorias extends HttpServlet {
@@ -22,6 +24,9 @@ public class ListarCategorias extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    servicios.DtCategoria resultados = null;
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
     ICategorias ctrlCategorias = Fabrica.getICategorias();
     String[] listaCategorias = ctrlCategorias.listarCategorias();
     request.setAttribute("CATEGORIAS", listaCategorias);
