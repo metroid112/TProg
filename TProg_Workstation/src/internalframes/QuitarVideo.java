@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -21,6 +22,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import datatypes.DtLista;
+import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -30,6 +34,9 @@ public class QuitarVideo extends JInternalFrame {
 
   private IUsuariosCanales ctrUsu;
   private IListas ctrLis;
+  private List<DtLista> listas;
+  private List<DtVideo> videos;
+  private List<DtUsuario> usuarios = ctrUsu.listarDtUsuarios();
   private ButtonGroup grupoLista = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
@@ -238,19 +245,16 @@ public class QuitarVideo extends JInternalFrame {
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuario.getSelectedItem() != null) {
+    try{
+      listas = ctrLis.listarListasDefectoUsuario(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
 
-      String s = modelUsuario.getSelectedItem().toString();
-
-      String[] listas = ctrLis.listarListasDefectoUsuario(s);
-
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (DtLista lista: listas) {
+        listListas.addElement(lista.getNombre());
       }
-    }
-
-    ctrLis = null;
+      ctrLis = null;
+    } 
+    catch(Exception e){}
+  
   }
 
   public void cargarParticularListas() {
@@ -298,5 +302,34 @@ public class QuitarVideo extends JInternalFrame {
       modelUsuario.addElement(usuarios[i]);
     }
     ctrUsu = null;
+  }
+  
+  public int obtenerUsuarioId(String nombre){
+
+    for(DtUsuario usuario : usuarios){
+      if(usuario.getNick() == nombre){
+        return usuario.getIdUsuario();
+      }
+    }
+    return 0;
+  }
+  
+  public int obtenerVideoId(String nombre){
+
+    for(DtVideo video : videos){
+      if(video.getNombre() == nombre){
+        return video.getId();
+      }
+    }
+    return 0;
+  }
+  
+  public int obtenerListaId(String nombre){
+    for(DtLista lista : listas){
+      if(lista.getNombre() == nombre){
+        return lista.getId();
+      }
+    }
+    return 0;
   }
 }
