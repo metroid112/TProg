@@ -166,7 +166,7 @@ public class Canal {
     return visible;
   }
 
-  public String[] listarVideosLista(String lista, boolean defecto) {
+  public List<DtVideo> listarVideosLista(String lista, boolean defecto) {
     if (defecto) {
       ListaDefecto listaDef = listasDefecto.get(lista);
       return listaDef.getArrayVideos();
@@ -176,7 +176,7 @@ public class Canal {
     }
   }
 
-  public String[] listarVideosDuenosLista(String lista, boolean defecto) { //capaz ya no sea necesaria
+  public List<DtVideo> listarVideosDuenosLista(String lista, boolean defecto) { //capaz ya no sea necesaria
     if (defecto) {
       ListaDefecto listaDef = listasDefecto.get(lista);
       return listaDef.getArrayVideosDuenos();

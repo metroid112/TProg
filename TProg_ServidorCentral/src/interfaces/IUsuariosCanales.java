@@ -28,7 +28,7 @@ public interface IUsuariosCanales {
   
   public boolean isCanalPublico(int idUsuario) throws NotFoundException;
 
-  public String[] listarVideosDuenosLista(int usuario, String lista, boolean defecto) throws NotFoundException;
+  public List<DtVideo> listarVideosDuenosLista(int usuario, String lista, boolean defecto) throws NotFoundException;
 
   public List<DtVideo> listarDtVideosDuenosLista(int usuario, String lista, boolean defecto) throws NotFoundException;
 

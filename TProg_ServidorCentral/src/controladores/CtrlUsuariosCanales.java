@@ -95,13 +95,13 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public String[] listarVideosDuenosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
+  public List<DtVideo> listarVideosDuenoLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().listarVideosDuenosLista(lista, defecto);
   }
 
   @Override
-  public List<DtVideo> listarDtVideosDuenosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
+  public List<DtVideo> listarDtVideosDuenoLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }

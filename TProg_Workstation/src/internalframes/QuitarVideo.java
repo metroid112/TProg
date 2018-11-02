@@ -137,7 +137,7 @@ public class QuitarVideo extends JInternalFrame {
         if (!list.isSelectionEmpty()) {
           comboBoxVideos.setEnabled(true);
           modelVideos.removeAllElements();
-          cargarVideosListas(modelUsuario.getSelectedItem().toString(),
+          cargarVideosListas(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()),
               list.getSelectedValue().toString(), rdbtnListasPorDefecto.isSelected());
         } else {
           comboBoxVideos.setEnabled(false);
@@ -225,10 +225,14 @@ public class QuitarVideo extends JInternalFrame {
         if (checkUsuario && checkVideo && comboBoxVideos.isEnabled()) {
           ctrLis = Fabrica.getIListas();
           String stringConcatenado = modelVideos.getSelectedItem().toString();
-          String ownerVideo = stringConcatenado.substring(0, stringConcatenado.indexOf('-'));
           String nombreVideo = stringConcatenado.substring(stringConcatenado.indexOf('-') + 1);
-          ctrLis.quitarVideoLista(modelUsuario.getSelectedItem().toString(), nombreVideo,
-              ownerVideo, list.getSelectedValue().toString(), rdbtnListasPorDefecto.isSelected());
+          try{
+          ctrLis.quitarVideoLista(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()),
+              nombreVideo,
+              obtenerUsuarioId(stringConcatenado.substring(0, stringConcatenado.indexOf('-'))),
+              list.getSelectedValue().toString(), rdbtnListasPorDefecto.isSelected());
+          }
+          catch(Exception error){}
           JOptionPane.showMessageDialog(null, "Se ha eliminado el video con exito!");
           modelUsuario.removeAllElements();
           modelVideos.removeAllElements();
@@ -246,7 +250,7 @@ public class QuitarVideo extends JInternalFrame {
 
     if (modelUsuario.getSelectedItem() != null) {
     try{
-      listas = ctrLis.listarListasDefectoUsuario(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
+      listas = ctrLis.getDtListasDefectoUsuario(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
 
       for (DtLista lista: listas) {
         listListas.addElement(lista.getNombre());
@@ -255,6 +259,7 @@ public class QuitarVideo extends JInternalFrame {
     } 
     catch(Exception e){}
   
+    }
   }
 
   public void cargarParticularListas() {
@@ -263,43 +268,41 @@ public class QuitarVideo extends JInternalFrame {
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuario.getSelectedItem() != null) {
+    try{
+      listas = ctrLis.getDtListasParticularesUsuario(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
 
-      String s = modelUsuario.getSelectedItem().toString();
-
-      String[] listas = ctrLis.listarListasParticularUsuario(s);
-
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (DtLista lista: listas) {
+        listListas.addElement(lista.getNombre());
       }
+      ctrLis = null;
+    } 
+    catch(Exception e){}
+  
     }
-
-    ctrLis = null;
   }
 
-  public void cargarVideosListas(String usuario, String lista, boolean defecto) {
+  public void cargarVideosListas(int idUsuario, String lista, boolean defecto) {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-
-    String[] videos = ctrUsu.listarVideosDuenosLista(usuario, lista, defecto);
-    int largov = videos.length;
+    try{
+    videos = ctrUsu.listarVideosDuenosLista(idUsuario, lista, defecto);
     modelVideos.addElement("");
-    for (int i = 0; i < largov; i++) {
-      modelVideos.addElement(videos[i]);
+    for (DtVideo video : videos) {
+      modelVideos.addElement(video.getNombre());
     }
     ctrUsu = null;
-
+    }
+    catch(Exception e){}
   }
 
   public void cargarDatos() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    usuarios = ctrUsu.listarDtUsuarios();
+
     modelUsuario.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuario.addElement(usuarios[i]);
+    for (DtUsuario usuario: usuarios) {
+      modelUsuario.addElement(usuario.getNick());
     }
     ctrUsu = null;
   }
