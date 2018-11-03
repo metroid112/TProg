@@ -28,11 +28,9 @@ public interface IUsuariosCanales {
   
   public boolean isCanalPublico(int idUsuario) throws NotFoundException;
 
-  public List<DtVideo> listarVideosDuenosLista(int usuario, String lista, boolean defecto) throws NotFoundException;
+  public List<DtVideo> listarDtVideosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException;
 
-  public List<DtVideo> listarDtVideosDuenosLista(int usuario, String lista, boolean defecto) throws NotFoundException;
-
-  public List<DtVideo> getListaDtVideo(int idUsuario) throws NotFoundException;
+  public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException;
 
   public List<DtVideo> getListaPublicoDtVideo();
 

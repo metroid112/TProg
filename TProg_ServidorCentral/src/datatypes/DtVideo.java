@@ -46,7 +46,7 @@ public class DtVideo {
 
     for (Comentario com : comentarios.values()) {
       DtComentario dtCom = com.getDt(); // Creo Dt
-      this.comentarios.put(dtCom.idComentario, dtCom); // Lo agrego a la coleccion
+      this.comentarios.put(dtCom.getId(), dtCom); // Lo agrego a la coleccion
     }
     this.visible = visible;
     for (Calificacion cal : calificaciones) {
@@ -63,7 +63,7 @@ public class DtVideo {
   public int getCantidadCalificacionesPositivas() {
     int sum = 0;
     for (DtCalificacion calif : calificaciones) {
-      if (calif.like) {
+      if (calif.isLike()) {
         sum++;
       }
     }
@@ -73,7 +73,7 @@ public class DtVideo {
   public int getCantidadCalificacionesNegativas() {
     int sum = 0;
     for (DtCalificacion calif : calificaciones) {
-      if (!calif.like) {
+      if (!calif.isLike()) {
         sum++;
       }
     }
@@ -85,8 +85,8 @@ public class DtVideo {
     String usuarioObjetivo;
 
     for (DtCalificacion calif : calificaciones) {
-      if (calif.like) {
-        usuarioObjetivo = calif.usuario;
+      if (calif.isLike()) {
+        usuarioObjetivo = calif.getUsuario();
         positivos.add(usuarioObjetivo);
       }
     }
@@ -98,8 +98,8 @@ public class DtVideo {
     String usuarioObjetivo;
 
     for (DtCalificacion calif : calificaciones) {
-      if (!calif.like) {
-        usuarioObjetivo = calif.usuario;
+      if (!calif.isLike()) {
+        usuarioObjetivo = calif.getUsuario();
         negativos.add(usuarioObjetivo);
       }
     }
@@ -169,5 +169,9 @@ public class DtVideo {
 
   public void setFecha(Date fecha) {
     this.fecha = fecha;
+  }
+  
+  public String getUsuario(){
+    return usuario;
   }
 }

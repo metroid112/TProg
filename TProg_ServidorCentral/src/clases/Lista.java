@@ -47,6 +47,14 @@ public abstract class Lista {
     return nombre;
   }
 
+  public List<DtVideo> getListVideos(){
+    List<DtVideo> resultado = new LinkedList<DtVideo>();
+    for(Video video : videos.values()){
+      resultado.add(video.getDt());
+    }
+    return resultado;
+  }
+  
   public Video getVideo(int idVideo) throws NotFoundException {
     if (this.videos.containsKey(idVideo)) {
       return this.videos.get(idVideo);

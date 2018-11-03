@@ -26,6 +26,7 @@ public class DtComentario {
       this.tieneHijos = true;
     }
   }
+  
 
   public String getString() {
     return ("(" + this.usuario + ") " + this.texto);

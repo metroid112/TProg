@@ -19,4 +19,30 @@ public class DtCalificacion {
     }
   }
 
+  public boolean isLike() {
+    return like;
+  }
+
+  public void setLike(boolean like) {
+    this.like = like;
+  }
+
+  public String getUsuario() {
+    return usuario;
+  }
+
+  public void setUsuario(String usuario) {
+    this.usuario = usuario;
+  }
+
+  public String getVideo() {
+    return video;
+  }
+
+  public void setVideo(String video) {
+    this.video = video;
+  }
+  
+  
+
 }

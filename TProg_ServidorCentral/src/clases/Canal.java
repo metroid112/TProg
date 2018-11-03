@@ -169,32 +169,13 @@ public class Canal {
   public List<DtVideo> listarVideosLista(String lista, boolean defecto) {
     if (defecto) {
       ListaDefecto listaDef = listasDefecto.get(lista);
-      return listaDef.getArrayVideos();
+      return listaDef.getListVideos();
     } else {
       ListaParticular listaPar = listasParticulares.get(lista);
-      return listaPar.getArrayVideos();
+      return listaPar.getListVideos();
     }
   }
 
-  public List<DtVideo> listarVideosDuenosLista(String lista, boolean defecto) { //capaz ya no sea necesaria
-    if (defecto) {
-      ListaDefecto listaDef = listasDefecto.get(lista);
-      return listaDef.getArrayVideosDuenos();
-    } else {
-      ListaParticular listaPar = listasParticulares.get(lista);
-      return listaPar.getArrayVideosDuenos();
-    }
-  }
-
-  public List<DtVideo> listarDtVideosDuenosLista(String lista, boolean defecto) {
-    if (defecto) {
-      ListaDefecto listaDef = listasDefecto.get(lista);
-      return listaDef.getDtVideos();
-    } else {
-      ListaParticular listaPar = listasParticulares.get(lista);
-      return listaPar.getDtVideos();
-    }
-  }
 
   public void modVideo(String nombreOld, int idVideo) throws DuplicateClassException {
     if (nombreOld.equals(idVideo) || !this.videos.containsKey(idVideo)) {

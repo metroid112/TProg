@@ -3,6 +3,7 @@ package internalframes;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -36,6 +37,7 @@ public class ConsultaLista extends JInternalFrame {
 
   private IUsuariosCanales ctrUsu;
   private IListas ctrLis;
+  private List<DtLista> listas;
   private ButtonGroup grupoLista = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private JComboBox<String> comboBoxUsuario;

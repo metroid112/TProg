@@ -285,10 +285,10 @@ public class QuitarVideo extends JInternalFrame {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
     try{
-    videos = ctrUsu.listarVideosDuenosLista(idUsuario, lista, defecto);
+    videos = ctrUsu.listarDtVideosLista(idUsuario, lista, defecto);
     modelVideos.addElement("");
     for (DtVideo video : videos) {
-      modelVideos.addElement(video.getNombre());
+      modelVideos.addElement(video.getNombre() + " - " + video.getUsuario());
     }
     ctrUsu = null;
     }
