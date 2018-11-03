@@ -2,6 +2,7 @@ package paneles;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -14,11 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import datatypes.DtVideo;
 import interfaces.IVideos;
 
 @SuppressWarnings("serial")
 public class SeleccionVideo extends JPanel implements ActionListener {
+  private int idUsuario;
   private JComboBox<String> cBoxUsuarios;
+  private List<DtVideo> videos;
   private IVideos contVideos;
   private JList<String> listaVideos;
 
@@ -28,7 +32,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
   public SeleccionVideo(IVideos contVideos) {
 
     this.contVideos = contVideos;
-
+    this.idUsuario = idUsuario;
     JLabel lblUsuario = new JLabel("Usuario:");
 
     cBoxUsuarios = new JComboBox<String>();
@@ -64,8 +68,12 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 
   }
 
-  public String getVideo() {
-    return listaVideos.getSelectedValue();
+  public int getVideo() {
+    for(DtVideo video : videos){
+      if(video.getNombre().equals(listaVideos.getSelectedValue()))
+        return video.getId();
+    }
+    return 0;
   }
 
   public void cargarDatos() {
@@ -77,14 +85,17 @@ public class SeleccionVideo extends JPanel implements ActionListener {
   }
 
   public void updateLista(String nickname) {
-    DefaultListModel<String> model = new DefaultListModel<String>();
-    String[] videos = contVideos.listarVideos(nickname);
-    if (videos != null) {
-      for (String vid : videos) {
-        model.addElement(vid);
+    try{
+      DefaultListModel<String> model = new DefaultListModel<String>();
+      videos = contVideos.listarVideos(idUsuario);
+      if (videos != null) {
+        for (DtVideo vid : videos) {
+          model.addElement(vid.getNombre());
+        }
       }
-    }
-    listaVideos.setModel(model);
+      listaVideos.setModel(model);
+      }
+    catch(Exception e){}
   }
 
   @Override

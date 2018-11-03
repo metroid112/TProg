@@ -3,6 +3,7 @@ package internalframes;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import datatypes.DtVideo;
 import interfaces.IVideos;
 import paneles.InfoVideo;
 import paneles.SeleccionVideo;
@@ -112,8 +114,8 @@ public class ConsultaVideo extends JInternalFrame {
   private void verInfo() {
     if (seleccionVideo.getVideo() != null && seleccionVideo.getUsuario() != null) {
       infoVideo.cargarDatos(
-          contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario()));
-      cambioPanel(); // Voy al panel de informacion
+          contVideos.getDtVideo(seleccionVideo.getVideo()));
+      cambioPanel();
     } else {
       JOptionPane.showMessageDialog(this, "Debe rellenar los campos", "Error",
           JOptionPane.ERROR_MESSAGE);

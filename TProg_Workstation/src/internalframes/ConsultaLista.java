@@ -400,7 +400,7 @@ public class ConsultaLista extends JInternalFrame {
   public int obtenerUsuarioId(String nombre){
 
     for(DtUsuario usuario : usuarios){
-      if(usuario.getNick() == nombre){
+      if(usuario.getNick().equals(nombre)){
         return usuario.getIdUsuario();
       }
     }
@@ -410,7 +410,7 @@ public class ConsultaLista extends JInternalFrame {
   public int obtenerVideoId(String nombre){
 
     for(DtVideo video : videos){
-      if(video.getNombre() == nombre){
+      if(video.getNombre().equals(nombre)){
         return video.getId();
       }
     }
@@ -419,7 +419,7 @@ public class ConsultaLista extends JInternalFrame {
   
   public int obtenerListaId(String nombre){
     for(DtLista lista : listas){
-      if(lista.getNombre() == nombre){
+      if(lista.getNombre().equals(nombre)){
         return lista.getId();
       }
     }

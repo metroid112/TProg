@@ -243,7 +243,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
   public int obtenerUsuarioId(String nombre){
 
     for(DtUsuario usuario : usuarios){
-      if(usuario.getNick() == nombre){
+      if(usuario.getNick().equals(nombre)){
         return usuario.getIdUsuario();
       }
     }
