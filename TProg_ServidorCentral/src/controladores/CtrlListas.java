@@ -88,15 +88,14 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public void quitarVideoLista(int idUsuario, String nombreVideo, int ownerVideo, String lista,
+  public void quitarVideoLista(int idUsuario, int idVideo, String lista,
       boolean defecto) throws NotFoundException  {
     Usuario usuarioObj = manejadorUsuarios.getUsuario(idUsuario);
-    Usuario owner = manejadorUsuarios.getUsuario(ownerVideo);
 
     if (defecto) {
-      usuarioObj.getCanal().quitarVideoListaDefecto(nombreVideo, lista, owner);
+      usuarioObj.getCanal().quitarVideoListaDefecto(idVideo, lista);
     } else {
-      usuarioObj.getCanal().quitarVideoListaParticular(nombreVideo, lista, owner);
+      usuarioObj.getCanal().quitarVideoListaParticular(idVideo, lista);
     }
   }
 

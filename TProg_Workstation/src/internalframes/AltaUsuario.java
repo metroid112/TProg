@@ -46,9 +46,6 @@ public class AltaUsuario extends JInternalFrame {
   private JRadioButton rdbtnNo;
   private JComboBox<String> comboBoxCategoria;
 
-  /**
-   * Create the frame.
-   */
   private IUsuariosCanales ctrlUsu;
   private JTextField dia;
   private JTextField mes;
@@ -424,7 +421,6 @@ public class AltaUsuario extends JInternalFrame {
     }
   }
 
-  // Limpia la ventana.
   protected void clean() {
     textField.setText("");
     textField_1.setText("");
@@ -440,7 +436,7 @@ public class AltaUsuario extends JInternalFrame {
 
   public void cargarDatos() {
     DefaultComboBoxModel<String> modelCombo = new DefaultComboBoxModel<String>(
-        Fabrica.getIVideos().listarCategorias());
+        Fabrica.getICategorias().listarCategorias());
 
     modelCombo.addElement("Sin categoria");
     modelCombo.setSelectedItem("Sin categoria");

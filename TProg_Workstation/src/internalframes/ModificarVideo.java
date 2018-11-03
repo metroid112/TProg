@@ -272,10 +272,10 @@ public class ModificarVideo extends JInternalFrame {
   private void cargarInfo() {
     if (seleccionVideo.getUsuario() != null && seleccionVideo.getVideo() != null) {
       DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
-      tfNombre.setText(infoVid.nombre);
-      textDescripcion.setText(infoVid.descripcion);
-      tfUrl.setText(infoVid.Url);
-      if (infoVid.visible) {
+      tfNombre.setText(infoVid.getNombre());
+      textDescripcion.setText(infoVid.getDescripcion());
+      tfUrl.setText(infoVid.getUrl());
+      if (infoVid.isVisible()) {
         rdbtnPublico.doClick();
       } else {
         rdbtnPrivado.doClick();
@@ -283,7 +283,7 @@ public class ModificarVideo extends JInternalFrame {
       int horas;
       int min;
       int seg;
-      Duration duracion = infoVid.duracion;
+      Duration duracion = infoVid.getDuracion();
       horas = (int) duracion.toHours();
       duracion = duracion.minusHours(horas);
       min = (int) duracion.toMinutes();
@@ -292,15 +292,15 @@ public class ModificarVideo extends JInternalFrame {
       spinnerHoras.setValue(horas);
       spinnerMin.setValue(min);
       spinnerSeg.setValue(seg);
-      datePicker.setDate(infoVid.fecha);
+      datePicker.setDate(infoVid.getFecha());
       DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(
           contVid.listarCategorias());
-      if (!infoVid.categoria.equals("Sin Categoria")) {
+      if (!infoVid.getCategoria().equals("Sin Categoria")) {
         int size = model.getSize();
         int i = 0;
         boolean encontrado = false;
         while (i <= size && !encontrado) {
-          if (model.getElementAt(i).equals(infoVid.categoria)) {
+          if (model.getElementAt(i).equals(infoVid.getCategoria())) {
             model.setSelectedItem(model.getElementAt(i));
             encontrado = true;
           }
@@ -308,12 +308,12 @@ public class ModificarVideo extends JInternalFrame {
         }
         if (!encontrado) {
           System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: "
-              + infoVid.categoria); // TODO
+              + infoVid.getCategoria()); // TODO
           // excepccion
         }
       } else {
-        model.addElement(infoVid.categoria); // En caso de decir "Sin Categoria"
-        model.setSelectedItem(infoVid.categoria);
+        model.addElement(infoVid.getCategoria()); // En caso de decir "Sin Categoria"
+        model.setSelectedItem(infoVid.getCategoria());
       }
       cBoxCategoria.setModel(model);
 

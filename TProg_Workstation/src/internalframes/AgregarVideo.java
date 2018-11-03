@@ -152,6 +152,9 @@ public class AgregarVideo extends JInternalFrame {
         rdbtnListasParticulares.setEnabled(false);
         rdbtnListasParticulares.setSelected(false);
         setVisible(false);
+        videos.clear();
+        usuarios.clear();
+        listas.clear();
       }
     });
 
@@ -182,6 +185,9 @@ public class AgregarVideo extends JInternalFrame {
           rdbtnListasPordefecto.setSelected(true);
           rdbtnListasParticulares.setEnabled(false);
           rdbtnListasParticulares.setSelected(false);
+          videos.clear();
+          usuarios.clear();
+          listas.clear();
           setVisible(false);
         }
 

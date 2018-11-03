@@ -32,7 +32,7 @@ public interface IListas {
 
   public Map<Integer, ListaParticular> listarListasParticularUsuario(int idUsuario) throws NotFoundException ;
 
-  public void quitarVideoLista(int idUsuario, String nombreVideo, int ownerVideo, String lista,
+  public void quitarVideoLista(int idUsuario, int idVideo, String lista,
       boolean deefecto) throws NotFoundException ;
 
   public List<DtLista> getDtListasPublicas();

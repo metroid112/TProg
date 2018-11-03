@@ -178,4 +178,24 @@ public class DtVideo {
   public String getUsuario(){
     return usuario;
   }
+  
+  public String getDescripcion(){
+    return descripcion;
+  }
+  
+  public String getCategoria(){
+    return categoria;
+  }
+  
+  public boolean isVisible(){
+    return visible;
+  }
+  
+  public String getUrl(){
+    return urlVideo;
+  }
+  
+  public Duration getDuracion(){
+    return duracion;
+  }
 }

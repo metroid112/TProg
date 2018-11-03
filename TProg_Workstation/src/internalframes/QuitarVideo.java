@@ -153,6 +153,9 @@ public class QuitarVideo extends JInternalFrame {
       public void actionPerformed(ActionEvent arg0) {
         modelUsuario.removeAllElements();
         modelVideos.removeAllElements();
+        videos.clear();
+        usuarios.clear();
+        listas.clear();
         list.setEnabled(false);
         setVisible(false);
       }
@@ -228,14 +231,16 @@ public class QuitarVideo extends JInternalFrame {
           String nombreVideo = stringConcatenado.substring(stringConcatenado.indexOf('-') + 1);
           try{
           ctrLis.quitarVideoLista(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()),
-              nombreVideo,
-              obtenerUsuarioId(stringConcatenado.substring(0, stringConcatenado.indexOf('-'))),
+              obtenerVideoId(nombreVideo),
               list.getSelectedValue().toString(), rdbtnListasPorDefecto.isSelected());
           }
           catch(Exception error){}
           JOptionPane.showMessageDialog(null, "Se ha eliminado el video con exito!");
           modelUsuario.removeAllElements();
           modelVideos.removeAllElements();
+          videos.clear();
+          usuarios.clear();
+          listas.clear();
           list.setEnabled(false);
           setVisible(false);
         }
