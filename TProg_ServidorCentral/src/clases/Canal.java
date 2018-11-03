@@ -1,17 +1,9 @@
 package clases;
 
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import datatypes.DtCanal;
-import datatypes.DtLista;
-import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
@@ -42,6 +34,34 @@ public class Canal {
       ListaDefecto listaDefecto = new ListaDefecto(lista, this);
       this.listasDefecto.put(listaDefecto.getId(), listaDefecto);
     }
+  }
+
+  public DtCanal getDt() {
+    return new DtCanal(this.nombreCanal, this.descripcionCanal, this.visible, this.ultimaActividad);
+  }
+
+  public String getNombre() {
+    return nombreCanal;
+  }
+
+  public String getDescripcion() {
+    return descripcionCanal;
+  }
+
+  public Categoria getCategoria() {
+    return this.categoria;
+  }
+
+  public boolean isVisible() {
+    return visible;
+  }
+
+  public Usuario getUsuario() {
+    return usuario;
+  }
+
+  public Date getUltimaActividad() {
+    return this.ultimaActividad;
   }
 
   public void altaVideo(Video video) throws DuplicateClassException {
@@ -94,8 +114,12 @@ public class Canal {
     }
   }
 
-  public Date getUltimaActividad() {
-    return this.ultimaActividad;
+  public Video getVideo(int idVideo) throws NotFoundException {
+    if (videos.containsKey(idVideo)) {
+      return videos.get(idVideo);
+    } else {
+      throw new NotFoundException("Video id: " + idVideo);
+    }
   }
 
   public Map<Integer, Video> getVideos() {
@@ -146,116 +170,19 @@ public class Canal {
     return listasParticulares;
   }
 
-  public String getNombre() {
-    return nombreCanal;
+  public void quitarVideoListaDefecto(int idVideo, int idLista) throws NotFoundException {
+    ListaDefecto listaDefecto = listasDefecto.get(idLista);
+    listaDefecto.quitarVideo(idVideo);
   }
 
-  public Usuario getUsuario() {
-    return usuario;
-  }
-
-  public String getDescripcion() {
-    return descripcionCanal;
-  }
-
-  public Video getVideo(int idVideo) {
-    return videos.get(idVideo);
-  }
-
-  public boolean isVisible() {
-    return visible;
-  }
-
-  public String[] listarVideosLista(String lista, boolean defecto) {
-    if (defecto) {
-      ListaDefecto listaDef = listasDefecto.get(lista);
-      return listaDef.getArrayVideos();
-    } else {
-      ListaParticular listaPar = listasParticulares.get(lista);
-      return listaPar.getArrayVideos();
+  public void quitarVideoListaParticular(int idVideo, int idLista) throws NotFoundException {
+    ListaParticular listaParticular = listasParticulares.get(idLista);
+    Video video = listaParticular.getVideo(idVideo);
+    listaParticular.quitarVideo(idVideo);
+    Categoria categoria = video.getCategoria();
+    if (listaParticular.esUnicaCategoria(categoria)) {
+      listaParticular.quitarCategoria(categoria);
     }
-  }
-
-  public String[] listarVideosDuenosLista(String lista, boolean defecto) { //capaz ya no sea necesaria
-    if (defecto) {
-      ListaDefecto listaDef = listasDefecto.get(lista);
-      return listaDef.getArrayVideosDuenos();
-    } else {
-      ListaParticular listaPar = listasParticulares.get(lista);
-      return listaPar.getArrayVideosDuenos();
-    }
-  }
-
-  public List<DtVideo> listarDtVideosDuenosLista(String lista, boolean defecto) {
-    if (defecto) {
-      ListaDefecto listaDef = listasDefecto.get(lista);
-      return listaDef.getDtVideos();
-    } else {
-      ListaParticular listaPar = listasParticulares.get(lista);
-      return listaPar.getDtVideos();
-    }
-  }
-
-  public void modVideo(String nombreOld, int idVideo) throws DuplicateClassException {
-    if (nombreOld.equals(idVideo) || !this.videos.containsKey(idVideo)) {
-      Video vid = this.videos.remove(nombreOld);
-      this.videos.put(idVideo, vid);
-    } else {
-      throw new DuplicateClassException("Video", "El nombre seleccionado ya existe.");
-    }
-  }
-  
-  public List<DtVideo> listaDtVideo() {
-    List<DtVideo> result = new LinkedList<DtVideo>();
-    for (Video v : videos.values()) {
-      result.add(v.getDt());
-    }
-    return result;
-  }
-
-  public List<DtVideo> listaPublicoDtVideo() {
-    List<DtVideo> result = new LinkedList<DtVideo>();
-    for (Video v : videos.values()) {
-      if (v.getVisible()) {
-        DtVideo nuevo = v.getDt();
-        result.add(nuevo);
-      }
-    }
-    return result;
-  }
-
-  public void quitarVideoListaDefecto(int video, String lista) {
-    ListaDefecto listaObj = listasDefecto.get(lista);
-    listaObj.quitarVideo(video);
-
-  }
-
-  public void quitarVideoListaParticular(int video, String lista) throws NotFoundException {
-    ListaParticular listaObj = listasParticulares.get(lista);
-    Video videoObj = listaObj.getVideo(video);
-    listaObj.quitarVideo(video);
-    Categoria cat = videoObj.getCategoria();
-
-    if (listaObj.esUnicaCategoria(cat)) {
-      listaObj.quitarCategoria(cat);
-    }
-
-  }
-
-  public void agregarVideo(Video video) {
-    this.videos.put(video.getId(), video);
-  }
-
-  public Categoria getCategoria() {
-    return this.categoria;
-  }
-
-  public DtLista getDtListaDefecto(String nombreListaDefecto) {
-    return this.listasDefecto.get(nombreListaDefecto).getDtLista();
-  }
-
-  public DtCanal getDt() {
-    return new DtCanal(this.nombreCanal, this.descripcionCanal, this.visible, this.ultimaActividad);
   }
 
   @Override
