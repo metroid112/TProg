@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import interfaces.Fabrica;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/CargaDatos")
 public class CargaDatos extends HttpServlet {
@@ -31,11 +33,9 @@ public class CargaDatos extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    try {
-      Fabrica.getIDatos().cargaDatos();
-    } catch (Exception exception) {
-      exception.printStackTrace();
-    }
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
+    port.cargarDatos();
     request.getRequestDispatcher("index.jsp").forward(request, response);
   }
 }
