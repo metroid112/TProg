@@ -15,24 +15,26 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import datatypes.DtUsuario;
 import datatypes.DtVideo;
+import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 
 @SuppressWarnings("serial")
 public class SeleccionVideo extends JPanel implements ActionListener {
-  private int idUsuario;
+
   private JComboBox<String> cBoxUsuarios;
   private List<DtVideo> videos;
+  private List<DtUsuario> usuarios;
   private IVideos contVideos;
+  private IUsuariosCanales contUsuarios;
   private JList<String> listaVideos;
 
-  /**
-   * Create the panel.
-   */
-  public SeleccionVideo(IVideos contVideos) {
+  public SeleccionVideo(IVideos contVideos, IUsuariosCanales contUsuarios) {
 
     this.contVideos = contVideos;
-    this.idUsuario = idUsuario;
+    this.contUsuarios = contUsuarios;
+    
     JLabel lblUsuario = new JLabel("Usuario:");
 
     cBoxUsuarios = new JComboBox<String>();
@@ -77,8 +79,9 @@ public class SeleccionVideo extends JPanel implements ActionListener {
   }
 
   public void cargarDatos() {
-    String[] usuarios = contVideos.listarUsuarios();
-    DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuarios);
+    usuarios = contUsuarios.listarDtUsuarios();
+    String[] usuariosArray = (String[]) usuarios.toArray();
+    DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuariosArray);
     cBoxUsuarios.setModel(modelU);
     cBoxUsuarios.setSelectedIndex(-1);
     updateLista((String) cBoxUsuarios.getSelectedItem());
@@ -87,7 +90,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
   public void updateLista(String nickname) {
     try{
       DefaultListModel<String> model = new DefaultListModel<String>();
-      videos = contVideos.listarVideos(idUsuario);
+      videos = contVideos.listarVideos(obtenerUsuarioId(cBoxUsuarios.getSelectedItem().toString()));
       if (videos != null) {
         for (DtVideo vid : videos) {
           model.addElement(vid.getNombre());
@@ -109,6 +112,16 @@ public class SeleccionVideo extends JPanel implements ActionListener {
     } else {
       return null;
     }
+  }
+  
+  public int obtenerUsuarioId(String nombre){
+
+    for(DtUsuario usuario : usuarios){
+      if(usuario.getNick().equals(nombre)){
+        return usuario.getIdUsuario();
+      }
+    }
+    return 0;
   }
 
 }

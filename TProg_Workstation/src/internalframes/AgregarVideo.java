@@ -368,7 +368,7 @@ public class AgregarVideo extends JInternalFrame {
         return usuario.getIdUsuario();
       }
     }
-    return 0;
+    return -1;
   }
   
   public int obtenerVideoId(String nombre){

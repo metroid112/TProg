@@ -30,7 +30,7 @@ import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class AltaUsuario extends JInternalFrame {
-  // protected static final String BufferedImage = null;
+
   private BufferedImage imagenFile = null;
   private JTextField textField;
   private JTextField textField_1;
