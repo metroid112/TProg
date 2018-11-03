@@ -52,7 +52,7 @@ public class ManejadorCategorias {
   }
   
   public DtCategoria toList() {
-    List<String> lista = new ArrayList<String>(categorias.keySet());
+    List<String> lista = new LinkedList<String>(categorias.keySet());
     return new DtCategoria(lista);
   }
 

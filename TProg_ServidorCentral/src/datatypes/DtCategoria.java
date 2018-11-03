@@ -15,7 +15,7 @@ public class DtCategoria extends DtUniversal {
   private List<ListaParticular> listas = new LinkedList<ListaParticular>();
   private String nombre;
   private List<Video> videos = new LinkedList<Video>();
-  private List<String> categorias = new ArrayList<String>();
+  private List<String> categorias;
   
   public List<String> getCategorias() {
     return categorias;

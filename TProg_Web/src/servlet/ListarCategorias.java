@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import interfaces.Fabrica;
 import interfaces.ICategorias;
+import servicios.DtCategoria;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -24,13 +25,13 @@ public class ListarCategorias extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    servicios.DtCategoria resultados = null;
+    servicios.DtCategoria resultado = null;
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
-    ICategorias ctrlCategorias = Fabrica.getICategorias();
-    String[] listaCategorias = ctrlCategorias.listarCategorias();
-    request.setAttribute("CATEGORIAS", listaCategorias);
-    request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request, response);
+    resultado = (servicios.DtCategoria) port.listarCategorias().getContenido();
+    response.getWriter().append(resultado.toString());
+    request.setAttribute("CATEGORIAS", resultado.getCategorias());
+    
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)

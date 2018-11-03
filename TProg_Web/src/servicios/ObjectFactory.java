@@ -126,6 +126,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DtCategoria }
+     * 
+     */
+    public DtCategoria createDtCategoria() {
+        return new DtCategoria();
+    }
+
+    /**
+     * Create an instance of {@link ListaParticular }
+     * 
+     */
+    public ListaParticular createListaParticular() {
+        return new ListaParticular();
+    }
+
+    /**
+     * Create an instance of {@link Video }
+     * 
+     */
+    public Video createVideo() {
+        return new Video();
+    }
+
+    /**
      * Create an instance of {@link DtComentario.Hijos.Entry }
      * 
      */

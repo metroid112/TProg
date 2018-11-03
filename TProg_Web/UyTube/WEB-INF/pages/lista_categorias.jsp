@@ -1,5 +1,6 @@
 <!doctype html>
-<%@ page import = "datatypes.*" %>
+<%@ page import = "servicios.DtCategoria" %>
+<%@ page import = "java.util.*" %>
 <html lang="en">
 <head>
 	<jsp:include page="/WEB-INF/extras/head.jsp" />
@@ -11,6 +12,7 @@
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
 			<% String[] listas = (String[]) request.getAttribute("CATEGORIAS");
+			   //List<String> listas = dtCategoria.getCategorias();
 				if (listas.length == 0) { %>
 					<h1>No hay categorias en el sistema.</h1>
 					<br>
@@ -18,7 +20,7 @@
 				<h1>Categorias</h1>
 				<br>
 					<div class="highlights">	
-					<% for (String categorias : (String[]) request.getAttribute("CATEGORIAS")) { %>
+					<% for (String categorias : listas) { %>
 							<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=categorias%>').submit();">	
 								<form id="Form<%=categorias%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="POST">
 									<input type="hidden" name="CATEGORIA" value="<%=categorias%>">
