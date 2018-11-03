@@ -1,7 +1,8 @@
 /clases/
 /controladores/
 /datatypes/
-/manejadores/
-/test/
+/excepciones/
 /interfaces/
+/manejadores/
 /servicios/
+/test/
