@@ -12,9 +12,9 @@ import clases.Video;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtCategoria extends DtUniversal {
-  private List<ListaParticular> listas = new LinkedList<ListaParticular>();
+  private List<ListaParticular> listas;
   private String nombre;
-  private List<Video> videos = new LinkedList<Video>();
+  private List<Video> videos;
   private List<String> categorias;
   
   public List<String> getCategorias() {
