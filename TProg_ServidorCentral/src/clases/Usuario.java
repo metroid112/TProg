@@ -190,11 +190,11 @@ public class Usuario {
 
   public void modificarUsuario(DtUsuario usuarioModificado) {
     this.nombre = usuarioModificado.getNombre();
-    this.apellido = usuarioModificado.get();
-    this.fechaNacimiento = usuarioModificado.get();
-    this.correo = usuarioModificado.get();
-    this.password = usuarioModificado.get();
-    this.img or imgpath = usuarioModificado.get();
+    this.apellido = usuarioModificado.getApellido();
+    this.fechaNacimiento = usuarioModificado.getFechaNacimiento();
+    this.correo = usuarioModificado.getCorreo();
+    this.password = usuarioModificado.getPassword();
+    this.imgPath = usuarioModificado.getImgPath();
   }
 /*
   @Override

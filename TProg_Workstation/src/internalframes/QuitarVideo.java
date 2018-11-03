@@ -234,8 +234,8 @@ public class QuitarVideo extends JInternalFrame {
           String nombreVideo = stringConcatenado.substring(stringConcatenado.indexOf('-') + 1);
           try{
           ctrLis.quitarVideoLista(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()),
-              obtenerVideoId(nombreVideo),
-              list.getSelectedValue().toString(), rdbtnListasPorDefecto.isSelected());
+              obtenerVideoId(nombreVideo),obtenerListaId(list.getSelectedValue().toString()),
+              rdbtnListasPorDefecto.isSelected());
           }
           catch(Exception error){}
           JOptionPane.showMessageDialog(null, "Se ha eliminado el video con exito!");

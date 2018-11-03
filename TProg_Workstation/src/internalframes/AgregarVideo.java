@@ -378,7 +378,7 @@ public class AgregarVideo extends JInternalFrame {
         return video.getId();
       }
     }
-    return 0;
+    return -1;
   }
   
   public int obtenerListaId(String nombre){
@@ -387,6 +387,6 @@ public class AgregarVideo extends JInternalFrame {
         return lista.getId();
       }
     }
-    return 0;
+    return -1;
   }
 }

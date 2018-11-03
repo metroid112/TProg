@@ -80,7 +80,11 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 
   public void cargarDatos() {
     usuarios = contUsuarios.listarDtUsuarios();
-    String[] usuariosArray = (String[]) usuarios.toArray();
+    String[] usuariosArray = new String[usuarios.size()];
+    int i = 0;
+    for(DtUsuario usuario : usuarios){
+      usuariosArray[i] = usuario.getNick();
+    }
     DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuariosArray);
     cBoxUsuarios.setModel(modelU);
     cBoxUsuarios.setSelectedIndex(-1);
@@ -106,11 +110,11 @@ public class SeleccionVideo extends JPanel implements ActionListener {
     updateLista((String) cBoxUsuarios.getSelectedItem());
   }
 
-  public String getUsuario() {
+  public int getUsuario() {
     if (cBoxUsuarios.getSelectedIndex() > -1) {
-      return (String) cBoxUsuarios.getSelectedItem();
+      return obtenerUsuarioId((String) cBoxUsuarios.getSelectedItem());
     } else {
-      return null;
+      return -1;
     }
   }
   
@@ -121,7 +125,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
         return usuario.getIdUsuario();
       }
     }
-    return 0;
+    return -1;
   }
 
 }

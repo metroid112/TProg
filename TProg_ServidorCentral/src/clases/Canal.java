@@ -175,47 +175,7 @@ public class Canal {
     listaDefecto.quitarVideo(idVideo);
   }
 
-<<<<<<< HEAD
-  public boolean isVisible() {
-    return visible;
-  }
 
-  public List<DtVideo> listarVideosLista(String lista, boolean defecto) {
-    if (defecto) {
-      ListaDefecto listaDef = listasDefecto.get(lista);
-      return listaDef.getListVideos();
-    } else {
-      ListaParticular listaPar = listasParticulares.get(lista);
-      return listaPar.getListVideos();
-    }
-  }
-
-
-  public void modVideo(String nombreOld, int idVideo) throws DuplicateClassException {
-    if (nombreOld.equals(idVideo) || !this.videos.containsKey(idVideo)) {
-      Video vid = this.videos.remove(nombreOld);
-      this.videos.put(idVideo, vid);
-    } else {
-      throw new DuplicateClassException("Video", "El nombre seleccionado ya existe.");
-    }
-  }
-  
-  public List<DtVideo> listaDtVideo() {
-    List<DtVideo> result = new LinkedList<DtVideo>();
-    for (Video v : videos.values()) {
-      result.add(v.getDt());
-    }
-    return result;
-  }
-
-  public List<DtVideo> listaPublicoDtVideo() {
-    List<DtVideo> result = new LinkedList<DtVideo>();
-    for (Video v : videos.values()) {
-      if (v.getVisible()) {
-        DtVideo nuevo = v.getDt();
-        result.add(nuevo);
-      }
-=======
   public void quitarVideoListaParticular(int idVideo, int idLista) throws NotFoundException {
     ListaParticular listaParticular = listasParticulares.get(idLista);
     Video video = listaParticular.getVideo(idVideo);
@@ -223,7 +183,7 @@ public class Canal {
     Categoria categoria = video.getCategoria();
     if (listaParticular.esUnicaCategoria(categoria)) {
       listaParticular.quitarCategoria(categoria);
->>>>>>> Reingenieria-Usuario
+
     }
   }
 

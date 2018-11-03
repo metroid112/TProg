@@ -22,7 +22,7 @@ public interface IListas {
 
   public DtLista getDt(int idLista) throws NotFoundException;
 
-  public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto)throws NotFoundException ;
+ // public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto)throws NotFoundException ;
 
   public Map<Integer, DtLista> getDtListas();
 
@@ -32,7 +32,7 @@ public interface IListas {
 
   public Map<Integer, ListaParticular> listarListasParticularUsuario(int idUsuario) throws NotFoundException ;
 
-  public void quitarVideoLista(int idUsuario, int idVideo, String lista,
+  public void quitarVideoLista(int idUsuario, int idVideo, int idLista,
       boolean deefecto) throws NotFoundException ;
 
   public List<DtLista> getDtListasPublicas();

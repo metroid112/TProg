@@ -88,14 +88,14 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public void quitarVideoLista(int idUsuario, int idVideo, String lista,
+  public void quitarVideoLista(int idUsuario, int idVideo, int idLista,
       boolean defecto) throws NotFoundException  {
     Usuario usuarioObj = manejadorUsuarios.getUsuario(idUsuario);
 
     if (defecto) {
-      usuarioObj.getCanal().quitarVideoListaDefecto(idVideo, lista);
+      usuarioObj.getCanal().quitarVideoListaDefecto(idVideo, idLista);
     } else {
-      usuarioObj.getCanal().quitarVideoListaParticular(idVideo, lista);
+      usuarioObj.getCanal().quitarVideoListaParticular(idVideo, idLista);
     }
   }
 
@@ -105,11 +105,10 @@ public class CtrlListas implements IListas {
         .getDtLista();
   }
 
-  @Override
+  /*@Override
   public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto)throws NotFoundException {
-    return manejadorUsuarios.getUsuario(idUsuario).getCanal()
-        .getDtListaDefecto(nombreListaDefecto);
-  }
+    return manejadorUsuarios.getUsuario(idUsuario).getCanal().getDtListaDefecto(nombreListaDefecto);
+  }*/
 
   @Override
   public Map<Integer, DtLista> getDtListas() {

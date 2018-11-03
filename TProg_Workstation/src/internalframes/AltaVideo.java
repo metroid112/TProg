@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
@@ -22,12 +23,15 @@ import javax.swing.SpinnerNumberModel;
 
 import org.jdesktop.swingx.JXDatePicker;
 
+import datatypes.DtUsuario;
+import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 
 @SuppressWarnings("serial")
 public class AltaVideo extends JInternalFrame {
   private JTextField TextoNombre;
   private JTextField tFieldUrl;
+  private List<DtUsuario> usuarios;
   private JComboBox<String> cBoxUsuarios;
   private JTextArea tAreaDescripcion;
   private JSpinner spinnerHoras;
@@ -38,12 +42,14 @@ public class AltaVideo extends JInternalFrame {
   private JScrollPane scrollPane;
 
   private IVideos contVideos;
+  private IUsuariosCanales contUsuarios;
 
   /**
    * Create the frame.
    */
-  public AltaVideo(IVideos interfaz) {
-    contVideos = interfaz; // Se inicia con la interfaz como parametro
+  public AltaVideo(IVideos contVideos,IUsuariosCanales contUsuarios) {
+    this.contVideos = contVideos;
+    this.contUsuarios = contUsuarios;
 
     setTitle("Alta de Video");
     setBounds(0, 0, 550, 400);
@@ -219,12 +225,17 @@ public class AltaVideo extends JInternalFrame {
   }
 
   public void cargarDatos() {
-    /**
-     * Aca se le piden la lista de usuarios y la lista de categorias al controlador
-     */
-    String[] usuarios = contVideos.listarUsuarios();
+
+    usuarios = contUsuarios.listarDtUsuarios();
+    String[] usuariosArray = new String[usuarios.size()];
+    int i = 0;
+    for(DtUsuario usuario : usuarios){
+      usuariosArray[i] = usuario.getNick();
+      i++;
+    }
+    
     String[] categorias = contVideos.listarCategorias();
-    DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<>(usuarios);
+    DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<>(usuariosArray);
     DefaultComboBoxModel<String> modelC = new DefaultComboBoxModel<>(categorias);
     modelC.addElement("Sin Categoria");
     modelC.setSelectedItem("Sin Categoria");
@@ -240,15 +251,13 @@ public class AltaVideo extends JInternalFrame {
     String url;
     String categoria;
     Duration duracion;
-    /**
-     * recolecto la info del frame
-     */
+
     nick = (String) cBoxUsuarios.getSelectedItem();
     nombre = TextoNombre.getText();
     descripcion = tAreaDescripcion.getText();
     url = tFieldUrl.getText();
     categoria = (String) cBoxCategoria.getSelectedItem();
-    if (categoria.equals("Sin Categoria")) { // Chequeo si eligio alguna categoria
+    if (categoria.equals("Sin Categoria")) {
       categoria = null;
     }
     duracion = Duration.ofHours((int) spinnerHoras.getValue());
@@ -257,19 +266,13 @@ public class AltaVideo extends JInternalFrame {
     Date fecha = datePicker.getDate();
     if (datosCorrectos(nick, nombre, url, duracion, fecha)) {
       try {
-        contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha, false);
+        contVideos.altaVideo(obtenerUsuarioId(nick), nombre, descripcion, duracion, url, categoria, fecha, false);
         JOptionPane.showMessageDialog(this, "Video creado con exito!");
         setVisible(false);
         clearDatos();
       } catch (Exception e) {
         JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video",
-            JOptionPane.ERROR_MESSAGE); // Muesta
-        // el
-        // error
-        // al
-        // dar
-        // de
-        // alta
+            JOptionPane.ERROR_MESSAGE);
       }
     } else {
       JOptionPane.showMessageDialog(this, "No deben haber campos vacios.", "Error!",
@@ -285,6 +288,7 @@ public class AltaVideo extends JInternalFrame {
   }
 
   private void clearDatos() {
+    usuarios.clear();
     TextoNombre.setText(null);
     tFieldUrl.setText(null);
     tAreaDescripcion.setText(null);
@@ -293,5 +297,15 @@ public class AltaVideo extends JInternalFrame {
     spinnerHoras.setValue(0);
     spinnerMinutos.setValue(0);
     spinnerSegundos.setValue(0);
+  }
+  
+  public int obtenerUsuarioId(String nombre){
+
+    for(DtUsuario usuario : usuarios){
+      if(usuario.getNick().equals(nombre)){
+        return usuario.getIdUsuario();
+      }
+    }
+    return -1;
   }
 }

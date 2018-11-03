@@ -28,12 +28,14 @@ import org.jdesktop.swingx.JXDatePicker;
 
 import datatypes.DtVideo;
 import excepciones.InvalidDataException;
+import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 import paneles.SeleccionVideo;
 
 @SuppressWarnings("serial")
 public class ModificarVideo extends JInternalFrame {
   private SeleccionVideo seleccionVideo;
+  private IUsuariosCanales contUsuarios;
   private IVideos contVid;
   private JTextField tfNombre;
   private JTextField tfUrl;
@@ -50,8 +52,9 @@ public class ModificarVideo extends JInternalFrame {
   /**
    * Create the frame.
    */
-  public ModificarVideo(IVideos contVid) {
+  public ModificarVideo(IVideos contVid,IUsuariosCanales contUsuarios) {
     this.contVid = contVid;
+    this.contUsuarios = contUsuarios;
     setTitle("Modificar Video");
     setBounds(100, 100, 500, 480);
     getContentPane().setLayout(new CardLayout(0, 0));
@@ -59,7 +62,7 @@ public class ModificarVideo extends JInternalFrame {
     JPanel panelSeleccion = new JPanel();
     getContentPane().add(panelSeleccion, "name_75253987057171");
 
-    seleccionVideo = new SeleccionVideo(this.contVid);
+    seleccionVideo = new SeleccionVideo(this.contVid,this.contUsuarios);
 
     JButton btnCancelar = new JButton("Cancelar");
     btnCancelar.addActionListener(new ActionListener() {
@@ -264,14 +267,14 @@ public class ModificarVideo extends JInternalFrame {
   }
 
   private void cambioPanel() {
-    CardLayout layout = (CardLayout) getContentPane().getLayout(); // Consigo el layout
-    layout.next(getContentPane()); // Cambia al siguiente panel
+    CardLayout layout = (CardLayout) getContentPane().getLayout();
+    layout.next(getContentPane()); 
 
   }
 
   private void cargarInfo() {
-    if (seleccionVideo.getUsuario() != null && seleccionVideo.getVideo() != null) {
-      DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
+    if (seleccionVideo.getUsuario() != -1 && seleccionVideo.getVideo() != -1) {
+      DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo());
       tfNombre.setText(infoVid.getNombre());
       textDescripcion.setText(infoVid.getDescripcion());
       tfUrl.setText(infoVid.getUrl());
@@ -327,18 +330,18 @@ public class ModificarVideo extends JInternalFrame {
   }
 
   private void modificarVideo() {
-    // try {
+    
 
-    String nick;
-    String nombreOld;
+    int idUsuario;
+    int idVIdeo;
     String nombre;
     String descripcion;
     String url;
     String categoria;
     Duration duracion;
     Boolean visible;
-    nick = seleccionVideo.getUsuario();
-    nombreOld = seleccionVideo.getVideo();
+    idUsuario = seleccionVideo.getUsuario();
+    idVIdeo = seleccionVideo.getVideo();
     nombre = tfNombre.getText();
     descripcion = textDescripcion.getText();
     url = tfUrl.getText();
@@ -357,7 +360,7 @@ public class ModificarVideo extends JInternalFrame {
     }
     if (datosCorrectos(nombre, url, duracion)) {
       try {
-        contVid.modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion,
+        contVid.modificarVideo(idUsuario, idVIdeo, nombre, descripcion, url, categoria, duracion,
             visible, fecha);
         JOptionPane.showMessageDialog(this, "Datos modificados con exito");
         setVisible(false);
@@ -366,6 +369,7 @@ public class ModificarVideo extends JInternalFrame {
         JOptionPane.showMessageDialog(this, exception.getMessage(), "Error",
             JOptionPane.ERROR_MESSAGE);
       }
+      catch(Exception e){}
     } else {
       JOptionPane.showMessageDialog(this, "Datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
     }

@@ -27,9 +27,6 @@ public class ConsultaVideo extends JInternalFrame {
   private SeleccionVideo seleccionVideo;
   private InfoVideo infoVideo;
 
-  /**
-   * Create the frame.
-   */
   public ConsultaVideo(IVideos contVideos,IUsuariosCanales contUsuarios) {
 
     this.contVideos = contVideos;
@@ -115,7 +112,7 @@ public class ConsultaVideo extends JInternalFrame {
   }
 
   private void verInfo() {
-    if (seleccionVideo.getVideo() != -1 && seleccionVideo.getUsuario() != null) {
+    if (seleccionVideo.getVideo() != -1 && seleccionVideo.getUsuario() != -1) {
       try{
       infoVideo.cargarDatos(
           contVideos.getDtVideo(seleccionVideo.getVideo()));

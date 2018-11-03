@@ -404,7 +404,7 @@ public class ConsultaLista extends JInternalFrame {
         return usuario.getIdUsuario();
       }
     }
-    return 0;
+    return -1;
   }
   
   public int obtenerVideoId(String nombre){
@@ -414,7 +414,7 @@ public class ConsultaLista extends JInternalFrame {
         return video.getId();
       }
     }
-    return 0;
+    return -1;
   }
   
   public int obtenerListaId(String nombre){
@@ -423,6 +423,6 @@ public class ConsultaLista extends JInternalFrame {
         return lista.getId();
       }
     }
-    return 0;
+    return -1;
   }
 }

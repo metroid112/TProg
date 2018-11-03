@@ -29,5 +29,5 @@ public interface IVideos {
 
   public List<DtVideo> getDtVideosPublicos();
 
-  public int getIdVideoNombre(String nombreVideo) throws NotFoundException;
+  //public int getIdVideoNombre(String nombreVideo) throws NotFoundException;
 }
