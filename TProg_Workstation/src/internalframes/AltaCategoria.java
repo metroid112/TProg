@@ -85,7 +85,7 @@ public class AltaCategoria extends JInternalFrame {
         ctrlCat = Fabrica.getICategorias();
         String texto = textField.getText();
         ctrlCat.altaCategoria(texto);
-        // Muestro éxito de la operación
+
         JOptionPane.showMessageDialog(this, "La categoria se ha creado con exito");
         textField.setText("");
         setVisible(false);

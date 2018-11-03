@@ -1,5 +1,8 @@
 package interfaces;
 
+import java.util.List;
+
+import datatypes.DtCategoria;
 import excepciones.NotFoundException;
 
 public interface ICategorias {
@@ -10,7 +13,7 @@ public interface ICategorias {
 
   public String[] getInfoVideos(String categoria) throws NotFoundException ;
 
-//  public String[] listarCategorias();
+  public List<DtCategoria> listarCategorias();
 
   public String[] getInfoVideosPublicos(String categoria) throws NotFoundException ;
 

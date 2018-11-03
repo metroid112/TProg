@@ -23,7 +23,9 @@ import javax.swing.SpinnerNumberModel;
 
 import org.jdesktop.swingx.JXDatePicker;
 
+import datatypes.DtCategoria;
 import datatypes.DtUsuario;
+import interfaces.ICategorias;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 
@@ -32,6 +34,7 @@ public class AltaVideo extends JInternalFrame {
   private JTextField TextoNombre;
   private JTextField tFieldUrl;
   private List<DtUsuario> usuarios;
+  private List<DtCategoria> categorias;
   private JComboBox<String> cBoxUsuarios;
   private JTextArea tAreaDescripcion;
   private JSpinner spinnerHoras;
@@ -43,13 +46,15 @@ public class AltaVideo extends JInternalFrame {
 
   private IVideos contVideos;
   private IUsuariosCanales contUsuarios;
+  private ICategorias contCategoria;
 
   /**
    * Create the frame.
    */
-  public AltaVideo(IVideos contVideos,IUsuariosCanales contUsuarios) {
+  public AltaVideo(IVideos contVideos,IUsuariosCanales contUsuarios,ICategorias contCategoria) {
     this.contVideos = contVideos;
     this.contUsuarios = contUsuarios;
+    this.contCategoria = contCategoria;
 
     setTitle("Alta de Video");
     setBounds(0, 0, 550, 400);
@@ -234,9 +239,16 @@ public class AltaVideo extends JInternalFrame {
       i++;
     }
     
-    String[] categorias = contVideos.listarCategorias();
+    categorias = contCategoria.listarCategorias();
+    String[] categoriasArray = new String[categorias.size()];
+    i = 0;
+    for(DtCategoria categoria : categorias){
+      usuariosArray[i] = categoria.getNombreCategoria();
+      i++;
+    }
+    
     DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<>(usuariosArray);
-    DefaultComboBoxModel<String> modelC = new DefaultComboBoxModel<>(categorias);
+    DefaultComboBoxModel<String> modelC = new DefaultComboBoxModel<>(categoriasArray);
     modelC.addElement("Sin Categoria");
     modelC.setSelectedItem("Sin Categoria");
     cBoxUsuarios.setModel(modelU);
@@ -289,6 +301,7 @@ public class AltaVideo extends JInternalFrame {
 
   private void clearDatos() {
     usuarios.clear();
+    categorias.clear();
     TextoNombre.setText(null);
     tFieldUrl.setText(null);
     tAreaDescripcion.setText(null);

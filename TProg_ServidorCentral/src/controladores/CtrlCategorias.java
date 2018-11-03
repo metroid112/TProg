@@ -1,6 +1,9 @@
 package controladores;
 
+import java.util.List;
+
 import clases.Categoria;
+import datatypes.DtCategoria;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.ICategorias;
@@ -43,9 +46,10 @@ public class CtrlCategorias implements ICategorias {
     Categoria categ = manejadorCategorias.getCategoria(categoria);
     return categ.getInfoVideosPublicos();
   }
-/*
+
   @Override
-  public String[] listarCategorias() {
-    return manejadorCategorias.toArray();
-  }*/
+  public List<DtCategoria> listarCategorias() {
+
+    return manejadorCategorias.listarCategorias();
+  }
 }

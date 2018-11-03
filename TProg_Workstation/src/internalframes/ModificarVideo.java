@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -26,8 +27,10 @@ import javax.swing.SpinnerNumberModel;
 
 import org.jdesktop.swingx.JXDatePicker;
 
+import datatypes.DtCategoria;
 import datatypes.DtVideo;
 import excepciones.InvalidDataException;
+import interfaces.ICategorias;
 import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 import paneles.SeleccionVideo;
@@ -35,7 +38,10 @@ import paneles.SeleccionVideo;
 @SuppressWarnings("serial")
 public class ModificarVideo extends JInternalFrame {
   private SeleccionVideo seleccionVideo;
+  private ICategorias contCategorias;
   private IUsuariosCanales contUsuarios;
+  
+  private List<DtCategoria> categorias;
   private IVideos contVid;
   private JTextField tfNombre;
   private JTextField tfUrl;
@@ -52,9 +58,10 @@ public class ModificarVideo extends JInternalFrame {
   /**
    * Create the frame.
    */
-  public ModificarVideo(IVideos contVid,IUsuariosCanales contUsuarios) {
+  public ModificarVideo(IVideos contVid,IUsuariosCanales contUsuarios, ICategorias contCategorias) {
     this.contVid = contVid;
     this.contUsuarios = contUsuarios;
+    this.contCategorias = contCategorias;
     setTitle("Modificar Video");
     setBounds(100, 100, 500, 480);
     getContentPane().setLayout(new CardLayout(0, 0));
@@ -296,8 +303,15 @@ public class ModificarVideo extends JInternalFrame {
       spinnerMin.setValue(min);
       spinnerSeg.setValue(seg);
       datePicker.setDate(infoVid.getFecha());
-      DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(
-          contVid.listarCategorias());
+      
+      categorias = contCategorias.listarCategorias();
+      
+      String[] arrayCategorias = new String[categorias.size()];
+      int j = 0;
+      for(DtCategoria categoria : categorias){
+        arrayCategorias[j] = categoria.getNombreCategoria();
+      }
+      DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(arrayCategorias);
       if (!infoVid.getCategoria().equals("Sin Categoria")) {
         int size = model.getSize();
         int i = 0;
@@ -364,6 +378,7 @@ public class ModificarVideo extends JInternalFrame {
             visible, fecha);
         JOptionPane.showMessageDialog(this, "Datos modificados con exito");
         setVisible(false);
+        categorias.clear();
         cambioPanel();
       } catch (InvalidDataException exception) {
         JOptionPane.showMessageDialog(this, exception.getMessage(), "Error",

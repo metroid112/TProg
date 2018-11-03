@@ -1,9 +1,12 @@
 package manejadores;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import clases.Categoria;
+import datatypes.DtCategoria;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 
@@ -41,5 +44,13 @@ public class ManejadorCategorias {
 
   public boolean existeCategoria(String nombreCategoria) {
     return categorias.containsKey(nombreCategoria);
+  }
+  
+  public List<DtCategoria> listarCategorias(){
+    List<DtCategoria> resultado = new LinkedList<DtCategoria>();
+    for(Categoria categoria: categorias.values()){
+      resultado.add(categoria.getDt());
+    }
+    return resultado;
   }
 }

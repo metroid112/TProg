@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -12,12 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
+import datatypes.DtCategoria;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 
 @SuppressWarnings("serial")
 public class ListarCategorias extends JInternalFrame {
 
+  private List<DtCategoria> categorias;
   private ICategorias ctrlCat;
   private DefaultListModel<String> model = new DefaultListModel<>();
 
@@ -28,7 +31,6 @@ public class ListarCategorias extends JInternalFrame {
 
     JScrollPane scrollPane = new JScrollPane();
 
-    // DefaultListModel<String> model = new DefaultListModel<>();
     JList<String> list = new JList<>(model);
     list.setEnabled(false);
     scrollPane.setViewportView(list);
@@ -40,6 +42,7 @@ public class ListarCategorias extends JInternalFrame {
       public void actionPerformed(ActionEvent arg0) {
         setVisible(false);
         model.removeAllElements();
+        categorias.clear();
       }
     });
 
@@ -69,10 +72,10 @@ public class ListarCategorias extends JInternalFrame {
 
     ctrlCat = Fabrica.getICategorias();
 
-    String[] cats = ctrlCat.listarCategorias();
-    int largo = cats.length;
-    for (int i = 0; i < largo; i++) {
-      model.addElement(cats[i]);
+    categorias = ctrlCat.listarCategorias();
+
+    for (DtCategoria categoria : categorias) {
+      model.addElement(categoria.getNombreCategoria());
     }
     ctrlCat = null;
   }

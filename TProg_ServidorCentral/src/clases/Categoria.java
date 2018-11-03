@@ -3,6 +3,8 @@ package clases;
 import java.util.LinkedList;
 import java.util.List;
 
+import datatypes.DtCategoria;
+
 public class Categoria {
 
   private int idCategoria;
@@ -94,5 +96,9 @@ public class Categoria {
   public boolean equals(Object object) {
     Categoria categoria = (Categoria) object;
     return this.nombre.equals(categoria.nombre) || this.idCategoria == categoria.idCategoria;
+  }
+  
+  public DtCategoria getDt(){
+    return new DtCategoria(this.nombre);
   }
 }
