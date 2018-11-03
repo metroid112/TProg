@@ -308,11 +308,10 @@ public class ModificarVideo extends JInternalFrame {
         }
         if (!encontrado) {
           System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: "
-              + infoVid.getCategoria()); // TODO
-          // excepccion
+              + infoVid.getCategoria());
         }
       } else {
-        model.addElement(infoVid.getCategoria()); // En caso de decir "Sin Categoria"
+        model.addElement(infoVid.getCategoria());
         model.setSelectedItem(infoVid.getCategoria());
       }
       cBoxCategoria.setModel(model);
@@ -344,9 +343,9 @@ public class ModificarVideo extends JInternalFrame {
     descripcion = textDescripcion.getText();
     url = tfUrl.getText();
     categoria = (String) cBoxCategoria.getSelectedItem();
-    if (categoria.equals("Sin Categoria")) { // Chequeo si eligio alguna categoria
+    if (categoria.equals("Sin Categoria"))
       categoria = null;
-    }
+    
     duracion = Duration.ofHours((int) spinnerHoras.getValue());
     duracion = duracion.plusMinutes((int) spinnerMin.getValue());
     duracion = duracion.plusSeconds((int) spinnerSeg.getValue());
@@ -371,10 +370,6 @@ public class ModificarVideo extends JInternalFrame {
       JOptionPane.showMessageDialog(this, "Datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    /*
-     * } catch (Exception e) { JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
-     * JOptionPane.ERROR_MESSAGE); }
-     */
   }
 
 }

@@ -112,13 +112,7 @@ public class ConsultaVideo extends JInternalFrame {
   private void verInfo() {
     if (seleccionVideo.getVideo() != null && seleccionVideo.getUsuario() != null) {
       infoVideo.cargarDatos(
-          contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario())); // Paso
-      // la
-      // info
-      // al
-      // panel
-      // de
-      // info
+          contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario()));
       cambioPanel(); // Voy al panel de informacion
     } else {
       JOptionPane.showMessageDialog(this, "Debe rellenar los campos", "Error",
