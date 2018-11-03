@@ -6,12 +6,15 @@ import java.util.List;
 public class Categoria {
 
   private List<ListaParticular> listas = new LinkedList<ListaParticular>();
-
+  private static int contadorID = 0;
+  private int idCategoria;
   private String nombre;
   private List<Video> videos = new LinkedList<Video>();
 
   public Categoria(String nombre) {
     this.nombre = nombre;
+    this.idCategoria = Categoria.contadorID;
+    Categoria.contadorID++;
   }
 
   public void addVideo(Video video) {
