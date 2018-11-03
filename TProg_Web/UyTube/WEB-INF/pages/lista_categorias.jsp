@@ -11,9 +11,9 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
-			<% String[] listas = (String[]) request.getAttribute("CATEGORIAS");
-			   //List<String> listas = dtCategoria.getCategorias();
-				if (listas.length == 0) { %>
+			<% servicios.DtCategoria dtCat = (DtCategoria) request.getAttribute("CATEGORIAS");
+			   List<String> listas = dtCat.getCategorias();
+				if (listas.size() == 0) { %>
 					<h1>No hay categorias en el sistema.</h1>
 					<br>
 			<% } else { %>	

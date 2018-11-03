@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import interfaces.Fabrica;
 import interfaces.ICategorias;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/ConsultaDeCategoria")
 public class ConsultaDeCategoria extends HttpServlet {
@@ -22,9 +24,10 @@ public class ConsultaDeCategoria extends HttpServlet {
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     if (request.getParameter("CATEGORIA") == null) {
-      ICategorias ctrlCategorias = Fabrica.getICategorias();
-      String[] listaCategorias = ctrlCategorias.listarCategorias();
-      request.setAttribute("CATEGORIAS", listaCategorias);
+      PublicadorService service = new PublicadorService();
+      Publicador port = service.getPublicadorPort();
+      servicios.DtCategoria dtCat = (servicios.DtCategoria) port.listarCategorias().getContenido();
+      request.setAttribute("CATEGORIAS", dtCat);
       request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request,
           response);
     } else {
