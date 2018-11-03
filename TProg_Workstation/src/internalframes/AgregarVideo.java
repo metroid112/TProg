@@ -154,7 +154,7 @@ public class AgregarVideo extends JInternalFrame {
         setVisible(false);
         videos.clear();
         usuarios.clear();
-        listas.clear();
+        //listas.clear();
       }
     });
 
@@ -187,7 +187,7 @@ public class AgregarVideo extends JInternalFrame {
           rdbtnListasParticulares.setSelected(false);
           videos.clear();
           usuarios.clear();
-          listas.clear();
+         // listas.clear();
           setVisible(false);
         }
 
@@ -326,6 +326,7 @@ public class AgregarVideo extends JInternalFrame {
 
   public void cargarDefectoListas() {
     listListas.removeAllElements();
+    listas.clear();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuObj.getSelectedItem() != null) {
@@ -343,6 +344,7 @@ public class AgregarVideo extends JInternalFrame {
   
   public void cargarParticularListas() {
     listListas.removeAllElements();
+    listas.clear();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuObj.getSelectedItem() != null) {

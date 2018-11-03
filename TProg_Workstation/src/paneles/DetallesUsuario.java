@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
@@ -24,7 +25,9 @@ import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import datatypes.DtLista;
 import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -33,6 +36,8 @@ import interfaces.IUsuariosCanales;
 public class DetallesUsuario extends JPanel {
   private IUsuariosCanales ctrlUsu = Fabrica.getIUsuariosCanales();
   private IListas ctrlLis = null;
+  private List<DtLista> listas;
+  private List<DtVideo> videosUsuario;
   private String noImagen = "img//sinImagen.jpg";
   private DefaultListModel<String> modelListas = new DefaultListModel<>();
   private JList<String> listasDeReproduccion = new JList<>(modelListas);
@@ -55,17 +60,17 @@ public class DetallesUsuario extends JPanel {
   public DetallesUsuario(String usuario) {
     DtUsuario dtUsuario = ctrlUsu.getDt(usuario);
 
-    String nombre = dtUsuario.nombre;
-    String apellido = dtUsuario.apellido;
-    String correo = dtUsuario.correo;
-    String canal = dtUsuario.canal;
-    String descripcionCanal = dtUsuario.descripcionCanal;
+    String nombre = dtUsuario.getNombre();
+    String apellido = dtUsuario.getApellido();
+    String correo = dtUsuario.getCorreo();
+    String canal = dtUsuario.getCanal().getNombreCanal();
+    String descripcionCanal = dtUsuario.getCanal().getDescripcionCanal();
     BufferedImage imagenF = dtUsuario.imagen;
     Date fechaNacimiento = dtUsuario.fechaNacimiento;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String fechaParaMostrar = sdf.format(fechaNacimiento);
 
-    boolean privado = dtUsuario.privado;
+    boolean privado = dtUsuario.getCanal().isVisible();
 
     JPanel imagen = new JPanel();
     imagen.setBackground(SystemColor.menu);
@@ -334,11 +339,10 @@ public class DetallesUsuario extends JPanel {
 
     ctrlLis = Fabrica.getIListas();
 
-    String[] listas = ctrlLis.listarListasParticularUsuario(usuario);
+    listas = ctrlLis.listarListasParticularUsuario(usuario);
 
     int largol = listas.length;
-    // fab = Fabrica.getFabrica();
-    // ctrlUsu = fab.getIUsuariosCanales();
+
     if (largol > 0) {
       for (int i = 0; i < largol; i++) {
         modelListas.addElement(listas[i]);
@@ -379,10 +383,9 @@ public class DetallesUsuario extends JPanel {
     modelVideos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] videosS = ctrlUsu.listarVideos(usuario);
-    int largo = videosS.length;
-    for (int i = 0; i < largo; i++) {
-      modelVideos.addElement(videosS[i]);
+    videosUsuario = ctrlUsu.listarVideosCanal(obtenerUsuarioId());
+    for (DtVideo video : videosUsuario) {
+      modelVideos.addElement(video.getNombre());
     }
     ctrlUsu = null;
   }

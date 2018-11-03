@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -33,7 +34,6 @@ public class VerInformacionUsuario extends JInternalFrame {
   private JPanel PanelInfoVideo;
   private String UsrSel = null;
   private ConsultaUsuario padre = null;
-
   public void setPadre(ConsultaUsuario padre) {
     this.padre = padre;
   }
@@ -229,23 +229,16 @@ public class VerInformacionUsuario extends JInternalFrame {
   }
 
   public void cambioPanel() {
-    CardLayout layout = (CardLayout) getContentPane().getLayout(); // Consigo el layout
-    layout.next(getContentPane()); // Cambia al siguiente panel
+    CardLayout layout = (CardLayout) getContentPane().getLayout(); 
+    layout.next(getContentPane());
   }
-
-  /*
-   * JLabel lblNewLabel_1 = new JLabel("vNombreLista");
-   * 
-   * JLabel lblVtipolista = new JLabel("vTipoLista");
-   * 
-   * JLabel lblNewLabel_2 = new JLabel("vPrivacidad");
-   */
+/
 
   private void cargaDatosLista(String lista, String usuario) {
 
     DtLista dtLista;
     try {
-      // JOptionPane.showMessageDialog(this, lista + " " + usuario);
+
       dtLista = ctrlLis.getDt(lista, usuario);
       if (dtLista.isVisible()) {
         lblNewLabel_2.setText("Publico");
@@ -260,14 +253,8 @@ public class VerInformacionUsuario extends JInternalFrame {
       lblNewLabel_1.setText(dtLista.getNombre());
       lblVtipolista.setText(dtLista.getTipo());
 
-      // DefaultListModel<String> modeloCategorias = new DefaultListModel<String>();
-      // for (String cat : dtLista.getCategorias()) {
-      // modeloCategorias.addElement(cat);
-      // }
-      // listaCategorias.setModel(modeloCategorias);
-
     } catch (Exception e) {
-      // TODO Auto-generated catch block
+
       e.printStackTrace();
     }
 

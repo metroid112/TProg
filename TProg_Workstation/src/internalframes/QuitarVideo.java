@@ -155,7 +155,7 @@ public class QuitarVideo extends JInternalFrame {
         modelVideos.removeAllElements();
         videos.clear();
         usuarios.clear();
-        listas.clear();
+        //listas.clear();
         list.setEnabled(false);
         setVisible(false);
       }
@@ -180,6 +180,7 @@ public class QuitarVideo extends JInternalFrame {
           }
         } else {
           modelVideos.removeAllElements();
+          videos.clear();
           rdbtnListasPorDefecto.setEnabled(false);
           rdbtnListasParticulares.setEnabled(false);
           list.setEnabled(false);
@@ -191,6 +192,7 @@ public class QuitarVideo extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         modelVideos.removeAllElements();
+        videos.clear();
         cargarDefectoListas();
       }
     });
@@ -199,6 +201,7 @@ public class QuitarVideo extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         modelVideos.removeAllElements();
+        videos.clear();
         cargarParticularListas();
       }
     });
@@ -240,7 +243,7 @@ public class QuitarVideo extends JInternalFrame {
           modelVideos.removeAllElements();
           videos.clear();
           usuarios.clear();
-          listas.clear();
+         // listas.clear();
           list.setEnabled(false);
           setVisible(false);
         }
@@ -250,7 +253,7 @@ public class QuitarVideo extends JInternalFrame {
 
   public void cargarDefectoListas() {
     listListas.removeAllElements();
-
+    listas.clear();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuario.getSelectedItem() != null) {
@@ -269,7 +272,7 @@ public class QuitarVideo extends JInternalFrame {
 
   public void cargarParticularListas() {
     listListas.removeAllElements();
-
+    listas.clear();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuario.getSelectedItem() != null) {
