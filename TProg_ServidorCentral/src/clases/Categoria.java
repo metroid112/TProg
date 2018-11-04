@@ -6,12 +6,15 @@ import java.util.List;
 public class Categoria {
 
   private List<ListaParticular> listas = new LinkedList<ListaParticular>();
-
+  private static int contadorID = 0;
+  private int idCategoria;
   private String nombre;
   private List<Video> videos = new LinkedList<Video>();
 
   public Categoria(String nombre) {
     this.nombre = nombre;
+    this.idCategoria = Categoria.contadorID;
+    Categoria.contadorID++;
   }
 
   public void addVideo(Video video) {
@@ -21,6 +24,22 @@ public class Categoria {
   @Override
   public boolean equals(Object categoria) {
     return (this.nombre.equals(((Categoria) categoria).getNombre()));
+  }
+
+  public List<ListaParticular> getListas() {
+    return listas;
+  }
+
+  public void setListas(List<ListaParticular> listas) {
+    this.listas = listas;
+  }
+
+  public List<Video> getVideos() {
+    return videos;
+  }
+
+  public void setVideos(List<Video> videos) {
+    this.videos = videos;
   }
 
   public String[] getInfoListas() {

@@ -1,9 +1,13 @@
 package manejadores;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import clases.Categoria;
+import datatypes.DtCategoria;
 import excepciones.DuplicateClassException;
 
 public class ManejadorCategorias {
@@ -45,6 +49,11 @@ public class ManejadorCategorias {
 
   public String[] toArray() {
     return categorias.keySet().toArray(new String[categorias.size()]);
+  }
+  
+  public DtCategoria toList() {
+    List<String> lista = new LinkedList<String>(categorias.keySet());
+    return new DtCategoria(lista);
   }
 
   public boolean existeCategoria(String nombre) {
