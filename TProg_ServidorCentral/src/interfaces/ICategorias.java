@@ -15,4 +15,6 @@ public interface ICategorias {
   public String[] getInfoVideosPublicos(String categoria);
 
   public String[] getInfoListasPublicas(String categoria);
+  
+  public DtCategoria consultaDeCategoria(String categoria);
 }

@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="listas" type="{http://servicios/}listaParticular" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="listas" type="{http://servicios/}dtLista" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="videos" type="{http://servicios/}video" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="videos" type="{http://servicios/}dtVideo" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="categorias" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
@@ -43,10 +43,10 @@ public class DtCategoria
 {
 
     @XmlElement(nillable = true)
-    protected List<ListaParticular> listas;
+    protected List<DtLista> listas;
     protected String nombre;
     @XmlElement(nillable = true)
-    protected List<Video> videos;
+    protected List<DtVideo> videos;
     @XmlElement(nillable = true)
     protected List<String> categorias;
 
@@ -68,13 +68,13 @@ public class DtCategoria
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ListaParticular }
+     * {@link DtLista }
      * 
      * 
      */
-    public List<ListaParticular> getListas() {
+    public List<DtLista> getListas() {
         if (listas == null) {
-            listas = new ArrayList<ListaParticular>();
+            listas = new ArrayList<DtLista>();
         }
         return this.listas;
     }
@@ -121,13 +121,13 @@ public class DtCategoria
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Video }
+     * {@link DtVideo }
      * 
      * 
      */
-    public List<Video> getVideos() {
+    public List<DtVideo> getVideos() {
         if (videos == null) {
-            videos = new ArrayList<Video>();
+            videos = new ArrayList<DtVideo>();
         }
         return this.videos;
     }

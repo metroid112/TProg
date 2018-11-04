@@ -80,6 +80,11 @@ public class Publicador {
   public DtPaquete listarCategorias() {
     return empaquetar(Fabrica.getICategorias().listarCategorias());
   }
+  
+  @WebMethod
+  public DtPaquete consultaDeCategoria(String categoria) {
+    return empaquetar(Fabrica.getICategorias().consultaDeCategoria(categoria));
+  }
     
   @WebMethod(exclude = true)
   public DtPaquete empaquetar(DtUniversal contenido) {

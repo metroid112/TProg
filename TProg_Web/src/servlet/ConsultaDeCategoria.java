@@ -23,21 +23,17 @@ public class ConsultaDeCategoria extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    if (request.getParameter("CATEGORIA") == null) {
-      PublicadorService service = new PublicadorService();
-      Publicador port = service.getPublicadorPort();
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();    
+    if (request.getParameter("CATEGORIA") == null) {    
       servicios.DtCategoria dtCat = (servicios.DtCategoria) port.listarCategorias().getContenido();
       request.setAttribute("CATEGORIAS", dtCat);
       request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request,
           response);
     } else {
-      ICategorias ctrlCategorias = Fabrica.getICategorias();
-      String categoria = request.getParameter("CATEGORIA");
-      request.setAttribute("CATEGORIA", categoria);
-      String[] informacionVideos = ctrlCategorias.getInfoVideos(categoria);
-      request.setAttribute("INFO_VIDEOS", informacionVideos);
-      String[] informacionListas = ctrlCategorias.getInfoListas(categoria);
-      request.setAttribute("INFO_LISTAS", informacionListas);
+      String categoria = (String) request.getParameter("CATEGORIA");
+      servicios.DtCategoria dtCat = (servicios.DtCategoria) port.consultaDeCategoria(categoria).getContenido();
+      request.setAttribute("CATEGORIA", dtCat);
       request.getRequestDispatcher("/WEB-INF/pages/consulta_categoria.jsp").forward(request,
           response);
     }

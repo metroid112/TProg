@@ -12,9 +12,9 @@ import clases.Video;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtCategoria extends DtUniversal {
-  private List<ListaParticular> listas;
+  private List<DtLista> listas;
   private String nombre;
-  private List<Video> videos;
+  private List<DtVideo> videos;
   private List<String> categorias;
   
   public List<String> getCategorias() {
@@ -30,12 +30,18 @@ public class DtCategoria extends DtUniversal {
   public DtCategoria(List<String> categorias) {
     this.categorias = categorias;
   }
-
-  public List<ListaParticular> getListas() {
+  
+  public DtCategoria(String nombre, List<DtVideo> videos, List<DtLista> listas) {
+    this.nombre = nombre;
+    this.videos = videos;
+    this.listas = listas;
+  }
+  
+  public List<DtLista> getListas() {
     return listas;
   }
 
-  public void setListas(List<ListaParticular> listas) {
+  public void setListas(List<DtLista> listas) {
     this.listas = listas;
   }
 
@@ -47,11 +53,11 @@ public class DtCategoria extends DtUniversal {
     this.nombre = nombre;
   }
 
-  public List<Video> getVideos() {
+  public List<DtVideo> getVideos() {
     return videos;
   }
 
-  public void setVideos(List<Video> videos) {
+  public void setVideos(List<DtVideo> videos) {
     this.videos = videos;
   }
   

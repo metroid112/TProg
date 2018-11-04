@@ -26,6 +26,22 @@ public class Categoria {
     return (this.nombre.equals(((Categoria) categoria).getNombre()));
   }
 
+  public List<ListaParticular> getListas() {
+    return listas;
+  }
+
+  public void setListas(List<ListaParticular> listas) {
+    this.listas = listas;
+  }
+
+  public List<Video> getVideos() {
+    return videos;
+  }
+
+  public void setVideos(List<Video> videos) {
+    this.videos = videos;
+  }
+
   public String[] getInfoListas() {
     String[] infoListas = new String[listas.size()];
     if (!listas.isEmpty()) {

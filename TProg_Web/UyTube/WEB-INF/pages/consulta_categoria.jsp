@@ -1,5 +1,6 @@
 <!doctype html>
-<%@ page import = "datatypes.*" %>
+<%@ page import = "servicios.*" %>
+<%@ page import = "java.util.*" %>
 <html lang="en">
 <head>
 	<jsp:include page="/WEB-INF/extras/head.jsp" />
@@ -10,18 +11,20 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
-			<% String categoria = (String) request.getAttribute("CATEGORIA");%>
-			<h1>Información de <%= "'" + categoria + "'" %></h1>
+			<% servicios.DtCategoria dtCat = (DtCategoria) request.getAttribute("CATEGORIA");%>
+			<% List<DtVideo> videos = dtCat.getVideos(); %>
+			<% List<DtLista> listas = dtCat.getListas(); %>
+			<h1>Informacion de <%= "'" + dtCat.getNombre() + "'" %></h1>
 			<br>
 			<h2> Videos: </h2>
-				<% for (String infoVideos : (String[]) request.getAttribute("INFO_VIDEOS")) { %>
-					<%= infoVideos %>
+				<% for (DtVideo video : videos) { %>
+					<%= video.getNombre() %>
 					<br>
 				<% } %>
 				<br>
-			<h2> Listas de reproducción: </h2>
-				<% for (String infoListas : (String[]) request.getAttribute("INFO_LISTAS")) { %>
-					<%= infoListas %>
+			<h2> Listas de reproduccion: </h2>
+				<% for (DtLista lista : listas) { %>
+					<%= lista.getNombre() %>
 					<br>
 				<% } %>
 				<br>
