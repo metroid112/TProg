@@ -64,7 +64,11 @@ public class SelectorUsuarios extends JPanel {
     ctrlUsu = null;
   }
 
-  public String getSelectedItem() {
-    return list.getSelectedValue();
+  public int getSelectedItem() {
+    for(DtUsuario usuario : usuarios){
+      if(list.getSelectedValue().equals(usuario.getNick()))
+        return usuario.getIdUsuario();
+    }
+    return -1;
   }
 }

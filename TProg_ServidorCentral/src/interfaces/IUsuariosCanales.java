@@ -18,6 +18,8 @@ public interface IUsuariosCanales {
 
   public boolean existeUsuarioMail(String mail) throws NotFoundException;
   
+  public boolean existeUsuarioNick(String nick) throws NotFoundException;
+  
   public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws NotFoundException, DuplicateClassException ;
   
   public DtUsuario getDt(int nick) throws NotFoundException;

@@ -5,7 +5,6 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -32,13 +31,13 @@ public class VerInformacionUsuario extends JInternalFrame {
   private JPanel panel_2;
   private IListas ctrlLis = Fabrica.getIListas();
   private JPanel PanelInfoVideo;
-  private String UsrSel = null;
   private ConsultaUsuario padre = null;
   public void setPadre(ConsultaUsuario padre) {
     this.padre = padre;
   }
 
   // imports para el video
+
   private InfoVideo PanelConsultaVideo;
   private JLabel lblNewLabel_1 = new JLabel("vNombreLista");
   private JLabel lblVtipolista = new JLabel("vTipoLista");
@@ -63,8 +62,7 @@ public class VerInformacionUsuario extends JInternalFrame {
         getContentPane().remove(paneluser);
         panel_2.remove(paneluser);
         paneluser = null;
-        // padre.SetVisible(true);
-        // getContentPane().removeAll();
+
       }
     });
 
@@ -75,8 +73,8 @@ public class VerInformacionUsuario extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         if (paneluser.isVideoSeleccionado()) {
-          String vidSel = paneluser.getVideoSeleccionado();
-          verInfo(vidSel, UsrSel);
+          int vidSel = paneluser.getVideoSeleccionado();
+          verInfo(vidSel);
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un video");
         }
@@ -89,9 +87,9 @@ public class VerInformacionUsuario extends JInternalFrame {
       public void actionPerformed(ActionEvent arg0) {
         // cargar informacion de lista,
         if (paneluser.isListaSelected()) {
-          String lisSel = paneluser.getListaSeleccionada();
-          if (lisSel != null) {
-            cargaDatosLista(lisSel, UsrSel);
+          int lisSel = paneluser.getListaSeleccionada();
+          if (lisSel != -1) {
+            cargaDatosLista(lisSel);
           } else {
             JOptionPane.showInputDialog(this);
           }
@@ -168,7 +166,6 @@ public class VerInformacionUsuario extends JInternalFrame {
     JLabel lblNewLabel = new JLabel("Videos");
 
     JButton VerInfoVideoDesdeCOnsultaLista = new JButton("Ver info video");
-    // TODO darle proposito
 
     JLabel lblDetallesLista = new JLabel("Detalles lista:");
     lblDetallesLista.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -213,33 +210,40 @@ public class VerInformacionUsuario extends JInternalFrame {
     videosLista = new JList<String>();
     VideosDeLista.setViewportView(videosLista);
     panelInfoListas.setLayout(glpanelInfoListas);
-    // cambioPanel();
+
   }
 
-  public void cargarInformacionUsuario(String usuario) {
-    UsrSel = usuario;
-    paneluser = new DetallesUsuario(usuario);
+  public void cargarInformacionUsuario(int idUsuario) {
+    try{
+    
+    paneluser = new DetallesUsuario(idUsuario);
     panel_2.add(paneluser, BorderLayout.CENTER);
+    }
+    catch(Exception e){}
   }
 
-  public void verInfo(String vidSel, String userSel) {
-    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel, userSel));
+  public void verInfo(int vidSel) {
+    try{
+    
+    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel));
     PanelInfoVideo.add(PanelConsultaVideo, BorderLayout.CENTER);
-    cambioPanel(); // Voy al panel de informacion
+    cambioPanel();
+    }
+    catch(Exception e){}
   }
 
   public void cambioPanel() {
     CardLayout layout = (CardLayout) getContentPane().getLayout(); 
     layout.next(getContentPane());
   }
-/
 
-  private void cargaDatosLista(String lista, String usuario) {
+
+  private void cargaDatosLista(int lista) {
 
     DtLista dtLista;
     try {
 
-      dtLista = ctrlLis.getDt(lista, usuario);
+      dtLista = ctrlLis.getDt(lista);
       if (dtLista.isVisible()) {
         lblNewLabel_2.setText("Publico");
       } else {
@@ -259,4 +263,6 @@ public class VerInformacionUsuario extends JInternalFrame {
     }
 
   }
+  
+
 }

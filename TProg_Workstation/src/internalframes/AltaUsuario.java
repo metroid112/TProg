@@ -371,7 +371,7 @@ public class AltaUsuario extends JInternalFrame {
 
   protected void cmdAltaUsuarioActionPerformed(ActionEvent e) {
     ctrlUsu = Fabrica.getIUsuariosCanales();
-    if (ctrlUsu.existeUsuario(textField.getText())) {
+    if (ctrlUsu.existeUsuarioNick(textField.getText())) {
       JOptionPane.showMessageDialog(this, "El usuario ya existe.");
     } else if (!ctrlUsu.existeUsuarioMail(textField_3.getText())) {
       JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.");
@@ -414,7 +414,7 @@ public class AltaUsuario extends JInternalFrame {
           throw new Exception("Formato de fecha incorrecto", ex);
         }
         ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, nombreCanal,
-            descripcion, categoria, privado); //se le pasa un imgpath en lugar de un buffered reader
+            descripcion, categoria, privado); //se le pasa un  buffered reader en lugar de un imgpath
 
         JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
         clean();
