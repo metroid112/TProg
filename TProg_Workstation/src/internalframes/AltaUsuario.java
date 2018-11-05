@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -25,12 +26,15 @@ import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import datatypes.DtCategoria;
 import interfaces.Fabrica;
+import interfaces.ICategorias;
 import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class AltaUsuario extends JInternalFrame {
 
+  private List<DtCategoria> categorias;
   private BufferedImage imagenFile = null;
   private JTextField textField;
   private JTextField textField_1;
@@ -46,6 +50,7 @@ public class AltaUsuario extends JInternalFrame {
   private JRadioButton rdbtnNo;
   private JComboBox<String> comboBoxCategoria;
 
+  private ICategorias ctrCategorias;
   private IUsuariosCanales ctrlUsu;
   private JTextField dia;
   private JTextField mes;
@@ -366,7 +371,7 @@ public class AltaUsuario extends JInternalFrame {
 
   protected void cmdAltaUsuarioActionPerformed(ActionEvent e) {
     ctrlUsu = Fabrica.getIUsuariosCanales();
-    if (ctrlUsu.existeUsuario(textField.getText())) {
+    if (ctrlUsu.existeUsuarioNick(textField.getText())) {
       JOptionPane.showMessageDialog(this, "El usuario ya existe.");
     } else if (!ctrlUsu.existeUsuarioMail(textField_3.getText())) {
       JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.");
@@ -409,7 +414,7 @@ public class AltaUsuario extends JInternalFrame {
           throw new Exception("Formato de fecha incorrecto", ex);
         }
         ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, nombreCanal,
-            descripcion, categoria, privado); //se le pasa un imgpath en lugar de un buffered reader
+            descripcion, categoria, privado); //se le pasa un  buffered reader en lugar de un imgpath
 
         JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
         clean();
@@ -422,6 +427,7 @@ public class AltaUsuario extends JInternalFrame {
   }
 
   protected void clean() {
+    categorias.clear();
     textField.setText("");
     textField_1.setText("");
     textField_2.setText("");
@@ -435,8 +441,14 @@ public class AltaUsuario extends JInternalFrame {
   }
 
   public void cargarDatos() {
-    DefaultComboBoxModel<String> modelCombo = new DefaultComboBoxModel<String>(
-        Fabrica.getICategorias().listarCategorias());
+    
+    categorias = ctrCategorias.listarCategorias();
+    String[] arrayCategorias = new String[categorias.size()];
+    int i = 0;
+    for(DtCategoria categoria : categorias){
+      arrayCategorias[i] = categoria.getNombreCategoria();
+    }
+    DefaultComboBoxModel<String> modelCombo = new DefaultComboBoxModel<String>();
 
     modelCombo.addElement("Sin categoria");
     modelCombo.setSelectedItem("Sin categoria");

@@ -73,9 +73,9 @@ public class Main {
   private QuitarVideo frmQuitarVideo = new QuitarVideo();
   private VerInformacionUsuario frmVerInfoUsuario = new VerInformacionUsuario();
   private ConsultaUsuario frmConsultaUsuario = new ConsultaUsuario(frmVerInfoUsuario);
-  private ConsultaVideo frmConsultaVideo = new ConsultaVideo(videos);
-  private AltaVideo frmAltaVideo = new AltaVideo(videos);
-  private ModificarVideo frmModificarVideo = new ModificarVideo(videos);
+  private ConsultaVideo frmConsultaVideo = new ConsultaVideo(videos,usuariosCanales);
+  private AltaVideo frmAltaVideo = new AltaVideo(videos,usuariosCanales,categorias);
+  private ModificarVideo frmModificarVideo = new ModificarVideo(videos,usuariosCanales,categorias);
 
   private JTextArea logCarga;
 

@@ -21,13 +21,6 @@ import paneles.SelectorUsuarios;
 @SuppressWarnings("serial")
 public class ModificarUsuario extends JInternalFrame {
 
-  /**
-   * Launch the application.
-   */
-
-  /**
-   * Create the frame.
-   */
   SelectorUsuarios panel = new SelectorUsuarios();
   private JTextField txtA;
   private JTextField txtB;
@@ -46,7 +39,6 @@ public class ModificarUsuario extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         setVisible(false);
-        // model.removeAllElements();
       }
     });
 
@@ -54,8 +46,8 @@ public class ModificarUsuario extends JInternalFrame {
     btnSeleccionar.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        String usuarioSeleccionado = panel.getSelectedItem();
-        if (usuarioSeleccionado != null) {
+        int usuarioSeleccionado = panel.getSelectedItem();
+        if (usuarioSeleccionado != -1) {
           // TODO something
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un usuario", "Error",

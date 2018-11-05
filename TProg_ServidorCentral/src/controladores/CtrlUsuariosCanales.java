@@ -42,15 +42,25 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public boolean existeUsuario(int idUsuario) {
+  public boolean existeUsuario(int idUsuario) { //Se usa en WorkStation
     return manejadorUsuarios.existeUsuarioId(idUsuario);
   }
 
   @Override
-  public boolean existeUsuarioMail(String mail) throws NotFoundException { // Se borra?
+  public boolean existeUsuarioMail(String mail) throws NotFoundException { //Se usa en WorkStation
     if (manejadorUsuarios.getUsuarioCorreo(mail) != null) {
       return true;
     } else {
+      return false;
+    }
+  }
+  
+  @Override
+  public boolean existeUsuarioNick(String nick) throws NotFoundException{ //Se usa en WorkStation
+    if(manejadorUsuarios.getUsuarioNick(nick) != null){
+      return true;
+    }
+    else {
       return false;
     }
   }

@@ -335,45 +335,54 @@ public class DetallesUsuario extends JPanel {
   }
 
   public void cargarDatosListas(int idUsuario) {
-
-    modelListas.removeAllElements();
-    listas.clear();
-    ctrlLis = Fabrica.getIListas();
-
-    listas = ctrlLis.listarListasParticularUsuario(idUsuario);
-
-    int largol = listas.length;
-
-    if (largol > 0) {
-      for (int i = 0; i < largol; i++) {
-        modelListas.addElement(listas[i]);
+    try{
+      modelListas.removeAllElements();
+      listas.clear();
+      ctrlLis = Fabrica.getIListas();
+  
+      listas = ctrlLis.getDtListasParticularesUsuario(idUsuario);
+  
+      if (!listas.isEmpty()) {
+        for (DtLista lista : listas) {
+          modelListas.addElement(lista.getNombre());
+        }
       }
-    }
-
-    listas = ctrlLis.listarListasDefectoUsuario(idUsuario);
-    largol = listas.length;
-    if (largol > 0) {
-      for (int i = 0; i < largol; i++) {
-        modelListas.addElement(listas[i]);
+      listas.clear();
+      listas = ctrlLis.getDtListasDefectoUsuario(idUsuario);
+      
+      if (!listas.isEmpty()) {
+        for (DtLista lista : listas) {
+          modelListas.addElement(lista.getNombre());
+        }
       }
+      ctrlLis = null;
     }
-    ctrlLis = null;
+    catch(Exception e){}
   }
 
-  public String getListaSeleccionada() {
-    String res = listasDeReproduccion.getSelectedValue();
-    listasDeReproduccion.setSelectedIndex(-1);
-    return res;
+  public int getListaSeleccionada() {
+    for(DtLista lista : listas){
+      if(listasDeReproduccion.getSelectedValue().equals(lista.getNombre())){
+        listasDeReproduccion.setSelectedIndex(-1);
+        return lista.getId();
+      }
+    }   
+    return -1;
   }
 
   public boolean isListaSelected() {
     return !listasDeReproduccion.isSelectionEmpty();
   }
 
-  public String getVideoSeleccionado() {
-    String res = videos.getSelectedValue();
-    videos.setSelectedIndex(-1);
-    return res;
+  public int getVideoSeleccionado() {
+    for(DtVideo video : videosUsuario){
+      
+      if(videos.getSelectedValue().equals(video.getNombre())){
+        videos.setSelectedIndex(-1);
+        return video.getId();
+      }  
+    }
+    return -1;
   }
 
   public boolean isVideoSeleccionado() {

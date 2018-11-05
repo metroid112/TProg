@@ -280,63 +280,65 @@ public class ModificarVideo extends JInternalFrame {
   }
 
   private void cargarInfo() {
-    if (seleccionVideo.getUsuario() != -1 && seleccionVideo.getVideo() != -1) {
-      DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo());
-      tfNombre.setText(infoVid.getNombre());
-      textDescripcion.setText(infoVid.getDescripcion());
-      tfUrl.setText(infoVid.getUrl());
-      if (infoVid.isVisible()) {
-        rdbtnPublico.doClick();
-      } else {
-        rdbtnPrivado.doClick();
-      }
-      int horas;
-      int min;
-      int seg;
-      Duration duracion = infoVid.getDuracion();
-      horas = (int) duracion.toHours();
-      duracion = duracion.minusHours(horas);
-      min = (int) duracion.toMinutes();
-      duracion = duracion.minusMinutes(min);
-      seg = (int) duracion.getSeconds();
-      spinnerHoras.setValue(horas);
-      spinnerMin.setValue(min);
-      spinnerSeg.setValue(seg);
-      datePicker.setDate(infoVid.getFecha());
-      
-      categorias = contCategorias.listarCategorias();
-      
-      String[] arrayCategorias = new String[categorias.size()];
-      int j = 0;
-      for(DtCategoria categoria : categorias){
-        arrayCategorias[j] = categoria.getNombreCategoria();
-      }
-      DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(arrayCategorias);
-      if (!infoVid.getCategoria().equals("Sin Categoria")) {
-        int size = model.getSize();
-        int i = 0;
-        boolean encontrado = false;
-        while (i <= size && !encontrado) {
-          if (model.getElementAt(i).equals(infoVid.getCategoria())) {
-            model.setSelectedItem(model.getElementAt(i));
-            encontrado = true;
+    try{
+      if (seleccionVideo.getUsuario() != -1 && seleccionVideo.getVideo() != -1) {
+        DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo());
+        tfNombre.setText(infoVid.getNombre());
+        textDescripcion.setText(infoVid.getDescripcion());
+        tfUrl.setText(infoVid.getUrl());
+        if (infoVid.isVisible()) {
+          rdbtnPublico.doClick();
+        } else {
+          rdbtnPrivado.doClick();
+        }
+        int horas;
+        int min;
+        int seg;
+        Duration duracion = infoVid.getDuracion();
+        horas = (int) duracion.toHours();
+        duracion = duracion.minusHours(horas);
+        min = (int) duracion.toMinutes();
+        duracion = duracion.minusMinutes(min);
+        seg = (int) duracion.getSeconds();
+        spinnerHoras.setValue(horas);
+        spinnerMin.setValue(min);
+        spinnerSeg.setValue(seg);
+        datePicker.setDate(infoVid.getFecha());
+        
+        categorias = contCategorias.listarCategorias();
+        
+        String[] arrayCategorias = new String[categorias.size()];
+        int j = 0;
+        for(DtCategoria categoria : categorias){
+          arrayCategorias[j] = categoria.getNombreCategoria();
+        }
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(arrayCategorias);
+        if (!infoVid.getCategoria().equals("Sin Categoria")) {
+          int size = model.getSize();
+          int i = 0;
+          boolean encontrado = false;
+          while (i <= size && !encontrado) {
+            if (model.getElementAt(i).equals(infoVid.getCategoria())) {
+              model.setSelectedItem(model.getElementAt(i));
+              encontrado = true;
+            }
+            i++;
           }
-          i++;
+          if (!encontrado) {
+            System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: "
+                + infoVid.getCategoria());
+          }
+        } else {
+          model.addElement(infoVid.getCategoria());
+          model.setSelectedItem(infoVid.getCategoria());
         }
-        if (!encontrado) {
-          System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: "
-              + infoVid.getCategoria());
-        }
+        cBoxCategoria.setModel(model);
+  
+        cambioPanel();
       } else {
-        model.addElement(infoVid.getCategoria());
-        model.setSelectedItem(infoVid.getCategoria());
+        JOptionPane.showMessageDialog(this, "Campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
       }
-      cBoxCategoria.setModel(model);
-
-      cambioPanel();
-    } else {
-      JOptionPane.showMessageDialog(this, "Campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+    }catch(Exception e){}
   }
 
   public boolean datosCorrectos(String nombre, String url, Duration duracion) {
