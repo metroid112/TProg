@@ -64,6 +64,8 @@ public class Canal {
     return this.ultimaActividad;
   }
 
+  // **** GENERAR SETTERS PARA NOMBRE, DESCRIPCION, VISIBILIDAD
+
   public void altaVideo(Video video) throws DuplicateClassException {
     if (videos.containsKey(video.getId())) {
       throw new DuplicateClassException("Video", video.getNombre());
@@ -74,7 +76,7 @@ public class Canal {
       }
     }
   }
-  
+
   public void agregarListaDefecto(ListaDefecto listaDefecto) throws DuplicateClassException {
     if (this.listasDefecto.containsKey(listaDefecto.getId())) {
       throw new DuplicateClassException("Lista", listaDefecto.getNombre());
@@ -91,7 +93,7 @@ public class Canal {
       this.listasParticulares.put(listaParticular.getId(), listaParticular);
     }
   }
-  
+
   public void agregarVideoListaDefecto(Video video, int idListaDefecto)
       throws DuplicateClassException, InvalidDataException {
     ListaDefecto lista = listasDefecto.get(idListaDefecto);
@@ -145,7 +147,7 @@ public class Canal {
     }
     return videos;
   }
-  
+
   public ListaDefecto getListaDefecto(int idListaDefecto) throws NotFoundException {
     if (this.listasDefecto.containsKey(idListaDefecto)) {
       return this.listasDefecto.get(idListaDefecto);
@@ -161,7 +163,7 @@ public class Canal {
       throw new NotFoundException("Lista Particular id: " + idListaParticular);
     }
   }
-  
+
   public Map<Integer, ListaDefecto> getListasDefecto() {
     return listasDefecto;
   }

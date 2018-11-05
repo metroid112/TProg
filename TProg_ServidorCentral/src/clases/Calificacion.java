@@ -34,14 +34,6 @@ public class Calificacion {
     this.like = like;
   }
 
-  public void setUsuario(Usuario usuario) {
-    this.usuario = usuario;
-  }
-
-  public void setVideo(Video video) {
-    this.video = video;
-  }
-
   @Override
   public boolean equals(Object object) {
     Calificacion cal = (Calificacion) object;
