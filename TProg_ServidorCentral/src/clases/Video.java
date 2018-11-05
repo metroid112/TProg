@@ -40,7 +40,7 @@ public class Video {
     this.canal = canal;
     Video.idCounter++;
     this.idVideo = Video.idCounter;
-    ManejadorVideos.getManejadorVideos().add(this);
+    ManejadorVideos.getManejadorVideos().addVideo(this);
   }
 
   public int getId() {

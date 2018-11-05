@@ -17,7 +17,7 @@ public class ListaDefecto extends Lista {
   public DtLista getDtLista() {
     LinkedList<String> videos = new LinkedList<String>();
     List<DtVideo> dtVideos = new LinkedList<DtVideo>();
-    for (Video vid : this.getVideos()) {
+    for (Video vid : this.getVideos().values()) {
       videos.add(vid.getCanal().getUsuario().getNick() + "-" + vid.getNombre());
       dtVideos.add(vid.getDt());
     }

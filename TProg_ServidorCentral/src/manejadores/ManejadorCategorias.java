@@ -9,10 +9,16 @@ import java.util.Map;
 import clases.Categoria;
 import datatypes.DtCategoria;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 
 public class ManejadorCategorias {
 
   private static ManejadorCategorias manejador = null;
+  private Map<String, Categoria> categorias = new HashMap<String, Categoria>();
+
+  private ManejadorCategorias() {
+
+  }
 
   public static ManejadorCategorias getManejadorCategorias() {
     if (manejador == null) {
@@ -21,42 +27,27 @@ public class ManejadorCategorias {
     return manejador;
   }
 
-  private Map<String, Categoria> categorias = new HashMap<String, Categoria>();
-
-  private ManejadorCategorias() {
-
-  }
-
-  public void add(Categoria categoria) {
-    categorias.put(categoria.getNombre(), categoria);
-  }
-
-  public void altaCategoria(String nombreCategoria) throws DuplicateClassException {
-    if (!categorias.containsKey(nombreCategoria)) {
-      add(new Categoria(nombreCategoria));
+  public void addCategoria(Categoria categoria) throws DuplicateClassException {
+    if (!categorias.containsKey(categoria.getNombre())) {
+      this.categorias.put(categoria.getNombre(), categoria);
     } else {
-      throw new DuplicateClassException("Categoria", nombreCategoria);
+      throw new DuplicateClassException("Categoria", categoria.getNombre());
     }
   }
 
-  public Categoria get(String nombreCategoria) {
-    return categorias.get(nombreCategoria);
+  public Categoria getCategoria(String nombreCategoria) throws NotFoundException {
+    if (this.categorias.get(nombreCategoria) != null) {
+      return this.categorias.get(nombreCategoria);
+    } else {
+      throw new NotFoundException("Categoria nombre: " + nombreCategoria);
+    }
   }
 
-  public void removeAll() {
-    this.categorias.clear();
+  public boolean existeCategoria(String nombreCategoria) {
+    return categorias.containsKey(nombreCategoria);
   }
 
-  public String[] toArray() {
-    return categorias.keySet().toArray(new String[categorias.size()]);
-  }
-  
-  public DtCategoria toList() {
-    List<String> lista = new LinkedList<String>(categorias.keySet());
-    return new DtCategoria(lista);
-  }
-
-  public boolean existeCategoria(String nombre) {
-    return categorias.containsKey(nombre);
+  public Map<String, Categoria> getCategorias() {
+    return this.categorias;
   }
 }

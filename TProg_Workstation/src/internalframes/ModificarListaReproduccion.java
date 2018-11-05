@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -16,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import datatypes.DtLista;
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -25,6 +28,8 @@ public class ModificarListaReproduccion extends JInternalFrame {
 
   private IUsuariosCanales ctrUsu;
   private IListas ctrLis;
+  private List<DtUsuario> usuarios;
+  private List<DtLista> listas;
   private ButtonGroup grupoVisibilidad = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private DefaultComboBoxModel<String> modelLisRep = new DefaultComboBoxModel<String>();
@@ -141,20 +146,22 @@ public class ModificarListaReproduccion extends JInternalFrame {
       public void actionPerformed(ActionEvent e) {
         String usuario = modelUsuario.getSelectedItem().toString();
         ctrLis = Fabrica.getIListas();
-
-        if (checkUsuario() && checkLista()) {
-          if (isCanalPublico(usuario)) {
-            ctrLis.guardarCambios(modelLisRep.getSelectedItem().toString(), usuario,
-                rdbtnPublica.isSelected());// Se rompe al llamar la funcion
-            setVisible(false);
-            clean();
-            rdbtnPrivada.setSelected(true);
-            rdbtnPublica.setSelected(false);
-            rdbtnPrivada.setEnabled(false);
-            rdbtnPublica.setEnabled(false);
-            comboBoxLisRep.setEnabled(false);
+        try{
+          if (checkUsuario() && checkLista()) {
+            if (isCanalPublico(usuario)) {
+              ctrLis.guardarCambios(modelLisRep.getSelectedItem().toString(), obtenerUsuarioId(usuario),
+                  rdbtnPublica.isSelected());
+              setVisible(false);
+              clean();
+              rdbtnPrivada.setSelected(true);
+              rdbtnPublica.setSelected(false);
+              rdbtnPrivada.setEnabled(false);
+              rdbtnPublica.setEnabled(false);
+              comboBoxLisRep.setEnabled(false);
+            }
           }
-        }
+      }
+      catch(Exception error){}
       }
     });
   }
@@ -162,39 +169,40 @@ public class ModificarListaReproduccion extends JInternalFrame {
   public void cargarDatos() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    usuarios = ctrUsu.listarDtUsuarios();
+
     modelUsuario.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuario.addElement(usuarios[i]);
+    for(DtUsuario usuario : usuarios) {
+      modelUsuario.addElement(usuario.getNick());
     }
     ctrUsu = null;
   }
 
   public void cargarListas() {
 
+    modelLisRep.removeAllElements();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuario.getSelectedItem() != null) {
+      try{
+        listas = ctrLis.getDtListasParticularesUsuario(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
 
-      String s = modelUsuario.getSelectedItem().toString();
-
-      String[] listas = ctrLis.listarListasParticularUsuario(s);
-
-      int largol = listas.length;
-
-      modelLisRep.addElement("");
-      for (int i = 0; i < largol; i++) {
-        modelLisRep.addElement(listas[i]);
+      for (DtLista lista: listas) {
+        modelLisRep.addElement(lista.getNombre());
       }
+      ctrLis = null;
     }
-    ctrLis = null;
+    catch(Exception e){}
+    
+    }
   }
 
   public void clean() {
     modelUsuario.removeAllElements();
     modelLisRep.removeAllElements();
     modelCategoria.removeAllElements();
+    listas.clear();
+    usuarios.clear();
   }
 
   boolean checkUsuario() {
@@ -220,14 +228,26 @@ public class ModificarListaReproduccion extends JInternalFrame {
   boolean isCanalPublico(String usuario) {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-
-    if (!ctrUsu.isCanalPublico(usuario)) {
-      JOptionPane.showMessageDialog(null,
-          "No se puede modificar la visibilidad del video poque el canal es privado", "Error",
-          JOptionPane.ERROR_MESSAGE);
-      return false;
-    }
+    try{
+      if (!ctrUsu.isCanalPublico(obtenerUsuarioId(usuario))) {
+        JOptionPane.showMessageDialog(null,
+            "No se puede modificar la visibilidad del video poque el canal es privado", "Error",
+            JOptionPane.ERROR_MESSAGE);
+        return false;
+      }
+      }
+    catch(Exception e){}
     return true;
+  }
+  
+  public int obtenerUsuarioId(String nombre){
+
+    for(DtUsuario usuario : usuarios){
+      if(usuario.getNick().equals(nombre)){
+        return usuario.getIdUsuario();
+      }
+    }
+    return 0;
   }
 
 }

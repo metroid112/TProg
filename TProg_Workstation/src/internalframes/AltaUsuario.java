@@ -30,7 +30,7 @@ import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class AltaUsuario extends JInternalFrame {
-  // protected static final String BufferedImage = null;
+
   private BufferedImage imagenFile = null;
   private JTextField textField;
   private JTextField textField_1;
@@ -46,9 +46,6 @@ public class AltaUsuario extends JInternalFrame {
   private JRadioButton rdbtnNo;
   private JComboBox<String> comboBoxCategoria;
 
-  /**
-   * Create the frame.
-   */
   private IUsuariosCanales ctrlUsu;
   private JTextField dia;
   private JTextField mes;
@@ -371,7 +368,7 @@ public class AltaUsuario extends JInternalFrame {
     ctrlUsu = Fabrica.getIUsuariosCanales();
     if (ctrlUsu.existeUsuario(textField.getText())) {
       JOptionPane.showMessageDialog(this, "El usuario ya existe.");
-    } else if (!ctrlUsu.isEmailUnique(textField_3.getText())) {
+    } else if (!ctrlUsu.existeUsuarioMail(textField_3.getText())) {
       JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.");
     } else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")) {
       JOptionPane.showMessageDialog(this, "Correo electronico invalido");
@@ -389,7 +386,7 @@ public class AltaUsuario extends JInternalFrame {
         String apellido = textField_2.getText();
         String correo = textField_3.getText();
         String categoria = (String) this.comboBoxCategoria.getSelectedItem();
-        Date nacimiento = null; // formar la fecha desde las partes.
+        Date nacimiento = null;
         BufferedImage imagen = imagenFile;
         boolean privado = rdbtnNewRadioButton.isSelected();
         boolean personalizado = rdbtnSi.isSelected();
@@ -412,7 +409,7 @@ public class AltaUsuario extends JInternalFrame {
           throw new Exception("Formato de fecha incorrecto", ex);
         }
         ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, nombreCanal,
-            descripcion, categoria, privado);
+            descripcion, categoria, privado); //se le pasa un imgpath en lugar de un buffered reader
 
         JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
         clean();
@@ -424,7 +421,6 @@ public class AltaUsuario extends JInternalFrame {
     }
   }
 
-  // Limpia la ventana.
   protected void clean() {
     textField.setText("");
     textField_1.setText("");
@@ -440,7 +436,7 @@ public class AltaUsuario extends JInternalFrame {
 
   public void cargarDatos() {
     DefaultComboBoxModel<String> modelCombo = new DefaultComboBoxModel<String>(
-        Fabrica.getIVideos().listarCategorias());
+        Fabrica.getICategorias().listarCategorias());
 
     modelCombo.addElement("Sin categoria");
     modelCombo.setSelectedItem("Sin categoria");

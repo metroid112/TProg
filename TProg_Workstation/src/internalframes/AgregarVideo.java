@@ -1,5 +1,6 @@
 package internalframes;
 
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,6 +22,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import datatypes.DtLista;
+import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -32,6 +36,9 @@ public class AgregarVideo extends JInternalFrame {
   private IUsuariosCanales ctrUsu;
   private IVideos ctrVid;
   private IListas ctrLis;
+  private List<DtLista> listas;
+  private List<DtVideo> videos;
+  private List<DtUsuario> usuarios = ctrUsu.listarDtUsuarios();
   private ButtonGroup grupoLista = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
@@ -145,6 +152,9 @@ public class AgregarVideo extends JInternalFrame {
         rdbtnListasParticulares.setEnabled(false);
         rdbtnListasParticulares.setSelected(false);
         setVisible(false);
+        videos.clear();
+        usuarios.clear();
+        //listas.clear();
       }
     });
 
@@ -161,10 +171,12 @@ public class AgregarVideo extends JInternalFrame {
 
         if (checkUsuario) {
           ctrLis = Fabrica.getIListas();
-          ctrLis.agregarVideoLista(modelUsuario.getSelectedItem().toString(),
-              modelVideos.getSelectedItem().toString(), modelUsuObj.getSelectedItem().toString(),
-              list.getSelectedValue().toString(), rdbtnListasPordefecto.isSelected());
-
+          try{
+          ctrLis.agregarVideoLista(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()), 
+              obtenerVideoId(modelVideos.getSelectedItem().toString()),
+              obtenerListaId(list.getSelectedValue().toString()), rdbtnListasPordefecto.isSelected());
+          }
+          catch(Exception error){}
           modelUsuario.removeAllElements();
           modelVideos.removeAllElements();
           modelUsuObj.removeAllElements();
@@ -173,6 +185,9 @@ public class AgregarVideo extends JInternalFrame {
           rdbtnListasPordefecto.setSelected(true);
           rdbtnListasParticulares.setEnabled(false);
           rdbtnListasParticulares.setSelected(false);
+          videos.clear();
+          usuarios.clear();
+         // listas.clear();
           setVisible(false);
         }
 
@@ -273,16 +288,14 @@ public class AgregarVideo extends JInternalFrame {
     ctrVid = Fabrica.getIVideos();
 
     if (modelUsuario.getSelectedItem() != null) {
-
-      String s = modelUsuario.getSelectedItem().toString();
-
-      String[] videos = ctrVid.listarVideos(s);
-
-      int largov = videos.length;
-
+      try{
+        videos = ctrVid.listarVideos(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
+      }
+      catch(Exception e){}
+      
       modelVideos.addElement("");
-      for (int i = 0; i < largov; i++) {
-        modelVideos.addElement(videos[i]);
+      for (DtVideo video : videos) {
+        modelVideos.addElement(video.getNombre());
       }
     }
     ctrVid = null;
@@ -292,11 +305,10 @@ public class AgregarVideo extends JInternalFrame {
   public void cargarUsuarioObj() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    
     modelUsuObj.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuObj.addElement(usuarios[i]);
+    for (DtUsuario usuario: usuarios) {
+      modelUsuObj.addElement(usuario.getNick());
     }
     ctrUsu = null;
   }
@@ -304,53 +316,77 @@ public class AgregarVideo extends JInternalFrame {
   public void cargarDatos() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+
     modelUsuario.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuario.addElement(usuarios[i]);
+    for (DtUsuario usuario: usuarios) {
+      modelUsuario.addElement(usuario.getNick());
     }
     ctrUsu = null;
-
   }
 
   public void cargarDefectoListas() {
     listListas.removeAllElements();
+    listas.clear();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuObj.getSelectedItem() != null) {
-
-      String s = modelUsuObj.getSelectedItem().toString();
-
-      String[] listas = ctrLis.listarListasDefectoUsuario(s);
-
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
-      }
+      try{
+        listas = ctrLis.getDtListasDefectoUsuario(obtenerUsuarioId(modelUsuObj.getSelectedItem().toString()));
+        
+        for (DtLista lista: listas) {
+          listListas.addElement(lista.getNombre());
+        }
+        ctrLis = null;
+      }     
+      catch(Exception e){}
     }
-
-    ctrLis = null;
   }
-
+  
   public void cargarParticularListas() {
     listListas.removeAllElements();
+    listas.clear();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuObj.getSelectedItem() != null) {
+      try{
+        listas = ctrLis.getDtListasParticularesUsuario(obtenerUsuarioId(modelUsuObj.getSelectedItem().toString()));
 
-      String s = modelUsuObj.getSelectedItem().toString();
+      for (DtLista lista: listas) {
+        listListas.addElement(lista.getNombre());
+      }
+      ctrLis = null;
+    }
+    catch(Exception e){}
+    
+    }
+  }
+  
+  public int obtenerUsuarioId(String nombre){
 
-      String[] listas = ctrLis.listarListasParticularUsuario(s);
-
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+    for(DtUsuario usuario : usuarios){
+      if(usuario.getNick().equals(nombre)){
+        return usuario.getIdUsuario();
       }
     }
+    return -1;
+  }
+  
+  public int obtenerVideoId(String nombre){
 
-    ctrLis = null;
+    for(DtVideo video : videos){
+      if(video.getNombre().equals(nombre)){
+        return video.getId();
+      }
+    }
+    return -1;
+  }
+  
+  public int obtenerListaId(String nombre){
+    for(DtLista lista : listas){
+      if(lista.getNombre().equals(nombre)){
+        return lista.getId();
+      }
+    }
+    return -1;
   }
 }

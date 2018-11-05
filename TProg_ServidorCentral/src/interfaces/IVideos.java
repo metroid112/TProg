@@ -11,7 +11,7 @@ import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
 
 public interface IVideos {
-  public void altaVideo(String nick, String nombre, String descripcion, Duration duracion,
+  public void altaVideo(int idUsuario, String nombre, String descripcion, Duration duracion,
       String url, String categoria, Date fecha, boolean visibilidad)
       throws DuplicateClassException, NotFoundException;
 
@@ -19,19 +19,15 @@ public interface IVideos {
 
   public Map<Integer, DtVideo> getDtVideos();
 
-  public String[] listarCategorias();
+  public List<DtVideo> listarVideos(int idUsuario) throws NotFoundException;
 
-  public String[] listarUsuarios();
-
-  public String[] listarVideos(String nickname);
-
-  public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion,
+  public DtVideo[] listarTodosLosVideos(int idUsuario);
+  
+  public void modificarVideo(int idUsuario, int nombreOld, String nombre, String descripcion,
       String url, String categoria, Duration duracion, boolean visible, Date fecha)
-      throws InvalidDataException, DuplicateClassException;
+      throws InvalidDataException, DuplicateClassException, NotFoundException;
 
-  public DtVideo[] listarTodosLosVideos(String nick);
+  public List<DtVideo> getDtVideosPublicos();
 
-  public List<DtVideo> getDtVideosPublicos(String nombreUsuario);
-
-  public List<DtVideo> getDtVideosPropietario(String nick);
+  //public int getIdVideoNombre(String nombreVideo) throws NotFoundException;
 }

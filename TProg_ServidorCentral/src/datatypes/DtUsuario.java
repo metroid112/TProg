@@ -9,72 +9,118 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtUsuario {
 
-  public Date fechaNacimiento;
-  public BufferedImage imagen;
-  public String nombre;
-  public String apellido;
-  public String canal;
-  public String correo;
-  public String descripcionCanal;
-  public boolean privado;
-  public String nick;
-  public String imgPath;
-  public Date ultimaActividad;
-  public String categoria;
+  private int idUsuario;
+  private String nick;
+  private String password;
+  private String correo;
+  private String nombre;
+  private String apellido;
+  private Date fechaNacimiento;
+  private DtCanal canal;
+  private String imgPath;
+  private BufferedImage imagen;
 
-  public DtUsuario(String nombre, String apellido, String canal, String correo,
-      String descripcionCanal, Date fechaNacimiento, BufferedImage imagen, boolean privado,
-      String nick, String imgPath, String categoria) {
+  public DtUsuario(int idUsuario, String nick, String password, String correo, String nombre,
+      String apellido, Date fechaNacimiento, String imgPath) {
+    this.idUsuario = idUsuario;
+    this.nick = nick;
+    this.password = password;
+    this.correo = correo;
     this.nombre = nombre;
     this.apellido = apellido;
-    this.canal = canal;
-    this.correo = correo;
-    this.descripcionCanal = descripcionCanal;
     this.fechaNacimiento = fechaNacimiento;
-    this.imagen = imagen;
-    this.privado = privado;
-    this.nick = nick;
     this.imgPath = imgPath;
-    this.categoria = categoria;
   }
 
-  public DtUsuario(String nick, String canal, String path, Date ultimaActividad) {
+  public DtUsuario(int idUsuario, String nick, DtCanal canal) {
+    this.idUsuario = idUsuario;
     this.nick = nick;
     this.canal = canal;
-    this.imgPath = path;
-    this.setUltimaActividad(ultimaActividad);
   }
 
-  @Override
-  public boolean equals(Object object) {
-    DtUsuario dtUsuario = (DtUsuario) object;
-    return (this.nombre.equals(dtUsuario.nombre) && this.apellido.equals(dtUsuario.apellido)
-        && this.correo.equals(dtUsuario.correo) && this.canal.equals(dtUsuario.canal)
-        && this.privado == dtUsuario.privado);
+  public int getIdUsuario() {
+    return this.idUsuario;
+  }
+
+  public String getNick() {
+    return this.nick;
+  }
+
+  public String getPassword() {
+    return this.password;
+  }
+
+  public String getCorreo() {
+    return this.correo;
   }
 
   public String getNombre() {
-    return nombre;
+    return this.nombre;
+  }
+
+  public String getApellido() {
+    return this.apellido;
+  }
+
+  public Date getFechaNacimiento() {
+    return this.fechaNacimiento;
+  }
+
+  public DtCanal getCanal() {
+    return this.canal;
+  }
+
+  public String getImgPath() {
+    return this.imgPath;
+  }
+
+  public BufferedImage getImagen() {
+    return this.imagen;
+  }
+
+  public void setIdUsuario(int idUsuario) {
+    this.idUsuario = idUsuario;
+  }
+
+  public void setNick(String nick) {
+    this.nick = nick;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public void setCorreo(String correo) {
+    this.correo = correo;
   }
 
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
 
-  public String getCanal() {
-    return canal;
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
   }
 
-  public void setCanal(String canal) {
+  public void setFechaNacimiento(Date fechaNacimiento) {
+    this.fechaNacimiento = fechaNacimiento;
+  }
+
+  public void setCanal(DtCanal canal) {
     this.canal = canal;
   }
 
-  public Date getUltimaActividad() {
-    return ultimaActividad;
+  public void setImgPath(String imgPath) {
+    this.imgPath = imgPath;
   }
 
-  public void setUltimaActividad(Date ultimaActividad) {
-    this.ultimaActividad = ultimaActividad;
+  public void setImagen(BufferedImage imagen) {
+    this.imagen = imagen;
   }
 
+  @Override
+  public boolean equals(Object object) {
+    DtUsuario dtUsuario = (DtUsuario) object;
+    return (this.nick.equals(dtUsuario.nick) && this.correo.equals(dtUsuario.correo));
+  }
 }

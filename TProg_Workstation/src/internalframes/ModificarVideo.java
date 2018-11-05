@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -26,14 +27,21 @@ import javax.swing.SpinnerNumberModel;
 
 import org.jdesktop.swingx.JXDatePicker;
 
+import datatypes.DtCategoria;
 import datatypes.DtVideo;
 import excepciones.InvalidDataException;
+import interfaces.ICategorias;
+import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 import paneles.SeleccionVideo;
 
 @SuppressWarnings("serial")
 public class ModificarVideo extends JInternalFrame {
   private SeleccionVideo seleccionVideo;
+  private ICategorias contCategorias;
+  private IUsuariosCanales contUsuarios;
+  
+  private List<DtCategoria> categorias;
   private IVideos contVid;
   private JTextField tfNombre;
   private JTextField tfUrl;
@@ -50,8 +58,10 @@ public class ModificarVideo extends JInternalFrame {
   /**
    * Create the frame.
    */
-  public ModificarVideo(IVideos contVid) {
+  public ModificarVideo(IVideos contVid,IUsuariosCanales contUsuarios, ICategorias contCategorias) {
     this.contVid = contVid;
+    this.contUsuarios = contUsuarios;
+    this.contCategorias = contCategorias;
     setTitle("Modificar Video");
     setBounds(100, 100, 500, 480);
     getContentPane().setLayout(new CardLayout(0, 0));
@@ -59,7 +69,7 @@ public class ModificarVideo extends JInternalFrame {
     JPanel panelSeleccion = new JPanel();
     getContentPane().add(panelSeleccion, "name_75253987057171");
 
-    seleccionVideo = new SeleccionVideo(this.contVid);
+    seleccionVideo = new SeleccionVideo(this.contVid,this.contUsuarios);
 
     JButton btnCancelar = new JButton("Cancelar");
     btnCancelar.addActionListener(new ActionListener() {
@@ -264,18 +274,18 @@ public class ModificarVideo extends JInternalFrame {
   }
 
   private void cambioPanel() {
-    CardLayout layout = (CardLayout) getContentPane().getLayout(); // Consigo el layout
-    layout.next(getContentPane()); // Cambia al siguiente panel
+    CardLayout layout = (CardLayout) getContentPane().getLayout();
+    layout.next(getContentPane()); 
 
   }
 
   private void cargarInfo() {
-    if (seleccionVideo.getUsuario() != null && seleccionVideo.getVideo() != null) {
-      DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
-      tfNombre.setText(infoVid.nombre);
-      textDescripcion.setText(infoVid.descripcion);
-      tfUrl.setText(infoVid.Url);
-      if (infoVid.visible) {
+    if (seleccionVideo.getUsuario() != -1 && seleccionVideo.getVideo() != -1) {
+      DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo());
+      tfNombre.setText(infoVid.getNombre());
+      textDescripcion.setText(infoVid.getDescripcion());
+      tfUrl.setText(infoVid.getUrl());
+      if (infoVid.isVisible()) {
         rdbtnPublico.doClick();
       } else {
         rdbtnPrivado.doClick();
@@ -283,7 +293,7 @@ public class ModificarVideo extends JInternalFrame {
       int horas;
       int min;
       int seg;
-      Duration duracion = infoVid.duracion;
+      Duration duracion = infoVid.getDuracion();
       horas = (int) duracion.toHours();
       duracion = duracion.minusHours(horas);
       min = (int) duracion.toMinutes();
@@ -292,15 +302,22 @@ public class ModificarVideo extends JInternalFrame {
       spinnerHoras.setValue(horas);
       spinnerMin.setValue(min);
       spinnerSeg.setValue(seg);
-      datePicker.setDate(infoVid.fecha);
-      DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(
-          contVid.listarCategorias());
-      if (!infoVid.categoria.equals("Sin Categoria")) {
+      datePicker.setDate(infoVid.getFecha());
+      
+      categorias = contCategorias.listarCategorias();
+      
+      String[] arrayCategorias = new String[categorias.size()];
+      int j = 0;
+      for(DtCategoria categoria : categorias){
+        arrayCategorias[j] = categoria.getNombreCategoria();
+      }
+      DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(arrayCategorias);
+      if (!infoVid.getCategoria().equals("Sin Categoria")) {
         int size = model.getSize();
         int i = 0;
         boolean encontrado = false;
         while (i <= size && !encontrado) {
-          if (model.getElementAt(i).equals(infoVid.categoria)) {
+          if (model.getElementAt(i).equals(infoVid.getCategoria())) {
             model.setSelectedItem(model.getElementAt(i));
             encontrado = true;
           }
@@ -308,12 +325,11 @@ public class ModificarVideo extends JInternalFrame {
         }
         if (!encontrado) {
           System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: "
-              + infoVid.categoria); // TODO
-          // excepccion
+              + infoVid.getCategoria());
         }
       } else {
-        model.addElement(infoVid.categoria); // En caso de decir "Sin Categoria"
-        model.setSelectedItem(infoVid.categoria);
+        model.addElement(infoVid.getCategoria());
+        model.setSelectedItem(infoVid.getCategoria());
       }
       cBoxCategoria.setModel(model);
 
@@ -328,25 +344,25 @@ public class ModificarVideo extends JInternalFrame {
   }
 
   private void modificarVideo() {
-    // try {
+    
 
-    String nick;
-    String nombreOld;
+    int idUsuario;
+    int idVIdeo;
     String nombre;
     String descripcion;
     String url;
     String categoria;
     Duration duracion;
     Boolean visible;
-    nick = seleccionVideo.getUsuario();
-    nombreOld = seleccionVideo.getVideo();
+    idUsuario = seleccionVideo.getUsuario();
+    idVIdeo = seleccionVideo.getVideo();
     nombre = tfNombre.getText();
     descripcion = textDescripcion.getText();
     url = tfUrl.getText();
     categoria = (String) cBoxCategoria.getSelectedItem();
-    if (categoria.equals("Sin Categoria")) { // Chequeo si eligio alguna categoria
+    if (categoria.equals("Sin Categoria"))
       categoria = null;
-    }
+    
     duracion = Duration.ofHours((int) spinnerHoras.getValue());
     duracion = duracion.plusMinutes((int) spinnerMin.getValue());
     duracion = duracion.plusSeconds((int) spinnerSeg.getValue());
@@ -358,23 +374,21 @@ public class ModificarVideo extends JInternalFrame {
     }
     if (datosCorrectos(nombre, url, duracion)) {
       try {
-        contVid.modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion,
+        contVid.modificarVideo(idUsuario, idVIdeo, nombre, descripcion, url, categoria, duracion,
             visible, fecha);
         JOptionPane.showMessageDialog(this, "Datos modificados con exito");
         setVisible(false);
+        categorias.clear();
         cambioPanel();
       } catch (InvalidDataException exception) {
         JOptionPane.showMessageDialog(this, exception.getMessage(), "Error",
             JOptionPane.ERROR_MESSAGE);
       }
+      catch(Exception e){}
     } else {
       JOptionPane.showMessageDialog(this, "Datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    /*
-     * } catch (Exception e) { JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
-     * JOptionPane.ERROR_MESSAGE); }
-     */
   }
 
 }

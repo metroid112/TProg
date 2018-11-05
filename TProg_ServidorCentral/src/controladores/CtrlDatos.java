@@ -12,6 +12,7 @@ import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtBusqueda;
+import datatypes.DtCanal;
 import datatypes.DtLista;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
@@ -40,6 +41,7 @@ public class CtrlDatos implements IDatos {
       ICategorias ctrlCategorias = Fabrica.getICategorias();
 
       class UsuarioBean {
+        public int id;
         public String nick;
         public String nombre;
         public String apellido;
@@ -67,7 +69,9 @@ public class CtrlDatos implements IDatos {
       UsuarioBean AR = new UsuarioBean();
       UsuarioBean AP = new UsuarioBean();
       UsuarioBean NJ = new UsuarioBean();
+      int id = 0;
 
+      HR.id = 0;
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
       HR.apellido = "Rubino";
@@ -78,6 +82,7 @@ public class CtrlDatos implements IDatos {
       HR.descripcionCanal = "El canal Horacio es para publicar contenido divertido";
       HR.visibilidadCanal = true;
 
+      MB.id = id++;
       MB.nick = "mbusca";
       MB.nombre = "Martín";
       MB.apellido = "Buscaglia";
@@ -88,6 +93,7 @@ public class CtrlDatos implements IDatos {
       MB.descripcionCanal = "Mi canal para colgar cosas";
       MB.visibilidadCanal = true;
 
+      HG.id = id++;
       HG.nick = "hectorg";
       HG.nombre = "Héctor";
       HG.apellido = "Guido";
@@ -98,6 +104,7 @@ public class CtrlDatos implements IDatos {
       HG.descripcionCanal = "Canal HG";
       HG.visibilidadCanal = true;
 
+      TC.id = id++;
       TC.nick = "tabarec";
       TC.nombre = "Tabaré";
       TC.apellido = "Cardozo";
@@ -108,6 +115,7 @@ public class CtrlDatos implements IDatos {
       TC.descripcionCanal = "Mi música e ainda mais";
       TC.visibilidadCanal = true;
 
+      CS.id = id++;
       CS.nick = "cachilas";
       CS.nombre = "Waldemar \"Cachila\"";
       CS.apellido = "Silva";
@@ -118,6 +126,7 @@ public class CtrlDatos implements IDatos {
       CS.descripcionCanal = "Para juntar cosas";
       CS.visibilidadCanal = false;
 
+      JB.id = id++;
       JB.nick = "juliob";
       JB.nombre = "Julio";
       JB.apellido = "Bocca";
@@ -128,6 +137,7 @@ public class CtrlDatos implements IDatos {
       JB.descripcionCanal = "Canal de JB";
       JB.visibilidadCanal = true;
 
+      DP.id = id++;
       DP.nick = "diegop";
       DP.nombre = "Diego";
       DP.apellido = "Parodi";
@@ -138,6 +148,7 @@ public class CtrlDatos implements IDatos {
       DP.descripcionCanal = "Canal de DP";
       DP.visibilidadCanal = true;
 
+      KH.id = id++;
       KH.nick = "kairoh";
       KH.nombre = "Kairo";
       KH.apellido = "Herrera";
@@ -148,6 +159,7 @@ public class CtrlDatos implements IDatos {
       KH.descripcionCanal = "Videos de grandes canciones de hoy y siempre";
       KH.visibilidadCanal = true;
 
+      RH.id = id++;
       RH.nick = "robinh";
       RH.nombre = "Robin";
       RH.apellido = "Henderson";
@@ -158,6 +170,7 @@ public class CtrlDatos implements IDatos {
       RH.descripcionCanal = "Henderson";
       RH.visibilidadCanal = true;
 
+      MT.id = id++;
       MT.nick = "marcelot";
       MT.nombre = "Marcelo";
       MT.apellido = "Tinelli";
@@ -168,6 +181,7 @@ public class CtrlDatos implements IDatos {
       MT.descripcionCanal = "Todo lo que querías y más!";
       MT.visibilidadCanal = true;
 
+      EN.id = id++;
       EN.nick = "novick";
       EN.nombre = "Edgardo";
       EN.apellido = "Novick";
@@ -178,6 +192,7 @@ public class CtrlDatos implements IDatos {
       EN.descripcionCanal = "Preparando las elecciones";
       EN.visibilidadCanal = true;
 
+      SP.id = id++;
       SP.nick = "sergiop";
       SP.nombre = "Sergio";
       SP.apellido = "Puglia";
@@ -188,6 +203,7 @@ public class CtrlDatos implements IDatos {
       SP.descripcionCanal = "Programas del ciclo y videos de cocina masterchef";
       SP.visibilidadCanal = true;
 
+      AR.id = id++;
       AR.nick = "chino";
       AR.nombre = "Alvaro";
       AR.apellido = "Recoba";
@@ -198,6 +214,7 @@ public class CtrlDatos implements IDatos {
       AR.descripcionCanal = "Canal de goles con Nacional";
       AR.visibilidadCanal = false;
 
+      AP.id = id++;
       AP.nick = "tonyp";
       AP.nombre = "Antonio";
       AP.apellido = "Pacheco";
@@ -208,6 +225,7 @@ public class CtrlDatos implements IDatos {
       AP.descripcionCanal = "Todos los goles con Peñarol";
       AP.visibilidadCanal = false;
 
+      NJ.id = id++;
       NJ.nick = "nicoJ";
       NJ.nombre = "Nicolás";
       NJ.apellido = "Jodal";
@@ -285,35 +303,35 @@ public class CtrlDatos implements IDatos {
           format.parse("09/08/1960"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Desde Genexus", "Canal informacion C y T", "Sin categoria", true, NJ.pass);
 
-      ctrlUsuarios.seguir(HR.nick, HG.nick);
-      ctrlUsuarios.seguir(HR.nick, DP.nick);
-      ctrlUsuarios.seguir(MB.nick, TC.nick);
-      ctrlUsuarios.seguir(MB.nick, CS.nick);
-      ctrlUsuarios.seguir(MB.nick, KH.nick);
-      ctrlUsuarios.seguir(HG.nick, MB.nick);
-      ctrlUsuarios.seguir(HG.nick, JB.nick);
-      ctrlUsuarios.seguir(TC.nick, HR.nick);
-      ctrlUsuarios.seguir(TC.nick, CS.nick);
-      ctrlUsuarios.seguir(CS.nick, HR.nick);
-      ctrlUsuarios.seguir(JB.nick, MB.nick);
-      ctrlUsuarios.seguir(JB.nick, DP.nick);
-      ctrlUsuarios.seguir(DP.nick, HG.nick);
-      ctrlUsuarios.seguir(KH.nick, SP.nick);
-      ctrlUsuarios.seguir(RH.nick, HG.nick);
-      ctrlUsuarios.seguir(RH.nick, JB.nick);
-      ctrlUsuarios.seguir(RH.nick, DP.nick);
-      ctrlUsuarios.seguir(MT.nick, CS.nick);
-      ctrlUsuarios.seguir(MT.nick, JB.nick);
-      ctrlUsuarios.seguir(MT.nick, KH.nick);
-      ctrlUsuarios.seguir(EN.nick, HR.nick);
-      ctrlUsuarios.seguir(EN.nick, TC.nick);
-      ctrlUsuarios.seguir(EN.nick, CS.nick);
-      ctrlUsuarios.seguir(SP.nick, MB.nick);
-      ctrlUsuarios.seguir(SP.nick, JB.nick);
-      ctrlUsuarios.seguir(SP.nick, DP.nick);
-      ctrlUsuarios.seguir(AR.nick, AP.nick);
-      ctrlUsuarios.seguir(AP.nick, AR.nick);
-      ctrlUsuarios.seguir(NJ.nick, DP.nick);
+      ctrlUsuarios.seguir(HR.id, HG.id);
+      ctrlUsuarios.seguir(HR.id, DP.id);
+      ctrlUsuarios.seguir(MB.id, TC.id);
+      ctrlUsuarios.seguir(MB.id, CS.id);
+      ctrlUsuarios.seguir(MB.id, KH.id);
+      ctrlUsuarios.seguir(HG.id, MB.id);
+      ctrlUsuarios.seguir(HG.id, JB.id);
+      ctrlUsuarios.seguir(TC.id, HR.id);
+      ctrlUsuarios.seguir(TC.id, CS.id);
+      ctrlUsuarios.seguir(CS.id, HR.id);
+      ctrlUsuarios.seguir(JB.id, MB.id);
+      ctrlUsuarios.seguir(JB.id, DP.id);
+      ctrlUsuarios.seguir(DP.id, HG.id);
+      ctrlUsuarios.seguir(KH.id, SP.id);
+      ctrlUsuarios.seguir(RH.id, HG.id);
+      ctrlUsuarios.seguir(RH.id, JB.id);
+      ctrlUsuarios.seguir(RH.id, DP.id);
+      ctrlUsuarios.seguir(MT.id, CS.id);
+      ctrlUsuarios.seguir(MT.id, JB.id);
+      ctrlUsuarios.seguir(MT.id, KH.id);
+      ctrlUsuarios.seguir(EN.id, HR.id);
+      ctrlUsuarios.seguir(EN.id, TC.id);
+      ctrlUsuarios.seguir(EN.id, CS.id);
+      ctrlUsuarios.seguir(SP.id, MB.id);
+      ctrlUsuarios.seguir(SP.id, JB.id);
+      ctrlUsuarios.seguir(SP.id, DP.id);
+      ctrlUsuarios.seguir(AR.id, AP.id);
+      ctrlUsuarios.seguir(AP.id, AR.id);
+      ctrlUsuarios.seguir(NJ.id, DP.id);
 
       class CategoriaBean {
         public String nombre;
@@ -452,13 +470,13 @@ public class CtrlDatos implements IDatos {
       V16.nombre = "Ventana al futuro Uruguay y déficit de ingenieros";
       V16.owner = NJ.nick;
 
-      Fabrica.getIVideos().altaVideo(HG.nick, V6.nombre,
+      Fabrica.getIVideos().altaVideo(HG.id, V6.nombre,
           "Del Ciclo más Universidad realizado por la UdelaR, compartimos con ustedes "
               + "un audiovisual realizado en 2016 por los 100 años de la denominación "
               + "Facultad de Ingeniería.\nExtraído del canal Teleuniversitaria UdelaR",
           Duration.parse("PT6M26S"), "https://youtu.be/peGS4TBxSaI", NOT.nombre,
           format.parse("03/08/2017"), true);
-      Fabrica.getIVideos().altaVideo(HG.nick, V7.nombre,
+      Fabrica.getIVideos().altaVideo(HG.id, V7.nombre,
           "50 años del Instituto de Computación. Facultad de Ingeniería. UDELAR. "
               + "22 de noviembre 2017.\nLa mesa de apertura estuvo integrada por Simon, "
               + "el rector de la Universidad de la República (Udelar), Roberto Markarian; "
@@ -467,37 +485,37 @@ public class CtrlDatos implements IDatos {
               + "(CUTI), Leonardo Loureiro, y el director del Inco, Diego Vallespir.",
           Duration.parse("PT27M22S"), "https://youtu.be/GzOJSk4urlM", NOT.nombre,
           format.parse("24/11/2017"), true);
-      Fabrica.getIVideos().altaVideo(HG.nick, V8.nombre,
+      Fabrica.getIVideos().altaVideo(HG.id, V8.nombre,
           "La muestra más grande de la Ingeniería nacional se realiza el jueves 19, "
               + "viernes 20 y sábado 21 de octubre de 2017. Ingeniería deMuestra fue organizada "
               + "por la Facultad de Ingeniería de la Universidad de la "
               + "República y su Fundación Julio Ricaldoni.",
           Duration.parse("PT1M"), "https://youtu.be/RnaYRA1k5j4", NOT.nombre,
           format.parse("25/10/2017"), true);
-      Fabrica.getIVideos().altaVideo(TC.nick, V1a.nombre,
+      Fabrica.getIVideos().altaVideo(TC.id, V1a.nombre,
           "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para "
               + "el Mundial de Futbol FIFA Rusia 2018.",
           Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", MUS.nombre,
           format.parse("05/06/2018"), false);
-      Fabrica.getIVideos().altaVideo(TC.nick, V2a.nombre, "", Duration.parse("PT4M18S"),
+      Fabrica.getIVideos().altaVideo(TC.id, V2a.nombre, "", Duration.parse("PT4M18S"),
           "https://youtu.be/K-uEIUnyZPg", MUS.nombre, format.parse("20/10/2016"), false);
-      Fabrica.getIVideos().altaVideo(TC.nick, V12a.nombre, "",
+      Fabrica.getIVideos().altaVideo(TC.id, V12a.nombre, "",
           Duration.parse("PT5M48S"),
           "https://youtu.be/wlEd6-HsIxI", DEP.nombre, format.parse("05/07/2013"), false);
-      Fabrica.getIVideos().altaVideo(CS.nick, V1a.nombre,
+      Fabrica.getIVideos().altaVideo(CS.id, V1a.nombre,
           "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para el "
               + "Mundial de Futbol FIFA Rusia 2018.",
           Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", MUS.nombre,
           format.parse("05/06/2018"), false);
-      Fabrica.getIVideos().altaVideo(CS.nick, "Niño payaso", "", Duration.parse("PT4M18S"),
+      Fabrica.getIVideos().altaVideo(CS.id, "Niño payaso", "", Duration.parse("PT4M18S"),
           "https://youtu.be/K-uEIUnyZPg", "Música", format.parse("20/10/2016"), false);
-      Fabrica.getIVideos().altaVideo(CS.nick, "Etapa A contramano Liguilla", "",
+      Fabrica.getIVideos().altaVideo(CS.id, "Etapa A contramano Liguilla", "",
           Duration.parse("PT57M15S"),
           "https://youtu.be/Es6GRMHXeCQ", "Carnaval", format.parse("17/12/2015"), false);
-      Fabrica.getIVideos().altaVideo(CS.nick, "Etapa Don Timoteo Liguilla", "",
+      Fabrica.getIVideos().altaVideo(CS.id, "Etapa Don Timoteo Liguilla", "",
           Duration.parse("PT51M38S"),
           "https://youtu.be/I_spHBU9ZsI", "Carnaval", format.parse("18/12/2015"), false);
-      Fabrica.getIVideos().altaVideo(CS.nick, "Recoba 20 mejores goles",
+      Fabrica.getIVideos().altaVideo(CS.id, "Recoba 20 mejores goles",
           "My Favorites\n\n\"El Chino\"",
           Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
           format.parse("14/11/2011"), false);
@@ -768,13 +786,15 @@ public class CtrlDatos implements IDatos {
     List<DtVideo> videos = new LinkedList<DtVideo>();
     List<DtLista> listas = new LinkedList<DtLista>();
     List<DtUsuario> usuarios = new LinkedList<DtUsuario>();
-    for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
+    for (Usuario usuario : ManejadorUsuarios.getManejadorUsuarios().getUsuarios().values()) {
       Canal canal = usuario.getCanal();
       if (canal.isVisible()) {
         if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
             || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
-              usuario.getPath(), canal.getUltimaActividad());
+          DtCanal dtCanal = new DtCanal(canal.getNombre(), canal.getDescripcion(),
+              canal.isVisible(), canal.getUltimaActividad());
+          DtUsuario dtUsuario = new DtUsuario(usuario.getId(), usuario.getNick(), dtCanal);
+          dtUsuario.setImgPath(usuario.getPath());
           usuarios.add(dtUsuario);
         }
       }

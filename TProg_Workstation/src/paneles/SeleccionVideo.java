@@ -2,6 +2,7 @@ package paneles;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -14,21 +15,26 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import datatypes.DtUsuario;
+import datatypes.DtVideo;
+import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 
 @SuppressWarnings("serial")
 public class SeleccionVideo extends JPanel implements ActionListener {
+
   private JComboBox<String> cBoxUsuarios;
+  private List<DtVideo> videos;
+  private List<DtUsuario> usuarios;
   private IVideos contVideos;
+  private IUsuariosCanales contUsuarios;
   private JList<String> listaVideos;
 
-  /**
-   * Create the panel.
-   */
-  public SeleccionVideo(IVideos contVideos) {
+  public SeleccionVideo(IVideos contVideos, IUsuariosCanales contUsuarios) {
 
     this.contVideos = contVideos;
-
+    this.contUsuarios = contUsuarios;
+    
     JLabel lblUsuario = new JLabel("Usuario:");
 
     cBoxUsuarios = new JComboBox<String>();
@@ -64,27 +70,39 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 
   }
 
-  public String getVideo() {
-    return listaVideos.getSelectedValue();
+  public int getVideo() {
+    for(DtVideo video : videos){
+      if(video.getNombre().equals(listaVideos.getSelectedValue()))
+        return video.getId();
+    }
+    return 0;
   }
 
   public void cargarDatos() {
-    String[] usuarios = contVideos.listarUsuarios();
-    DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuarios);
+    usuarios = contUsuarios.listarDtUsuarios();
+    String[] usuariosArray = new String[usuarios.size()];
+    int i = 0;
+    for(DtUsuario usuario : usuarios){
+      usuariosArray[i] = usuario.getNick();
+    }
+    DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuariosArray);
     cBoxUsuarios.setModel(modelU);
     cBoxUsuarios.setSelectedIndex(-1);
     updateLista((String) cBoxUsuarios.getSelectedItem());
   }
 
   public void updateLista(String nickname) {
-    DefaultListModel<String> model = new DefaultListModel<String>();
-    String[] videos = contVideos.listarVideos(nickname);
-    if (videos != null) {
-      for (String vid : videos) {
-        model.addElement(vid);
+    try{
+      DefaultListModel<String> model = new DefaultListModel<String>();
+      videos = contVideos.listarVideos(obtenerUsuarioId(cBoxUsuarios.getSelectedItem().toString()));
+      if (videos != null) {
+        for (DtVideo vid : videos) {
+          model.addElement(vid.getNombre());
+        }
       }
-    }
-    listaVideos.setModel(model);
+      listaVideos.setModel(model);
+      }
+    catch(Exception e){}
   }
 
   @Override
@@ -92,12 +110,22 @@ public class SeleccionVideo extends JPanel implements ActionListener {
     updateLista((String) cBoxUsuarios.getSelectedItem());
   }
 
-  public String getUsuario() {
+  public int getUsuario() {
     if (cBoxUsuarios.getSelectedIndex() > -1) {
-      return (String) cBoxUsuarios.getSelectedItem();
+      return obtenerUsuarioId((String) cBoxUsuarios.getSelectedItem());
     } else {
-      return null;
+      return -1;
     }
+  }
+  
+  public int obtenerUsuarioId(String nombre){
+
+    for(DtUsuario usuario : usuarios){
+      if(usuario.getNick().equals(nombre)){
+        return usuario.getIdUsuario();
+      }
+    }
+    return -1;
   }
 
 }

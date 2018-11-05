@@ -85,8 +85,8 @@ public class CargaDatosTest {
   public void testListasParticulares() {
     int contador = 0;
     for (String usuario : listaUsuarios) {
-      contador += ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal()
-          .getListaParticulares().size();
+      contador += ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal()
+          .getListasParticulares().size();
     }
     assertTrue(contador == 6);
   }
@@ -97,7 +97,8 @@ public class CargaDatosTest {
     int esperado = listaUsuarios.length * 3;
     for (String usuario : listaUsuarios) {
       contador +=
-          ManejadorUsuarios.getManejadorUsuarios().get(usuario).getCanal().getListaDefecto().size();
+          ManejadorUsuarios.getManejadorUsuarios().getUsuario(usuario).getCanal().getListasDefecto()
+              .size();
     }
     assertEquals(contador, esperado);
   }
@@ -120,7 +121,7 @@ public class CargaDatosTest {
       }
     }
     // Cantidad canales publicos
-    for (Usuario usu : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
+    for (Usuario usu : ManejadorUsuarios.getManejadorUsuarios().getUsuarios().values()) {
       if (usu.getCanal().isVisible()) {
         esperado++;
       }

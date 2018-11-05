@@ -3,6 +3,7 @@ package internalframes;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -12,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import datatypes.DtVideo;
+import interfaces.IUsuariosCanales;
 import interfaces.IVideos;
 import paneles.InfoVideo;
 import paneles.SeleccionVideo;
@@ -20,15 +23,14 @@ import paneles.SeleccionVideo;
 public class ConsultaVideo extends JInternalFrame {
 
   private IVideos contVideos;
+  private IUsuariosCanales contUsuarios;
   private SeleccionVideo seleccionVideo;
   private InfoVideo infoVideo;
 
-  /**
-   * Create the frame.
-   */
-  public ConsultaVideo(IVideos contVideos) {
+  public ConsultaVideo(IVideos contVideos,IUsuariosCanales contUsuarios) {
 
     this.contVideos = contVideos;
+    this.contUsuarios = contUsuarios;
 
     setTitle("Consulta de Video");
     setBounds(100, 100, 580, 475);
@@ -37,7 +39,7 @@ public class ConsultaVideo extends JInternalFrame {
     JPanel panelSeleccion = new JPanel();
     getContentPane().add(panelSeleccion, "name_1194544403547543");
 
-    seleccionVideo = new SeleccionVideo(this.contVideos);
+    seleccionVideo = new SeleccionVideo(this.contVideos,this.contUsuarios);
 
     JButton btnVerInfo = new JButton("Ver Info");
     btnVerInfo.addActionListener(new ActionListener() {
@@ -110,16 +112,13 @@ public class ConsultaVideo extends JInternalFrame {
   }
 
   private void verInfo() {
-    if (seleccionVideo.getVideo() != null && seleccionVideo.getUsuario() != null) {
+    if (seleccionVideo.getVideo() != -1 && seleccionVideo.getUsuario() != -1) {
+      try{
       infoVideo.cargarDatos(
-          contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario())); // Paso
-      // la
-      // info
-      // al
-      // panel
-      // de
-      // info
-      cambioPanel(); // Voy al panel de informacion
+          contVideos.getDtVideo(seleccionVideo.getVideo()));
+      cambioPanel();
+      }
+      catch(Exception e){}
     } else {
       JOptionPane.showMessageDialog(this, "Debe rellenar los campos", "Error",
           JOptionPane.ERROR_MESSAGE);

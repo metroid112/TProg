@@ -31,7 +31,7 @@ public class CtrlListasTest {
   public void testAgregarVideoLista() {
     try {
       iListas.agregarVideoLista("hectorg", "100 años de FING", "kairoh", "Nostalgia", false);
-      List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal()
+      List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().getUsuario("kairoh").getCanal()
           .getLista("Nostalgia").getVideos();
       boolean pertenece = false;
       for (Video vid : listaVideos) {
@@ -42,11 +42,11 @@ public class CtrlListasTest {
       assertTrue(pertenece);
       iListas.agregarVideoLista("hectorg", "100 años de FING", "kairoh", "Escuchar más tarde",
           true);
-      ListaDefecto listaVideos2 = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal()
-          .getListaDefecto().get("Escuchar más tarde");
+      ListaDefecto listaVideos2 = ManejadorUsuarios.getManejadorUsuarios().getUsuario("kairoh").getCanal()
+          .getListasDefecto().getCategoria("Escuchar más tarde");
 
       Video vid = listaVideos2.getVideo("100 años de FING",
-          ManejadorUsuarios.getManejadorUsuarios().get("hectorg"));
+          ManejadorUsuarios.getManejadorUsuarios().getUsuario("hectorg"));
       assertTrue(vid != null);
     } catch (Exception e) {
       e.printStackTrace();
@@ -82,7 +82,7 @@ public class CtrlListasTest {
     iListas.guardarCambios("TestTarea2", "chino", false);
     try {
       ListaParticular listaParticular = (ListaParticular) ManejadorUsuarios.getManejadorUsuarios()
-          .get("chino").getCanal().getLista("TestTarea2");
+          .getUsuario("chino").getCanal().getLista("TestTarea2");
       Boolean esVisible = listaParticular.isVisible();
       assertEquals(false, esVisible);
     } catch (Exception e) {
@@ -94,7 +94,7 @@ public class CtrlListasTest {
   @Test
   public void testQuitarVideoLista() throws Exception {
     iListas.quitarVideoLista("kairoh", "100 años de FING", "hectorg", "Nostalgia", false);
-    List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().get("kairoh").getCanal()
+    List<Video> listaVideos = ManejadorUsuarios.getManejadorUsuarios().getUsuario("kairoh").getCanal()
         .getLista("Nostalgia").getVideos();
     boolean pertenece = false;
     for (Video vid : listaVideos) {

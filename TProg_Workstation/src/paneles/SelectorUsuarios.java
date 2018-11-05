@@ -1,5 +1,7 @@
 package paneles;
 
+import java.util.List;
+
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -10,15 +12,14 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ListSelectionModel;
 
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class SelectorUsuarios extends JPanel {
   private IUsuariosCanales ctrlUsu;
-  /**
-   * Launch the application.
-   */
+  private List<DtUsuario> usuarios;
   private DefaultListModel<String> model = new DefaultListModel<>();
   private JList<String> list = new JList<>(model);
 
@@ -52,18 +53,18 @@ public class SelectorUsuarios extends JPanel {
 
   public void cargarDatos() {
     model.removeAllElements();
+    usuarios.clear();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] usua = ctrlUsu.listarUsuarios();
-    int largo = usua.length;
-    for (int i = 0; i < largo; i++) {
-      model.addElement(usua[i]);
+    usuarios = ctrlUsu.listarDtUsuarios();
+
+    for (DtUsuario usuario : usuarios) {
+      model.addElement(usuario.getNick());
     }
     ctrlUsu = null;
   }
 
   public String getSelectedItem() {
     return list.getSelectedValue();
-    // return model.
   }
 }

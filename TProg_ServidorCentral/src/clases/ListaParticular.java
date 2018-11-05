@@ -18,12 +18,12 @@ public class ListaParticular extends Lista {
       boolean visible) throws DuplicateClassException {
     super(nombre, canal);
     this.visible = visible;
-    ManejadorListasParticulares.getManejadorListasParticulares().add(this);
+    ManejadorListasParticulares.getManejadorListasParticulares().addListaParticular(this);
   }
 
   public Date getUltimaActividad() {
     Date ultimaActividad = null;
-    for (Video vid : this.getVideos()) {
+    for (Video vid : this.getVideos().values()) {
       if (ultimaActividad == null || vid.getFecha().after(ultimaActividad)) {
         ultimaActividad = vid.getFecha();
       }
@@ -33,7 +33,7 @@ public class ListaParticular extends Lista {
 
   public boolean esUnicaCategoria(Categoria categoria) {
     if (categoria != null) {
-      for (Video v : super.getVideos()) {
+      for (Video v : super.getVideos().values()) {
         if (v.getCategoria() == categoria) {
           return false;
         }
@@ -57,7 +57,7 @@ public class ListaParticular extends Lista {
   @Override
   public DtLista getDtLista() {
     LinkedList<String> videos = new LinkedList<String>();
-    for (Video vid : this.getVideos()) {
+    for (Video vid : this.getVideos().values()) {
       videos.add(vid.getCanal().getUsuario().getNick() + "-" + vid.getNombre());
     }
     LinkedList<String> categorias = new LinkedList<String>();
@@ -68,7 +68,7 @@ public class ListaParticular extends Lista {
         categorias, this.getUltimaActividad(), this.getId());
   }
 
-  public void insertarCategoria(Categoria categoria) {
+  public void agregarCategoria(Categoria categoria) {
     if (!categorias.containsKey(categoria.getNombre())) {
       categorias.put(categoria.getNombre(), categoria);
       categoria.addLista(this);

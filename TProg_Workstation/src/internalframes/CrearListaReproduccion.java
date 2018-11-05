@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -17,6 +18,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import datatypes.DtUsuario;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -27,6 +29,7 @@ public class CrearListaReproduccion extends JInternalFrame {
   private JTextField textFieldNombre;
   private IUsuariosCanales ctrUsu;
   private IListas ctrLista;
+  private List<DtUsuario> usuarios;
   private ButtonGroup grupoTipo = new ButtonGroup();
   private ButtonGroup grupoVisibilidad = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
@@ -180,8 +183,7 @@ public class CrearListaReproduccion extends JInternalFrame {
                 publica = false;
               }
               ctrLista.altaListaParticular(textFieldNombre.getText(),
-                  modelUsuario.getSelectedItem().toString(), publica); // Visibilidad publica = true
-
+                  obtenerUsuarioId(modelUsuario.getSelectedItem().toString()), publica);
             }
             JOptionPane.showMessageDialog(null, "La lista fue creada con exito",
                 "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
@@ -221,11 +223,11 @@ public class CrearListaReproduccion extends JInternalFrame {
     Fabrica.getFabrica();
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    usuarios = ctrUsu.listarDtUsuarios();
+    
     modelUsuario.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuario.addElement(usuarios[i]);
+    for (DtUsuario usuario : usuarios) {
+      modelUsuario.addElement(usuario.getNick());
     }
     ctrUsu = null;
 
@@ -235,19 +237,34 @@ public class CrearListaReproduccion extends JInternalFrame {
 
     modelUsuario.removeAllElements();
     textFieldNombre.setText(null);
+    usuarios.clear();
 
   }
 
   boolean isCanalPublico(String usuario) {
     Fabrica.getFabrica();
     ctrUsu = Fabrica.getIUsuariosCanales();
-
-    if (!ctrUsu.isCanalPublico(usuario)) {
-      JOptionPane.showMessageDialog(null, "La lista se creara como privada", "El canal es privado",
-          JOptionPane.WARNING_MESSAGE);
-      return false;
+    try{
+      if (!ctrUsu.isCanalPublico(obtenerUsuarioId(usuario))) {
+        JOptionPane.showMessageDialog(null, "La lista se creara como privada", "El canal es privado",
+            JOptionPane.WARNING_MESSAGE);
+        return false;
+      }
     }
+    catch(Exception e){}
     return true;
+
   }
+  
+  public int obtenerUsuarioId(String nombre){
+
+    for(DtUsuario usuario : usuarios){
+      if(usuario.getNick() == nombre){
+        return usuario.getIdUsuario();
+      }
+    }
+    return 0;
+  }
+  
 
 }

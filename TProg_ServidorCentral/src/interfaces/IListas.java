@@ -3,6 +3,7 @@ package interfaces;
 import java.util.List;
 import java.util.Map;
 
+import clases.ListaDefecto;
 import clases.ListaParticular;
 import datatypes.DtLista;
 import excepciones.DuplicateClassException;
@@ -11,41 +12,38 @@ import excepciones.NotFoundException;
 
 public interface IListas {
 
-  public void agregarVideoLista(String usuario, String video, String usuarioObjetivo, String lista,
-      boolean defecto) throws DuplicateClassException, InvalidDataException;
+  public void agregarVideoLista(int idVideo, int idUsuario, int idLista,
+      boolean defecto) throws DuplicateClassException, InvalidDataException, NotFoundException ;
 
-  public void altaListaDefecto(String nombre) throws DuplicateClassException;
+  public void altaListaDefecto(String nombreListaDefecto) throws DuplicateClassException;
 
-  public void altaListaParticular(String nombre, String usuario, boolean visibilidad)
-      throws DuplicateClassException;
+  public void altaListaParticular(String nombreListaDefecto, int idUsuario, boolean visibilidad)
+      throws DuplicateClassException, NotFoundException ;
 
   public DtLista getDt(int idLista) throws NotFoundException;
 
-  public DtLista getDtDefecto(String usuario, String nombreListaDefecto);
+ // public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto)throws NotFoundException ;
 
   public Map<Integer, DtLista> getDtListas();
 
-  // public String getDue�oVideo(String due�oLista, String nombreLista, String
-  // nombreVid, String algo) throws Exception;
+  public void guardarCambios(String nomLis, int idUsuario, boolean visible) throws NotFoundException ;
 
-  public void guardarCambios(String nomLis, String usuario, boolean visible);
+  public Map<Integer, ListaDefecto> listarListasDefectoUsuario(int idUsuario) throws NotFoundException ;
 
-  public String[] listarListasDefectoUsuario(String usuario);
+  public Map<Integer, ListaParticular> listarListasParticularUsuario(int idUsuario) throws NotFoundException ;
 
-  public String[] listarListasParticularUsuario(String usuario);
-
-  public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista,
-      boolean deefecto);
+  public void quitarVideoLista(int idUsuario, int idVideo, int idLista,
+      boolean deefecto) throws NotFoundException ;
 
   public List<DtLista> getDtListasPublicas();
 
-  public List<DtLista> getDtListasParticularesUsuario(String usuario);
+  public List<DtLista> getDtListasParticularesUsuario(int idUsuario) throws NotFoundException ;
 
-  public List<DtLista> getDtListasParticularesPublicasUsuario(String usuario);
+  public List<DtLista> getDtListasParticularesPublicasUsuario(int idUsuario)throws NotFoundException ;
 
-  public List<DtLista> getDtListasDefectoUsuario(String usuario);
+  public List<DtLista> getDtListasDefectoUsuario(int idUsuario) throws NotFoundException ;
 
-  public List<DtLista> getDtListasPrivadasUsuario(String usuario);
+  public List<DtLista> getDtListasPrivadasUsuario(int idUsuario) throws NotFoundException ;
 
   public Map<Integer, ListaParticular> getListasPublicas();
 }

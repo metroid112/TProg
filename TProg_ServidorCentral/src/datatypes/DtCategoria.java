@@ -12,37 +12,27 @@ import clases.Video;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtCategoria extends DtUniversal {
-  private List<DtLista> listas;
+
+  private int idCategoria;
   private String nombre;
   private List<DtVideo> videos;
-  private List<String> categorias;
-  
-  public List<String> getCategorias() {
-    return categorias;
-  }
+  private List<DtLista> listas;
 
-  public void setCategorias(List<String> categorias) {
-    this.categorias = categorias;
-  }
-  
   public DtCategoria() {}
-  
-  public DtCategoria(List<String> categorias) {
-    this.categorias = categorias;
-  }
-  
-  public DtCategoria(String nombre, List<DtVideo> videos, List<DtLista> listas) {
+
+  public DtCategoria(int idCategoria, String nombre, List<DtVideo> videos, List<DtLista> listas) {
+    this.idCategoria = idCategoria;
     this.nombre = nombre;
     this.videos = videos;
     this.listas = listas;
   }
-  
-  public List<DtLista> getListas() {
-    return listas;
+
+  public int getId() {
+    return this.idCategoria;
   }
 
-  public void setListas(List<DtLista> listas) {
-    this.listas = listas;
+  public void setId(int idCategoria) {
+    this.idCategoria = idCategoria;
   }
 
   public String getNombre() {
@@ -53,6 +43,14 @@ public class DtCategoria extends DtUniversal {
     this.nombre = nombre;
   }
 
+  public List<DtLista> getListas() {
+    return listas;
+  }
+
+  public void setListas(List<DtLista> listas) {
+    this.listas = listas;
+  }
+
   public List<DtVideo> getVideos() {
     return videos;
   }
@@ -60,7 +58,4 @@ public class DtCategoria extends DtUniversal {
   public void setVideos(List<DtVideo> videos) {
     this.videos = videos;
   }
-  
-  
-  
 }

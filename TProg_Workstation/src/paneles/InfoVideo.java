@@ -3,6 +3,7 @@ package paneles;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -146,16 +147,16 @@ public class InfoVideo extends JPanel {
   }
 
   public void cargarDatos(DtVideo dtVid) {
-    lblVnombre.setText(dtVid.nombre);
-    textVdescripcion.setText(dtVid.descripcion);
-    lblVurl.setText(dtVid.Url);
-    if (dtVid.visible) {
+    lblVnombre.setText(dtVid.getNombre());
+    textVdescripcion.setText(dtVid.getDescripcion());
+    lblVurl.setText(dtVid.getUrl());
+    if (dtVid.isVisible()) {
       lblVvisibilidad.setText("Publico");
     } else {
       lblVvisibilidad.setText("Privado");
     }
-    lblVcategoria.setText(dtVid.categoria);
-    Duration duracion = dtVid.duracion;
+    lblVcategoria.setText(dtVid.getCategoria());
+    Duration duracion = dtVid.getDuracion();
     int horas = (int) duracion.toHours();
     duracion = duracion.minusHours(horas);
     int min = (int) duracion.toMinutes();
@@ -163,25 +164,25 @@ public class InfoVideo extends JPanel {
     int seg = (int) duracion.getSeconds();
     lblVduracion.setText(String.format("%d:%02d:%02d", horas, min, seg));
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    lblVfecha.setText(dateFormat.format(dtVid.fecha));
+    lblVfecha.setText(dateFormat.format(dtVid.getFecha()));
 
     DefaultListModel<String> modeloLista = new DefaultListModel<String>();
     if (!dtVid.calificaciones.isEmpty()) {
       for (DtCalificacion cal : dtVid.calificaciones) {
-        modeloLista.addElement(cal.usuario + " - " + cal.getLikeParsed());
+        modeloLista.addElement(cal.getUsuario() + " - " + cal.getLikeParsed());
       }
     } else {
       modeloLista.addElement("Sin calificaciones");
     }
     listaValoraciones.setModel(modeloLista);
 
-    DefaultMutableTreeNode raiz = loadComentarios(dtVid.comentarios, dtVid.nombre);
+    DefaultMutableTreeNode raiz = loadComentarios(dtVid.comentarios, dtVid.getNombre());
     DefaultTreeModel model = new DefaultTreeModel(raiz);
     tree.setModel(model);
 
   }
 
-  public DefaultMutableTreeNode loadComentarios(LinkedHashMap<Integer, DtComentario> coments,
+  public DefaultMutableTreeNode loadComentarios(Map<Integer, DtComentario> coments,
       String nombreVideo) {
     DefaultMutableTreeNode nodo;
     DefaultMutableTreeNode raiz;
@@ -195,7 +196,7 @@ public class InfoVideo extends JPanel {
 
   public DefaultMutableTreeNode getNode(DtComentario comentario) {
     DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(comentario.getString());
-    for (DtComentario hijo : comentario.hijos.values()) {
+    for (DtComentario hijo : comentario.getHijos().values()) {
       DefaultMutableTreeNode nodoHijo = getNode(hijo); // Recursion
       nodo.add(nodoHijo);
     }

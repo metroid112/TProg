@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -15,6 +16,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import datatypes.DtCategoria;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 
@@ -22,6 +24,7 @@ import interfaces.ICategorias;
 public class ConsultaCategoria extends JInternalFrame {
 
   private ICategorias ctrlCat;
+  private List<DtCategoria> categorias;
   private DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
   private DefaultListModel<String> videos = new DefaultListModel<>();
   private DefaultListModel<String> listas = new DefaultListModel<>();
@@ -36,6 +39,7 @@ public class ConsultaCategoria extends JInternalFrame {
       public void actionPerformed(ActionEvent e) {
         setVisible(false);
         model.removeAllElements();
+        categorias.clear();
       }
     });
 
@@ -56,8 +60,6 @@ public class ConsultaCategoria extends JInternalFrame {
         cmdConsultaCategoriaActionPerformed(selected);
       }
     });
-    // comboBox.setModel(new DefaultComboBoxModel(new String[] {"","Deportes",
-    // "Gatos"}));
 
     JLabel lblSeleccioneUnaCategoria = new JLabel("Seleccione una categoria:");
     GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -111,37 +113,38 @@ public class ConsultaCategoria extends JInternalFrame {
 
     ctrlCat = Fabrica.getICategorias();
 
-    String[] cats = ctrlCat.listarCategorias();
-    int largo = cats.length;
-    model.addElement("");
-    for (int i = 0; i < largo; i++) {
-      model.addElement(cats[i]);
+    categorias = ctrlCat.listarCategorias();
+
+    for (DtCategoria categoria : categorias) {
+      model.addElement(categoria.getNombreCategoria());
     }
     ctrlCat = null;
   }
 
   protected void cmdConsultaCategoriaActionPerformed(Object o) {
-    videos.removeAllElements();
-    listas.removeAllElements();
-    if (o != null) {
-      String s = o.toString();
-      if (!s.equals("")) {
-        ctrlCat = Fabrica.getICategorias();
-
-        String[] infoVideo = ctrlCat.getInfoVideos(s);
-        int largo = infoVideo.length;
-        for (int i = 0; i < largo; i++) {
-          videos.addElement(infoVideo[i]);
-        }
-
-        String[] infoLista = ctrlCat.getInfoListas(s);
-        largo = infoLista.length;
-        for (int i = 0; i < largo; i++) {
-          listas.addElement(infoLista[i]);
+    try{
+      videos.removeAllElements();
+      listas.removeAllElements();
+      if (o != null) {
+        String s = o.toString();
+        if (!s.equals("")) {
+          ctrlCat = Fabrica.getICategorias();
+  
+          String[] infoVideo = ctrlCat.getInfoVideos(s);
+          int largo = infoVideo.length;
+          for (int i = 0; i < largo; i++) {
+            videos.addElement(infoVideo[i]);
+          }
+  
+          String[] infoLista = ctrlCat.getInfoListas(s);
+          largo = infoLista.length;
+          for (int i = 0; i < largo; i++) {
+            listas.addElement(infoLista[i]);
+          }
         }
       }
     }
-
+    catch(Exception e){}
   }
 
 }

@@ -11,20 +11,22 @@ import datatypes.DtUsuario;
 
 public class Usuario {
 
-  private String apellido;
-  private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
-  private Canal canal;
-  private List<Comentario> comentarios = new LinkedList<Comentario>();
-  private String correo;
-  private Date fechaNacimiento;
-  private BufferedImage imagen;
+  private int idUsuario;
   private String nick;
+  private String password = "";
+  private String correo;
   private String nombre;
+  private String apellido;
+  private Date fechaNacimiento;
+  private Canal canal;
+  private String imgPath = "img/usuarios/null.JPG";
+  private BufferedImage imagen;
+
+  private List<Calificacion> calificaciones = new LinkedList<Calificacion>();
+  private Map<Integer, Comentario> comentarios = new HashMap<Integer, Comentario>();
   private Map<String, Usuario> seguidores = new HashMap<String, Usuario>();
   private Map<String, Usuario> seguidos = new HashMap<String, Usuario>();
-  private String password = "";
-  private String imgPath = "img/usuarios/null.JPG";
-  private int idUsuario;
+
   private static int idCounter = 0;
 
   public Usuario(String nickname, String nombre, String apellido, String correo,
@@ -66,7 +68,7 @@ public class Usuario {
 
   public void comentar(String texto, Date fecha, Video vid) {
     Comentario comentario = new Comentario(texto, this, vid, fecha);
-    this.comentarios.add(comentario);
+    this.comentarios.put(comentario.getId(), comentario);
     vid.addComentarioPadre(comentario);
   }
 
@@ -79,11 +81,8 @@ public class Usuario {
   }
 
   public DtUsuario getDt() {
-    String categoria = this.getCanal().getCategoria() == null ? "Sin Categoria"
-        : this.getCanal().getCategoria().getNombre();
-    return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
-        this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible(),
-        this.nick, this.imgPath, categoria);
+    return new DtUsuario(this.idUsuario, this.nick, this.password, this.correo, this.nombre,
+        this.apellido, this.fechaNacimiento, this.imgPath);
   }
 
   public BufferedImage getImagen() {
@@ -116,7 +115,7 @@ public class Usuario {
   public void responder(String texto, Date fecha, Integer idComentarioPadre, Video vid) {
     Comentario padre = vid.getComentario(idComentarioPadre);
     Comentario comentario = new Comentario(texto, this, vid, padre, fecha);
-    this.comentarios.add(comentario);
+    this.comentarios.put(comentario.getId(), comentario);
 
   }
 
@@ -130,7 +129,7 @@ public class Usuario {
     seguido.removeSeguidor(this);
   }
 
-  private void removeSeguidor(Usuario usuario) {
+  public void removeSeguidor(Usuario usuario) {
     this.seguidores.remove(usuario.getNick());
   }
 
@@ -187,5 +186,21 @@ public class Usuario {
   public String getPath() {
     return this.imgPath;
   }
+
+
+  public void modificarUsuario(DtUsuario usuarioModificado) {
+    this.nombre = usuarioModificado.getNombre();
+    this.apellido = usuarioModificado.getApellido();
+    this.fechaNacimiento = usuarioModificado.getFechaNacimiento();
+    this.correo = usuarioModificado.getCorreo();
+    this.password = usuarioModificado.getPassword();
+    this.imgPath = usuarioModificado.getImgPath();
+  }
+/*
+  @Override
+  public boolean equals(Object object) {
+    Usuario user = (Usuario) object;
+    return (this.nick.equals(user.nick));
+  }*/
 
 }

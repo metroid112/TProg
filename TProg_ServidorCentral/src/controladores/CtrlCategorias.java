@@ -1,5 +1,9 @@
 package controladores;
 
+import java.util.List;
+
+import clases.Categoria;
+import datatypes.DtCategoria;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,6 +14,7 @@ import datatypes.DtCategoria;
 import datatypes.DtLista;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import interfaces.ICategorias;
 import manejadores.ManejadorCategorias;
 
@@ -18,43 +23,14 @@ public class CtrlCategorias implements ICategorias {
   private ManejadorCategorias manejadorCategorias = ManejadorCategorias.getManejadorCategorias();
 
   public CtrlCategorias() {
-
   }
 
   @Override
   public void altaCategoria(String nombreCategoria) throws DuplicateClassException {
-    manejadorCategorias.altaCategoria(nombreCategoria);
+    Categoria nuevaCategoria = new Categoria(nombreCategoria);
+    manejadorCategorias.addCategoria(nuevaCategoria);
   }
 
-  @Override
-  public String[] getInfoListas(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
-    return categ.getInfoListas();
-  }
-
-  @Override
-  public String[] getInfoListasPublicas(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
-    return categ.getInfoListasPublicas();
-  }
-
-  @Override
-  public String[] getInfoVideos(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
-    return categ.getInfoVideos();
-  }
-
-  @Override
-  public String[] getInfoVideosPublicos(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
-    return categ.getInfoVideosPublicos();
-  }
-
-  @Override
-  public DtCategoria listarCategorias() {
-    return manejadorCategorias.toList();
-  }
-  
   @Override
   public DtCategoria consultaDeCategoria(String categoria) {
     Categoria categ = manejadorCategorias.get(categoria);

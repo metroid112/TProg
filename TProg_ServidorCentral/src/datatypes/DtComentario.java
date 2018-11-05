@@ -11,11 +11,11 @@ import clases.Comentario;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtComentario {
-  public Map<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
-  public Integer idComentario;
-  public String texto;
-  public String usuario;
-  public Date fecha;
+  private Map<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
+  private Integer idComentario;
+  private String texto;
+  private String usuario;
+  private Date fecha;
   private boolean tieneHijos = false;
 
   public DtComentario(Comentario comentario) {
@@ -30,6 +30,7 @@ public class DtComentario {
       this.tieneHijos = true;
     }
   }
+  
 
   public String getString() {
     return ("(" + this.usuario + ") " + this.texto);

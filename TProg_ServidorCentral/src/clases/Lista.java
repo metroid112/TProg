@@ -1,22 +1,25 @@
 package clases;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import datatypes.DtLista;
 import datatypes.DtVideo;
+import excepciones.InvalidDataException;
+import excepciones.NotFoundException;
 
 public abstract class Lista {
 
   private Canal canal;
-
   private String nombre;
-  private List<Video> videos = new LinkedList<Video>();
+  private Map<Integer, Video> videos = new HashMap<Integer, Video>();
   private int idLista;
   private static int idCounter = 0;
 
-  // Pato: Constructor con todos los atributos, posiblemente se precise cortar
-  // algunos
+  public abstract DtLista getDtLista();
+
   public Lista(String nombre, Canal canal) {
     this.nombre = nombre;
     this.canal = canal;
@@ -28,69 +31,47 @@ public abstract class Lista {
     return this.idLista;
   }
 
-  public boolean existeVideo(Video video) {
-    return videos.contains(video);
+  public boolean existeVideo(int idVideo) {
+    return videos.containsKey(idVideo);
   }
 
-  public String[] getArrayVideos() {
-    String[] result = new String[videos.size()];
-    int contador = 0;
-    for (Video v : videos) {
-      result[contador] = v.getNombre();
-      contador++;
-    }
-    return result;
-  }
-
-  public String[] getArrayVideosDuenos() {
-    String[] result = new String[videos.size()];
-    int contador = 0;
-    for (Video v : videos) {
-      result[contador] = v.getCanal().getUsuario().getNick() + "-" + v.getNombre();
-      contador++;
-    }
-    return result;
+  public Map<Integer, Video> getVideos() {
+    return this.videos;
   }
 
   public Canal getCanal() {
     return canal;
   }
 
-  public abstract DtLista getDtLista();
-
   public String getNombre() {
     return nombre;
   }
 
-  public Video getVideo(String nombreVid, Usuario ownerVideo) { // TODO FIX!
-    Video video = null;
-    for (Video vid : videos) {
-      if (vid.getNombre().equals(nombreVid)
-          && (vid.getCanal().getUsuario().getNick() == ownerVideo.getNick())) {
-        video = vid;
-      }
+  public List<DtVideo> getListVideos(){
+    List<DtVideo> resultado = new LinkedList<DtVideo>();
+    for(Video video : videos.values()){
+      resultado.add(video.getDt());
     }
-    return video;
+    return resultado;
   }
-
-  public List<DtVideo> getDtVideos() {
-    List<DtVideo> dtVideos = new LinkedList<DtVideo>();
-    for (Video vid : videos) {
-      DtVideo dtVid = vid.getDt();
-      dtVideos.add(dtVid);
+  
+  public Video getVideo(int idVideo) throws NotFoundException {
+    if (this.videos.containsKey(idVideo)) {
+      return this.videos.get(idVideo);
+    } else {
+      throw new NotFoundException("");
     }
-    return dtVideos;
   }
 
-  public List<Video> getVideos() {
-    return videos;
+  public void agregarVideo(Video video) throws InvalidDataException {
+    if (video != null) {
+      videos.put(video.getId(), video);
+    } else {
+      throw new InvalidDataException("");
+    }
   }
 
-  public void insertarVideo(Video video) {
-    videos.add(video);
-  }
-
-  public void quitarVideo(Video video) {
-    videos.remove(video);
+  public void quitarVideo(int idVideo) {
+    videos.remove(idVideo);
   }
 }

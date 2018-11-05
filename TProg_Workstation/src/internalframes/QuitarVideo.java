@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -21,6 +22,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import datatypes.DtLista;
+import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -30,6 +34,9 @@ public class QuitarVideo extends JInternalFrame {
 
   private IUsuariosCanales ctrUsu;
   private IListas ctrLis;
+  private List<DtLista> listas;
+  private List<DtVideo> videos;
+  private List<DtUsuario> usuarios = ctrUsu.listarDtUsuarios();
   private ButtonGroup grupoLista = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private DefaultComboBoxModel<String> modelVideos = new DefaultComboBoxModel<String>();
@@ -130,7 +137,7 @@ public class QuitarVideo extends JInternalFrame {
         if (!list.isSelectionEmpty()) {
           comboBoxVideos.setEnabled(true);
           modelVideos.removeAllElements();
-          cargarVideosListas(modelUsuario.getSelectedItem().toString(),
+          cargarVideosListas(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()),
               list.getSelectedValue().toString(), rdbtnListasPorDefecto.isSelected());
         } else {
           comboBoxVideos.setEnabled(false);
@@ -146,6 +153,9 @@ public class QuitarVideo extends JInternalFrame {
       public void actionPerformed(ActionEvent arg0) {
         modelUsuario.removeAllElements();
         modelVideos.removeAllElements();
+        videos.clear();
+        usuarios.clear();
+        //listas.clear();
         list.setEnabled(false);
         setVisible(false);
       }
@@ -170,6 +180,7 @@ public class QuitarVideo extends JInternalFrame {
           }
         } else {
           modelVideos.removeAllElements();
+          videos.clear();
           rdbtnListasPorDefecto.setEnabled(false);
           rdbtnListasParticulares.setEnabled(false);
           list.setEnabled(false);
@@ -181,6 +192,7 @@ public class QuitarVideo extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         modelVideos.removeAllElements();
+        videos.clear();
         cargarDefectoListas();
       }
     });
@@ -189,6 +201,7 @@ public class QuitarVideo extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         modelVideos.removeAllElements();
+        videos.clear();
         cargarParticularListas();
       }
     });
@@ -218,13 +231,19 @@ public class QuitarVideo extends JInternalFrame {
         if (checkUsuario && checkVideo && comboBoxVideos.isEnabled()) {
           ctrLis = Fabrica.getIListas();
           String stringConcatenado = modelVideos.getSelectedItem().toString();
-          String ownerVideo = stringConcatenado.substring(0, stringConcatenado.indexOf('-'));
           String nombreVideo = stringConcatenado.substring(stringConcatenado.indexOf('-') + 1);
-          ctrLis.quitarVideoLista(modelUsuario.getSelectedItem().toString(), nombreVideo,
-              ownerVideo, list.getSelectedValue().toString(), rdbtnListasPorDefecto.isSelected());
+          try{
+          ctrLis.quitarVideoLista(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()),
+              obtenerVideoId(nombreVideo),obtenerListaId(list.getSelectedValue().toString()),
+              rdbtnListasPorDefecto.isSelected());
+          }
+          catch(Exception error){}
           JOptionPane.showMessageDialog(null, "Se ha eliminado el video con exito!");
           modelUsuario.removeAllElements();
           modelVideos.removeAllElements();
+          videos.clear();
+          usuarios.clear();
+         // listas.clear();
           list.setEnabled(false);
           setVisible(false);
         }
@@ -234,69 +253,94 @@ public class QuitarVideo extends JInternalFrame {
 
   public void cargarDefectoListas() {
     listListas.removeAllElements();
-
+    listas.clear();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuario.getSelectedItem() != null) {
+    try{
+      listas = ctrLis.getDtListasDefectoUsuario(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
 
-      String s = modelUsuario.getSelectedItem().toString();
-
-      String[] listas = ctrLis.listarListasDefectoUsuario(s);
-
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (DtLista lista: listas) {
+        listListas.addElement(lista.getNombre());
       }
+      ctrLis = null;
+    } 
+    catch(Exception e){}
+  
     }
-
-    ctrLis = null;
   }
 
   public void cargarParticularListas() {
     listListas.removeAllElements();
-
+    listas.clear();
     ctrLis = Fabrica.getIListas();
 
     if (modelUsuario.getSelectedItem() != null) {
+    try{
+      listas = ctrLis.getDtListasParticularesUsuario(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
 
-      String s = modelUsuario.getSelectedItem().toString();
-
-      String[] listas = ctrLis.listarListasParticularUsuario(s);
-
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (DtLista lista: listas) {
+        listListas.addElement(lista.getNombre());
       }
+      ctrLis = null;
+    } 
+    catch(Exception e){}
+  
     }
-
-    ctrLis = null;
   }
 
-  public void cargarVideosListas(String usuario, String lista, boolean defecto) {
+  public void cargarVideosListas(int idUsuario, String lista, boolean defecto) {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-
-    String[] videos = ctrUsu.listarVideosDuenosLista(usuario, lista, defecto);
-    int largov = videos.length;
+    try{
+    videos = ctrUsu.listarDtVideosLista(idUsuario, lista, defecto);
     modelVideos.addElement("");
-    for (int i = 0; i < largov; i++) {
-      modelVideos.addElement(videos[i]);
+    for (DtVideo video : videos) {
+      modelVideos.addElement(video.getNombre() + " - " + video.getUsuario());
     }
     ctrUsu = null;
-
+    }
+    catch(Exception e){}
   }
 
   public void cargarDatos() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    usuarios = ctrUsu.listarDtUsuarios();
+
     modelUsuario.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuario.addElement(usuarios[i]);
+    for (DtUsuario usuario: usuarios) {
+      modelUsuario.addElement(usuario.getNick());
     }
     ctrUsu = null;
+  }
+  
+  public int obtenerUsuarioId(String nombre){
+
+    for(DtUsuario usuario : usuarios){
+      if(usuario.getNick().equals(nombre)){
+        return usuario.getIdUsuario();
+      }
+    }
+    return 0;
+  }
+  
+  public int obtenerVideoId(String nombre){
+
+    for(DtVideo video : videos){
+      if(video.getNombre().equals(nombre)){
+        return video.getId();
+      }
+    }
+    return 0;
+  }
+  
+  public int obtenerListaId(String nombre){
+    for(DtLista lista : listas){
+      if(lista.getNombre().equals(nombre)){
+        return lista.getId();
+      }
+    }
+    return 0;
   }
 }

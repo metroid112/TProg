@@ -19,16 +19,16 @@ public class DtVideo {
   public List<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
   public Map<Integer, DtComentario> comentarios =
       new LinkedHashMap<Integer, DtComentario>();
-  public Duration duracion;
-  public Date fecha;
-  public String usuario;
-  public String nombre;
-  public String urlVideo;
-  public String urlThumbnail;
-  public String descripcion;
-  public String categoria;
-  public boolean visible;
-  public int idVideo;
+  private Duration duracion;
+  private Date fecha;
+  private String usuario;
+  private String nombre;
+  private String urlVideo;
+  private String urlThumbnail;
+  private String descripcion;
+  private String categoria;
+  private boolean visible;
+  private int idVideo;
 
   public DtVideo(String nombre, String descripcion, String url, Categoria categoria, Date fecha,
 
@@ -50,7 +50,7 @@ public class DtVideo {
 
     for (Comentario com : comentarios.values()) {
       DtComentario dtCom = com.getDt(); // Creo Dt
-      this.comentarios.put(dtCom.idComentario, dtCom); // Lo agrego a la coleccion
+      this.comentarios.put(dtCom.getId(), dtCom); // Lo agrego a la coleccion
     }
     this.visible = visible;
     for (Calificacion cal : calificaciones) {
@@ -67,7 +67,7 @@ public class DtVideo {
   public int getCantidadCalificacionesPositivas() {
     int sum = 0;
     for (DtCalificacion calif : calificaciones) {
-      if (calif.like) {
+      if (calif.isLike()) {
         sum++;
       }
     }
@@ -77,7 +77,7 @@ public class DtVideo {
   public int getCantidadCalificacionesNegativas() {
     int sum = 0;
     for (DtCalificacion calif : calificaciones) {
-      if (!calif.like) {
+      if (!calif.isLike()) {
         sum++;
       }
     }
@@ -89,8 +89,8 @@ public class DtVideo {
     String usuarioObjetivo;
 
     for (DtCalificacion calif : calificaciones) {
-      if (calif.like) {
-        usuarioObjetivo = calif.usuario;
+      if (calif.isLike()) {
+        usuarioObjetivo = calif.getUsuario();
         positivos.add(usuarioObjetivo);
       }
     }
@@ -102,8 +102,8 @@ public class DtVideo {
     String usuarioObjetivo;
 
     for (DtCalificacion calif : calificaciones) {
-      if (!calif.like) {
-        usuarioObjetivo = calif.usuario;
+      if (!calif.isLike()) {
+        usuarioObjetivo = calif.getUsuario();
         negativos.add(usuarioObjetivo);
       }
     }
@@ -139,6 +139,9 @@ public class DtVideo {
     }
     return resultado;
   }
+  public int getId(){
+    return idVideo;
+  }
 
   public List<DtCalificacion> getCalificaciones() {
     return calificaciones;
@@ -170,5 +173,29 @@ public class DtVideo {
 
   public void setFecha(Date fecha) {
     this.fecha = fecha;
+  }
+  
+  public String getUsuario(){
+    return usuario;
+  }
+  
+  public String getDescripcion(){
+    return descripcion;
+  }
+  
+  public String getCategoria(){
+    return categoria;
+  }
+  
+  public boolean isVisible(){
+    return visible;
+  }
+  
+  public String getUrl(){
+    return urlVideo;
+  }
+  
+  public Duration getDuracion(){
+    return duracion;
   }
 }

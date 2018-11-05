@@ -6,57 +6,55 @@ import java.util.List;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 
 public interface IUsuariosCanales {
 
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
-      String categoria, boolean visible, String pass);
+      String categoria, boolean visible, String pass) throws NotFoundException, DuplicateClassException;
 
-  public boolean existeUsuario(String nick);
+  public boolean existeUsuario(int nick);
 
-  public DtUsuario getDt(String nick);
+  public boolean existeUsuarioMail(String mail) throws NotFoundException;
+  
+  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws NotFoundException, DuplicateClassException ;
+  
+  public DtUsuario getDt(int nick) throws NotFoundException;
 
-  public boolean isCanalPublico(String usuario);
+  public List<DtUsuario> listarDtUsuarios();
+  
+  public boolean checkLogin(int idUsuario, String pass) throws NotFoundException;
+  
+  public boolean isCanalPublico(int idUsuario) throws NotFoundException;
 
-  public List<String> listarNombresUsuarios();
+  public List<DtVideo> listarDtVideosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException;
 
-  public void seguir(String seguidor, String seguido);
-
-  void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
-      String nombreDuenoVideo);
-
-  public boolean yaCalificacdo(String nombreUsuario, boolean like, String nombreVideo,
-      String nombreDuenoVideo);
-
-  void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
-      String nombreDuenoVideo);
-
-  void comentarVideo(String texto, Date fecha, String nombreUsuario, String nombreVideo,
-      String nombreDuenoVideo);
-
-  void responderComentario(String texto, Date fecha, String nombreUsuario, String nombreVideo,
-      String nombreDuenoVideo, Integer idComentarioPadre);
-
-  public String[] listarVideosDuenosLista(String usuario, String lista, boolean defecto);
-
-  public List<DtVideo> listarDtVideosDuenosLista(String usuario, String lista, boolean defecto);
-
-  public List<DtVideo> getListaDtVideo(String usuario);
+  public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException;
 
   public List<DtVideo> getListaPublicoDtVideo();
 
-  public boolean checkLogin(String usr, String pass);
+  void comentarVideo(String texto, Date fecha, int nombreUsuario, int idVideo,
+      int idOwnerVideo) throws NotFoundException;
 
-  public boolean existeUsuarioMail(String mail);
+  void responderComentario(String texto, Date fecha, int nombreUsuario, int nombreVideo,
+      String nombreDuenoVideo, Integer idComentarioPadre) throws NotFoundException;
+  
+  void valorarVideo(int idUsuario, boolean like, int nombreVideo) throws NotFoundException;
 
-  public List<String> getSeguidores(String nombreUsuario);
+  public boolean yaCalificacdo(int nombreUsuario, boolean like, int nombreVideo,
+      int nombreDuenoVideo) throws NotFoundException;
 
-  public List<String> getSeguidos(String nombreUsuario);
+  void modificarValoracion(boolean like, int idUsuario, int idVideo) throws NotFoundException;
+  
+  public void seguir(int idUsuarioSeguidor, int idUsuarioSeguido) throws NotFoundException;
+  
+  public List<String> getSeguidores(int idUsuario) throws NotFoundException;
 
-  public boolean isSeguidor(String seguidor, String seguido);
+  public List<String> getSeguidos(int idUsuario) throws NotFoundException;
 
-  public void dejarSeguir(String seguidor, String seguido);
+  public boolean isSeguidor(int seguidor, int seguido) throws NotFoundException;
 
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws DuplicateClassException;
+  public void dejarSeguir(int idSeguidor, int idSeguido) throws NotFoundException;
+
 }

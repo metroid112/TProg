@@ -25,20 +25,24 @@ public class ManejadorListasParticulares {
   private Map<Integer, ListaParticular> listasParticulares =
       new HashMap<Integer, ListaParticular>();
 
-  public void add(ListaParticular listaParticular) throws DuplicateClassException {
-    if (!listasParticulares.containsKey(listaParticular.getId())) {
-      this.listasParticulares.put(listaParticular.getId(), listaParticular);
+  public void addListaParticular(ListaParticular listaParticular) throws DuplicateClassException {
+    if (listasParticulares.containsKey(listaParticular.getId())) {
+      throw new DuplicateClassException("Lista Particular", listaParticular.getNombre());
     } else {
-      throw new DuplicateClassException("ListaParticular", listaParticular.getNombre());
+      this.listasParticulares.put(listaParticular.getId(), listaParticular);
     }
   }
 
-  public ListaParticular getById(int idLista) throws NotFoundException {
+  public ListaParticular getListaParticular(int idLista) throws NotFoundException {
     if (this.listasParticulares.get(idLista) != null) {
       return this.listasParticulares.get(idLista);
     } else {
-      throw new NotFoundException("la id: " + idLista);
+      throw new NotFoundException("Lista Particular id: " + idLista);
     }
+  }
+  
+  public boolean existeListaParticular(int idLista) {
+    return this.listasParticulares.containsKey(idLista);
   }
 
   public Map<Integer, ListaParticular> getListasParticulares() {

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
@@ -24,15 +25,20 @@ import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import datatypes.DtLista;
 import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class DetallesUsuario extends JPanel {
+  
   private IUsuariosCanales ctrlUsu = Fabrica.getIUsuariosCanales();
   private IListas ctrlLis = null;
+  private List<DtLista> listas;
+  private List<DtVideo> videosUsuario;
   private String noImagen = "img//sinImagen.jpg";
   private DefaultListModel<String> modelListas = new DefaultListModel<>();
   private JList<String> listasDeReproduccion = new JList<>(modelListas);
@@ -49,23 +55,21 @@ public class DetallesUsuario extends JPanel {
     this.editar = b;
   }
 
-  /**
-   * Create the panel.
-   */
-  public DetallesUsuario(String usuario) {
-    DtUsuario dtUsuario = ctrlUsu.getDt(usuario);
+  public DetallesUsuario(int idUsuario) {
+    try{
+    DtUsuario dtUsuario = ctrlUsu.getDt(idUsuario);
 
-    String nombre = dtUsuario.nombre;
-    String apellido = dtUsuario.apellido;
-    String correo = dtUsuario.correo;
-    String canal = dtUsuario.canal;
-    String descripcionCanal = dtUsuario.descripcionCanal;
-    BufferedImage imagenF = dtUsuario.imagen;
-    Date fechaNacimiento = dtUsuario.fechaNacimiento;
+    String nombre = dtUsuario.getNombre();
+    String apellido = dtUsuario.getApellido();
+    String correo = dtUsuario.getCorreo();
+    String canal = dtUsuario.getCanal().getNombreCanal();
+    String descripcionCanal = dtUsuario.getCanal().getDescripcionCanal();
+    BufferedImage imagenF = dtUsuario.getImagen();
+    Date fechaNacimiento = dtUsuario.getFechaNacimiento();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String fechaParaMostrar = sdf.format(fechaNacimiento);
 
-    boolean privado = dtUsuario.privado;
+    boolean privado = dtUsuario.getCanal().isVisible();
 
     JPanel imagen = new JPanel();
     imagen.setBackground(SystemColor.menu);
@@ -100,7 +104,7 @@ public class DetallesUsuario extends JPanel {
 
     JLabel lblListasDeReproduccion = new JLabel("Listas");
 
-    String nickname = "Datos del usuario " + usuario;
+    String nickname = "Datos del usuario " + dtUsuario.getNick();
 
     JLabel lblDatosDelUsuario = new JLabel(nickname);
     lblDatosDelUsuario.setHorizontalAlignment(SwingConstants.CENTER);
@@ -297,18 +301,20 @@ public class DetallesUsuario extends JPanel {
     scrollPane.setViewportView(videos);
     setLayout(groupLayout);
 
-    cargarDatosListas(usuario);
-    cargarDatosVideos(usuario);
-    cargarDatosSeguidores(usuario);
-    cargarDatosSeguidos(usuario);
+    cargarDatosListas(dtUsuario.getIdUsuario());
+    cargarDatosVideos(dtUsuario.getIdUsuario());
+    cargarDatosSeguidores(dtUsuario.getIdUsuario());
+    cargarDatosSeguidos(dtUsuario.getIdUsuario());
     setVisible(true);
+    }
+    catch(Exception e){}
   }
 
-  public void cargarDatosSeguidores(String usuario) {
+  public void cargarDatosSeguidores(int idUsuario) {
     modelSeguidores.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] Seguidores = ctrlUsu.listarSeguidores(usuario);
+    String[] Seguidores = ctrlUsu.listarSeguidores(idUsuario);
     int largo = Seguidores.length;
     for (int i = 0; i < largo; i++) {
       modelSeguidores.addElement(Seguidores[i]);
@@ -316,11 +322,11 @@ public class DetallesUsuario extends JPanel {
     ctrlUsu = null;
   }
 
-  public void cargarDatosSeguidos(String usuario) {
+  public void cargarDatosSeguidos(int idUsuario) {
     modelSeguidos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] seguidos = ctrlUsu.listarSeguidos(usuario);
+    String[] seguidos = ctrlUsu.listarSeguidos(idUsuario);
     int largo = seguidos.length;
     for (int i = 0; i < largo; i++) {
       modelSeguidos.addElement(seguidos[i]);
@@ -328,24 +334,23 @@ public class DetallesUsuario extends JPanel {
     ctrlUsu = null;
   }
 
-  public void cargarDatosListas(String usuario) {
+  public void cargarDatosListas(int idUsuario) {
 
     modelListas.removeAllElements();
-
+    listas.clear();
     ctrlLis = Fabrica.getIListas();
 
-    String[] listas = ctrlLis.listarListasParticularUsuario(usuario);
+    listas = ctrlLis.listarListasParticularUsuario(idUsuario);
 
     int largol = listas.length;
-    // fab = Fabrica.getFabrica();
-    // ctrlUsu = fab.getIUsuariosCanales();
+
     if (largol > 0) {
       for (int i = 0; i < largol; i++) {
         modelListas.addElement(listas[i]);
       }
     }
 
-    listas = ctrlLis.listarListasDefectoUsuario(usuario);
+    listas = ctrlLis.listarListasDefectoUsuario(idUsuario);
     largol = listas.length;
     if (largol > 0) {
       for (int i = 0; i < largol; i++) {
@@ -375,16 +380,18 @@ public class DetallesUsuario extends JPanel {
     return !videos.isSelectionEmpty();
   }
 
-  public void cargarDatosVideos(String usuario) {
+  public void cargarDatosVideos(int idUsuario) {
+    try{
     modelVideos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] videosS = ctrlUsu.listarVideos(usuario);
-    int largo = videosS.length;
-    for (int i = 0; i < largo; i++) {
-      modelVideos.addElement(videosS[i]);
+    videosUsuario = ctrlUsu.listarVideosCanal(idUsuario);
+    for (DtVideo video : videosUsuario) {
+      modelVideos.addElement(video.getNombre());
     }
     ctrlUsu = null;
+    }
+    catch(Exception e){}
   }
 
 }
