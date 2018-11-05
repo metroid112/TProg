@@ -126,6 +126,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DtCategoria }
+     * 
+     */
+    public DtCategoria createDtCategoria() {
+        return new DtCategoria();
+    }
+
+    /**
      * Create an instance of {@link DtComentario.Hijos.Entry }
      * 
      */

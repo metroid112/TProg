@@ -1,48 +1,61 @@
 package datatypes;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-public class DtCategoria {
-  
-  private String nombreCategoria;
-  private DtCanal canal;
-  private Map<Integer, DtVideo> videos = new HashMap<Integer, DtVideo>();
-  private Map<Integer, DtLista> listasParticulares = new HashMap<Integer, DtLista>();
-  
-  public DtCategoria(String nombreCategoria) {
-    this.nombreCategoria = nombreCategoria;
-  }
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
-  public String getNombreCategoria() {
-    return this.nombreCategoria;
-  }
+import clases.ListaParticular;
+import clases.Video;
 
-  public DtCanal getCanal() {
-    return this.canal;
-  }
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtCategoria extends DtUniversal {
 
-  public Map<Integer, DtVideo> getVideos() {
-    return this.videos;
-  }
+  private int idCategoria;
+  private String nombre;
+  private List<DtVideo> videos;
+  private List<DtLista> listas;
 
-  public Map<Integer, DtLista> getListasParticulares() {
-    return this.listasParticulares;
-  }
+  public DtCategoria() {}
 
-  public void setNombreCategoria(String nombreCategoria) {
-    this.nombreCategoria = nombreCategoria;
-  }
-
-  public void setCanal(DtCanal canal) {
-    this.canal = canal;
-  }
-
-  public void setVideos(Map<Integer, DtVideo> videos) {
+  public DtCategoria(int idCategoria, String nombre, List<DtVideo> videos, List<DtLista> listas) {
+    this.idCategoria = idCategoria;
+    this.nombre = nombre;
     this.videos = videos;
+    this.listas = listas;
   }
 
-  public void setListasParticulares(Map<Integer, DtLista> listasParticulares) {
-    this.listasParticulares = listasParticulares;
+  public int getId() {
+    return this.idCategoria;
+  }
+
+  public void setId(int idCategoria) {
+    this.idCategoria = idCategoria;
+  }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public List<DtLista> getListas() {
+    return listas;
+  }
+
+  public void setListas(List<DtLista> listas) {
+    this.listas = listas;
+  }
+
+  public List<DtVideo> getVideos() {
+    return videos;
+  }
+
+  public void setVideos(List<DtVideo> videos) {
+    this.videos = videos;
   }
 }

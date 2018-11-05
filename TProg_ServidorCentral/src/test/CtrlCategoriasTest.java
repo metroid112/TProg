@@ -3,8 +3,11 @@ package test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.junit.Test;
 
+import datatypes.DtCategoria;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IListas;
@@ -67,7 +70,8 @@ public class CtrlCategoriasTest {
   @Test
   public void listarCategoriasTest() {
     int esperado = 13;
-    String[] infoLista = iCategorias.listarCategorias();
-    assertEquals(esperado, infoLista.length);
+    DtCategoria infoLista = iCategorias.listarCategorias();
+    List<String> lista = infoLista.getCategorias();
+    assertEquals(esperado, lista.size());
   }
 }

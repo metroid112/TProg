@@ -1,5 +1,6 @@
 package manejadores;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class ManejadorCategorias {
 
   private static ManejadorCategorias manejador = null;
   private Map<String, Categoria> categorias = new HashMap<String, Categoria>();
-  
+
   private ManejadorCategorias() {
 
   }
@@ -24,7 +25,7 @@ public class ManejadorCategorias {
       manejador = new ManejadorCategorias();
     }
     return manejador;
-  }  
+  }
 
   public void addCategoria(Categoria categoria) throws DuplicateClassException {
     if (!categorias.containsKey(categoria.getNombre())) {
@@ -45,12 +46,8 @@ public class ManejadorCategorias {
   public boolean existeCategoria(String nombreCategoria) {
     return categorias.containsKey(nombreCategoria);
   }
-  
-  public List<DtCategoria> listarCategorias(){
-    List<DtCategoria> resultado = new LinkedList<DtCategoria>();
-    for(Categoria categoria: categorias.values()){
-      resultado.add(categoria.getDt());
-    }
-    return resultado;
+
+  public Map<String, Categoria> getCategorias() {
+    return this.categorias;
   }
 }

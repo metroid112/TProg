@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtUniversal")
 @XmlSeeAlso({
-    DtBusqueda.class
+    DtBusqueda.class,
+    DtCategoria.class
 })
 public abstract class DtUniversal {
 
