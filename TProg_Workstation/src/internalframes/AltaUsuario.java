@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -25,12 +26,15 @@ import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import datatypes.DtCategoria;
 import interfaces.Fabrica;
+import interfaces.ICategorias;
 import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class AltaUsuario extends JInternalFrame {
 
+  private List<DtCategoria> categorias;
   private BufferedImage imagenFile = null;
   private JTextField textField;
   private JTextField textField_1;
@@ -46,6 +50,7 @@ public class AltaUsuario extends JInternalFrame {
   private JRadioButton rdbtnNo;
   private JComboBox<String> comboBoxCategoria;
 
+  private ICategorias ctrCategorias;
   private IUsuariosCanales ctrlUsu;
   private JTextField dia;
   private JTextField mes;
@@ -422,6 +427,7 @@ public class AltaUsuario extends JInternalFrame {
   }
 
   protected void clean() {
+    categorias.clear();
     textField.setText("");
     textField_1.setText("");
     textField_2.setText("");
@@ -435,8 +441,14 @@ public class AltaUsuario extends JInternalFrame {
   }
 
   public void cargarDatos() {
-    DefaultComboBoxModel<String> modelCombo = new DefaultComboBoxModel<String>(
-        Fabrica.getICategorias().listarCategorias());
+    
+    categorias = ctrCategorias.listarCategorias();
+    String[] arrayCategorias = new String[categorias.size()];
+    int i = 0;
+    for(DtCategoria categoria : categorias){
+      arrayCategorias[i] = categoria.getNombreCategoria();
+    }
+    DefaultComboBoxModel<String> modelCombo = new DefaultComboBoxModel<String>();
 
     modelCombo.addElement("Sin categoria");
     modelCombo.setSelectedItem("Sin categoria");
