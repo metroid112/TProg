@@ -15,7 +15,6 @@ import clases.Video;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtCategorias extends DtUniversal {
 
-  // *** VA A SER UN MAP CON ID LUEGO ***
   public Map<String, DtCategoria> categorias = new HashMap<String, DtCategoria>();
 
   public DtCategorias(Map<String, DtCategoria> categorias) {

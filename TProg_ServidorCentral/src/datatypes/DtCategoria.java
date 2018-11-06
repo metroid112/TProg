@@ -12,7 +12,6 @@ import clases.Video;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtCategoria extends DtUniversal {
-  // *** VA A HABER UN ID ACA LUEGO ***
   private String nombre;
   private List<DtVideo> videos;
   private List<DtLista> listas;

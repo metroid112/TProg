@@ -51,7 +51,7 @@ public class CtrlCategorias implements ICategorias {
   }
 
   @Override
-  public DtCategoria listarCategorias() {
+  public LinkedList<String> listarCategorias() {
     return manejadorCategorias.toList();
   }
   
