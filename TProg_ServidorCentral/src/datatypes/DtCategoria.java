@@ -15,12 +15,12 @@ public class DtCategoria extends DtUniversal {
 
   private int idCategoria;
   private String nombre;
-  private List<DtVideo> videos;
-  private List<DtLista> listas;
+  private DtVideos videos;
+  private DtListasParticulares listas;
 
   public DtCategoria() {}
 
-  public DtCategoria(int idCategoria, String nombre, List<DtVideo> videos, List<DtLista> listas) {
+  public DtCategoria(int idCategoria, String nombre, DtVideos videos, DtListasParticulares listas) {
     this.idCategoria = idCategoria;
     this.nombre = nombre;
     this.videos = videos;
@@ -43,19 +43,20 @@ public class DtCategoria extends DtUniversal {
     this.nombre = nombre;
   }
 
-  public List<DtLista> getListas() {
-    return listas;
+  public DtVideos getVideos() {
+    return this.videos;
   }
 
-  public void setListas(List<DtLista> listas) {
-    this.listas = listas;
+  public DtListasParticulares getListas() {
+    return this.listas;
   }
 
-  public List<DtVideo> getVideos() {
-    return videos;
-  }
-
-  public void setVideos(List<DtVideo> videos) {
+  public void setVideos(DtVideos videos) {
     this.videos = videos;
   }
+
+  public void setListas(DtListasParticulares listas) {
+    this.listas = listas;
+  }
+  
 }

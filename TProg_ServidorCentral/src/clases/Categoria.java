@@ -1,16 +1,20 @@
 package clases;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import datatypes.DtCategoria;
+import datatypes.DtListasParticulares;
+import datatypes.DtVideos;
 
 public class Categoria {
 
   private int idCategoria;
   private String nombre;
-  private List<ListaParticular> listas = new LinkedList<ListaParticular>();
-  private List<Video> videos = new LinkedList<Video>();
+  private Map<Integer, Video> videos = new HashMap<Integer, Video>();
+  private Map<Integer, ListaParticular> listas = new HashMap<Integer, ListaParticular>();
   private static int idCounter = 0;
 
   public Categoria(String nombre) {
@@ -20,7 +24,7 @@ public class Categoria {
   }
 
   public DtCategoria getDt(){
-    return new DtCategoria(this.nombre);
+    return new DtCategoria(this.idCategoria, this.nombre, new DtVideos(this.videos), new DtListasParticulares(this.listas));
   }
 
   public int getId() {
@@ -31,24 +35,24 @@ public class Categoria {
     return nombre;
   }
 
-  public List<ListaParticular> getListas() {
+  public Map<Integer, ListaParticular> getListas() {
     return listas;
   }
 
-  public List<Video> getVideos() {
+  public Map<Integer, Video> getVideos() {
     return videos;
   }
 
   public void addVideo(Video video) {
-    videos.add(video);
+    videos.put(video.getId(), video);
   }
 
   public void addLista(ListaParticular listaParticular) {
-    listas.add(listaParticular);
+    listas.put(listaParticular.getId(), listaParticular);
   }
 
-  public void removeVideo(Video video) {
-    this.videos.remove(video);
+  public void removeVideo(int idVideo) {
+    this.videos.remove(idVideo);
   }
 
   @Override
