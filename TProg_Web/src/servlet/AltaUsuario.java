@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -22,6 +23,8 @@ import javax.servlet.http.Part;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import interfaces.IUsuariosCanales;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/AltaUsuario")
 @MultipartConfig
@@ -121,7 +124,9 @@ public class AltaUsuario extends HttpServlet {
 
   private void volver(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String[] listaCategorias = ctrlCategorias.listarCategorias();
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
+    List<String> listaCategorias = port.listarCategorias().getListaAux();
     request.setAttribute("CATEGORIAS", listaCategorias);
     request.getRequestDispatcher("WEB-INF/pages/alta_usuario.jsp").forward(request, response);
   }
