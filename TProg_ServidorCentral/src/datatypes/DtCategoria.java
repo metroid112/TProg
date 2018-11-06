@@ -1,48 +1,62 @@
 package datatypes;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-public class DtCategoria {
-  
-  private String nombreCategoria;
-  private DtCanal canal;
-  private Map<Integer, DtVideo> videos = new HashMap<Integer, DtVideo>();
-  private Map<Integer, DtLista> listasParticulares = new HashMap<Integer, DtLista>();
-  
-  public DtCategoria(String nombreCategoria) {
-    this.nombreCategoria = nombreCategoria;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
+import clases.ListaParticular;
+import clases.Video;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DtCategoria extends DtUniversal {
+
+  private int idCategoria;
+  private String nombre;
+  private DtVideos videos;
+  private DtListasParticulares listas;
+
+  public DtCategoria() {}
+
+  public DtCategoria(int idCategoria, String nombre, DtVideos videos, DtListasParticulares listas) {
+    this.idCategoria = idCategoria;
+    this.nombre = nombre;
+    this.videos = videos;
+    this.listas = listas;
   }
 
-  public String getNombreCategoria() {
-    return this.nombreCategoria;
+  public int getId() {
+    return this.idCategoria;
   }
 
-  public DtCanal getCanal() {
-    return this.canal;
+  public void setId(int idCategoria) {
+    this.idCategoria = idCategoria;
   }
 
-  public Map<Integer, DtVideo> getVideos() {
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public DtVideos getVideos() {
     return this.videos;
   }
 
-  public Map<Integer, DtLista> getListasParticulares() {
-    return this.listasParticulares;
+  public DtListasParticulares getListas() {
+    return this.listas;
   }
 
-  public void setNombreCategoria(String nombreCategoria) {
-    this.nombreCategoria = nombreCategoria;
-  }
-
-  public void setCanal(DtCanal canal) {
-    this.canal = canal;
-  }
-
-  public void setVideos(Map<Integer, DtVideo> videos) {
+  public void setVideos(DtVideos videos) {
     this.videos = videos;
   }
 
-  public void setListasParticulares(Map<Integer, DtLista> listasParticulares) {
-    this.listasParticulares = listasParticulares;
+  public void setListas(DtListasParticulares listas) {
+    this.listas = listas;
   }
+  
 }
