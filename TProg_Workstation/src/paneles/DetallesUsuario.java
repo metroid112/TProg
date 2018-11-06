@@ -311,27 +311,33 @@ public class DetallesUsuario extends JPanel {
   }
 
   public void cargarDatosSeguidores(int idUsuario) {
-    modelSeguidores.removeAllElements();
-    ctrlUsu = Fabrica.getIUsuariosCanales();
-
-    String[] Seguidores = ctrlUsu.listarSeguidores(idUsuario);
-    int largo = Seguidores.length;
-    for (int i = 0; i < largo; i++) {
-      modelSeguidores.addElement(Seguidores[i]);
+    try{
+      modelSeguidores.removeAllElements();
+      ctrlUsu = Fabrica.getIUsuariosCanales();
+  
+      List<String> seguidores = ctrlUsu.getSeguidores(idUsuario);
+      
+      for (String usuario : seguidores) {
+        modelSeguidores.addElement(usuario);
+      }
+      ctrlUsu = null;
     }
-    ctrlUsu = null;
+    catch(Exception e){}
   }
 
   public void cargarDatosSeguidos(int idUsuario) {
-    modelSeguidos.removeAllElements();
-    ctrlUsu = Fabrica.getIUsuariosCanales();
-
-    String[] seguidos = ctrlUsu.listarSeguidos(idUsuario);
-    int largo = seguidos.length;
-    for (int i = 0; i < largo; i++) {
-      modelSeguidos.addElement(seguidos[i]);
+    try{
+      modelSeguidos.removeAllElements();
+      ctrlUsu = Fabrica.getIUsuariosCanales();
+  
+      List<String> seguidos = ctrlUsu.getSeguidos(idUsuario);
+      
+      for (String usuario : seguidos) {
+        modelSeguidos.addElement(usuario);
+      }
+      ctrlUsu = null;
     }
-    ctrlUsu = null;
+    catch(Exception e){}
   }
 
   public void cargarDatosListas(int idUsuario) {
