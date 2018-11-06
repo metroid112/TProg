@@ -51,9 +51,9 @@ public class ManejadorCategorias {
     return categorias.keySet().toArray(new String[categorias.size()]);
   }
   
-  public DtCategoria toList() {
-    List<String> lista = new LinkedList<String>(categorias.keySet());
-    return new DtCategoria(lista);
+  public LinkedList<String> toList() {
+    LinkedList<String> lista = new LinkedList<String>(categorias.keySet());
+    return lista;
   }
 
   public boolean existeCategoria(String nombre) {
