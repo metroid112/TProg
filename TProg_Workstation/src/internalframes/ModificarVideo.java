@@ -310,7 +310,7 @@ public class ModificarVideo extends JInternalFrame {
         String[] arrayCategorias = new String[categorias.size()];
         int j = 0;
         for(DtCategoria categoria : categorias){
-          arrayCategorias[j] = categoria.getNombreCategoria();
+          arrayCategorias[j] = categoria.getNombre();
         }
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(arrayCategorias);
         if (!infoVid.getCategoria().equals("Sin Categoria")) {

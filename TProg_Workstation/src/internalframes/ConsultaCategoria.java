@@ -116,7 +116,7 @@ public class ConsultaCategoria extends JInternalFrame {
     categorias = ctrlCat.listarCategorias();
 
     for (DtCategoria categoria : categorias) {
-      model.addElement(categoria.getNombreCategoria());
+      model.addElement(categoria.getNombre());
     }
     ctrlCat = null;
   }
