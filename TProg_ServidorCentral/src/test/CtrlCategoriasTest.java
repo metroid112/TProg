@@ -70,7 +70,8 @@ public class CtrlCategoriasTest {
   @Test
   public void listarCategoriasTest() {
     int esperado = 13;
-    List<String> lista = iCategorias.listarCategorias();
+    DtCategoria infoLista = iCategorias.listarCategorias();
+    List<String> lista = infoLista.getCategorias();
     assertEquals(esperado, lista.size());
   }
 }

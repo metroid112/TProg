@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +26,8 @@ public class ConsultaDeCategoria extends HttpServlet {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();    
     if (request.getParameter("CATEGORIA") == null) {    
-      List<String> listaCat = port.listarCategorias().getListaAux();
-      request.setAttribute("CATEGORIAS", listaCat);
+      servicios.DtCategoria dtCat = (servicios.DtCategoria) port.listarCategorias().getContenido();
+      request.setAttribute("CATEGORIAS", dtCat);
       request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request,
           response);
     } else {

@@ -1,5 +1,7 @@
 package datatypes;
 
+package datatypes;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +15,6 @@ import clases.Video;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtCategoria extends DtUniversal {
 <<<<<<< HEAD
-<<<<<<< HEAD
 
   private int idCategoria;
   private String nombre;
@@ -26,8 +27,6 @@ public class DtCategoria extends DtUniversal {
     this.idCategoria = idCategoria;
 =======
   // *** VA A HABER UN ID ACA LUEGO ***
-=======
->>>>>>> master
   private String nombre;
   private List<DtVideo> videos;
   private List<DtLista> listas;
