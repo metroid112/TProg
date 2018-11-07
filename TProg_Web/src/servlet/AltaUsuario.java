@@ -9,7 +9,9 @@ import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,10 +21,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
-import interfaces.Fabrica;
-import interfaces.ICategorias;
-import interfaces.IUsuariosCanales;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -30,9 +32,6 @@ import servicios.PublicadorService;
 @MultipartConfig
 public class AltaUsuario extends HttpServlet {
   private static final long serialVersionUID = 1L;
-
-  private ICategorias ctrlCategorias = Fabrica.getICategorias();
-  private IUsuariosCanales ctrlUsuarios = Fabrica.getIUsuariosCanales();
   
   public AltaUsuario() {
     super();
@@ -71,11 +70,11 @@ public class AltaUsuario extends HttpServlet {
           request.setAttribute("ERROR_PASS", true);
           error = true;
         }
-        if (ctrlUsuarios.existeUsuario(nickname)) {
+        if (false) {    // TODO ajax nick
           request.setAttribute("ERROR_NICK", true);
           error = true;
         }
-        if (ctrlUsuarios.existeUsuarioMail(correo)) {
+        if (false) {    // TODO ajax correo
           request.setAttribute("ERROR_MAIL", true);
           error = true;
         }
@@ -110,9 +109,19 @@ public class AltaUsuario extends HttpServlet {
           } else {
             visible = true;
           }
-          Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo,
-              fechaNacimiento,
-              imagenPath,
+          GregorianCalendar fechaNacimientoCal = new GregorianCalendar();
+          fechaNacimientoCal.setTime(fechaNacimiento);
+          XMLGregorianCalendar fechaNacimientoXML = null;
+          try {
+            fechaNacimientoXML = DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaNacimientoCal);
+          } catch (DatatypeConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+          PublicadorService service = new PublicadorService();
+          Publicador port = service.getPublicadorPort();
+          port.altaUsuario(nickname, nombre, apellido, correo,
+              fechaNacimientoXML, imagenPath,
               nombreCanal, descripcionCanal, categoria, visible, passConfirm);
           response.sendRedirect("Inicio");
         }
