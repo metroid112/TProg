@@ -15,7 +15,7 @@ import clases.Categoria;
 import clases.Comentario;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DtVideo {
+public class DtVideo extends DtUniversal{
   public List<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
   public Map<Integer, DtComentario> comentarios =
       new LinkedHashMap<Integer, DtComentario>();

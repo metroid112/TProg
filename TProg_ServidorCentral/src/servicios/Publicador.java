@@ -14,6 +14,7 @@ import javax.xml.ws.Endpoint;
 import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 
 @WebService
@@ -80,13 +81,37 @@ public class Publicador {
   
   @WebMethod
   public DtPaquete listarCategorias() {
-    return empaquetar(Fabrica.getICategorias().listarCategorias());
+    return empaquetar2(Fabrica.getICategorias().listarCategorias());
   }
   
   @WebMethod
   public DtPaquete consultaDeCategoria(String categoria) {
     return empaquetar(Fabrica.getICategorias().consultaDeCategoria(categoria));
   }
+  
+  @WebMethod
+  public DtPaquete listarTodosLosVideos(String nick) throws Exception {
+    List<?extends DtUniversal> lista = Fabrica.getIVideos().listarTodosLosVideos(nick);
+    return empaquetar2(lista);
+  }
+  
+  @WebMethod
+  public DtPaquete listarListasDefectoUsuario(String nick) {
+    List<String> listaDefecto = Fabrica.getIListas().listarListasDefectoUsuario(nick);
+    return empaquetar(listaDefecto);
+  }
+  
+  @WebMethod
+  public DtPaquete listarListasParticularUsuario(String nick) {
+    List<String> listaParticular = Fabrica.getIListas().listarListasParticularUsuario(nick);
+    return empaquetar(listaParticular);
+  }
+  
+  @WebMethod
+  public DtPaquete listarListasParticularUsuario(String nick) {
+    List<String> listaParticular = Fabrica.getIListas().listarListasParticularUsuario(nick);
+    return empaquetar(listaParticular);
+  }zc
   
   /**
    * Empaqueta un data type generico
@@ -106,9 +131,16 @@ public class Publicador {
    * LinkedList de string a empaquetar
    */
   @WebMethod(exclude = true)
-  public DtPaquete empaquetar(LinkedList<String> lista) {
+  public DtPaquete empaquetar(List<String> lista) {
     DtPaquete pack = new DtPaquete();
     pack.setListaAux(lista);
+    return pack;
+  }
+  
+  @WebMethod(exclude = true)
+  public DtPaquete empaquetar2(List<? extends DtUniversal> lista) {
+    DtPaquete pack = new DtPaquete();
+    pack.setListaDt(lista);
     return pack;
   }
     

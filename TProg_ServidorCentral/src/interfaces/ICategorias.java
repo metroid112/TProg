@@ -1,6 +1,7 @@
 package interfaces;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import datatypes.DtCategoria;
 
@@ -12,7 +13,7 @@ public interface ICategorias {
 
   public String[] getInfoVideos(String categoria);
 
-  public LinkedList<String> listarCategorias();
+  public List<DtCategoria> listarCategorias();
 
   public String[] getInfoVideosPublicos(String categoria);
 

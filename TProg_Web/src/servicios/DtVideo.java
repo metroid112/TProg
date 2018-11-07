@@ -19,7 +19,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <pre>
  * &lt;complexType name="dtVideo"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="calificaciones" type="{http://servicios/}dtCalificacion" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="comentarios"&gt;
@@ -55,7 +55,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="idVideo" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
+ *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
@@ -77,7 +77,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "visible",
     "idVideo"
 })
-public class DtVideo {
+public class DtVideo
+    extends DtUniversal
+{
 
     @XmlElement(nillable = true)
     protected List<DtCalificacion> calificaciones;

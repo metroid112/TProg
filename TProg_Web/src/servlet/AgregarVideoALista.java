@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,14 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtUsuario;
-import datatypes.DtVideo;
-import excepciones.DuplicateClassException;
-import excepciones.InvalidDataException;
-import excepciones.NotFoundException;
+import java.lang.Exception;
+
 import interfaces.Fabrica;
 import interfaces.IListas;
-import interfaces.IVideos;
+import servicios.DtUniversal;
+import servicios.DtUsuario;
+import servicios.DtVideo;
+import servicios.Publicador;
+import servicios.PublicadorService;
 import utils.EstadoSesion;
 
 @WebServlet("/AgregarVideoALista")
@@ -28,6 +30,8 @@ public class AgregarVideoALista extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();   
     if (request.getParameter("agregarVideo") != null) {
       IListas ctrlListas = Fabrica.getIListas();
       String idVideo = (String) request.getParameter("video");
@@ -42,9 +46,9 @@ public class AgregarVideoALista extends HttpServlet {
       } catch (Exception e) {
         e.printStackTrace();
       }
-      String nombreVideo = video.nombre;
-      String nombreOwnerVideo = video.usuario;
-      String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
+      String nombreVideo = video.getNombre();
+      String nombreOwnerVideo = video.getUsuario();
+      String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
       try {
         ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
         request.setAttribute("EXITO",
@@ -53,16 +57,14 @@ public class AgregarVideoALista extends HttpServlet {
       } catch (Exception e) {
         request.setAttribute("ERROR", "El video " + "'" + nombreVideo + "'"
             + " ya estaba en la lista " + "'" + nombreLista + "'.");
-        IListas ctrlListas2 = Fabrica.getIListas();
-        IVideos ctrlVideos2 = Fabrica.getIVideos();
         String nickUsuario =
-            ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-        String[] listasParticulares = ctrlListas2.listarListasParticularUsuario(nickUsuario);
-        request.setAttribute("LISTAS_PARTICULARES", listasParticulares);
-        String[] listasPorDefecto = ctrlListas2.listarListasDefectoUsuario(nickUsuario);
-        request.setAttribute("LISTAS_POR_DEFECTO", listasPorDefecto);
-        DtVideo[] listaDeVideos = ctrlVideos2.listarTodosLosVideos(nickUsuario);
+            ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+        List<DtUniversal> listaDeVideos = port.listarTodosLosVideos(nickUsuario).getListaDt();
         request.setAttribute("LISTA_DE_VIDEOS", listaDeVideos);
+        List<String> listasPorDefecto = port.listarListasDefectoUsuario(nickUsuario).getListaAux();
+        request.setAttribute("LISTAS_POR_DEFECTO", listasPorDefecto);
+        List<String> listasParticulares = port.listarListasParticularUsuario(nickUsuario).getListaAux();
+        request.setAttribute("LISTAS_PARTICULARES", listasParticulares);
         request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp")
             .forward(request, response);
 
@@ -72,16 +74,14 @@ public class AgregarVideoALista extends HttpServlet {
           || request.getSession().getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)) {
         response.sendRedirect("/Inicio");
       } else {
-        IListas ctrlListas = Fabrica.getIListas();
-        IVideos ctrlVideos = Fabrica.getIVideos();
         String nickUsuario =
-            ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-        String[] listasParticulares = ctrlListas.listarListasParticularUsuario(nickUsuario);
-        request.setAttribute("LISTAS_PARTICULARES", listasParticulares);
-        String[] listasPorDefecto = ctrlListas.listarListasDefectoUsuario(nickUsuario);
-        request.setAttribute("LISTAS_POR_DEFECTO", listasPorDefecto);
-        DtVideo[] listaDeVideos = ctrlVideos.listarTodosLosVideos(nickUsuario);
+            ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+        List<DtUniversal> listaDeVideos = port.listarTodosLosVideos(nickUsuario).getListaDt();
         request.setAttribute("LISTA_DE_VIDEOS", listaDeVideos);
+        List<String> listasPorDefecto = port.listarListasDefectoUsuario(nickUsuario).getListaAux();
+        request.setAttribute("LISTAS_POR_DEFECTO", listasPorDefecto);
+        List<String> listasParticulares = port.listarListasParticularUsuario(nickUsuario).getListaAux();
+        request.setAttribute("LISTAS_PARTICULARES", listasParticulares);
         request.getRequestDispatcher("/WEB-INF/pages/agregar_video_a_lista_de_reproduccion.jsp")
             .forward(request, response);
       }
