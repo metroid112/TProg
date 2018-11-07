@@ -1,32 +1,24 @@
 package interfaces;
 
-<<<<<<< HEAD
 import java.util.List;
 
 import datatypes.DtCategoria;
-import datatypes.DtCategorias;
-import excepciones.NotFoundException;
-=======
-import java.util.LinkedList;
 
->>>>>>> master
+import excepciones.NotFoundException;
+
 import datatypes.DtCategoria;
 
 public interface ICategorias {
 
   public void altaCategoria(String nombreCategoria) throws Exception;
 
-  public String[] getInfoListas(String categoria) throws NotFoundException ;
+  //public String[] getInfoListas(String categoria) throws NotFoundException ;
 
-  public String[] getInfoVideos(String categoria) throws NotFoundException ;
+ // public String[] getInfoVideos(String categoria) throws NotFoundException ;
 
-<<<<<<< HEAD
   public List<DtCategoria> listarCategorias();
-=======
-  public LinkedList<String> listarCategorias();
->>>>>>> master
 
-  public String[] getInfoVideosPublicos(String categoria) throws NotFoundException ;
+ // public String[] getInfoVideosPublicos(String categoria) throws NotFoundException ;
 
   public DtCategoria consultaDeCategoria(String categoria);
 }

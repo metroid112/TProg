@@ -111,7 +111,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException {
+  public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException { //Hay una funcion en crtVideos que hace exactamente lo mismo
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();

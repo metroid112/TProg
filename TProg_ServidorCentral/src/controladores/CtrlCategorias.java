@@ -1,6 +1,7 @@
 package controladores;
 
 import java.util.List;
+import java.util.Map;
 
 import clases.Categoria;
 import datatypes.DtCategoria;
@@ -33,35 +34,34 @@ public class CtrlCategorias implements ICategorias {
   
   @Override
   public List<DtCategoria> listarCategorias(){
-    List<DtCategoria> resultado = new List<DtCategoria>();
+    List<DtCategoria> resultado = new LinkedList<DtCategoria>();
+    
     return resultado;
   }
 
   @Override
-<<<<<<< HEAD
-=======
-  public LinkedList<String> listarCategorias() {
-    return manejadorCategorias.toList();
-  }
-  
-  @Override
->>>>>>> master
+
   public DtCategoria consultaDeCategoria(String categoria) {
-    Categoria categ = manejadorCategorias.get(categoria);
-    List<Video> videos = categ.getVideos();
+    try{
+    Categoria categ = manejadorCategorias.getCategoria(categoria);
+    Map<Integer,Video> videos = categ.getVideos();
     List<DtVideo> dtVideos = new LinkedList<DtVideo>();
-    for (Video vid : videos) {
+    for (Video vid : videos.values()) {
       if (vid.isVisible()) {
         dtVideos.add(vid.getDt());
       }
     }
-    List<ListaParticular> listas = categ.getListas();
+    Map<Integer,ListaParticular> listas = categ.getListas();
     List<DtLista> dtListas = new LinkedList<DtLista>();
-    for (ListaParticular lista : listas) {
+    for (ListaParticular lista : listas.values()) {
       if (lista.isVisible()) {
         dtListas.add(lista.getDtLista());
       }    
     }
     return new DtCategoria(categoria, dtVideos, dtListas);
   }
+  catch(NotFoundException e){}
+    return null;
+  }
+  
 }

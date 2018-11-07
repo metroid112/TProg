@@ -21,7 +21,7 @@ public interface IVideos {
 
   public List<DtVideo> listarVideos(int idUsuario) throws NotFoundException;
 
-  public DtVideo[] listarTodosLosVideos(int idUsuario);
+  public DtVideo[] listarTodosLosVideos(int idUsuario) throws NotFoundException;
   
   public void modificarVideo(int idUsuario, int nombreOld, String nombre, String descripcion,
       String url, String categoria, Duration duracion, boolean visible, Date fecha)

@@ -43,10 +43,9 @@ public class ManejadorCategorias {
     }
   }
 
-<<<<<<< HEAD
-  public boolean existeCategoria(String nombreCategoria) {
-    return categorias.containsKey(nombreCategoria);
-=======
+//  public boolean existeCategoria(String nombreCategoria) {
+  //  return categorias.containsKey(nombreCategoria);
+
   public String[] toArray() {
     return categorias.keySet().toArray(new String[categorias.size()]);
   }
@@ -54,7 +53,7 @@ public class ManejadorCategorias {
   public LinkedList<String> toList() {
     LinkedList<String> lista = new LinkedList<String>(categorias.keySet());
     return lista;
->>>>>>> master
+
   }
 
   public Map<String, Categoria> getCategorias() {
