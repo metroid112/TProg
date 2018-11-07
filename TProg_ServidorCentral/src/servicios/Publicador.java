@@ -1,6 +1,8 @@
 package servicios;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -85,11 +87,28 @@ public class Publicador {
   public DtPaquete consultaDeCategoria(String categoria) {
     return empaquetar(Fabrica.getICategorias().consultaDeCategoria(categoria));
   }
-    
+  
+  /**
+   * Empaqueta un data type generico
+   * @param contenido
+   * Data type que extienda DtUniversal
+   */
   @WebMethod(exclude = true)
   public DtPaquete empaquetar(DtUniversal contenido) {
     DtPaquete pack = new DtPaquete();
     pack.setContenido(contenido);
+    return pack;
+  }
+  
+  /**
+   * Empaqueta una lista de string
+   * @param lista
+   * LinkedList de string a empaquetar
+   */
+  @WebMethod(exclude = true)
+  public DtPaquete empaquetar(LinkedList<String> lista) {
+    DtPaquete pack = new DtPaquete();
+    pack.setListaAux(lista);
     return pack;
   }
     
