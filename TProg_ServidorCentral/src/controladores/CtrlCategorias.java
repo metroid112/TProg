@@ -30,6 +30,12 @@ public class CtrlCategorias implements ICategorias {
     Categoria nuevaCategoria = new Categoria(nombreCategoria);
     manejadorCategorias.addCategoria(nuevaCategoria);
   }
+  
+  @Override
+  public List<DtCategoria> listarCategorias(){
+    List<DtCategoria> resultado = new List<DtCategoria>();
+    return resultado;
+  }
 
   @Override
   public DtCategoria consultaDeCategoria(String categoria) {
