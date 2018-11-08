@@ -68,8 +68,6 @@ public class ConsultaVideo extends HttpServlet {
           }
         }
       }
-      vid = ctrVideos.getDtVideo(idVideo);
-      request.setAttribute("DT_VIDEO", vid);
     } catch (NotFoundException e) {
       e.printStackTrace();
     }
