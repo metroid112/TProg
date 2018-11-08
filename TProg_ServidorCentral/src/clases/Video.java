@@ -100,9 +100,9 @@ public class Video {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.url = url;
-    if (this.categoria != null) {
+   /* if (this.categoria != null) {
       this.categoria.remove(this);
-    }
+    }*/
     this.categoria = categoria;
     this.categoria.addVideo(this);
     this.duracion = duracion;

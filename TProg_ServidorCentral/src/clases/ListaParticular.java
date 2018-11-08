@@ -64,7 +64,7 @@ public class ListaParticular extends Lista {
     for (Categoria cat : this.getCategorias().values()) {
       categorias.add(cat.getNombre());
     }
-    return new DtLista(this.getNombre(), "Particular", this.visible, videos, this.getDtVideos(),
+    return new DtLista(this.getNombre(), "Particular", this.visible, videos, this.getListVideos(),
         categorias, this.getUltimaActividad(), this.getId());
   }
 

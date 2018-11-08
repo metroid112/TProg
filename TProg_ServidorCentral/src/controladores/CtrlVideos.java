@@ -56,25 +56,40 @@ public class CtrlVideos implements IVideos {
   
   @Override
   public List<DtVideo> listarVideos(int idUsuario) throws NotFoundException{
-    Usuario usuario = manejadorUsuario.getUsuario(idUsuario);
-    if (usuario != null) {
-      return usuario.getCanal().listaDtVideo();
-    } else {
-      return null;
+    
+    List<DtVideo> listaVideos = new ArrayList<DtVideo>();
+    Usuario user = manejadorUsuario.getUsuario(idUsuario);
+    Map<Integer, Video> lista = user.getCanal().getVideosPrivados();
+    
+    for(Video video : lista.values()){
+    listaVideos.add(video.getDt());
     }
+    lista = user.getCanal().getVideosPublicos();
+    
+    for(Video video : lista.values()){
+    listaVideos.add(video.getDt());
+    }
+    return listaVideos;
+    
   }
 
   @Override
-  public DtVideo[] listarTodosLosVideos(int idUsuario) { //se necesita?
-    List<DtVideo> listaVideos = new ArrayList<DtVideo>();
-    for (Usuario usuario : manejadorUsuario.getUsuarios().values()) {
-      List<DtVideo> lista = usuario.getCanal().listaPublicoDtVideo();
-      listaVideos.addAll(lista);
-    }
-    Usuario user = manejadorUsuario.getUsuario(idUsuario);
-    List<DtVideo> lista = user.getCanal().getDtVideosPrivados();
-    listaVideos.addAll(lista);
-    return listaVideos.toArray(new DtVideo[listaVideos.size()]);
+  public DtVideo[] listarTodosLosVideos(int idUsuario)  throws NotFoundException {
+    
+      List<DtVideo> listaVideos = new ArrayList<DtVideo>();
+      for (Usuario usuario : manejadorUsuario.getUsuarios().values()) {
+        Map<Integer, Video> lista = usuario.getCanal().getVideosPublicos();
+        for(Video video : lista.values()){
+        listaVideos.add(video.getDt());
+        }
+      }
+      Usuario user = manejadorUsuario.getUsuario(idUsuario);
+      Map<Integer, Video> lista = user.getCanal().getVideosPrivados();
+      for(Video video : lista.values()){
+      listaVideos.add(video.getDt());
+      }
+      return listaVideos.toArray(new DtVideo[listaVideos.size()]);
+
   }
 
   @Override
@@ -106,15 +121,15 @@ public class CtrlVideos implements IVideos {
   @Override
   public List<DtVideo> getDtVideosPublicos() {
     List<DtVideo> result = new LinkedList<DtVideo>();
-    List<DtVideo> listaUsuario = null;
+    Map<Integer, Video> listaUsuario = null;
 
     for (Usuario usuarioObjetivo : manejadorUsuario.getUsuarios().values()) {
 
       Canal canalObjetivo = usuarioObjetivo.getCanal();
-      listaUsuario = canalObjetivo.listaPublicoDtVideo();
+      listaUsuario = canalObjetivo.getVideosPublicos();
 
-      for (DtVideo v : listaUsuario) {
-        result.add(v);
+      for (Video video : listaUsuario.values()) {
+        result.add(video.getDt());
       }
 
     }

@@ -243,7 +243,7 @@ public class AltaVideo extends JInternalFrame {
     String[] categoriasArray = new String[categorias.size()];
     i = 0;
     for(DtCategoria categoria : categorias){
-      usuariosArray[i] = categoria.getNombreCategoria();
+      usuariosArray[i] = categoria.getNombre();
       i++;
     }
     
