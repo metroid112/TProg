@@ -61,12 +61,16 @@ public class CtrlCategorias implements ICategorias {
     List<Video> videos = categ.getVideos();
     List<DtVideo> dtVideos = new LinkedList<DtVideo>();
     for (Video vid : videos) {
-     dtVideos.add(vid.getDt());
+      if (vid.isVisible()) {
+        dtVideos.add(vid.getDt());
+      }
     }
     List<ListaParticular> listas = categ.getListas();
     List<DtLista> dtListas = new LinkedList<DtLista>();
     for (ListaParticular lista : listas) {
-      dtListas.add(lista.getDtLista());
+      if (lista.isVisible()) {
+        dtListas.add(lista.getDtLista());
+      }    
     }
     return new DtCategoria(categoria, dtVideos, dtListas);
   }
