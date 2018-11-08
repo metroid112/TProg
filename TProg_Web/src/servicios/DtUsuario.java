@@ -16,7 +16,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <pre>
  * &lt;complexType name="dtUsuario"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="imagen" type="{http://servicios/}bufferedImage" minOccurs="0"/&gt;
@@ -31,7 +31,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="categoria" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
+ *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
@@ -53,7 +53,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "ultimaActividad",
     "categoria"
 })
-public class DtUsuario {
+public class DtUsuario
+    extends DtUniversal
+{
 
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fechaNacimiento;

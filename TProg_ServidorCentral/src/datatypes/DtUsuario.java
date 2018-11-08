@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DtUsuario {
+public class DtUsuario extends DtUniversal{
 
   public Date fechaNacimiento;
   public BufferedImage imagen;
@@ -55,6 +55,78 @@ public class DtUsuario {
 
   public String getNombre() {
     return nombre;
+  }
+
+  public Date getFechaNacimiento() {
+    return fechaNacimiento;
+  }
+
+  public void setFechaNacimiento(Date fechaNacimiento) {
+    this.fechaNacimiento = fechaNacimiento;
+  }
+
+  public BufferedImage getImagen() {
+    return imagen;
+  }
+
+  public void setImagen(BufferedImage imagen) {
+    this.imagen = imagen;
+  }
+
+  public String getApellido() {
+    return apellido;
+  }
+
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
+  }
+
+  public String getCorreo() {
+    return correo;
+  }
+
+  public void setCorreo(String correo) {
+    this.correo = correo;
+  }
+
+  public String getDescripcionCanal() {
+    return descripcionCanal;
+  }
+
+  public void setDescripcionCanal(String descripcionCanal) {
+    this.descripcionCanal = descripcionCanal;
+  }
+
+  public boolean isPrivado() {
+    return privado;
+  }
+
+  public void setPrivado(boolean privado) {
+    this.privado = privado;
+  }
+
+  public String getNick() {
+    return nick;
+  }
+
+  public void setNick(String nick) {
+    this.nick = nick;
+  }
+
+  public String getImgPath() {
+    return imgPath;
+  }
+
+  public void setImgPath(String imgPath) {
+    this.imgPath = imgPath;
+  }
+
+  public String getCategoria() {
+    return categoria;
+  }
+
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
   }
 
   public void setNombre(String nombre) {

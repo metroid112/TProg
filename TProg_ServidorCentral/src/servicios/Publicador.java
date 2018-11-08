@@ -19,6 +19,7 @@ import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
 import interfaces.Fabrica;
+import interfaces.IUsuariosCanales;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
@@ -98,6 +99,21 @@ public class Publicador {
   @WebMethod
   public DtPaquete consultaDeCategoria(String categoria) {
     return empaquetar(Fabrica.getICategorias().consultaDeCategoria(categoria));
+  }
+  
+  @WebMethod  
+  public boolean checkLogin(String nick, String pass) {
+    IUsuariosCanales iUC = Fabrica.getIUsuariosCanales();
+    if (iUC.existeUsuario(nick) || iUC.existeUsuarioMail(nick)) {
+      return iUC.checkLogin(nick, pass);
+    } else {
+      return false;
+    }
+  }
+  
+  @WebMethod
+  public DtPaquete getDtUsuario(String nick) {
+    return empaquetar(Fabrica.getIUsuariosCanales().getDt(nick));
   }
   
   /**

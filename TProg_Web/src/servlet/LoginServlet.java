@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtUsuario;
-import interfaces.Fabrica;
-import interfaces.IUsuariosCanales;
+import servicios.DtUsuario;
 import servicios.Publicador;
 import servicios.PublicadorService;
 import utils.EstadoSesion;
@@ -45,9 +43,9 @@ public class LoginServlet extends HttpServlet {
         //IUsuariosCanales interfazUsuariosCanales = Fabrica.getIUsuariosCanales();
         PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
-        if ((port.existeUsuario(nick) || port.existeUsuarioMail(nick)) && port.checkLogin(nick, pass)) {
+        if (port.checkLogin(nick, pass)) {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
-          DtUsuario dtUsuario = port.getDtUsuario(nick);
+          DtUsuario dtUsuario = (DtUsuario) port.getDtUsuario(nick).getContenido();
           request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
           response.sendRedirect("Inicio");
         } else {
