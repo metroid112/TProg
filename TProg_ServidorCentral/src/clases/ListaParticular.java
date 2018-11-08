@@ -86,6 +86,11 @@ public class ListaParticular extends Lista {
   public boolean isVisible() {
     return this.visible;
   }
+  
+  public void modificarDatos(String nombre, boolean visible){
+    this.setNombre(nombre);
+    this.visible = visible;
+  }
 
   @Override
   public boolean equals(Object object) {

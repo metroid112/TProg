@@ -23,7 +23,8 @@ import manejadores.ManejadorVideos;
 
 public class CtrlListas implements IListas {
 
-  private ManejadorListasDefecto manejadorListas = ManejadorListasDefecto.getManejadorListasDefecto();
+  private ManejadorListasParticulares manejadorListasParticulares = ManejadorListasParticulares.getManejadorListasParticulares();
+  private ManejadorListasDefecto manejadorListasDefecto = ManejadorListasDefecto.getManejadorListasDefecto();
   private ManejadorUsuarios manejadorUsuarios = ManejadorUsuarios.getManejadorUsuarios();
   private ManejadorVideos manejadorVideos = ManejadorVideos.getManejadorVideos();
 
@@ -46,7 +47,7 @@ public class CtrlListas implements IListas {
 
   @Override
   public void altaListaDefecto(String nombreListaDefecto) throws DuplicateClassException {
-    manejadorListas.addListaDefecto(nombreListaDefecto);
+    manejadorListasDefecto.addListaDefecto(nombreListaDefecto);
     for (Usuario usuario : manejadorUsuarios.getUsuarios().values()) {
       ListaDefecto listaDef = new ListaDefecto(nombreListaDefecto,usuario.getCanal());
       usuario.getCanal().agregarListaDefecto(listaDef);
@@ -62,9 +63,9 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public void guardarCambios(String nomLis, int idUsuario, boolean visible) throws NotFoundException {
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    usuarioObjetivo.getCanal().guardarCambios(nomLis, visible);
+  public void modificarDatos(String nomLis, int idLista, boolean visible) throws NotFoundException {   
+    ListaParticular lista = manejadorListasParticulares.getListaParticular(idLista);
+    lista.modificarDatos(nomLis,visible);
   }
 
   @Override

@@ -519,48 +519,48 @@ public class CtrlDatos implements IDatos {
           "My Favorites\n\n\"El Chino\"",
           Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
           format.parse("14/11/2011"), false);
-      Fabrica.getIVideos().altaVideo("juliob", "Sweet child'o mine",
+      Fabrica.getIVideos().altaVideo(JB.id, "Sweet child'o mine",
           "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
           Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Música",
           format.parse("24/12/2009"), true);
-      Fabrica.getIVideos().altaVideo("juliob", "Thriller",
+      Fabrica.getIVideos().altaVideo(JB.id, "Thriller",
           "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
           Duration.parse("PT13M42S"), "https://youtu.be/PAfbzKcePx0", "Música",
           format.parse("02/10/2009"), false);
-      Fabrica.getIVideos().altaVideo("juliob", "Show de goles",
+      Fabrica.getIVideos().altaVideo(JB.id, "Show de goles",
           "TORNEO CLAUSURA 2018\nFECHA 1.....",
           Duration.parse("PT4M23S"), "https://youtu.be/g46w4_kD_lA", "Deporte",
           format.parse("23/07/2018"), true);
-      Fabrica.getIVideos().altaVideo("juliob", "Inauguracion Estadio Peñarol",
+      Fabrica.getIVideos().altaVideo(JB.id, "Inauguracion Estadio Peñarol",
           "Recordemos la ceremonia de inauguración del Estadio de Peñarol.\nLlamado \""
               + "Estadio Campeón del Siglo\".",
           Duration.parse("PT3H27M26S"), "https://youtu.be/U6XPJ8Vz72A", "Deporte",
           format.parse("04/04/2016"), true);
-      Fabrica.getIVideos().altaVideo("kairoh", "Sweet child'o mine",
+      Fabrica.getIVideos().altaVideo(KH.id, "Sweet child'o mine",
           "#AppetiteForDestruction: The Debut Album, Remastered and Expanded. Available now as Box Set, Super Deluxe, Double LP, and Double CD here: https://lnk.to/AppetiteForDestruction... \n\nApple Music: https://lnk.to/AppetiteForDestruction... \niTunes: https://lnk.to/AppetiteForDestruction... \nSpotify: https://lnk.to/AppetiteForDestruction... \nAmazon: https://lnk.to/AppetiteForDestruction... \nGoogle Play: https://lnk.to/AppetiteForDestruction... \n\nSite: https://www.gunsnroses.com/ \nFacebook: https://www.facebook.com/gunsnroses\nTwitter: https://twitter.com/gunsnroses \nInstagram: https://www.instagram.com/gunsnroses \n\nMusic video by Guns N' Roses performing Sweet Child O' Mine. YouTube view counts pre-VEVO: 2,418,311. (C) 1987 Guns N' Roses under exclusive license to Geffen Records\n\n#GunsNRoses #SweetChildOMine #vevo #rockandroll #vevoofficial",
           Duration.parse("PT5M2S"), "https://youtu.be/1w7OgIMMRc4", "Música",
           format.parse("24/12/2009"), true);
-      Fabrica.getIVideos().altaVideo("kairoh", "Dancing in the Dark",
+      Fabrica.getIVideos().altaVideo(KH.id, "Dancing in the Dark",
           "Bruce Springsteen's official music video for \'Dancing In The Dark\'. Click to listen to Bruce Springsteen on Spotify: http://smarturl.it/BSpringSpot?IQid=B...",
           Duration.parse("PT3M58S"), "https://youtu.be/129kuDCQtHs", "Música",
           format.parse("03/10/2009"), true);
-      Fabrica.getIVideos().altaVideo("kairoh", "Thriller",
+      Fabrica.getIVideos().altaVideo(KH.id, "Thriller",
           "Listen to more Michael Jackson: https://MichaelJackson.lnk.to/Stream!to\n\nMichael Jackson's 14-minute short film \"Thriller\" revolutionized the music video genre forever. Hailed as the greatest music video of all time by MTV, VH1, Rolling Stone and others, \"Thriller,\" directed by John Landis, is also the only music video selected to be included in the Library of Congress' prestigious National Film Registry.\n\nBuy/Listen to Thriller 25: \nAmazon - http://smarturl.it/mj_thriller25_amzn...  \niTunes - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nOfficial Store - http://smarturl.it/MJ_T25DE_OS?IQid=y...  \nSpotify - http://smarturl.it/mj_thriller25_sptf...  \n\nWritten by Rod Temperton\nProduced by Quincy Jones for Quincy Jones Productions\nFrom the album Thriller, released November 30, 1982\nReleased as a single January 23, 1984\n\nTHE SHORT FILM\nDirector: John Landis\nPrimary Production Location: Los Angeles, California\n\nMichael Jackson's short film for \"Thriller\" was the third of three short films produced for recordings from Thriller, which continues its reign as the biggest selling album of all time with worldwide sales in excess of 105 million as of June 1, 2016 and in December 2015 became the first ever album to be awarded triple diamond status (i.e.: sales in excess of 30 million) by the RIAA for US sales alone. The \"Thriller\" single reached No. 1 in four countries in 1984, topping the U.S. Billboard Hot Dance Club Play chart as well as charts in Spain, France and Belgium. The song peaked at No. 4 on the Billboard Hot 100, making Thriller the first album to feature seven Top 10 singles. The Recording Industry Association of America certified \"Thriller\" Gold and Platinum on December 4, 1989. \n\nThe groundbreaking short films for the Thriller album, starting with \"Billie Jean,\" following up with \"Beat It\" and culminating with the epic, nearly 14-minute \"Thriller,\" truly expanded the possibilities of \"music video\" as art form. \"I wanted something that would glue you to the set, something you'd want to watch over and over,\" Michael wrote in his 1988 memoir Moonwalk. \"I wanted to be a pioneer in this relatively new medium and make the best short music movies we could make.\"\n\nIn the short film\'s extended prologue, Michael\'s moonlit date with his girlfriend (played by model Ola Ray) is interrupted by his sudden transformation into a howling werewolf. While the \"real\" Michael and Ola, observing the scene in a movie theater, walk home from the their date, Michael teases her by singing the verses of \"Thriller.\"\n\nFollow the Official Michael Jackson Accounts: \nFacebook - http://smarturl.it/mj_facebook?IQid=y...  \nTwitter - http://smarturl.it/mj_twitter?IQid=yt...  \nSpotify - http://smarturl.it/mj_spotify?IQid=yt...  \nNewsletter - http://smarturl.it/mj_newsletter?IQid...  \nYouTube - http://smarturl.it/mj_youtube?IQid=yt...  \nWebsite - http://smarturl.it/mj_website?IQid=yt...",
           Duration.parse("PT13M42S"), "https://youtu.be/sOnqjkJTMaA", "Música",
           format.parse("02/10/2009"), true);
-      Fabrica.getIVideos().altaVideo("chino", "Recoba 20 mejores goles",
+      Fabrica.getIVideos().altaVideo(AR.id, "Recoba 20 mejores goles",
           "My Favorites\n\n\"El Chino\"",
           Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
           format.parse("14/11/2011"), false);
-      Fabrica.getIVideos().altaVideo("tonyp", "Pacheco goles mas recordados", "",
+      Fabrica.getIVideos().altaVideo(AP.id, "Pacheco goles mas recordados", "",
           Duration.parse("PT5M48S"),
           "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
-      Fabrica.getIVideos().altaVideo("nicoJ", "Entrevista a director CUTI",
+      Fabrica.getIVideos().altaVideo(NJ.id, "Entrevista a director CUTI",
           "Segunda parte de la entrevista realizada por la periodista "
               + "Paula Echevarr�a al director de CUTI",
           Duration.parse("PT5M39S"), "https://youtu.be/Eq5uBEzI6qs", "Ciencia y Tecnología",
           format.parse("03/04/2017"), true);
-      Fabrica.getIVideos().altaVideo("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros",
+      Fabrica.getIVideos().altaVideo(NJ.id, "Ventana al futuro Uruguay y deficit de ingenieros",
           "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis medicos. Los datos se desprenden del Panorama de la Educación 2014 del anuario del Ministerio de Educación y Cultura. Ese año egresaron de la Universidad de la República 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, según sostienen desde la Facultad de Ingeniería, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundación Julio Ricaldoni, María Simón.",
           Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnología",
           format.parse("20/07/2016"), true);
@@ -583,7 +583,7 @@ public class CtrlDatos implements IDatos {
 
       class ListaParticularBean {
         public String nombre;
-        public String owner;
+        public int owner;
       }
 
       ListaParticularBean LP1 = new ListaParticularBean();
@@ -594,22 +594,22 @@ public class CtrlDatos implements IDatos {
       ListaParticularBean LP6 = new ListaParticularBean();
 
       LP1.nombre = "Nostalgia";
-      LP1.owner = KH.nick;
+      LP1.owner = KH.id;
 
       LP2.nombre = "De fiesta";
-      LP2.owner = TC.nick;
+      LP2.owner = TC.id;
 
       LP3.nombre = "Novedades FING";
-      LP3.owner = HG.nick;
+      LP3.owner = HG.id;
 
       LP4.nombre = "De todo un poco";
-      LP4.owner = CS.nick;
+      LP4.owner = CS.id;
 
       LP5.nombre = "Noticias y CYT";
-      LP5.owner = NJ.nick;
+      LP5.owner = NJ.id;
 
       LP6.nombre = "Solo deportes";
-      LP6.owner = JB.nick;
+      LP6.owner = JB.id;
 
       Fabrica.getIListas().altaListaParticular(LP1.nombre, LP1.owner, true);
       Fabrica.getIListas().altaListaParticular(LP2.nombre, LP2.owner, false);
@@ -617,64 +617,64 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIListas().altaListaParticular(LP4.nombre, LP4.owner, false);
       Fabrica.getIListas().altaListaParticular(LP5.nombre, LP5.owner, true);
       Fabrica.getIListas().altaListaParticular(LP6.nombre, LP6.owner, true);
-
-      Fabrica.getIListas().agregarVideoLista("juliob", "Sweet child'o mine", "kairoh",
+      //int idVideo, int idUsuario, int idLista, boolean defecto
+      
+      Fabrica.getIListas().agregarVideoLista("Sweet child'o mine",JB.id, "kairoh",
           "Nostalgia",
           false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Sweet child'o mine", "kairoh",
+      Fabrica.getIListas().agregarVideoLista("Sweet child'o mine",KH.id, "kairoh",
           "Nostalgia",
           false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Dancing in the Dark", "kairoh",
+      Fabrica.getIListas().agregarVideoLista("Dancing in the Dark",KH.id, "kairoh",
           "Nostalgia",
           false);
-      Fabrica.getIListas().agregarVideoLista("kairoh", "Thriller", "kairoh", "Nostalgia", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Thriller", "kairoh", "Nostalgia", false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "tabarec", "De fiesta",
+      Fabrica.getIListas().agregarVideoLista("Thriller",KH.id, "kairoh", "Nostalgia", false);
+      Fabrica.getIListas().agregarVideoLista("Thriller",JB.id, "kairoh", "Nostalgia", false);
+      Fabrica.getIListas().agregarVideoLista("Locura celeste",TC.id, "tabarec", "De fiesta",
           false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "tabarec", "De fiesta",
+      Fabrica.getIListas().agregarVideoLista("Locura celeste",CS.id, "tabarec", "De fiesta",
           false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Niño payaso", "tabarec", "De fiesta",
+      Fabrica.getIListas().agregarVideoLista("Niño payaso",TC.id, "tabarec", "De fiesta",
           false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Niño payaso", "tabarec", "De fiesta",
+      Fabrica.getIListas().agregarVideoLista( "Niño payaso",CS.id, "tabarec", "De fiesta",
           false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "tabarec",
+      Fabrica.getIListas().agregarVideoLista( "Etapa Don Timoteo Liguilla",CS.id, "tabarec",
           "De fiesta",
           false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", "100 años de FING", "hectorg",
+      Fabrica.getIListas().agregarVideoLista( "100 años de FING",HG.id, "hectorg",
           "Novedades FING",
           false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", V7.nombre, "hectorg",
+      Fabrica.getIListas().agregarVideoLista( V7.nombre,HG.id, "hectorg",
           "Novedades FING",
           false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", V8.nombre, "hectorg",
+      Fabrica.getIListas().agregarVideoLista( V8.nombre,HG.id ,"hectorg",
           "Novedades FING", false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Locura celeste", "cachilas",
+      Fabrica.getIListas().agregarVideoLista( "Locura celeste",TC.id, "cachilas",
           "De todo un poco",
           false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Locura celeste", "cachilas",
+      Fabrica.getIListas().agregarVideoLista( "Locura celeste",CS.id, "cachilas",
           "De todo un poco",
           false);
-      Fabrica.getIListas().agregarVideoLista("tabarec", "Niño payaso", "cachilas",
+      Fabrica.getIListas().agregarVideoLista( "Niño payaso",TC.id ,"cachilas",
           "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Niño payaso", "cachilas",
+      Fabrica.getIListas().agregarVideoLista( "Niño payaso",CS.id, "cachilas",
           "De todo un poco",
           false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa A contramano Liguilla",
+      Fabrica.getIListas().agregarVideoLista( "Etapa A contramano Liguilla",CS.id,
           "cachilas",
           "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
+      Fabrica.getIListas().agregarVideoLista("Etapa Don Timoteo Liguilla",CS.id, "cachilas",
           "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol",
+      Fabrica.getIListas().agregarVideoLista( "Inauguracion Estadio Peñarol",JB.id,
           "cachilas",
           "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("hectorg", V8.nombre, "nicoJ",
+      Fabrica.getIListas().agregarVideoLista( V8.nombre,HG.id ,"nicoJ",
           "Noticias y CYT", false);
-      Fabrica.getIListas().agregarVideoLista("nicoJ",
-          "Ventana al futuro Uruguay y deficit de ingenieros",
+      Fabrica.getIListas().agregarVideoLista( "Ventana al futuro Uruguay y deficit de ingenieros", NJ.id,
           "nicoJ", "Noticias y CYT", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
+      Fabrica.getIListas().agregarVideoLista( "Show de goles", JB.id ,"juliob", "Solo deportes",
           false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol", "juliob",
+      Fabrica.getIListas().agregarVideoLista( "Inauguracion Estadio Peñarol", JB.id,"juliob",
           "Solo deportes", false);
 
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");

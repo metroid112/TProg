@@ -26,7 +26,7 @@ public interface IListas {
 
   public Map<Integer, DtLista> getDtListas();
 
-  public void guardarCambios(String nomLis, int idUsuario, boolean visible) throws NotFoundException ;
+  public void modificarDatos(String nomLis, int idLista, boolean visible) throws NotFoundException ;
 
   public Map<Integer, ListaDefecto> listarListasDefectoUsuario(int idUsuario) throws NotFoundException ;
 

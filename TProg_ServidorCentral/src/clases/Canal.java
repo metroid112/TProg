@@ -39,7 +39,7 @@ public class Canal {
   public DtCanal getDt() {
     return new DtCanal(this.nombreCanal, this.descripcionCanal, this.visible, this.ultimaActividad);
   }
-
+  
   public String getNombre() {
     return nombreCanal;
   }

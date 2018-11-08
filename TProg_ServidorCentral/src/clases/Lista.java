@@ -46,6 +46,10 @@ public abstract class Lista {
   public String getNombre() {
     return nombre;
   }
+  
+  public void setNombre(String nombre){
+    this.nombre = nombre;
+  }
 
   public List<DtVideo> getListVideos(){
     List<DtVideo> resultado = new LinkedList<DtVideo>();
@@ -62,6 +66,7 @@ public abstract class Lista {
       throw new NotFoundException("");
     }
   }
+  
 
   public void agregarVideo(Video video) throws InvalidDataException {
     if (video != null) {
