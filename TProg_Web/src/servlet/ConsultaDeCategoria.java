@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import servicios.DtCategoria;
+import servicios.DtUniversal;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -29,7 +30,7 @@ public class ConsultaDeCategoria extends HttpServlet {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();    
     if (request.getParameter("CATEGORIA") == null) {    
-      List<DtCategoria> listaCat = port.listarCategorias().getListaDt();
+      List<DtUniversal> listaCat = port.listarCategorias().getListaDt();
       request.setAttribute("CATEGORIAS", listaCat);
       request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request,
           response);

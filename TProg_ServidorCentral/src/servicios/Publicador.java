@@ -107,11 +107,7 @@ public class Publicador {
     return empaquetar(listaParticular);
   }
   
-  @WebMethod
-  public DtPaquete listarListasParticularUsuario(String nick) {
-    List<String> listaParticular = Fabrica.getIListas().listarListasParticularUsuario(nick);
-    return empaquetar(listaParticular);
-  }zc
+
   
   /**
    * Empaqueta un data type generico

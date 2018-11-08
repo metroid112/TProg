@@ -11,7 +11,7 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
-			<% List<String> listas = (List<String>) request.getAttribute("CATEGORIAS");
+			<% List<DtCategoria> listas = (List<DtCategoria>) request.getAttribute("CATEGORIAS");
 				if (listas.size() == 0) { %>
 					<h1>No hay categorias en el sistema.</h1>
 					<br>
@@ -19,7 +19,7 @@
 				<h1>Categorias</h1>
 				<br>
 					<div class="highlights">	
-					<% for (String categorias : listas) { %>
+					<% for (DtCategoria categorias : listas) { %>
 							<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=categorias%>').submit();">	
 								<form id="Form<%=categorias%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="POST">
 									<input type="hidden" name="CATEGORIA" value="<%=categorias%>">
