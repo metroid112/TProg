@@ -49,13 +49,13 @@ public class DtBusqueda extends DtUniversal{
     getUsuarios().sort(Comparator.comparing(DtUsuario::getCanal));
     return this;
   }
-  
+
   public DtBusqueda sortFecha() {
     getVideos().sort(Comparator.comparing(DtVideo::getFecha).reversed());
     getListas().sort(Comparator.comparing(DtLista::getUltimaActividad).reversed());
     getUsuarios().sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
     return this;
   }
-  
+
 
 }
