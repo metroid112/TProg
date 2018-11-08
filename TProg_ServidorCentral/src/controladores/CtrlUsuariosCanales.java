@@ -103,20 +103,20 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().isVisible();
   }
-
+/*
   @Override
   public List<DtVideo> listarDtVideosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto);
+    return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto); //se pasa al controlador listas
   }
 
   @Override
-  public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException { //Hay una funcion en crtVideos que hace exactamente lo mismo
+  public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException { //se pasa al controlador videos
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
   }
-
+*/
   @Override
   public List<DtVideo> getListaPublicoDtVideo() {
     return controladorVideos.getDtVideosPublicos();

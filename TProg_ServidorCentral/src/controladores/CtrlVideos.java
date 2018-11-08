@@ -97,12 +97,10 @@ public class CtrlVideos implements IVideos {
       String url, String categoriaString, Duration duracion, boolean visible, Date fecha)
       throws InvalidDataException, DuplicateClassException, NotFoundException {
     Video vid = manejadorVideo.getVideo(idVideo);
-    vid.getCanal().modVideo(nombre,idVideo);
-    Categoria categoria;
+    
+    Categoria categoria = null;
     if (categoriaString != null) {
       categoria = manejadorCategoria.getCategoria(categoriaString);
-    } else {
-      categoria = null;
     }
     vid.modificarDatos(nombre, descripcion, url, categoria, duracion, visible, fecha);
 
