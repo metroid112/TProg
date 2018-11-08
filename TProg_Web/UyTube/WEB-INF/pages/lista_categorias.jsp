@@ -20,12 +20,12 @@
 				<br>
 					<div class="highlights">	
 					<% for (DtCategoria categorias : listas) { %>
-							<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=categorias%>').submit();">	
-								<form id="Form<%=categorias%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="POST">
-									<input type="hidden" name="CATEGORIA" value="<%=categorias%>">
+							<div class="detalleClickeableCategoria" onclick="document.getElementById('Form<%= categorias.getCategoriaId() %>').submit();">	
+								<form id="Form<%= categorias.getCategoriaId() %>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="POST">
+									<input type="hidden" name="CATEGORIA" value="<%= categorias.getNombre() %>">
 									<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
 									<header>
-									<%= categorias %>
+									<%= categorias.getNombre() %>
 									</header>
 								</form>	
 							</div>

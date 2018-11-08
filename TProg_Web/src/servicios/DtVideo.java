@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para dtVideo complex type.
+ * <p>Java class for dtVideo complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtVideo"&gt;
@@ -127,7 +127,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad comentarios.
+     * Gets the value of the comentarios property.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad comentarios.
+     * Sets the value of the comentarios property.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad duracion.
+     * Gets the value of the duracion property.
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad duracion.
+     * Sets the value of the duracion property.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +175,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad fecha.
+     * Gets the value of the fecha property.
      * 
      * @return
      *     possible object is
@@ -187,7 +187,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad fecha.
+     * Sets the value of the fecha property.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +199,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad usuario.
+     * Gets the value of the usuario property.
      * 
      * @return
      *     possible object is
@@ -211,7 +211,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad usuario.
+     * Sets the value of the usuario property.
      * 
      * @param value
      *     allowed object is
@@ -223,7 +223,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad nombre.
+     * Gets the value of the nombre property.
      * 
      * @return
      *     possible object is
@@ -235,7 +235,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Sets the value of the nombre property.
      * 
      * @param value
      *     allowed object is
@@ -247,7 +247,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad urlVideo.
+     * Gets the value of the urlVideo property.
      * 
      * @return
      *     possible object is
@@ -259,7 +259,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad urlVideo.
+     * Sets the value of the urlVideo property.
      * 
      * @param value
      *     allowed object is
@@ -271,7 +271,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad urlThumbnail.
+     * Gets the value of the urlThumbnail property.
      * 
      * @return
      *     possible object is
@@ -283,7 +283,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad urlThumbnail.
+     * Sets the value of the urlThumbnail property.
      * 
      * @param value
      *     allowed object is
@@ -295,7 +295,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcion.
+     * Gets the value of the descripcion property.
      * 
      * @return
      *     possible object is
@@ -307,7 +307,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad descripcion.
+     * Sets the value of the descripcion property.
      * 
      * @param value
      *     allowed object is
@@ -319,7 +319,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad categoria.
+     * Gets the value of the categoria property.
      * 
      * @return
      *     possible object is
@@ -331,7 +331,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad categoria.
+     * Sets the value of the categoria property.
      * 
      * @param value
      *     allowed object is
@@ -343,7 +343,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad visible.
+     * Gets the value of the visible property.
      * 
      */
     public boolean isVisible() {
@@ -351,7 +351,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad visible.
+     * Sets the value of the visible property.
      * 
      */
     public void setVisible(boolean value) {
@@ -359,7 +359,7 @@ public class DtVideo
     }
 
     /**
-     * Obtiene el valor de la propiedad idVideo.
+     * Gets the value of the idVideo property.
      * 
      */
     public int getIdVideo() {
@@ -367,7 +367,7 @@ public class DtVideo
     }
 
     /**
-     * Define el valor de la propiedad idVideo.
+     * Sets the value of the idVideo property.
      * 
      */
     public void setIdVideo(int value) {
@@ -376,9 +376,9 @@ public class DtVideo
 
 
     /**
-     * <p>Clase Java para anonymous complex type.
+     * <p>Java class for anonymous complex type.
      * 
-     * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+     * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
      * &lt;complexType&gt;
@@ -444,9 +444,9 @@ public class DtVideo
 
 
         /**
-         * <p>Clase Java para anonymous complex type.
+         * <p>Java class for anonymous complex type.
          * 
-         * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+         * <p>The following schema fragment specifies the expected content contained within this class.
          * 
          * <pre>
          * &lt;complexType&gt;
@@ -474,7 +474,7 @@ public class DtVideo
             protected DtComentario value;
 
             /**
-             * Obtiene el valor de la propiedad key.
+             * Gets the value of the key property.
              * 
              * @return
              *     possible object is
@@ -486,7 +486,7 @@ public class DtVideo
             }
 
             /**
-             * Define el valor de la propiedad key.
+             * Sets the value of the key property.
              * 
              * @param value
              *     allowed object is
@@ -498,7 +498,7 @@ public class DtVideo
             }
 
             /**
-             * Obtiene el valor de la propiedad value.
+             * Gets the value of the value property.
              * 
              * @return
              *     possible object is
@@ -510,7 +510,7 @@ public class DtVideo
             }
 
             /**
-             * Define el valor de la propiedad value.
+             * Sets the value of the value property.
              * 
              * @param value
              *     allowed object is

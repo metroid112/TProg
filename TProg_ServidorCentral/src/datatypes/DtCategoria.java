@@ -15,8 +15,8 @@ import clases.Video;
 public class DtCategoria extends DtUniversal {
   private String nombre;
   private int categoriaId;
-  private List<DtVideo> videos;
-  private List<DtLista> listas;
+  private List<DtVideo> videos = new LinkedList<DtVideo>();
+  private List<DtLista> listas = new LinkedList<DtLista>();
 
   public DtCategoria() {}
 

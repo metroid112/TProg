@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dtPaquete complex type.
+ * <p>Java class for dtPaquete complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtPaquete"&gt;
@@ -45,7 +45,7 @@ public class DtPaquete {
     protected List<DtUniversal> listaDt;
 
     /**
-     * Obtiene el valor de la propiedad contenido.
+     * Gets the value of the contenido property.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class DtPaquete {
     }
 
     /**
-     * Define el valor de la propiedad contenido.
+     * Sets the value of the contenido property.
      * 
      * @param value
      *     allowed object is
