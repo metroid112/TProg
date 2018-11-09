@@ -30,38 +30,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtComentario }
-     * 
-     */
-    public DtComentario createDtComentario() {
-        return new DtComentario();
-    }
-
-    /**
-     * Create an instance of {@link DtComentario.Hijos }
-     * 
-     */
-    public DtComentario.Hijos createDtComentarioHijos() {
-        return new DtComentario.Hijos();
-    }
-
-    /**
-     * Create an instance of {@link DtVideo }
-     * 
-     */
-    public DtVideo createDtVideo() {
-        return new DtVideo();
-    }
-
-    /**
-     * Create an instance of {@link DtVideo.Comentarios }
-     * 
-     */
-    public DtVideo.Comentarios createDtVideoComentarios() {
-        return new DtVideo.Comentarios();
-    }
-
-    /**
      * Create an instance of {@link DtPaquete }
      * 
      */
@@ -78,11 +46,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DtVideo }
+     * 
+     */
+    public DtVideo createDtVideo() {
+        return new DtVideo();
+    }
+
+    /**
      * Create an instance of {@link DtCalificacion }
      * 
      */
     public DtCalificacion createDtCalificacion() {
         return new DtCalificacion();
+    }
+
+    /**
+     * Create an instance of {@link DtComentario }
+     * 
+     */
+    public DtComentario createDtComentario() {
+        return new DtComentario();
     }
 
     /**
@@ -131,22 +115,6 @@ public class ObjectFactory {
      */
     public DtCategoria createDtCategoria() {
         return new DtCategoria();
-    }
-
-    /**
-     * Create an instance of {@link DtComentario.Hijos.Entry }
-     * 
-     */
-    public DtComentario.Hijos.Entry createDtComentarioHijosEntry() {
-        return new DtComentario.Hijos.Entry();
-    }
-
-    /**
-     * Create an instance of {@link DtVideo.Comentarios.Entry }
-     * 
-     */
-    public DtVideo.Comentarios.Entry createDtVideoComentariosEntry() {
-        return new DtVideo.Comentarios.Entry();
     }
 
 }

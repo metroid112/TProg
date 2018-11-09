@@ -18,6 +18,7 @@ import javax.xml.ws.Endpoint;
 import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
@@ -114,6 +115,43 @@ public class Publicador {
   @WebMethod
   public DtPaquete getDtUsuario(String nick) {
     return empaquetar(Fabrica.getIUsuariosCanales().getDt(nick));
+  }
+  
+  @WebMethod
+  public DtPaquete getDtVideo(int idVideo) {
+    try {
+      return empaquetar(Fabrica.getIVideos().getDtVideo(idVideo));
+    } catch (NotFoundException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+      return null;
+    }
+  }
+  
+  @WebMethod
+  public boolean yaCalificado(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo) {
+    return Fabrica.getIUsuariosCanales().yaCalificacdo(nombreUsuario, like, nombreVideo, nombreDuenoVideo);
+  }
+  
+  @WebMethod
+  public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo) {
+    Fabrica.getIUsuariosCanales().valorarVideo(nombreUsuario, like, nombreVideo, nombreDuenoVideo);
+  }
+  
+  @WebMethod
+  public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDuenoVideo) {
+    Fabrica.getIUsuariosCanales().modificarValoracion(like, nombreUsuario, nombreVideo, nombreDuenoVideo);
+  }
+  
+  @WebMethod
+  public void comentarVideo(String texto, GregorianCalendar calendario, String nombreUsuario, String nombreVideo, String nombreDuenoVideo) {
+    Date fecha = calendario.getTime();
+    Fabrica.getIUsuariosCanales().comentarVideo(texto, fecha, nombreUsuario, nombreVideo, nombreDuenoVideo);
+  }
+  
+  @WebMethod
+  public void responderComentario(String texto, GregorianCalendar calendario, String nombreUsuario, String nombreVideo, String nombreDuenoVideo, int idComentarioPadre) {
+    Fabrica.getIUsuariosCanales().responderComentario(texto, calendario.getTime(), nombreUsuario, nombreVideo, nombreDuenoVideo, idComentarioPadre);
   }
   
   /**
