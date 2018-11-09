@@ -187,5 +187,4 @@ public class Usuario {
   public String getPath() {
     return this.imgPath;
   }
-
 }

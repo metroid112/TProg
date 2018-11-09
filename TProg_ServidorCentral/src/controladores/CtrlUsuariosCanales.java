@@ -4,12 +4,14 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import clases.Calificacion;
 import clases.Canal;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -207,5 +209,18 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     }
     Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
     
+  }
+
+  @Override
+  public void bajaUsuario(String nickUsuario) throws NotFoundException {
+    Usuario user = manejadorUsuarios.get(nickUsuario);
+    if (user == null) {
+      throw new NotFoundException(nickUsuario);
+    } else {
+      List<Calificacion> calificaciones = user.getCalificaciones();
+      calificaciones = null;
+      
+      user = null;
+    }    
   }
 }
