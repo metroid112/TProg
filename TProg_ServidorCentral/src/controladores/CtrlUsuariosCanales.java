@@ -1,8 +1,10 @@
 package controladores;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import clases.Canal;
 import clases.Usuario;
@@ -103,20 +105,25 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
     return usuarioObjetivo.getCanal().isVisible();
   }
-/*
-  @Override
-  public List<DtVideo> listarDtVideosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException{
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    return usuarioObjetivo.getCanal().listarVideosLista(lista, defecto); //se pasa al controlador listas
-  }
 
   @Override
   public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException { //se pasa al controlador videos
-    Usuario usuarioObjetivo = manejadorUsuarios.getUsuario(idUsuario);
-    Canal canalObjetivo = usuarioObjetivo.getCanal();
-    return canalObjetivo.listaDtVideo();
+    
+    List<DtVideo> listaVideos = new ArrayList<DtVideo>();
+    Usuario user = manejadorUsuarios.getUsuario(idUsuario);
+    Map<Integer, Video> lista = user.getCanal().getVideosPrivados();
+    
+    for(Video video : lista.values()){
+    listaVideos.add(video.getDt());
+    }
+    lista = user.getCanal().getVideosPublicos();
+    
+    for(Video video : lista.values()){
+    listaVideos.add(video.getDt());
+    }
+    return listaVideos;
   }
-*/
+
   @Override
   public List<DtVideo> getListaPublicoDtVideo() {
     return controladorVideos.getDtVideosPublicos();

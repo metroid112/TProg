@@ -32,7 +32,7 @@ public interface IUsuariosCanales {
 
  // public List<DtVideo> listarDtVideosLista(int idUsuario, String lista, boolean defecto) throws NotFoundException; se pasa  al controlador listas
 
- // public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException; se pasa cl controlador videos
+  public List<DtVideo> listarVideosCanal(int idUsuario) throws NotFoundException;
 
   public List<DtVideo> getListaPublicoDtVideo();
 

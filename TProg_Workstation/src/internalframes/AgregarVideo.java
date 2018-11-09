@@ -289,7 +289,7 @@ public class AgregarVideo extends JInternalFrame {
 
     if (modelUsuario.getSelectedItem() != null) {
       try{
-        videos = ctrVid.listarVideos(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
+        videos = ctrUsu.listarVideosCanal(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()));
       }
       catch(Exception e){}
       

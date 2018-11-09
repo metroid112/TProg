@@ -19,7 +19,7 @@ public interface IVideos {
 
   public Map<Integer, DtVideo> getDtVideos();
 
-  public List<DtVideo> listarVideos(int idUsuario) throws NotFoundException;
+  //public List<DtVideo> listarVideos(int idUsuario) throws NotFoundException;
 
   public DtVideo[] listarTodosLosVideos(int idUsuario) throws NotFoundException;
   

@@ -12,6 +12,7 @@ import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtLista;
+import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
@@ -42,7 +43,12 @@ public class CtrlListas implements IListas {
       }
     } else
       throw new InvalidDataException("Video null");
-
+  }
+  
+  @Override
+  public List<DtVideo> listarDtVideosLista(int idLista, boolean defecto) throws NotFoundException{
+    ListaParticular lista = manejadorListasParticulares.getListaParticular(idLista);
+    return lista.getListVideos();
   }
 
   @Override

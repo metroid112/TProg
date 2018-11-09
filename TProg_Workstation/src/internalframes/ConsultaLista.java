@@ -388,7 +388,7 @@ public class ConsultaLista extends JInternalFrame {
 
       duenoVid = listaVideos.getSelectedValue().substring(0,
       listaVideos.getSelectedValue().indexOf('-'));
-      videos = ctrVid.listarVideos(obtenerUsuarioId(duenoVid));
+      videos = ctrUsu.listarVideosCanal(obtenerUsuarioId(duenoVid));
       DtVideo dtVid = ctrVid.getDtVideo(obtenerVideoId(
       listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1)));
       infoVid.cargarDatos(dtVid);

@@ -53,7 +53,7 @@ public class CtrlVideos implements IVideos {
     Video video = ManejadorVideos.getManejadorVideos().getVideo(idVideo);
     return video.getDt();
   }
-  
+  /*
   @Override
   public List<DtVideo> listarVideos(int idUsuario) throws NotFoundException{
     
@@ -71,7 +71,7 @@ public class CtrlVideos implements IVideos {
     }
     return listaVideos;
     
-  }
+  }*/
 
   @Override
   public DtVideo[] listarTodosLosVideos(int idUsuario)  throws NotFoundException {

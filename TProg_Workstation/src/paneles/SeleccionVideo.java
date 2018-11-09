@@ -94,7 +94,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
   public void updateLista(String nickname) {
     try{
       DefaultListModel<String> model = new DefaultListModel<String>();
-      videos = contVideos.listarVideos(obtenerUsuarioId(cBoxUsuarios.getSelectedItem().toString()));
+      videos = contUsuarios.listarVideosCanal(obtenerUsuarioId(cBoxUsuarios.getSelectedItem().toString()));
       if (videos != null) {
         for (DtVideo vid : videos) {
           model.addElement(vid.getNombre());

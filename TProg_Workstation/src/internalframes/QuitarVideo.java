@@ -137,8 +137,7 @@ public class QuitarVideo extends JInternalFrame {
         if (!list.isSelectionEmpty()) {
           comboBoxVideos.setEnabled(true);
           modelVideos.removeAllElements();
-          cargarVideosListas(obtenerUsuarioId(modelUsuario.getSelectedItem().toString()),
-              list.getSelectedValue().toString(), rdbtnListasPorDefecto.isSelected());
+          cargarVideosListas(obtenerListaId(list.getSelectedValue().toString()), rdbtnListasPorDefecto.isSelected());
         } else {
           comboBoxVideos.setEnabled(false);
         }
@@ -289,11 +288,11 @@ public class QuitarVideo extends JInternalFrame {
     }
   }
 
-  public void cargarVideosListas(int idUsuario, String lista, boolean defecto) {
+  public void cargarVideosListas(int idLista, boolean defecto) {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
     try{
-    videos = ctrUsu.listarDtVideosLista(idUsuario, lista, defecto);
+    videos = ctrLis.listarDtVideosLista( idLista, defecto);
     modelVideos.addElement("");
     for (DtVideo video : videos) {
       modelVideos.addElement(video.getNombre() + " - " + video.getUsuario());

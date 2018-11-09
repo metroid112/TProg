@@ -242,64 +242,64 @@ public class CtrlDatos implements IDatos {
       ctrlUsuarios.altaUsuario(MB.nick, MB.nombre, MB.apellido, MB.mail,
           format.parse(MB.nacimiento), "img" + divisor + "usuarios" + divisor + "martin.JPG",
           MB.nombreCanal, MB.descripcionCanal, "Sin categoria", true, MB.pass);
-      ctrlUsuarios.altaUsuario("hectorg", "Héctor", "Guido",
+      ctrlUsuarios.altaUsuario(HG.nick, "Héctor", "Guido",
           "hector.gui@elgalpon.org.uy",
           format.parse("07/01/1954"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "hectorg",
           "Canal HG",
           "Sin categoria", true, HG.pass);
-      ctrlUsuarios.altaUsuario("tabarec", "Tabare", "Cardozo",
+      ctrlUsuarios.altaUsuario(TC.nick, TC.nombre, TC.apellido,
           "tabare.car@agadu.org.uy",
           format.parse("24/07/1971"), "img" + divisor + "usuarios" + divisor + "tabare.JPG",
           "Tabar�",
           "Mi musica e ainda mais", "Sin categoria", true, TC.pass);
-      ctrlUsuarios.altaUsuario("cachilas", "Waldemar \"Cachila\"", "Silva",
+      ctrlUsuarios.altaUsuario(CS.nick, CS.nombre, CS.apellido,
           "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"),
           "img" + divisor + "usuarios" + divisor + "cachila.JPG",
           "El Cachila", "Para juntar cosas", "Sin categoria", false, CS.pass);
-      ctrlUsuarios.altaUsuario("juliob", "Julio", "Bocca",
+      ctrlUsuarios.altaUsuario(JB.nick, JB.nombre, JB.apellido,
           "juliobocca@sodre.com.uy",
           format.parse("16/03/1967"), "img" + divisor + "usuarios" + divisor + "null.JPG", "juliob",
           "Canal de JB",
           "Sin categoria", true, JB.pass);
-      ctrlUsuarios.altaUsuario("diegop", "Diego", "Parodi", "diego@efectocine.com",
+      ctrlUsuarios.altaUsuario(DP.nick, DP.nombre, DP.apellido, "diego@efectocine.com",
           format.parse("01/01/1975"), "img" + divisor + "usuarios" + divisor + "null.JPG", "diegop",
           "Canal de DP",
           "Sin categoria", true, DP.pass);
-      ctrlUsuarios.altaUsuario("kairoh", "Kairo", "Herrera",
+      ctrlUsuarios.altaUsuario(KH.nick, KH.nombre, KH.apellido,
           "kairoher@pilsenrock.com.uy",
           format.parse("25/04/1840"), "img" + divisor + "usuarios" + divisor + "kairo.JPG",
           "Kairo musica",
           "Videos de grandes canciones de hoy y siempre", "Sin categoria", true, KH.pass);
-      ctrlUsuarios.altaUsuario("robinh", "Robin", "Henderson",
+      ctrlUsuarios.altaUsuario(RH.nick, RH.nombre, RH.apellido,
           "Robin.h@tinglesa.com.uy",
           format.parse("03/08/1940"), "img" + divisor + "usuarios" + divisor + "null.JPG", "robinh",
           "Henderson",
           "Sin categoria", true, RH.pass);
-      ctrlUsuarios.altaUsuario("marcelot", "Marcelo", "Tinelli",
+      ctrlUsuarios.altaUsuario(MT.nick, MT.nombre, MT.apellido,
           "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"),
           "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Tinelli total", "Todo lo que querias y más !", "Sin categoria", true, MT.pass);
-      ctrlUsuarios.altaUsuario("novick", "Edgardo", "Novick",
+      ctrlUsuarios.altaUsuario(EN.nick, EN.nombre, EN.apellido,
           "edgardo@novick.com.uy",
           format.parse("17/07/1952"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Con la gente",
           "Preparando las elecciones", "Sin categoria", true, EN.pass);
-      ctrlUsuarios.altaUsuario("sergiop", "Sergio", "Puglia",
+      ctrlUsuarios.altaUsuario(SP.nick, SP.nombre, SP.apellido,
           "puglia@alpanpan.com.uy",
           format.parse("28/01/1950"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Puglia invita",
           "Programas del ciclo y videos de cocina masterchef", "Sin categoria", true, SP.pass);
-      ctrlUsuarios.altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy",
+      ctrlUsuarios.altaUsuario(AR.nick, AR.nombre, AR.apellido, "chino@trico.org.uy",
           format.parse("17/03/1976"), "img" + divisor + "usuarios" + divisor + "recoba.JPG",
           "Chino Recoba",
           "Canal de goles con Nacional ", "Sin categoria", false, AR.pass);
-      ctrlUsuarios.altaUsuario("tonyp", "Antonio", "Pacheco",
+      ctrlUsuarios.altaUsuario(AP.apellido, AP.nombre, AP.apellido,
           "eltony@manya.org.uy",
           format.parse("14/02/1955"), "img" + divisor + "usuarios" + divisor + "pacheco.JPG",
           "Tony Pacheco",
           "Todos los goles con Peñarol", "Sin categoria", false, AP.pass);
-      ctrlUsuarios.altaUsuario("nicoJ", "Nicolas", "Jodal", "jodal@artech.com.uy",
+      ctrlUsuarios.altaUsuario(NJ.nick, NJ.nombre, NJ.apellido, "jodal@artech.com.uy",
           format.parse("09/08/1960"), "img" + divisor + "usuarios" + divisor + "null.JPG",
           "Desde Genexus", "Canal informacion C y T", "Sin categoria", true, NJ.pass);
 
@@ -377,6 +377,7 @@ public class CtrlDatos implements IDatos {
       ctrlCategorias.altaCategoria(VIA.nombre);
 
       class VideoBean {
+        public int id;
         public String nombre;
         public String owner;
       }
@@ -403,72 +404,96 @@ public class CtrlDatos implements IDatos {
       VideoBean V14b = new VideoBean();
       VideoBean V15 = new VideoBean();
       VideoBean V16 = new VideoBean();
-
-      V1a.nombre = "Locura celeste";
-      V1a.owner = TC.nick;
-
-      V1b.nombre = "Locura celeste";
-      V1b.owner = CS.nick;
-
-      V2a.nombre = "Niño payaso";
-      V2a.owner = TC.nick;
-
-      V2b.nombre = "Niño payaso";
-      V2b.owner = CS.nick;
-
-      V3a.nombre = "Sweet child'o mine";
-      V3a.owner = JB.nick;
-
-      V3b.nombre = "Sweet child'o mine";
-      V3b.owner = KH.nick;
-
-      V4.nombre = "Dancing in the Dark";
-      V4.owner = KH.nick;
-
-      V5a.nombre = "Thriller";
-      V5a.owner = JB.nick;
-
-      V5b.nombre = "Thriller";
-      V5b.owner = KH.nick;
-
+      
+      int idVideo = 0;
+      
       V6.nombre = "100 años de FING";
       V6.owner = HG.nick;
-
+      V6.id = idVideo++;
+      
       V7.nombre = "50 años del InCo";
       V7.owner = HG.nick;
+      V7.id = idVideo++;
 
       V8.nombre = "Ingeniería de Muestra 2017";
       V8.owner = HG.nick;
+      V8.id = idVideo++;
+      
+      V1a.nombre = "Locura celeste";
+      V1a.owner = TC.nick;
+      V1a.id = idVideo++;
 
+      V2a.nombre = "Niño payaso";
+      V2a.owner = TC.nick;
+      V2a.id = idVideo++;
+      
+      V12a.nombre = "Pacheco goles más recordados";
+      V12a.owner = TC.nick;
+      V12a.id = idVideo++;
+      
+      V1b.nombre = "Locura celeste";
+      V1b.owner = CS.nick;
+      V1b.id = idVideo++;
+      
+      V2b.nombre = "Niño payaso";
+      V2b.owner = CS.nick;
+      V2b.id = idVideo++;
+      
       V9.nombre = "Etapa A contramano Liguilla";
       V9.owner = CS.nick;
+      V9.id = idVideo++;
 
       V10.nombre = "Etapa Don Timoteo Liguilla";
       V10.owner = CS.nick;
-
-      V11.nombre = "Show de goles";
-      V11.owner = JB.nick;
-
-      V12a.nombre = "Pacheco goles más recordados";
-      V12a.owner = TC.nick;
-
-      V12b.nombre = "Pacheco goles más recordados";
-      V12b.owner = AP.nick;
-
-      V13.nombre = "Inauguración Estadio Peñarol";
-      V13.owner = JB.nick;
+      V10.id = idVideo++;
 
       V14a.nombre = "Recoba 20 mejores goles";
       V14a.owner = CS.nick;
+      V14a.id = idVideo++;
+      
+      V3a.nombre = "Sweet child'o mine";
+      V3a.owner = JB.nick;
+      V3a.id = idVideo++;
+
+      V5a.nombre = "Thriller";
+      V5a.owner = JB.nick;
+      V5a.id = idVideo++;
+      
+      V11.nombre = "Show de goles";
+      V11.owner = JB.nick;
+      V11.id = idVideo++;
+      
+      V13.nombre = "Inauguración Estadio Peñarol";
+      V13.owner = JB.nick;
+      V13.id = idVideo++;
+      
+      V3b.nombre = "Sweet child'o mine";
+      V3b.owner = KH.nick;
+      V3b.id = idVideo++;
+
+      V4.nombre = "Dancing in the Dark";
+      V4.owner = KH.nick;
+      V4.id = idVideo++;
+
+      V5b.nombre = "Thriller";
+      V5b.owner = KH.nick;
+      V5b.id = idVideo++;
 
       V14b.nombre = "Recoba 20 mejores goles";
       V14b.owner = AR.nick;
+      V14b.id = idVideo++;
+      
+      V12b.nombre = "Pacheco goles más recordados";
+      V12b.owner = AP.nick;
+      V12b.id = idVideo++;
 
       V15.nombre = "Entrevista a director CUTI";
       V15.owner = NJ.nick;
+      V15.id = idVideo++;
 
       V16.nombre = "Ventana al futuro Uruguay y déficit de ingenieros";
       V16.owner = NJ.nick;
+      V16.id = idVideo++;
 
       Fabrica.getIVideos().altaVideo(HG.id, V6.nombre,
           "Del Ciclo más Universidad realizado por la UdelaR, compartimos con ustedes "
@@ -502,7 +527,7 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIVideos().altaVideo(TC.id, V12a.nombre, "",
           Duration.parse("PT5M48S"),
           "https://youtu.be/wlEd6-HsIxI", DEP.nombre, format.parse("05/07/2013"), false);
-      Fabrica.getIVideos().altaVideo(CS.id, V1a.nombre,
+      Fabrica.getIVideos().altaVideo(CS.id, V1b.nombre,
           "Tema Oficial de la cobertura celeste de Monte Carlo Televisión Canal 4 para el "
               + "Mundial de Futbol FIFA Rusia 2018.",
           Duration.parse("PT3M4S"), "https://youtu.be/PAfbzKcePx0", MUS.nombre,

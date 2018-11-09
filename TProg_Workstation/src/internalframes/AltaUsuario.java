@@ -446,7 +446,7 @@ public class AltaUsuario extends JInternalFrame {
     String[] arrayCategorias = new String[categorias.size()];
     int i = 0;
     for(DtCategoria categoria : categorias){
-      arrayCategorias[i] = categoria.getNombreCategoria();
+      arrayCategorias[i] = categoria.getNombre();
     }
     DefaultComboBoxModel<String> modelCombo = new DefaultComboBoxModel<String>();
 

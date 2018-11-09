@@ -5,6 +5,7 @@ import java.util.Map;
 
 import clases.ListaDefecto;
 import clases.ListaParticular;
+import datatypes.DtVideo;
 import datatypes.DtLista;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
@@ -15,6 +16,8 @@ public interface IListas {
   public void agregarVideoLista(int idVideo, int idUsuario, int idLista,
       boolean defecto) throws DuplicateClassException, InvalidDataException, NotFoundException ;
 
+  public List<DtVideo> listarDtVideosLista(int idLista, boolean defecto) throws NotFoundException;
+  
   public void altaListaDefecto(String nombreListaDefecto) throws DuplicateClassException;
 
   public void altaListaParticular(String nombreListaDefecto, int idUsuario, boolean visibilidad)

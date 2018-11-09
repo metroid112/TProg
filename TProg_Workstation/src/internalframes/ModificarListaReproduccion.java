@@ -149,7 +149,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
         try{
           if (checkUsuario() && checkLista()) {
             if (isCanalPublico(usuario)) {
-              ctrLis.guardarCambios(modelLisRep.getSelectedItem().toString(), obtenerUsuarioId(usuario),
+              ctrLis.modificarDatos(modelLisRep.getSelectedItem().toString(), obtenerUsuarioId(usuario),
                   rdbtnPublica.isSelected());
               setVisible(false);
               clean();

@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import datatypes.DtCategoria;
+import datatypes.DtLista;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 
@@ -56,7 +58,7 @@ public class ConsultaCategoria extends JInternalFrame {
     comboBox.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent arg0) {
-        Object selected = comboBox.getSelectedItem();
+        String selected = comboBox.getSelectedItem().toString();
         cmdConsultaCategoriaActionPerformed(selected);
       }
     });
@@ -121,25 +123,32 @@ public class ConsultaCategoria extends JInternalFrame {
     ctrlCat = null;
   }
 
-  protected void cmdConsultaCategoriaActionPerformed(Object o) {
+  protected void cmdConsultaCategoriaActionPerformed(String categoriaNombre) {
     try{
       videos.removeAllElements();
       listas.removeAllElements();
-      if (o != null) {
-        String s = o.toString();
-        if (!s.equals("")) {
+      if (categoriaNombre != null) {
+        
+        if (!categoriaNombre.equals("")) {
+          
+          DtCategoria categoria = null;
+          for(DtCategoria dtCat : categorias){
+            if(dtCat.getNombre().equals(categoriaNombre))
+              categoria = dtCat;
+          }
+          
           ctrlCat = Fabrica.getICategorias();
   
-          String[] infoVideo = ctrlCat.getInfoVideos(s);
-          int largo = infoVideo.length;
-          for (int i = 0; i < largo; i++) {
-            videos.addElement(infoVideo[i]);
+          List<DtVideo> videosCategoria = categoria.getVideos();
+          
+          for (DtVideo video : videosCategoria) {
+            videos.addElement(video.getNombre());
           }
   
-          String[] infoLista = ctrlCat.getInfoListas(s);
-          largo = infoLista.length;
-          for (int i = 0; i < largo; i++) {
-            listas.addElement(infoLista[i]);
+          List<DtLista> listasCategoria = categoria.getListas();
+          
+          for (DtLista lista : listasCategoria) {
+            listas.addElement(lista.getNombre());
           }
         }
       }
