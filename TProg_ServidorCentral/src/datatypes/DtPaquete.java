@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 public class DtPaquete {
   private DtUniversal contenido;
   private LinkedList<String> listaAux;
+  private LinkedList<DtUniversal> listaDt;
   
   public DtPaquete() {}
   
@@ -27,4 +28,13 @@ public class DtPaquete {
   public void setListaAux(LinkedList<String> listaAux) {
     this.listaAux = listaAux;
   }
+
+  public LinkedList<DtUniversal> getListaDt() {
+    return listaDt;
+  }
+
+  public void setListaDt(LinkedList<DtUniversal> listaDt) {
+    this.listaDt = listaDt;
+  }
+  
 }

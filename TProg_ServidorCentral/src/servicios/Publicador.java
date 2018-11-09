@@ -18,6 +18,7 @@ import javax.xml.ws.Endpoint;
 import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
+import datatypes.DtVideo;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
@@ -152,6 +153,28 @@ public class Publicador {
   @WebMethod
   public void responderComentario(String texto, GregorianCalendar calendario, String nombreUsuario, String nombreVideo, String nombreDuenoVideo, int idComentarioPadre) {
     Fabrica.getIUsuariosCanales().responderComentario(texto, calendario.getTime(), nombreUsuario, nombreVideo, nombreDuenoVideo, idComentarioPadre);
+  }
+  
+  @WebMethod
+  public DtPaquete getListaPublicoDtVideo() {
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIUsuariosCanales().getListaPublicoDtVideo()) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getListaDtVideo(String nick) {
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIUsuariosCanales().getListaDtVideo(nick)) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);
+    return pack;
   }
   
   /**
