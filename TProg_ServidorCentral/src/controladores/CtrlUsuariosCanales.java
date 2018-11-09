@@ -217,9 +217,19 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     if (user == null) {
       throw new NotFoundException(nickUsuario);
     } else {
+      // ** CALIFICACIONES **
       List<Calificacion> calificaciones = user.getCalificaciones();
+      for (Calificacion calificacion : calificaciones) {
+        calificacion.setVideo(null);
+        calificacion = null;
+      }
+      calificaciones.clear();
       calificaciones = null;
       
+      // ** MANEJADOR **
+      manejadorUsuarios.getMap().remove(nickUsuario);
+      
+      // ** USUARIO **
       user = null;
     }    
   }

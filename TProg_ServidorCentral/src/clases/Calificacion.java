@@ -36,4 +36,8 @@ public class Calificacion {
     return (this.like == cal.like && this.usuario.equals(cal.usuario)
         && this.video.equals(cal.video));
   }
+
+  public void setVideo(Video video) {
+    this.video = video;    
+  }
 }
