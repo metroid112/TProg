@@ -1,6 +1,9 @@
 package servicios;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,6 +12,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Endpoint;
 
 import datatypes.DtBusqueda;
@@ -56,6 +60,14 @@ public class Publicador {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+  }
+  
+  @WebMethod
+  public void AltaUsuario(String nickname, String nombre, String apellido, String correo, GregorianCalendar fechaNacimiento,
+      String imagenPath, String nombreCanal, String descripcionCanal, String categoria, boolean visible, String pass) {
+    // Cambiar imagenPath
+    Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo, fechaNacimiento.getTime(),
+        imagenPath, nombreCanal, descripcionCanal, categoria, visible, pass);
   }
   
   @WebMethod
