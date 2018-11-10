@@ -167,4 +167,12 @@ public class Usuario {
     return this.idUsuario;
   }
 
+  public String getNombre() {
+    return this.nombre;
+  }
+
+  public String getApellido() {
+    return this.apellido;
+  }
+
 }

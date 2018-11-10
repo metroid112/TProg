@@ -56,14 +56,6 @@ public class DtUsuario extends DtUniversal{
     this.fechaNacimiento = fechaNacimiento;
   }
 
-  public BufferedImage getImagen() {
-    return imagen;
-  }
-
-  public void setImagen(BufferedImage imagen) {
-    this.imagen = imagen;
-  }
-
   public String getApellido() {
     return apellido;
   }
@@ -102,14 +94,6 @@ public class DtUsuario extends DtUniversal{
 
   public void setNick(String nick) {
     this.nick = nick;
-  }
-
-  public String getImgPath() {
-    return imgPath;
-  }
-
-  public void setImgPath(String imgPath) {
-    this.imgPath = imgPath;
   }
 
   public String getCategoria() {
