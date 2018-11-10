@@ -17,43 +17,30 @@ public class Usuario {
   private List<Comentario> comentarios = new LinkedList<Comentario>();
   private String correo;
   private Date fechaNacimiento;
-  private BufferedImage imagen;
   private String nick;
   private String nombre;
   private Map<String, Usuario> seguidores = new HashMap<String, Usuario>();
   private Map<String, Usuario> seguidos = new HashMap<String, Usuario>();
   private String password = "";
-  private String imgPath = "img/usuarios/null.JPG";
   private int idUsuario;
   private static int idCounter = 0;
+  private Imagen img;   //TODO null
 
   public Usuario(String nickname, String nombre, String apellido, String correo,
-      Date fechaNacimiento, BufferedImage image) {
+      Date fechaNacimiento, Imagen img, String password) {
     this.nick = nickname;
     this.nombre = nombre;
     this.apellido = apellido;
     this.correo = correo;
     this.fechaNacimiento = fechaNacimiento;
-    this.imagen = image;
-    Usuario.idCounter++;
-    this.idUsuario = Usuario.idCounter;
-  }
-
-  public Usuario(String nickname, String nombre, String apellido, String correo,
-      Date fechaNacimiento, String image, String password) {
-    this.nick = nickname;
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.correo = correo;
-    this.fechaNacimiento = fechaNacimiento;
-    this.imgPath = image;
+    this.img = img;
     this.password = password;
     Usuario.idCounter++;
     this.idUsuario = Usuario.idCounter;
   }
 
-  public String getImg() {
-    return this.imgPath;
+  public Imagen getImg() {
+    return this.img;
   }
 
   public void addCalificacion(Calificacion cal) {
@@ -82,12 +69,8 @@ public class Usuario {
     String categoria = this.getCanal().getCategoria() == null ? "Sin Categoria"
         : this.getCanal().getCategoria().getNombre();
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
-        this.canal.getDescripcion(), this.fechaNacimiento, this.imagen, this.canal.isVisible(),
-        this.nick, this.imgPath, categoria);
-  }
-
-  public BufferedImage getImagen() {
-    return imagen;
+        this.canal.getDescripcion(), this.fechaNacimiento, this.canal.isVisible(),
+        this.nick, this.img.getId(), categoria);
   }
 
   public String getNick() {
@@ -161,7 +144,7 @@ public class Usuario {
     Usuario user = (Usuario) object;
     return (this.nombre.equals(user.nombre) && this.nick.equals(user.nick)
         && this.apellido.equals(user.apellido) && this.correo.equals(user.correo)
-        && this.fechaNacimiento.equals(user.fechaNacimiento) && this.imagen == user.imagen);
+        && this.fechaNacimiento.equals(user.fechaNacimiento));
   }
 
   public Comentario getComentario(int idComentario) {
@@ -182,10 +165,6 @@ public class Usuario {
 
   public Integer getId() {
     return this.idUsuario;
-  }
-
-  public String getPath() {
-    return this.imgPath;
   }
 
 }

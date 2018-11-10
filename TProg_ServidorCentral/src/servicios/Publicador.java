@@ -67,10 +67,10 @@ public class Publicador {
   
   @WebMethod
   public void AltaUsuario(String nickname, String nombre, String apellido, String correo, GregorianCalendar fechaNacimiento,
-      String imagenPath, String nombreCanal, String descripcionCanal, String categoria, boolean visible, String pass) {
+      byte[] imgByte, String nombreCanal, String descripcionCanal, String categoria, boolean visible, String pass) {
     // Cambiar imagenPath
     Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo, fechaNacimiento.getTime(),
-        imagenPath, nombreCanal, descripcionCanal, categoria, visible, pass);
+        imgByte, nombreCanal, descripcionCanal, categoria, visible, pass);
   }
   
   @WebMethod

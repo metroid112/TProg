@@ -94,22 +94,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BufferedImage }
-     * 
-     */
-    public BufferedImage createBufferedImage() {
-        return new BufferedImage();
-    }
-
-    /**
-     * Create an instance of {@link Raster }
-     * 
-     */
-    public Raster createRaster() {
-        return new Raster();
-    }
-
-    /**
      * Create an instance of {@link DtCategoria }
      * 
      */
