@@ -30,6 +30,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     DtBusqueda.class,
     DtVideo.class,
+<<<<<<< HEAD
+=======
+    DtUsuario.class,
+>>>>>>> master
     DtCategoria.class
 })
 public abstract class DtUniversal {

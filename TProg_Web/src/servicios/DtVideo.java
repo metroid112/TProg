@@ -22,33 +22,16 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="calificaciones" type="{http://servicios/}dtCalificacion" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="comentarios"&gt;
- *           &lt;complexType&gt;
- *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                 &lt;sequence&gt;
- *                   &lt;element name="entry" maxOccurs="unbounded" minOccurs="0"&gt;
- *                     &lt;complexType&gt;
- *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                           &lt;sequence&gt;
- *                             &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *                             &lt;element name="value" type="{http://servicios/}dtComentario" minOccurs="0"/&gt;
- *                           &lt;/sequence&gt;
- *                         &lt;/restriction&gt;
- *                       &lt;/complexContent&gt;
- *                     &lt;/complexType&gt;
- *                   &lt;/element&gt;
- *                 &lt;/sequence&gt;
- *               &lt;/restriction&gt;
- *             &lt;/complexContent&gt;
- *           &lt;/complexType&gt;
- *         &lt;/element&gt;
+ *         &lt;element name="calificacionesPositivas" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="calificacionesNegativas" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="comentarios" type="{http://servicios/}dtComentario" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="duracion" type="{http://servicios/}duration" minOccurs="0"/&gt;
+ *         &lt;element name="duracionSegundos" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="urlVideo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="youtubeId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="urlThumbnail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="categoria" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -65,12 +48,16 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtVideo", propOrder = {
     "calificaciones",
+    "calificacionesPositivas",
+    "calificacionesNegativas",
     "comentarios",
     "duracion",
+    "duracionSegundos",
     "fecha",
     "usuario",
     "nombre",
     "urlVideo",
+    "youtubeId",
     "urlThumbnail",
     "descripcion",
     "categoria",
@@ -83,14 +70,20 @@ public class DtVideo
 
     @XmlElement(nillable = true)
     protected List<DtCalificacion> calificaciones;
-    @XmlElement(required = true)
-    protected DtVideo.Comentarios comentarios;
+    @XmlElement(nillable = true)
+    protected List<String> calificacionesPositivas;
+    @XmlElement(nillable = true)
+    protected List<String> calificacionesNegativas;
+    @XmlElement(nillable = true)
+    protected List<DtComentario> comentarios;
     protected Duration duracion;
+    protected long duracionSegundos;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fecha;
     protected String usuario;
     protected String nombre;
     protected String urlVideo;
+    protected String youtubeId;
     protected String urlThumbnail;
     protected String descripcion;
     protected String categoria;
@@ -127,27 +120,98 @@ public class DtVideo
     }
 
     /**
+<<<<<<< HEAD
      * Gets the value of the comentarios property.
+=======
+     * Gets the value of the calificacionesPositivas property.
      * 
-     * @return
-     *     possible object is
-     *     {@link DtVideo.Comentarios }
-     *     
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the calificacionesPositivas property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCalificacionesPositivas().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+>>>>>>> master
+     * 
      */
-    public DtVideo.Comentarios getComentarios() {
-        return comentarios;
+    public List<String> getCalificacionesPositivas() {
+        if (calificacionesPositivas == null) {
+            calificacionesPositivas = new ArrayList<String>();
+        }
+        return this.calificacionesPositivas;
     }
 
     /**
+<<<<<<< HEAD
      * Sets the value of the comentarios property.
+=======
+     * Gets the value of the calificacionesNegativas property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DtVideo.Comentarios }
-     *     
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the calificacionesNegativas property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCalificacionesNegativas().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+>>>>>>> master
+     * 
      */
-    public void setComentarios(DtVideo.Comentarios value) {
-        this.comentarios = value;
+    public List<String> getCalificacionesNegativas() {
+        if (calificacionesNegativas == null) {
+            calificacionesNegativas = new ArrayList<String>();
+        }
+        return this.calificacionesNegativas;
+    }
+
+    /**
+     * Gets the value of the comentarios property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the comentarios property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getComentarios().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DtComentario }
+     * 
+     * 
+     */
+    public List<DtComentario> getComentarios() {
+        if (comentarios == null) {
+            comentarios = new ArrayList<DtComentario>();
+        }
+        return this.comentarios;
     }
 
     /**
@@ -175,7 +239,27 @@ public class DtVideo
     }
 
     /**
+<<<<<<< HEAD
      * Gets the value of the fecha property.
+=======
+     * Obtiene el valor de la propiedad duracionSegundos.
+     * 
+     */
+    public long getDuracionSegundos() {
+        return duracionSegundos;
+    }
+
+    /**
+     * Define el valor de la propiedad duracionSegundos.
+     * 
+     */
+    public void setDuracionSegundos(long value) {
+        this.duracionSegundos = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad fecha.
+>>>>>>> master
      * 
      * @return
      *     possible object is
@@ -271,7 +355,35 @@ public class DtVideo
     }
 
     /**
+<<<<<<< HEAD
      * Gets the value of the urlThumbnail property.
+=======
+     * Obtiene el valor de la propiedad youtubeId.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getYoutubeId() {
+        return youtubeId;
+    }
+
+    /**
+     * Define el valor de la propiedad youtubeId.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setYoutubeId(String value) {
+        this.youtubeId = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad urlThumbnail.
+>>>>>>> master
      * 
      * @return
      *     possible object is
@@ -374,6 +486,7 @@ public class DtVideo
         this.idVideo = value;
     }
 
+<<<<<<< HEAD
 
     /**
      * <p>Java class for anonymous complex type.
@@ -525,4 +638,6 @@ public class DtVideo
 
     }
 
+=======
+>>>>>>> master
 }

@@ -34,19 +34,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtComentario }
+     * Create an instance of {@link DtPaquete }
      * 
      */
-    public DtComentario createDtComentario() {
-        return new DtComentario();
+    public DtPaquete createDtPaquete() {
+        return new DtPaquete();
     }
 
     /**
-     * Create an instance of {@link DtComentario.Hijos }
+     * Create an instance of {@link DtBusqueda }
      * 
      */
-    public DtComentario.Hijos createDtComentarioHijos() {
-        return new DtComentario.Hijos();
+    public DtBusqueda createDtBusqueda() {
+        return new DtBusqueda();
     }
 
     /**
@@ -58,6 +58,7 @@ public class ObjectFactory {
     }
 
     /**
+<<<<<<< HEAD
      * Create an instance of {@link DtVideo.Comentarios }
      * 
      */
@@ -83,18 +84,21 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DtBusqueda }
-     * 
-     */
-    public DtBusqueda createDtBusqueda() {
-        return new DtBusqueda();
-    }
-
-    /**
+=======
      * Create an instance of {@link DtCalificacion }
+>>>>>>> master
      * 
      */
     public DtCalificacion createDtCalificacion() {
         return new DtCalificacion();
+    }
+
+    /**
+     * Create an instance of {@link DtComentario }
+     * 
+     */
+    public DtComentario createDtComentario() {
+        return new DtComentario();
     }
 
     /**
@@ -122,22 +126,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BufferedImage }
-     * 
-     */
-    public BufferedImage createBufferedImage() {
-        return new BufferedImage();
-    }
-
-    /**
-     * Create an instance of {@link Raster }
-     * 
-     */
-    public Raster createRaster() {
-        return new Raster();
-    }
-
-    /**
      * Create an instance of {@link DtCategoria }
      * 
      */
@@ -145,6 +133,7 @@ public class ObjectFactory {
         return new DtCategoria();
     }
 
+<<<<<<< HEAD
     /**
      * Create an instance of {@link DtComentario.Hijos.Entry }
      * 
@@ -170,4 +159,6 @@ public class ObjectFactory {
         return new JAXBElement<Exception>(_Exception_QNAME, Exception.class, null, value);
     }
 
+=======
+>>>>>>> master
 }

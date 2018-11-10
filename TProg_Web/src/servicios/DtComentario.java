@@ -21,29 +21,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="hijos"&gt;
- *           &lt;complexType&gt;
- *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                 &lt;sequence&gt;
- *                   &lt;element name="entry" maxOccurs="unbounded" minOccurs="0"&gt;
- *                     &lt;complexType&gt;
- *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                           &lt;sequence&gt;
- *                             &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *                             &lt;element name="value" type="{http://servicios/}dtComentario" minOccurs="0"/&gt;
- *                           &lt;/sequence&gt;
- *                         &lt;/restriction&gt;
- *                       &lt;/complexContent&gt;
- *                     &lt;/complexType&gt;
- *                   &lt;/element&gt;
- *                 &lt;/sequence&gt;
- *               &lt;/restriction&gt;
- *             &lt;/complexContent&gt;
- *           &lt;/complexType&gt;
- *         &lt;/element&gt;
- *         &lt;element name="idComentario" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="hijos" type="{http://servicios/}dtComentario" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="idComentario" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="texto" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
@@ -67,9 +46,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class DtComentario {
 
-    @XmlElement(required = true)
-    protected DtComentario.Hijos hijos;
-    protected Integer idComentario;
+    @XmlElement(nillable = true)
+    protected List<DtComentario> hijos;
+    protected int idComentario;
     protected String texto;
     protected String usuario;
     @XmlSchemaType(name = "dateTime")
@@ -78,6 +57,7 @@ public class DtComentario {
 
     /**
      * Gets the value of the hijos property.
+<<<<<<< HEAD
      * 
      * @return
      *     possible object is
@@ -90,37 +70,48 @@ public class DtComentario {
 
     /**
      * Sets the value of the hijos property.
+=======
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DtComentario.Hijos }
-     *     
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the hijos property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getHijos().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DtComentario }
+     * 
+>>>>>>> master
+     * 
      */
-    public void setHijos(DtComentario.Hijos value) {
-        this.hijos = value;
+    public List<DtComentario> getHijos() {
+        if (hijos == null) {
+            hijos = new ArrayList<DtComentario>();
+        }
+        return this.hijos;
     }
 
     /**
      * Gets the value of the idComentario property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
      */
-    public Integer getIdComentario() {
+    public int getIdComentario() {
         return idComentario;
     }
 
     /**
      * Sets the value of the idComentario property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
      */
-    public void setIdComentario(Integer value) {
+    public void setIdComentario(int value) {
         this.idComentario = value;
     }
 
@@ -212,6 +203,7 @@ public class DtComentario {
         this.tieneHijos = value;
     }
 
+<<<<<<< HEAD
 
     /**
      * <p>Java class for anonymous complex type.
@@ -363,4 +355,6 @@ public class DtComentario {
 
     }
 
+=======
+>>>>>>> master
 }
