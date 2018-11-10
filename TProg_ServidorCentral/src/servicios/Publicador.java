@@ -19,7 +19,7 @@ import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
 import datatypes.DtVideo;
-import excepciones.NotFoundException;
+import excepciones.*;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
@@ -110,7 +110,7 @@ public class Publicador {
   }
   
   @WebMethod
-  public DtPaquete listarTodosLosVideos(String nick) throws Exception {
+  public DtPaquete listarTodosLosVideos(String nick) {
     DtPaquete pack = new DtPaquete();
     List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>(); 
     for (DtUniversal dato : Fabrica.getIVideos().listarTodosLosVideos(nick)) {
@@ -206,6 +206,12 @@ public class Publicador {
     pack.setListaDt(listaUniversal);
     return pack;
   }
+  
+  @WebMethod
+  public void agregarVideoLista(String nombreOwnerVideo, String nombreVideo, String usuario, String nombreLista, Boolean defecto) throws DuplicateClassException, InvalidDataException {
+    Fabrica.getIListas().agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
+  }
+  
   
   /**
    * Empaqueta un data type generico

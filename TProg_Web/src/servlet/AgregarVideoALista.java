@@ -33,16 +33,14 @@ public class AgregarVideoALista extends HttpServlet {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();   
     if (request.getParameter("agregarVideo") != null) {
-      IListas ctrlListas = Fabrica.getIListas();
       String idVideo = (String) request.getParameter("video");
       String lista = (String) request.getParameter("lista");
-      int largo = lista.length();
       String tipoLista = String.valueOf(lista.charAt(0));
       String nombreLista = lista.substring(1, lista.length());
       Boolean defecto = tipoLista.equals("D");
       DtVideo video = null;
       try {
-        video = Fabrica.getIVideos().getDtVideo(Integer.parseInt(idVideo));
+        video = (DtVideo) port.getDtVideo(Integer.parseInt(idVideo)).getContenido();
       } catch (Exception e) {
         e.printStackTrace();
       }
@@ -50,7 +48,7 @@ public class AgregarVideoALista extends HttpServlet {
       String nombreOwnerVideo = video.getUsuario();
       String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
       try {
-        ctrlListas.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
+        port.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
         request.setAttribute("EXITO",
             "¡Se ha agregado el video a la lista seleccionada con éxito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);

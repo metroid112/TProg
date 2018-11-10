@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for dtVideo complex type.
+ * <p>Clase Java para dtVideo complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtVideo"&gt;
@@ -120,9 +120,6 @@ public class DtVideo
     }
 
     /**
-<<<<<<< HEAD
-     * Gets the value of the comentarios property.
-=======
      * Gets the value of the calificacionesPositivas property.
      * 
      * <p>
@@ -142,7 +139,6 @@ public class DtVideo
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
->>>>>>> master
      * 
      */
     public List<String> getCalificacionesPositivas() {
@@ -153,9 +149,6 @@ public class DtVideo
     }
 
     /**
-<<<<<<< HEAD
-     * Sets the value of the comentarios property.
-=======
      * Gets the value of the calificacionesNegativas property.
      * 
      * <p>
@@ -175,7 +168,6 @@ public class DtVideo
      * Objects of the following type(s) are allowed in the list
      * {@link String }
      * 
->>>>>>> master
      * 
      */
     public List<String> getCalificacionesNegativas() {
@@ -215,7 +207,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the duracion property.
+     * Obtiene el valor de la propiedad duracion.
      * 
      * @return
      *     possible object is
@@ -227,7 +219,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the duracion property.
+     * Define el valor de la propiedad duracion.
      * 
      * @param value
      *     allowed object is
@@ -239,9 +231,6 @@ public class DtVideo
     }
 
     /**
-<<<<<<< HEAD
-     * Gets the value of the fecha property.
-=======
      * Obtiene el valor de la propiedad duracionSegundos.
      * 
      */
@@ -259,7 +248,6 @@ public class DtVideo
 
     /**
      * Obtiene el valor de la propiedad fecha.
->>>>>>> master
      * 
      * @return
      *     possible object is
@@ -271,7 +259,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the fecha property.
+     * Define el valor de la propiedad fecha.
      * 
      * @param value
      *     allowed object is
@@ -283,7 +271,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -295,7 +283,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -307,7 +295,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the nombre property.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
@@ -319,7 +307,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the nombre property.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
@@ -331,7 +319,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the urlVideo property.
+     * Obtiene el valor de la propiedad urlVideo.
      * 
      * @return
      *     possible object is
@@ -343,7 +331,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the urlVideo property.
+     * Define el valor de la propiedad urlVideo.
      * 
      * @param value
      *     allowed object is
@@ -355,9 +343,6 @@ public class DtVideo
     }
 
     /**
-<<<<<<< HEAD
-     * Gets the value of the urlThumbnail property.
-=======
      * Obtiene el valor de la propiedad youtubeId.
      * 
      * @return
@@ -383,7 +368,6 @@ public class DtVideo
 
     /**
      * Obtiene el valor de la propiedad urlThumbnail.
->>>>>>> master
      * 
      * @return
      *     possible object is
@@ -395,7 +379,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the urlThumbnail property.
+     * Define el valor de la propiedad urlThumbnail.
      * 
      * @param value
      *     allowed object is
@@ -407,7 +391,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the descripcion property.
+     * Obtiene el valor de la propiedad descripcion.
      * 
      * @return
      *     possible object is
@@ -419,7 +403,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the descripcion property.
+     * Define el valor de la propiedad descripcion.
      * 
      * @param value
      *     allowed object is
@@ -431,7 +415,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the categoria property.
+     * Obtiene el valor de la propiedad categoria.
      * 
      * @return
      *     possible object is
@@ -443,7 +427,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the categoria property.
+     * Define el valor de la propiedad categoria.
      * 
      * @param value
      *     allowed object is
@@ -455,7 +439,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the visible property.
+     * Obtiene el valor de la propiedad visible.
      * 
      */
     public boolean isVisible() {
@@ -463,7 +447,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the visible property.
+     * Define el valor de la propiedad visible.
      * 
      */
     public void setVisible(boolean value) {
@@ -471,7 +455,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the idVideo property.
+     * Obtiene el valor de la propiedad idVideo.
      * 
      */
     public int getIdVideo() {
@@ -479,165 +463,11 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the idVideo property.
+     * Define el valor de la propiedad idVideo.
      * 
      */
     public void setIdVideo(int value) {
         this.idVideo = value;
     }
 
-<<<<<<< HEAD
-
-    /**
-     * <p>Java class for anonymous complex type.
-     * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
-     * <pre>
-     * &lt;complexType&gt;
-     *   &lt;complexContent&gt;
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *       &lt;sequence&gt;
-     *         &lt;element name="entry" maxOccurs="unbounded" minOccurs="0"&gt;
-     *           &lt;complexType&gt;
-     *             &lt;complexContent&gt;
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                 &lt;sequence&gt;
-     *                   &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
-     *                   &lt;element name="value" type="{http://servicios/}dtComentario" minOccurs="0"/&gt;
-     *                 &lt;/sequence&gt;
-     *               &lt;/restriction&gt;
-     *             &lt;/complexContent&gt;
-     *           &lt;/complexType&gt;
-     *         &lt;/element&gt;
-     *       &lt;/sequence&gt;
-     *     &lt;/restriction&gt;
-     *   &lt;/complexContent&gt;
-     * &lt;/complexType&gt;
-     * </pre>
-     * 
-     * 
-     */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "entry"
-    })
-    public static class Comentarios {
-
-        protected List<DtVideo.Comentarios.Entry> entry;
-
-        /**
-         * Gets the value of the entry property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the entry property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getEntry().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link DtVideo.Comentarios.Entry }
-         * 
-         * 
-         */
-        public List<DtVideo.Comentarios.Entry> getEntry() {
-            if (entry == null) {
-                entry = new ArrayList<DtVideo.Comentarios.Entry>();
-            }
-            return this.entry;
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
-         *         &lt;element name="value" type="{http://servicios/}dtComentario" minOccurs="0"/&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "key",
-            "value"
-        })
-        public static class Entry {
-
-            protected Integer key;
-            protected DtComentario value;
-
-            /**
-             * Gets the value of the key property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link Integer }
-             *     
-             */
-            public Integer getKey() {
-                return key;
-            }
-
-            /**
-             * Sets the value of the key property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link Integer }
-             *     
-             */
-            public void setKey(Integer value) {
-                this.key = value;
-            }
-
-            /**
-             * Gets the value of the value property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link DtComentario }
-             *     
-             */
-            public DtComentario getValue() {
-                return value;
-            }
-
-            /**
-             * Sets the value of the value property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link DtComentario }
-             *     
-             */
-            public void setValue(DtComentario value) {
-                this.value = value;
-            }
-
-        }
-
-    }
-
-=======
->>>>>>> master
 }
