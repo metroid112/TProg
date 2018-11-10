@@ -31,9 +31,6 @@ public class ConsultaDeCategoria extends HttpServlet {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();    
     if (request.getParameter("CATEGORIA") == null) { 
-      if (port == null) {
-        System.out.println("hola");
-      }
       List<DtUniversal> listaCat = port.listarCategorias().getListaDt();
       request.setAttribute("CATEGORIAS", listaCat);
       request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request,

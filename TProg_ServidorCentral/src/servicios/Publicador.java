@@ -74,6 +74,11 @@ public class Publicador {
   }
   
   @WebMethod
+  public void altaListaParticular(String nombreLista, String nickUsuario, Boolean visibilidad) throws DuplicateClassException {
+    Fabrica.getIListas().altaListaParticular(nombreLista, nickUsuario, visibilidad);
+  }
+  
+  @WebMethod
   public DtPaquete busquedaGeneral(String txtBusqueda, int orden) {
     return empaquetar(Fabrica.getIDatos().busquedaGeneral(txtBusqueda, orden));
   }
@@ -114,6 +119,17 @@ public class Publicador {
     DtPaquete pack = new DtPaquete();
     List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>(); 
     for (DtUniversal dato : Fabrica.getIVideos().listarTodosLosVideos(nick)) {
+      listaUniversal.add(dato);
+    };
+    pack.setListaDt(listaUniversal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIUsuariosCanales().listarDtVideosDuenosLista(usuario, lista, defecto)) {
       listaUniversal.add(dato);
     };
     pack.setListaDt(listaUniversal);
