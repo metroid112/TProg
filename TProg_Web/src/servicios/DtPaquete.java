@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="contenido" type="{http://servicios/}dtUniversal" minOccurs="0"/&gt;
+ *         &lt;element name="listaContenido" type="{http://servicios/}dtUniversal" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="listaAux" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -32,11 +33,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtPaquete", propOrder = {
     "contenido",
+    "listaContenido",
     "listaAux"
 })
 public class DtPaquete {
 
     protected DtUniversal contenido;
+    @XmlElement(nillable = true)
+    protected List<DtUniversal> listaContenido;
     @XmlElement(nillable = true)
     protected List<String> listaAux;
 
@@ -62,6 +66,35 @@ public class DtPaquete {
      */
     public void setContenido(DtUniversal value) {
         this.contenido = value;
+    }
+
+    /**
+     * Gets the value of the listaContenido property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listaContenido property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListaContenido().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DtUniversal }
+     * 
+     * 
+     */
+    public List<DtUniversal> getListaContenido() {
+        if (listaContenido == null) {
+            listaContenido = new ArrayList<DtUniversal>();
+        }
+        return this.listaContenido;
     }
 
     /**

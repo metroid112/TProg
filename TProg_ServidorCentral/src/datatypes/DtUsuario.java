@@ -9,40 +9,31 @@ import javax.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtUsuario {
 
-  public Date fechaNacimiento;
-  public BufferedImage imagen;
+  public String nick;
   public String nombre;
   public String apellido;
   public String canal;
   public String correo;
   public String descripcionCanal;
   public boolean privado;
-  public String nick;
-  public String imgPath;
+  public int idImagen;
+  public Date fechaNacimiento;
   public Date ultimaActividad;
   public String categoria;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
-      String descripcionCanal, Date fechaNacimiento, BufferedImage imagen, boolean privado,
-      String nick, String imgPath, String categoria) {
+      String descripcionCanal, Date fechaNacimiento, boolean privado,
+      String nick, int idImagen, String categoria) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.canal = canal;
     this.correo = correo;
     this.descripcionCanal = descripcionCanal;
     this.fechaNacimiento = fechaNacimiento;
-    this.imagen = imagen;
     this.privado = privado;
     this.nick = nick;
-    this.imgPath = imgPath;
+    this.idImagen = idImagen;
     this.categoria = categoria;
-  }
-
-  public DtUsuario(String nick, String canal, String path, Date ultimaActividad) {
-    this.nick = nick;
-    this.canal = canal;
-    this.imgPath = path;
-    this.setUltimaActividad(ultimaActividad);
   }
 
   @Override

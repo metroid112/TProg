@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dataMaestro complex type.
+ * <p>Clase Java para dataMaestro complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dataMaestro"&gt;
@@ -44,7 +44,7 @@ public class DataMaestro {
     protected List<DataPersona> convocados;
 
     /**
-     * Gets the value of the nombre property.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
@@ -56,7 +56,7 @@ public class DataMaestro {
     }
 
     /**
-     * Sets the value of the nombre property.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
@@ -68,7 +68,7 @@ public class DataMaestro {
     }
 
     /**
-     * Gets the value of the apellido property.
+     * Obtiene el valor de la propiedad apellido.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class DataMaestro {
     }
 
     /**
-     * Sets the value of the apellido property.
+     * Define el valor de la propiedad apellido.
      * 
      * @param value
      *     allowed object is
