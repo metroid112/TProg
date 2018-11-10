@@ -607,6 +607,7 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIListas().altaListaDefecto(LD3.nombre);
 
       class ListaParticularBean {
+        public int id;
         public String nombre;
         public int owner;
       }
@@ -617,24 +618,32 @@ public class CtrlDatos implements IDatos {
       ListaParticularBean LP4 = new ListaParticularBean();
       ListaParticularBean LP5 = new ListaParticularBean();
       ListaParticularBean LP6 = new ListaParticularBean();
-
+      
+      int idLista = 0;
+      
       LP1.nombre = "Nostalgia";
       LP1.owner = KH.id;
+      LP1.id = idLista++;
 
       LP2.nombre = "De fiesta";
       LP2.owner = TC.id;
+      LP2.id = idLista++;
 
       LP3.nombre = "Novedades FING";
       LP3.owner = HG.id;
+      LP3.id = idLista++;
 
       LP4.nombre = "De todo un poco";
       LP4.owner = CS.id;
+      LP4.id = idLista++;
 
       LP5.nombre = "Noticias y CYT";
       LP5.owner = NJ.id;
+      LP5.id = idLista++;
 
       LP6.nombre = "Solo deportes";
       LP6.owner = JB.id;
+      LP6.id = idLista++;
 
       Fabrica.getIListas().altaListaParticular(LP1.nombre, LP1.owner, true);
       Fabrica.getIListas().altaListaParticular(LP2.nombre, LP2.owner, false);
@@ -642,65 +651,32 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIListas().altaListaParticular(LP4.nombre, LP4.owner, false);
       Fabrica.getIListas().altaListaParticular(LP5.nombre, LP5.owner, true);
       Fabrica.getIListas().altaListaParticular(LP6.nombre, LP6.owner, true);
-      //int idVideo, int idUsuario, int idLista, boolean defecto
-      //nombreVideo, NombreDueñoVideo,NombreDueñoLista,NombreLista
-      Fabrica.getIListas().agregarVideoLista("Sweet child'o mine",JB.id, "kairoh",
-          "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("Sweet child'o mine",KH.id, "kairoh",
-          "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("Dancing in the Dark",KH.id, "kairoh",
-          "Nostalgia",
-          false);
-      Fabrica.getIListas().agregarVideoLista("Thriller",KH.id, "kairoh", "Nostalgia", false);
-      Fabrica.getIListas().agregarVideoLista("Thriller",JB.id, "kairoh", "Nostalgia", false);
-      Fabrica.getIListas().agregarVideoLista("Locura celeste",TC.id, "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("Locura celeste",CS.id, "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista("Niño payaso",TC.id, "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista( "Niño payaso",CS.id, "tabarec", "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista( "Etapa Don Timoteo Liguilla",CS.id, "tabarec",
-          "De fiesta",
-          false);
-      Fabrica.getIListas().agregarVideoLista( "100 años de FING",HG.id, "hectorg",
-          "Novedades FING",
-          false);
-      Fabrica.getIListas().agregarVideoLista( V7.nombre,HG.id, "hectorg",
-          "Novedades FING",
-          false);
-      Fabrica.getIListas().agregarVideoLista( V8.nombre,HG.id ,"hectorg",
-          "Novedades FING", false);
-      Fabrica.getIListas().agregarVideoLista( "Locura celeste",TC.id, "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista( "Locura celeste",CS.id, "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista( "Niño payaso",TC.id ,"cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista( "Niño payaso",CS.id, "cachilas",
-          "De todo un poco",
-          false);
-      Fabrica.getIListas().agregarVideoLista( "Etapa A contramano Liguilla",CS.id,
-          "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("Etapa Don Timoteo Liguilla",CS.id, "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista( "Inauguracion Estadio Peñarol",JB.id,
-          "cachilas",
-          "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista( V8.nombre,HG.id ,"nicoJ",
-          "Noticias y CYT", false);
-      Fabrica.getIListas().agregarVideoLista( "Ventana al futuro Uruguay y deficit de ingenieros", NJ.id,
-          "nicoJ", "Noticias y CYT", false);
-      Fabrica.getIListas().agregarVideoLista( "Show de goles", JB.id ,"juliob", "Solo deportes",
-          false);
-      Fabrica.getIListas().agregarVideoLista( "Inauguracion Estadio Peñarol", JB.id,"juliob",
-          "Solo deportes", false);
+
+      
+      Fabrica.getIListas().agregarVideoLista(V3a.id, KH.id, LP1.id, false);
+      Fabrica.getIListas().agregarVideoLista(V3b.id, KH.id, LP1.id, false);
+      Fabrica.getIListas().agregarVideoLista(V4.id, KH.id, LP1.id, false);
+      Fabrica.getIListas().agregarVideoLista(V5b.id, KH.id, LP1.id, false);
+      Fabrica.getIListas().agregarVideoLista(V5a.id, KH.id, LP1.id, false);
+      Fabrica.getIListas().agregarVideoLista(V1a.id, TC.id, LP2.id, false);
+      Fabrica.getIListas().agregarVideoLista(V1b.id, TC.id, LP2.id, false);
+      Fabrica.getIListas().agregarVideoLista(V2a.id, TC.id, LP2.id, false);
+      Fabrica.getIListas().agregarVideoLista(V2b.id, TC.id, LP2.id, false);
+      Fabrica.getIListas().agregarVideoLista(V10.id, TC.id, LP2.id, false);
+      Fabrica.getIListas().agregarVideoLista(V6.id, HG.id, LP3.id, false);
+      Fabrica.getIListas().agregarVideoLista(V7.id, HG.id, LP3.id, false);
+      Fabrica.getIListas().agregarVideoLista(V8.id, HG.id, LP3.id, false);
+      Fabrica.getIListas().agregarVideoLista(V1a.id, CS.id, LP4.id, false);
+      Fabrica.getIListas().agregarVideoLista(V1b.id, CS.id, LP4.id, false);
+      Fabrica.getIListas().agregarVideoLista(V2a.id, CS.id, LP4.id, false);
+      Fabrica.getIListas().agregarVideoLista(V2b.id, CS.id, LP4.id, false);
+      Fabrica.getIListas().agregarVideoLista(V9.id, CS.id, LP4.id, false);
+      Fabrica.getIListas().agregarVideoLista(V10.id, CS.id, LP4.id, false);
+      Fabrica.getIListas().agregarVideoLista(V13.id, CS.id, LP4.id, false);
+      Fabrica.getIListas().agregarVideoLista(V8.id, NJ.id, LP5.id, false);
+      Fabrica.getIListas().agregarVideoLista(V16.id, NJ.id, LP5.id, false);
+      Fabrica.getIListas().agregarVideoLista(V11.id, JB.id, LP6.id, false);
+      Fabrica.getIListas().agregarVideoLista(V13.id, JB.id, LP6.id, false);
 
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
       Fabrica.getIUsuariosCanales().comentarVideo("Fue un gran evento",
