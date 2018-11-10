@@ -16,14 +16,14 @@ public class DtUsuario extends DtUniversal{
   public String correo;
   public String descripcionCanal;
   public boolean privado;
-  public int idImagen;
+  public String idImagen;
   public Date fechaNacimiento;
   public Date ultimaActividad;
   public String categoria;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
       String descripcionCanal, Date fechaNacimiento, boolean privado,
-      String nick, int idImagen, String categoria) {
+      String nick, String idImagen, String categoria) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.canal = canal;
