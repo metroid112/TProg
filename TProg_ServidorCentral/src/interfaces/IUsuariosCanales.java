@@ -11,7 +11,7 @@ import excepciones.NotFoundException;
 public interface IUsuariosCanales {
 
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
-      Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
+      Date fechaNacimiento, byte[] imgByte, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass);
 
   public boolean existeUsuario(String nick);

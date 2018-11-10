@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -32,7 +33,7 @@ import servicios.PublicadorService;
 @MultipartConfig
 public class AltaUsuario extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  
+
   public AltaUsuario() {
     super();
   }
@@ -51,30 +52,21 @@ public class AltaUsuario extends HttpServlet {
         String correo = request.getParameter("mail");
         Part imgFile = request.getPart("img");
         String imagenPath = null;
+        byte[] bytearray = null;
         if (imgFile.getSize() != 0) {
           String imgFileName = imgFile.getSubmittedFileName();
           InputStream imgFileContent = imgFile.getInputStream();
-          File pathImgUsuario = new File(getServletContext().getRealPath("/"), "img/usuarios");
-          if (!pathImgUsuario.isDirectory()) {
-            pathImgUsuario.mkdirs();
-          }        
-          File imgUsuario = new File(pathImgUsuario, imgFileName);
-          try (InputStream input = imgFileContent) {
-            Files.copy(input, imgUsuario.toPath(), StandardCopyOption.REPLACE_EXISTING);          
-          }
-          imagenPath = "img/usuarios/" + imgFile.getSubmittedFileName();
-        } else {
-          imagenPath = "img/usuarios/null.JPG"; 
+          bytearray = IOUtils.toByteArray(imgFileContent);
         }
         if (!pass.equals(passConfirm)) {
           request.setAttribute("ERROR_PASS", true);
           error = true;
         }
-        if (false) {    // TODO ajax nick
+        if (false) { // TODO ajax nick
           request.setAttribute("ERROR_NICK", true);
           error = true;
         }
-        if (false) {    // TODO ajax correo
+        if (false) { // TODO ajax correo
           request.setAttribute("ERROR_MAIL", true);
           error = true;
         }
@@ -100,7 +92,7 @@ public class AltaUsuario extends HttpServlet {
           String categoria;
           if (request.getParameter("categoria") == "Sin categoría") {
             categoria = null;
-          } else { 
+          } else {
             categoria = request.getParameter("categoria");
           }
           Boolean visible;
@@ -113,7 +105,8 @@ public class AltaUsuario extends HttpServlet {
           fechaNacimientoCal.setTime(fechaNacimiento);
           XMLGregorianCalendar fechaNacimientoXML = null;
           try {
-            fechaNacimientoXML = DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaNacimientoCal);
+            fechaNacimientoXML =
+                DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaNacimientoCal);
           } catch (DatatypeConfigurationException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -121,7 +114,7 @@ public class AltaUsuario extends HttpServlet {
           PublicadorService service = new PublicadorService();
           Publicador port = service.getPublicadorPort();
           port.altaUsuario(nickname, nombre, apellido, correo,
-              fechaNacimientoXML, imagenPath,
+              fechaNacimientoXML, bytearray,
               nombreCanal, descripcionCanal, categoria, visible, passConfirm);
           response.sendRedirect("Inicio");
         }

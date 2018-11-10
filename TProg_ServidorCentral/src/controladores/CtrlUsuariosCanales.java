@@ -6,6 +6,7 @@ import java.util.List;
 
 import clases.Calificacion;
 import clases.Canal;
+import clases.Imagen;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtUsuario;
@@ -26,10 +27,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
-      Date fechaNacimiento, String imagenPath, String nombreCanal, String descripcionCanal,
+      Date fechaNacimiento, byte[] imgByte, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass) {
+    Imagen img = new Imagen(imgByte);
     Usuario user =
-        new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, imagenPath, pass);
+        new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, img, pass);
     String descCanal;
     if (descripcionCanal.equals("") || descripcionCanal == null) {
       descCanal = nickname;
