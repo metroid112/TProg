@@ -19,7 +19,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <pre>
  * &lt;complexType name="dtLista"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="categorias" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -30,7 +30,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="idLista" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
+ *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
@@ -48,7 +48,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "ultimaActividad",
     "idLista"
 })
-public class DtLista {
+public class DtLista
+    extends DtUniversal
+{
 
     @XmlElement(nillable = true)
     protected List<String> categorias;

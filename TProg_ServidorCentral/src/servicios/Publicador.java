@@ -177,6 +177,59 @@ public class Publicador {
     return pack;
   }
   
+  @WebMethod
+  public DtPaquete getListasPublicas(){
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIListas().getDtListasPublicas()) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);    
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtListasPrivadasUsuario(String nick){
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIListas().getDtListasPrivadasUsuario(nick)) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);   
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtListasDefectoUsuario(String nick){
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIListas().getDtListasDefectoUsuario(nick)) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);    
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtDefecto(String usuario, String nombreListaDefecto){
+    DtPaquete pack = new DtPaquete();
+    DtUniversal universal = Fabrica.getIListas().getDtDefecto(usuario, nombreListaDefecto);
+    pack.setContenido(universal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDt(int idLista){
+    try{
+    DtPaquete pack = new DtPaquete();
+    DtUniversal universal = Fabrica.getIListas().getDt(idLista);
+    pack.setContenido(universal);
+    return pack;
+    }
+    catch(NotFoundException e){
+      return null;
+    }
+  }
   /**
    * Empaqueta un data type generico
    * @param contenido

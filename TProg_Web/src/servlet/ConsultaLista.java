@@ -13,6 +13,8 @@ import datatypes.DtUsuario;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
+import servicios.Publicador;
+import servicios.PublicadorService;
 import utils.EstadoSesion;
 
 @WebServlet("/ConsultaLista")
@@ -25,15 +27,18 @@ public class ConsultaLista extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    IListas ctrlListas = Fabrica.getIListas();
-    if (request.getParameter("STATE").equals("START")) {
-      // obtener las listas necesarias, todas las listas particulares.
-      request.setAttribute("LISTAS", ctrlListas.getListasPublicas());
+   // IListas ctrlListas = Fabrica.getIListas();
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();  
+    
+    if (request.getParameter("STATE").equals("START")) {    
+      
+      request.setAttribute("LISTAS", port.getListasPublicas());
       if (request.getSession().getAttribute("LOGIN") != null
           && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
         String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-        request.setAttribute("LISTASPRIVADAS", ctrlListas.getDtListasPrivadasUsuario(usuario));
-        request.setAttribute("LISTASDEFECTO", ctrlListas.getDtListasDefectoUsuario(usuario));
+        request.setAttribute("LISTASPRIVADAS", port.getDtListasPrivadasUsuario(usuario));
+        request.setAttribute("LISTASDEFECTO", port.getDtListasDefectoUsuario(usuario));
       }
       request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
     } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {

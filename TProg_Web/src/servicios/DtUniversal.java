@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     DtBusqueda.class,
     DtVideo.class,
+    DtLista.class,
     DtUsuario.class,
     DtCategoria.class
 })
