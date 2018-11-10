@@ -18,16 +18,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="imagen" type="{http://servicios/}bufferedImage" minOccurs="0"/&gt;
+ *         &lt;element name="nick" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="canal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="correo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="descripcionCanal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="privado" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="nick" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="imgPath" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="idImagen" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="categoria" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
@@ -40,82 +39,56 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtUsuario", propOrder = {
-    "fechaNacimiento",
-    "imagen",
+    "nick",
     "nombre",
     "apellido",
     "canal",
     "correo",
     "descripcionCanal",
     "privado",
-    "nick",
-    "imgPath",
+    "idImagen",
+    "fechaNacimiento",
     "ultimaActividad",
     "categoria"
 })
 public class DtUsuario {
 
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar fechaNacimiento;
-    protected BufferedImage imagen;
+    protected String nick;
     protected String nombre;
     protected String apellido;
     protected String canal;
     protected String correo;
     protected String descripcionCanal;
     protected boolean privado;
-    protected String nick;
-    protected String imgPath;
+    protected int idImagen;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaNacimiento;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar ultimaActividad;
     protected String categoria;
 
     /**
-     * Obtiene el valor de la propiedad fechaNacimiento.
+     * Obtiene el valor de la propiedad nick.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getFechaNacimiento() {
-        return fechaNacimiento;
+    public String getNick() {
+        return nick;
     }
 
     /**
-     * Define el valor de la propiedad fechaNacimiento.
+     * Define el valor de la propiedad nick.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setFechaNacimiento(XMLGregorianCalendar value) {
-        this.fechaNacimiento = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad imagen.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BufferedImage }
-     *     
-     */
-    public BufferedImage getImagen() {
-        return imagen;
-    }
-
-    /**
-     * Define el valor de la propiedad imagen.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BufferedImage }
-     *     
-     */
-    public void setImagen(BufferedImage value) {
-        this.imagen = value;
+    public void setNick(String value) {
+        this.nick = value;
     }
 
     /**
@@ -255,51 +228,43 @@ public class DtUsuario {
     }
 
     /**
-     * Obtiene el valor de la propiedad nick.
+     * Obtiene el valor de la propiedad idImagen.
+     * 
+     */
+    public int getIdImagen() {
+        return idImagen;
+    }
+
+    /**
+     * Define el valor de la propiedad idImagen.
+     * 
+     */
+    public void setIdImagen(int value) {
+        this.idImagen = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad fechaNacimiento.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public String getNick() {
-        return nick;
+    public XMLGregorianCalendar getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
     /**
-     * Define el valor de la propiedad nick.
+     * Define el valor de la propiedad fechaNacimiento.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setNick(String value) {
-        this.nick = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad imgPath.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getImgPath() {
-        return imgPath;
-    }
-
-    /**
-     * Define el valor de la propiedad imgPath.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setImgPath(String value) {
-        this.imgPath = value;
+    public void setFechaNacimiento(XMLGregorianCalendar value) {
+        this.fechaNacimiento = value;
     }
 
     /**

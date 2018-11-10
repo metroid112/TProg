@@ -19,7 +19,6 @@ public class Imagen {
     this.id = Imagen.idCounter;
     //Devuelve image/*;
     String extension = (new Tika().detect(imgByte)).replaceAll("image/", ".");
-    System.out.println(extension);
     File directorio = new File("media/");
     if (!directorio.isDirectory()) {
       directorio.mkdirs();
