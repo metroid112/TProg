@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -680,12 +681,15 @@ public class CtrlDatos implements IDatos {
 
       
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
+      //String texto, Date fecha, int idUsuario, int idVideo,int idOwnerVideo
       Fabrica.getIUsuariosCanales().comentarVideo("Fue un gran evento",
           formatComentario.parse("05/12/2017 14:35"), NJ.id, V7.id, HG.id);
+      
       Fabrica.getIUsuariosCanales().responderComentario("Para el proximo aniversario ofrezco vamo' con los Momo",
           format.parse("08/12/2017 01:47"),HR.id, V7.id, HG.id);
       Fabrica.getIUsuariosCanales().responderComentario("Yo ofrezco a la banda tb",
           format.parse("10/12/2017 17:09"), TC.id, V7.id, "hectorg");
+      
       Fabrica.getIUsuariosCanales().comentarVideo("Felicitaciones FING!!!",
           formatComentario.parse("07/09/2017 04:56"), NJ.id, "100 años de FING", HG.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Un gusto cubrir eventos como este.",
@@ -702,6 +706,7 @@ public class CtrlDatos implements IDatos {
           formatComentario.parse("11/09/2017 03:45"), MT.id, "Locura celeste", TC.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Me encanta este tema",
           formatComentario.parse("11/09/2017 03:45"), MT.id, "Locura celeste", CS.id);
+      
       Fabrica.getIUsuariosCanales().responderComentario("Gracias Marce ;)",
           formatComentario.parse("15/09/2018 12:29"), TC.id, "Locura celeste", TC.id);
       Fabrica.getIUsuariosCanales().responderComentario("Gracias Marce ;)",
