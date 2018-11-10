@@ -2,6 +2,8 @@ package datatypes;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -11,21 +13,21 @@ import clases.Comentario;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DtComentario {
-  public Map<Integer, DtComentario> hijos = new LinkedHashMap<Integer, DtComentario>();
-  public Integer idComentario;
+  public List<DtComentario> hijos = new LinkedList<DtComentario>();
+  public int idComentario;
   public String texto;
   public String usuario;
   public Date fecha;
   private boolean tieneHijos = false;
 
   public DtComentario(Comentario comentario) {
-    this.idComentario = comentario.getId();
+    this.idComentario = comentario.getId().intValue();
     this.texto = comentario.getTexto();
     this.usuario = comentario.getUsuario().getNick();
     this.fecha = comentario.getFecha();
     if (comentario.tieneRespuestas()) {
       for (Comentario com : comentario.getRespuestas().values()) {
-        this.hijos.put(com.getId(), new DtComentario(com));
+        this.hijos.add(new DtComentario(com));
       }
       this.tieneHijos = true;
     }
@@ -39,19 +41,19 @@ public class DtComentario {
     return this.tieneHijos;
   }
 
-  public Map<Integer, DtComentario> getHijos() {
+  public List<DtComentario> getHijos() {
     return hijos;
   }
 
-  public void setHijos(Map<Integer, DtComentario> hijos) {
+  public void setHijos(List<DtComentario> hijos) {
     this.hijos = hijos;
   }
 
-  public Integer getId() {
+  public int getId() {
     return idComentario;
   }
 
-  public void setId(Integer idComentario) {
+  public void setId(int idComentario) {
     this.idComentario = idComentario;
   }
 

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtUsuario;
-import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
+import servicios.DtUniversal;
+import servicios.DtUsuario;
+import servicios.DtVideo;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/VideoServlet")
 public class VideoServlet extends HttpServlet {
@@ -24,19 +28,20 @@ public class VideoServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
 
     IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
 
-    LinkedList<DtVideo> videosPublicos =
-        (LinkedList<DtVideo>) ctrUsuariosCanales.getListaPublicoDtVideo();
+    List<DtUniversal> videosPublicos = port.getListaPublicoDtVideo().getListaDt();
 
     request.setAttribute("VIDEOS_PUBLICOS", videosPublicos);
 
     DtUsuario d = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
 
     if (d != null) {
-      LinkedList<DtVideo> videosUsuario =
-          (LinkedList<DtVideo>) ctrUsuariosCanales.getListaDtVideo(d.nick);
+      List<DtUniversal> videosUsuario =
+          (List<DtUniversal>) port.getListaDtVideo(d.getNick()).getListaDt();
       int largoVideosUsuario = videosUsuario.size();
 
       request.setAttribute("VIDEOS_USUARIO", videosUsuario);
