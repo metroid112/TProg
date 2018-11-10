@@ -10,6 +10,8 @@ SwingX 1.6.5-1: http://central.maven.org/maven2/org/swinglabs/swingx/swingx-core
 
 H2 1.4.197: http://www.h2database.com/h2-2018-03-18.zip
 
+Apache Commons IO 2.6: http://espejito.fder.edu.uy/apache//commons/io/binaries/commons-io-2.6-bin.zip
+
 # TProg
 Taller de Progamación
 
