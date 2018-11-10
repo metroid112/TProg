@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import datatypes.DtCategoria;
 import datatypes.DtUsuario;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
@@ -24,13 +26,12 @@ public class AltaVideo extends HttpServlet {
 
   public AltaVideo() {
     super();
-    // TODO Auto-generated constructor stub
   }
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     ICategorias ctrlCategorias = Fabrica.getICategorias();
-    String[] listaCategorias = ctrlCategorias.listarCategorias();
+    List<DtCategoria> listaCategorias = ctrlCategorias.listarCategorias();
     request.setAttribute("CATEGORIAS", listaCategorias);
     if (request.getParameter("STATE") == null) {
       response.sendRedirect("/jsp/error500.jsp");
@@ -41,7 +42,7 @@ public class AltaVideo extends HttpServlet {
           request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
           request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
         }
-        // TODO: cargar categorias
+        
         request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
       } else {
         String nick = "";
@@ -50,7 +51,7 @@ public class AltaVideo extends HttpServlet {
           request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
           request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
         }
-        nick = user.nick;
+        nick = user.getNick();
         Date fecha = new Date();
         String nombre = request.getParameter("nombre");
         String url = request.getParameter("url");
@@ -68,8 +69,7 @@ public class AltaVideo extends HttpServlet {
             exception.printStackTrace();
           }
           try {
-            Fabrica.getIVideos().altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha,
-                false);
+            Fabrica.getIVideos().altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha,false);
           } catch (DuplicateClassException exception) {
             request.setAttribute("ERROR_1", "Ya existe un video con ese nombre");
             

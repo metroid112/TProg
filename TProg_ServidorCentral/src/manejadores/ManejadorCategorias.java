@@ -1,6 +1,5 @@
 package manejadores;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,9 +42,6 @@ public class ManejadorCategorias {
     }
   }
 
-//  public boolean existeCategoria(String nombreCategoria) {
-  //  return categorias.containsKey(nombreCategoria);
-
   public String[] toArray() {
     return categorias.keySet().toArray(new String[categorias.size()]);
   }
@@ -54,6 +50,13 @@ public class ManejadorCategorias {
     LinkedList<String> lista = new LinkedList<String>(categorias.keySet());
     return lista;
 
+  }
+  public List<DtCategoria> listaCategorias(){ //este se usa, tolist y toarray me parece que no
+    List<DtCategoria> lista = new LinkedList<DtCategoria>();
+    for(Categoria categoria: categorias.values()){
+      lista.add(categoria.getDt());
+    }
+    return lista;
   }
 
   public Map<String, Categoria> getCategorias() {

@@ -34,9 +34,7 @@ public class CtrlCategorias implements ICategorias {
   
   @Override
   public List<DtCategoria> listarCategorias(){
-    List<DtCategoria> resultado = new LinkedList<DtCategoria>();
-    
-    return resultado;
+    return manejadorCategorias.listaCategorias();
   }
 
   @Override

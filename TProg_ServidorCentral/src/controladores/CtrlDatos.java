@@ -13,7 +13,6 @@ import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtBusqueda;
-import datatypes.DtCanal;
 import datatypes.DtLista;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
@@ -681,47 +680,47 @@ public class CtrlDatos implements IDatos {
 
       
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
-      //String texto, Date fecha, int idUsuario, int idVideo,int idOwnerVideo
+      
       Fabrica.getIUsuariosCanales().comentarVideo("Fue un gran evento",
           formatComentario.parse("05/12/2017 14:35"), NJ.id, V7.id, HG.id);
-      
+      //OJO LOS ID DE LOS COMENTARIOS PUEDEN ESTAR MAL, CORROBORAR
       Fabrica.getIUsuariosCanales().responderComentario("Para el proximo aniversario ofrezco vamo' con los Momo",
-          format.parse("08/12/2017 01:47"),HR.id, V7.id, HG.id);
+          format.parse("08/12/2017 01:47"),HR.id, V7.id, 1);
       Fabrica.getIUsuariosCanales().responderComentario("Yo ofrezco a la banda tb",
-          format.parse("10/12/2017 17:09"), TC.id, V7.id, "hectorg");
+          format.parse("10/12/2017 17:09"), TC.id, V7.id, 2);
       
       Fabrica.getIUsuariosCanales().comentarVideo("Felicitaciones FING!!!",
-          formatComentario.parse("07/09/2017 04:56"), NJ.id, "100 años de FING", HG.id);
+          formatComentario.parse("07/09/2017 04:56"), NJ.id, V6.id, HG.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Un gusto cubrir eventos como este.",
           formatComentario.parse("23/10/2017 12:58"), KH.id, V8.id,HG.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Peñarol Peñarol!!!",
-          formatComentario.parse("14/11/2016 05:34"), KH.id, "Inauguracion Estadio Peñarol",JB.id);
+          formatComentario.parse("14/11/2016 05:34"), KH.id, V13.id,JB.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Rock and Rolllll",
-          formatComentario.parse("30/10/2017 02:17"), MT.id, "Sweet child'o mine", KH.id);
+          formatComentario.parse("30/10/2017 02:17"), MT.id, V3b.id, KH.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Rock and Rolllll",
-          formatComentario.parse("30/10/2017 02:17"), MT.id, "Sweet child'o mine", JB.id);
+          formatComentario.parse("30/10/2017 02:17"), MT.id, V3a.id, JB.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Anoche exploto!!!",
-          formatComentario.parse("25/08/2018 18:00"), MT.id, "Dancing in the Dark", KH.id);
+          formatComentario.parse("25/08/2018 18:00"), MT.id, V4.id, KH.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Me encanta este tema",
-          formatComentario.parse("11/09/2017 03:45"), MT.id, "Locura celeste", TC.id);
+          formatComentario.parse("11/09/2017 03:45"), MT.id, V1a.id, TC.id);
       Fabrica.getIUsuariosCanales().comentarVideo("Me encanta este tema",
-          formatComentario.parse("11/09/2017 03:45"), MT.id, "Locura celeste", CS.id);
+          formatComentario.parse("11/09/2017 03:45"), MT.id, V1b.id, CS.id);
       
       Fabrica.getIUsuariosCanales().responderComentario("Gracias Marce ;)",
-          formatComentario.parse("15/09/2018 12:29"), TC.id, "Locura celeste", TC.id);
+          formatComentario.parse("15/09/2018 12:29"), TC.id, V1a.id, 1);
       Fabrica.getIUsuariosCanales().responderComentario("Gracias Marce ;)",
-          formatComentario.parse("15/09/2018 12:29"), TC.id, "Locura celeste", CS.id);
+          formatComentario.parse("15/09/2018 12:29"), TC.id, V1b.id, 1);
 
-      Fabrica.getIUsuariosCanales().valorarVideo("sergiop", false, V7.nombre,"hectorg");
-      Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, V8.nombre,"hectorg");
-      Fabrica.getIUsuariosCanales().valorarVideo("sergiop", true, "Show de goles", "juliob");
-      Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "tabarec");
-      Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "cachilas");
-      Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", true, V7.nombre, "hectorg");
-      Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, V7.nombre, "hectorg");
-      Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "Inauguracion Estadio Peñarol","juliob");
-      Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Locura celeste", "tabarec");
-      Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Dancing in the Dark","kairoh");
+      Fabrica.getIUsuariosCanales().valorarVideo(SP.id, false, V7.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(SP.id, true, V8.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(SP.id, true, V11.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(NJ.id, false, V1b.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(NJ.id, false, V1b.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(NJ.id, true, V7.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(KH.id, true, V7.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(KH.id, true, V13.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(MT.id, true, V1b.id);
+      Fabrica.getIUsuariosCanales().valorarVideo(MT.id, true, V4.id);
     }
   }
 

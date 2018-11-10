@@ -112,10 +112,6 @@ public class CtrlListas implements IListas {
         .getDtLista();
   }
 
-  /*@Override
-  public DtLista getDtDefecto(int idUsuario, String nombreListaDefecto)throws NotFoundException {
-    return manejadorUsuarios.getUsuario(idUsuario).getCanal().getDtListaDefecto(nombreListaDefecto);
-  }*/
 
   @Override
   public Map<Integer, DtLista> getDtListas() {

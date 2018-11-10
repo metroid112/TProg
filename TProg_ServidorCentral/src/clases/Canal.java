@@ -3,7 +3,6 @@ package clases;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import datatypes.DtCanal;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
@@ -36,9 +35,6 @@ public class Canal {
     }
   }
 
-  public DtCanal getDt() {
-    return new DtCanal(this.nombreCanal, this.descripcionCanal, this.visible, this.ultimaActividad);
-  }
   
   public String getNombre() {
     return nombreCanal;

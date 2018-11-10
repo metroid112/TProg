@@ -139,7 +139,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
 
   @Override
   public void responderComentario(String texto, Date fecha, int idUsuario,
-      int idVideo, String nombreDuenoVideo, Integer idComentarioPadre) throws NotFoundException{
+      int idVideo,  Integer idComentarioPadre) throws NotFoundException{
 
     Usuario usuario = manejadorUsuarios.getUsuario(idUsuario);
     Video vid = manejadorVideos.getVideo(idVideo);

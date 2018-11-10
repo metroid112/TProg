@@ -53,25 +53,6 @@ public class CtrlVideos implements IVideos {
     Video video = ManejadorVideos.getManejadorVideos().getVideo(idVideo);
     return video.getDt();
   }
-  /*
-  @Override
-  public List<DtVideo> listarVideos(int idUsuario) throws NotFoundException{
-    
-    List<DtVideo> listaVideos = new ArrayList<DtVideo>();
-    Usuario user = manejadorUsuario.getUsuario(idUsuario);
-    Map<Integer, Video> lista = user.getCanal().getVideosPrivados();
-    
-    for(Video video : lista.values()){
-    listaVideos.add(video.getDt());
-    }
-    lista = user.getCanal().getVideosPublicos();
-    
-    for(Video video : lista.values()){
-    listaVideos.add(video.getDt());
-    }
-    return listaVideos;
-    
-  }*/
 
   @Override
   public DtVideo[] listarTodosLosVideos(int idUsuario)  throws NotFoundException {

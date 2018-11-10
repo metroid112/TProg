@@ -40,7 +40,7 @@ public interface IUsuariosCanales {
       int idOwnerVideo) throws NotFoundException;
 
   void responderComentario(String texto, Date fecha, int nombreUsuario, int nombreVideo,
-      String nombreDuenoVideo, Integer idComentarioPadre) throws NotFoundException;
+       Integer idComentarioPadre) throws NotFoundException;
   
   void valorarVideo(int idUsuario, boolean like, int nombreVideo) throws NotFoundException;
 
