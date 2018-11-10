@@ -643,7 +643,7 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIListas().altaListaParticular(LP5.nombre, LP5.owner, true);
       Fabrica.getIListas().altaListaParticular(LP6.nombre, LP6.owner, true);
       //int idVideo, int idUsuario, int idLista, boolean defecto
-      
+      //nombreVideo, NombreDueñoVideo,NombreDueñoLista,NombreLista
       Fabrica.getIListas().agregarVideoLista("Sweet child'o mine",JB.id, "kairoh",
           "Nostalgia",
           false);
