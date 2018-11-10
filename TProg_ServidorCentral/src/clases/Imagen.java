@@ -8,6 +8,8 @@ import java.io.OutputStream;
 
 import org.apache.tika.Tika;
 
+import excepciones.NotFoundException;
+
 public class Imagen {
   private int id;
   private static int idCounter = 0;
@@ -46,5 +48,19 @@ public class Imagen {
   
   public int getId() {
     return this.id;
+  }
+  
+  public static void borrar(int idImg) throws NotFoundException {
+    File media = new File("media/");
+    boolean borro = false;
+    for (File img : media.listFiles()) {
+      if (img.getName().matches(Integer.toString(idImg) + "\\..*")) {
+        img.delete();
+        borro = true;
+      }
+    }
+    if (!borro) {
+      throw new NotFoundException(Integer.toString(idImg));
+    }
   }
 }
