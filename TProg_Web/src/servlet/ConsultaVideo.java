@@ -41,30 +41,30 @@ public class ConsultaVideo extends HttpServlet {
       DtUsuario d = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
 
       if (request.getParameter("ACCION").equals("VALORAR_POSITIVO")) {
-        if (!ctrUsuariosCanales.yaCalificacdo(d.nick, false, vid.nombre, vid.usuario)) {
+        if (!ctrUsuariosCanales.yaCalificacdo(d.getNick(), false, vid.getNombre(), vid.getUsuario())) {
 
-          ctrUsuariosCanales.valorarVideo(d.nick, true, vid.nombre, vid.usuario);
+          ctrUsuariosCanales.valorarVideo(d.getNick(), true, vid.getNombre(), vid.getUsuario());
         } else {
-          ctrUsuariosCanales.modificarValoracion(true, d.nick, vid.nombre, vid.usuario);
+          ctrUsuariosCanales.modificarValoracion(true, d.getNick(), vid.getNombre(), vid.getUsuario());
         }
       }
       if (request.getParameter("ACCION").equals("VALORAR_NEGATIVO")) {
-        if (!ctrUsuariosCanales.yaCalificacdo(d.nick, true, vid.nombre, vid.usuario)) {
-          ctrUsuariosCanales.valorarVideo(d.nick, false, vid.nombre, vid.usuario);
+        if (!ctrUsuariosCanales.yaCalificacdo(d.getNick(), true, vid.getNombre(), vid.getUsuario())) {
+          ctrUsuariosCanales.valorarVideo(d.getNick(), false, vid.getNombre(), vid.getUsuario());
         } else {
-          ctrUsuariosCanales.modificarValoracion(false, d.nick, vid.nombre, vid.usuario);
+          ctrUsuariosCanales.modificarValoracion(false, d.getNick(), vid.getNombre(), vid.getUsuario());
         }
       }
       if (request.getParameter("ACCION").equals("COMENTAR")) {
         if (request.getParameter("COMENTARIO") != "") {
           if (request.getParameter("COMENTARIO_ID") == null) {
-            ctrUsuariosCanales.comentarVideo(request.getParameter("COMENTARIO"), new Date(), d.nick,
-                vid.nombre, vid.usuario);
+            ctrUsuariosCanales.comentarVideo(request.getParameter("COMENTARIO"), new Date(), d.getNick(),
+                vid.getNombre(), vid.getUsuario());
           } else {
             String idReq = request.getParameter("COMENTARIO_ID");
             int idComentario = Integer.parseInt(idReq);
             ctrUsuariosCanales.responderComentario(request.getParameter("COMENTARIO"), new Date(),
-                d.nick, vid.nombre, vid.usuario, idComentario);
+                d.getNick(), vid.getNombre(), vid.getUsuario(), idComentario);
           }
         }
       }

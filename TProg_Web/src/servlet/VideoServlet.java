@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
@@ -24,7 +25,7 @@ public class VideoServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
+    try{
     IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
 
     LinkedList<DtVideo> videosPublicos =
@@ -36,13 +37,15 @@ public class VideoServlet extends HttpServlet {
 
     if (d != null) {
       LinkedList<DtVideo> videosUsuario =
-          (LinkedList<DtVideo>) ctrUsuariosCanales.getListaDtVideo(d.nick);
+          (LinkedList<DtVideo>) ctrUsuariosCanales.listarVideosCanal(d.getIdUsuario());
       int largoVideosUsuario = videosUsuario.size();
 
       request.setAttribute("VIDEOS_USUARIO", videosUsuario);
     }
 
     request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
+    }
+    catch(NotFoundException e){}
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
