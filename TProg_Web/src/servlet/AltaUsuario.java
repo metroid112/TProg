@@ -9,7 +9,11 @@ import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -18,19 +22,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
-import interfaces.Fabrica;
-import interfaces.ICategorias;
-import interfaces.IUsuariosCanales;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/AltaUsuario")
 @MultipartConfig
 public class AltaUsuario extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  private ICategorias ctrlCategorias = Fabrica.getICategorias();
-  private IUsuariosCanales ctrlUsuarios = Fabrica.getIUsuariosCanales();
-  
   public AltaUsuario() {
     super();
   }
@@ -49,30 +52,21 @@ public class AltaUsuario extends HttpServlet {
         String correo = request.getParameter("mail");
         Part imgFile = request.getPart("img");
         String imagenPath = null;
+        byte[] bytearray = null;
         if (imgFile.getSize() != 0) {
           String imgFileName = imgFile.getSubmittedFileName();
           InputStream imgFileContent = imgFile.getInputStream();
-          File pathImgUsuario = new File(getServletContext().getRealPath("/"), "img/usuarios");
-          if (!pathImgUsuario.isDirectory()) {
-            pathImgUsuario.mkdirs();
-          }        
-          File imgUsuario = new File(pathImgUsuario, imgFileName);
-          try (InputStream input = imgFileContent) {
-            Files.copy(input, imgUsuario.toPath(), StandardCopyOption.REPLACE_EXISTING);          
-          }
-          imagenPath = "img/usuarios/" + imgFile.getSubmittedFileName();
-        } else {
-          imagenPath = "img/usuarios/null.JPG"; 
+          bytearray = IOUtils.toByteArray(imgFileContent);
         }
         if (!pass.equals(passConfirm)) {
           request.setAttribute("ERROR_PASS", true);
           error = true;
         }
-        if (ctrlUsuarios.existeUsuario(nickname)) {
+        if (false) { // TODO ajax nick
           request.setAttribute("ERROR_NICK", true);
           error = true;
         }
-        if (ctrlUsuarios.existeUsuarioMail(correo)) {
+        if (false) { // TODO ajax correo
           request.setAttribute("ERROR_MAIL", true);
           error = true;
         }
@@ -98,7 +92,7 @@ public class AltaUsuario extends HttpServlet {
           String categoria;
           if (request.getParameter("categoria") == "Sin categoría") {
             categoria = null;
-          } else { 
+          } else {
             categoria = request.getParameter("categoria");
           }
           Boolean visible;
@@ -107,9 +101,20 @@ public class AltaUsuario extends HttpServlet {
           } else {
             visible = true;
           }
-          Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo,
-              fechaNacimiento,
-              imagenPath,
+          GregorianCalendar fechaNacimientoCal = new GregorianCalendar();
+          fechaNacimientoCal.setTime(fechaNacimiento);
+          XMLGregorianCalendar fechaNacimientoXML = null;
+          try {
+            fechaNacimientoXML =
+                DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaNacimientoCal);
+          } catch (DatatypeConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+          PublicadorService service = new PublicadorService();
+          Publicador port = service.getPublicadorPort();
+          port.altaUsuario(nickname, nombre, apellido, correo,
+              fechaNacimientoXML, bytearray,
               nombreCanal, descripcionCanal, categoria, visible, passConfirm);
           response.sendRedirect("Inicio");
         }
@@ -121,7 +126,9 @@ public class AltaUsuario extends HttpServlet {
 
   private void volver(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String[] listaCategorias = ctrlCategorias.listarCategorias();
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
+    List<String> listaCategorias = port.listarCategorias().getListaAux();
     request.setAttribute("CATEGORIAS", listaCategorias);
     request.getRequestDispatcher("WEB-INF/pages/alta_usuario.jsp").forward(request, response);
   }

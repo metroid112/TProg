@@ -1,3 +1,4 @@
+<%@ page import="java.util.List" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +30,7 @@
 				<br>
 				Fecha de nacimiento: <input type="date" name="fecha" required>*
 				<br>
-				Contrase√±a: <input type="password" name="pass" required>*
+				ContraseÒa: <input type="password" name="pass" required>*
 				<br>
 				Confirmar contrase√±a: <input type="password" name="passConfirm" required>*
 				<br>
@@ -41,10 +42,10 @@
 				<br>
 				Visibilidad: <input type="radio" name="visibilidad" checked>Privado  <input type="radio" name="visibilidad">P√∫blico
 				<br>
-				Categor√≠a:
+				CategorÌa:
 				<select name="categoria">
-					<option selected value>Sin categor√≠a</option>
-				<% for (String cat : (String[]) request.getAttribute("CATEGORIAS")) { %>
+					<option selected value>Sin categorÌa</option>
+				<% for (String cat : (List<String>) request.getAttribute("CATEGORIAS")) { %>
 					<option value="<%= cat %>"><%= cat %> </option>
 				<% } %>
 				</select>

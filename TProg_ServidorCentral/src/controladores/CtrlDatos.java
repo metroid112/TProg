@@ -773,8 +773,13 @@ public class CtrlDatos implements IDatos {
       if (canal.isVisible()) {
         if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
             || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
-              usuario.getPath(), canal.getUltimaActividad());
+          /*DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
+              usuario.getImg().getId(), canal.getUltimaActividad());*/
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNombre(), usuario.getApellido(),
+              usuario.getCanal().getNombre(), usuario.getCorreo(),
+              usuario.getCanal().getDescripcion(), usuario.getFecha(),
+              !usuario.getCanal().isVisible(), usuario.getNick(),
+              usuario.getImg().getId(), usuario.getCanal().getCategoria().getNombre());
           usuarios.add(dtUsuario);
         }
       }

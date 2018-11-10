@@ -1,6 +1,5 @@
 package datatypes;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -10,21 +9,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 public class DtPaquete {
   private DtUniversal contenido;
   private List<String> listaAux;
-  private List<? extends DtUniversal> listaDt;
-
+  private List<DtUniversal> listaDt;
   
   public DtPaquete() {}
-  
-  public List<? extends DtUniversal> getListaDt() {
-    return listaDt;
-  }
-
-  public void setListaDt(List<? extends DtUniversal> listaDt) {
-    this.listaDt = listaDt;
-  }
 
   public DtUniversal getContenido() {
-    return this.contenido;
+    return contenido;
   }
 
   public void setContenido(DtUniversal contenido) {
@@ -38,4 +28,15 @@ public class DtPaquete {
   public void setListaAux(List<String> listaAux) {
     this.listaAux = listaAux;
   }
+
+  public List<DtUniversal> getListaDt() {
+    return listaDt;
+  }
+
+  public void setListaDt(List<DtUniversal> listaDt) {
+    this.listaDt = listaDt;
+  }
+  
+
+  
 }
