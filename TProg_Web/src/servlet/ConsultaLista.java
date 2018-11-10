@@ -31,7 +31,7 @@ public class ConsultaLista extends HttpServlet {
       request.setAttribute("LISTAS", ctrlListas.getListasPublicas());
       if (request.getSession().getAttribute("LOGIN") != null
           && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
-        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
+        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
         request.setAttribute("LISTASPRIVADAS", ctrlListas.getDtListasPrivadasUsuario(usuario));
         request.setAttribute("LISTASDEFECTO", ctrlListas.getDtListasDefectoUsuario(usuario));
       }

@@ -45,13 +45,13 @@ public class AltaVideo extends HttpServlet {
         
         request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
       } else {
-        String nick = "";
+        int idUsuario = -1;
         DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
         if (user == null) {
           request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
           request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
         }
-        nick = user.getNick();
+        idUsuario = user.getIdUsuario();
         Date fecha = new Date();
         String nombre = request.getParameter("nombre");
         String url = request.getParameter("url");
@@ -69,7 +69,7 @@ public class AltaVideo extends HttpServlet {
             exception.printStackTrace();
           }
           try {
-            Fabrica.getIVideos().altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha,false);
+            Fabrica.getIVideos().altaVideo(idUsuario, nombre, descripcion, duracion, url, categoria, fecha,false);
           } catch (DuplicateClassException exception) {
             request.setAttribute("ERROR_1", "Ya existe un video con ese nombre");
             
@@ -78,7 +78,7 @@ public class AltaVideo extends HttpServlet {
             request.setAttribute("ERROR_2", exception.getMessage());
             request.getRequestDispatcher("WEB-INF/pages/alta_video.jsp").forward(request, response);
           }
-        // volver a index
+        
         response.sendRedirect("Inicio");
         }
 
