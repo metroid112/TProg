@@ -123,5 +123,13 @@ public class DtUsuario extends DtUniversal{
   public void setUltimaActividad(Date ultimaActividad) {
     this.ultimaActividad = ultimaActividad;
   }
+  
+  public void setIdImagen(String idImagen) {
+    this.idImagen = idImagen;
+  }
+  
+  public String getIdImagen() {
+    return this.idImagen;
+  }
 
 }

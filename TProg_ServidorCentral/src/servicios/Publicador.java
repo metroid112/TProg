@@ -8,12 +8,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlValue;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Endpoint;
+
+import com.sun.istack.internal.Nullable;
 
 import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
@@ -65,11 +72,14 @@ public class Publicador {
     }
   }
   
-  @WebMethod
-  public void AltaUsuario(String nickname, String nombre, String apellido, String correo, GregorianCalendar fechaNacimiento,
-      byte[] imgByte, String nombreCanal, String descripcionCanal, String categoria, boolean visible, String pass) {
-    // Cambiar imagenPath
-    Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo, fechaNacimiento.getTime(),
+  @WebMethod  
+  public void AltaUsuario(String nickname, String nombre, String apellido, String correo,
+      GregorianCalendar fechaNacimiento,
+      @XmlElement(required = false, name = "imagen") @WebParam(name = "imagen", header = true) byte[] imgByte, String nombreCanal,
+      String descripcionCanal, String categoria, boolean visible, String pass) {
+    
+    Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo,
+        fechaNacimiento.getTime(),
         imgByte, nombreCanal, descripcionCanal, categoria, visible, pass);
   }
   

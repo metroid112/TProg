@@ -779,7 +779,8 @@ public class CtrlDatos implements IDatos {
               usuario.getImg().getId(), canal.getUltimaActividad());*/
           Categoria categoria = usuario.getCanal().getCategoria();
           Imagen img = usuario.getImg();
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNombre(), usuario.getApellido(),
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNombre(),
+              usuario.getApellido(),
               usuario.getCanal().getNombre(), usuario.getCorreo(),
               usuario.getCanal().getDescripcion(), usuario.getFecha(),
               !usuario.getCanal().isVisible(), usuario.getNick(),

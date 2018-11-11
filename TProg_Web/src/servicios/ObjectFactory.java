@@ -1,7 +1,10 @@
 
 package servicios;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -21,6 +24,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Imagen_QNAME = new QName("http://servicios/", "imagen");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: servicios
@@ -99,6 +103,15 @@ public class ObjectFactory {
      */
     public DtCategoria createDtCategoria() {
         return new DtCategoria();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "imagen")
+    public JAXBElement<byte[]> createImagen(byte[] value) {
+        return new JAXBElement<byte[]>(_Imagen_QNAME, byte[].class, null, ((byte[]) value));
     }
 
 }
