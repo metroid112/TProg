@@ -26,6 +26,7 @@ public class ObjectFactory {
 
     private final static QName _DuplicateClassException_QNAME = new QName("http://servicios/", "DuplicateClassException");
     private final static QName _InvalidDataException_QNAME = new QName("http://servicios/", "InvalidDataException");
+    private final static QName _Imagen_QNAME = new QName("http://servicios/", "imagen");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: servicios
@@ -138,6 +139,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://servicios/", name = "InvalidDataException")
     public JAXBElement<InvalidDataException> createInvalidDataException(InvalidDataException value) {
         return new JAXBElement<InvalidDataException>(_InvalidDataException_QNAME, InvalidDataException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "imagen")
+    public JAXBElement<byte[]> createImagen(byte[] value) {
+        return new JAXBElement<byte[]>(_Imagen_QNAME, byte[].class, null, ((byte[]) value));
     }
 
 }
