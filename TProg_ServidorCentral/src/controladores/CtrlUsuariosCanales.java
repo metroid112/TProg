@@ -250,7 +250,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       
       // ** VIDEOS **
       Map<String, Video> videos = user.getCanal().getVideos();
-      
+      for (Video video : videos.values()) {
+        
+        video = null;
+      }
       
       // ** LISTAS **
       
