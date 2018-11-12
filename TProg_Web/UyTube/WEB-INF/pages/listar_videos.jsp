@@ -1,5 +1,6 @@
-<%@page import="datatypes.DtUsuario"%>
-<%@page import="datatypes.DtVideo"%>
+<%@page import="servicios.DtUsuario"%>
+<%@page import="servicios.DtUniversal" %>
+<%@page import="servicios.DtVideo"%>
 <%@page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
@@ -16,20 +17,21 @@
 			<p>Videos Publicos:</p>
 			<div class="highlights">
 			<%
-				List<DtVideo> listaVideosPublicos = (List<DtVideo>) request.getAttribute("VIDEOS_PUBLICOS");
+				List<DtUniversal> listaVideosPublicos = (List<DtUniversal>) request.getAttribute("VIDEOS_PUBLICOS");
 				String cast;
-				for(DtVideo vp: listaVideosPublicos) { 
-				cast = Integer.toString(vp.idVideo);
+				for(DtUniversal vidUni: listaVideosPublicos) {
+					DtVideo vp = (DtVideo) vidUni;
+					cast = Integer.toString(vp.getIdVideo());
 				%>
-					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=vp.idVideo%>').submit();">	
-					<form id="Form<%=vp.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
+					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=vp.getIdVideo()%>').submit();">	
+					<form id="Form<%=vp.getIdVideo()%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
 						<input type="hidden" id="1" name="VIDEO_ID" value="<%=cast%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="<%=vp.urlThumbnail%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%=vp.getUrlThumbnail()%>">
 						<br>
 						<header>
-						<%=vp.nombre%>
+						<%=vp.getNombre()%>
 						<br>
-						Usuario: <%=vp.usuario%>
+						Usuario: <%=vp.getUsuario()%>
 						</header>
 					</form>	
 					</div>
@@ -44,20 +46,21 @@
 								if(d != null){
 				%>
 				 <%
-				   List<DtVideo> listaVideosUsuario = (List<DtVideo>) request.getAttribute("VIDEOS_USUARIO");
+				   List<DtUniversal> listaVideosUsuario = (List<DtUniversal>) request.getAttribute("VIDEOS_USUARIO");
 				 					String cast2;
-				 					for (DtVideo v : listaVideosUsuario) { 
-				 						cast2 = Integer.toString(v.idVideo);
+				 					for (DtUniversal vidUni : listaVideosUsuario) { 
+				 						DtVideo v = (DtVideo) vidUni;
+				 						cast2 = Integer.toString(v.getIdVideo());
 				 %>			
-					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=v.idVideo%>').submit();">	
-					<form id="Form<%=v.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
+					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=v.getIdVideo()%>').submit();">	
+					<form id="Form<%=v.getIdVideo()%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
 						<input type="hidden" id="1" name="VIDEO_ID" value="<%=cast2%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="<%=v.urlThumbnail%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%=v.getUrlThumbnail()%>">
 						<br>
 						<header>
-						<%= v.nombre %>
+						<%= v.getNombre() %>
 						<br>
-						User: <%= v.usuario %>
+						User: <%= v.getUsuario() %>
 						</header>
 					</form>	
 					</div>

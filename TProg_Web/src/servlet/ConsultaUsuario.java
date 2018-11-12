@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtUsuario;
+import servicios.DtUsuario;
 import interfaces.Fabrica;
 
 @WebServlet("/ConsultaUsuario")
@@ -46,7 +46,7 @@ public class ConsultaUsuario extends HttpServlet {
             Fabrica.getIUsuariosCanales().getSeguidos(nombreUsuario));
         if (usuarioLogueado != null) {
           request.setAttribute("SIGUE",
-              Fabrica.getIUsuariosCanales().isSeguidor(usuarioLogueado.nick, nombreUsuario));
+              Fabrica.getIUsuariosCanales().isSeguidor(usuarioLogueado.getNick(), nombreUsuario));
         }
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);

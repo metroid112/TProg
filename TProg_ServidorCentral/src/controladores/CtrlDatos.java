@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import clases.Canal;
+import clases.Categoria;
+import clases.Imagen;
 import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
@@ -773,8 +775,16 @@ public class CtrlDatos implements IDatos {
       if (canal.isVisible()) {
         if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
             || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
-              usuario.getPath(), canal.getUltimaActividad());
+          /*DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
+              usuario.getImg().getId(), canal.getUltimaActividad());*/
+          Categoria categoria = usuario.getCanal().getCategoria();
+          Imagen img = usuario.getImg();
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNombre(),
+              usuario.getApellido(),
+              usuario.getCanal().getNombre(), usuario.getCorreo(),
+              usuario.getCanal().getDescripcion(), usuario.getFecha(),
+              !usuario.getCanal().isVisible(), usuario.getNick(),
+              img == null ? "0.JPG" : Integer.toString(img.getId()) + img.getExtension(), categoria == null ? "Sin categoria" : categoria.getNombre());
           usuarios.add(dtUsuario);
         }
       }

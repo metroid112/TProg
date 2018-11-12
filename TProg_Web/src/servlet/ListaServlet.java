@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtUsuario;
-import datatypes.DtVideo;
-import interfaces.Fabrica;
+import servicios.DtUniversal;
+import servicios.DtUsuario;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/ListaServlet")
 public class ListaServlet extends HttpServlet {
@@ -25,11 +26,13 @@ public class ListaServlet extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();   
     String nombreLista = (String) request.getParameter("nombreLista");
     Boolean visibilidad;
-    String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-    String[] listasPublicas = Fabrica.getIListas().listarListasDefectoUsuario(nickUsuario);
-    String[] listasParticulares = Fabrica.getIListas().listarListasParticularUsuario(nickUsuario);
+    String nickUsuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+    List<String> listasPublicas = port.listarListasDefectoUsuario(nickUsuario).getListaAux();
+    List<String> listasParticulares = port.listarListasParticularUsuario(nickUsuario).getListaAux();
     if (request.getParameter("STATE") != null
         && request.getParameter("STATE").equals("DETALLESLISTA")) {
       String listaSeleccionada = (String) request.getParameter("LISTA");
@@ -39,8 +42,7 @@ public class ListaServlet extends HttpServlet {
       if (request.getParameter("LISTAPUBLICA").equals("S")) {
         listaDefecto = true;
       }
-      List<DtVideo> videosDeLista = Fabrica.getIUsuariosCanales()
-          .listarDtVideosDuenosLista(nickUsuario, listaSeleccionada, listaDefecto);
+      List<DtUniversal> videosDeLista = port.listarDtVideosDuenosLista(nickUsuario, listaSeleccionada, listaDefecto).getListaDt();
       request.setAttribute("VIDEOSLISTA", videosDeLista);
       request.getRequestDispatcher("/WEB-INF/pages/seleccionar_video.jsp").forward(request,
           response);
@@ -60,7 +62,7 @@ public class ListaServlet extends HttpServlet {
       // String nickUsuario = ((DtUsuario)
       // request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       try {
-        Fabrica.getIListas().altaListaParticular(nombreLista, nickUsuario, visibilidad);
+        port.altaListaParticular(nombreLista, nickUsuario, visibilidad);
         request.setAttribute("EXITO", "¡Se ha creado la lista con éxito!");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
       } catch (Exception e) {

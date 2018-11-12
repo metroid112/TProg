@@ -69,7 +69,7 @@
 						<input type="hidden" name="STATE" value="INFO">
 						<input type="hidden" name="usuario" value="<%= usuario.getNick() %>">
 						<div class="thumbnail">
-							<img class="icon" width="30%" alt="Lista de reproduccion" src="<%= usuario.getImgPath() %>">
+							<img class="icon" width="30%" alt="Usuario" src="/Img?id=<%=usuario.getIdImagen()%>">
 						</div>
 						<br>
 						<header>

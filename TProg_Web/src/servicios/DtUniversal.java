@@ -29,6 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "dtUniversal")
 @XmlSeeAlso({
     DtBusqueda.class,
+    DtVideo.class,
+    DtUsuario.class,
     DtCategoria.class
 })
 public abstract class DtUniversal {

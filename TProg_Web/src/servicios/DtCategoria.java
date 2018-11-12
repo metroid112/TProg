@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="categoriaId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="videos" type="{http://servicios/}dtVideo" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="listas" type="{http://servicios/}dtLista" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtCategoria", propOrder = {
     "nombre",
+    "categoriaId",
     "videos",
     "listas"
 })
@@ -41,6 +43,7 @@ public class DtCategoria
 {
 
     protected String nombre;
+    protected int categoriaId;
     @XmlElement(nillable = true)
     protected List<DtVideo> videos;
     @XmlElement(nillable = true)
@@ -68,6 +71,22 @@ public class DtCategoria
      */
     public void setNombre(String value) {
         this.nombre = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad categoriaId.
+     * 
+     */
+    public int getCategoriaId() {
+        return categoriaId;
+    }
+
+    /**
+     * Define el valor de la propiedad categoriaId.
+     * 
+     */
+    public void setCategoriaId(int value) {
+        this.categoriaId = value;
     }
 
     /**

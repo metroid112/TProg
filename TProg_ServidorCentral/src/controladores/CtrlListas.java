@@ -71,7 +71,7 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public String[] listarListasDefectoUsuario(String usuario) {
+  public List<String> listarListasDefectoUsuario(String usuario) {
 
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
@@ -81,7 +81,7 @@ public class CtrlListas implements IListas {
   }
 
   @Override
-  public String[] listarListasParticularUsuario(String usuario) {
+  public List<String> listarListasParticularUsuario(String usuario) {
 
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();

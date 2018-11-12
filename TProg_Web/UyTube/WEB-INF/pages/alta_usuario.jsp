@@ -40,7 +40,7 @@
 				<br>
 				Descripción del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
 				<br>
-				Visibilidad: <input type="radio" name="visibilidad" checked>Privado  <input type="radio" name="visibilidad">Público
+				Visibilidad: <input type="radio" name="visibilidad" value="privado" checked>Privado  <input type="radio" name="visibilidad">Público
 				<br>
 				Categor�a:
 				<select name="categoria">
