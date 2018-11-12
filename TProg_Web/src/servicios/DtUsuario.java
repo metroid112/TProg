@@ -25,7 +25,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="correo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="descripcionCanal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="privado" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="idImagen" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="idImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="categoria" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -62,7 +62,7 @@ public class DtUsuario
     protected String correo;
     protected String descripcionCanal;
     protected boolean privado;
-    protected int idImagen;
+    protected String idImagen;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fechaNacimiento;
     @XmlSchemaType(name = "dateTime")
@@ -232,16 +232,24 @@ public class DtUsuario
     /**
      * Obtiene el valor de la propiedad idImagen.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getIdImagen() {
+    public String getIdImagen() {
         return idImagen;
     }
 
     /**
      * Define el valor de la propiedad idImagen.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setIdImagen(int value) {
+    public void setIdImagen(String value) {
         this.idImagen = value;
     }
 
