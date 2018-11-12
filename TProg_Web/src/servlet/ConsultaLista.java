@@ -27,7 +27,7 @@ public class ConsultaLista extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-   // IListas ctrlListas = Fabrica.getIListas();
+
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();  
     
@@ -44,17 +44,12 @@ public class ConsultaLista extends HttpServlet {
     } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
       request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
-      DtLista dtLista = null;
+      servicios.DtPaquete dtLista = null;
       if (request.getParameter("NOMBRELISTADEFECTO") != null) { // LISTA DEFECTO
-        dtLista = Fabrica.getIListas().getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).nick,
+        dtLista = port.getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).nick,
             request.getParameter("NOMBRELISTADEFECTO"));
       } else {
-        try {
-          dtLista = Fabrica.getIListas().getDt(idLista);
-        } catch (NotFoundException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
+          dtLista = port.getDt(idLista);
       }
       request.setAttribute("DTLISTA", dtLista);
       request.getRequestDispatcher("WEB-INF/pages/detalles_lista.jsp").forward(request, response);
