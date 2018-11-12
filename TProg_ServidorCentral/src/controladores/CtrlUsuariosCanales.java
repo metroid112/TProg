@@ -3,6 +3,7 @@ package controladores;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import clases.Calificacion;
 import clases.Canal;
@@ -225,11 +226,37 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       // ** CALIFICACIONES **
       List<Calificacion> calificaciones = user.getCalificaciones();
       for (Calificacion calificacion : calificaciones) {
-        calificacion.setVideo(null);
+        
+        // Remuevo link video -> calificacion
+        List<Calificacion> calificacionesVideo = calificacion.getVideo().getCalificaciones();
+        for (Calificacion calificacionVideo : calificacionesVideo) {
+          if (calificacionVideo.getUsuario().getId() == user.getId()) {
+            calificacionesVideo.remove(calificacionVideo);
+            calificacionVideo = null;
+            break;
+          }
+        }
+        
+        // Remuevo link calificacion -> video
+        calificacion.setVideo(null); 
+        
+        // Remuevo link calificacion -> usuario
+        calificacion.setUsuario(null);
+        
         calificacion = null;
       }
       calificaciones.clear();
       calificaciones = null;
+      
+      // ** VIDEOS **
+      Map<String, Video> videos = user.getCanal().getVideos();
+      
+      
+      // ** LISTAS **
+      
+      // ** CATEGORIAS **
+      
+      // ** CANAL ** 
       
       // ** MANEJADOR **
       manejadorUsuarios.getMap().remove(nickUsuario);

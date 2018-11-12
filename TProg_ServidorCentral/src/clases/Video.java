@@ -135,4 +135,8 @@ public class Video {
   public Date getFecha() {
     return this.fecha;
   }
+
+  public List<Calificacion> getCalificaciones() {
+    return this.calificaciones;
+  }
 }
