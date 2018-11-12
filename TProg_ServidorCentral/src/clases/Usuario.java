@@ -68,9 +68,10 @@ public class Usuario {
   public DtUsuario getDt() {
     String categoria = this.getCanal().getCategoria() == null ? "Sin Categoria"
         : this.getCanal().getCategoria().getNombre();
+    Imagen img = this.img;
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
         this.canal.getDescripcion(), this.fechaNacimiento, this.canal.isVisible(),
-        this.nick, this.img.getId(), categoria);
+        this.nick, img == null ? "0.JPG" : Integer.toString(img.getId()) + img.getExtension(), categoria);
   }
 
   public String getNick() {
