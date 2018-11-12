@@ -29,7 +29,7 @@
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
 			<% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
 			<div class="thumbnail">
-  				<img src="<%= logueado.getIdImagen() %>" alt="Image"/>
+  				<img src="/Img?id=<%= logueado.getIdImagen()%>" alt="Image"/>
 			</div>
 			Iniciado como <%= logueado.getNick() %>
 			<br>
