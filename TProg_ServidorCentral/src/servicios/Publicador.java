@@ -1,4 +1,7 @@
 package servicios;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Calendar;
@@ -19,6 +22,8 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlValue;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Endpoint;
+
+import org.apache.commons.io.IOUtils;
 
 import com.sun.istack.internal.Nullable;
 
@@ -75,7 +80,8 @@ public class Publicador {
   @WebMethod  
   public void AltaUsuario(String nickname, String nombre, String apellido, String correo,
       GregorianCalendar fechaNacimiento,
-      @XmlElement(required = false, name = "imagen") @WebParam(name = "imagen", header = true) byte[] imgByte, String nombreCanal,
+      @XmlElement(required = false, name = "imagen")
+      @WebParam(name = "imagen", header = true) byte[] imgByte, String nombreCanal,
       String descripcionCanal, String categoria, boolean visible, String pass) {
     
     Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo,
@@ -238,6 +244,19 @@ public class Publicador {
     Fabrica.getIListas().agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
   }
   
+  @WebMethod
+  public byte[] getImagen(String id) {
+    byte[] imagenByte = null;
+    try {
+      File imagen = new File("media/" + id);
+      FileInputStream inStream = new FileInputStream(imagen);
+      imagenByte = IOUtils.toByteArray(inStream);      
+    } catch (IOException e) {
+      e.printStackTrace();
+      System.out.println("Archivo no encontrado: " + id);
+    }    
+    return imagenByte;
+  }
   
   /**
    * Empaqueta un data type generico
