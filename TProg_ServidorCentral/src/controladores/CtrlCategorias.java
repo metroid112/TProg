@@ -51,27 +51,31 @@ public class CtrlCategorias implements ICategorias {
   }
 
   @Override
-  public LinkedList<String> listarCategorias() {
-    return manejadorCategorias.toList();
+  public List<DtCategoria> listarCategorias() {
+    List<DtCategoria> dtCat = new LinkedList<DtCategoria>();
+    for (Categoria cats : manejadorCategorias.getCategorias().values()) {
+      dtCat.add(cats.getDt());
+    }
+    return dtCat;
   }
   
   @Override
   public DtCategoria consultaDeCategoria(String categoria) {
     Categoria categ = manejadorCategorias.get(categoria);
     List<Video> videos = categ.getVideos();
-    List<DtVideo> dtVideos = new LinkedList<DtVideo>();
+    List<Video> dtVideos = new LinkedList<Video>();
     for (Video vid : videos) {
       if (vid.isVisible()) {
-        dtVideos.add(vid.getDt());
+        dtVideos.add(vid);
       }
     }
     List<ListaParticular> listas = categ.getListas();
-    List<DtLista> dtListas = new LinkedList<DtLista>();
+    List<ListaParticular> dtListas = new LinkedList<ListaParticular>();
     for (ListaParticular lista : listas) {
       if (lista.isVisible()) {
-        dtListas.add(lista.getDtLista());
+        dtListas.add(lista);
       }    
     }
-    return new DtCategoria(categoria, dtVideos, dtListas);
+    return new DtCategoria(categoria, categ.getIdCategoria(), dtVideos, dtListas);
   }
 }

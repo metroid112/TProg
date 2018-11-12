@@ -29,7 +29,10 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   public void altaUsuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, byte[] imgByte, String nombreCanal, String descripcionCanal,
       String categoria, boolean visible, String pass) {
-    Imagen img = new Imagen(imgByte);
+    Imagen img = null;
+    if (imgByte != null) {
+      img = new Imagen(imgByte); 
+    }
     Usuario user =
         new Usuario(nickname, nombre, apellido, correo, fechaNacimiento, img, pass);
     String descCanal;

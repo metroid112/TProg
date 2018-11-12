@@ -40,7 +40,7 @@ public class CtrlVideosTest {
         videosVisiblesCachilas++;
       }
     }
-    assertEquals(videosVisiblesCachilas, interfazVideos.listarTodosLosVideos("cachilas").length);
+    assertEquals(videosVisiblesCachilas, interfazVideos.listarTodosLosVideos("cachilas").size());
   }
 
   @Test

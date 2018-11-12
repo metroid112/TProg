@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtUsuario;
-import interfaces.Fabrica;
-import interfaces.IUsuariosCanales;
+import servicios.DtUsuario;
+import servicios.Publicador;
+import servicios.PublicadorService;
 import utils.EstadoSesion;
 
 @WebServlet("/login")
@@ -37,18 +37,17 @@ public class LoginServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/pages/inicio_sesion.jsp").forward(request, response);
       } else {
         String nick = (String) request.getParameter("nickname");
-        response.getWriter().println(nick); // asddfasdf
+        response.getWriter().println(nick);
         String pass = (String) request.getParameter("pass");
-        response.getWriter().println(pass); // asdfasdfadsf
-        IUsuariosCanales interfazUsuariosCanales = Fabrica.getIUsuariosCanales();
-        if ((interfazUsuariosCanales.existeUsuario(nick)
-            || interfazUsuariosCanales.existeUsuarioMail(nick))
-            && interfazUsuariosCanales.checkLogin(nick, pass)) {
+        response.getWriter().println(pass);
+        //IUsuariosCanales interfazUsuariosCanales = Fabrica.getIUsuariosCanales();
+        PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        if (port.checkLogin(nick, pass)) {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
-          DtUsuario dtUsuario = interfazUsuariosCanales.getDt(nick);
+          DtUsuario dtUsuario = (DtUsuario) port.getDtUsuario(nick).getContenido();
           request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
           response.sendRedirect("Inicio");
-          response.getWriter().println("entre al if");
         } else {
           request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
           request.getRequestDispatcher("WEB-INF/error/inicio_sesion_error.jsp").forward(request,

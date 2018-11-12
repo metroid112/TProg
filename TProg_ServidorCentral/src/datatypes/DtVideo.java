@@ -15,15 +15,20 @@ import clases.Categoria;
 import clases.Comentario;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DtVideo {
+
+public class DtVideo extends DtUniversal{
+
   public List<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
-  public Map<Integer, DtComentario> comentarios =
-      new LinkedHashMap<Integer, DtComentario>();
+  public List<String> calificacionesPositivas = new LinkedList<String>(); // Usuarios like
+  public List<String> calificacionesNegativas = new LinkedList<String>(); // Usuarios dislike
+  public List<DtComentario> comentarios = new LinkedList<DtComentario>();
   public Duration duracion;
+  public long duracionSegundos;
   public Date fecha;
   public String usuario;
   public String nombre;
   public String urlVideo;
+  public String youtubeId;
   public String urlThumbnail;
   public String descripcion;
   public String categoria;
@@ -45,69 +50,47 @@ public class DtVideo {
       this.categoria = "Sin Categoria";
     }
     this.duracion = duracion;
+    this.duracionSegundos = duracion.getSeconds();
     this.fecha = fecha;
     this.usuario = usuario;
 
     for (Comentario com : comentarios.values()) {
       DtComentario dtCom = com.getDt(); // Creo Dt
-      this.comentarios.put(dtCom.idComentario, dtCom); // Lo agrego a la coleccion
+      this.comentarios.add(dtCom); // Lo agrego a la coleccion
     }
     this.visible = visible;
     for (Calificacion cal : calificaciones) {
-      this.calificaciones.add(cal.getDt());
+      DtCalificacion dtCal = cal.getDt();
+      if (cal.getlike()) {
+        this.calificacionesPositivas.add(dtCal.usuario);
+      } else {
+        this.calificacionesNegativas.add(dtCal.usuario);
+      }
+      this.calificaciones.add(dtCal);
     }
     this.idVideo = idVideo;
     if (this.urlVideo != null) {
       this.urlThumbnail = "https://img.youtube.com/vi/";
       this.urlThumbnail += this.urlVideo.substring(17, urlVideo.length());
+      this.youtubeId = this.urlVideo.substring(17, urlVideo.length());
       this.urlThumbnail += "/0.jpg";
     }
   }
 
   public int getCantidadCalificacionesPositivas() {
-    int sum = 0;
-    for (DtCalificacion calif : calificaciones) {
-      if (calif.like) {
-        sum++;
-      }
-    }
-    return sum;
+    return this.calificacionesPositivas.size();
   }
 
   public int getCantidadCalificacionesNegativas() {
-    int sum = 0;
-    for (DtCalificacion calif : calificaciones) {
-      if (!calif.like) {
-        sum++;
-      }
-    }
-    return sum;
+    return this.calificacionesNegativas.size();
   }
 
   public List<String> getCalificacionesPositivas() {
-    List<String> positivos = new LinkedList<String>();
-    String usuarioObjetivo;
-
-    for (DtCalificacion calif : calificaciones) {
-      if (calif.like) {
-        usuarioObjetivo = calif.usuario;
-        positivos.add(usuarioObjetivo);
-      }
-    }
-    return positivos;
+    return this.calificacionesPositivas;
   }
 
   public List<String> getCalificacionesNegativas() {
-    List<String> negativos = new LinkedList<String>();
-    String usuarioObjetivo;
-
-    for (DtCalificacion calif : calificaciones) {
-      if (!calif.like) {
-        usuarioObjetivo = calif.usuario;
-        negativos.add(usuarioObjetivo);
-      }
-    }
-    return negativos;
+    return this.calificacionesNegativas;
   }
 
   public String duracionPrintFormat() {
@@ -148,11 +131,11 @@ public class DtVideo {
     this.calificaciones = calificaciones;
   }
 
-  public Map<Integer, DtComentario> getComentarios() {
+  public List<DtComentario> getComentarios() {
     return comentarios;
   }
 
-  public void setComentarios(Map<Integer, DtComentario> comentarios) {
+  public void setComentarios(List<DtComentario> comentarios) {
     this.comentarios = comentarios;
   }
 
@@ -171,4 +154,85 @@ public class DtVideo {
   public void setFecha(Date fecha) {
     this.fecha = fecha;
   }
+  
+  public void setDuracion(Duration duracion) {
+    this.duracion = duracion;
+  }
+
+  public String getUsuario() {
+    return usuario;
+  }
+
+  public void setUsuario(String usuario) {
+    this.usuario = usuario;
+  }
+
+  public String getUrlVideo() {
+    return urlVideo;
+  }
+
+  public void setUrlVideo(String urlVideo) {
+    this.urlVideo = urlVideo;
+  }
+
+  public String getUrlThumbnail() {
+    return urlThumbnail;
+  }
+
+  public void setUrlThumbnail(String urlThumbnail) {
+    this.urlThumbnail = urlThumbnail;
+  }
+
+  public String getDescripcion() {
+    return descripcion;
+  }
+
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+
+  public String getCategoria() {
+    return categoria;
+  }
+
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
+  }
+
+  public boolean isVisible() {
+    return visible;
+  }
+
+  public void setVisible(boolean visible) {
+    this.visible = visible;
+  }
+
+  public int getIdVideo() {
+    return idVideo;
+  }
+
+  public void setIdVideo(int idVideo) {
+    this.idVideo = idVideo;
+  }
+  
+  public Duration getDuracion() {
+    return duracion;
+  }
+
+  public long getDuracionSegundos() {
+    return duracionSegundos;
+  }
+
+  public void setDuracionSegundos(long duracionSegundos) {
+    this.duracionSegundos = duracionSegundos;
+  }
+
+  public String getYoutubeId() {
+    return youtubeId;
+  }
+
+  public void setYoutubeId(String youtubeId) {
+    this.youtubeId = youtubeId;
+  } 
+  
 }

@@ -133,9 +133,9 @@ public class Canal {
     return listaDefecto;
   }
 
-  public String[] getListaDefectoUsuario() {
-
-    return listaDefecto.keySet().toArray(new String[listaDefecto.size()]);
+  public List<String> getListaDefectoUsuario() {
+    List<String> lista = new LinkedList<String>(listaDefecto.keySet());
+    return lista;
 
   }
 
@@ -143,9 +143,9 @@ public class Canal {
     return listaParticulares;
   }
 
-  public String[] getListaParticularUsuario() {
-
-    return listaParticulares.keySet().toArray(new String[listaParticulares.size()]);
+  public List<String> getListaParticularUsuario() {
+    List<String> lista = new LinkedList<String>(listaParticulares.keySet());
+    return lista;
 
   }
 

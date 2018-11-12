@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DtUsuario {
+public class DtUsuario extends DtUniversal{
 
   public String nick;
   public String nombre;
@@ -16,14 +16,14 @@ public class DtUsuario {
   public String correo;
   public String descripcionCanal;
   public boolean privado;
-  public int idImagen;
+  public String idImagen;
   public Date fechaNacimiento;
   public Date ultimaActividad;
   public String categoria;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
       String descripcionCanal, Date fechaNacimiento, boolean privado,
-      String nick, int idImagen, String categoria) {
+      String nick, String idImagen, String categoria) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.canal = canal;
@@ -48,6 +48,62 @@ public class DtUsuario {
     return nombre;
   }
 
+  public Date getFechaNacimiento() {
+    return fechaNacimiento;
+  }
+
+  public void setFechaNacimiento(Date fechaNacimiento) {
+    this.fechaNacimiento = fechaNacimiento;
+  }
+
+  public String getApellido() {
+    return apellido;
+  }
+
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
+  }
+
+  public String getCorreo() {
+    return correo;
+  }
+
+  public void setCorreo(String correo) {
+    this.correo = correo;
+  }
+
+  public String getDescripcionCanal() {
+    return descripcionCanal;
+  }
+
+  public void setDescripcionCanal(String descripcionCanal) {
+    this.descripcionCanal = descripcionCanal;
+  }
+
+  public boolean isPrivado() {
+    return privado;
+  }
+
+  public void setPrivado(boolean privado) {
+    this.privado = privado;
+  }
+
+  public String getNick() {
+    return nick;
+  }
+
+  public void setNick(String nick) {
+    this.nick = nick;
+  }
+
+  public String getCategoria() {
+    return categoria;
+  }
+
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
+  }
+
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
@@ -66,6 +122,14 @@ public class DtUsuario {
 
   public void setUltimaActividad(Date ultimaActividad) {
     this.ultimaActividad = ultimaActividad;
+  }
+  
+  public void setIdImagen(String idImagen) {
+    this.idImagen = idImagen;
+  }
+  
+  public String getIdImagen() {
+    return this.idImagen;
   }
 
 }

@@ -3,6 +3,8 @@ package clases;
 import java.util.LinkedList;
 import java.util.List;
 
+import datatypes.DtCategoria;
+
 public class Categoria {
 
   private List<ListaParticular> listas = new LinkedList<ListaParticular>();
@@ -15,6 +17,14 @@ public class Categoria {
     this.nombre = nombre;
     this.idCategoria = Categoria.contadorID;
     Categoria.contadorID++;
+  }
+
+  public DtCategoria getDt() {
+    return new DtCategoria(this.nombre, this.idCategoria, this.videos, this.listas);
+  }
+  
+  public int getIdCategoria() {
+    return idCategoria;
   }
 
   public void addVideo(Video video) {

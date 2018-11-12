@@ -1,4 +1,4 @@
-<%@page import="datatypes.*" %>
+<%@page import="servicios.*" %>
 <%@page import="utils.*" %>
 <div class="header">
 	<div class="head-item1">
@@ -29,9 +29,9 @@
 		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
 			<% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
 			<div class="thumbnail">
-  				<img src="<%= logueado.imgPath %>" alt="Image"/>
+  				<img src="<%= logueado.getIdImagen() %>" alt="Image"/>
 			</div>
-			Iniciado como <%= logueado.nick %>
+			Iniciado como <%= logueado.getNick() %>
 			<br>
 			<form action="login" method="GET">
 				<input type="hidden" name="CERRAR_SESION" value="CONFIRM">
