@@ -8,7 +8,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<link rel="stylesheet" href="media/bootstrap/js/bootstrap.min.js" media="screen">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<title>UyTube - Index</title>
+	<title>UyTube - Login</title>
 </head>
 <body>
 <div class="container-fluid fill-height">

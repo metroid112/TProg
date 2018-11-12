@@ -33,9 +33,10 @@ public class CargaDatos extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    PublicadorService service = new PublicadorService();
+    /*PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
-    port.cargarDatos();
-    request.getRequestDispatcher("index.jsp").forward(request, response);
+    port.cargarDatos();*/
+    request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request, response);
+    //request.getRequestDispatcher("inicio.jsp").forward(request, response);
   }
 }
