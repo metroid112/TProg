@@ -49,7 +49,7 @@ public class ConsultaLista extends HttpServlet {
         dtLista = port.getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).nick,
             request.getParameter("NOMBRELISTADEFECTO"));
       } else {
-          dtLista = port.getDt(idLista);
+          dtLista = port.getDtLista(idLista);
       }
       request.setAttribute("DTLISTA", dtLista);
       request.getRequestDispatcher("WEB-INF/pages/detalles_lista.jsp").forward(request, response);

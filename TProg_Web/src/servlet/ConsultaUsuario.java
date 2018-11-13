@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import datatypes.DtUsuario;
 import interfaces.Fabrica;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/ConsultaUsuario")
 public class ConsultaUsuario extends HttpServlet {
@@ -22,10 +24,13 @@ public class ConsultaUsuario extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
+    
     switch (request.getParameter("STATE")) {
       case "LISTAR":
         request.setAttribute("STATE", "LISTAR");
-        request.setAttribute("USUARIOS", Fabrica.getIUsuariosCanales().listarNombresUsuarios());
+        request.setAttribute("USUARIOS", port.listarNombresUsuarios());
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);
         break;
@@ -35,18 +40,18 @@ public class ConsultaUsuario extends HttpServlet {
         String nombreUsuario = (String) request.getParameter("usuario");
         request.setAttribute("STATE", "INFO");
         request.setAttribute("USUARIO",
-            Fabrica.getIUsuariosCanales().getDt(nombreUsuario));
+            port.getDtUsuario(nombreUsuario));
         request.setAttribute("VIDEOS",
-            Fabrica.getIVideos().getDtVideosPublicos(nombreUsuario));
+            port.getDtVideosPublicos(nombreUsuario));
         request.setAttribute("LISTAS",
-            Fabrica.getIListas().getDtListasParticularesPublicasUsuario(nombreUsuario));
+            port.getDtListasParticularesPublicasUsuario(nombreUsuario));
         request.setAttribute("SEGUIDORES",
-            Fabrica.getIUsuariosCanales().getSeguidores(nombreUsuario));
+            port.getSeguidores(nombreUsuario));
         request.setAttribute("SEGUIDOS",
-            Fabrica.getIUsuariosCanales().getSeguidos(nombreUsuario));
+            port.getSeguidos(nombreUsuario));
         if (usuarioLogueado != null) {
           request.setAttribute("SIGUE",
-              Fabrica.getIUsuariosCanales().isSeguidor(usuarioLogueado.nick, nombreUsuario));
+              port.isSeguidor(usuarioLogueado.nick, nombreUsuario));
         }
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);

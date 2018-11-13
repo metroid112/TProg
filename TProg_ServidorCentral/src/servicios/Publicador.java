@@ -219,7 +219,7 @@ public class Publicador {
   }
   
   @WebMethod
-  public DtPaquete getDt(int idLista){
+  public DtPaquete getDtLista(int idLista){
     try{
     DtPaquete pack = new DtPaquete();
     DtUniversal universal = Fabrica.getIListas().getDt(idLista);
@@ -230,6 +230,58 @@ public class Publicador {
       return null;
     }
   }
+  @WebMethod
+  public DtPaquete listarNombresUsuarios(){
+    DtPaquete pack = new DtPaquete();
+    List<String> universal = Fabrica.getIUsuariosCanales().listarNombresUsuarios();
+    pack.setListaAux(universal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtVideosPublicos(String nombreUsuario){
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIVideos().getDtVideosPublicos(nombreUsuario)) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);  
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtListasParticularesPublicasUsuario(String nombreUsuario){
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIListas().getDtListasParticularesPublicasUsuario(nombreUsuario)) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);  
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getSeguidores(String nombreUsuario){
+    DtPaquete pack = new DtPaquete();
+    List<String> universal = Fabrica.getIUsuariosCanales().getSeguidores(nombreUsuario);
+    pack.setListaAux(universal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getSeguidos(String nombreUsuario){
+    DtPaquete pack = new DtPaquete();
+    List<String> universal = Fabrica.getIUsuariosCanales().getSeguidos(nombreUsuario);
+    pack.setListaAux(universal);
+    return pack;
+  }
+  
+  @WebMethod
+  public boolean isSeguidor(String usuarioLogueado, String nombreUsuario){
+    return Fabrica.getIUsuariosCanales().isSeguidor(usuarioLogueado,nombreUsuario);
+  }
+  
+  
   /**
    * Empaqueta un data type generico
    * @param contenido
