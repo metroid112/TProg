@@ -10,15 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
-import datatypes.DtUsuario;
-import interfaces.Fabrica;
-=======
+
 import servicios.DtLista;
 import servicios.DtUniversal;
 import servicios.DtUsuario;
 import servicios.DtVideo;
->>>>>>> WS-fran
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -35,18 +31,12 @@ public class ConsultaUsuario extends HttpServlet {
       throws ServletException, IOException {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
-<<<<<<< HEAD
-    
-    switch (request.getParameter("STATE")) {
-      case "LISTAR":
-        request.setAttribute("STATE", "LISTAR");
-        request.setAttribute("USUARIOS", port.listarNombresUsuarios());
-=======
+
     switch (request.getParameter("STATE")) {
       case "LISTAR":
         request.setAttribute("STATE", "LISTAR");
         request.setAttribute("USUARIOS", port.listarNombresUsuarios().getListaAux());
->>>>>>> WS-fran
+
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);
         break;
@@ -55,21 +45,7 @@ public class ConsultaUsuario extends HttpServlet {
             (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
         String nombreUsuario = (String) request.getParameter("usuario");
         request.setAttribute("STATE", "INFO");
-<<<<<<< HEAD
-        request.setAttribute("USUARIO",
-            port.getDtUsuario(nombreUsuario));
-        request.setAttribute("VIDEOS",
-            port.getDtVideosPublicos(nombreUsuario));
-        request.setAttribute("LISTAS",
-            port.getDtListasParticularesPublicasUsuario(nombreUsuario));
-        request.setAttribute("SEGUIDORES",
-            port.getSeguidores(nombreUsuario));
-        request.setAttribute("SEGUIDOS",
-            port.getSeguidos(nombreUsuario));
-        if (usuarioLogueado != null) {
-          request.setAttribute("SIGUE",
-              port.isSeguidor(usuarioLogueado.nick, nombreUsuario));
-=======
+
         request.setAttribute("USUARIO", (DtUsuario)
             port.getDtUsuario(nombreUsuario).getContenido());
         List<DtVideo> listaVideos = new LinkedList<DtVideo>();
@@ -89,7 +65,7 @@ public class ConsultaUsuario extends HttpServlet {
         if (usuarioLogueado != null) {
           request.setAttribute("SIGUE",
               port.isSeguidor(usuarioLogueado.getNick(), nombreUsuario));
->>>>>>> WS-fran
+
         }
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);

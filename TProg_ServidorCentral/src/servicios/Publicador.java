@@ -10,6 +10,8 @@ import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
+
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -23,7 +25,7 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Endpoint;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.tika.io.IOUtils;
 
 import com.sun.istack.internal.Nullable;
 
@@ -240,7 +242,7 @@ public class Publicador {
   }
   
   @WebMethod
-<<<<<<< HEAD
+
   public DtPaquete getListasPublicas(){
     DtPaquete pack = new DtPaquete();
     LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -293,12 +295,8 @@ public class Publicador {
       return null;
     }
   }
-  @WebMethod
-  public DtPaquete listarNombresUsuarios(){
-    DtPaquete pack = new DtPaquete();
-    List<String> universal = Fabrica.getIUsuariosCanales().listarNombresUsuarios();
-    pack.setListaAux(universal);
-=======
+ 
+
   public void agregarVideoLista(String nombreOwnerVideo, String nombreVideo, String usuario, String nombreLista, Boolean defecto) throws DuplicateClassException, InvalidDataException {
     Fabrica.getIListas().agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
   }
@@ -337,20 +335,12 @@ public class Publicador {
     DtPaquete pack = new DtPaquete();
     List<String> usuarios = Fabrica.getIUsuariosCanales().listarNombresUsuarios();
     pack.setListaAux(usuarios);
->>>>>>> WS-fran
+
     return pack;
   }
   
   @WebMethod
-<<<<<<< HEAD
-  public DtPaquete getDtVideosPublicos(String nombreUsuario){
-    DtPaquete pack = new DtPaquete();
-    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
-    for (DtUniversal dato : Fabrica.getIVideos().getDtVideosPublicos(nombreUsuario)) {
-      listaUniversal.add(dato);      
-    }
-    pack.setListaDt(listaUniversal);  
-=======
+
   public DtPaquete getDtVideosPublicos(String nick) {
     DtPaquete pack = new DtPaquete();
     List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -358,20 +348,12 @@ public class Publicador {
       listaUniversal.add(dtUniversal);
     }
     pack.setListaDt(listaUniversal);
->>>>>>> WS-fran
+
     return pack;
   }
   
   @WebMethod
-<<<<<<< HEAD
-  public DtPaquete getDtListasParticularesPublicasUsuario(String nombreUsuario){
-    DtPaquete pack = new DtPaquete();
-    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
-    for (DtUniversal dato : Fabrica.getIListas().getDtListasParticularesPublicasUsuario(nombreUsuario)) {
-      listaUniversal.add(dato);      
-    }
-    pack.setListaDt(listaUniversal);  
-=======
+
   public DtPaquete getDtListasParticularesPublicasUsuario(String nick) {
     DtPaquete pack = new DtPaquete();
     List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -379,34 +361,12 @@ public class Publicador {
       listaUniversal.add(dtUniversal);
     }
     pack.setListaDt(listaUniversal);
->>>>>>> WS-fran
+
     return pack;
   }
   
   @WebMethod
-<<<<<<< HEAD
-  public DtPaquete getSeguidores(String nombreUsuario){
-    DtPaquete pack = new DtPaquete();
-    List<String> universal = Fabrica.getIUsuariosCanales().getSeguidores(nombreUsuario);
-    pack.setListaAux(universal);
-    return pack;
-  }
-  
-  @WebMethod
-  public DtPaquete getSeguidos(String nombreUsuario){
-    DtPaquete pack = new DtPaquete();
-    List<String> universal = Fabrica.getIUsuariosCanales().getSeguidos(nombreUsuario);
-    pack.setListaAux(universal);
-    return pack;
-  }
-  
-  @WebMethod
-  public boolean isSeguidor(String usuarioLogueado, String nombreUsuario){
-    return Fabrica.getIUsuariosCanales().isSeguidor(usuarioLogueado,nombreUsuario);
-  }
-  
-  
-=======
+
   public DtPaquete getSeguidores(String usuario) {
     return empaquetar(Fabrica.getIUsuariosCanales().getSeguidores(usuario));
   }
@@ -421,7 +381,7 @@ public class Publicador {
     return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
   }
   
->>>>>>> WS-fran
+
   /**
    * Empaqueta un data type generico
    * @param contenido
