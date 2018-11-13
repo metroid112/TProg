@@ -73,7 +73,7 @@ public class CtrlListasTest {
       e.printStackTrace();
     }
     int esperado = 1;
-    int cantidadListasParticulares = iListas.listarListasParticularUsuario("chino").length;
+    int cantidadListasParticulares = iListas.listarListasParticularUsuario("chino").size();
     assertEquals(esperado, cantidadListasParticulares);
   }
 
@@ -108,7 +108,7 @@ public class CtrlListasTest {
   @Test
   public void testListarListasDefectoUsuario() {
     String[] listas = { "Escuchar más tarde", "Deporte total", "Novedades generales" };
-    String[] listasObtenidas = iListas.listarListasDefectoUsuario("hectorg");
+    String[] listasObtenidas = (String[]) iListas.listarListasDefectoUsuario("hectorg").toArray();
 
     assertEquals(listas.length, listasObtenidas.length);
   }
@@ -116,13 +116,13 @@ public class CtrlListasTest {
   @Test
   public void testListarListasParticularUsuario() {
     String[] listaKairoh = { "Nostalgia" };
-    String[] listaKairohObtenida = iListas.listarListasParticularUsuario("kairoh");
+    String[] listaKairohObtenida = (String[]) iListas.listarListasParticularUsuario("kairoh").toArray();
     assertArrayEquals(listaKairoh, listaKairohObtenida);
     String[] listaTabarec = { "De fiesta" };
-    String[] listaTabarecObtenida = iListas.listarListasParticularUsuario("tabarec");
+    String[] listaTabarecObtenida = (String[]) iListas.listarListasParticularUsuario("tabarec").toArray();
     assertArrayEquals(listaTabarec, listaTabarecObtenida);
     String[] listaChino = { "TestTarea2" };
-    String[] listaChinoObtenida = iListas.listarListasParticularUsuario("chino");
+    String[] listaChinoObtenida = (String[]) iListas.listarListasParticularUsuario("chino").toArray();
     assertArrayEquals(listaChino, listaChinoObtenida);
   }
 

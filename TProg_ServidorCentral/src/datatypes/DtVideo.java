@@ -15,7 +15,9 @@ import clases.Categoria;
 import clases.Comentario;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DtVideo extends DtUniversal {
+
+public class DtVideo extends DtUniversal{
+
   public List<DtCalificacion> calificaciones = new LinkedList<DtCalificacion>();
   public List<String> calificacionesPositivas = new LinkedList<String>(); // Usuarios like
   public List<String> calificacionesNegativas = new LinkedList<String>(); // Usuarios dislike

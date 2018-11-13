@@ -9,29 +9,28 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para dtUsuario complex type.
+ * <p>Java class for dtUsuario complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtUsuario"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="imagen" type="{http://servicios/}bufferedImage" minOccurs="0"/&gt;
+ *         &lt;element name="nick" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="canal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="correo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="descripcionCanal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="privado" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
- *         &lt;element name="nick" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="imgPath" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="idImagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="categoria" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
+ *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
@@ -40,222 +39,38 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtUsuario", propOrder = {
-    "fechaNacimiento",
-    "imagen",
+    "nick",
     "nombre",
     "apellido",
     "canal",
     "correo",
     "descripcionCanal",
     "privado",
-    "nick",
-    "imgPath",
+    "idImagen",
+    "fechaNacimiento",
     "ultimaActividad",
     "categoria"
 })
-public class DtUsuario {
+public class DtUsuario
+    extends DtUniversal
+{
 
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar fechaNacimiento;
-    protected BufferedImage imagen;
+    protected String nick;
     protected String nombre;
     protected String apellido;
     protected String canal;
     protected String correo;
     protected String descripcionCanal;
     protected boolean privado;
-    protected String nick;
-    protected String imgPath;
+    protected String idImagen;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaNacimiento;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar ultimaActividad;
     protected String categoria;
 
     /**
-     * Obtiene el valor de la propiedad fechaNacimiento.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    /**
-     * Define el valor de la propiedad fechaNacimiento.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setFechaNacimiento(XMLGregorianCalendar value) {
-        this.fechaNacimiento = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad imagen.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BufferedImage }
-     *     
-     */
-    public BufferedImage getImagen() {
-        return imagen;
-    }
-
-    /**
-     * Define el valor de la propiedad imagen.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BufferedImage }
-     *     
-     */
-    public void setImagen(BufferedImage value) {
-        this.imagen = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nombre.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * Define el valor de la propiedad nombre.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNombre(String value) {
-        this.nombre = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad apellido.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getApellido() {
-        return apellido;
-    }
-
-    /**
-     * Define el valor de la propiedad apellido.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setApellido(String value) {
-        this.apellido = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad canal.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCanal() {
-        return canal;
-    }
-
-    /**
-     * Define el valor de la propiedad canal.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCanal(String value) {
-        this.canal = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad correo.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCorreo() {
-        return correo;
-    }
-
-    /**
-     * Define el valor de la propiedad correo.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCorreo(String value) {
-        this.correo = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad descripcionCanal.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescripcionCanal() {
-        return descripcionCanal;
-    }
-
-    /**
-     * Define el valor de la propiedad descripcionCanal.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescripcionCanal(String value) {
-        this.descripcionCanal = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad privado.
-     * 
-     */
-    public boolean isPrivado() {
-        return privado;
-    }
-
-    /**
-     * Define el valor de la propiedad privado.
-     * 
-     */
-    public void setPrivado(boolean value) {
-        this.privado = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nick.
+     * Gets the value of the nick property.
      * 
      * @return
      *     possible object is
@@ -267,7 +82,7 @@ public class DtUsuario {
     }
 
     /**
-     * Define el valor de la propiedad nick.
+     * Sets the value of the nick property.
      * 
      * @param value
      *     allowed object is
@@ -279,31 +94,191 @@ public class DtUsuario {
     }
 
     /**
-     * Obtiene el valor de la propiedad imgPath.
+     * Gets the value of the nombre property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getImgPath() {
-        return imgPath;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * Define el valor de la propiedad imgPath.
+     * Sets the value of the nombre property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setImgPath(String value) {
-        this.imgPath = value;
+    public void setNombre(String value) {
+        this.nombre = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad ultimaActividad.
+     * Gets the value of the apellido property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getApellido() {
+        return apellido;
+    }
+
+    /**
+     * Sets the value of the apellido property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setApellido(String value) {
+        this.apellido = value;
+    }
+
+    /**
+     * Gets the value of the canal property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCanal() {
+        return canal;
+    }
+
+    /**
+     * Sets the value of the canal property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCanal(String value) {
+        this.canal = value;
+    }
+
+    /**
+     * Gets the value of the correo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * Sets the value of the correo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCorreo(String value) {
+        this.correo = value;
+    }
+
+    /**
+     * Gets the value of the descripcionCanal property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescripcionCanal() {
+        return descripcionCanal;
+    }
+
+    /**
+     * Sets the value of the descripcionCanal property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescripcionCanal(String value) {
+        this.descripcionCanal = value;
+    }
+
+    /**
+     * Gets the value of the privado property.
+     * 
+     */
+    public boolean isPrivado() {
+        return privado;
+    }
+
+    /**
+     * Sets the value of the privado property.
+     * 
+     */
+    public void setPrivado(boolean value) {
+        this.privado = value;
+    }
+
+    /**
+     * Gets the value of the idImagen property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIdImagen() {
+        return idImagen;
+    }
+
+    /**
+     * Sets the value of the idImagen property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIdImagen(String value) {
+        this.idImagen = value;
+    }
+
+    /**
+     * Gets the value of the fechaNacimiento property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    /**
+     * Sets the value of the fechaNacimiento property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setFechaNacimiento(XMLGregorianCalendar value) {
+        this.fechaNacimiento = value;
+    }
+
+    /**
+     * Gets the value of the ultimaActividad property.
      * 
      * @return
      *     possible object is
@@ -315,7 +290,7 @@ public class DtUsuario {
     }
 
     /**
-     * Define el valor de la propiedad ultimaActividad.
+     * Sets the value of the ultimaActividad property.
      * 
      * @param value
      *     allowed object is
@@ -327,7 +302,7 @@ public class DtUsuario {
     }
 
     /**
-     * Obtiene el valor de la propiedad categoria.
+     * Gets the value of the categoria property.
      * 
      * @return
      *     possible object is
@@ -339,7 +314,7 @@ public class DtUsuario {
     }
 
     /**
-     * Define el valor de la propiedad categoria.
+     * Sets the value of the categoria property.
      * 
      * @param value
      *     allowed object is

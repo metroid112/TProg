@@ -24,6 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _DuplicateClassException_QNAME = new QName("http://servicios/", "DuplicateClassException");
+    private final static QName _InvalidDataException_QNAME = new QName("http://servicios/", "InvalidDataException");
     private final static QName _Imagen_QNAME = new QName("http://servicios/", "imagen");
 
     /**
@@ -31,6 +33,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link DuplicateClassException }
+     * 
+     */
+    public DuplicateClassException createDuplicateClassException() {
+        return new DuplicateClassException();
+    }
+
+    /**
+     * Create an instance of {@link InvalidDataException }
+     * 
+     */
+    public InvalidDataException createInvalidDataException() {
+        return new InvalidDataException();
     }
 
     /**
@@ -103,6 +121,24 @@ public class ObjectFactory {
      */
     public DtCategoria createDtCategoria() {
         return new DtCategoria();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DuplicateClassException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "DuplicateClassException")
+    public JAXBElement<DuplicateClassException> createDuplicateClassException(DuplicateClassException value) {
+        return new JAXBElement<DuplicateClassException>(_DuplicateClassException_QNAME, DuplicateClassException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InvalidDataException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "InvalidDataException")
+    public JAXBElement<InvalidDataException> createInvalidDataException(InvalidDataException value) {
+        return new JAXBElement<InvalidDataException>(_InvalidDataException_QNAME, InvalidDataException.class, null, value);
     }
 
     /**
