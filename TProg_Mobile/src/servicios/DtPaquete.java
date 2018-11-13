@@ -1,15 +1,18 @@
 
 package servicios;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dtPaquete complex type.
+ * <p>Java class for dtPaquete complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtPaquete"&gt;
@@ -17,6 +20,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="contenido" type="{http://servicios/}dtUniversal" minOccurs="0"/&gt;
+ *         &lt;element name="listaAux" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="listaDt" type="{http://servicios/}dtUniversal" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,14 +32,20 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtPaquete", propOrder = {
-    "contenido"
+    "contenido",
+    "listaAux",
+    "listaDt"
 })
 public class DtPaquete {
 
     protected DtUniversal contenido;
+    @XmlElement(nillable = true)
+    protected List<String> listaAux;
+    @XmlElement(nillable = true)
+    protected List<DtUniversal> listaDt;
 
     /**
-     * Obtiene el valor de la propiedad contenido.
+     * Gets the value of the contenido property.
      * 
      * @return
      *     possible object is
@@ -46,7 +57,7 @@ public class DtPaquete {
     }
 
     /**
-     * Define el valor de la propiedad contenido.
+     * Sets the value of the contenido property.
      * 
      * @param value
      *     allowed object is
@@ -55,6 +66,64 @@ public class DtPaquete {
      */
     public void setContenido(DtUniversal value) {
         this.contenido = value;
+    }
+
+    /**
+     * Gets the value of the listaAux property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listaAux property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListaAux().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
+    public List<String> getListaAux() {
+        if (listaAux == null) {
+            listaAux = new ArrayList<String>();
+        }
+        return this.listaAux;
+    }
+
+    /**
+     * Gets the value of the listaDt property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the listaDt property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListaDt().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DtUniversal }
+     * 
+     * 
+     */
+    public List<DtUniversal> getListaDt() {
+        if (listaDt == null) {
+            listaDt = new ArrayList<DtUniversal>();
+        }
+        return this.listaDt;
     }
 
 }

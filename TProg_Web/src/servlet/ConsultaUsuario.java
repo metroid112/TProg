@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 import datatypes.DtUsuario;
 import interfaces.Fabrica;
+=======
+import servicios.DtLista;
+import servicios.DtUniversal;
+import servicios.DtUsuario;
+import servicios.DtVideo;
+>>>>>>> WS-fran
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -26,11 +35,18 @@ public class ConsultaUsuario extends HttpServlet {
       throws ServletException, IOException {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
+<<<<<<< HEAD
     
     switch (request.getParameter("STATE")) {
       case "LISTAR":
         request.setAttribute("STATE", "LISTAR");
         request.setAttribute("USUARIOS", port.listarNombresUsuarios());
+=======
+    switch (request.getParameter("STATE")) {
+      case "LISTAR":
+        request.setAttribute("STATE", "LISTAR");
+        request.setAttribute("USUARIOS", port.listarNombresUsuarios().getListaAux());
+>>>>>>> WS-fran
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);
         break;
@@ -39,6 +55,7 @@ public class ConsultaUsuario extends HttpServlet {
             (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
         String nombreUsuario = (String) request.getParameter("usuario");
         request.setAttribute("STATE", "INFO");
+<<<<<<< HEAD
         request.setAttribute("USUARIO",
             port.getDtUsuario(nombreUsuario));
         request.setAttribute("VIDEOS",
@@ -52,6 +69,27 @@ public class ConsultaUsuario extends HttpServlet {
         if (usuarioLogueado != null) {
           request.setAttribute("SIGUE",
               port.isSeguidor(usuarioLogueado.nick, nombreUsuario));
+=======
+        request.setAttribute("USUARIO", (DtUsuario)
+            port.getDtUsuario(nombreUsuario).getContenido());
+        List<DtVideo> listaVideos = new LinkedList<DtVideo>();
+        for (DtUniversal dtUni : port.getDtVideosPublicos(nombreUsuario).getListaDt()) {
+          listaVideos.add((DtVideo) dtUni);
+        }
+        request.setAttribute("VIDEOS",listaVideos);
+        List<DtLista> listaListas = new LinkedList<DtLista>();
+        for (DtUniversal dtUni : port.getDtListasParticularesPublicasUsuario(nombreUsuario).getListaDt()) {
+          listaListas.add((DtLista) dtUni);
+        }
+        request.setAttribute("LISTAS", listaListas);
+        request.setAttribute("SEGUIDORES",
+            port.getSeguidores(nombreUsuario).getListaAux());
+        request.setAttribute("SEGUIDOS",
+            port.getSeguidos(nombreUsuario).getListaAux());
+        if (usuarioLogueado != null) {
+          request.setAttribute("SIGUE",
+              port.isSeguidor(usuarioLogueado.getNick(), nombreUsuario));
+>>>>>>> WS-fran
         }
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);

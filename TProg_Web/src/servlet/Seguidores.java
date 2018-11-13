@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtUsuario;
-import interfaces.Fabrica;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/Seguidores")
 public class Seguidores extends HttpServlet {
@@ -30,10 +30,12 @@ public class Seguidores extends HttpServlet {
   }
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response) {
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
     if (request.getParameter("ACCION").equals("SEGUIR")) {
       String seguidor = request.getParameter("USUARIO_SEGUIDOR");
       String seguido = request.getParameter("USUARIO_SEGUIDO");
-      Fabrica.getIUsuariosCanales().seguir(seguidor, seguido);
+      port.seguir(seguidor, seguido);
       try {
         response.sendRedirect("Inicio");
       } catch (IOException e) {
@@ -42,7 +44,7 @@ public class Seguidores extends HttpServlet {
     } else if (request.getParameter("ACCION").equals("DEJAR_SEGUIR")) {
       String seguidor = request.getParameter("USUARIO_SEGUIDOR");
       String seguido = request.getParameter("USUARIO_SEGUIDO");
-      Fabrica.getIUsuariosCanales().dejarSeguir(seguidor, seguido);
+      port.dejarSeguir(seguidor, seguido);
       try {
         response.sendRedirect("Inicio");
       } catch (IOException e) {

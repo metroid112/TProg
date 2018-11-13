@@ -29,7 +29,7 @@ public interface IVideos {
       String url, String categoria, Duration duracion, boolean visible, Date fecha)
       throws InvalidDataException, DuplicateClassException;
 
-  public DtVideo[] listarTodosLosVideos(String nick);
+  public List<DtVideo> listarTodosLosVideos(String nick);
 
   public List<DtVideo> getDtVideosPublicos(String nombreUsuario);
 

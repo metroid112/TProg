@@ -1,4 +1,7 @@
 package servicios;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Calendar;
@@ -8,18 +11,27 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlValue;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Endpoint;
+
+import org.apache.commons.io.IOUtils;
+
+import com.sun.istack.internal.Nullable;
 
 import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
 import datatypes.DtVideo;
-import excepciones.NotFoundException;
+import excepciones.*;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
@@ -65,12 +77,21 @@ public class Publicador {
     }
   }
   
-  @WebMethod
-  public void AltaUsuario(String nickname, String nombre, String apellido, String correo, GregorianCalendar fechaNacimiento,
-      byte[] imgByte, String nombreCanal, String descripcionCanal, String categoria, boolean visible, String pass) {
-    // Cambiar imagenPath
-    Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo, fechaNacimiento.getTime(),
+  @WebMethod  
+  public void AltaUsuario(String nickname, String nombre, String apellido, String correo,
+      GregorianCalendar fechaNacimiento,
+      @XmlElement(required = false, name = "imagen")
+      @WebParam(name = "imagen", header = true) byte[] imgByte, String nombreCanal,
+      String descripcionCanal, String categoria, boolean visible, String pass) {
+    
+    Fabrica.getIUsuariosCanales().altaUsuario(nickname, nombre, apellido, correo,
+        fechaNacimiento.getTime(),
         imgByte, nombreCanal, descripcionCanal, categoria, visible, pass);
+  }
+  
+  @WebMethod
+  public void altaListaParticular(String nombreLista, String nickUsuario, Boolean visibilidad) throws DuplicateClassException {
+    Fabrica.getIListas().altaListaParticular(nombreLista, nickUsuario, visibilidad);
   }
   
   @WebMethod
@@ -95,7 +116,13 @@ public class Publicador {
   
   @WebMethod
   public DtPaquete listarCategorias() {
-    return empaquetar(Fabrica.getICategorias().listarCategorias());
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>(); 
+    for (DtUniversal dato : Fabrica.getICategorias().listarCategorias()) {
+      listaUniversal.add(dato);
+    };
+    pack.setListaDt(listaUniversal);
+    return pack;
   }
   
   @WebMethod
@@ -103,6 +130,41 @@ public class Publicador {
     return empaquetar(Fabrica.getICategorias().consultaDeCategoria(categoria));
   }
   
+  @WebMethod
+  public DtPaquete listarTodosLosVideos(String nick) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>(); 
+    for (DtUniversal dato : Fabrica.getIVideos().listarTodosLosVideos(nick)) {
+      listaUniversal.add(dato);
+    };
+    pack.setListaDt(listaUniversal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete listarDtVideosDuenosLista(String usuario, String lista, boolean defecto) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIUsuariosCanales().listarDtVideosDuenosLista(usuario, lista, defecto)) {
+      listaUniversal.add(dato);
+    };
+    pack.setListaDt(listaUniversal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete listarListasDefectoUsuario(String nick) {
+    List<String> listaDefecto = Fabrica.getIListas().listarListasDefectoUsuario(nick);
+    return empaquetar(listaDefecto);
+  }
+  
+  @WebMethod
+  public DtPaquete listarListasParticularUsuario(String nick) {
+    List<String> listaParticular = Fabrica.getIListas().listarListasParticularUsuario(nick);
+    return empaquetar(listaParticular);
+  }
+  
+
   @WebMethod  
   public boolean checkLogin(String nick, String pass) {
     IUsuariosCanales iUC = Fabrica.getIUsuariosCanales();
@@ -158,7 +220,7 @@ public class Publicador {
   @WebMethod
   public DtPaquete getListaPublicoDtVideo() {
     DtPaquete pack = new DtPaquete();
-    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
     for (DtUniversal dato : Fabrica.getIUsuariosCanales().getListaPublicoDtVideo()) {
       listaUniversal.add(dato);      
     }
@@ -169,7 +231,7 @@ public class Publicador {
   @WebMethod
   public DtPaquete getListaDtVideo(String nick) {
     DtPaquete pack = new DtPaquete();
-    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
     for (DtUniversal dato : Fabrica.getIUsuariosCanales().getListaDtVideo(nick)) {
       listaUniversal.add(dato);      
     }
@@ -178,6 +240,7 @@ public class Publicador {
   }
   
   @WebMethod
+<<<<<<< HEAD
   public DtPaquete getListasPublicas(){
     DtPaquete pack = new DtPaquete();
     LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -235,10 +298,51 @@ public class Publicador {
     DtPaquete pack = new DtPaquete();
     List<String> universal = Fabrica.getIUsuariosCanales().listarNombresUsuarios();
     pack.setListaAux(universal);
+=======
+  public void agregarVideoLista(String nombreOwnerVideo, String nombreVideo, String usuario, String nombreLista, Boolean defecto) throws DuplicateClassException, InvalidDataException {
+    Fabrica.getIListas().agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
+  }
+  
+  @WebMethod
+  public byte[] getImagen(String id) {
+    byte[] imagenByte = null;
+    try {
+      File imagen = new File("media/" + id);
+      FileInputStream inStream = new FileInputStream(imagen);
+      imagenByte = IOUtils.toByteArray(inStream);      
+    } catch (IOException e) {
+      e.printStackTrace();
+      System.out.println("Archivo no encontrado: " + id);
+    }    
+    return imagenByte;
+  }
+  
+  @WebMethod
+  public void quitarVideoLista(String usuario, String nombreVideo, String nombreOwnerVideo, String lista, Boolean defecto) {
+    Fabrica.getIListas().quitarVideoLista(usuario, nombreVideo, nombreOwnerVideo, lista, defecto);
+  }
+  
+  @WebMethod
+  public void seguir(String seguidor, String seguido) {
+    Fabrica.getIUsuariosCanales().seguir(seguidor, seguido);
+  }
+  
+  @WebMethod
+  public void dejarSeguir(String seguidor, String seguido) {
+    Fabrica.getIUsuariosCanales().dejarSeguir(seguidor, seguido);
+  }
+  
+  @WebMethod
+  public DtPaquete listarNombresUsuarios() {
+    DtPaquete pack = new DtPaquete();
+    List<String> usuarios = Fabrica.getIUsuariosCanales().listarNombresUsuarios();
+    pack.setListaAux(usuarios);
+>>>>>>> WS-fran
     return pack;
   }
   
   @WebMethod
+<<<<<<< HEAD
   public DtPaquete getDtVideosPublicos(String nombreUsuario){
     DtPaquete pack = new DtPaquete();
     LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -246,10 +350,20 @@ public class Publicador {
       listaUniversal.add(dato);      
     }
     pack.setListaDt(listaUniversal);  
+=======
+  public DtPaquete getDtVideosPublicos(String nick) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dtUniversal : Fabrica.getIVideos().getDtVideosPublicos(nick)) {
+      listaUniversal.add(dtUniversal);
+    }
+    pack.setListaDt(listaUniversal);
+>>>>>>> WS-fran
     return pack;
   }
   
   @WebMethod
+<<<<<<< HEAD
   public DtPaquete getDtListasParticularesPublicasUsuario(String nombreUsuario){
     DtPaquete pack = new DtPaquete();
     LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -257,10 +371,20 @@ public class Publicador {
       listaUniversal.add(dato);      
     }
     pack.setListaDt(listaUniversal);  
+=======
+  public DtPaquete getDtListasParticularesPublicasUsuario(String nick) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dtUniversal : Fabrica.getIListas().getDtListasParticularesPublicasUsuario(nick)) {
+      listaUniversal.add(dtUniversal);
+    }
+    pack.setListaDt(listaUniversal);
+>>>>>>> WS-fran
     return pack;
   }
   
   @WebMethod
+<<<<<<< HEAD
   public DtPaquete getSeguidores(String nombreUsuario){
     DtPaquete pack = new DtPaquete();
     List<String> universal = Fabrica.getIUsuariosCanales().getSeguidores(nombreUsuario);
@@ -282,6 +406,22 @@ public class Publicador {
   }
   
   
+=======
+  public DtPaquete getSeguidores(String usuario) {
+    return empaquetar(Fabrica.getIUsuariosCanales().getSeguidores(usuario));
+  }
+  
+  @WebMethod
+  public DtPaquete getSeguidos(String usuario) {
+    return empaquetar(Fabrica.getIUsuariosCanales().getSeguidos(usuario));
+  }
+  
+  @WebMethod
+  public boolean isSeguidor(String seguidor, String seguido) {
+    return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
+  }
+  
+>>>>>>> WS-fran
   /**
    * Empaqueta un data type generico
    * @param contenido
@@ -300,10 +440,20 @@ public class Publicador {
    * LinkedList de string a empaquetar
    */
   @WebMethod(exclude = true)
-  public DtPaquete empaquetar(LinkedList<String> lista) {
+  public DtPaquete empaquetar(List<String> lista) {
     DtPaquete pack = new DtPaquete();
     pack.setListaAux(lista);
     return pack;
   }
+  
+  /* 
+   * No sirve mucho porque no se puede pasar una lista de dtAlgo como lista de DtUniversal
+  @WebMethod(exclude = true)
+  public DtPaquete empaquetar2(List<DtUniversal> lista) {
+    DtPaquete pack = new DtPaquete();
+    pack.setListaDt(lista);
+    return pack;
+  }
+  */
     
 }

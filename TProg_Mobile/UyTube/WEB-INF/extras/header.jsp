@@ -1,42 +1,39 @@
-<%@page import="datatypes.*" %>
-<%@page import="utils.*" %>
 <div class="header">
-	<div class="head-item1">
-		<a href="Inicio">
-			<img class="icono" width="200px" alt="UyTube" src="img/logo.png">
-		</a>
-	</div>
-	<div class="head-item busqueda" align="center">
-		<form action="Busqueda" method="post">
-			<div class="form-group">
-				<div class="input-group-btn">
-					<input type="text" placeholder="Búsqueda" name="txtBusqueda">
-					<input type="hidden" name="TIPO_BUSQUEDA" value="TODOS">
-					<button>Buscar</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	<div class="head-item" align="right">
-		<% if (session.getAttribute("USUARIO_LOGEADO") == null) {
-		  session.setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
-		} %>
-		<% if (session.getAttribute("LOGIN") == null || session.getAttribute("LOGIN").equals(EstadoSesion.NO_LOGIN)) { %>
-			<form action="login" method="GET">
-				<input type="hidden" name="PANTALLALOGIN" value=TRUE>
-				<button type="submit">Iniciar Sesion</button>
-			</form>
-		<% } else if (session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {%>
-			<% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
-			<div class="thumbnail">
-  				<img src="<%= logueado.imgPath %>" alt="Image"/>
-			</div>
-			Iniciado como <%= logueado.nick %>
-			<br>
-			<form action="login" method="GET">
-				<input type="hidden" name="CERRAR_SESION" value="CONFIRM">
-				<button class="btnHeader" type="submit">Cerrar Sesion</button>
-			</form>
-		<% } %>
-	</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 </div>

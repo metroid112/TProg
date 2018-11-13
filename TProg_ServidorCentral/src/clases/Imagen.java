@@ -18,7 +18,6 @@ public class Imagen {
     this.setImgByte(imgByte);
     Imagen.idCounter++;
     this.id = Imagen.idCounter;
-    //Devuelve image/*;
     this.extension = (new Tika().detect(imgByte)).replaceAll("image/", ".");
     File directorio = new File("media/");
     if (!directorio.isDirectory()) {

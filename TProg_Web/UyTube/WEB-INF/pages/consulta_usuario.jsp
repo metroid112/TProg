@@ -1,6 +1,6 @@
-<%@ page import="datatypes.*, java.util.*, utils.*, java.text.*" %>
+<%@ page import="servicios.*, java.util.*, utils.*, java.text.*" %>
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 	<jsp:include page="/WEB-INF/extras/head.jsp" />
 	<title>UyTube - Consulta Usuario</title>
@@ -14,7 +14,7 @@
 		<%
 		switch((String) request.getAttribute("STATE")) {
 			case "LISTAR":
-				List<String> listaUsuarios = (LinkedList<String>) request.getAttribute("USUARIOS");
+				List<String> listaUsuarios = (List<String>) request.getAttribute("USUARIOS");
 				if (listaUsuarios.isEmpty()) { %>
 					<h1>No hay usuarios.</h1>
 		 	 <% } else { %>
@@ -37,29 +37,29 @@
   		List<String> seguidos = (List<String>) request.getAttribute("SEGUIDOS");
   		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
  			if (usuario == null) { %>
-  			<h1>Usuario <%= usuario.nick %> no existe</h1>
+  			<h1>Usuario <%= usuario.getNick() %> no existe</h1>
      <%	} else { %>
   			<h1>INFO USUARIO</h1>
-  			<h2><%= usuario.nick %></h2>
+  			<h2><%= usuario.getNick() %></h2>
   			<div class="head-item" align="right">
   				<div class="thumbnail2">
-  					<img alt="Imagen de <%= usuario.nick %>" src="<%= usuario.imgPath %>">
+  					<img alt="Imagen de <%= usuario.getNick() %>" src="/Img?id=<%= usuario.getIdImagen() %>">
   				</div>
   			</div>
   			<br>
-  			Nombre: <%= usuario.nombre + " " + usuario.apellido %>
+  			Nombre: <%= usuario.getNombre() + " " + usuario.getApellido() %>
   			<br>
-  			Fecha de nacimiento: <%= dateFormat.format(usuario.fechaNacimiento) %>
+  			Fecha de nacimiento: <%= dateFormat.format(usuario.getFechaNacimiento().toGregorianCalendar().getTime()) %>
   			<br>
-  			<h2>CANAL: <%= usuario.canal %></h2>
-  			Descripción: <%= usuario.descripcionCanal %>
+  			<h2>CANAL: <%= usuario.getCanal() %></h2>
+  			Descripción: <%= usuario.getDescripcionCanal()%>
   			<br>
-  			Categoria: <%= usuario.categoria %>
+  			Categoria: <%= usuario.getCategoria() %>
   			<h3>VIDEOS PUBLICOS</h3>
      		<% for(DtVideo video : videos) { %>
   				<form action="ConsultaVideo" method="GET">
-	  				<input name="VIDEO_ID" value="<%= video.idVideo %>" type="hidden">
-	  				<button><%= video.nombre %></button>
+	  				<input name="VIDEO_ID" value="<%= video.getIdVideo() %>" type="hidden">
+	  				<button><%= video.getNombre() %></button>
 	  			</form>
 	  			<br>
      		<% } %>
@@ -67,7 +67,7 @@
      		<%	for(DtLista lista : listas) { %>
 					<form action="ConsultaLista" method="GET">
 						<input name="STATE" value="DETALLESLISTA" type="hidden">
-						<input name="IDLISTA" value="<%= lista.getId() %>" type="hidden">
+						<input name="IDLISTA" value="<%= lista.getIdLista() %>" type="hidden">
 						<button><%= lista.getNombre() %></button>
 					</form>
 					<br>
@@ -88,7 +88,7 @@
    <% } %>
    <% if(session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
 				DtUsuario usuarioLogueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO");
-				if(usuarioLogueado.nick.equals(usuario.nick)) { %>
+				if(usuarioLogueado.getNick().equals(usuario.getNick())) { %>
 				  	<!-- Modificar Usuario --> 
      <% } else { %>
      			<%
@@ -98,8 +98,8 @@
      			%>
 			  	<form action="Seguidores" method="GET">
 			  		<input name="ACCION" value="<%= metodoSeguir %>" type="hidden">
-			  		<input name="USUARIO_SEGUIDO" value="<%= usuario.nick %>" type="hidden">
-			  		<input name="USUARIO_SEGUIDOR" value="<%= usuarioLogueado.nick %>" type="hidden">
+			  		<input name="USUARIO_SEGUIDO" value="<%= usuario.getNick() %>" type="hidden">
+			  		<input name="USUARIO_SEGUIDOR" value="<%= usuarioLogueado.getNick()%>" type="hidden">
 			  		<button><%= textoSeguir %></button>
 				</form>
      <%	}

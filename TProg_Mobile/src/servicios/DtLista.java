@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para dtLista complex type.
+ * <p>Java class for dtLista complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtLista"&gt;
@@ -93,7 +93,7 @@ public class DtLista {
     }
 
     /**
-     * Obtiene el valor de la propiedad nombre.
+     * Gets the value of the nombre property.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class DtLista {
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Sets the value of the nombre property.
      * 
      * @param value
      *     allowed object is
@@ -117,7 +117,7 @@ public class DtLista {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipo.
+     * Gets the value of the tipo property.
      * 
      * @return
      *     possible object is
@@ -129,7 +129,7 @@ public class DtLista {
     }
 
     /**
-     * Define el valor de la propiedad tipo.
+     * Sets the value of the tipo property.
      * 
      * @param value
      *     allowed object is
@@ -199,7 +199,7 @@ public class DtLista {
     }
 
     /**
-     * Obtiene el valor de la propiedad visible.
+     * Gets the value of the visible property.
      * 
      */
     public boolean isVisible() {
@@ -207,7 +207,7 @@ public class DtLista {
     }
 
     /**
-     * Define el valor de la propiedad visible.
+     * Sets the value of the visible property.
      * 
      */
     public void setVisible(boolean value) {
@@ -215,7 +215,7 @@ public class DtLista {
     }
 
     /**
-     * Obtiene el valor de la propiedad ultimaActividad.
+     * Gets the value of the ultimaActividad property.
      * 
      * @return
      *     possible object is
@@ -227,7 +227,7 @@ public class DtLista {
     }
 
     /**
-     * Define el valor de la propiedad ultimaActividad.
+     * Sets the value of the ultimaActividad property.
      * 
      * @param value
      *     allowed object is
@@ -239,7 +239,7 @@ public class DtLista {
     }
 
     /**
-     * Obtiene el valor de la propiedad idLista.
+     * Gets the value of the idLista property.
      * 
      */
     public int getIdLista() {
@@ -247,7 +247,7 @@ public class DtLista {
     }
 
     /**
-     * Define el valor de la propiedad idLista.
+     * Sets the value of the idLista property.
      * 
      */
     public void setIdLista(int value) {

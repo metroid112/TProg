@@ -1,7 +1,10 @@
 
 package servicios;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -21,6 +24,9 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _DuplicateClassException_QNAME = new QName("http://servicios/", "DuplicateClassException");
+    private final static QName _InvalidDataException_QNAME = new QName("http://servicios/", "InvalidDataException");
+    private final static QName _Imagen_QNAME = new QName("http://servicios/", "imagen");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: servicios
@@ -30,35 +36,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtComentario }
+     * Create an instance of {@link DuplicateClassException }
      * 
      */
-    public DtComentario createDtComentario() {
-        return new DtComentario();
+    public DuplicateClassException createDuplicateClassException() {
+        return new DuplicateClassException();
     }
 
     /**
-     * Create an instance of {@link DtComentario.Hijos }
+     * Create an instance of {@link InvalidDataException }
      * 
      */
-    public DtComentario.Hijos createDtComentarioHijos() {
-        return new DtComentario.Hijos();
-    }
-
-    /**
-     * Create an instance of {@link DtVideo }
-     * 
-     */
-    public DtVideo createDtVideo() {
-        return new DtVideo();
-    }
-
-    /**
-     * Create an instance of {@link DtVideo.Comentarios }
-     * 
-     */
-    public DtVideo.Comentarios createDtVideoComentarios() {
-        return new DtVideo.Comentarios();
+    public InvalidDataException createInvalidDataException() {
+        return new InvalidDataException();
     }
 
     /**
@@ -78,11 +68,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DtVideo }
+     * 
+     */
+    public DtVideo createDtVideo() {
+        return new DtVideo();
+    }
+
+    /**
      * Create an instance of {@link DtCalificacion }
      * 
      */
     public DtCalificacion createDtCalificacion() {
         return new DtCalificacion();
+    }
+
+    /**
+     * Create an instance of {@link DtComentario }
+     * 
+     */
+    public DtComentario createDtComentario() {
+        return new DtComentario();
     }
 
     /**
@@ -110,22 +116,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link BufferedImage }
-     * 
-     */
-    public BufferedImage createBufferedImage() {
-        return new BufferedImage();
-    }
-
-    /**
-     * Create an instance of {@link Raster }
-     * 
-     */
-    public Raster createRaster() {
-        return new Raster();
-    }
-
-    /**
      * Create an instance of {@link DtCategoria }
      * 
      */
@@ -134,19 +124,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtComentario.Hijos.Entry }
+     * Create an instance of {@link JAXBElement }{@code <}{@link DuplicateClassException }{@code >}}
      * 
      */
-    public DtComentario.Hijos.Entry createDtComentarioHijosEntry() {
-        return new DtComentario.Hijos.Entry();
+    @XmlElementDecl(namespace = "http://servicios/", name = "DuplicateClassException")
+    public JAXBElement<DuplicateClassException> createDuplicateClassException(DuplicateClassException value) {
+        return new JAXBElement<DuplicateClassException>(_DuplicateClassException_QNAME, DuplicateClassException.class, null, value);
     }
 
     /**
-     * Create an instance of {@link DtVideo.Comentarios.Entry }
+     * Create an instance of {@link JAXBElement }{@code <}{@link InvalidDataException }{@code >}}
      * 
      */
-    public DtVideo.Comentarios.Entry createDtVideoComentariosEntry() {
-        return new DtVideo.Comentarios.Entry();
+    @XmlElementDecl(namespace = "http://servicios/", name = "InvalidDataException")
+    public JAXBElement<InvalidDataException> createInvalidDataException(InvalidDataException value) {
+        return new JAXBElement<InvalidDataException>(_InvalidDataException_QNAME, InvalidDataException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "imagen")
+    public JAXBElement<byte[]> createImagen(byte[] value) {
+        return new JAXBElement<byte[]>(_Imagen_QNAME, byte[].class, null, ((byte[]) value));
     }
 
 }
