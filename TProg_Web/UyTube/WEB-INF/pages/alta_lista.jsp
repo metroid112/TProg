@@ -9,6 +9,13 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
+			<%
+			if (request.getAttribute("ERROR") != null) { %>
+			
+				<h2 style="color: red"><%= request.getAttribute("ERROR") %></h2>
+			<%	
+			}
+			%>
 			<div class="wrap-contact3">
 				<form class="contact3-form validate-form" action="ListaServlet" method="POST" id="formListaServlet">
 					<span class="contact3-form-title">

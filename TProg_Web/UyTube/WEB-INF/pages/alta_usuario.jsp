@@ -44,7 +44,7 @@
 				<br>
 				Categoría:
 				<select name="categoria">
-					<option selected value>Sin categoría</option>
+					<option selected>Sin categoría</option>
 				<% for (String cat : (List<String>) request.getAttribute("CATEGORIAS")) { %>
 					<option value="<%= cat %>"><%= cat %> </option>
 				<% } %>

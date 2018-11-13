@@ -29,6 +29,7 @@ import org.apache.commons.io.IOUtils;
 import com.sun.istack.internal.Nullable;
 
 import datatypes.DtBusqueda;
+import datatypes.DtCategoria;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
 import datatypes.DtVideo;
@@ -118,11 +119,14 @@ public class Publicador {
   @WebMethod
   public DtPaquete listarCategorias() {
     DtPaquete pack = new DtPaquete();
-    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>(); 
-    for (DtUniversal dato : Fabrica.getICategorias().listarCategorias()) {
-      listaUniversal.add(dato);
+    List<String> listaCat = new LinkedList<String>();
+    List<DtUniversal> listaCatDt = new LinkedList<DtUniversal>();
+    for (DtCategoria dato : Fabrica.getICategorias().listarCategorias()) {
+      listaCat.add(dato.getNombre());
+      listaCatDt.add(dato);
     };
-    pack.setListaDt(listaUniversal);
+    pack.setListaDt(listaCatDt);
+    pack.setListaAux(listaCat);
     return pack;
   }
   

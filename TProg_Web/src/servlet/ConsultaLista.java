@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtLista;
-import datatypes.DtUsuario;
+import servicios.DtLista;
+import servicios.DtUsuario;
 import excepciones.NotFoundException;
-import interfaces.Fabrica;
-import interfaces.IListas;
 import utils.EstadoSesion;
 
 @WebServlet("/ConsultaLista")
