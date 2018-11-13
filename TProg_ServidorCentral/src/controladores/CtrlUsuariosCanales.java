@@ -232,7 +232,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
         for (Calificacion calificacionVideo : calificacionesVideo) {
           if (calificacionVideo.getUsuario().getId() == user.getId()) {
             calificacionesVideo.remove(calificacionVideo);
-            calificacionVideo = null;
             break;
           }
         }
@@ -243,6 +242,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
         // Remuevo link calificacion -> usuario
         calificacion.setUsuario(null);
         
+        // Ya esta desreferenciado asi que no se si es necesario este paso
         calificacion = null;
       }
       calificaciones.clear();
