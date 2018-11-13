@@ -263,6 +263,61 @@ public class Publicador {
     Fabrica.getIListas().quitarVideoLista(usuario, nombreVideo, nombreOwnerVideo, lista, defecto);
   }
   
+  @WebMethod
+  public void seguir(String seguidor, String seguido) {
+    Fabrica.getIUsuariosCanales().seguir(seguidor, seguido);
+  }
+  
+  @WebMethod
+  public void dejarSeguir(String seguidor, String seguido) {
+    Fabrica.getIUsuariosCanales().dejarSeguir(seguidor, seguido);
+  }
+  
+  @WebMethod
+  public DtPaquete listarNombresUsuarios() {
+    DtPaquete pack = new DtPaquete();
+    List<String> usuarios = Fabrica.getIUsuariosCanales().listarNombresUsuarios();
+    pack.setListaAux(usuarios);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtVideosPublicos(String nick) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dtUniversal : Fabrica.getIVideos().getDtVideosPublicos(nick)) {
+      listaUniversal.add(dtUniversal);
+    }
+    pack.setListaDt(listaUniversal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtListasParticularesPublicasUsuario(String nick) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dtUniversal : Fabrica.getIListas().getDtListasParticularesPublicasUsuario(nick)) {
+      listaUniversal.add(dtUniversal);
+    }
+    pack.setListaDt(listaUniversal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getSeguidores(String usuario) {
+    return empaquetar(Fabrica.getIUsuariosCanales().getSeguidores(usuario));
+  }
+  
+  @WebMethod
+  public DtPaquete getSeguidos(String usuario) {
+    return empaquetar(Fabrica.getIUsuariosCanales().getSeguidos(usuario));
+  }
+  
+  @WebMethod
+  public boolean isSeguidor(String seguidor, String seguido) {
+    return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
+  }
+  
   /**
    * Empaqueta un data type generico
    * @param contenido
@@ -287,11 +342,14 @@ public class Publicador {
     return pack;
   }
   
+  /* 
+   * No sirve mucho porque no se puede pasar una lista de dtAlgo como lista de DtUniversal
   @WebMethod(exclude = true)
   public DtPaquete empaquetar2(List<DtUniversal> lista) {
     DtPaquete pack = new DtPaquete();
     pack.setListaDt(lista);
     return pack;
   }
+  */
     
 }

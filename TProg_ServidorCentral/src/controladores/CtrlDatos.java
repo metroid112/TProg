@@ -784,14 +784,17 @@ public class CtrlDatos implements IDatos {
               usuario.getCanal().getNombre(), usuario.getCorreo(),
               usuario.getCanal().getDescripcion(), usuario.getFecha(),
               !usuario.getCanal().isVisible(), usuario.getNick(),
-              img == null ? "0.JPG" : Integer.toString(img.getId()) + img.getExtension(), categoria == null ? "Sin categoria" : categoria.getNombre());
+              img == null ? "0.JPG" : Integer.toString(img.getId()) + img.getExtension(),
+              categoria == null ? "Sin categoria" : categoria.getNombre());
+          dtUsuario.setUltimaActividad(canal.getUltimaActividad());
           usuarios.add(dtUsuario);
         }
       }
     }
     DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
     switch (orden) {
-      case 1: resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
+      case 1: 
+        resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
         break;
       case 2: resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getCanal));
         break;
