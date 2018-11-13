@@ -304,6 +304,31 @@ public class Publicador {
   }
   
   @WebMethod
+  public DtPaquete getDtListasParticularesUsuario(String nick) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dtUniversal : Fabrica.getIListas().getDtListasParticularesUsuario(nick)) {
+      listaUniversal.add(dtUniversal);
+    }
+    pack.setListaDt(listaUniversal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDt(int idLista) {
+    try {
+      return empaquetar(Fabrica.getIListas().getDt(idLista));
+    } catch (NotFoundException e) {
+      return null;
+    }
+  }
+  
+  @WebMethod
+  public void guardarCambios(String nombreLista, String usuario, Boolean visibilidad) {
+    Fabrica.getIListas().guardarCambios(nombreLista, usuario, visibilidad);
+  }
+  
+  @WebMethod
   public DtPaquete getSeguidores(String usuario) {
     return empaquetar(Fabrica.getIUsuariosCanales().getSeguidores(usuario));
   }
