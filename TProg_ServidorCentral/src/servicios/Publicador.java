@@ -258,6 +258,11 @@ public class Publicador {
     return imagenByte;
   }
   
+  @WebMethod
+  public void quitarVideoLista(String usuario, String nombreVideo, String nombreOwnerVideo, String lista, Boolean defecto) {
+    Fabrica.getIListas().quitarVideoLista(usuario, nombreVideo, nombreOwnerVideo, lista, defecto);
+  }
+  
   /**
    * Empaqueta un data type generico
    * @param contenido

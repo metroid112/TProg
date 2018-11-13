@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import servicios.Publicador;
+import servicios.PublicadorService;
 import utils.EstadoSesion;
 
 @WebServlet("/Inicio")
@@ -21,13 +23,16 @@ public class Inicio extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     iniciar(request, response);
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();
+    port.cargarDatos();
     request.getRequestDispatcher("index.jsp").forward(request, response);
   }
 
   private void iniciar(HttpServletRequest request, HttpServletResponse response) {
-    if (request.getSession().getAttribute("LOGIN") == null) {
+    //if (request.getSession().getAttribute("LOGIN") == null) {
       request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
-    }
+    //}
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)

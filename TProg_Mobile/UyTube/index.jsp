@@ -1,3 +1,5 @@
+<%@page import="servicios.*" %>
+<%@page import="utils.*" %>
 <!doctype html>
 <html>
 <head>
@@ -19,15 +21,16 @@
 					<p>Iniciar Sesión					</p>
 					<form class="login" action="login" method="POST">
 					  <div class="form-group">
-					    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo o nickname" name="nickname">
+					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo o nickname" name="nickname">
 					  </div>
 					  <div class="form-group">
 					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="pass">
 					  </div>
-					  <div class="form-check">
-					    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					    <label class="form-check-label" for="exampleCheck1">Recordarme</label>
-					  </div>
+					  <%
+							if (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_INCORRECTO)) { %>
+								<p style="color:red">Usuario o password incorrectos</p>
+						<%	}
+				 		%>	
 					  <input type="submit" class="btn btn-primary" value=Login>
 					</form>
 				</div>

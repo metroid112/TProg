@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dtUniversal complex type.
+ * <p>Java class for dtUniversal complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtUniversal"&gt;
@@ -29,6 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "dtUniversal")
 @XmlSeeAlso({
     DtBusqueda.class,
+    DtVideo.class,
+    DtUsuario.class,
     DtCategoria.class
 })
 public abstract class DtUniversal {
