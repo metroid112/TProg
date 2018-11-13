@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -188,6 +189,32 @@ public class Publicador {
       // TODO Auto-generated catch block
       e.printStackTrace();
       return null;
+    }
+  }
+  
+  @WebMethod
+  public DtPaquete getDtVideosPropietario(String usuario) {
+    List<DtUniversal> listaUni = new LinkedList<DtUniversal>();
+    for (DtUniversal dtUni : Fabrica.getIVideos().getDtVideosPropietario(usuario)) {
+      listaUni.add(dtUni);
+    }
+    DtPaquete pack = new DtPaquete();
+    pack.setListaDt(listaUni);
+    return pack;
+  }
+  
+  @WebMethod 
+  public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion, String url,
+      String categoria, long duracionSeg, boolean visible, GregorianCalendar fechaCalendario) {
+    try {
+      Duration duracion = Duration.ofSeconds(duracionSeg);
+      Fabrica.getIVideos().modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fechaCalendario.getTime());
+    } catch (InvalidDataException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (DuplicateClassException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
   }
   
