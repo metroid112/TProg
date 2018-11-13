@@ -10,19 +10,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dtCategoria complex type.
+ * <p>Java class for dtCategoria complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtCategoria"&gt;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="listas" type="{http://servicios/}dtLista" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="categoriaId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="videos" type="{http://servicios/}dtVideo" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="categorias" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="listas" type="{http://servicios/}dtLista" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
@@ -33,54 +33,24 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtCategoria", propOrder = {
-    "listas",
     "nombre",
+    "categoriaId",
     "videos",
-    "categorias"
+    "listas"
 })
 public class DtCategoria
     extends DtUniversal
 {
 
-    @XmlElement(nillable = true)
-    protected List<DtLista> listas;
     protected String nombre;
+    protected int categoriaId;
     @XmlElement(nillable = true)
     protected List<DtVideo> videos;
     @XmlElement(nillable = true)
-    protected List<String> categorias;
+    protected List<DtLista> listas;
 
     /**
-     * Gets the value of the listas property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the listas property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getListas().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link DtLista }
-     * 
-     * 
-     */
-    public List<DtLista> getListas() {
-        if (listas == null) {
-            listas = new ArrayList<DtLista>();
-        }
-        return this.listas;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nombre.
+     * Gets the value of the nombre property.
      * 
      * @return
      *     possible object is
@@ -92,7 +62,7 @@ public class DtCategoria
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Sets the value of the nombre property.
      * 
      * @param value
      *     allowed object is
@@ -101,6 +71,22 @@ public class DtCategoria
      */
     public void setNombre(String value) {
         this.nombre = value;
+    }
+
+    /**
+     * Gets the value of the categoriaId property.
+     * 
+     */
+    public int getCategoriaId() {
+        return categoriaId;
+    }
+
+    /**
+     * Sets the value of the categoriaId property.
+     * 
+     */
+    public void setCategoriaId(int value) {
+        this.categoriaId = value;
     }
 
     /**
@@ -133,32 +119,32 @@ public class DtCategoria
     }
 
     /**
-     * Gets the value of the categorias property.
+     * Gets the value of the listas property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the categorias property.
+     * This is why there is not a <CODE>set</CODE> method for the listas property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCategorias().add(newItem);
+     *    getListas().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * {@link DtLista }
      * 
      * 
      */
-    public List<String> getCategorias() {
-        if (categorias == null) {
-            categorias = new ArrayList<String>();
+    public List<DtLista> getListas() {
+        if (listas == null) {
+            listas = new ArrayList<DtLista>();
         }
-        return this.categorias;
+        return this.listas;
     }
 
 }

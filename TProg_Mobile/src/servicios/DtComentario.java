@@ -12,38 +12,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para dtComentario complex type.
+ * <p>Java class for dtComentario complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtComentario"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="hijos"&gt;
- *           &lt;complexType&gt;
- *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                 &lt;sequence&gt;
- *                   &lt;element name="entry" maxOccurs="unbounded" minOccurs="0"&gt;
- *                     &lt;complexType&gt;
- *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                           &lt;sequence&gt;
- *                             &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *                             &lt;element name="value" type="{http://servicios/}dtComentario" minOccurs="0"/&gt;
- *                           &lt;/sequence&gt;
- *                         &lt;/restriction&gt;
- *                       &lt;/complexContent&gt;
- *                     &lt;/complexType&gt;
- *                   &lt;/element&gt;
- *                 &lt;/sequence&gt;
- *               &lt;/restriction&gt;
- *             &lt;/complexContent&gt;
- *           &lt;/complexType&gt;
- *         &lt;/element&gt;
- *         &lt;element name="idComentario" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="hijos" type="{http://servicios/}dtComentario" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="idComentario" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="texto" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
@@ -67,9 +46,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class DtComentario {
 
-    @XmlElement(required = true)
-    protected DtComentario.Hijos hijos;
-    protected Integer idComentario;
+    @XmlElement(nillable = true)
+    protected List<DtComentario> hijos;
+    protected int idComentario;
     protected String texto;
     protected String usuario;
     @XmlSchemaType(name = "dateTime")
@@ -77,55 +56,52 @@ public class DtComentario {
     protected boolean tieneHijos;
 
     /**
-     * Obtiene el valor de la propiedad hijos.
+     * Gets the value of the hijos property.
      * 
-     * @return
-     *     possible object is
-     *     {@link DtComentario.Hijos }
-     *     
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the hijos property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getHijos().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DtComentario }
+     * 
+     * 
      */
-    public DtComentario.Hijos getHijos() {
-        return hijos;
+    public List<DtComentario> getHijos() {
+        if (hijos == null) {
+            hijos = new ArrayList<DtComentario>();
+        }
+        return this.hijos;
     }
 
     /**
-     * Define el valor de la propiedad hijos.
+     * Gets the value of the idComentario property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link DtComentario.Hijos }
-     *     
      */
-    public void setHijos(DtComentario.Hijos value) {
-        this.hijos = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad idComentario.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getIdComentario() {
+    public int getIdComentario() {
         return idComentario;
     }
 
     /**
-     * Define el valor de la propiedad idComentario.
+     * Sets the value of the idComentario property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
      */
-    public void setIdComentario(Integer value) {
+    public void setIdComentario(int value) {
         this.idComentario = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad texto.
+     * Gets the value of the texto property.
      * 
      * @return
      *     possible object is
@@ -137,7 +113,7 @@ public class DtComentario {
     }
 
     /**
-     * Define el valor de la propiedad texto.
+     * Sets the value of the texto property.
      * 
      * @param value
      *     allowed object is
@@ -149,7 +125,7 @@ public class DtComentario {
     }
 
     /**
-     * Obtiene el valor de la propiedad usuario.
+     * Gets the value of the usuario property.
      * 
      * @return
      *     possible object is
@@ -161,7 +137,7 @@ public class DtComentario {
     }
 
     /**
-     * Define el valor de la propiedad usuario.
+     * Sets the value of the usuario property.
      * 
      * @param value
      *     allowed object is
@@ -173,7 +149,7 @@ public class DtComentario {
     }
 
     /**
-     * Obtiene el valor de la propiedad fecha.
+     * Gets the value of the fecha property.
      * 
      * @return
      *     possible object is
@@ -185,7 +161,7 @@ public class DtComentario {
     }
 
     /**
-     * Define el valor de la propiedad fecha.
+     * Sets the value of the fecha property.
      * 
      * @param value
      *     allowed object is
@@ -197,7 +173,7 @@ public class DtComentario {
     }
 
     /**
-     * Obtiene el valor de la propiedad tieneHijos.
+     * Gets the value of the tieneHijos property.
      * 
      */
     public boolean isTieneHijos() {
@@ -205,162 +181,11 @@ public class DtComentario {
     }
 
     /**
-     * Define el valor de la propiedad tieneHijos.
+     * Sets the value of the tieneHijos property.
      * 
      */
     public void setTieneHijos(boolean value) {
         this.tieneHijos = value;
-    }
-
-
-    /**
-     * <p>Clase Java para anonymous complex type.
-     * 
-     * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
-     * 
-     * <pre>
-     * &lt;complexType&gt;
-     *   &lt;complexContent&gt;
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *       &lt;sequence&gt;
-     *         &lt;element name="entry" maxOccurs="unbounded" minOccurs="0"&gt;
-     *           &lt;complexType&gt;
-     *             &lt;complexContent&gt;
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                 &lt;sequence&gt;
-     *                   &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
-     *                   &lt;element name="value" type="{http://servicios/}dtComentario" minOccurs="0"/&gt;
-     *                 &lt;/sequence&gt;
-     *               &lt;/restriction&gt;
-     *             &lt;/complexContent&gt;
-     *           &lt;/complexType&gt;
-     *         &lt;/element&gt;
-     *       &lt;/sequence&gt;
-     *     &lt;/restriction&gt;
-     *   &lt;/complexContent&gt;
-     * &lt;/complexType&gt;
-     * </pre>
-     * 
-     * 
-     */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "entry"
-    })
-    public static class Hijos {
-
-        protected List<DtComentario.Hijos.Entry> entry;
-
-        /**
-         * Gets the value of the entry property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the entry property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getEntry().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link DtComentario.Hijos.Entry }
-         * 
-         * 
-         */
-        public List<DtComentario.Hijos.Entry> getEntry() {
-            if (entry == null) {
-                entry = new ArrayList<DtComentario.Hijos.Entry>();
-            }
-            return this.entry;
-        }
-
-
-        /**
-         * <p>Clase Java para anonymous complex type.
-         * 
-         * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="key" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
-         *         &lt;element name="value" type="{http://servicios/}dtComentario" minOccurs="0"/&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "key",
-            "value"
-        })
-        public static class Entry {
-
-            protected Integer key;
-            protected DtComentario value;
-
-            /**
-             * Obtiene el valor de la propiedad key.
-             * 
-             * @return
-             *     possible object is
-             *     {@link Integer }
-             *     
-             */
-            public Integer getKey() {
-                return key;
-            }
-
-            /**
-             * Define el valor de la propiedad key.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link Integer }
-             *     
-             */
-            public void setKey(Integer value) {
-                this.key = value;
-            }
-
-            /**
-             * Obtiene el valor de la propiedad value.
-             * 
-             * @return
-             *     possible object is
-             *     {@link DtComentario }
-             *     
-             */
-            public DtComentario getValue() {
-                return value;
-            }
-
-            /**
-             * Define el valor de la propiedad value.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link DtComentario }
-             *     
-             */
-            public void setValue(DtComentario value) {
-                this.value = value;
-            }
-
-        }
-
     }
 
 }
