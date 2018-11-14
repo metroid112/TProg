@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -125,6 +126,16 @@ public class Publicador {
     };
     pack.setListaDt(listaUniversal);
     return pack;
+  }
+  
+  @WebMethod  
+  public void AltaVideo(String nickUsuario, String nombre, String descripcion, long duracionSegundos, String url,
+      GregorianCalendar fecha, String categoria, boolean visible) {
+    try{
+
+    Fabrica.getIVideos().altaVideo(nickUsuario, nombre, descripcion, Duration.ofHours((duracionSegundos/60)/60), url, categoria, fecha.getTime(),false);
+    }
+    catch(Exception e){}
   }
   
   @WebMethod
