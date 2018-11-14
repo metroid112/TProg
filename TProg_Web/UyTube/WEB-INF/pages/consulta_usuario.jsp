@@ -89,7 +89,10 @@
    <% if(session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
 				DtUsuario usuarioLogueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO");
 				if(usuarioLogueado.getNick().equals(usuario.getNick())) { %>
-				  	<!-- Modificar Usuario --> 
+				  	<form action="ModificarUsuario" method="GET">
+				  		<input name="STATE" value="LOAD" type="hidden">
+				  		<button>Modificar Usuario</button>
+				  	</form>
      <% } else { %>
      			<%
      			boolean sigue = (boolean) request.getAttribute("SIGUE");

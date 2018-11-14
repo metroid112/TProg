@@ -176,4 +176,33 @@ public class Usuario {
     return this.apellido;
   }
 
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
+  }
+
+  public void setCalificaciones(List<Calificacion> calificaciones) {
+    this.calificaciones = calificaciones;
+  }
+
+  public void setCorreo(String correo) {
+    this.correo = correo;
+  }
+
+  public void setFechaNacimiento(Date fechaNacimiento) {
+    this.fechaNacimiento = fechaNacimiento;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public void setNick(String nick) {
+    this.nick = nick;
+  }
+  
+  
 }

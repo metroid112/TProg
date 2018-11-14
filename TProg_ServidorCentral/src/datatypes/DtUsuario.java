@@ -20,6 +20,7 @@ public class DtUsuario extends DtUniversal{
   public Date fechaNacimiento;
   public Date ultimaActividad;
   public String categoria;
+  public String password;
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
       String descripcionCanal, Date fechaNacimiento, boolean privado,

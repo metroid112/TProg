@@ -203,7 +203,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws DuplicateClassException {
+  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal, byte[] img) throws DuplicateClassException {
     if(!usuarioModificado.nick.equals(usuarioOriginal.nick) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.nick);
     }
@@ -211,6 +211,21 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       throw new DuplicateClassException("Usuario", usuarioModificado.correo);
     }
     Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
-    
+    usuario.setNick(usuarioModificado.nick);
+    usuario.setNombre(usuarioModificado.nombre);
+    usuario.setApellido(usuarioModificado.apellido);
+    usuario.setPassword(usuarioModificado.password);
+    usuario.setCorreo(usuarioModificado.correo);
+    usuario.setFechaNacimiento(usuarioModificado.fechaNacimiento);
+    usuario.getCanal().setNombre(usuarioModificado.canal);
+    usuario.getCanal().setDescripcion(usuarioModificado.descripcionCanal);
+    usuario.getCanal().setVisible(usuarioModificado.privado);
+    usuario.getCanal().setCategoria(ManejadorCategorias.getManejadorCategorias().get(usuarioModificado.categoria));
+    if (img == null) {
+      Imagen.borrar(usuario.getImg().getId());
+    } else {
+      usuario.getImg().setImgByte(img);
+    }
+    manejadorUsuarios.add(usuario);
   }
 }
