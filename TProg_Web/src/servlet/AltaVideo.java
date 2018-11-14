@@ -12,10 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import datatypes.DtUsuario;
+import servicios.DtUsuario;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
@@ -50,12 +51,12 @@ public class AltaVideo extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
       } else {
         String nick = "";
-        DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
-        if (user == null) {
+        DtUsuario usuarioLogueado = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+        if (usuarioLogueado == null) {
           request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
           request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
         }
-        nick = user.nick;
+        nick = usuarioLogueado.getNick();
         Date fecha = new Date();
         String nombre = request.getParameter("nombre");
         String url = request.getParameter("url");
@@ -65,9 +66,8 @@ public class AltaVideo extends HttpServlet {
         String duracionM = request.getParameter("duracionM");
         String duracionS = request.getParameter("duracionS");
 
-         // Duration duracion =
-              //Duration.parse("PT" + duracionH + "H" + duracionM + "M" + duracionS + "S");
-          long duracion = 0;
+          Duration duration = Duration.parse("PT" + duracionH + "H" + duracionM + "M" + duracionS + "S");
+          long duracion = duration.toMinutes()*60;
           try {
             fecha = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("fecha"));
           } catch (ParseException exception) {
@@ -82,16 +82,16 @@ public class AltaVideo extends HttpServlet {
             PublicadorService service = new PublicadorService();
             
             Publicador port = service.getPublicadorPort();
-            port.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fechaNacimientoXML,false);
+            port.altaVideo(nick, nombre, descripcion, duracion, url, fechaNacimientoXML, categoria,false);
             
-          } catch (DuplicateClassException exception) {
+          } /*catch (DuplicateClassException exception) {
             request.setAttribute("ERROR_1", "Ya existe un video con ese nombre");
             
             request.getRequestDispatcher("WEB-INF/pages/alta_video.jsp").forward(request, response);
           } catch (NotFoundException exception) {
             request.setAttribute("ERROR_2", exception.getMessage());
             request.getRequestDispatcher("WEB-INF/pages/alta_video.jsp").forward(request, response);
-          }
+          } */catch (DatatypeConfigurationException exception){}
         
         response.sendRedirect("Inicio");
         }
