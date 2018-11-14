@@ -10,6 +10,7 @@
 		<jsp:include page="/WEB-INF/extras/header.jsp" />
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
+			<div id="prueba"></div> <br>
 				<% if (request.getAttribute("ERROR_PASS") != null && (boolean) request.getAttribute("ERROR_PASS")) { %>
 					<h2>La contraseñas no coinciden.</h2>
 				<% } %>
@@ -20,13 +21,13 @@
 					<h2>El mail ya esta siendo usado.</h2>
 				<% } %>
 				<form action="AltaUsuario" method="POST" id="formAltaUsuario" enctype="multipart/form-data">
-				Nickname: <input type="text" name="nick" required>*
+				Nickname: <input type="text" name="nick" id="nick" required>* <span id="nickDisponible"></span>
 				<br>
 				Nombre: <input type="text" name="nombre" required>*
 				<br>
 				Apellido: <input type="text" name="apellido" required>*
 				<br>
-				Correo: <input type="email" name="mail" required>*
+				Correo: <input type="email" id="mail" name="mail" required>*<p id="mailDisponible"></p>
 				<br>
 				Fecha de nacimiento: <input type="date" name="fecha" required>*
 				<br>
@@ -57,5 +58,34 @@
 		</div>
 	</div>
 <jsp:include page="/WEB-INF/extras/script.jsp" />
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#nick").keyup(function() {
+		var txt = $("#nick").val();
+		$.get("AjaxServlet", {
+			tipo: "nick",
+			texto : txt
+		}, function (respuesta) {
+			$("#nickDisponible").text(respuesta);
+		});
+	});
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#mail").keyup(function() {
+		var txt = $("#mail").val();
+		$.get("AjaxServlet", {
+			tipo: "mail",
+			texto : txt
+		}, function (respuesta) {
+			$("#mailDisponible").text(respuesta);
+		});
+	});
+});
+</script>
+
 </body>
 </html>
