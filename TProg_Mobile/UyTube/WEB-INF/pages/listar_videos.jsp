@@ -1,14 +1,23 @@
+<%@page import="servicios.*" %>
+<%@page import="utils.*" %>
 <!doctype html>
 <html lang="en">
 <head>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" type="text/css" href="css/marco.css">
 	<title>UyTube - Explorar</title>
+	<style>
+	a.navbar-brand {
+	text-align: center;
+	font-size: 1rem;
+	}
+	</style>
 </head>
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#"> <img class="logo" src="img/logo.png" height="40"> LOGO</a>
+    <% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
+	<a class="navbar-brand" href="#"> <img class="logo" src="img/logo.png" height="3rem"> Bienvenido <%= logueado.getNick() %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
