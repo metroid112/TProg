@@ -374,6 +374,21 @@ public class Publicador {
     return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
   }
   
+  @WebMethod
+  public boolean existeNick(String nick) {
+    return Fabrica.getIUsuariosCanales().existeUsuario(nick);
+  }
+  
+  @WebMethod
+  public boolean existeCorreo(String correo) {
+    return Fabrica.getIUsuariosCanales().existeUsuarioMail(correo);
+  }
+  
+  @WebMethod
+  public boolean existeLista(String nombre, String nick) {
+   return Fabrica.getIListas().existeLista(nombre, nick);
+  }
+  
   /**
    * Empaqueta un data type generico
    * @param contenido
