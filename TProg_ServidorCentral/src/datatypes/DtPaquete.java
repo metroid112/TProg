@@ -1,6 +1,5 @@
 package datatypes;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,9 +12,9 @@ public class DtPaquete {
   private List<DtUniversal> listaDt;
   
   public DtPaquete() {}
-  
+
   public DtUniversal getContenido() {
-    return this.contenido;
+    return contenido;
   }
 
   public void setContenido(DtUniversal contenido) {
@@ -37,5 +36,7 @@ public class DtPaquete {
   public void setListaDt(List<DtUniversal> listaDt) {
     this.listaDt = listaDt;
   }
+  
+
   
 }

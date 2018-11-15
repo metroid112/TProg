@@ -1,5 +1,5 @@
 <!doctype html>
-<%@ page import = "datatypes.*" %>
+<%@ page import = "servicios.*" %>
 <%@ page import = "java.util.*" %>
 <html lang="en">
 <head>
@@ -22,9 +22,9 @@
 					<p>Seleccione una lista</p>
 					<% for (DtLista lista : (List<DtLista>) request.getAttribute("LISTAS")) { %>
 						<% if (lista.isVisible()) { %>
-							<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
-							<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ModificarLista" method="POST" >
-								<input type="hidden" name="lista" value="<%= lista.getId() %>">
+							<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getIdLista()%>').submit();">		
+							<form id="Form<%=lista.getIdLista()%>" class="detClickeableLista" action="ModificarLista" method="POST" >
+								<input type="hidden" name="lista" value="<%= lista.getIdLista() %>">
 								<input type="hidden" name="modificarLista" value="">
 								<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
 								<br>
@@ -35,9 +35,9 @@
 							</form>	
 							</div>
 						<% } else { %>
-							<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
-							<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ModificarLista" method="POST" >
-								<input type="hidden" name="lista" value="<%= lista.getId() %>">
+							<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getIdLista()%>').submit();">		
+							<form id="Form<%=lista.getIdLista()%>" class="detClickeableLista" action="ModificarLista" method="POST" >
+								<input type="hidden" name="lista" value="<%= lista.getIdLista() %>">
 								<input type="hidden" name="modificarLista" value="">
 								<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
 								<br>

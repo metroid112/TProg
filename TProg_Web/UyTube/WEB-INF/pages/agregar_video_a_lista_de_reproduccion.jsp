@@ -1,5 +1,6 @@
 <!doctype html>
-<%@ page import = "datatypes.*" %>
+<%@ page import = "servicios.*" %>
+<%@ page import = "java.util.*" %>
 <html lang="en">
 <head>
 	<jsp:include page="/WEB-INF/extras/head.jsp" />
@@ -18,8 +19,8 @@
 				<br>
 				<select required name="video">
 					<option value="" disabled selected hidden>Seleccione un video</option>
-					<% for (DtVideo video : (DtVideo[]) request.getAttribute("LISTA_DE_VIDEOS")) { %>
-						<option value="<%= video.idVideo %>"><%= video.nombre %> </option>
+					<% for (DtVideo video : (List<DtVideo>) request.getAttribute("LISTA_DE_VIDEOS")) { %>
+						<option value="<%= video.getIdVideo() %>"><%= video.getNombre() %> </option>
 					<% } %>
 				</select>
 						
@@ -27,10 +28,10 @@
 				<br>
 				<select required name="lista">
 					<option value="" disabled selected hidden>Seleccione una lista</option>
-					<% for (String listasPorDefecto : (String[]) request.getAttribute("LISTAS_POR_DEFECTO")) { %>
+					<% for (String listasPorDefecto : (List<String>) request.getAttribute("LISTAS_POR_DEFECTO")) { %>
 						<option value="D<%= listasPorDefecto %>" ><%= listasPorDefecto + " - Defecto" %></option>
 					<% } %>
-					<% for (String listasParticulares : (String[]) request.getAttribute("LISTAS_PARTICULARES")) { %>
+					<% for (String listasParticulares : (List<String>) request.getAttribute("LISTAS_PARTICULARES")) { %>
 						<option value="P<%= listasParticulares %>"><%= listasParticulares + " - Particular" %></option>
 					<% } %>
 				</select>

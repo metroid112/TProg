@@ -1,7 +1,10 @@
 
 package servicios;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -21,12 +24,31 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _DuplicateClassException_QNAME = new QName("http://servicios/", "DuplicateClassException");
+    private final static QName _InvalidDataException_QNAME = new QName("http://servicios/", "InvalidDataException");
+    private final static QName _Imagen_QNAME = new QName("http://servicios/", "imagen");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: servicios
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link DuplicateClassException }
+     * 
+     */
+    public DuplicateClassException createDuplicateClassException() {
+        return new DuplicateClassException();
+    }
+
+    /**
+     * Create an instance of {@link InvalidDataException }
+     * 
+     */
+    public InvalidDataException createInvalidDataException() {
+        return new InvalidDataException();
     }
 
     /**
@@ -99,6 +121,33 @@ public class ObjectFactory {
      */
     public DtCategoria createDtCategoria() {
         return new DtCategoria();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DuplicateClassException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "DuplicateClassException")
+    public JAXBElement<DuplicateClassException> createDuplicateClassException(DuplicateClassException value) {
+        return new JAXBElement<DuplicateClassException>(_DuplicateClassException_QNAME, DuplicateClassException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InvalidDataException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "InvalidDataException")
+    public JAXBElement<InvalidDataException> createInvalidDataException(InvalidDataException value) {
+        return new JAXBElement<InvalidDataException>(_InvalidDataException_QNAME, InvalidDataException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "imagen")
+    public JAXBElement<byte[]> createImagen(byte[] value) {
+        return new JAXBElement<byte[]>(_Imagen_QNAME, byte[].class, null, ((byte[]) value));
     }
 
 }

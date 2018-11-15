@@ -96,7 +96,7 @@ public class AltaUsuario extends HttpServlet {
             categoria = request.getParameter("categoria");
           }
           Boolean visible;
-          if (request.getParameter("visibilidad").equals("Privado")) {
+          if (request.getParameter("visibilidad").equals("privado")) {
             visible = false;
           } else {
             visible = true;

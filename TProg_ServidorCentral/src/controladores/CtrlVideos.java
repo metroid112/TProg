@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -11,6 +12,7 @@ import java.util.Map.Entry;
 import clases.Categoria;
 import clases.Usuario;
 import clases.Video;
+import datatypes.DtUniversal;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
@@ -82,9 +84,9 @@ public class CtrlVideos implements IVideos {
   }
 
   @Override
-  public DtVideo[] listarTodosLosVideos(String nick) {
+  public List<DtVideo> listarTodosLosVideos(String nick) {
 
-    List<DtVideo> listaVideos = new ArrayList<DtVideo>();
+    List<DtVideo> listaVideos = new LinkedList<DtVideo>();
     for (Entry<String, Usuario> usuario : manejadorUsuario.getMap().entrySet()) {
       List<DtVideo> lista = usuario.getValue().getCanal().getVideosPublicos();
       listaVideos.addAll(lista);
@@ -92,7 +94,7 @@ public class CtrlVideos implements IVideos {
     Usuario user = manejadorUsuario.get(nick);
     List<DtVideo> lista = user.getCanal().getVideosPrivados();
     listaVideos.addAll(lista);
-    return listaVideos.toArray(new DtVideo[listaVideos.size()]);
+    return listaVideos;
   }
 
   @Override

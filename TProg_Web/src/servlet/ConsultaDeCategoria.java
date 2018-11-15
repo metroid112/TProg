@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import interfaces.Fabrica;
-import interfaces.ICategorias;
+import servicios.DtCategoria;
+import servicios.DtUniversal;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -27,14 +27,14 @@ public class ConsultaDeCategoria extends HttpServlet {
       throws ServletException, IOException {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();    
-    if (request.getParameter("CATEGORIA") == null) {    
-      List<String> listaCat = port.listarCategorias().getListaAux();
+    if (request.getParameter("CATEGORIA") == null) { 
+      List<DtUniversal> listaCat = port.listarCategorias().getListaDt();
       request.setAttribute("CATEGORIAS", listaCat);
       request.getRequestDispatcher("/WEB-INF/pages/lista_categorias.jsp").forward(request,
           response);
     } else {
       String categoria = (String) request.getParameter("CATEGORIA");
-      servicios.DtCategoria dtCat = (servicios.DtCategoria) port.consultaDeCategoria(categoria).getContenido();
+      DtCategoria dtCat = (DtCategoria) port.consultaDeCategoria(categoria).getContenido();
       request.setAttribute("CATEGORIA", dtCat);
       request.getRequestDispatcher("/WEB-INF/pages/consulta_categoria.jsp").forward(request,
           response);

@@ -30,9 +30,9 @@ public interface IListas {
 
   public void guardarCambios(String nomLis, String usuario, boolean visible);
 
-  public String[] listarListasDefectoUsuario(String usuario);
+  public List<String> listarListasDefectoUsuario(String usuario);
 
-  public String[] listarListasParticularUsuario(String usuario);
+  public List<String> listarListasParticularUsuario(String usuario);
 
   public void quitarVideoLista(String usuario, String video, String ownerVideo, String lista,
       boolean deefecto);
@@ -48,4 +48,6 @@ public interface IListas {
   public List<DtLista> getDtListasPrivadasUsuario(String usuario);
 
   public Map<Integer, ListaParticular> getListasPublicas();
+  
+  public boolean existeLista(String nombre, String nick);
 }

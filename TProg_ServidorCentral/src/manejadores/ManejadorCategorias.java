@@ -56,6 +56,10 @@ public class ManejadorCategorias {
     return lista;
   }
 
+  public Map<String, Categoria> getCategorias() {
+    return categorias;
+  }
+
   public boolean existeCategoria(String nombre) {
     return categorias.containsKey(nombre);
   }

@@ -1,5 +1,8 @@
 package controladores;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -7,7 +10,11 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
+
 import clases.Canal;
+import clases.Categoria;
+import clases.Imagen;
 import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
@@ -27,6 +34,19 @@ import manejadores.ManejadorVideos;
 public class CtrlDatos implements IDatos {
 
   private static boolean cargaDatos = false;
+  
+  public byte[] getByte(String id) {
+    byte[] imagenByte = null;
+    try {
+      File imagen = new File("img/" + id);
+      FileInputStream inStream = new FileInputStream(imagen);
+      imagenByte = IOUtils.toByteArray(inStream);      
+    } catch (IOException e) {
+      e.printStackTrace();
+      System.out.println("Archivo no encontrado: " + id);
+    }    
+    return imagenByte;
+  }
 
   @Override
   public void cargaDatos() throws Exception {
@@ -219,70 +239,62 @@ public class CtrlDatos implements IDatos {
       NJ.visibilidadCanal = true;
 
       ctrlUsuarios.altaUsuario(HR.nick, HR.nombre, HR.apellido, HR.mail,
-          format.parse(HR.nacimiento), "img" + divisor + "usuarios" + divisor + "horacio.JPG",
+          format.parse(HR.nacimiento), getByte("horacio.JPG"),
           HR.nombreCanal, HR.descripcionCanal, "Sin categoria", HR.visibilidadCanal, HR.pass);
       ctrlUsuarios.altaUsuario(MB.nick, MB.nombre, MB.apellido, MB.mail,
-          format.parse(MB.nacimiento), "img" + divisor + "usuarios" + divisor + "martin.JPG",
+          format.parse(MB.nacimiento), getByte("martin.JPG"),
           MB.nombreCanal, MB.descripcionCanal, "Sin categoria", true, MB.pass);
       ctrlUsuarios.altaUsuario("hectorg", "Héctor", "Guido",
           "hector.gui@elgalpon.org.uy",
-          format.parse("07/01/1954"), "img" + divisor + "usuarios" + divisor + "null.JPG",
+          format.parse("07/01/1954"), getByte("null.JPG"),
           "hectorg",
           "Canal HG",
           "Sin categoria", true, HG.pass);
       ctrlUsuarios.altaUsuario("tabarec", "Tabare", "Cardozo",
           "tabare.car@agadu.org.uy",
-          format.parse("24/07/1971"), "img" + divisor + "usuarios" + divisor + "tabare.JPG",
-          "Tabar�",
+          format.parse("24/07/1971"), getByte("tabare.JPG"), "Tabaré",
           "Mi musica e ainda mais", "Sin categoria", true, TC.pass);
       ctrlUsuarios.altaUsuario("cachilas", "Waldemar \"Cachila\"", "Silva",
-          "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"),
-          "img" + divisor + "usuarios" + divisor + "cachila.JPG",
+          "Cachila.sil@c1080.org.uy", format.parse("01/01/1947"), getByte("cachila.JPG"),
           "El Cachila", "Para juntar cosas", "Sin categoria", false, CS.pass);
       ctrlUsuarios.altaUsuario("juliob", "Julio", "Bocca",
           "juliobocca@sodre.com.uy",
-          format.parse("16/03/1967"), "img" + divisor + "usuarios" + divisor + "null.JPG", "juliob",
+          format.parse("16/03/1967"), null, "juliob",
           "Canal de JB",
           "Sin categoria", true, JB.pass);
       ctrlUsuarios.altaUsuario("diegop", "Diego", "Parodi", "diego@efectocine.com",
-          format.parse("01/01/1975"), "img" + divisor + "usuarios" + divisor + "null.JPG", "diegop",
+          format.parse("01/01/1975"), null, "diegop",
           "Canal de DP",
           "Sin categoria", true, DP.pass);
       ctrlUsuarios.altaUsuario("kairoh", "Kairo", "Herrera",
           "kairoher@pilsenrock.com.uy",
-          format.parse("25/04/1840"), "img" + divisor + "usuarios" + divisor + "kairo.JPG",
-          "Kairo musica",
+          format.parse("25/04/1840"), getByte("kairo.JPG"), "Kairo musica",
           "Videos de grandes canciones de hoy y siempre", "Sin categoria", true, KH.pass);
       ctrlUsuarios.altaUsuario("robinh", "Robin", "Henderson",
           "Robin.h@tinglesa.com.uy",
-          format.parse("03/08/1940"), "img" + divisor + "usuarios" + divisor + "null.JPG", "robinh",
-          "Henderson",
+          format.parse("03/08/1940"), null, "robinh", "Henderson",
           "Sin categoria", true, RH.pass);
       ctrlUsuarios.altaUsuario("marcelot", "Marcelo", "Tinelli",
-          "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"),
-          "img" + divisor + "usuarios" + divisor + "null.JPG",
+          "marcelot@ideasdelsur.com.ar", format.parse("01/04/1960"), null,
           "Tinelli total", "Todo lo que querias y más !", "Sin categoria", true, MT.pass);
       ctrlUsuarios.altaUsuario("novick", "Edgardo", "Novick",
           "edgardo@novick.com.uy",
-          format.parse("17/07/1952"), "img" + divisor + "usuarios" + divisor + "null.JPG",
-          "Con la gente",
+          format.parse("17/07/1952"), null, "Con la gente",
           "Preparando las elecciones", "Sin categoria", true, EN.pass);
       ctrlUsuarios.altaUsuario("sergiop", "Sergio", "Puglia",
           "puglia@alpanpan.com.uy",
-          format.parse("28/01/1950"), "img" + divisor + "usuarios" + divisor + "null.JPG",
-          "Puglia invita",
+          format.parse("28/01/1950"), null, "Puglia invita",
           "Programas del ciclo y videos de cocina masterchef", "Sin categoria", true, SP.pass);
       ctrlUsuarios.altaUsuario("chino", "Alvaro", "Recoba", "chino@trico.org.uy",
-          format.parse("17/03/1976"), "img" + divisor + "usuarios" + divisor + "recoba.JPG",
-          "Chino Recoba",
+          format.parse("17/03/1976"), getByte("recoba.JPG"), "Chino Recoba",
           "Canal de goles con Nacional ", "Sin categoria", false, AR.pass);
       ctrlUsuarios.altaUsuario("tonyp", "Antonio", "Pacheco",
           "eltony@manya.org.uy",
-          format.parse("14/02/1955"), "img" + divisor + "usuarios" + divisor + "pacheco.JPG",
+          format.parse("14/02/1955"), getByte("pacheco.JPG"),
           "Tony Pacheco",
           "Todos los goles con Peñarol", "Sin categoria", false, AP.pass);
       ctrlUsuarios.altaUsuario("nicoJ", "Nicolas", "Jodal", "jodal@artech.com.uy",
-          format.parse("09/08/1960"), "img" + divisor + "usuarios" + divisor + "null.JPG",
+          format.parse("09/08/1960"), null,
           "Desde Genexus", "Canal informacion C y T", "Sin categoria", true, NJ.pass);
 
       ctrlUsuarios.seguir(HR.nick, HG.nick);
@@ -775,18 +787,24 @@ public class CtrlDatos implements IDatos {
             || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
           /*DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
               usuario.getImg().getId(), canal.getUltimaActividad());*/
-          DtUsuario dtUsuario = new DtUsuario(usuario.getNombre(), usuario.getApellido(),
+          Categoria categoria = usuario.getCanal().getCategoria();
+          Imagen img = usuario.getImg();
+          DtUsuario dtUsuario = new DtUsuario(usuario.getNombre(),
+              usuario.getApellido(),
               usuario.getCanal().getNombre(), usuario.getCorreo(),
               usuario.getCanal().getDescripcion(), usuario.getFecha(),
               !usuario.getCanal().isVisible(), usuario.getNick(),
-              usuario.getImg().getId(), usuario.getCanal().getCategoria().getNombre());
+              img == null ? "0.JPG" : Integer.toString(img.getId()) + img.getExtension(),
+              categoria == null ? "Sin categoria" : categoria.getNombre());
+          dtUsuario.setUltimaActividad(canal.getUltimaActividad());
           usuarios.add(dtUsuario);
         }
       }
     }
     DtBusqueda resultados = new DtBusqueda(videos, listas, usuarios);
     switch (orden) {
-      case 1: resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
+      case 1: 
+        resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getUltimaActividad).reversed());
         break;
       case 2: resultados.getUsuarios().sort(Comparator.comparing(DtUsuario::getCanal));
         break;
