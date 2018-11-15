@@ -1,5 +1,5 @@
-<%@page import="datatypes.DtUsuario"%>
-<%@page import="datatypes.DtVideo"%>
+<%@page import="servicios.DtUsuario"%>
+<%@page import="servicios.DtVideo"%>
 <%@page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
@@ -16,16 +16,16 @@
 		<br>
 		<div class="highlights">
 			<% for (DtVideo video : (List<DtVideo>) request.getAttribute("VIDEOS")) { %>
-				<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">
-					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="ModificarVideo" method="POST">
-					<input type="hidden" name="video" value="<%=video.idVideo%>">
+				<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.getIdVideo()%>').submit();">
+					<form id="Form<%=video.getIdVideo()%>" class="detClickeableVideo" action="ModificarVideo" method="POST">
+					<input type="hidden" name="video" value="<%=video.getIdVideo()%>">
 					<input type="hidden" name="videoSeleccionado" value="">
-					<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.urlThumbnail%>">
+					<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.getUrlThumbnail()%>">
 					<br>
 					<header>
-					<%= video.nombre %>
+					<%= video.getNombre() %>
 					<br>
-					User: <%= video.usuario %>
+					User: <%= video.getUsuario() %>
 					</header>
 					</form>	
 				</div>
