@@ -132,19 +132,6 @@ public class Publicador {
     return pack;
   }
   
-//  @WebMethod  
-//  public void AltaVideo(String nickUsuario, String nombre, String descripcion, long duracionSegundos, String url,
-//      GregorianCalendar fecha, String categoria, boolean visible) {
-//    try{
-//
-//    Fabrica.getIVideos().altaVideo(nickUsuario, nombre, descripcion, Duration.ofHours((duracionSegundos/60)/60), url, categoria, fecha.getTime(),false);
-//
-//    }
-//    catch(Exception e){}
-//  }
-  
-   Acordate de borrar esto asi no te saltan conflictos con lo que ya esta
-  
   @WebMethod
   public DtPaquete consultaDeCategoria(String categoria) {
     return empaquetar(Fabrica.getICategorias().consultaDeCategoria(categoria));
@@ -286,7 +273,6 @@ public class Publicador {
   }
   
   @WebMethod
-
   public DtPaquete getListasPublicas(){
     DtPaquete pack = new DtPaquete();
     LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -340,7 +326,7 @@ public class Publicador {
     }
   }
  
-
+  @WebMethod
   public void agregarVideoLista(String nombreOwnerVideo, String nombreVideo, String usuario, String nombreLista, Boolean defecto) throws DuplicateClassException, InvalidDataException {
     Fabrica.getIListas().agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
   }
@@ -384,7 +370,6 @@ public class Publicador {
   }
   
   @WebMethod
-
   public DtPaquete getDtVideosPublicos(String nick) {
     DtPaquete pack = new DtPaquete();
     List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -392,12 +377,10 @@ public class Publicador {
       listaUniversal.add(dtUniversal);
     }
     pack.setListaDt(listaUniversal);
-
     return pack;
   }
   
   @WebMethod
-
   public DtPaquete getDtListasParticularesPublicasUsuario(String nick) {
     DtPaquete pack = new DtPaquete();
     List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -405,12 +388,10 @@ public class Publicador {
       listaUniversal.add(dtUniversal);
     }
     pack.setListaDt(listaUniversal);
-
     return pack;
   }
   
   @WebMethod
-
   public DtPaquete getDtListasParticularesUsuario(String nick) {
     DtPaquete pack = new DtPaquete();
     List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
@@ -436,7 +417,6 @@ public class Publicador {
   }
   
   @WebMethod
-
   public DtPaquete getSeguidores(String usuario) {
     return empaquetar(Fabrica.getIUsuariosCanales().getSeguidores(usuario));
   }
