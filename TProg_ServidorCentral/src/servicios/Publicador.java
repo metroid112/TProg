@@ -212,7 +212,8 @@ public class Publicador {
       String categoria, long duracionSeg, boolean visible, GregorianCalendar fechaCalendario) {
     try {
       Duration duracion = Duration.ofSeconds(duracionSeg);
-      Fabrica.getIVideos().modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fechaCalendario.getTime());
+      Fabrica.getIVideos().modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria,
+          duracion, visible, fechaCalendario.getTime());
     } catch (InvalidDataException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -228,23 +229,27 @@ public class Publicador {
   }
   
   @WebMethod
-  public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo, String nombreDuenoVideo) {
+  public void valorarVideo(String nombreUsuario, boolean like, String nombreVideo,
+      String nombreDuenoVideo) {
     Fabrica.getIUsuariosCanales().valorarVideo(nombreUsuario, like, nombreVideo, nombreDuenoVideo);
   }
   
   @WebMethod
-  public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo, String nombreDuenoVideo) {
+  public void modificarValoracion(boolean like, String nombreUsuario, String nombreVideo,
+      String nombreDuenoVideo) {
     Fabrica.getIUsuariosCanales().modificarValoracion(like, nombreUsuario, nombreVideo, nombreDuenoVideo);
   }
   
   @WebMethod
-  public void comentarVideo(String texto, GregorianCalendar calendario, String nombreUsuario, String nombreVideo, String nombreDuenoVideo) {
+  public void comentarVideo(String texto, GregorianCalendar calendario, String nombreUsuario,
+      String nombreVideo, String nombreDuenoVideo) {
     Date fecha = calendario.getTime();
     Fabrica.getIUsuariosCanales().comentarVideo(texto, fecha, nombreUsuario, nombreVideo, nombreDuenoVideo);
   }
   
   @WebMethod
-  public void responderComentario(String texto, GregorianCalendar calendario, String nombreUsuario, String nombreVideo, String nombreDuenoVideo, int idComentarioPadre) {
+  public void responderComentario(String texto, GregorianCalendar calendario, String nombreUsuario,
+      String nombreVideo, String nombreDuenoVideo, int idComentarioPadre) {
     Fabrica.getIUsuariosCanales().responderComentario(texto, calendario.getTime(), nombreUsuario, nombreVideo, nombreDuenoVideo, idComentarioPadre);
   }
   
@@ -271,7 +276,8 @@ public class Publicador {
   }
   
   @WebMethod
-  public void agregarVideoLista(String nombreOwnerVideo, String nombreVideo, String usuario, String nombreLista, Boolean defecto) throws DuplicateClassException, InvalidDataException {
+  public void agregarVideoLista(String nombreOwnerVideo, String nombreVideo, String usuario,
+      String nombreLista, Boolean defecto) throws DuplicateClassException, InvalidDataException {
     Fabrica.getIListas().agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
   }
   
@@ -392,6 +398,18 @@ public class Publicador {
   @WebMethod
   public boolean existeLista(String nombre, String nick) {
    return Fabrica.getIListas().existeLista(nombre, nick);
+  }
+  
+  @WebMethod
+  public void altaVideo(String nick, String nombre, String descripcion, long segundos, String url,
+      String categoria, GregorianCalendar calendario, boolean visibilidad) {
+    try {
+      Fabrica.getIVideos().altaVideo(nick, nombre, descripcion, Duration.ofSeconds(segundos), url,
+          categoria, calendario.getTime(), visibilidad);
+    } catch (DuplicateClassException | NotFoundException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
   
   /**
