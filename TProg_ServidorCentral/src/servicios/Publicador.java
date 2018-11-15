@@ -134,6 +134,7 @@ public class Publicador {
     try{
 
     Fabrica.getIVideos().altaVideo(nickUsuario, nombre, descripcion, Duration.ofHours((duracionSegundos/60)/60), url, categoria, fecha.getTime(),false);
+
     }
     catch(Exception e){}
   }

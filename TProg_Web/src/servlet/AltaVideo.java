@@ -17,8 +17,6 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import servicios.DtUsuario;
-import excepciones.DuplicateClassException;
-import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 import servicios.Publicador;
@@ -53,9 +51,12 @@ public class AltaVideo extends HttpServlet {
         String nick = "";
         DtUsuario usuarioLogueado = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
         if (usuarioLogueado == null) {
+
           request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
           request.getRequestDispatcher("/jsp/alta_video.jsp").forward(request, response);
         }
+        else{
+
         nick = usuarioLogueado.getNick();
         Date fecha = new Date();
         String nombre = request.getParameter("nombre");
@@ -82,22 +83,19 @@ public class AltaVideo extends HttpServlet {
             PublicadorService service = new PublicadorService();
             
             Publicador port = service.getPublicadorPort();
-            port.altaVideo(nick, nombre, descripcion, duracion, url, fechaNacimientoXML, categoria,false);
             
-          } /*catch (DuplicateClassException exception) {
-            request.setAttribute("ERROR_1", "Ya existe un video con ese nombre");
+            port.altaVideo(nick, nombre, descripcion, duracion, url, fechaNacimientoXML, "categoria",false);
             
-            request.getRequestDispatcher("WEB-INF/pages/alta_video.jsp").forward(request, response);
-          } catch (NotFoundException exception) {
-            request.setAttribute("ERROR_2", exception.getMessage());
-            request.getRequestDispatcher("WEB-INF/pages/alta_video.jsp").forward(request, response);
-          } */catch (DatatypeConfigurationException exception){}
-        
-        response.sendRedirect("Inicio");
+            response.sendRedirect("Inicio");
+            
+          } catch (DatatypeConfigurationException exception){
+            request.setAttribute("ERROR_1", "Tiene ganas de no funcar");
+          }
         }
-
-      }
     }
+
+  }
+}
   
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
