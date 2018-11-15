@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import servicios.DtUsuario;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -34,7 +35,7 @@ public class AjaxServlet extends HttpServlet {
 	  PrintWriter out = response.getWriter();
 	  switch (tipo) {
       case "nick":
-        bool = !texto.equals("") && port.existeNick(texto);
+        bool = texto.equals("") || port.existeNick(texto);
         if (bool) {
           out.write("true");
         } else {
@@ -43,11 +44,21 @@ public class AjaxServlet extends HttpServlet {
         break;
         
       case "mail":
-        bool = !texto.equals("") && port.existeCorreo(texto);
+        bool = texto.equals("") || port.existeCorreo(texto);
         if (bool) {
           out.write("true");
         } else {
           out.write("false");  
+        }
+        break;
+      
+      case "lista":
+        String nick = ((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+        bool = texto.equals("") || port.existeLista(texto, nick);
+        if (bool) {
+          out.write("true");
+        } else {
+          out.write("false");
         }
         break;
 

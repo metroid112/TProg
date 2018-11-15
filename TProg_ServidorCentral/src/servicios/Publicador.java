@@ -384,6 +384,11 @@ public class Publicador {
     return Fabrica.getIUsuariosCanales().existeUsuarioMail(correo);
   }
   
+  @WebMethod
+  public boolean existeLista(String nombre, String nick) {
+   return Fabrica.getIListas().existeLista(nombre, nick);
+  }
+  
   /**
    * Empaqueta un data type generico
    * @param contenido

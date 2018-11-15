@@ -63,8 +63,7 @@ public class ListaServlet extends HttpServlet {
       // request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
       try {
         port.altaListaParticular(nombreLista, nickUsuario, visibilidad);
-        request.setAttribute("EXITO", "¡Se ha creado la lista con éxito!");
-        request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
+        response.sendRedirect("Inicio");
       } catch (Exception e) {
         request.setAttribute("ERROR", e.getMessage());
         request.getRequestDispatcher("/WEB-INF/pages/alta_lista.jsp").forward(request, response);

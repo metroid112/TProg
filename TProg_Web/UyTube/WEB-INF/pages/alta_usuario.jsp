@@ -21,27 +21,25 @@
 					<h2>El mail ya esta siendo usado.</h2>
 				<% } %>
 				<form action="AltaUsuario" method="POST" id="formAltaUsuario" enctype="multipart/form-data">
-				Nickname: <input type="text" name="nick" id="nick" required>* <span id="nickDisponible"></span>
-				<br>
-				<span id="boolSpan"></span>
+				Nickname: <input type="text" name="nick" id="nick" required>* <span id="nickDisponible" style="font-size: small;"></span>
 				<br>
 				Nombre: <input type="text" name="nombre" required>*
 				<br>
 				Apellido: <input type="text" name="apellido" required>*
 				<br>
-				Correo: <input type="email" id="mail" name="mail" required>* <span id="mailDisponible"></span>
+				Correo: <input type="email" id="mail" name="mail" required>* <span id="mailDisponible" style="font-size: small;"></span>
 				<br>
 				Fecha de nacimiento: <input type="date" name="fecha" required>*
 				<br>
 				Contraseña: <input type="password" name="pass" id="pass" required>*
 				<br>
-				Confirmar contraseÃ±a: <input type="password" name="passConfirm" id="passConfirm" required>* <span id="passCoinciden"></span>
+				Confirmar contraseña: <input type="password" name="passConfirm" id="passConfirm" required>* <span id="passCoinciden" style="font-size: small;"></span>
 				<br>
 				Imagen: <input type="file" name="img" accept="image/*">
 				<br>
 				Nombre del canal: <input type="text" name="nombreCanal">
 				<br>
-				DescripciÃ³n del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
+				Descripción del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
 				<br>
 				Visibilidad: <input type="radio" name="visibilidad" value="privado" checked>Privado  <input type="radio" name="visibilidad">PÃºblico
 				<br>
@@ -112,7 +110,19 @@ $(document).ready(function() {
 		} else {
 			$("#passCoinciden").text("");
 		}
-	})
+	});
+	
+	$("#pass").keyup(function() {
+		var pass = $("#pass").val();
+		var passConfirm = $("#passConfirm").val();
+		deshab3 = (pass != passConfirm);
+		if (deshab3) {
+			$("#passCoinciden").text("Las contraseñas no coinciden");
+			$("#passCoinciden").css("color", "red");
+		} else {
+			$("#passCoinciden").text("");
+		}
+	});
 	
 	$("#formAltaUsuario").submit(function(event) {
 		if (deshab1 || deshab2 || deshab3) {
