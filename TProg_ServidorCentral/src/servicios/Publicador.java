@@ -31,6 +31,7 @@ import org.apache.tika.io.IOUtils;
 import com.sun.istack.internal.Nullable;
 
 import datatypes.DtBusqueda;
+import datatypes.DtCategoria;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
 import datatypes.DtVideo;
@@ -120,11 +121,14 @@ public class Publicador {
   @WebMethod
   public DtPaquete listarCategorias() {
     DtPaquete pack = new DtPaquete();
-    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>(); 
-    for (DtUniversal dato : Fabrica.getICategorias().listarCategorias()) {
-      listaUniversal.add(dato);
+    List<String> listaCat = new LinkedList<String>();
+    List<DtUniversal> listaCatDt = new LinkedList<DtUniversal>();
+    for (DtCategoria dato : Fabrica.getICategorias().listarCategorias()) {
+      listaCat.add(dato.getNombre());
+      listaCatDt.add(dato);
     };
-    pack.setListaDt(listaUniversal);
+    pack.setListaDt(listaCatDt);
+    pack.setListaAux(listaCat);
     return pack;
   }
   
@@ -202,6 +206,32 @@ public class Publicador {
       // TODO Auto-generated catch block
       e.printStackTrace();
       return null;
+    }
+  }
+  
+  @WebMethod
+  public DtPaquete getDtVideosPropietario(String usuario) {
+    List<DtUniversal> listaUni = new LinkedList<DtUniversal>();
+    for (DtUniversal dtUni : Fabrica.getIVideos().getDtVideosPropietario(usuario)) {
+      listaUni.add(dtUni);
+    }
+    DtPaquete pack = new DtPaquete();
+    pack.setListaDt(listaUni);
+    return pack;
+  }
+  
+  @WebMethod 
+  public void modificarVideo(String nick, String nombreOld, String nombre, String descripcion, String url,
+      String categoria, long duracionSeg, boolean visible, GregorianCalendar fechaCalendario) {
+    try {
+      Duration duracion = Duration.ofSeconds(duracionSeg);
+      Fabrica.getIVideos().modificarVideo(nick, nombreOld, nombre, descripcion, url, categoria, duracion, visible, fechaCalendario.getTime());
+    } catch (InvalidDataException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (DuplicateClassException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
   }
   
@@ -379,6 +409,32 @@ public class Publicador {
   
   @WebMethod
 
+  public DtPaquete getDtListasParticularesUsuario(String nick) {
+    DtPaquete pack = new DtPaquete();
+    List<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dtUniversal : Fabrica.getIListas().getDtListasParticularesUsuario(nick)) {
+      listaUniversal.add(dtUniversal);
+    }
+    pack.setListaDt(listaUniversal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDt(int idLista) {
+    try {
+      return empaquetar(Fabrica.getIListas().getDt(idLista));
+    } catch (NotFoundException e) {
+      return null;
+    }
+  }
+  
+  @WebMethod
+  public void guardarCambios(String nombreLista, String usuario, Boolean visibilidad) {
+    Fabrica.getIListas().guardarCambios(nombreLista, usuario, visibilidad);
+  }
+  
+  @WebMethod
+
   public DtPaquete getSeguidores(String usuario) {
     return empaquetar(Fabrica.getIUsuariosCanales().getSeguidores(usuario));
   }
@@ -391,6 +447,22 @@ public class Publicador {
   @WebMethod
   public boolean isSeguidor(String seguidor, String seguido) {
     return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
+  }
+  
+
+  @WebMethod
+  public boolean existeNick(String nick) {
+    return Fabrica.getIUsuariosCanales().existeUsuario(nick);
+  }
+  
+  @WebMethod
+  public boolean existeCorreo(String correo) {
+    return Fabrica.getIUsuariosCanales().existeUsuarioMail(correo);
+  }
+  
+  @WebMethod
+  public boolean existeLista(String nombre, String nick) {
+   return Fabrica.getIListas().existeLista(nombre, nick);
   }
   
 

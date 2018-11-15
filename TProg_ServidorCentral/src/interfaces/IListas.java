@@ -48,4 +48,6 @@ public interface IListas {
   public List<DtLista> getDtListasPrivadasUsuario(String usuario);
 
   public Map<Integer, ListaParticular> getListasPublicas();
+  
+  public boolean existeLista(String nombre, String nick);
 }

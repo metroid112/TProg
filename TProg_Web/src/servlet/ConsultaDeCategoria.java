@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import interfaces.Fabrica;
-import interfaces.ICategorias;
 import servicios.DtCategoria;
-import servicios.DtPaquete;
 import servicios.DtUniversal;
 import servicios.Publicador;
 import servicios.PublicadorService;

@@ -178,10 +178,13 @@ public class Canal {
 
   public void altaListaParticular(String nombre, boolean visibilidad)
       throws DuplicateClassException {
-
-    ListaParticular nuevaLista = new ListaParticular(nombre, this,
-        visibilidad);
-    listaParticulares.put(nombre, nuevaLista);
+    if (!listaParticulares.containsKey(nombre)) {
+      ListaParticular nuevaLista = new ListaParticular(nombre, this,
+          visibilidad);
+      listaParticulares.put(nombre, nuevaLista);
+    } else {
+      throw new DuplicateClassException("lista",nombre);
+    }
   }
 
   public boolean isVisible() {

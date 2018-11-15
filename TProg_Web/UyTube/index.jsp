@@ -9,12 +9,30 @@
 		<jsp:include page="WEB-INF/extras/header.jsp" />
 		<div class="contenedor">
 			<jsp:include page="WEB-INF/extras/sidebar.jsp" />
-			<form action="Prueba" method="get">
-				texto: <input type="text" name="texto">
-				<button>Send</button>
-			</form>
+			<div class="contenido">
+				<input type="text" id="texto">
+				<button id="boton1">test</button>
+				<div id="texto1">hola</div>
+				
+			</div>
+			
+				
 		</div>
 		<jsp:include page="WEB-INF/extras/script.jsp" />
+		
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#texto").keyup(function() {
+				var txt = $("#texto").val();
+				$.get("AjaxServlet", {
+					texto : txt
+				}, function (respuesta) {
+					$("#texto1").text(respuesta);
+				});
+			});
+		});
+		</script>
+		
 	</div>	
 </body>
 </html>
