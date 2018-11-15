@@ -213,4 +213,9 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
     
   }
+
+  @Override
+  public boolean existeVideo(String nombre, String nick) {
+    return manejadorUsuarios.get(nick).getCanal().getVideos().containsKey(nombre);
+  }
 }

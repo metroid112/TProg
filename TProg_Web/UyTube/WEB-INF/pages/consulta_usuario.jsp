@@ -14,7 +14,7 @@
 		<%
 		switch((String) request.getAttribute("STATE")) {
 			case "LISTAR":
-				List<String> listaUsuarios = (LinkedList<String>) request.getAttribute("USUARIOS");
+				List<String> listaUsuarios = (List<String>) request.getAttribute("USUARIOS");
 				if (listaUsuarios.isEmpty()) { %>
 					<h1>No hay usuarios.</h1>
 		 	 <% } else { %>
