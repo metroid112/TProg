@@ -33,6 +33,7 @@ public class AjaxServlet extends HttpServlet {
 	  boolean bool = false;
 	  response.setContentType("text/plain");
 	  PrintWriter out = response.getWriter();
+	  String nick = ((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
 	  switch (tipo) {
       case "nick":
         bool = texto.equals("") || port.existeNick(texto);
@@ -53,13 +54,26 @@ public class AjaxServlet extends HttpServlet {
         break;
       
       case "lista":
-        String nick = ((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
         bool = texto.equals("") || port.existeLista(texto, nick);
         if (bool) {
           out.write("true");
         } else {
           out.write("false");
         }
+        break;
+        
+      case "Video":
+        String textoBase = request.getParameter("textoBase");
+        if (textoBase != null && textoBase.equals(texto)) {
+          out.write("false");
+        } else {
+          bool = texto.equals("") || port.existeVideo(texto, nick);
+          if (bool) {
+            out.write("true");
+          } else {
+            out.write("false");
+          }
+        }       
         break;
 
       default:

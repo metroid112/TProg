@@ -385,6 +385,11 @@ public class Publicador {
   }
   
   @WebMethod
+  public boolean existeVideo(String nombre, String nick) {
+    return Fabrica.getIUsuariosCanales().existeVideo(nombre, nick);
+  }
+  
+  @WebMethod
   public boolean existeLista(String nombre, String nick) {
    return Fabrica.getIListas().existeLista(nombre, nick);
   }
