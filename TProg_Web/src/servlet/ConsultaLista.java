@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtLista;
-import datatypes.DtUsuario;
+import servicios.DtLista;
+import servicios.DtUsuario;
 import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
@@ -33,12 +33,12 @@ public class ConsultaLista extends HttpServlet {
     
     if (request.getParameter("STATE").equals("START")) {    
       
-      request.setAttribute("LISTAS", port.getListasPublicas());
+      request.setAttribute("LISTAS", port.getListasPublicas().getListaAux());
       if (request.getSession().getAttribute("LOGIN") != null
           && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
-        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-        request.setAttribute("LISTASPRIVADAS", port.getDtListasPrivadasUsuario(usuario));
-        request.setAttribute("LISTASDEFECTO", port.getDtListasDefectoUsuario(usuario));
+        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+        request.setAttribute("LISTASPRIVADAS", port.getDtListasPrivadasUsuario(usuario).getListaAux());
+        request.setAttribute("LISTASDEFECTO", port.getDtListasDefectoUsuario(usuario).getListaAux());
       }
       request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
     } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
@@ -46,7 +46,7 @@ public class ConsultaLista extends HttpServlet {
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
       servicios.DtPaquete dtLista = null;
       if (request.getParameter("NOMBRELISTADEFECTO") != null) { // LISTA DEFECTO
-        dtLista = port.getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).nick,
+        dtLista = port.getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick(),
             request.getParameter("NOMBRELISTADEFECTO"));
       } else {
           dtLista = port.getDtLista(idLista);

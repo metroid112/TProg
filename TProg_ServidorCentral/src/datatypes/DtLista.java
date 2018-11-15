@@ -8,11 +8,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-<<<<<<< HEAD
-public class DtLista extends DtUniversal{
-=======
+
 public class DtLista extends DtUniversal {
->>>>>>> WS-fran
+
   private List<String> categorias = new LinkedList<String>();
   private String nombre;
   private String tipo;

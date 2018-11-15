@@ -1,7 +1,7 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.util.Map" %>
 <%@ page import = "java.util.Map.Entry" %>
-<%@ page import = "clases.*,interfaces.*, utils.*, datatypes.*" %>
+<%@ page import = "servicios.*,clases.*,interfaces.*, utils.*" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,16 +17,16 @@
 			Por favor seleccione una lista
 			<br>
 			<div class="highlights">
-				<% Map<Integer, ListaParticular> listas = (Map<Integer, ListaParticular>) request.getAttribute("LISTAS");
-				for (Entry<Integer, ListaParticular> Lista : listas.entrySet() ) { %>
-					<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=Lista.getValue().getId()%>').submit();">		
-					<form id="Form<%=Lista.getValue().getId()%>" class="detClickeableLista" action="ConsultaLista" method="GET" >
+				<% List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS");
+				for (DtLista Lista : listas) { %>
+					<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=Lista.getIdLista()%>').submit();">		
+					<form id="Form<%=Lista.getIdLista()%>" class="detClickeableLista" action="ConsultaLista" method="GET" >
 						<input type="hidden" name="STATE" value="DETALLESLISTA">
-						<input type="hidden" name="IDLISTA" value="<%= Lista.getValue().getId() %>">
+						<input type="hidden" name="IDLISTA" value="<%= Lista.getIdLista() %>">
 						<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
 						<br>
 						<header>
-						<%= Lista.getValue().getNombre() %>
+						<%= Lista.getNombre() %>
 						</header>
 						<br>
 					</form>	
@@ -39,11 +39,11 @@
 			List<DtLista> listasDefecto = (List<DtLista>) request.getAttribute("LISTASDEFECTO");
 			if (listasPrivadas.size() != 0) {
 			for (DtLista u : listasPrivadas) { %>
-				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=u.getId()%>').submit();">		
-				<form id="Form<%=u.getId()%>" class="detClickeableLista" action="ConsultaLista" method="GET">
+				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=u.getIdLista()%>').submit();">		
+				<form id="Form<%=u.getIdLista()%>" class="detClickeableLista" action="ConsultaLista" method="GET">
 					<input type="hidden" name="STATE" value="DETALLESLISTA">
 					<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
-					<input type="hidden" name="IDLISTA" value="<%=u.getId()%>">
+					<input type="hidden" name="IDLISTA" value="<%=u.getIdLista()%>">
 					<br>
 					<header>
 					<%= u.getNombre() %>
@@ -54,11 +54,11 @@
 			<% } }
 			if (listasDefecto.size() != 0) {
 			  for(DtLista lista : listasDefecto) { %>
-  				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getId()%>').submit();">		
-				<form id="Form<%=lista.getId()%>" class="detClickeableLista" action="ConsultaLista" method="POST">
+  				<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=lista.getIdLista()%>').submit();">		
+				<form id="Form<%=lista.getIdLista()%>" class="detClickeableLista" action="ConsultaLista" method="POST">
 					<input type="hidden" name="STATE" value="DETALLESLISTA">
 					<img class="icon" width="30%" alt="Lista de reproduccion" src="img/playlist.png">
-					<input type="hidden" name="IDLISTA" value="<%=lista.getId()%>">
+					<input type="hidden" name="IDLISTA" value="<%=lista.getIdLista()%>">
 					<input type="hidden" name="NOMBRELISTADEFECTO" value="<%= lista.getNombre() %>">
 					<br>
 					<header>
