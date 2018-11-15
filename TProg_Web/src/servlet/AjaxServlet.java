@@ -34,21 +34,21 @@ public class AjaxServlet extends HttpServlet {
 	  PrintWriter out = response.getWriter();
 	  switch (tipo) {
       case "nick":
-        bool = port.existeNick(texto);
+        bool = !texto.equals("") && port.existeNick(texto);
         if (bool) {
-          out.write("Nick no disponible");
+          out.write("true");
         } else {
-          out.write("Nick disponible");
-        }        
+          out.write("false");
+        }
         break;
         
       case "mail":
-        bool = port.existeCorreo(texto);
+        bool = !texto.equals("") && port.existeCorreo(texto);
         if (bool) {
-          out.write("El correo ya esta en uso");
+          out.write("true");
         } else {
-          out.write("");
-        }        
+          out.write("false");  
+        }
         break;
 
       default:
