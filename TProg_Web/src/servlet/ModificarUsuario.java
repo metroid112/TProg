@@ -24,16 +24,14 @@ public class ModificarUsuario extends HttpServlet {
     super();
   }
 
+  @SuppressWarnings("unchecked")
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
     switch((String) request.getParameter("STATE")) {
       case "LOAD":
-        List<DtCategoria> categorias = new LinkedList<DtCategoria>();
-        for (DtUniversal categoria : port.listarCategorias().getListaDt()) {
-          categorias.add((DtCategoria) categoria);
-        }
+        List<DtCategoria> categorias = (List<DtCategoria>) (List<?>) port.listarCategorias().getListaDt();
         request.setAttribute("CATEGORIAS", categorias);
         request.getRequestDispatcher("WEB-INF/pages/consulta_usurio.jsp").forward(request, response);
         break;
