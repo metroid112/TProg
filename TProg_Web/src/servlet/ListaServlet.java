@@ -64,7 +64,7 @@ public class ListaServlet extends HttpServlet {
       try {
         port.altaListaParticular(nombreLista, nickUsuario, visibilidad);
         request.setAttribute("EXITO", "¡Se ha creado la lista con éxito!");
-        request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
+        request.getRequestDispatcher("Inicio").forward(request, response);
       } catch (Exception e) {
         request.setAttribute("ERROR", e.getMessage());
         request.getRequestDispatcher("/WEB-INF/pages/alta_lista.jsp").forward(request, response);

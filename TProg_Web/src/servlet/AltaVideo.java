@@ -45,7 +45,7 @@ public class AltaVideo extends HttpServlet {
           request.setAttribute("ERROR_3", "USUARIO NO LOGEADO");
           request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
         }
-        // TODO: cargar categorias
+
         request.getRequestDispatcher("/WEB-INF/pages/alta_video.jsp").forward(request, response);
       } else {
         String nick = "";
@@ -86,7 +86,7 @@ public class AltaVideo extends HttpServlet {
             
             port.altaVideo(nick, nombre, descripcion, duracion, url, fechaNacimientoXML, "categoria",false);
             
-            response.sendRedirect("Inicio");
+            request.getRequestDispatcher("Inicio").forward(request, response);
             
           } catch (DatatypeConfigurationException exception){
             request.setAttribute("ERROR_1", "Tiene ganas de no funcar");
