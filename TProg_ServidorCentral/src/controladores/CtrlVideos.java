@@ -34,7 +34,6 @@ public class CtrlVideos implements IVideos {
   public void altaVideo(String nick, String nombre, String descripcion, Duration duracion,
       String url, String nombreCategoria, Date fecha, boolean visibilidad)
       throws DuplicateClassException, NotFoundException {  
-    System.out.println("Entramos al alta Video");
     Categoria categoria = manejadorCategoria.get(nombreCategoria);
     if (categoria == null) {
       throw new NotFoundException("Categor�a " + nombreCategoria);

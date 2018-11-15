@@ -447,6 +447,17 @@ public class Publicador {
    return Fabrica.getIListas().existeLista(nombre, nick);
   }
   
+  @WebMethod
+  public void altaVideo(String nick, String nombre, String descripcion, long segundos, String url,
+      String categoria, GregorianCalendar calendario, boolean visibilidad) {
+    try {
+      Fabrica.getIVideos().altaVideo(nick, nombre, descripcion, Duration.ofSeconds(segundos), url,
+          categoria, calendario.getTime(), visibilidad);
+    } catch (DuplicateClassException | NotFoundException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
 
   /**
    * Empaqueta un data type generico
