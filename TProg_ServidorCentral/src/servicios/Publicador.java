@@ -132,16 +132,18 @@ public class Publicador {
     return pack;
   }
   
-  @WebMethod  
-  public void AltaVideo(String nickUsuario, String nombre, String descripcion, long duracionSegundos, String url,
-      GregorianCalendar fecha, String categoria, boolean visible) {
-    try{
-
-    Fabrica.getIVideos().altaVideo(nickUsuario, nombre, descripcion, Duration.ofHours((duracionSegundos/60)/60), url, categoria, fecha.getTime(),false);
-
-    }
-    catch(Exception e){}
-  }
+//  @WebMethod  
+//  public void AltaVideo(String nickUsuario, String nombre, String descripcion, long duracionSegundos, String url,
+//      GregorianCalendar fecha, String categoria, boolean visible) {
+//    try{
+//
+//    Fabrica.getIVideos().altaVideo(nickUsuario, nombre, descripcion, Duration.ofHours((duracionSegundos/60)/60), url, categoria, fecha.getTime(),false);
+//
+//    }
+//    catch(Exception e){}
+//  }
+  
+   Acordate de borrar esto asi no te saltan conflictos con lo que ya esta
   
   @WebMethod
   public DtPaquete consultaDeCategoria(String categoria) {

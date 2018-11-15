@@ -1,7 +1,7 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.util.Map" %>
 <%@ page import = "java.util.Map.Entry" %>
-<%@ page import = "servicios.*,clases.*,interfaces.*, utils.*" %>
+<%@ page import = "servicios.*,clases.*, utils.*" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,7 +17,7 @@
 			Por favor seleccione una lista
 			<br>
 			<div class="highlights">
-				<% List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS");
+				<% List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS"); 				
 				for (DtLista Lista : listas) { %>
 					<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=Lista.getIdLista()%>').submit();">		
 					<form id="Form<%=Lista.getIdLista()%>" class="detClickeableLista" action="ConsultaLista" method="GET" >

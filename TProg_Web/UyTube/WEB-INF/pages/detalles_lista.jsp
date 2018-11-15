@@ -1,4 +1,4 @@
-<%@ page import = "clases.*,interfaces.*, utils.*, datatypes.*" %>
+<%@ page import = "clases.*, utils.*, datatypes.*" %>
 <%@ page import = "java.util.List" %>
 <!doctype html>
 <html lang="en">
@@ -13,7 +13,7 @@
 		<div class="contenido">
 			<br>
 			Detalles de la lista
-			<% DtLista lista = (DtLista) request.getAttribute("DTLISTA"); %>
+			<% DtLista lista = (DtLista) request.getAttribute("DTLISTA"); 	// "DTLISTA" es un DtPaquete, el casteo esta mal%>
 			<% DtUsuario owner = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO"); %>
 			<%= lista.getNombre() %>
 			<br>

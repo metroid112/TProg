@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import servicios.DtLista;
 import servicios.DtUsuario;
 import excepciones.NotFoundException;
-import interfaces.Fabrica;
-import interfaces.IListas;
+//import interfaces.Fabrica;
+//import interfaces.IListas;
 import servicios.Publicador;
 import servicios.PublicadorService;
 import utils.EstadoSesion;
@@ -33,25 +33,38 @@ public class ConsultaLista extends HttpServlet {
     
     if (request.getParameter("STATE").equals("START")) {    
       
-      request.setAttribute("LISTAS", port.getListasPublicas().getListaAux());
+      request.setAttribute("LISTAS", port.getListasPublicas().getListaAux());   // Corregir
+      /**
+       * getListaAux() devuelve un List<String> pero el tema es que en el publicador seteaste la listaDt del 
+       * paquete con una List<DtUniversal>.
+       * Deberias usar el getListaDt(). 
+       * Eso te va a devolver algo del tipo List<DtUniversal>, luego tenes que crear una List<DtLista> y meter todos los elementos
+       * de la lista universal. Esa List<DtLista> es la que vas a pasarle al jsp.
+       * 
+       * 
+       */
+      
       if (request.getSession().getAttribute("LOGIN") != null
           && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
         String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
-        request.setAttribute("LISTASPRIVADAS", port.getDtListasPrivadasUsuario(usuario).getListaAux());
-        request.setAttribute("LISTASDEFECTO", port.getDtListasDefectoUsuario(usuario).getListaAux());
+        request.setAttribute("LISTASPRIVADAS", port.getDtListasPrivadasUsuario(usuario).getListaAux()); // Corregir
+        request.setAttribute("LISTASDEFECTO", port.getDtListasDefectoUsuario(usuario).getListaAux());   // Corregir
+        /**
+         * Aca te pasa lo mismo que antes: usas el get equivocado y te esta devolviendo null.
+         */
       }
       request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
     } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
-      request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
+      request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));  // No entiendo, donde se setea el parametro "LISTAPUBLICA"?
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
-      servicios.DtPaquete dtLista = null;
+      servicios.DtPaquete dtLista = null;   // Ojo no te confundas con los nombres, DtPaquete != DtLista
       if (request.getParameter("NOMBRELISTADEFECTO") != null) { // LISTA DEFECTO
         dtLista = port.getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick(),
             request.getParameter("NOMBRELISTADEFECTO"));
       } else {
           dtLista = port.getDtLista(idLista);
       }
-      request.setAttribute("DTLISTA", dtLista);
+      request.setAttribute("DTLISTA", dtLista);   // Aca mandaste un DtPaquete en vez de un DtLista
       request.getRequestDispatcher("WEB-INF/pages/detalles_lista.jsp").forward(request, response);
     } else {
       request.getRequestDispatcher("/index.jsp").forward(request, response);
