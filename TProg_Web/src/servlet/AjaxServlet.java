@@ -33,7 +33,10 @@ public class AjaxServlet extends HttpServlet {
 	  boolean bool = false;
 	  response.setContentType("text/plain");
 	  PrintWriter out = response.getWriter();
-	  String nick = ((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+	  String nick = null;
+	  if (request.getSession().getAttribute("USUARIO_LOGEADO") != null) {
+	    nick = ((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+	  }	  
 	  switch (tipo) {
       case "nick":
         bool = texto.equals("") || port.existeNick(texto);

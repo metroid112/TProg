@@ -87,6 +87,7 @@ java.util.Date" %>
 		</select>
 		<br>
 		Duracion (H M S): <br> <input type="number" name="duracionH" id="hora" min="0" oninput="validity.valid||(value='');" value="<%= horas %>"required><input type="number" name="duracionM" id="minuto" min="0" oninput="validity.valid||(value='');" value="<%= minutos %>"required><input type="number" id="segundo" min="0" name="duracionS" oninput="validity.valid||(value='');" value="<%= segundos %>"required>*
+		<span id="errorDuracion" style="color: red; font-size: small;"></span>
 		<br>
 		Fecha: <br> <input type="date" value="<%= date %>" name="fecha" required>*
 		<input type="hidden" name="modificar"  value="">
@@ -118,7 +119,16 @@ $(document).ready(function() {
 	});
 	
 	$("#formModificarVideo").submit(function(evento) {
-		if (habilitado == false) {
+		var hora = parseInt($("#hora").val());
+		var min = parseInt($("#minuto").val());
+		var seg = parseInt($("#segundo").val());
+		var sum = hora + min + seg;
+		if (sum == "0") {
+			$("#errorDuracion").text("La duracion no puede ser 0");
+		} else {
+			$("#errorDuracion").text("");
+		}
+		if (habilitado == false || sum == "0") {
 			evento.preventDefault();
 		}
 	});
