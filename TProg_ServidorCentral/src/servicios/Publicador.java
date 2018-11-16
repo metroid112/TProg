@@ -54,6 +54,7 @@ public class Publicador {
         InputStream in = new FileInputStream("config.properties");
         prop.load(in);
         endpoint = Endpoint.publish(prop.getProperty("wsdlURL"), this);
+        in.close();
       } catch (IOException e) {
         e.printStackTrace();
       }
