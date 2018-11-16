@@ -337,8 +337,7 @@ public class DetallesUsuario extends JPanel {
     String[] listas = ctrlLis.listarListasParticularUsuario(usuario);
 
     int largol = listas.length;
-    // fab = Fabrica.getFabrica();
-    // ctrlUsu = fab.getIUsuariosCanales();
+
     if (largol > 0) {
       for (int i = 0; i < largol; i++) {
         modelListas.addElement(listas[i]);

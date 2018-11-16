@@ -274,7 +274,7 @@ public class ModificarVideo extends JInternalFrame {
       DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
       tfNombre.setText(infoVid.nombre);
       textDescripcion.setText(infoVid.descripcion);
-      tfUrl.setText(infoVid.Url);
+      tfUrl.setText(infoVid.getUrlVideo());
       if (infoVid.visible) {
         rdbtnPublico.doClick();
       } else {
@@ -366,7 +366,8 @@ public class ModificarVideo extends JInternalFrame {
       } catch (InvalidDataException exception) {
         JOptionPane.showMessageDialog(this, exception.getMessage(), "Error",
             JOptionPane.ERROR_MESSAGE);
-      }
+      } catch (Exception exception2){}
+      
     } else {
       JOptionPane.showMessageDialog(this, "Datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
     }

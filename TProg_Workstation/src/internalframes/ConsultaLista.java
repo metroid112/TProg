@@ -3,6 +3,7 @@ package internalframes;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -289,7 +290,7 @@ public class ConsultaLista extends JInternalFrame {
 
     Fabrica.getFabrica();
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
+    List<String> usuarios = ctrUsu.listarNombresUsuarios();
     modelUsuario.addElement("");
     for (String usuario : usuarios) {
       modelUsuario.addElement(usuario);
@@ -305,12 +306,11 @@ public class ConsultaLista extends JInternalFrame {
     if (modelUsuario.getSelectedItem() != null) {
 
       String s = (String) modelUsuario.getSelectedItem();
-      String[] listas = ctrLis.listarListasDefectoUsuario(s);
+      List<String> listas = ctrLis.listarListasDefectoUsuario(s);
 
-      int largol = listas.length;
 
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (String lista : listas) {
+        listListas.addElement(lista);
       }
     }
 
@@ -326,12 +326,11 @@ public class ConsultaLista extends JInternalFrame {
 
       String s = modelUsuario.getSelectedItem().toString();
 
-      String[] listas = ctrLis.listarListasParticularUsuario(s);
+      List<String> listas = ctrLis.listarListasParticularUsuario(s);
 
-      int largol = listas.length;
 
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (String lista : listas) {
+        listListas.addElement(lista);
       }
     }
 
