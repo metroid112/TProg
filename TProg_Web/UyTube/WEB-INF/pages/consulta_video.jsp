@@ -39,7 +39,7 @@
 				<%! DateFormat format = new SimpleDateFormat("dd/MM/yyyy");%>
 
 				<h4>Fecha:</h4> <%= format.format(vid.getFecha().toGregorianCalendar().getTime()) %>
-				 <br>º	
+				 <br>	
 				 
 				<% 
 				Long segundos = vid.getDuracionSegundos();
