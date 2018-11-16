@@ -26,6 +26,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -309,10 +310,10 @@ public class DetallesUsuario extends JPanel {
     modelSeguidores.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] Seguidores = ctrlUsu.listarSeguidores(usuario);
-    int largo = Seguidores.length;
-    for (int i = 0; i < largo; i++) {
-      modelSeguidores.addElement(Seguidores[i]);
+    List<String> seguidores = ctrlUsu.getSeguidores(usuario);
+
+    for (String seguidor : seguidores) {
+      modelSeguidores.addElement(seguidor);
     }
     ctrlUsu = null;
   }
@@ -321,10 +322,10 @@ public class DetallesUsuario extends JPanel {
     modelSeguidos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] seguidos = ctrlUsu.listarSeguidos(usuario);
-    int largo = seguidos.length;
-    for (int i = 0; i < largo; i++) {
-      modelSeguidos.addElement(seguidos[i]);
+    List<String> seguidos = ctrlUsu.getSeguidos(usuario);
+    
+    for (String seguido : seguidos) {
+      modelSeguidos.addElement(seguido);
     }
     ctrlUsu = null;
   }
@@ -379,10 +380,10 @@ public class DetallesUsuario extends JPanel {
     modelVideos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] videosS = ctrlUsu.listarVideos(usuario);
-    int largo = videosS.length;
-    for (int i = 0; i < largo; i++) {
-      modelVideos.addElement(videosS[i]);
+    List<DtVideo> videosS = ctrlUsu.getListaDtVideo(usuario);
+
+    for (DtVideo video : videosS) {
+      modelVideos.addElement(video.getNombre());
     }
     ctrlUsu = null;
   }
