@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.time.Duration;
 import java.util.Calendar;
@@ -10,8 +11,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
-
-
+import java.util.Properties;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -48,7 +48,16 @@ public class Publicador {
   
   @WebMethod(exclude = true)
   public void publicar(){
-       endpoint = Endpoint.publish("http://localhost:10135/publicador", this);
+     
+      try {
+        Properties prop = new Properties();
+        InputStream in = new FileInputStream("config.properties");
+        prop.load(in);
+        endpoint = Endpoint.publish(prop.getProperty("wsdlURL"), this);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+       
   }
   
   @WebMethod(exclude = true)
