@@ -27,7 +27,7 @@
 		Visibilidad: <input type="radio" name="visibilidad" value="privado" <%= usuario.isPrivado() ? "checked" : "" %>>Privado  <input type="radio" name="visibilidad" <%= !usuario.isPrivado() ? "checked" : "" %>>Público<br>
 		Categoría:
 		<select name="categoria">
-			<option selected value>Sin categoría</option>
+			<option <%= usuario.getCategoria().equals("Sin categoria") ? "selected" : "" %> value>Sin categoría</option>
 		<% for (DtCategoria cat : (List<DtCategoria>) request.getAttribute("CATEGORIAS")) { %>
 			<option value="<%= cat.getNombre() %>" <%= usuario.getCategoria().equals(cat.getNombre()) ? "selected" : "" %>><%= cat.getNombre() %> </option>
 		<% } %>

@@ -31,6 +31,7 @@ import com.sun.istack.internal.Nullable;
 import datatypes.DtBusqueda;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
+import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.*;
 import interfaces.Fabrica;
@@ -368,6 +369,12 @@ public class Publicador {
   @WebMethod
   public boolean isSeguidor(String seguidor, String seguido) {
     return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
+  }
+  
+  @WebMethod
+  public void modificarUsuario(String nickUsuarioOriginal, DtUniversal usuarioModificado, @XmlElement(required = false, name = "imagen")
+  @WebParam(name = "imagen", header = true) byte[] img) throws DuplicateClassException {
+    Fabrica.getIUsuariosCanales().modificarUsuario(nickUsuarioOriginal, (DtUsuario) usuarioModificado, img);
   }
   
   /**

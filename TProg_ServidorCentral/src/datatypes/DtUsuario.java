@@ -22,6 +22,10 @@ public class DtUsuario extends DtUniversal{
   public String categoria;
   public String password;
 
+  public DtUsuario() {
+    
+  }
+  
   public DtUsuario(String nombre, String apellido, String canal, String correo,
       String descripcionCanal, Date fechaNacimiento, boolean privado,
       String nick, String idImagen, String categoria) {

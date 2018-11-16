@@ -9,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para dtUsuario complex type.
+ * <p>Java class for dtUsuario complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="dtUsuario"&gt;
@@ -29,6 +29,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="categoria" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
@@ -49,7 +50,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "idImagen",
     "fechaNacimiento",
     "ultimaActividad",
-    "categoria"
+    "categoria",
+    "password"
 })
 public class DtUsuario
     extends DtUniversal
@@ -68,9 +70,10 @@ public class DtUsuario
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar ultimaActividad;
     protected String categoria;
+    protected String password;
 
     /**
-     * Obtiene el valor de la propiedad nick.
+     * Gets the value of the nick property.
      * 
      * @return
      *     possible object is
@@ -82,7 +85,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad nick.
+     * Sets the value of the nick property.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +97,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad nombre.
+     * Gets the value of the nombre property.
      * 
      * @return
      *     possible object is
@@ -106,7 +109,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Sets the value of the nombre property.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +121,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad apellido.
+     * Gets the value of the apellido property.
      * 
      * @return
      *     possible object is
@@ -130,7 +133,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad apellido.
+     * Sets the value of the apellido property.
      * 
      * @param value
      *     allowed object is
@@ -142,7 +145,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad canal.
+     * Gets the value of the canal property.
      * 
      * @return
      *     possible object is
@@ -154,7 +157,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad canal.
+     * Sets the value of the canal property.
      * 
      * @param value
      *     allowed object is
@@ -166,7 +169,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad correo.
+     * Gets the value of the correo property.
      * 
      * @return
      *     possible object is
@@ -178,7 +181,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad correo.
+     * Sets the value of the correo property.
      * 
      * @param value
      *     allowed object is
@@ -190,7 +193,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcionCanal.
+     * Gets the value of the descripcionCanal property.
      * 
      * @return
      *     possible object is
@@ -202,7 +205,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad descripcionCanal.
+     * Sets the value of the descripcionCanal property.
      * 
      * @param value
      *     allowed object is
@@ -214,7 +217,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad privado.
+     * Gets the value of the privado property.
      * 
      */
     public boolean isPrivado() {
@@ -222,7 +225,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad privado.
+     * Sets the value of the privado property.
      * 
      */
     public void setPrivado(boolean value) {
@@ -230,7 +233,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad idImagen.
+     * Gets the value of the idImagen property.
      * 
      * @return
      *     possible object is
@@ -242,7 +245,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad idImagen.
+     * Sets the value of the idImagen property.
      * 
      * @param value
      *     allowed object is
@@ -254,7 +257,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaNacimiento.
+     * Gets the value of the fechaNacimiento property.
      * 
      * @return
      *     possible object is
@@ -266,7 +269,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad fechaNacimiento.
+     * Sets the value of the fechaNacimiento property.
      * 
      * @param value
      *     allowed object is
@@ -278,7 +281,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad ultimaActividad.
+     * Gets the value of the ultimaActividad property.
      * 
      * @return
      *     possible object is
@@ -290,7 +293,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad ultimaActividad.
+     * Sets the value of the ultimaActividad property.
      * 
      * @param value
      *     allowed object is
@@ -302,7 +305,7 @@ public class DtUsuario
     }
 
     /**
-     * Obtiene el valor de la propiedad categoria.
+     * Gets the value of the categoria property.
      * 
      * @return
      *     possible object is
@@ -314,7 +317,7 @@ public class DtUsuario
     }
 
     /**
-     * Define el valor de la propiedad categoria.
+     * Sets the value of the categoria property.
      * 
      * @param value
      *     allowed object is
@@ -323,6 +326,30 @@ public class DtUsuario
      */
     public void setCategoria(String value) {
         this.categoria = value;
+    }
+
+    /**
+     * Gets the value of the password property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets the value of the password property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPassword(String value) {
+        this.password = value;
     }
 
 }

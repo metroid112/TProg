@@ -58,5 +58,5 @@ public interface IUsuariosCanales {
 
   public void dejarSeguir(String seguidor, String seguido);
 
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal, byte[] img) throws DuplicateClassException;
+  public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException;
 }

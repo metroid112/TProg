@@ -203,14 +203,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal, byte[] img) throws DuplicateClassException {
-    if(!usuarioModificado.nick.equals(usuarioOriginal.nick) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
+  public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException {
+    Usuario usuario = manejadorUsuarios.get(nickUsuarioOriginal);
+    if(!usuarioModificado.nick.equals(usuario.getNick()) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.nick);
     }
-    if(!usuarioModificado.correo.equals(usuarioOriginal.correo) && manejadorUsuarios.mailGet(usuarioModificado.correo) != null) {
+    if(!usuarioModificado.correo.equals(usuario.getCorreo()) && manejadorUsuarios.mailGet(usuarioModificado.correo) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.correo);
     }
-    Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
     usuario.setNick(usuarioModificado.nick);
     usuario.setNombre(usuarioModificado.nombre);
     usuario.setApellido(usuarioModificado.apellido);
@@ -222,10 +222,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     usuario.getCanal().setVisible(usuarioModificado.privado);
     usuario.getCanal().setCategoria(ManejadorCategorias.getManejadorCategorias().get(usuarioModificado.categoria));
     if (img == null) {
-      Imagen.borrar(usuario.getImg().getId());
+      //Imagen.borrar(usuario.getImg().getId()); TODO BORRAR IMAGEN
     } else {
       usuario.getImg().setImgByte(img);
     }
+    manejadorUsuarios.getMap().remove(nickUsuarioOriginal);
     manejadorUsuarios.add(usuario);
   }
 }
