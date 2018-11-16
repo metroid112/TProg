@@ -140,10 +140,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
 
-  public List<DtVideo> getListaDtVideo(String usuario) { // CUANDO SE BORRA EL LISTAR VIDEOS.JSP SE
-                                                         // PUEDE BORRAR ESTA FUNCION, YA HAY OTRA
-                                                         // IGUAL EN EL CONTROLADOR VIDEO
-
+  public List<DtVideo> getListaDtVideo(String usuario) { 
+                                                         
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
