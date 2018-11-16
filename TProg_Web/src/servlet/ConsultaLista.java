@@ -33,7 +33,7 @@ public class ConsultaLista extends HttpServlet {
     
     if (request.getParameter("STATE").equals("START")) {    
       
-      request.setAttribute("LISTAS", port.getListasPublicas().getListaAux());   // Corregir
+      request.setAttribute("LISTAS", port.getListasPublicas().getListaDt());
       /**
        * getListaAux() devuelve un List<String> pero el tema es que en el publicador seteaste la listaDt del 
        * paquete con una List<DtUniversal>.
@@ -47,8 +47,8 @@ public class ConsultaLista extends HttpServlet {
       if (request.getSession().getAttribute("LOGIN") != null
           && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
         String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
-        request.setAttribute("LISTASPRIVADAS", port.getDtListasPrivadasUsuario(usuario).getListaAux()); // Corregir
-        request.setAttribute("LISTASDEFECTO", port.getDtListasDefectoUsuario(usuario).getListaAux());   // Corregir
+        request.setAttribute("LISTASPRIVADAS", port.getDtListasPrivadasUsuario(usuario).getListaDt());
+        request.setAttribute("LISTASDEFECTO", port.getDtListasDefectoUsuario(usuario).getListaDt());
         /**
          * Aca te pasa lo mismo que antes: usas el get equivocado y te esta devolviendo null.
          */
@@ -57,14 +57,14 @@ public class ConsultaLista extends HttpServlet {
     } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
       request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));  // No entiendo, donde se setea el parametro "LISTAPUBLICA"?
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
-      servicios.DtPaquete dtLista = null;   // Ojo no te confundas con los nombres, DtPaquete != DtLista
+      servicios.DtLista dtLista = null;
       if (request.getParameter("NOMBRELISTADEFECTO") != null) { // LISTA DEFECTO
-        dtLista = port.getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick(),
-            request.getParameter("NOMBRELISTADEFECTO"));
+        dtLista = (DtLista) port.getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick(),
+            request.getParameter("NOMBRELISTADEFECTO")).getContenido();
       } else {
-          dtLista = port.getDtLista(idLista);
+          dtLista = (DtLista) port.getDtLista(idLista).getContenido();
       }
-      request.setAttribute("DTLISTA", dtLista);   // Aca mandaste un DtPaquete en vez de un DtLista
+      request.setAttribute("DTLISTA", dtLista);
       request.getRequestDispatcher("WEB-INF/pages/detalles_lista.jsp").forward(request, response);
     } else {
       request.getRequestDispatcher("/index.jsp").forward(request, response);
