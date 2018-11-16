@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
@@ -334,21 +335,21 @@ public class DetallesUsuario extends JPanel {
 
     ctrlLis = Fabrica.getIListas();
 
-    String[] listas = ctrlLis.listarListasParticularUsuario(usuario);
+    List<String> listas = ctrlLis.listarListasParticularUsuario(usuario);
 
-    int largol = listas.length;
+    int largol = listas.size();
 
     if (largol > 0) {
-      for (int i = 0; i < largol; i++) {
-        modelListas.addElement(listas[i]);
+      for (String lista : listas) {
+        modelListas.addElement(lista);
       }
     }
 
     listas = ctrlLis.listarListasDefectoUsuario(usuario);
-    largol = listas.length;
+    largol = listas.size();
     if (largol > 0) {
-      for (int i = 0; i < largol; i++) {
-        modelListas.addElement(listas[i]);
+      for (String lista : listas) {
+        modelListas.addElement(lista);
       }
     }
     ctrlLis = null;
