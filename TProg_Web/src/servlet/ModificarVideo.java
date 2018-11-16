@@ -28,9 +28,6 @@ import servicios.PublicadorService;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
-import interfaces.Fabrica;
-import interfaces.ICategorias;
-import interfaces.IVideos;
 import utils.EstadoSesion;
 
 @WebServlet("/ModificarVideo")
@@ -53,8 +50,7 @@ public class ModificarVideo extends HttpServlet {
         try {
           DtVideo video = (DtVideo) port.getDtVideo(Integer.parseInt(idVideo)).getContenido();
           request.setAttribute("VIDEO", video);
-          ICategorias ctrlCategorias = Fabrica.getICategorias();
-          String[] listaCategorias = ctrlCategorias.listarCategorias();
+          List<String> listaCategorias = port.listarCategorias().getListaAux();
           request.setAttribute("CATEGORIAS", listaCategorias);
           request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request,
               response);
@@ -87,6 +83,7 @@ public class ModificarVideo extends HttpServlet {
           /**
            * AJAX
            */
+            response.sendRedirect("Inicio");
 //          request.setAttribute("DURACION", "La duracion debe ser positiva.");
 //          Categoria cat = ManejadorCategorias.getManejadorCategorias().get(categoria);
 //          Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
@@ -111,8 +108,7 @@ public class ModificarVideo extends HttpServlet {
           }
           port.modificarVideo(nick, oldNombre, nombreVideo, descripcionVideo,
               urlVideo, categoria, duracion.getSeconds(), visible, XMLcalendario);
-          request.setAttribute("EXITO", "Se han modificados los datos del video con exito!");
-          request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
+          response.sendRedirect("Inicio");
         }
       } else {
         String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
