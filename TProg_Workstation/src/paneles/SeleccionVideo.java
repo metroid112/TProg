@@ -2,6 +2,7 @@ package paneles;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -14,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
+import datatypes.DtVideo;
 import interfaces.IVideos;
 
 @SuppressWarnings("serial")
@@ -21,10 +23,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
   private JComboBox<String> cBoxUsuarios;
   private IVideos contVideos;
   private JList<String> listaVideos;
-
-  /**
-   * Create the panel.
-   */
+  private List<DtVideo> videos;
   public SeleccionVideo(IVideos contVideos) {
 
     this.contVideos = contVideos;
@@ -32,7 +31,7 @@ public class SeleccionVideo extends JPanel implements ActionListener {
     JLabel lblUsuario = new JLabel("Usuario:");
 
     cBoxUsuarios = new JComboBox<String>();
-    cBoxUsuarios.addActionListener(this); // Agrego el listener para leer el usuario seleccionado
+    cBoxUsuarios.addActionListener(this);
 
     JScrollPane scrollPane = new JScrollPane();
     GroupLayout groupLayout = new GroupLayout(this);
