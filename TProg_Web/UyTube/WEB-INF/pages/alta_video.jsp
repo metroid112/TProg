@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,19 +24,20 @@
 		<%} %>
 			<form action="AltaVideo" method="POST" id="formAltaVideo">
 				<input type="hidden" name="STATE" value="ALTA">
-				Nombre: <br> <input type="text" name="nombre" required>*
+				Nombre: <br> <input type="text" name="nombre" id="nombreVideo" required>* <span id="validVideo" style="color: red; font-size: small;"></span>
 				<br>
-				DuraciÃ³n (H M S): <br> <input type="number" name="duracionH" min="0" required><input type="number" name="duracionM" min="0" required><input type="number" name="duracionS" min="0" required>*
+				Duración (H M S): <br> <input type="number" name="duracionH" id="duracionH" min="0" required><input type="number" name="duracionM" id="duracionM" min="0" required><input type="number" name="duracionS" id="duracionS" min="0" required>*
+				<span id="errorDuracion" style="color: red; font-size: small;"></span>
 				<br>
 				URL: <br> <input type="url" name="url" required>*
 				<br>
-				DescripciÃ³n: <br> <textarea rows="5" cols="35" form="formAltaVideo" name="descripcion"></textarea>
+				Descripción: <br> <textarea rows="5" cols="35" form="formAltaVideo" name="descripcion"></textarea>
 				<br>
 				Fecha: <input type="date" name="fecha" required>*
 				<br>
-				CategorÃ­a: <br>
+				Categoría: <br>
 				<select name="categoria">
-				<% for (String cat : (String[]) request.getAttribute("CATEGORIAS")) { %>
+				<% for (String cat : (List<String>) request.getAttribute("CATEGORIAS")) { %>
 					<option value="<%= cat %>"><%= cat %> </option>
 				<% } %>
 				</select>
@@ -46,5 +48,44 @@
 		</div>
 	</div>
 <jsp:include page="/WEB-INF/extras/script.jsp" />
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var habilitado = true;
+	$("#nombreVideo").keyup(function() {
+		var nombre = $("#nombreVideo").val(); 
+		$.get("AjaxServlet",{
+			texto : nombre,
+			tipo : "Video"
+		}, function (respuesta) {
+			if (respuesta == "true") {
+				habilitado = false;
+				$("#validVideo").text("Nombre no valido");
+			} else {
+				habilitado = true;
+				$("#validVideo").text("");
+			}
+		});
+	});
+	
+	$("#formAltaVideo").submit(function(evento) {
+		var hora = parseInt($("#duracionH").val());
+		var min = parseInt($("#duracionM").val());
+		var seg = parseInt($("#duracionS").val());
+		var sum = hora + min + seg;
+		if ((habilitado == false) || (sum == "0")) {
+			evento.preventDefault();
+			if (sum == "0") {
+				$("#errorDuracion").text("La duracion no puede ser 0");
+			} else {
+				$("#errorDuracion").text("");
+			}			
+		}
+	});
+});
+
+</script>
+
 </body>
 </html>

@@ -59,4 +59,6 @@ public interface IUsuariosCanales {
   public void dejarSeguir(String seguidor, String seguido);
 
   public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException;
+
+  public boolean existeVideo(String nombre, String nick);
 }

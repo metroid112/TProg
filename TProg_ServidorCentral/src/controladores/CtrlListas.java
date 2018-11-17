@@ -15,6 +15,7 @@ import datatypes.DtLista;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
+import interfaces.Fabrica;
 import interfaces.IListas;
 import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorListasParticulares;
@@ -195,5 +196,10 @@ public class CtrlListas implements IListas {
       listasDefecto.add(lista.getDtLista());
     }
     return listasDefecto;
+  }
+
+  @Override
+  public boolean existeLista(String nombre, String nick) {
+    return ManejadorUsuarios.getManejadorUsuarios().get(nick).getCanal().getListaParticulares().containsKey(nombre);
   }
 }

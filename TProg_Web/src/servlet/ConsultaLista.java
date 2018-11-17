@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datatypes.DtLista;
-import datatypes.DtUsuario;
+import servicios.DtLista;
+import servicios.DtUsuario;
 import excepciones.NotFoundException;
-import interfaces.Fabrica;
-import interfaces.IListas;
+//import interfaces.Fabrica;
+//import interfaces.IListas;
+import servicios.Publicador;
+import servicios.PublicadorService;
 import utils.EstadoSesion;
 
 @WebServlet("/ConsultaLista")
@@ -25,31 +27,42 @@ public class ConsultaLista extends HttpServlet {
 
   private void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    IListas ctrlListas = Fabrica.getIListas();
-    if (request.getParameter("STATE").equals("START")) {
-      // obtener las listas necesarias, todas las listas particulares.
-      request.setAttribute("LISTAS", ctrlListas.getListasPublicas());
+
+    PublicadorService service = new PublicadorService();
+    Publicador port = service.getPublicadorPort();  
+    
+    if (request.getParameter("STATE").equals("START")) {    
+      
+      request.setAttribute("LISTAS", port.getListasPublicas().getListaDt());
+      /**
+       * getListaAux() devuelve un List<String> pero el tema es que en el publicador seteaste la listaDt del 
+       * paquete con una List<DtUniversal>.
+       * Deberias usar el getListaDt(). 
+       * Eso te va a devolver algo del tipo List<DtUniversal>, luego tenes que crear una List<DtLista> y meter todos los elementos
+       * de la lista universal. Esa List<DtLista> es la que vas a pasarle al jsp.
+       * 
+       * 
+       */
+      
       if (request.getSession().getAttribute("LOGIN") != null
           && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
-        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-        request.setAttribute("LISTASPRIVADAS", ctrlListas.getDtListasPrivadasUsuario(usuario));
-        request.setAttribute("LISTASDEFECTO", ctrlListas.getDtListasDefectoUsuario(usuario));
+        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+        request.setAttribute("LISTASPRIVADAS", port.getDtListasPrivadasUsuario(usuario).getListaDt());
+        request.setAttribute("LISTASDEFECTO", port.getDtListasDefectoUsuario(usuario).getListaDt());
+        /**
+         * Aca te pasa lo mismo que antes: usas el get equivocado y te esta devolviendo null.
+         */
       }
       request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
     } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
-      request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));
+      request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));  // No entiendo, donde se setea el parametro "LISTAPUBLICA"?
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
-      DtLista dtLista = null;
+      servicios.DtLista dtLista = null;
       if (request.getParameter("NOMBRELISTADEFECTO") != null) { // LISTA DEFECTO
-        dtLista = Fabrica.getIListas().getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).nick,
-            request.getParameter("NOMBRELISTADEFECTO"));
+        dtLista = (DtLista) port.getDtDefecto(((DtUsuario)request.getSession().getAttribute("USUARIO_LOGEADO")).getNick(),
+            request.getParameter("NOMBRELISTADEFECTO")).getContenido();
       } else {
-        try {
-          dtLista = Fabrica.getIListas().getDt(idLista);
-        } catch (NotFoundException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
-        }
+          dtLista = (DtLista) port.getDtLista(idLista).getContenido();
       }
       request.setAttribute("DTLISTA", dtLista);
       request.getRequestDispatcher("WEB-INF/pages/detalles_lista.jsp").forward(request, response);

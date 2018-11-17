@@ -1,5 +1,7 @@
 package paneles;
 
+import java.util.List;
+
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -54,10 +56,11 @@ public class SelectorUsuarios extends JPanel {
     model.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] usua = ctrlUsu.listarUsuarios();
-    int largo = usua.length;
-    for (int i = 0; i < largo; i++) {
-      model.addElement(usua[i]);
+    List<String> usuarios = ctrlUsu.listarNombresUsuarios();
+
+    model.addElement("");
+    for (String usuario : usuarios) {
+      model.addElement(usuario);
     }
     ctrlUsu = null;
   }

@@ -33,7 +33,7 @@ public class CtrlVideos implements IVideos {
   @Override
   public void altaVideo(String nick, String nombre, String descripcion, Duration duracion,
       String url, String nombreCategoria, Date fecha, boolean visibilidad)
-      throws DuplicateClassException, NotFoundException {
+      throws DuplicateClassException, NotFoundException {  
     Categoria categoria = manejadorCategoria.get(nombreCategoria);
     if (categoria == null) {
       throw new NotFoundException("Categor�a " + nombreCategoria);

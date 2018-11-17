@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import servicios.DtLista;
 import servicios.DtUniversal;
 import servicios.DtUsuario;
@@ -30,10 +31,12 @@ public class ConsultaUsuario extends HttpServlet {
       throws ServletException, IOException {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
+
     switch (request.getParameter("STATE")) {
       case "LISTAR":
         request.setAttribute("STATE", "LISTAR");
         request.setAttribute("USUARIOS", port.listarNombresUsuarios().getListaAux());
+
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);
         break;
@@ -42,6 +45,7 @@ public class ConsultaUsuario extends HttpServlet {
             (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
         String nombreUsuario = (String) request.getParameter("usuario");
         request.setAttribute("STATE", "INFO");
+
         request.setAttribute("USUARIO", (DtUsuario)
             port.getDtUsuario(nombreUsuario).getContenido());
         List<DtVideo> listaVideos = new LinkedList<DtVideo>();
@@ -61,6 +65,7 @@ public class ConsultaUsuario extends HttpServlet {
         if (usuarioLogueado != null) {
           request.setAttribute("SIGUE",
               port.isSeguidor(usuarioLogueado.getNick(), nombreUsuario));
+
         }
         request.getRequestDispatcher("/WEB-INF/pages/consulta_usuario.jsp").forward(request,
             response);

@@ -371,7 +371,7 @@ public class AltaUsuario extends JInternalFrame {
     ctrlUsu = Fabrica.getIUsuariosCanales();
     if (ctrlUsu.existeUsuario(textField.getText())) {
       JOptionPane.showMessageDialog(this, "El usuario ya existe.");
-    } else if (!ctrlUsu.isEmailUnique(textField_3.getText())) {
+    } else if (!ctrlUsu.existeUsuarioMail(textField_3.getText())) {
       JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.");
     } else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")) {
       JOptionPane.showMessageDialog(this, "Correo electronico invalido");

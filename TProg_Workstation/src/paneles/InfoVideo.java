@@ -148,7 +148,7 @@ public class InfoVideo extends JPanel {
   public void cargarDatos(DtVideo dtVid) {
     lblVnombre.setText(dtVid.nombre);
     textVdescripcion.setText(dtVid.descripcion);
-    lblVurl.setText(dtVid.Url);
+    lblVurl.setText(dtVid.getUrlVideo());
     if (dtVid.visible) {
       lblVvisibilidad.setText("Publico");
     } else {
@@ -195,7 +195,7 @@ public class InfoVideo extends JPanel {
 
   public DefaultMutableTreeNode getNode(DtComentario comentario) {
     DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(comentario.getString());
-    for (DtComentario hijo : comentario.hijos.values()) {
+    for (DtComentario hijo : comentario.hijos) {
       DefaultMutableTreeNode nodoHijo = getNode(hijo); // Recursion
       nodo.add(nodoHijo);
     }
