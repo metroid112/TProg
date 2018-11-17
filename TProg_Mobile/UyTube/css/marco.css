@@ -9,12 +9,24 @@
 .thumbnail
 {
     margin-bottom: 30px;
+    cursor: pointer; 
     padding: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
-
+	.td:hover {
+	box-shadow: 3px 3px 0px transparent !important;
+    		transition: 0.5s !important;
+	}
+.thumbnail:hover{
+    	    box-shadow: 3px 3px 0px transparent;
+    		transition: 0.5s;
+    }
+ .item.list-group-item:hover{
+    	    box-shadow: 3px 3px 0px transparent;
+    		transition: 0.5s;
+    }
 .item.list-group-item
 {
     float: none;
