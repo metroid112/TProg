@@ -6,7 +6,7 @@
 <!-- CUANDO EN EL INDEX SE LISTEN LOS VIDEOS, ESTO SE PUEDE PELAR -->
 <head>
 	<jsp:include page="/WEB-INF/extras/head.jsp" />
-	<title>UyTube - Lista de Videos</title>
+	<title>UyTube - Listas de reproduccion</title>
 </head>
 <body>
 	<div class="page">
