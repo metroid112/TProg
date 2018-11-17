@@ -1,39 +1,31 @@
+<%@page import="servicios.DtUsuario"%>
+<%@page import="servicios.DtUniversal" %>
+<%@page import="servicios.DtVideo"%>
+<%@page import="java.util.List"%>
 <!doctype html>
 <html lang="en">
 <head>
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="js/main.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" type="text/css" href="css/marco.css">
 	<title>UyTube - Explorar</title>
+	<style>
+	a.navbar-brand {
+	text-align: center;
+	font-size: 0.9rem;
+	}
+	</style>
 </head>
 <body>
-<header role="banner" class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-        </div>
-        <div class="navbar-inverse side-collapse in">
-          <nav role="navigation" class="navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="#Home">Ver Videos</a></li>
-              <li><a href="#users">Ver Listas</a></li>
-              <li><a href="http://placesforlove.com">Salir</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
-    <div class="container side-collapse-container">
-      <div class="row">
-      <div class="col">
-      </div>
-      <div class="col-1">
-        <h1>Bienvenido</h1>
-       </div>
-      <div class="col">
-      </div>
-    </div>
-    </div>
+<div class="container">
+<jsp:include page="/WEB-INF/extras/header.jsp" />
+
+      <br>
+      <br>
+        <p style="text-align: center;">Bienvenido</p>
+
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

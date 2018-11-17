@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
           servicios.DtUsuario dtUsuario = (DtUsuario) port.getDtUsuario(nick).getContenido();
           request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
-          request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request,
+          request.getRequestDispatcher("WEB-INF/pages/inicio.jsp").forward(request,
               response);
         } else {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_INCORRECTO);
@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
       }
     } else {
       if (request.getParameter("CERRAR_SESION") == null) {
-        response.sendRedirect("WEB-INF/pages/listar_videos.jsp");
+        response.sendRedirect("WEB-INF/pages/inicio.jsp");
       } else if (request.getParameter("CERRAR_SESION").equals("CONFIRM")) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getSession().setAttribute("USUARIO_LOGEADO", null);
@@ -67,12 +67,22 @@ public class LoginServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request, response);
+    if (request.getSession().getAttribute("LOGIN")==null || !request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))
+    {    processRequest(request, response); }
+    else {
+      request.getRequestDispatcher("WEB-INF/pages/inicio.jsp").forward(request,
+          response);
+    }
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request, response);
+    if (request.getSession().getAttribute("LOGIN")==null || !request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))
+    {    processRequest(request, response); }
+    else {
+      request.getRequestDispatcher("WEB-INF/pages/inicio.jsp").forward(request,
+          response);
+    }
   }
 
 }

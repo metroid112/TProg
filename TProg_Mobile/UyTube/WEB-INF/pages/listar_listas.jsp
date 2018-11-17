@@ -6,7 +6,7 @@
 <head>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" type="text/css" href="css/marco.css">
-	<title>UyTube - Videos</title>
+	<title>UyTube - Listas</title>
 	<style>
 	a.navbar-brand {
 	text-align: center;
@@ -23,13 +23,13 @@
 <jsp:include page="/WEB-INF/extras/header.jsp" />
 <div class="navbar navbar-default">
 
-    <form class="navbar-form" action="VideoServlet" method="post" style="width:100%;">
+    <form class="navbar-form" action="ListaServlet" method="post" style="width:100%;">
         <div class="form-group"  style="display:inline; width:100%;">
          
             <div class="input-group" style="display:table;">
          
                 <input class="form-control" name="txtBusqueda" placeholder="Busque aqui" autocomplete="off" autofocus="autofocus" type="text" style="width:70%; float:left;">
-                <input type="hidden" name="TIPO_BUSQUEDA" value="VIDEOS">
+                <input type="hidden" name="TIPO_BUSQUEDA" value="LISTAS">
             	<div class="input-group-btn navbar-btn" style="border-radius:6px; width:30%; float:right;">
 					<button type="submit" class="btn btn-default btn-nav" style="width:100%;">
 					Buscar
@@ -54,7 +54,7 @@
 			</div>
 			<div class="col-10">
 			<% if (request.getParameter("txtBusqueda") == null || request.getParameter("txtBusqueda").equals("null") || request.getParameter("txtBusqueda").equals("")) {%>
-			<p style="text-align: center;">   Todos los videos: </p>
+			<p style="text-align: center;">   Todas las listas: </p>
 			<%} else {%>
 			<p> <b>Resultados para:</b> <%= request.getParameter("txtBusqueda") %></p>
 			<%}%>
@@ -62,27 +62,26 @@
 			<div class="col-1">
 			</div>
 			</div>
-    			<div id="products" class="row view-group">
-				<%for (DtVideo vid : videos) {%>
-                <div class="item col-xs-4 col-lg-4">
-                    <div class="thumbnail card" onclick="document.getElementById('Form<%=vid.getIdVideo()%>').submit();">
-                    <form id="Form<%=vid.getIdVideo()%>" action="ConsultaVideo" method="GET">
-						<input type="hidden" id="1" name="VIDEO_ID" value="<%=vid.getIdVideo()%>">
-                        <div class="img-event">
-                            <img class="group list-group-image img-fluid" src="<%=vid.getUrlThumbnail()%>" alt="" />
-                        </div>
-                        <div class="caption card-body">
-                            <h4 class="group card-title inner list-group-item-heading">
-                                <%=vid.getNombre()%></h4>
-                            <p class="group inner list-group-item-text">
-							Usuario: <%=vid.getUsuario()%></p>
-                        </div>
-                    </form>
-                    </div>
-                </div>
-				<% } %>
-            </div>
-
+			    <div class="row col-md-6 col-md-offset-2 custyle">
+    			<table class="table table-striped custab">
+    			<thead>
+        		<tr>
+            		<th>Nombre</th>
+            		<th>Tipo de lista</th>
+            		<th class="text-center">Action</th>
+        		</tr>
+    			</thead>
+    			<%for (DtLista lista : listas) {%>
+            		<tr>
+                		<td><%= lista.getNombre() %></td>
+                		<td>probando</td>
+                		<td class="text-center"><a class='btn btn-info btn-xs' href="/VideoServlet"><span class="glyphicon glyphicon-edit"></span>
+                		<input type="hidden" name="STATE" value="DETALLESLISTA">
+						<input type="hidden" name="IDLISTA" value="<%= lista.getIdLista() %>"> Edit</a> </td>
+            		</tr>
+           		<% } %>
+    </table>
+    </div>
 </div><!-- /.container-fluid -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
