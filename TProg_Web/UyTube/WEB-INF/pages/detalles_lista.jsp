@@ -1,4 +1,4 @@
-<%@ page import = "clases.*, utils.*, datatypes.*" %>
+<%@ page import = "clases.*, utils.*, servicios.*" %>
 <%@ page import = "java.util.List" %>
 <!doctype html>
 <html lang="en">
@@ -13,7 +13,7 @@
 		<div class="contenido">
 			<br>
 			Detalles de la lista
-			<% DtLista lista = (DtLista) request.getAttribute("DTLISTA"); 	// "DTLISTA" es un DtPaquete, el casteo esta mal%>
+			<% DtLista lista = (DtLista) request.getAttribute("DTLISTA");// "DTLISTA" es un DtPaquete, el casteo esta mal%>
 			<% DtUsuario owner = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO"); %>
 			<%= lista.getNombre() %>
 			<br>
@@ -22,15 +22,16 @@
 				<div class="highlights">
 					<% List<DtVideo> listaVideos = (List<DtVideo>) lista.getDtVideos();
 					for (DtVideo video : listaVideos) {
-						if (video.visible || (owner != null && video.usuario.equals(owner))) { %>
-					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">
-					<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
-						<input type="hidden" name="VIDEO_ID" value="<%=video.idVideo%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.urlThumbnail%>">
+						if (video.isVisible()|| (owner != null && video.getUsuario().equals(owner))) { %>
+					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.getIdVideo()%>').submit();">
+					
+					<form id="Form<%=video.getIdVideo()%>" class="detClickeableVideo" action="ConsultaVideo" method="GET">
+						<input type="hidden" name="VIDEO_ID" value="<%=video.getIdVideo()%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.getUrlThumbnail()%>">
 						<header>
-						<%= video.nombre %>
+						<%= video.getNombre() %>
 						<br>
-						User: <%= video.usuario %>
+						User: <%= video.getUsuario() %>
 						</header>
 					</form>
 					</div>

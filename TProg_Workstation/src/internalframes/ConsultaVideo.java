@@ -107,14 +107,17 @@ public class ConsultaVideo extends JInternalFrame {
   }
 
   private void verInfo() {
-    if (seleccionVideo.getVideo() != null && seleccionVideo.getUsuario() != null) {
-      infoVideo.cargarDatos(
-          contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario()));
-      cambioPanel();
-    } else {
-      JOptionPane.showMessageDialog(this, "Debe rellenar los campos", "Error",
-          JOptionPane.ERROR_MESSAGE);
+    try{
+      if (seleccionVideo.getVideo() != -1 && seleccionVideo.getUsuario() != null) {
+        infoVideo.cargarDatos(
+            contVideos.getDtVideo(seleccionVideo.getVideo()));
+        cambioPanel();
+      } else {
+        JOptionPane.showMessageDialog(this, "Debe rellenar los campos", "Error",
+            JOptionPane.ERROR_MESSAGE);
+      }
     }
+    catch(Exception e){}
   }
 
   private void cambioPanel() {

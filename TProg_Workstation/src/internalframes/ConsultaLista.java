@@ -43,6 +43,7 @@ public class ConsultaLista extends JInternalFrame {
   private JLabel lVisible;
   private InfoVideo infoVid;
   private JList<String> listaCategorias;
+  private List<DtLista> listas;
 
   private DefaultListModel<String> listListas = new DefaultListModel<>();
 
@@ -235,6 +236,7 @@ public class ConsultaLista extends JInternalFrame {
         modelUsuario.removeAllElements();
         listListas.removeAllElements();
         list.setEnabled(false);
+        listas.clear();
         rdbtnListasPorDefecto.setSelected(true);
         rdbtnListasParticulares.setSelected(false);
         rdbtnListasPorDefecto.setEnabled(false);
@@ -246,6 +248,8 @@ public class ConsultaLista extends JInternalFrame {
     rdbtnListasPorDefecto.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent arg0) {
+        listas.clear();
+        listas = ctrLis.getDtListasDefectoUsuario(comboBoxUsuario.getSelectedItem().toString());
         cargarDefectoListas();
       }
     });
@@ -253,6 +257,8 @@ public class ConsultaLista extends JInternalFrame {
     rdbtnListasParticulares.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        listas.clear();
+        listas = ctrLis.getDtListasParticularesUsuario(comboBoxUsuario.getSelectedItem().toString());
         cargarParticularListas();
       }
     });
@@ -351,7 +357,7 @@ public class ConsultaLista extends JInternalFrame {
     String lista = list.getSelectedValue();
     String usuario = (String) comboBoxUsuario.getSelectedItem();
     try {
-      DtLista dtLista = ctrLis.getDt(lista, usuario);
+      DtLista dtLista = ctrLis.getDt(obtenerListaId(lista));
       if (dtLista.isVisible()) {
         lVisible.setText("Publico");
       } else {
@@ -394,5 +400,14 @@ public class ConsultaLista extends JInternalFrame {
         duenoVid);
     infoVid.cargarDatos(dtVid);
 
+  }
+  
+  public int obtenerListaId(String nombre){
+    for(DtLista lista : listas){
+      if(lista.getNombre().equals(nombre)){
+        return lista.getId();
+      }
+    }
+    return -1;
   }
 }

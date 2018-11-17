@@ -63,12 +63,21 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 
   }
 
-  public String getVideo() {
+  public int getVideo() {
+    for(DtVideo video : videos){
+      if(video.getNombre().equals(listaVideos.getSelectedValue()))
+        return video.getIdVideo();
+    }
+    return -1;
+  }
+  
+  public String getVideoNombre(){
     return listaVideos.getSelectedValue();
   }
 
   public void cargarDatos() {
     String[] usuarios = contVideos.listarUsuarios();
+    videos.clear();
     DefaultComboBoxModel<String> modelU = new DefaultComboBoxModel<String>(usuarios);
     cBoxUsuarios.setModel(modelU);
     cBoxUsuarios.setSelectedIndex(-1);
@@ -77,10 +86,12 @@ public class SeleccionVideo extends JPanel implements ActionListener {
 
   public void updateLista(String nickname) {
     DefaultListModel<String> model = new DefaultListModel<String>();
-    String[] videos = contVideos.listarVideos(nickname);
-    if (videos != null) {
-      for (String vid : videos) {
-        model.addElement(vid);
+    videos.clear();
+    videos = contVideos.getDtVideosPropietario(nickname);
+   // String[] videos = contVideos.listarVideos(nickname);
+    if (!videos.isEmpty()) {
+      for (DtVideo vid : videos) {
+        model.addElement(vid.getNombre());
       }
     }
     listaVideos.setModel(model);

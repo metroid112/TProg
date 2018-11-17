@@ -30,7 +30,7 @@
      <% }
 			break;
 		case "INFO":
-			DtUsuario usuario = (DtUsuario) request.getAttribute("USUARIO");
+		DtUsuario usuario = (DtUsuario) request.getAttribute("USUARIO");
   		List<DtVideo> videos = (List<DtVideo>) request.getAttribute("VIDEOS");
   		List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS");
   		List<String> seguidores = (List<String>) request.getAttribute("SEGUIDORES");
