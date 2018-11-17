@@ -1,3 +1,4 @@
+<%@ page import="servicios.*" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,6 +17,32 @@
 			<%	
 			}
 			%>
+			<% DtUniversal dtUni = ((DtUniversal) request.getAttribute("USUARIO")); %>
+			<% DtUsuario dtUsu = (DtUsuario) dtUni; %>
+			<% if (dtUsu.isPrivado()) { %>
+			<div class="wrap-contact3">
+				<form class="contact3-form validate-form" action="ListaServlet" method="POST" id="formListaServlet">
+					<span class="contact3-form-title">
+					Alta lista particular
+					</span>
+					<div class="wrap-contact3-form-radio">
+						<div class="contact3-form-radio m-r-42">
+							<input class="input-radio3" id="radio1" type="radio" name="visibilidad" value="Privado" checked="checked">
+							<label class="label-radio3" for="radio1">
+							Privado
+							</label>
+						</div>
+					</div>
+					<div class="wrap-input3 validate-input" data-validate="El nombre es obligatorio">
+						<input class="input3" type="text" id="nombreLista" name="nombreLista" placeholder="Nombre de la lista" required>
+						<span class="focus-input3"></span> <span id="listaValida" style="color: red; font-size: small;"></span>
+					</div>
+					<div class="container-contact3-form-btn">
+						<input type="submit" class="contact3-form-btn" value="Aceptar">
+					</div>
+				</form>
+			</div>
+			<% } else { %>
 			<div class="wrap-contact3">
 				<form class="contact3-form validate-form" action="ListaServlet" method="POST" id="formListaServlet">
 					<span class="contact3-form-title">
@@ -43,7 +70,8 @@
 						<input type="submit" class="contact3-form-btn" value="Aceptar">
 					</div>
 				</form>
-			</div>
+			</div>	
+			<% } %>		
 		</div>
 	</div>
 <jsp:include page="/WEB-INF/extras/script.jsp" />
