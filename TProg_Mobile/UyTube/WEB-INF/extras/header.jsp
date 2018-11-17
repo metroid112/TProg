@@ -9,12 +9,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbar1">
     <ul class="navbar-nav ml-auto"> 
-<li class="nav-item active">
-<a class="nav-link" href="/VideoServlet">Ver Videos <span class="sr-only">(current)</span></a>
-</li>
-<li class="nav-item"><a class="nav-link" href="/ListaServlet"> Ver Listas </a></li>
 <li class="nav-item">
-<a class="btn ml-2 btn-warning" href="http://bootstrap-ecommerce.com">Salir</a></li>
+<a class="nav-link" href="VideoServlet">Ver Videos <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item"><a class="nav-link" href="ListaServlet"> Ver Listas </a></li>
+<li class="nav-item">
+<a class="btn ml-2 btn-warning" href="CerrarSesion">Cerrar Sesion</a></li>
     </ul>
   </div>
 </nav>	
