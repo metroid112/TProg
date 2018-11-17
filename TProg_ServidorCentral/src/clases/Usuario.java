@@ -175,4 +175,8 @@ public class Usuario {
   public String getApellido() {
     return this.apellido;
   }
+
+  public List<Comentario> getComentarios() {
+    return this.comentarios;
+  }
 }

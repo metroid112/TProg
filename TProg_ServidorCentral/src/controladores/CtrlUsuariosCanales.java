@@ -7,13 +7,18 @@ import java.util.Map;
 
 import clases.Calificacion;
 import clases.Canal;
+import clases.Categoria;
+import clases.Comentario;
 import clases.Imagen;
+import clases.ListaDefecto;
+import clases.ListaParticular;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
+import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -251,21 +256,123 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       // ** VIDEOS **
       Map<String, Video> videos = user.getCanal().getVideos();
       for (Video video : videos.values()) {
+        // ** COMENTARIOS **
+        video.getComentarios().clear();
+        video.setComentarios(null);
+        
+        // ** CALIFICACIONES **        
+        List<Calificacion> calificacionesVideo = video.getCalificaciones();
+        for(Calificacion calificacionVideo : calificacionesVideo) {
+          calificacionVideo.getUsuario().getCalificaciones().remove(calificacionVideo);
+          calificacionVideo.setUsuario(null);
+          
+          calificacionVideo.setVideo(null);
+          
+          calificacionVideo = null;
+        }        
+        calificacionesVideo.clear();
+        calificacionesVideo = null;
+        
+        // ** LISTAS PARTICULARES Y DEFECTO **
+        for (Usuario usuarioVideoLista : ManejadorUsuarios.getManejadorUsuarios().getMap().values()) {
+          for(ListaDefecto listaDefectoVideo : usuarioVideoLista.getCanal().getListaDefecto().values()) {
+            listaDefectoVideo.getVideos().remove(video);
+          }
+          for(ListaParticular listaParticularVideo : usuarioVideoLista.getCanal().getListaParticulares().values()) {
+            user.getCanal().quitarVideoListaParticular(video.getNombre(), listaParticularVideo.getNombre(), user);
+          }
+        }      
+        
+        // ** CATEGORIA **
+        video.getCategoria().getVideos().remove(video);
+        video.setCategoria(null);
+        
+        // ** CANAL **
+        video.setCanal(null);
+        user.getCanal().getVideos().remove(video.getNombre());
         
         video = null;
       }
+      videos.clear();
+      videos = null;
       
-      // ** LISTAS **
+      // ** LISTAS PARTICULARES **
+      Map<String, ListaParticular> listasParticulares = user.getCanal().getListaParticulares();
+      for (ListaParticular listaParticular : listasParticulares.values()) {
+        listaParticular.getCategorias().clear();
+        listaParticular.setCategorias(null);
+        
+        listaParticular.getVideos().clear();
+        listaParticular.setVideos(null);
+        
+        listaParticular.setCanal(null);
+        
+        listaParticular = null;
+      }
+      listasParticulares.clear();
+      listasParticulares = null;
+      
+      
+      // ** LISTAS DEFECTO ** 
+      Map<String, ListaDefecto> listasDefecto = user.getCanal().getListaDefecto();
+      for (ListaDefecto listaDefecto : listasDefecto.values()) {
+        listaDefecto.getVideos().clear();
+        listaDefecto.setVideos(null);
+        
+        listaDefecto.setCanal(null);        
+        
+        listaDefecto = null;
+      }
+      listasDefecto.clear();
+      listasDefecto = null;
       
       // ** CATEGORIAS **
+      user.getCanal().setCategoria(null);
+      
+      // ** SEGUIDORES **
+      Map<String, Usuario> seguidores = user.getSeguidores();
+      for (Usuario seguidor : seguidores.values()) {
+        seguidor.dejarSeguir(user);        
+      }
+      seguidores.clear();
+      seguidores = null;
+      
+      // ** SEGUIDOS **
+      Map<String, Usuario> seguidos = user.getSeguidos();
+      for (Usuario seguido : seguidos.values()) {
+        user.dejarSeguir(seguido);        
+      }
+      seguidos.clear();
+      seguidos = null;
+      
+      // ** COMENTARIOS **
+      List<Comentario> comentarios = user.getComentarios();
+      for (Comentario comentario : comentarios) {
+        comentario.getRespuestas().clear(); // TODO: hijos tienen referencias?
+        comentario.setRespuestas(null);
+        
+        comentario.getVideo().getComentarios().remove(comentario.getId());
+        
+        comentario = null;
+      }
+      comentarios.clear();
+      comentarios = null;
       
       // ** CANAL ** 
+      user.setCanal(null);
       
       // ** MANEJADOR **
       manejadorUsuarios.getMap().remove(nickUsuario);
       
+      // ** IMAGEN **
+      Imagen imagen = user.getImg();
+      
+      if (imagen != null) {
+        Imagen.borrar(imagen.getId());
+      }
+      
       // ** USUARIO **
       user = null;
-    }    
+    }
   }
 }

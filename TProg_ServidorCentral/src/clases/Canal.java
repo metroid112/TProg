@@ -286,4 +286,8 @@ public class Canal {
     return this.listaDefecto.get(nombreListaDefecto).getDtLista();
   }
 
+  public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;    
+  }
+
 }

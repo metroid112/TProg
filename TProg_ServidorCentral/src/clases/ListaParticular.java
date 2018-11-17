@@ -31,6 +31,10 @@ public class ListaParticular extends Lista {
     return ultimaActividad;
   }
 
+  public void setCategorias(Map<String, Categoria> categorias) {
+    this.categorias = categorias;
+  }
+
   public boolean esUnicaCategoria(Categoria categoria) {
     if (categoria != null) {
       for (Video v : super.getVideos()) {
