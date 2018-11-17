@@ -11,6 +11,7 @@ import clases.Video;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -201,15 +202,33 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws DuplicateClassException {
-    if(!usuarioModificado.nick.equals(usuarioOriginal.nick) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
+  public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException, NotFoundException {
+    Usuario usuario = manejadorUsuarios.get(nickUsuarioOriginal);
+    if(!usuarioModificado.nick.equals(usuario.getNick()) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.nick);
     }
-    if(!usuarioModificado.correo.equals(usuarioOriginal.correo) && manejadorUsuarios.mailGet(usuarioModificado.correo) != null) {
+    if(!usuarioModificado.correo.equals(usuario.getCorreo()) && manejadorUsuarios.mailGet(usuarioModificado.correo) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.correo);
     }
-    Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
-    
+    usuario.setNick(usuarioModificado.nick);
+    usuario.setNombre(usuarioModificado.nombre);
+    usuario.setApellido(usuarioModificado.apellido);
+    usuario.setPassword(usuarioModificado.password);
+    usuario.setCorreo(usuarioModificado.correo);
+    usuario.setFechaNacimiento(usuarioModificado.fechaNacimiento);
+    usuario.getCanal().setNombre(usuarioModificado.canal);
+    usuario.getCanal().setDescripcion(usuarioModificado.descripcionCanal);
+    usuario.getCanal().setVisible(usuarioModificado.privado);
+    usuario.getCanal().setCategoria(ManejadorCategorias.getManejadorCategorias().get(usuarioModificado.categoria));
+    if (img == null) {
+      Imagen.borrar(usuario.getImg().getId());
+      usuario.setImg(null);
+    } else {
+      int idImg = usuario.getImg().getId();
+      usuario.getImg().modificarImg(idImg, img);
+    }
+    manejadorUsuarios.getMap().remove(nickUsuarioOriginal);
+    manejadorUsuarios.add(usuario);
   }
 
   @Override

@@ -785,8 +785,6 @@ public class CtrlDatos implements IDatos {
       if (canal.isVisible()) {
         if (canal.getNombre().toLowerCase().contains(txtBusqueda.toLowerCase())
             || canal.getDescripcion().toLowerCase().contains(txtBusqueda.toLowerCase())) {
-          /*DtUsuario dtUsuario = new DtUsuario(usuario.getNick(), usuario.getCanal().getNombre(),
-              usuario.getImg().getId(), canal.getUltimaActividad());*/
           Categoria categoria = usuario.getCanal().getCategoria();
           Imagen img = usuario.getImg();
           DtUsuario dtUsuario = new DtUsuario(usuario.getNombre(),
