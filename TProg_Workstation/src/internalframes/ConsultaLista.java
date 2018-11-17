@@ -357,7 +357,7 @@ public class ConsultaLista extends JInternalFrame {
     String lista = list.getSelectedValue();
     String usuario = (String) comboBoxUsuario.getSelectedItem();
     try {
-      DtLista dtLista = ctrLis.getDt(lista, usuario);
+      DtLista dtLista = ctrLis.getDt(obtenerListaId(lista));
       if (dtLista.isVisible()) {
         lVisible.setText("Publico");
       } else {
@@ -402,7 +402,12 @@ public class ConsultaLista extends JInternalFrame {
 
   }
   
-  private int obtenerListaId(String nombre){
-    for
+  public int obtenerListaId(String nombre){
+    for(DtLista lista : listas){
+      if(lista.getNombre().equals(nombre)){
+        return lista.getId();
+      }
+    }
+    return -1;
   }
 }

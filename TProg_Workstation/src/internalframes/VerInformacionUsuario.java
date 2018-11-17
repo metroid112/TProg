@@ -87,7 +87,7 @@ public class VerInformacionUsuario extends JInternalFrame {
     verInfoListas.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent arg0) {
-        // cargar informacion de lista,
+
         if (paneluser.isListaSelected()) {
           String lisSel = paneluser.getListaSeleccionada();
           if (lisSel != null) {
@@ -168,7 +168,6 @@ public class VerInformacionUsuario extends JInternalFrame {
     JLabel lblNewLabel = new JLabel("Videos");
 
     JButton VerInfoVideoDesdeCOnsultaLista = new JButton("Ver info video");
-    // TODO darle proposito
 
     JLabel lblDetallesLista = new JLabel("Detalles lista:");
     lblDetallesLista.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -213,7 +212,7 @@ public class VerInformacionUsuario extends JInternalFrame {
     videosLista = new JList<String>();
     VideosDeLista.setViewportView(videosLista);
     panelInfoListas.setLayout(glpanelInfoListas);
-    // cambioPanel();
+
   }
 
   public void cargarInformacionUsuario(String usuario) {
@@ -225,28 +224,20 @@ public class VerInformacionUsuario extends JInternalFrame {
   public void verInfo(String vidSel, String userSel) {
     PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel, userSel));
     PanelInfoVideo.add(PanelConsultaVideo, BorderLayout.CENTER);
-    cambioPanel(); // Voy al panel de informacion
+    cambioPanel();
   }
 
   public void cambioPanel() {
-    CardLayout layout = (CardLayout) getContentPane().getLayout(); // Consigo el layout
-    layout.next(getContentPane()); // Cambia al siguiente panel
+    CardLayout layout = (CardLayout) getContentPane().getLayout();
+    layout.next(getContentPane());
   }
 
-  /*
-   * JLabel lblNewLabel_1 = new JLabel("vNombreLista");
-   * 
-   * JLabel lblVtipolista = new JLabel("vTipoLista");
-   * 
-   * JLabel lblNewLabel_2 = new JLabel("vPrivacidad");
-   */
-
-  private void cargaDatosLista(String lista, String usuario) {
+  private void cargaDatosLista(int lista) {
 
     DtLista dtLista;
     try {
-      // JOptionPane.showMessageDialog(this, lista + " " + usuario);
-      dtLista = ctrlLis.getDt(lista, usuario);
+
+      dtLista = ctrlLis.getDt(lista);
       if (dtLista.isVisible()) {
         lblNewLabel_2.setText("Publico");
       } else {
@@ -260,14 +251,7 @@ public class VerInformacionUsuario extends JInternalFrame {
       lblNewLabel_1.setText(dtLista.getNombre());
       lblVtipolista.setText(dtLista.getTipo());
 
-      // DefaultListModel<String> modeloCategorias = new DefaultListModel<String>();
-      // for (String cat : dtLista.getCategorias()) {
-      // modeloCategorias.addElement(cat);
-      // }
-      // listaCategorias.setModel(modeloCategorias);
-
     } catch (Exception e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
 
