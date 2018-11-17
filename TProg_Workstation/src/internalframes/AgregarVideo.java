@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -151,6 +152,7 @@ public class AgregarVideo extends JInternalFrame {
     btnAceptar.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        try{
         boolean checkUsuario = true;
 
         if (comboBoxUsuario.getSelectedItem() == "") {
@@ -175,6 +177,8 @@ public class AgregarVideo extends JInternalFrame {
           rdbtnListasParticulares.setSelected(false);
           setVisible(false);
         }
+        }
+        catch(Exception error){}
 
       }
     });
@@ -292,11 +296,11 @@ public class AgregarVideo extends JInternalFrame {
   public void cargarUsuarioObj() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    List<String> usuarios = ctrUsu.listarNombresUsuarios();
+
     modelUsuObj.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuObj.addElement(usuarios[i]);
+    for (String usuario : usuarios) {
+      modelUsuObj.addElement(usuario);
     }
     ctrUsu = null;
   }
@@ -304,11 +308,11 @@ public class AgregarVideo extends JInternalFrame {
   public void cargarDatos() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    List<String> usuarios = ctrUsu.listarNombresUsuarios();
+
     modelUsuario.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuario.addElement(usuarios[i]);
+    for (String usuario : usuarios) {
+      modelUsuario.addElement(usuario);
     }
     ctrUsu = null;
 
@@ -322,12 +326,10 @@ public class AgregarVideo extends JInternalFrame {
 
       String s = modelUsuObj.getSelectedItem().toString();
 
-      String[] listas = ctrLis.listarListasDefectoUsuario(s);
+      List<String> listas = ctrLis.listarListasDefectoUsuario(s);
 
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (String lista : listas) {
+        listListas.addElement(lista);
       }
     }
 
@@ -342,12 +344,10 @@ public class AgregarVideo extends JInternalFrame {
 
       String s = modelUsuObj.getSelectedItem().toString();
 
-      String[] listas = ctrLis.listarListasParticularUsuario(s);
+      List<String> listas = ctrLis.listarListasParticularUsuario(s);
 
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (String lista : listas) {
+        listListas.addElement(lista);
       }
     }
 

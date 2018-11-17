@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -15,6 +16,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import datatypes.DtCategoria;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 
@@ -111,11 +113,11 @@ public class ConsultaCategoria extends JInternalFrame {
 
     ctrlCat = Fabrica.getICategorias();
 
-    String[] cats = ctrlCat.listarCategorias();
-    int largo = cats.length;
+    List<DtCategoria> cats = ctrlCat.listarCategorias();
+    
     model.addElement("");
-    for (int i = 0; i < largo; i++) {
-      model.addElement(cats[i]);
+    for (DtCategoria categoria : cats) {
+      model.addElement(categoria.getNombre());
     }
     ctrlCat = null;
   }

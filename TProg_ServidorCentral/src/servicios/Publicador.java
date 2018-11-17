@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.time.Duration;
 import java.util.Calendar;
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -24,7 +26,7 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Endpoint;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.tika.io.IOUtils;
 
 import com.sun.istack.internal.Nullable;
 
@@ -46,7 +48,17 @@ public class Publicador {
   
   @WebMethod(exclude = true)
   public void publicar(){
-       endpoint = Endpoint.publish("http://localhost:10135/publicador", this);
+     
+      try {
+        Properties prop = new Properties();
+        InputStream in = new FileInputStream("config.properties");
+        prop.load(in);
+        endpoint = Endpoint.publish(prop.getProperty("wsdlURL"), this);
+        in.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+       
   }
   
   @WebMethod(exclude = true)
@@ -276,8 +288,66 @@ public class Publicador {
   }
   
   @WebMethod
+
+  public DtPaquete getListasPublicas(){
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIListas().getDtListasPublicas()) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);    
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtListasPrivadasUsuario(String nick){
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIListas().getDtListasPrivadasUsuario(nick)) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);   
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtListasDefectoUsuario(String nick){
+    DtPaquete pack = new DtPaquete();
+    LinkedList<DtUniversal> listaUniversal = new LinkedList<DtUniversal>();
+    for (DtUniversal dato : Fabrica.getIListas().getDtListasDefectoUsuario(nick)) {
+      listaUniversal.add(dato);      
+    }
+    pack.setListaDt(listaUniversal);    
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtDefecto(String usuario, String nombreListaDefecto){
+    DtPaquete pack = new DtPaquete();
+    DtUniversal universal = Fabrica.getIListas().getDtDefecto(usuario, nombreListaDefecto);
+    pack.setContenido(universal);
+    return pack;
+  }
+  
+  @WebMethod
+  public DtPaquete getDtLista(int idLista){
+    try{
+    DtPaquete pack = new DtPaquete();
+    DtUniversal universal = Fabrica.getIListas().getDt(idLista);
+    pack.setContenido(universal);
+    return pack;
+    }
+    catch(NotFoundException e){
+      return null;
+    }
+  }
+ 
+  @WebMethod
+
+
   public void agregarVideoLista(String nombreOwnerVideo, String nombreVideo, String usuario,
       String nombreLista, Boolean defecto) throws DuplicateClassException, InvalidDataException {
+
     Fabrica.getIListas().agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
   }
   
@@ -315,6 +385,7 @@ public class Publicador {
     DtPaquete pack = new DtPaquete();
     List<String> usuarios = Fabrica.getIUsuariosCanales().listarNombresUsuarios();
     pack.setListaAux(usuarios);
+
     return pack;
   }
   
@@ -380,6 +451,7 @@ public class Publicador {
     return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
   }
   
+
   @WebMethod
   public boolean existeNick(String nick) {
     return Fabrica.getIUsuariosCanales().existeUsuario(nick);
@@ -411,7 +483,7 @@ public class Publicador {
       e.printStackTrace();
     }
   }
-  
+
   /**
    * Empaqueta un data type generico
    * @param contenido

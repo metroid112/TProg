@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
+import datatypes.DtCategoria;
 import interfaces.Fabrica;
 import interfaces.ICategorias;
 
@@ -69,10 +71,10 @@ public class ListarCategorias extends JInternalFrame {
 
     ctrlCat = Fabrica.getICategorias();
 
-    String[] cats = ctrlCat.listarCategorias();
-    int largo = cats.length;
-    for (int i = 0; i < largo; i++) {
-      model.addElement(cats[i]);
+    List<DtCategoria> cats = ctrlCat.listarCategorias();
+
+    for (DtCategoria categoria : cats) {
+      model.addElement(categoria.getNombre());
     }
     ctrlCat = null;
   }

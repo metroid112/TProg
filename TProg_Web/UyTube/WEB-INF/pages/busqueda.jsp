@@ -96,6 +96,7 @@
 						<header>
 						<%= lista.getNombre() %>
 						</header>
+						User: <%= lista.getNombreOwner() %>
 						<br>
 					</form>	
 				</div>

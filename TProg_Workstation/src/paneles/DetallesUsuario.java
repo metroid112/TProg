@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
@@ -25,6 +26,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import datatypes.DtUsuario;
+import datatypes.DtVideo;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IUsuariosCanales;
@@ -308,10 +310,10 @@ public class DetallesUsuario extends JPanel {
     modelSeguidores.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] Seguidores = ctrlUsu.listarSeguidores(usuario);
-    int largo = Seguidores.length;
-    for (int i = 0; i < largo; i++) {
-      modelSeguidores.addElement(Seguidores[i]);
+    List<String> seguidores = ctrlUsu.getSeguidores(usuario);
+
+    for (String seguidor : seguidores) {
+      modelSeguidores.addElement(seguidor);
     }
     ctrlUsu = null;
   }
@@ -320,10 +322,10 @@ public class DetallesUsuario extends JPanel {
     modelSeguidos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] seguidos = ctrlUsu.listarSeguidos(usuario);
-    int largo = seguidos.length;
-    for (int i = 0; i < largo; i++) {
-      modelSeguidos.addElement(seguidos[i]);
+    List<String> seguidos = ctrlUsu.getSeguidos(usuario);
+    
+    for (String seguido : seguidos) {
+      modelSeguidos.addElement(seguido);
     }
     ctrlUsu = null;
   }
@@ -334,22 +336,21 @@ public class DetallesUsuario extends JPanel {
 
     ctrlLis = Fabrica.getIListas();
 
-    String[] listas = ctrlLis.listarListasParticularUsuario(usuario);
+    List<String> listas = ctrlLis.listarListasParticularUsuario(usuario);
 
-    int largol = listas.length;
-    // fab = Fabrica.getFabrica();
-    // ctrlUsu = fab.getIUsuariosCanales();
+    int largol = listas.size();
+
     if (largol > 0) {
-      for (int i = 0; i < largol; i++) {
-        modelListas.addElement(listas[i]);
+      for (String lista : listas) {
+        modelListas.addElement(lista);
       }
     }
 
     listas = ctrlLis.listarListasDefectoUsuario(usuario);
-    largol = listas.length;
+    largol = listas.size();
     if (largol > 0) {
-      for (int i = 0; i < largol; i++) {
-        modelListas.addElement(listas[i]);
+      for (String lista : listas) {
+        modelListas.addElement(lista);
       }
     }
     ctrlLis = null;
@@ -379,10 +380,10 @@ public class DetallesUsuario extends JPanel {
     modelVideos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
 
-    String[] videosS = ctrlUsu.listarVideos(usuario);
-    int largo = videosS.length;
-    for (int i = 0; i < largo; i++) {
-      modelVideos.addElement(videosS[i]);
+    List<DtVideo> videosS = ctrlUsu.getListaDtVideo(usuario);
+
+    for (DtVideo video : videosS) {
+      modelVideos.addElement(video.getNombre());
     }
     ctrlUsu = null;
   }

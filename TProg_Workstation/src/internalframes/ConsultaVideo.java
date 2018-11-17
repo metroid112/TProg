@@ -23,9 +23,6 @@ public class ConsultaVideo extends JInternalFrame {
   private SeleccionVideo seleccionVideo;
   private InfoVideo infoVideo;
 
-  /**
-   * Create the frame.
-   */
   public ConsultaVideo(IVideos contVideos) {
 
     this.contVideos = contVideos;
@@ -110,25 +107,22 @@ public class ConsultaVideo extends JInternalFrame {
   }
 
   private void verInfo() {
-    if (seleccionVideo.getVideo() != null && seleccionVideo.getUsuario() != null) {
-      infoVideo.cargarDatos(
-          contVideos.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario())); // Paso
-      // la
-      // info
-      // al
-      // panel
-      // de
-      // info
-      cambioPanel(); // Voy al panel de informacion
-    } else {
-      JOptionPane.showMessageDialog(this, "Debe rellenar los campos", "Error",
-          JOptionPane.ERROR_MESSAGE);
+    try{
+      if (seleccionVideo.getVideo() != -1 && seleccionVideo.getUsuario() != null) {
+        infoVideo.cargarDatos(
+            contVideos.getDtVideo(seleccionVideo.getVideo()));
+        cambioPanel();
+      } else {
+        JOptionPane.showMessageDialog(this, "Debe rellenar los campos", "Error",
+            JOptionPane.ERROR_MESSAGE);
+      }
     }
+    catch(Exception e){}
   }
 
   private void cambioPanel() {
-    CardLayout layout = (CardLayout) getContentPane().getLayout(); // Consigo el layout
-    layout.next(getContentPane()); // Cambia al siguiente panel
+    CardLayout layout = (CardLayout) getContentPane().getLayout();
+    layout.next(getContentPane());
 
   }
 }
