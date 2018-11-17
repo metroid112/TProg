@@ -454,7 +454,7 @@ public class Publicador {
   
   @WebMethod
   public void modificarUsuario(String nickUsuarioOriginal, DtUniversal usuarioModificado, @XmlElement(required = false, name = "imagen")
-  @WebParam(name = "imagen", header = true) byte[] img) throws DuplicateClassException {
+  @WebParam(name = "imagen", header = true) byte[] img) throws DuplicateClassException, NotFoundException {
     Fabrica.getIUsuariosCanales().modificarUsuario(nickUsuarioOriginal, (DtUsuario) usuarioModificado, img);
   }
   

@@ -11,6 +11,7 @@ import clases.Video;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
@@ -201,7 +202,7 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException {
+  public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException, NotFoundException {
     Usuario usuario = manejadorUsuarios.get(nickUsuarioOriginal);
     if(!usuarioModificado.nick.equals(usuario.getNick()) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.nick);
@@ -220,9 +221,11 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     usuario.getCanal().setVisible(usuarioModificado.privado);
     usuario.getCanal().setCategoria(ManejadorCategorias.getManejadorCategorias().get(usuarioModificado.categoria));
     if (img == null) {
-      //Imagen.borrar(usuario.getImg().getId()); TODO BORRAR IMAGEN
+      Imagen.borrar(usuario.getImg().getId());
+      usuario.setImg(null);
     } else {
-      usuario.getImg().setImgByte(img);
+      int idImg = usuario.getImg().getId();
+      usuario.getImg().modificarImg(idImg, img);
     }
     manejadorUsuarios.getMap().remove(nickUsuarioOriginal);
     manejadorUsuarios.add(usuario);

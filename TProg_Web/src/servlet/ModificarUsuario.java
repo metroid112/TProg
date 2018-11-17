@@ -27,6 +27,7 @@ import servicios.DtCategoria;
 import servicios.DtUniversal;
 import servicios.DtUsuario;
 import servicios.DuplicateClassException_Exception;
+import servicios.NotFoundException_Exception;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -89,11 +90,12 @@ public class ModificarUsuario extends HttpServlet {
           String descripcionCanal = request.getParameter("descripcion");
           boolean visibilidad = request.getParameter("visibilidad").equals("privado") ? true : false;
           String categoria = request.getParameter("categoria");
-          usuarioModificado.setIdImagen(img == null ? usuario.getIdImagen() : "0.JPG");
+          usuarioModificado.setIdImagen(img == null ? "0.JPG" : usuario.getIdImagen());
           usuarioModificado.setNick(nick);
           usuarioModificado.setNombre(nombre);
           usuarioModificado.setApellido(apellido);
           usuarioModificado.setCorreo(mail);
+          usuarioModificado.setPassword(password);
           usuarioModificado.setFechaNacimiento(fechaNacimientoXML);
           usuarioModificado.setCanal(nombreCanal);
           usuarioModificado.setDescripcionCanal(descripcionCanal);
@@ -106,6 +108,9 @@ public class ModificarUsuario extends HttpServlet {
           } catch (DuplicateClassException_Exception exception) {
             // TODO Auto-generated catch block
             exception.printStackTrace();
+          } catch (NotFoundException_Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
           }
         }
         break;

@@ -14,13 +14,13 @@
 	<div class="contenido">
 		<% DtUsuario usuario = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO"); %>
 		<form action="ModificarUsuario" method="POST" id="formAltaUsuario" enctype="multipart/form-data">
-		Nick: <input type="text" value="<%= usuario.getNick() %>" name="nick"><br>
-		Nombre: <input type="text" value="<%= usuario.getNombre() %>" name="nombre"><br>
-		Apellido: <input type="text" value="<%= usuario.getApellido() %>" name="apellido"><br>
-		Correo: <input type="email" value="<%= usuario.getCorreo() %>" name="mail"><br>
-		Fecha de nacimiento: <input type="date" value="<%= usuario.getFechaNacimiento() %>" name="fecha"><br>
-		Password: <input type="password" name="pass"><br>
-		Confirmar password: <input type="password" name="passConfirm"><br>
+		Nick: <input type="text" value="<%= usuario.getNick() %>" name="nick" required><br>
+		Nombre: <input type="text" value="<%= usuario.getNombre() %>" name="nombre" required><br>
+		Apellido: <input type="text" value="<%= usuario.getApellido() %>" name="apellido" required><br>
+		Correo: <input type="email" value="<%= usuario.getCorreo() %>" name="mail" required><br>
+		Fecha de nacimiento: <input type="date" value="<%= usuario.getFechaNacimiento().toGregorianCalendar().getTime() %>" name="fecha" required><br>
+		Password: <input type="password" name="pass" required><br>
+		Confirmar password: <input type="password" name="passConfirm" required><br>
 		Imagen: <input type="file" name="img" accept="image/*"><br>
 		Nombre del canal: <input type="text" value="<%= usuario.getCanal() %>" name="nombreCanal"><br>
 		Descripción del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"><%= usuario.getDescripcionCanal() %></textarea><br>
