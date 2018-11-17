@@ -70,7 +70,7 @@ public class Usuario {
         : this.getCanal().getCategoria().getNombre();
     Imagen img = this.img;
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
-        this.canal.getDescripcion(), this.fechaNacimiento, this.canal.isVisible(),
+        this.canal.getDescripcion(), this.fechaNacimiento, !this.canal.isVisible(),
         this.nick, img == null ? "0.JPG" : Integer.toString(img.getId()) + img.getExtension(), categoria);
   }
 
