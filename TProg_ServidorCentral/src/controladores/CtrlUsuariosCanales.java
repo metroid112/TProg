@@ -6,11 +6,14 @@ import java.util.List;
 
 import clases.Canal;
 import clases.Imagen;
+import clases.Lista;
+import clases.ListaDefecto;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;

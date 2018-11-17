@@ -566,14 +566,17 @@ public class CtrlDatos implements IDatos {
       ListaDefectoBean LD1 = new ListaDefectoBean();
       ListaDefectoBean LD2 = new ListaDefectoBean();
       ListaDefectoBean LD3 = new ListaDefectoBean();
+      ListaDefectoBean LD4 = new ListaDefectoBean();
 
       LD1.nombre = "Escuchar más tarde";
       LD2.nombre = "Deporte total";
       LD3.nombre = "Novedades generales";
+      LD4.nombre = "Historial";
 
       Fabrica.getIListas().altaListaDefecto(LD1.nombre);
       Fabrica.getIListas().altaListaDefecto(LD2.nombre);
       Fabrica.getIListas().altaListaDefecto(LD3.nombre);
+      Fabrica.getIListas().altaListaDefecto(LD4.nombre);
 
       class ListaParticularBean {
         public String nombre;
@@ -717,6 +720,77 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Locura celeste", "tabarec");
       Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Dancing in the Dark",
           "kairoh");
+      
+      ManejadorUsuarios mU = ManejadorUsuarios.getManejadorUsuarios();
+      ManejadorVideos mV   = ManejadorVideos.getManejadorVideos();
+      
+      mU.get(HR.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 2);
+      mU.get(HR.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 4);
+      
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 5);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 5);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V5a.owner, V5a.nombre), 4);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V5b.owner, V5b.nombre), 4);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 1);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 1);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V8.owner, V8.nombre), 1);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 3);
+      
+      mU.get(HG.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 1);
+      mU.get(HG.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 1);
+      mU.get(HG.nick).getCanal().consultarVideo(mV.returnId(V8.owner, V8.nombre), 1);
+      mU.get(HG.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 10);
+  
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V1a.owner, V1a.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V1b.owner, V1b.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V2a.owner, V2a.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V2b.owner, V2b.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V12a.owner, V12a.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V12b.owner, V12b.nombre), 1);
+      
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V1a.owner, V1a.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V1b.owner, V1b.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V2a.owner, V2a.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V2b.owner, V2b.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 20);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 20);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V9.owner, V9.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V10.owner, V10.nombre), 2);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 5);
+      
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 1);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 1);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V5a.owner, V5a.nombre), 1);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V5b.owner, V5b.nombre), 1);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 2);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V13.owner, V13.nombre), 2);
+  
+      mU.get(DP.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 2);
+      mU.get(DP.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 2);
+      mU.get(DP.nick).getCanal().consultarVideo(mV.returnId(V5a.owner, V5a.nombre), 1);
+      mU.get(DP.nick).getCanal().consultarVideo(mV.returnId(V5b.owner, V5b.nombre), 1);
+      
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 8);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 8);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V4.owner, V4.nombre), 6);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V5a.owner, V5a.nombre), 2);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V5b.owner, V5b.nombre), 2);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V10.owner, V10.nombre), 1);
+      
+      mU.get(SP.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 5);
+      mU.get(SP.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 1);
+      mU.get(SP.nick).getCanal().consultarVideo(mV.returnId(V8.owner, V8.nombre), 1);
+      mU.get(SP.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 2);
+      
+      mU.get(AR.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 1);
+      
+      mU.get(AP.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 1);
+      
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V4.owner, V4.nombre), 8);
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 3);
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V8.owner, V8.nombre), 21);
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V15.owner, V15.nombre), 10);
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V16.owner, V16.nombre), 4);
     }
   }
 

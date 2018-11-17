@@ -13,6 +13,7 @@ import datatypes.DtLista;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import manejadores.ManejadorListasDefecto;
+import manejadores.ManejadorVideos;
 
 public class Canal {
 
@@ -287,6 +288,21 @@ public class Canal {
 
   public DtLista getDtListaDefecto(String nombreListaDefecto) {
     return this.listaDefecto.get(nombreListaDefecto).getDtLista();
+  }
+  
+  public void consultaVideo(int idVideo) {
+    Map<Integer, Integer> reproducciones = this.usuario.getReproducciones();
+    if (reproducciones.get(idVideo) == null) {
+      reproducciones.put(idVideo, 1);
+    } else {
+      int reproduccionesVideo = reproducciones.get(idVideo);
+      reproduccionesVideo++;
+      reproducciones.put(idVideo, reproduccionesVideo);
+    }
+  }
+  
+  public void consultarVideo(int idVideo, int consultas) {
+    this.usuario.getReproducciones().put(idVideo, consultas);
   }
 
 }

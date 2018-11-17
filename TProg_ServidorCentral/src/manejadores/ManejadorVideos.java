@@ -43,4 +43,13 @@ public class ManejadorVideos {
   public Map<Integer, Video> getVideos() {
     return this.videos;
   }
+  
+  public int returnId(String owner, String nombreVideo) {
+    for (Video video : this.videos.values()) {
+      if (video.getCanal().getUsuario().getNick().equals(owner) && video.getNombre().equals(nombreVideo)) {
+        return video.getId();
+      }
+    }
+    return 0;
+  }
 }
