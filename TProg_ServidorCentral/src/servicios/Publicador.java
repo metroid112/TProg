@@ -34,6 +34,7 @@ import datatypes.DtBusqueda;
 import datatypes.DtCategoria;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
+import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.*;
 import interfaces.Fabrica;
@@ -451,7 +452,12 @@ public class Publicador {
     return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
   }
   
-
+  @WebMethod
+  public void modificarUsuario(String nickUsuarioOriginal, DtUniversal usuarioModificado, @XmlElement(required = false, name = "imagen")
+  @WebParam(name = "imagen", header = true) byte[] img) throws DuplicateClassException, NotFoundException {
+    Fabrica.getIUsuariosCanales().modificarUsuario(nickUsuarioOriginal, (DtUsuario) usuarioModificado, img);
+  }
+  
   @WebMethod
   public boolean existeNick(String nick) {
     return Fabrica.getIUsuariosCanales().existeUsuario(nick);
@@ -483,7 +489,7 @@ public class Publicador {
       e.printStackTrace();
     }
   }
-
+  
   /**
    * Empaqueta un data type generico
    * @param contenido
