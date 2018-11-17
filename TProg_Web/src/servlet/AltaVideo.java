@@ -75,7 +75,7 @@ public class AltaVideo extends HttpServlet {
               GregorianCalendar cal = new GregorianCalendar();
               cal.setTime(fecha);
               XMLGregorianCalendar fechaXML = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal);
-              port.altaVideo(nick, nombre, descripcion, duracion.getSeconds(), url, "categoria", fechaXML,  //Categoria temporalmente hardcodeada
+              port.altaVideo(nick, nombre, descripcion, duracion.getSeconds(), url, categoria, fechaXML,
                   false);
             } catch (DatatypeConfigurationException e) {
               // TODO Auto-generated catch block
