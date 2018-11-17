@@ -38,15 +38,12 @@ public class VerInformacionUsuario extends JInternalFrame {
     this.padre = padre;
   }
 
-  // imports para el video
   private InfoVideo PanelConsultaVideo;
   private JLabel lblNewLabel_1 = new JLabel("vNombreLista");
   private JLabel lblVtipolista = new JLabel("vTipoLista");
   private JLabel lblNewLabel_2 = new JLabel("vPrivacidad");
   private JList<String> videosLista;
   private IVideos contVideos = Fabrica.getIVideos();
-
-  // fin
 
   public VerInformacionUsuario() {
     setBounds(0, 10, 787, 480);
@@ -75,8 +72,8 @@ public class VerInformacionUsuario extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         if (paneluser.isVideoSeleccionado()) {
-          String vidSel = paneluser.getVideoSeleccionado();
-          verInfo(vidSel, UsrSel);
+          int vidSel = paneluser.getVideoSeleccionado();
+          verInfo(vidSel);
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un video");
         }
@@ -89,9 +86,9 @@ public class VerInformacionUsuario extends JInternalFrame {
       public void actionPerformed(ActionEvent arg0) {
 
         if (paneluser.isListaSelected()) {
-          String lisSel = paneluser.getListaSeleccionada();
-          if (lisSel != null) {
-            cargaDatosLista(lisSel, UsrSel);
+          int lisSel = paneluser.getListaSeleccionada();
+          if (lisSel != -1) {
+            cargaDatosLista(lisSel);
           } else {
             JOptionPane.showInputDialog(this);
           }
@@ -221,10 +218,13 @@ public class VerInformacionUsuario extends JInternalFrame {
     panel_2.add(paneluser, BorderLayout.CENTER);
   }
 
-  public void verInfo(String vidSel, String userSel) {
-    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel, userSel));
+  public void verInfo(int vidSel) {
+    try{
+    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel));
     PanelInfoVideo.add(PanelConsultaVideo, BorderLayout.CENTER);
     cambioPanel();
+    }
+    catch(Exception e){}
   }
 
   public void cambioPanel() {

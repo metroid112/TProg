@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.tika.io.IOUtils;
 
 import clases.Canal;
 import clases.Categoria;

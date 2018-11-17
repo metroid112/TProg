@@ -3,6 +3,7 @@ package internalframes;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -37,13 +38,15 @@ public class ConsultaLista extends JInternalFrame {
 
   private IUsuariosCanales ctrUsu;
   private IListas ctrLis;
+  private IVideos ctrVid;
   private ButtonGroup grupoLista = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private JComboBox<String> comboBoxUsuario;
   private JLabel lVisible;
   private InfoVideo infoVid;
   private JList<String> listaCategorias;
-  private List<DtLista> listas;
+  private List<DtVideo> videos = new LinkedList<DtVideo>();
+  private List<DtLista> listas = new LinkedList<DtLista>();
 
   private DefaultListModel<String> listListas = new DefaultListModel<>();
 
@@ -296,6 +299,8 @@ public class ConsultaLista extends JInternalFrame {
 
     Fabrica.getFabrica();
     ctrUsu = Fabrica.getIUsuariosCanales();
+    videos.clear();
+    listas.clear();
     List<String> usuarios = ctrUsu.listarNombresUsuarios();
     modelUsuario.addElement("");
     for (String usuario : usuarios) {
@@ -354,8 +359,15 @@ public class ConsultaLista extends JInternalFrame {
   }
 
   private void cargaDatosLista() {
+    
+    ctrVid = Fabrica.getIVideos();
     String lista = list.getSelectedValue();
     String usuario = (String) comboBoxUsuario.getSelectedItem();
+    videos.clear();
+    
+    if(usuario != null)
+    videos = ctrVid.getDtVideosPropietario(usuario);
+    
     try {
       DtLista dtLista = ctrLis.getDt(obtenerListaId(lista));
       if (dtLista.isVisible()) {
@@ -364,6 +376,7 @@ public class ConsultaLista extends JInternalFrame {
         lVisible.setText("Privado");
       }
       DefaultListModel<String> modeloVideos = new DefaultListModel<String>();
+      
       for (String vid : dtLista.getVideos()) {
         modeloVideos.addElement(vid);
       }
@@ -385,27 +398,29 @@ public class ConsultaLista extends JInternalFrame {
   }
 
   private void cargarVideo() {
-    Fabrica.getFabrica();
-    IVideos ctrVid = Fabrica.getIVideos();
-    String duenoVid = null;
-    try {
+    try{
+      Fabrica.getFabrica();
+      IVideos ctrVid = Fabrica.getIVideos();
 
-      duenoVid = listaVideos.getSelectedValue().substring(0,
-          listaVideos.getSelectedValue().indexOf('-'));
-    } catch (Exception e) {
-      JOptionPane.showMessageDialog(this, "error cargarVid" + e.getMessage(), "Error",
-          JOptionPane.ERROR_MESSAGE);
+      DtVideo dtVid = ctrVid.getDtVideo(obtenerVideoId(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1)));
+      infoVid.cargarDatos(dtVid);
     }
-    DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1),
-        duenoVid);
-    infoVid.cargarDatos(dtVid);
-
+    catch(Exception e){}
   }
   
   public int obtenerListaId(String nombre){
     for(DtLista lista : listas){
       if(lista.getNombre().equals(nombre)){
         return lista.getId();
+      }
+    }
+    return -1;
+  }
+  
+  public int obtenerVideoId(String nombre){
+    for(DtVideo video : videos){
+      if(video.getNombre().equals(nombre)){
+        return video.getIdVideo();
       }
     }
     return -1;

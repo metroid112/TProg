@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -25,6 +26,7 @@ import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import datatypes.DtLista;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import interfaces.Fabrica;
@@ -35,6 +37,8 @@ import interfaces.IUsuariosCanales;
 public class DetallesUsuario extends JPanel {
   private IUsuariosCanales ctrlUsu = Fabrica.getIUsuariosCanales();
   private IListas ctrlLis = null;
+  private List<DtLista> listas = new LinkedList<DtLista>();
+  private List<DtVideo> videosS = new LinkedList<DtVideo>();;
   private String noImagen = "img//sinImagen.jpg";
   private DefaultListModel<String> modelListas = new DefaultListModel<>();
   private JList<String> listasDeReproduccion = new JList<>(modelListas);
@@ -51,9 +55,7 @@ public class DetallesUsuario extends JPanel {
     this.editar = b;
   }
 
-  /**
-   * Create the panel.
-   */
+
   public DetallesUsuario(String usuario) {
     DtUsuario dtUsuario = ctrlUsu.getDt(usuario);
 
@@ -62,7 +64,7 @@ public class DetallesUsuario extends JPanel {
     String correo = dtUsuario.correo;
     String canal = dtUsuario.canal;
     String descripcionCanal = dtUsuario.descripcionCanal;
-    BufferedImage imagenF = dtUsuario.imagen;
+    BufferedImage imagenF =  null ; //dtUsuario.imagen;
     Date fechaNacimiento = dtUsuario.fechaNacimiento;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String fechaParaMostrar = sdf.format(fechaNacimiento);
@@ -81,7 +83,6 @@ public class DetallesUsuario extends JPanel {
         tmp = img.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);
         ;
       } catch (IOException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
       }
     }
@@ -335,41 +336,47 @@ public class DetallesUsuario extends JPanel {
     modelListas.removeAllElements();
 
     ctrlLis = Fabrica.getIListas();
-
-    List<String> listas = ctrlLis.listarListasParticularUsuario(usuario);
-
+    listas.clear();
+    //listas = ctrlLis.listarListasParticularUsuario(usuario);
+    listas.addAll(ctrlLis.getDtListasParticularesUsuario(usuario));
+    listas.addAll(ctrlLis.getDtListasDefectoUsuario(usuario));
+    
     int largol = listas.size();
 
     if (largol > 0) {
-      for (String lista : listas) {
-        modelListas.addElement(lista);
+      for (DtLista lista : listas) {
+        modelListas.addElement(lista.getNombre());
       }
     }
-
+/*
     listas = ctrlLis.listarListasDefectoUsuario(usuario);
     largol = listas.size();
     if (largol > 0) {
       for (String lista : listas) {
         modelListas.addElement(lista);
       }
-    }
+    }*/
     ctrlLis = null;
   }
 
-  public String getListaSeleccionada() {
-    String res = listasDeReproduccion.getSelectedValue();
-    listasDeReproduccion.setSelectedIndex(-1);
-    return res;
+  public int getListaSeleccionada() {
+    for(DtLista lista : listas){
+      if(lista.getNombre().equals(listasDeReproduccion.getSelectedValue()))
+        return lista.getId();
+    }
+    return -1;
   }
 
   public boolean isListaSelected() {
     return !listasDeReproduccion.isSelectionEmpty();
   }
 
-  public String getVideoSeleccionado() {
-    String res = videos.getSelectedValue();
-    videos.setSelectedIndex(-1);
-    return res;
+  public int getVideoSeleccionado() {
+    for(DtVideo video : videosS){
+      if(video.getNombre().equals(videos.getSelectedValue()))
+        return video.getIdVideo();
+    }
+    return -1;
   }
 
   public boolean isVideoSeleccionado() {
@@ -379,8 +386,8 @@ public class DetallesUsuario extends JPanel {
   public void cargarDatosVideos(String usuario) {
     modelVideos.removeAllElements();
     ctrlUsu = Fabrica.getIUsuariosCanales();
-
-    List<DtVideo> videosS = ctrlUsu.getListaDtVideo(usuario);
+    videosS.clear();
+    videosS = ctrlUsu.getListaDtVideo(usuario);
 
     for (DtVideo video : videosS) {
       modelVideos.addElement(video.getNombre());

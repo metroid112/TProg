@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,12 +27,15 @@ import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import org.apache.tika.io.IOUtils;
+
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class AltaUsuario extends JInternalFrame {
   // protected static final String BufferedImage = null;
+  private byte[] byteImagen = null;
   private BufferedImage imagenFile = null;
   private JTextField textField;
   private JTextField textField_1;
@@ -202,9 +207,12 @@ public class AltaUsuario extends JInternalFrame {
         file.showOpenDialog(getFocusOwner());
         /** abrimos el archivo seleccionado */
         abre = file.getSelectedFile();
+
         if (abre != null) {
           try {
-            imagenFile = ImageIO.read(abre);
+            //imagenFile = ImageIO.read(abre);
+            InputStream imageInput = new FileInputStream(abre);
+            byteImagen = IOUtils.toByteArray(imageInput);
           } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -371,7 +379,7 @@ public class AltaUsuario extends JInternalFrame {
     ctrlUsu = Fabrica.getIUsuariosCanales();
     if (ctrlUsu.existeUsuario(textField.getText())) {
       JOptionPane.showMessageDialog(this, "El usuario ya existe.");
-    } else if (!ctrlUsu.existeUsuarioMail(textField_3.getText())) {
+    } else if (ctrlUsu.existeUsuarioMail(textField_3.getText())) {
       JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.");
     } else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")) {
       JOptionPane.showMessageDialog(this, "Correo electronico invalido");
@@ -411,8 +419,8 @@ public class AltaUsuario extends JInternalFrame {
         } catch (Exception ex) {
           throw new Exception("Formato de fecha incorrecto", ex);
         }
-        ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, nombreCanal,
-            descripcion, categoria, privado);
+        ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, byteImagen, nombreCanal,
+            descripcion, categoria, privado, null); // Temporalmente null, hay que agregar lo de la contraseña
 
         JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
         clean();
