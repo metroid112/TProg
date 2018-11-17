@@ -16,14 +16,8 @@ import paneles.SelectorUsuarios;
 public class ConsultaUsuario extends JInternalFrame {
   SelectorUsuarios panel = new SelectorUsuarios();
 
-  // private JInternalFrame infoUsuario;
-
   public ConsultaUsuario(VerInformacionUsuario ventanaInfo) {
-    /*
-     * groupLayout_1.setHorizontalGroup( groupLayout_1.createParallelGroup(Alignment.LEADING)
-     * .addGap(0, 450, Short.MAX_VALUE) ); groupLayout_1.setVerticalGroup(
-     * groupLayout_1.createParallelGroup(Alignment.LEADING) .addGap(0, 409, Short.MAX_VALUE) );
-     */
+
     setTitle("Consultar Usuario");
     setBounds(100, 10, 466, 490);
 

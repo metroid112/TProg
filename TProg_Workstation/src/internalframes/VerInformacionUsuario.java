@@ -86,9 +86,13 @@ public class VerInformacionUsuario extends JInternalFrame {
       public void actionPerformed(ActionEvent arg0) {
 
         if (paneluser.isListaSelected()) {
-          int lisSel = paneluser.getListaSeleccionada();
-          if (lisSel != -1) {
-            cargaDatosLista(lisSel);
+          
+          int idLista = paneluser.getListaSeleccionadaId();
+          String nombreList = paneluser.getListaSeleccionadaNombre();
+          String nombreUsuario = paneluser.getUsuarioSeleccionadoNombre();
+          
+          if (idLista != -1) {
+            cargaDatosLista(idLista,nombreList,nombreUsuario);
           } else {
             JOptionPane.showInputDialog(this);
           }
@@ -232,12 +236,14 @@ public class VerInformacionUsuario extends JInternalFrame {
     layout.next(getContentPane());
   }
 
-  private void cargaDatosLista(int lista) {
+  private void cargaDatosLista(int lista, String nombreLista, String nombreUsuario) {
 
     DtLista dtLista;
     try {
-
+      if(paneluser.isSelListParticular())
       dtLista = ctrlLis.getDt(lista);
+      else dtLista = ctrlLis.getDtDefecto(nombreUsuario,nombreLista);
+        
       if (dtLista.isVisible()) {
         lblNewLabel_2.setText("Publico");
       } else {

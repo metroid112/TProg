@@ -39,7 +39,7 @@ public class DetallesUsuario extends JPanel {
   private IListas ctrlLis = null;
   private List<DtLista> listas = new LinkedList<DtLista>();
   private List<DtVideo> videosS = new LinkedList<DtVideo>();;
-  private String noImagen = "img//sinImagen.jpg";
+  private String usuario;
   private DefaultListModel<String> modelListas = new DefaultListModel<>();
   private JList<String> listasDeReproduccion = new JList<>(modelListas);
   private DefaultListModel<String> modelSeguidores = new DefaultListModel<>();
@@ -58,13 +58,13 @@ public class DetallesUsuario extends JPanel {
 
   public DetallesUsuario(String usuario) {
     DtUsuario dtUsuario = ctrlUsu.getDt(usuario);
-
+    this.usuario = usuario;
     String nombre = dtUsuario.nombre;
     String apellido = dtUsuario.apellido;
     String correo = dtUsuario.correo;
     String canal = dtUsuario.canal;
     String descripcionCanal = dtUsuario.descripcionCanal;
-    BufferedImage imagenF =  null ; //dtUsuario.imagen;
+    BufferedImage imagenF =  null ;
     Date fechaNacimiento = dtUsuario.fechaNacimiento;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String fechaParaMostrar = sdf.format(fechaNacimiento);
@@ -79,7 +79,7 @@ public class DetallesUsuario extends JPanel {
       tmp = imagenF.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);
     } else {
       try {
-        Image img = ImageIO.read(new File(noImagen));
+        Image img = ImageIO.read(new File("media/" + dtUsuario.getIdImagen()));
         tmp = img.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);
         ;
       } catch (IOException e) {
@@ -348,25 +348,31 @@ public class DetallesUsuario extends JPanel {
         modelListas.addElement(lista.getNombre());
       }
     }
-/*
-    listas = ctrlLis.listarListasDefectoUsuario(usuario);
-    largol = listas.size();
-    if (largol > 0) {
-      for (String lista : listas) {
-        modelListas.addElement(lista);
-      }
-    }*/
+
     ctrlLis = null;
   }
 
-  public int getListaSeleccionada() {
+  public String getUsuarioSeleccionadoNombre(){
+    return this.usuario;
+  }
+  
+  public int getListaSeleccionadaId() {
     for(DtLista lista : listas){
       if(lista.getNombre().equals(listasDeReproduccion.getSelectedValue()))
         return lista.getId();
     }
     return -1;
   }
-
+  
+  public String getListaSeleccionadaNombre() {
+    return listasDeReproduccion.getSelectedValue();
+  }
+  
+  public boolean isSelListParticular(){
+    DtLista resultado = listas.get(getListaSeleccionadaId());
+    return resultado.getTipo().equals("Particular");
+  }
+  
   public boolean isListaSelected() {
     return !listasDeReproduccion.isSelectionEmpty();
   }
