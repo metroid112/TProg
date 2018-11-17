@@ -206,7 +206,5 @@ public class Usuario {
 
   public void setImg(Imagen imagen) {
     this.img = imagen;
-  }
-  
-  
+  }  
 }
