@@ -1,39 +1,21 @@
-<div class="header">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span></span>
-    <span></span>
-    <span></span>
+<%@page import="servicios.*" %>
+<%@page import="utils.*" %>
+<div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:100%;">
+    <% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
+	<a class="navbar-brand" href="/Inicio" style="width:70%; float:left;"> <img class="logo" src="img/logo.png" height="30px" style="float:left;"> Hola <%= logueado.getNick() %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+  <div class="collapse navbar-collapse" id="navbar1">
+    <ul class="navbar-nav ml-auto"> 
+<li class="nav-item active">
+<a class="nav-link" href="/VideoServlet">Ver Videos <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item"><a class="nav-link" href="/ListaServlet"> Ver Listas </a></li>
+<li class="nav-item">
+<a class="btn ml-2 btn-warning" href="http://bootstrap-ecommerce.com">Salir</a></li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
-</nav>
+</nav>	
 </div>

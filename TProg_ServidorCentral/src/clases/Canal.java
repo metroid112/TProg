@@ -289,4 +289,22 @@ public class Canal {
     return this.listaDefecto.get(nombreListaDefecto).getDtLista();
   }
 
+  public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;
+  }
+
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public void setVisible(boolean visible) {
+    this.visible = visible;
+  }
+  
+  
+
 }
