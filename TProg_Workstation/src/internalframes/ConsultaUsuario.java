@@ -40,11 +40,9 @@ public class ConsultaUsuario extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent clic) {
         String usuarioSeleccionado = panel.getSelectedItem();
-        // JOptionPane.showMessageDialog(getFocusOwner(), "click", "Um suceso",
-        // getDefaultCloseOperation());
+
         if (usuarioSeleccionado != null) {
-          // VerInformacionUsuario verInformacion = new
-          // VerInformacionUsuario(usuarioSeleccionado);
+
           ventanaInfo.cargarInformacionUsuario(usuarioSeleccionado);
           ventanaInfo.setVisible(true);
           setVisible(false);

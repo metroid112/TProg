@@ -213,7 +213,7 @@ public class ConsultaLista extends JInternalFrame {
           lblVideos.setEnabled(true);
           lblVisibilidad.setEnabled(true);
           lblCategorias.setEnabled(true);
-          cargaDatosLista();
+          cargaDatosLista(rdbtnListasParticulares.isSelected());
         } else {
           listaCategorias.setModel(new DefaultListModel<String>());
           listaVideos.setModel(new DefaultListModel<String>());
@@ -251,8 +251,7 @@ public class ConsultaLista extends JInternalFrame {
     rdbtnListasPorDefecto.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent arg0) {
-        listas.clear();
-        listas = ctrLis.getDtListasDefectoUsuario(comboBoxUsuario.getSelectedItem().toString());
+
         cargarDefectoListas();
       }
     });
@@ -260,8 +259,7 @@ public class ConsultaLista extends JInternalFrame {
     rdbtnListasParticulares.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        listas.clear();
-        listas = ctrLis.getDtListasParticularesUsuario(comboBoxUsuario.getSelectedItem().toString());
+
         cargarParticularListas();
       }
     });
@@ -313,39 +311,32 @@ public class ConsultaLista extends JInternalFrame {
   public void cargarDefectoListas() {
 
     listListas.removeAllElements();
-
+    Fabrica.getFabrica();
+    ctrLis = Fabrica.getIListas();
+    listas.clear();
     if (modelUsuario.getSelectedItem() != null) {
 
-      String s = (String) modelUsuario.getSelectedItem();
-      List<String> listas = ctrLis.listarListasDefectoUsuario(s);
-
-
-      for (String lista : listas) {
-        listListas.addElement(lista);
+      listas = ctrLis.getDtListasDefectoUsuario(comboBoxUsuario.getSelectedItem().toString());
+      for(DtLista lista : listas){
+        listListas.addElement(lista.getNombre());
       }
     }
 
-    // ctrLis = null;
   }
 
   public void cargarParticularListas() {
     listListas.removeAllElements();
     Fabrica.getFabrica();
     ctrLis = Fabrica.getIListas();
-
+    listas.clear();
     if (modelUsuario.getSelectedItem() != null) {
 
-      String s = modelUsuario.getSelectedItem().toString();
-
-      List<String> listas = ctrLis.listarListasParticularUsuario(s);
-
-
-      for (String lista : listas) {
-        listListas.addElement(lista);
+      listas = ctrLis.getDtListasParticularesUsuario(comboBoxUsuario.getSelectedItem().toString());
+      for(DtLista lista : listas){
+        listListas.addElement(lista.getNombre());
       }
     }
 
-    // ctrLis = null;
   }
 
   boolean checkUsuario() {
@@ -358,7 +349,7 @@ public class ConsultaLista extends JInternalFrame {
     return true;
   }
 
-  private void cargaDatosLista() {
+  private void cargaDatosLista(boolean listaParticular) {
     
     ctrVid = Fabrica.getIVideos();
     String lista = list.getSelectedValue();
@@ -369,7 +360,12 @@ public class ConsultaLista extends JInternalFrame {
     videos = ctrVid.getDtVideosPropietario(usuario);
     
     try {
-      DtLista dtLista = ctrLis.getDt(obtenerListaId(lista));
+      DtLista dtLista;
+      if(listaParticular){
+      dtLista = ctrLis.getDt(obtenerListaId(lista));
+      }
+      else dtLista = ctrLis.getDtDefecto(usuario,lista);
+        
       if (dtLista.isVisible()) {
         lVisible.setText("Publico");
       } else {
