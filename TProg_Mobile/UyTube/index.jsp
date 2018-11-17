@@ -31,6 +31,9 @@
 								<p style="color:red">Usuario o password incorrectos</p>
 						<%	}
 				 		%>	
+				 	<div class="checkbox">
+      				<label> <input type="checkbox"> Recordarme </label>
+    				</div>
 					  <input type="submit" class="btn btn-primary" value=Login>
 					</form>
 				</div>

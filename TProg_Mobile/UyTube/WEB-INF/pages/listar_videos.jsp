@@ -7,16 +7,7 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" type="text/css" href="css/marco.css">
 	<title>UyTube - Videos</title>
-	<style>
-	a.navbar-brand {
-	text-align: center;
-	font-size: 0.9rem;
-	}
-	item.hover {
-	background: #F5F5F5;
-  	transition-duration: 0.3s;
-	}
-	</style>
+	<jsp:include page="/WEB-INF/extras/head.jsp" />
 </head>
 <body>
 <div class="container">
@@ -30,7 +21,7 @@
          
                 <input class="form-control" name="txtBusqueda" placeholder="Busque aqui" autocomplete="off" autofocus="autofocus" type="text" style="width:70%; float:left;">
                 <input type="hidden" name="TIPO_BUSQUEDA" value="VIDEOS">
-            	<div class="input-group-btn navbar-btn" style="border-radius:6px; width:30%; float:right;">
+            	<div class="input-group-btn navbar-btn2" style="border-radius:6px; width:30%; float:right;">
 					<button type="submit" class="btn btn-default btn-nav" style="width:100%;">
 					Buscar
 					</button>
