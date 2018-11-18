@@ -58,6 +58,8 @@ public interface IUsuariosCanales {
   public boolean isSeguidor(String seguidor, String seguido);
 
   public void dejarSeguir(String seguidor, String seguido);
+  
+  public void bajaUsuario(String nickUsuario) throws NotFoundException;
 
   public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException, NotFoundException;
 

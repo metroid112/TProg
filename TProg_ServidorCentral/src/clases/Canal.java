@@ -290,9 +290,9 @@ public class Canal {
   }
 
   public void setCategoria(Categoria categoria) {
-    this.categoria = categoria;
+    this.categoria = categoria;    
   }
-
+  
   public void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
   }
@@ -304,7 +304,4 @@ public class Canal {
   public void setVisible(boolean visible) {
     this.visible = visible;
   }
-  
-  
-
 }

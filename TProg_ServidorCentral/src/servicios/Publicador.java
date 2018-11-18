@@ -367,6 +367,11 @@ public class Publicador {
   }
   
   @WebMethod
+  public void borrarUsuario(String nickUsuario) throws NotFoundException {
+    Fabrica.getIUsuariosCanales().bajaUsuario(nickUsuario);
+  }
+  
+  @WebMethod
   public void quitarVideoLista(String usuario, String nombreVideo, String nombreOwnerVideo, String lista, Boolean defecto) {
     Fabrica.getIListas().quitarVideoLista(usuario, nombreVideo, nombreOwnerVideo, lista, defecto);
   }

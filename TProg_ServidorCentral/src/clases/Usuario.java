@@ -176,6 +176,10 @@ public class Usuario {
     return this.apellido;
   }
 
+  public List<Comentario> getComentarios() {
+    return this.comentarios;
+  }
+
   public void setApellido(String apellido) {
     this.apellido = apellido;
   }
