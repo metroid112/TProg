@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,7 +13,6 @@ import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import servicios.DtUniversal;
 import servicios.DtUsuario;
-import servicios.DtVideo;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
