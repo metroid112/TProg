@@ -258,15 +258,22 @@ public class Canal {
   }
 
   public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
+    System.out.println(lista);
+    System.out.println(video);
+    System.out.println(ownerVideo.getNick());
     ListaParticular listaObj = listaParticulares.get(lista);
-    Video videoObj = listaObj.getVideo(video, ownerVideo);
-    listaObj.quitarVideo(videoObj);
-    Categoria cat = videoObj.getCategoria();
-
-    if (listaObj.esUnicaCategoria(cat)) {
-      listaObj.quitarCategoria(cat);
+    if (listaObj == null) {
+      System.out.println("LISTA ES NULL");
     }
+    Video videoObj = listaObj.getVideo(video, ownerVideo);
+    if (videoObj != null) {
+      listaObj.quitarVideo(videoObj);
+      Categoria cat = videoObj.getCategoria();
 
+      if (listaObj.esUnicaCategoria(cat)) {
+        listaObj.quitarCategoria(cat);
+      } 
+    }
   }
 
   public void agregarVideo(Video video) {

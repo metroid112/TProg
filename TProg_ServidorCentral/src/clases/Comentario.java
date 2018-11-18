@@ -66,6 +66,30 @@ public class Comentario {
       return null;
     }
   }
+  
+  public Comentario deleteCom(Integer idComentario) {
+    if (this.idComentario == idComentario) {
+      if (this.getPadre() != null) {
+        this.getPadre().getRespuestas().clear();
+      }
+      return this;
+    } else if (!this.respuestas.isEmpty()) {
+      Comentario encontrado = null;
+      for (Comentario hijo : this.respuestas.values()) {
+        Comentario retornado = hijo.getCom(idComentario);
+        if (retornado != null) {
+          encontrado = retornado;
+        }
+      }
+      return encontrado;
+    } else {
+      return null;
+    }
+  }
+
+  private Comentario getPadre() {
+    return this.padre;
+  }
 
   public DtComentario getDt() {
     return new DtComentario(this);
