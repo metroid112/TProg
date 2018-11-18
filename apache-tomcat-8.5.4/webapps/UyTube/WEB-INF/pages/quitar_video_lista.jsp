@@ -1,4 +1,4 @@
-<%@ page import = "interfaces.*, utils.*, datatypes.*" %>
+<%@ page import = "interfaces.*, java.util.*, utils.*, servicios.*" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,13 +12,13 @@
 		<div class="contenido">
 			<br>
 			Se muestran las listas de 
-			<%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).nombre %>
+			<%= ((DtUsuario)session.getAttribute("USUARIO_LOGEADO")).getNick() %>
 			<br>
 			<br>
 			Por favor seleccione una lista
 			<br>
 			<div class="highlights">
-				<% for (String u : (String[]) request.getAttribute("LISTASPUBLICAS")) { %>
+				<% for (String u : (List<String>) request.getAttribute("LISTASPUBLICAS")) { %>
 					<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=u%>').submit();">
 					<form id="Form<%=u%>" class="detClickeableLista" action="ListaServlet" method="GET">
 						<input type="hidden" name="STATE" value="DETALLESLISTA">
@@ -34,7 +34,7 @@
 					</div>
 				<% } %>
 				<br>
-				<% for (String u : (String[]) request.getAttribute("LISTASPRIVADAS")) { %>
+				<% for (String u : (List<String>) request.getAttribute("LISTASPRIVADAS")) { %>
 					<div class="detalleClickeableLista" onclick="document.getElementById('Form<%=u%>').submit();">
 					<form id="Form<%=u%>" class="detClickeableLista" action="ListaServlet" method="GET">
 						<input type="hidden" name="STATE" value="DETALLESLISTA">

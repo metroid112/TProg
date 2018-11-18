@@ -3,7 +3,7 @@
 <div class="row">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:100%;">
     <% DtUsuario logueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO"); %>
-	<a class="navbar-brand" href="/Inicio" style="width:70%; float:left;"> <img class="logo" src="img/logo.png" height="30px" style="float:left;"> Hola <%= logueado.getNick() %></a>
+	<a class="navbar-brand" href="Inicio" style="width:70%; float:left;"> <img class="logo" src="img/logo.png" height="30px" style="float:left;"> Hola <%= logueado.getNick() %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -25,6 +25,7 @@ rem In debug mode we need a real JDK (JAVA_HOME)
 if ""%1"" == ""debug"" goto needJavaHome
 
 rem Otherwise either JRE or JDK are fine
+set JAVA_HOME=""C:\Program Files\Java\jdk1.8.0_181""
 if not "%JRE_HOME%" == "" goto gotJreHome
 if not "%JAVA_HOME%" == "" goto gotJavaHome
 echo Neither the JAVA_HOME nor the JRE_HOME environment variable is defined
