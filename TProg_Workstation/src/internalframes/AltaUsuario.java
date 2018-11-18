@@ -215,7 +215,7 @@ public class AltaUsuario extends JInternalFrame {
             InputStream imageInput = new FileInputStream(abre);
             byteImagen = IOUtils.toByteArray(imageInput);
           } catch (IOException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
           }
         }
@@ -407,7 +407,7 @@ public class AltaUsuario extends JInternalFrame {
         String contrasena = textField_5.getText();
         Date nacimiento = null; // formar la fecha desde las partes.
         BufferedImage imagen = imagenFile;
-        boolean privado = rdbtnNewRadioButton.isSelected();
+        boolean visible = !rdbtnNewRadioButton.isSelected();
         boolean personalizado = rdbtnSi.isSelected();
         String descripcion = "Sin descripcion";
         String nombreCanal = textField.getText();
@@ -427,8 +427,7 @@ public class AltaUsuario extends JInternalFrame {
         } catch (Exception ex) {
           throw new Exception("Formato de fecha incorrecto", ex);
         }
-        ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, byteImagen, nombreCanal,
-            descripcion, categoria, privado, contrasena);
+        ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, byteImagen, nombreCanal, descripcion, categoria, visible, contrasena);
 
         JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
         clean();
