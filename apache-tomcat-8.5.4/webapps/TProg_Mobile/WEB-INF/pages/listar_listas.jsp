@@ -62,11 +62,12 @@
             		</div>
 				<% } }
 				if (listasDefecto.size() != 0) {
-			  	for(DtLista lista : listasDefecto) { %>
+			  	for(DtLista lista : listasDefecto) { 
+			  	if (lista.getNombre().equals("Historial")) {%>			  	
 			  		<tr class="clickeable" onclick="document.getElementById('Form<%=lista.getIdLista()%>').submit();">
                 		<td class="clickeable"><%= lista.getNombre() %></td>
-                		<td class="clickeable">Defecto</td>
-                			</tr>
+                		<td class="clickeable">Automatica</td>
+                	</tr>
             		<div>
                 		<form id="Form<%=lista.getIdLista()%>" action="ListaServlet" method="POST">
                 		<input type="hidden" name="STATE" value="DETALLESLISTA">
@@ -74,7 +75,19 @@
 						<input type="hidden" name="NOMBRELISTADEFECTO" value="<%= lista.getNombre() %>">
 						</form>
             		</div>
-			  	<% } } %>
+            	<% } else { %>
+			  		<tr class="clickeable" onclick="document.getElementById('Form<%=lista.getIdLista()%>').submit();">
+                		<td class="clickeable"><%= lista.getNombre() %></td>
+                		<td class="clickeable">Defecto</td>
+                	</tr>
+            		<div>
+                		<form id="Form<%=lista.getIdLista()%>" action="ListaServlet" method="POST">
+                		<input type="hidden" name="STATE" value="DETALLESLISTA">
+						<input type="hidden" name="IDLISTA" value="<%= lista.getIdLista() %>">
+						<input type="hidden" name="NOMBRELISTADEFECTO" value="<%= lista.getNombre() %>">
+						</form>
+            		</div>
+			  	<% } } } %>
     </table>
     </div>
 </div><!-- /.container-fluid -->
