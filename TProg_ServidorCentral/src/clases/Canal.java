@@ -178,10 +178,13 @@ public class Canal {
 
   public void altaListaParticular(String nombre, boolean visibilidad)
       throws DuplicateClassException {
-
-    ListaParticular nuevaLista = new ListaParticular(nombre, this,
-        visibilidad);
-    listaParticulares.put(nombre, nuevaLista);
+    if (!listaParticulares.containsKey(nombre)) {
+      ListaParticular nuevaLista = new ListaParticular(nombre, this,
+          visibilidad);
+      listaParticulares.put(nombre, nuevaLista);
+    } else {
+      throw new DuplicateClassException("lista",nombre);
+    }
   }
 
   public boolean isVisible() {
@@ -289,5 +292,16 @@ public class Canal {
   public void setCategoria(Categoria categoria) {
     this.categoria = categoria;    
   }
+  
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public void setVisible(boolean visible) {
+    this.visible = visible;
+  }
 }

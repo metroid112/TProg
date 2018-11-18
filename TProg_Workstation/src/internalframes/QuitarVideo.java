@@ -2,6 +2,7 @@ package internalframes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -241,12 +242,10 @@ public class QuitarVideo extends JInternalFrame {
 
       String s = modelUsuario.getSelectedItem().toString();
 
-      String[] listas = ctrLis.listarListasDefectoUsuario(s);
+      List<String> listas = ctrLis.listarListasDefectoUsuario(s);
 
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (String lista : listas) {
+        listListas.addElement(lista);
       }
     }
 
@@ -262,12 +261,10 @@ public class QuitarVideo extends JInternalFrame {
 
       String s = modelUsuario.getSelectedItem().toString();
 
-      String[] listas = ctrLis.listarListasParticularUsuario(s);
+      List<String> listas = ctrLis.listarListasParticularUsuario(s);
 
-      int largol = listas.length;
-
-      for (int i = 0; i < largol; i++) {
-        listListas.addElement(listas[i]);
+      for (String lista : listas) {
+        listListas.addElement(lista);
       }
     }
 
@@ -291,11 +288,11 @@ public class QuitarVideo extends JInternalFrame {
   public void cargarDatos() {
 
     ctrUsu = Fabrica.getIUsuariosCanales();
-    String[] usuarios = ctrUsu.listarUsuarios();
-    int largou = usuarios.length;
+    List<String> usuarios = ctrUsu.listarNombresUsuarios();
+
     modelUsuario.addElement("");
-    for (int i = 0; i < largou; i++) {
-      modelUsuario.addElement(usuarios[i]);
+    for (String usuario : usuarios) {
+      modelUsuario.addElement(usuario);
     }
     ctrUsu = null;
   }

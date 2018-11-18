@@ -19,7 +19,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <pre>
  * &lt;complexType name="dtLista"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;extension base="{http://servicios/}dtUniversal"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="categorias" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -29,8 +29,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="idLista" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="nombreOwner" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
+ *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
@@ -46,9 +47,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "dtVideos",
     "visible",
     "ultimaActividad",
-    "idLista"
+    "idLista",
+    "nombreOwner"
 })
-public class DtLista {
+public class DtLista
+    extends DtUniversal
+{
 
     @XmlElement(nillable = true)
     protected List<String> categorias;
@@ -62,6 +66,7 @@ public class DtLista {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar ultimaActividad;
     protected int idLista;
+    protected String nombreOwner;
 
     /**
      * Gets the value of the categorias property.
@@ -252,6 +257,30 @@ public class DtLista {
      */
     public void setIdLista(int value) {
         this.idLista = value;
+    }
+
+    /**
+     * Gets the value of the nombreOwner property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombreOwner() {
+        return nombreOwner;
+    }
+
+    /**
+     * Sets the value of the nombreOwner property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombreOwner(String value) {
+        this.nombreOwner = value;
     }
 
 }

@@ -270,57 +270,60 @@ public class ModificarVideo extends JInternalFrame {
   }
 
   private void cargarInfo() {
-    if (seleccionVideo.getUsuario() != null && seleccionVideo.getVideo() != null) {
-      DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo(), seleccionVideo.getUsuario());
-      tfNombre.setText(infoVid.nombre);
-      textDescripcion.setText(infoVid.descripcion);
-      tfUrl.setText(infoVid.Url);
-      if (infoVid.visible) {
-        rdbtnPublico.doClick();
-      } else {
-        rdbtnPrivado.doClick();
-      }
-      int horas;
-      int min;
-      int seg;
-      Duration duracion = infoVid.duracion;
-      horas = (int) duracion.toHours();
-      duracion = duracion.minusHours(horas);
-      min = (int) duracion.toMinutes();
-      duracion = duracion.minusMinutes(min);
-      seg = (int) duracion.getSeconds();
-      spinnerHoras.setValue(horas);
-      spinnerMin.setValue(min);
-      spinnerSeg.setValue(seg);
-      datePicker.setDate(infoVid.fecha);
-      DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(
-          contVid.listarCategorias());
-      if (!infoVid.categoria.equals("Sin Categoria")) {
-        int size = model.getSize();
-        int i = 0;
-        boolean encontrado = false;
-        while (i <= size && !encontrado) {
-          if (model.getElementAt(i).equals(infoVid.categoria)) {
-            model.setSelectedItem(model.getElementAt(i));
-            encontrado = true;
+    try{
+      if (seleccionVideo.getUsuario() != null && seleccionVideo.getVideo() != -1) {
+        DtVideo infoVid = contVid.getDtVideo(seleccionVideo.getVideo());
+        tfNombre.setText(infoVid.nombre);
+        textDescripcion.setText(infoVid.descripcion);
+        tfUrl.setText(infoVid.getUrlVideo());
+        if (infoVid.visible) {
+          rdbtnPublico.doClick();
+        } else {
+          rdbtnPrivado.doClick();
+        }
+        int horas;
+        int min;
+        int seg;
+        Duration duracion = infoVid.duracion;
+        horas = (int) duracion.toHours();
+        duracion = duracion.minusHours(horas);
+        min = (int) duracion.toMinutes();
+        duracion = duracion.minusMinutes(min);
+        seg = (int) duracion.getSeconds();
+        spinnerHoras.setValue(horas);
+        spinnerMin.setValue(min);
+        spinnerSeg.setValue(seg);
+        datePicker.setDate(infoVid.fecha);
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(
+            contVid.listarCategorias());
+        if (!infoVid.categoria.equals("Sin Categoria")) {
+          int size = model.getSize();
+          int i = 0;
+          boolean encontrado = false;
+          while (i <= size && !encontrado) {
+            if (model.getElementAt(i).equals(infoVid.categoria)) {
+              model.setSelectedItem(model.getElementAt(i));
+              encontrado = true;
+            }
+            i++;
           }
-          i++;
+          if (!encontrado) {
+            System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: "
+                + infoVid.categoria); // TODO
+            // excepccion
+          }
+        } else {
+          model.addElement(infoVid.categoria); // En caso de decir "Sin Categoria"
+          model.setSelectedItem(infoVid.categoria);
         }
-        if (!encontrado) {
-          System.out.println("ERROR: categoria no encontrada en ModificarVideo. La categoria era: "
-              + infoVid.categoria); // TODO
-          // excepccion
-        }
+        cBoxCategoria.setModel(model);
+  
+        cambioPanel();
       } else {
-        model.addElement(infoVid.categoria); // En caso de decir "Sin Categoria"
-        model.setSelectedItem(infoVid.categoria);
+        JOptionPane.showMessageDialog(this, "Campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
       }
-      cBoxCategoria.setModel(model);
-
-      cambioPanel();
-    } else {
-      JOptionPane.showMessageDialog(this, "Campos vacios", "Error", JOptionPane.ERROR_MESSAGE);
     }
+    catch(Exception e){}
   }
 
   public boolean datosCorrectos(String nombre, String url, Duration duracion) {
@@ -328,7 +331,6 @@ public class ModificarVideo extends JInternalFrame {
   }
 
   private void modificarVideo() {
-    // try {
 
     String nick;
     String nombreOld;
@@ -339,12 +341,12 @@ public class ModificarVideo extends JInternalFrame {
     Duration duracion;
     Boolean visible;
     nick = seleccionVideo.getUsuario();
-    nombreOld = seleccionVideo.getVideo();
+    nombreOld = seleccionVideo.getVideoNombre();
     nombre = tfNombre.getText();
     descripcion = textDescripcion.getText();
     url = tfUrl.getText();
     categoria = (String) cBoxCategoria.getSelectedItem();
-    if (categoria.equals("Sin Categoria")) { // Chequeo si eligio alguna categoria
+    if (categoria.equals("Sin Categoria")) {
       categoria = null;
     }
     duracion = Duration.ofHours((int) spinnerHoras.getValue());
@@ -366,15 +368,12 @@ public class ModificarVideo extends JInternalFrame {
       } catch (InvalidDataException exception) {
         JOptionPane.showMessageDialog(this, exception.getMessage(), "Error",
             JOptionPane.ERROR_MESSAGE);
-      }
+      } catch (Exception exception2){}
+      
     } else {
       JOptionPane.showMessageDialog(this, "Datos vacios", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    /*
-     * } catch (Exception e) { JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
-     * JOptionPane.ERROR_MESSAGE); }
-     */
   }
 
 }

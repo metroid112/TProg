@@ -10,40 +10,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import interfaces.Fabrica;
+import interfaces.IUsuariosCanales;
 import servicios.DtLista;
 import servicios.DtUniversal;
 import servicios.DtUsuario;
-import excepciones.NotFoundException;
-//import interfaces.Fabrica;
-//import interfaces.IListas;
+import servicios.DtVideo;
 import servicios.Publicador;
 import servicios.PublicadorService;
 import utils.EstadoSesion;
 
-@WebServlet("/ConsultaLista")
-public class ConsultaLista extends HttpServlet {
+@WebServlet("/ListaServlet")
+public class ListaServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  public ConsultaLista() {
+  public ListaServlet() {
     super();
   }
 
-  private void processRequest(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();  
     
-    if (request.getParameter("STATE").equals("START")) {
+    if (request.getSession().getAttribute("LOGIN") != null
+        && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO) && 
+          (request.getParameter("STATE") == null || !request.getParameter("STATE").equals("DETALLESLISTA"))) {
       List<DtUniversal> listaUni = port.getListasPublicas().getListaDt();
       List<DtLista> lista = new LinkedList<DtLista>();
       for(DtUniversal universal :  listaUni){
-        lista.add((DtLista )universal);
+        lista.add((DtLista)universal);
       }
       request.setAttribute("LISTAS", lista);
       
-      if (request.getSession().getAttribute("LOGIN") != null
-          && request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
         String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
         
         List<DtUniversal> listaPrivUni = port.getDtListasPrivadasUsuario(usuario).getListaDt();
@@ -60,9 +59,9 @@ public class ConsultaLista extends HttpServlet {
         }
         request.setAttribute("LISTASDEFECTO", listaDefect);
 
-      }
-      request.getRequestDispatcher("WEB-INF/pages/consulta_lista.jsp").forward(request, response);
-    } else if (request.getParameter("STATE").equals("DETALLESLISTA")) {
+      
+      request.getRequestDispatcher("WEB-INF/pages/listar_listas.jsp").forward(request, response);
+    } else if (request.getParameter("STATE") != null && request.getParameter("STATE").equals("DETALLESLISTA")) {
       request.setAttribute("LISTAPUBLICA", request.getParameter("LISTAPUBLICA"));  // No entiendo, donde se setea el parametro "LISTAPUBLICA"?
       int idLista = Integer.parseInt((String) request.getParameter("IDLISTA"));
       servicios.DtLista dtLista = null;
@@ -75,18 +74,13 @@ public class ConsultaLista extends HttpServlet {
       request.setAttribute("DTLISTA", dtLista);
       request.getRequestDispatcher("WEB-INF/pages/detalles_lista.jsp").forward(request, response);
     } else {
-      request.getRequestDispatcher("/index.jsp").forward(request, response);
+      response.sendRedirect("Inicio");
     }
-  }
-
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    processRequest(request, response);
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request, response);
+    doGet(request, response);
   }
 
 }

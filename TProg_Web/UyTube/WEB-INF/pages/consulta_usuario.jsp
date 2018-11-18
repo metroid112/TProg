@@ -14,7 +14,7 @@
 		<%
 		switch((String) request.getAttribute("STATE")) {
 			case "LISTAR":
-				List<String> listaUsuarios = (LinkedList<String>) request.getAttribute("USUARIOS");
+				List<String> listaUsuarios = (List<String>) request.getAttribute("USUARIOS");
 				if (listaUsuarios.isEmpty()) { %>
 					<h1>No hay usuarios.</h1>
 		 	 <% } else { %>
@@ -30,7 +30,7 @@
      <% }
 			break;
 		case "INFO":
-			DtUsuario usuario = (DtUsuario) request.getAttribute("USUARIO");
+		DtUsuario usuario = (DtUsuario) request.getAttribute("USUARIO");
   		List<DtVideo> videos = (List<DtVideo>) request.getAttribute("VIDEOS");
   		List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS");
   		List<String> seguidores = (List<String>) request.getAttribute("SEGUIDORES");
@@ -89,7 +89,10 @@
    <% if(session.getAttribute("LOGIN") != null && session.getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO)) {
 				DtUsuario usuarioLogueado = (DtUsuario) session.getAttribute("USUARIO_LOGEADO");
 				if(usuarioLogueado.getNick().equals(usuario.getNick())) { %>
-				  	<!-- Modificar Usuario --> 
+				  	<form action="ModificarUsuario" method="GET">
+				  		<input name="STATE" value="LOAD" type="hidden">
+				  		<button>Modificar Usuario</button>
+				  	</form>
      <% } else { %>
      			<%
      			boolean sigue = (boolean) request.getAttribute("SIGUE");

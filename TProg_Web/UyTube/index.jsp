@@ -8,13 +8,9 @@
 	<div class="page">
 		<jsp:include page="WEB-INF/extras/header.jsp" />
 		<div class="contenedor">
-			<jsp:include page="WEB-INF/extras/sidebar.jsp" />
-			<form action="Prueba" method="get">
-				texto: <input type="text" name="texto">
-				<button>Send</button>
-			</form>
+			<jsp:include page="WEB-INF/extras/sidebar.jsp" />				
 		</div>
-		<jsp:include page="WEB-INF/extras/script.jsp" />
+		<jsp:include page="WEB-INF/extras/script.jsp" />		
 	</div>	
 </body>
 </html>

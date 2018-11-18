@@ -8,7 +8,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DtLista {
+
+public class DtLista extends DtUniversal {
+
   private List<String> categorias = new LinkedList<String>();
   private String nombre;
   private String tipo;
@@ -17,6 +19,7 @@ public class DtLista {
   private boolean visible;
   private Date ultimaActividad;
   private int idLista;
+  private String nombreOwner;
 
   public DtLista(String nombre, String tipo, boolean visible, List<String> videos,
       List<String> categorias) {
@@ -28,7 +31,7 @@ public class DtLista {
   }
 
   public DtLista(String nombre, String tipo, boolean visible, List<String> videos,
-      List<DtVideo> dtVideos, List<String> categorias, Date ultimaActividad, int idLista) {
+      List<DtVideo> dtVideos, List<String> categorias, Date ultimaActividad, int idLista, String nombreOwner) {
     this.nombre = nombre;
     this.idLista = idLista;
     this.tipo = tipo;
@@ -37,6 +40,15 @@ public class DtLista {
     this.videos = videos;
     this.categorias = categorias;
     this.ultimaActividad = ultimaActividad;
+    this.nombreOwner = nombreOwner;
+  }
+
+  public String getNombreOwner() {
+    return nombreOwner;
+  }
+
+  public void setNombreOwner(String nombreOwner) {
+    this.nombreOwner = nombreOwner;
   }
 
   public Date getUltimaActividad() {

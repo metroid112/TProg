@@ -148,10 +148,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
     return usuarioObjetivo.getCanal().listarDtVideosDuenosLista(lista, defecto);
   }
 
-  public List<DtVideo> getListaDtVideo(String usuario) { // CUANDO SE BORRA EL LISTAR VIDEOS.JSP SE
-                                                         // PUEDE BORRAR ESTA FUNCION, YA HAY OTRA
-                                                         // IGUAL EN EL CONTROLADOR VIDEO
-
+  public List<DtVideo> getListaDtVideo(String usuario) { 
+                                                         
     Usuario usuarioObjetivo = manejadorUsuarios.get(usuario);
     Canal canalObjetivo = usuarioObjetivo.getCanal();
     return canalObjetivo.listaDtVideo();
@@ -211,15 +209,38 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
   }
 
   @Override
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws DuplicateClassException {
-    if(!usuarioModificado.nick.equals(usuarioOriginal.nick) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
+  public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException, NotFoundException {
+    Usuario usuario = manejadorUsuarios.get(nickUsuarioOriginal);
+    if(!usuarioModificado.nick.equals(usuario.getNick()) && manejadorUsuarios.get(usuarioModificado.nick) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.nick);
     }
-    if(!usuarioModificado.correo.equals(usuarioOriginal.correo) && manejadorUsuarios.mailGet(usuarioModificado.correo) != null) {
+    if(!usuarioModificado.correo.equals(usuario.getCorreo()) && manejadorUsuarios.mailGet(usuarioModificado.correo) != null) {
       throw new DuplicateClassException("Usuario", usuarioModificado.correo);
     }
-    Usuario usuario = manejadorUsuarios.get(usuarioOriginal.nick);
-    
+    usuario.setNick(usuarioModificado.nick);
+    usuario.setNombre(usuarioModificado.nombre);
+    usuario.setApellido(usuarioModificado.apellido);
+    usuario.setPassword(usuarioModificado.password);
+    usuario.setCorreo(usuarioModificado.correo);
+    usuario.setFechaNacimiento(usuarioModificado.fechaNacimiento);
+    usuario.getCanal().setNombre(usuarioModificado.canal);
+    usuario.getCanal().setDescripcion(usuarioModificado.descripcionCanal);
+    usuario.getCanal().setVisible(usuarioModificado.privado);
+    usuario.getCanal().setCategoria(ManejadorCategorias.getManejadorCategorias().get(usuarioModificado.categoria));
+    if (img == null) {
+      Imagen.borrar(usuario.getImg().getId());
+      usuario.setImg(null);
+    } else {
+      int idImg = usuario.getImg().getId();
+      usuario.getImg().modificarImg(idImg, img);
+    }
+    manejadorUsuarios.getMap().remove(nickUsuarioOriginal);
+    manejadorUsuarios.add(usuario);
+  }
+
+  @Override
+  public boolean existeVideo(String nombre, String nick) {
+    return manejadorUsuarios.get(nick).getCanal().getVideos().containsKey(nombre);
   }
 
   @Override
@@ -374,5 +395,12 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       // ** USUARIO **
       user = null;
     }
+  }
+
+  @Override
+  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal)
+      throws DuplicateClassException {
+    // TODO Auto-generated method stub
+    
   }
 }

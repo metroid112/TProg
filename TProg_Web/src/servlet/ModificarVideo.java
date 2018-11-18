@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,19 +16,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
-import clases.Calificacion;
-import clases.Categoria;
-import clases.Comentario;
-import datatypes.DtUsuario;
-import datatypes.DtVideo;
+import servicios.DtUniversal;
+import servicios.DtUsuario;
+import servicios.DtVideo;
+import servicios.Publicador;
+import servicios.PublicadorService;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
-import interfaces.Fabrica;
-import interfaces.ICategorias;
-import interfaces.IVideos;
-import manejadores.ManejadorCategorias;
 import utils.EstadoSesion;
 
 @WebServlet("/ModificarVideo")
@@ -42,26 +42,25 @@ public class ModificarVideo extends HttpServlet {
       throws ServletException, IOException {
     if ((request.getSession().getAttribute("USUARIO_LOGEADO") != null) 
         && (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))) {
-      IVideos ctrlVideos = Fabrica.getIVideos();
+      //IVideos ctrlVideos = Fabrica.getIVideos();
+      PublicadorService service = new PublicadorService();
+      Publicador port = service.getPublicadorPort();
       if (request.getParameter("videoSeleccionado") != null) {
         String idVideo = (String) request.getParameter("video");
         try {
-          DtVideo video = ctrlVideos.getDtVideo(Integer.parseInt(idVideo));
+          DtVideo video = (DtVideo) port.getDtVideo(Integer.parseInt(idVideo)).getContenido();
           request.setAttribute("VIDEO", video);
-          ICategorias ctrlCategorias = Fabrica.getICategorias();
-          String[] listaCategorias = ctrlCategorias.listarCategorias();
+          List<String> listaCategorias = port.listarCategorias().getListaAux();
           request.setAttribute("CATEGORIAS", listaCategorias);
           request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request,
               response);
         } catch (NumberFormatException e) {
           e.printStackTrace();
-        } catch (NotFoundException e) {
-          e.printStackTrace();
         }
 
       } else if (request.getParameter("modificar") != null) {
         DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
-        String nick = user.nick;
+        String nick = user.getNick();
         String oldNombre = (String) request.getParameter("oldNombre");
         String nombreVideo = (String) request.getParameter("nombreVideo");
         String urlVideo = (String) request.getParameter("urlVideo");
@@ -81,58 +80,43 @@ public class ModificarVideo extends HttpServlet {
         Duration duracion =
             Duration.parse("PT" + duracionH + "H" + duracionM + "M" + duracionS + "S");
         if (duracionH.equals("0") && duracionM.equals("0") && duracionS.equals("0")) {
-          request.setAttribute("DURACION", "La duracion debe ser positiva.");
-          Categoria cat = ManejadorCategorias.getManejadorCategorias().get(categoria);
-          Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
-          List<Calificacion> calificacion = new LinkedList<Calificacion>();
-          DtVideo videoTemp = new DtVideo(oldNombre, descripcionVideo, urlVideo, cat, fecha,
-              duracion, visible, comentarios, calificacion, -1, nick);
-          request.setAttribute("VIDEO", videoTemp);
-          ICategorias ctrlCategorias = Fabrica.getICategorias();
-          String[] listaCategorias = ctrlCategorias.listarCategorias();
-          request.setAttribute("CATEGORIAS", listaCategorias);
-          request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request,
-              response);
+          /**
+           * AJAX
+           */
+            response.sendRedirect("Inicio");
+//          request.setAttribute("DURACION", "La duracion debe ser positiva.");
+//          Categoria cat = ManejadorCategorias.getManejadorCategorias().get(categoria);
+//          Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
+//          List<Calificacion> calificacion = new LinkedList<Calificacion>();
+//          DtVideo videoTemp = new DtVideo(oldNombre, descripcionVideo, urlVideo, cat, fecha,
+//              duracion, visible, comentarios, calificacion, -1, nick);
+//          request.setAttribute("VIDEO", videoTemp);
+//          ICategorias ctrlCategorias = Fabrica.getICategorias();
+//          String[] listaCategorias = ctrlCategorias.listarCategorias();
+//          request.setAttribute("CATEGORIAS", listaCategorias);
+//          request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request,
+//              response);
         } else {
+          GregorianCalendar calendario = new GregorianCalendar();
+          calendario.setTime(fecha);
+          XMLGregorianCalendar XMLcalendario = null;
           try {
-            Fabrica.getIVideos().modificarVideo(nick, oldNombre, nombreVideo, descripcionVideo,
-                urlVideo, categoria, duracion, visible, fecha);
-            request.setAttribute("EXITO", "�Se han modificados los datos del video con exito!");
-            request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
-          } catch (InvalidDataException e) {
-            request.setAttribute("PRIVACIDAD",
-                "No se puede cambiar la visibilidad del video porque el canal es privado.");
-            Categoria cat = ManejadorCategorias.getManejadorCategorias().get(categoria);
-            Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
-            List<Calificacion> calificacion = new LinkedList<Calificacion>();
-            DtVideo videoTemp = new DtVideo(oldNombre, descripcionVideo, urlVideo, cat, fecha,
-                duracion, visible, comentarios, calificacion, -1, nick);
-            request.setAttribute("VIDEO", videoTemp);
-            ICategorias ctrlCategorias = Fabrica.getICategorias();
-            String[] listaCategorias = ctrlCategorias.listarCategorias();
-            request.setAttribute("CATEGORIAS", listaCategorias);
-            request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request,
-                response);
+            XMLcalendario = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendario);
+          } catch (DatatypeConfigurationException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
-          } catch (DuplicateClassException f) {
-            request.setAttribute("DUPLICADO",
-                "El nombre " + nombreVideo + " ya existe, por favor elegir otro.");
-            Categoria cat = ManejadorCategorias.getManejadorCategorias().get(categoria);
-            Map<Integer, Comentario> comentarios = new LinkedHashMap<Integer, Comentario>();
-            List<Calificacion> calificacion = new LinkedList<Calificacion>();
-            DtVideo videoTemp = new DtVideo(oldNombre, descripcionVideo, urlVideo, cat, fecha,
-                duracion, visible, comentarios, calificacion, -1, nick);
-            request.setAttribute("VIDEO", videoTemp);
-            ICategorias ctrlCategorias = Fabrica.getICategorias();
-            String[] listaCategorias = ctrlCategorias.listarCategorias();
-            request.setAttribute("CATEGORIAS", listaCategorias);
-            request.getRequestDispatcher("/WEB-INF/pages/modificar_video.jsp").forward(request,
-                response);
           }
+          port.modificarVideo(nick, oldNombre, nombreVideo, descripcionVideo,
+              urlVideo, categoria, duracion.getSeconds(), visible, XMLcalendario);
+          response.sendRedirect("Inicio");
         }
       } else {
-        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).nick;
-        List<DtVideo> listaVideos = ctrlVideos.getDtVideosPropietario(usuario);
+        String usuario = ((DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO")).getNick();
+        List<DtUniversal> listaUni = port.getDtVideosPropietario(usuario).getListaDt();
+        List<DtVideo> listaVideos = new LinkedList<DtVideo>();
+        for (DtUniversal dtUni : listaUni) {
+          listaVideos.add((DtVideo) dtUni);
+        }
         request.setAttribute("VIDEOS", listaVideos);
         request.getRequestDispatcher("/WEB-INF/pages/videos_propietario.jsp").forward(request,
             response);
