@@ -19,7 +19,7 @@ public class DtUsuario extends DtUniversal{
   public String idImagen;
   public Date fechaNacimiento;
   public Date ultimaActividad;
-  public String categoria;
+  public String categoria;  
 
   public DtUsuario(String nombre, String apellido, String canal, String correo,
       String descripcionCanal, Date fechaNacimiento, boolean privado,

@@ -483,6 +483,11 @@ public class Publicador {
       e.printStackTrace();
     }
   }
+  
+  @WebMethod
+  public void consultaVideo(String nick, int idVideo) throws NotFoundException {
+    Fabrica.getIVideos().consultarVideo(idVideo, nick);
+  }
 
   /**
    * Empaqueta un data type generico

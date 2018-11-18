@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import datatypes.DtLista;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorVideos;
 
@@ -290,19 +291,18 @@ public class Canal {
     return this.listaDefecto.get(nombreListaDefecto).getDtLista();
   }
   
-  public void consultaVideo(int idVideo) {
-    Map<Integer, Integer> reproducciones = this.usuario.getReproducciones();
+  public void consultaVideo(int idVideo) throws NotFoundException {
+    Map<Integer, Historial> reproducciones = this.usuario.getReproducciones();
     if (reproducciones.get(idVideo) == null) {
-      reproducciones.put(idVideo, 1);
+      reproducciones.put(idVideo, new Historial(1, new Date()));
+      this.usuario.getCanal().getListaDefecto().get("Historial").getVideos().add(ManejadorVideos.getManejadorVideos().getById(idVideo));
     } else {
-      int reproduccionesVideo = reproducciones.get(idVideo);
-      reproduccionesVideo++;
-      reproducciones.put(idVideo, reproduccionesVideo);
+      reproducciones.get(idVideo).aumentarReproduccion();
     }
   }
   
   public void consultarVideo(int idVideo, int consultas) {
-    this.usuario.getReproducciones().put(idVideo, consultas);
+    this.usuario.getReproducciones().put(idVideo, new Historial(consultas, new Date()));
   }
 
 }

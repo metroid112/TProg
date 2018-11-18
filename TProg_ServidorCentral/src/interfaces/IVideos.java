@@ -34,4 +34,6 @@ public interface IVideos {
   public List<DtVideo> getDtVideosPublicos(String nombreUsuario);
 
   public List<DtVideo> getDtVideosPropietario(String nick);
+  
+  public void consultarVideo(int idVideo, String nickUsuario) throws NotFoundException;
 }

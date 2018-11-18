@@ -128,4 +128,9 @@ public class CtrlVideos implements IVideos {
     return ManejadorUsuarios.getManejadorUsuarios().get(nombreUsuario).getCanal()
         .getVideosPublicos();
   }
+
+  @Override
+  public void consultarVideo(int idVideo, String nickUsuario) throws NotFoundException {
+    ManejadorUsuarios.getManejadorUsuarios().get(nickUsuario).getCanal().consultaVideo(idVideo);    
+  }
 }
