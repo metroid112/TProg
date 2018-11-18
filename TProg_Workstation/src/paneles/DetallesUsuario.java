@@ -38,7 +38,7 @@ public class DetallesUsuario extends JPanel {
   private IUsuariosCanales ctrlUsu = Fabrica.getIUsuariosCanales();
   private IListas ctrlLis = null;
   private List<DtLista> listas = new LinkedList<DtLista>();
-  private List<DtVideo> videosS = new LinkedList<DtVideo>();;
+  private List<DtVideo> videosS = new LinkedList<DtVideo>();
   private String usuario;
   private DefaultListModel<String> modelListas = new DefaultListModel<>();
   private JList<String> listasDeReproduccion = new JList<>(modelListas);
