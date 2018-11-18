@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import clases.Categoria;
+import clases.Historial;
 import clases.Usuario;
 import clases.Video;
 import datatypes.DtUniversal;
@@ -132,5 +133,10 @@ public class CtrlVideos implements IVideos {
   @Override
   public void consultarVideo(int idVideo, String nickUsuario) throws NotFoundException {
     ManejadorUsuarios.getManejadorUsuarios().get(nickUsuario).getCanal().consultaVideo(idVideo);    
+  }
+
+  @Override
+  public Historial historialVideo(int idVideo, String nickUsuario) throws NotFoundException {
+    return ManejadorUsuarios.getManejadorUsuarios().get(nickUsuario).getReproducciones().get(idVideo);
   }
 }

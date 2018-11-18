@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import clases.Historial;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
@@ -37,5 +38,5 @@ public interface IVideos {
   
   public void consultarVideo(int idVideo, String nickUsuario) throws NotFoundException;
   
-  public Historial historialVideo(int idVideo, )
+  public Historial historialVideo(int idVideo, String nickUsuario) throws NotFoundException;
 }
