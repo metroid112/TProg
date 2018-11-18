@@ -396,11 +396,4 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       user = null;
     }
   }
-
-  @Override
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal)
-      throws DuplicateClassException {
-    // TODO Auto-generated method stub
-    
-  }
 }

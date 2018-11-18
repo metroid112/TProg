@@ -78,20 +78,6 @@ public class Imagen {
     return this.extension;
   }
   
-  public static void borrar(int idImg) throws NotFoundException {
-    File media = new File("media/");
-    boolean borro = false;
-    for (File img : media.listFiles()) {
-      if (img.getName().matches(Integer.toString(idImg) + "\\..*")) {
-        img.delete();
-        borro = true;
-      }
-    }
-    if (!borro) {
-      throw new NotFoundException(Integer.toString(idImg));
-    }
-  }
-  
   public void modificarImg(int idImg, byte[] img) throws NotFoundException {
     Imagen.borrar(idImg);
     this.crearImg(img);
