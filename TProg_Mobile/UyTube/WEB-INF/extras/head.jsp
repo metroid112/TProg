@@ -11,10 +11,13 @@
 	}
 	td {
 	font-size: 0.8rem;
+	}
+	td.clickeable {
 	cursor: pointer; 
 	}
-	td:hover {
+	tr.clickeable:hover {
 		box-shadow: 3px 3px 0px transparent !important;
+		background-color:#ffff99 !important;
     	transition: 0.5s !important;
 	}
 	.custab{

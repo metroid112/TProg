@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
       } else {
         String nick = (String) request.getParameter("nickname");
         String pass = (String) request.getParameter("pass");
+        
         //logica para remember me.
         String value = request.getParameter("recordarme");
         boolean rememberMe = false;
@@ -46,12 +47,20 @@ public class LoginServlet extends HttpServlet {
             rememberMe = true;
         }
         if (rememberMe) {           //If your checkbox value is true
+        Cookie[] cookies=request.getCookies();
+        if (cookies != null) {
+           for (Cookie cookie : cookies) {
+               if (cookie.getName().equals("cookieLoginUser") || cookie.getName().equals("cookieLoginPassword")) {
+                 cookie.setMaxAge(0);
+               }
+           }
+        }
         Cookie cookieUsername = new Cookie("cookieLoginUser", nick);
         Cookie cookiePassword = new Cookie("cookieLoginPassword",
                             pass);
-        // Make the cookie one year last
-        cookieUsername.setMaxAge(60 * 60 * 24 * 365);
-        cookiePassword.setMaxAge(60 * 60 * 24 * 365);
+        // Make the cookie one day last
+        cookieUsername.setMaxAge(60 * 60 * 24);
+        cookiePassword.setMaxAge(60 * 60 * 24);
         response.addCookie(cookieUsername);
         response.addCookie(cookiePassword);
         }

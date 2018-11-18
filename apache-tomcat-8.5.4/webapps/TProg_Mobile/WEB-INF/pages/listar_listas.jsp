@@ -35,9 +35,9 @@
     			<% List<DtLista> listas = (List<DtLista>) request.getAttribute("LISTAS"); 				
 				for (DtLista Lista : listas) { 
 				if (owner != null && Lista.getNombreOwner().equals(owner.getNick())) { %>
-            		<tr onclick="document.getElementById('Form<%=Lista.getIdLista()%>').submit();">
-                		<td><%= Lista.getNombre() %></td>
-                		<td>Publica</td>
+            		<tr class="clickeable" onclick="document.getElementById('Form<%=Lista.getIdLista()%>').submit();">
+                		<td class="clickeable"><%= Lista.getNombre() %></td>
+                		<td class="clickeable">Publica</td>
             		</tr>
             		<div>
                 		<form id="Form<%=Lista.getIdLista()%>" action="ListaServlet" method="GET">
@@ -50,9 +50,9 @@
 				List<DtLista> listasDefecto = (List<DtLista>) request.getAttribute("LISTASDEFECTO");
 				if (listasPrivadas.size() != 0) {
 				for (DtLista u : listasPrivadas) { %>
-					<tr onclick="document.getElementById('Form<%=u.getIdLista()%>').submit();">
-                		<td><%= u.getNombre() %></td>
-                		<td>Privada</td>
+					<tr class="clickeable" onclick="document.getElementById('Form<%=u.getIdLista()%>').submit();">
+                		<td class="clickeable"><%= u.getNombre() %></td>
+                		<td class="clickeable">Privada</td>
             		</tr>
             		<div>
                 		<form id="Form<%=u.getIdLista()%>" action="ListaServlet" method="GET">
@@ -63,9 +63,9 @@
 				<% } }
 				if (listasDefecto.size() != 0) {
 			  	for(DtLista lista : listasDefecto) { %>
-			  		<tr onclick="document.getElementById('Form<%=lista.getIdLista()%>').submit();">
-                		<td><%= lista.getNombre() %></td>
-                		<td>Defecto</td>
+			  		<tr class="clickeable" onclick="document.getElementById('Form<%=lista.getIdLista()%>').submit();">
+                		<td class="clickeable"><%= lista.getNombre() %></td>
+                		<td class="clickeable">Defecto</td>
                 			</tr>
             		<div>
                 		<form id="Form<%=lista.getIdLista()%>" action="ListaServlet" method="POST">
