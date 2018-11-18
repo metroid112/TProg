@@ -58,9 +58,9 @@
 			<div class="col-1">
 			</div>
 			</div>
+				<%} else { %>
     			<div id="products" class="row view-group">
-				<%} else {
-				for (DtVideo vid : listaVideos) {
+				<% for (DtVideo vid : listaVideos) {
 					if (vid.isVisible()) { %>
                 <div class="item col-xs-4 col-lg-4">
                     <div class="thumbnail card" onclick="document.getElementById('Form<%=vid.getIdVideo()%>').submit();">
