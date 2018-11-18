@@ -230,7 +230,7 @@ public class VerInformacionUsuario extends JInternalFrame {
   private void muchasCosas(){
     int idVideo = -1;
     String nombre = videosLista.getSelectedValue().substring(videosLista.getSelectedValue().indexOf('-') + 1);
-    System.out.println(videosLista.getSelectedValue().substring(videosLista.getSelectedValue().indexOf('-') + 1));
+    
     for(DtVideo video : dtLista.getDtVideos()){
          if(video.getNombre().equals(nombre))
            idVideo = video.getIdVideo();
