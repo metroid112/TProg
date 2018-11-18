@@ -13,6 +13,20 @@
 	<title>UyTube - Login</title>
 </head>
 <body>
+<!-- Logica para recordar la sesion -->
+<%Cookie[] cookies=request.getCookies();
+String name="",pass="";
+if (cookies != null) {
+     for (Cookie cookie : cookies) {
+       if (cookie.getName().equals("cookieLoginUser")) {
+           name=cookie.getValue();
+       }
+       if(cookie.getName().equals("cookieLoginPassword")){
+           pass=cookie.getValue();
+       }
+    }
+}
+%>
 <div class="container-fluid fill-height">
 		<div class="h-100 row align-items-center">
 			<div class="col-2">
@@ -21,10 +35,10 @@
 					<p>Iniciar Sesión					</p>
 					<form class="login" action="login" method="POST">
 					  <div class="form-group">
-					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo o nickname" name="nickname">
+					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo o nickname" name="nickname" value=<%=name%>>
 					  </div>
 					  <div class="form-group">
-					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="pass">
+					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="pass"value=<%=pass%>>
 					  </div>
 					  <%
 							if (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_INCORRECTO)) { %>
@@ -32,7 +46,7 @@
 						<%	}
 				 		%>	
 				 	<div class="checkbox">
-      				<label> <input type="checkbox"> Recordarme </label>
+      				<label> <input type="checkbox" name="recordarme"> Recordarme </label>
     				</div>
 					  <input type="submit" class="btn btn-primary" value=Login>
 					</form>

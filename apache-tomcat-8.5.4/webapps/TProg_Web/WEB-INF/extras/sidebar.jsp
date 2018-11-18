@@ -1,4 +1,4 @@
-<%@page import="datatypes.*" %>
+<%@page import="servicios.*" %>
 <%@page import="utils.*" %>
 
 <div class="sidebar">
@@ -22,6 +22,10 @@
 		</form>
 		<form action="ModificarLista" method="GET">
 			<button>Modificar Lista</button>
+		</form>
+		<form action="BajaUsuario" method="POST">
+			<input type="hidden" name="nickUsuario" value="<%= ((DtUsuario) session.getAttribute("USUARIO_LOGEADO")).getNick() %>" />
+			<button>Borrar Cuenta</button>
 		</form>
 	<% } else { %>
 		<form action="AltaUsuario" method="GET">

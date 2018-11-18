@@ -85,6 +85,7 @@ public class ConsultaVideo extends HttpServlet {
    // }
 
     request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
+     // response.sendRedirect("ConsultaVideo").;
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -102,6 +103,7 @@ public class ConsultaVideo extends HttpServlet {
     //}
 
     request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
+     // response.sendRedirect("Consulta);
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)

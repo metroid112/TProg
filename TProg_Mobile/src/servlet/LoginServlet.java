@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,9 +38,24 @@ public class LoginServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/pages/inicio_sesion.jsp").forward(request, response);
       } else {
         String nick = (String) request.getParameter("nickname");
-        response.getWriter().println(nick);
         String pass = (String) request.getParameter("pass");
-        response.getWriter().println(pass);
+        //logica para remember me.
+        String value = request.getParameter("recordarme");
+        boolean rememberMe = false;
+        if(value != null && value.equalsIgnoreCase("on")){
+            rememberMe = true;
+        }
+        if (rememberMe) {           //If your checkbox value is true
+        Cookie cookieUsername = new Cookie("cookieLoginUser", nick);
+        Cookie cookiePassword = new Cookie("cookieLoginPassword",
+                            pass);
+        // Make the cookie one year last
+        cookieUsername.setMaxAge(60 * 60 * 24 * 365);
+        cookiePassword.setMaxAge(60 * 60 * 24 * 365);
+        response.addCookie(cookieUsername);
+        response.addCookie(cookiePassword);
+        }
+        //fin logica remember me.
         PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
         if (port.checkLogin(nick, pass)) {
