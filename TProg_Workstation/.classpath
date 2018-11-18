@@ -2,7 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/TProg_ServidorCentral"/>
 	<classpathentry kind="lib" path="lib/SwingX.jar"/>
+	<classpathentry kind="lib" path="lib/tika-core-1.19.1.jar"/>
+	<classpathentry kind="lib" path="lib/ServidorCentral.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
