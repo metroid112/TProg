@@ -18,6 +18,7 @@ import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
+import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorListasParticulares;
@@ -275,10 +276,29 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       calificaciones.clear();
       calificaciones = null;
       
+      // ** COMENTARIOS **
+      List<Comentario> comentarios = user.getComentarios();
+      for (Comentario comentario : comentarios) {
+        int idComentario = comentario.getId();
+        if (comentario.getVideo() != null ) {
+          Comentario coment = comentario.getVideo().getComentarios().remove(idComentario);
+          if (coment == null) {
+            comentario.deleteCom();
+          }
+        }
+        
+        //comentario = null;
+      }
+      comentarios.clear();
+      comentarios = null;
+      
       // ** VIDEOS **
       Map<String, Video> videos = user.getCanal().getVideos();
       for (Video video : videos.values()) {
         // ** COMENTARIOS **
+        for (Comentario comment : video.getComentarios().values()) {
+          borrarComentarios(comment);
+        }
         video.getComentarios().clear();
         video.setComentarios(null);
         
@@ -302,7 +322,6 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
               listaDefectoVideo.getVideos().remove(video);
             }
             for(ListaParticular listaParticularVideo : usuarioVideoLista.getCanal().getListaParticulares().values()) {
-              System.out.println(usuarioVideoLista.getNick());
               usuarioVideoLista.getCanal().quitarVideoListaParticular(video.getNombre(), listaParticularVideo.getNombre(), user);
             }
           }
@@ -374,24 +393,8 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       seguidos.clear();
       seguidos = null;
       
-      // ** COMENTARIOS **
-      List<Comentario> comentarios = user.getComentarios();
-      for (Comentario comentario : comentarios) {
-        int idComentario = comentario.getId();
-        //comentario.getRespuestas().clear(); // TODO: hijos tienen referencias?
-        //comentario.setRespuestas(null);
-        
-        Comentario coment = comentario.getVideo().getComentarios().remove(idComentario);
-        if (coment == null) {
-          comentario.getVideo().borrarComentario(idComentario);
-        }
-        
-        comentario = null;
-      }
-      comentarios.clear();
-      comentarios = null;
-      
       // ** CANAL ** 
+      user.getCanal().setUsuario(null);
       user.setCanal(null);
       
       // ** MANEJADOR **
@@ -407,5 +410,14 @@ public class CtrlUsuariosCanales implements IUsuariosCanales {
       // ** USUARIO **
       user = null;
     }
+  }
+
+  private void borrarComentarios(Comentario comment) {
+    if (comment.tieneRespuestas()) {
+      for (Comentario commenta : comment.getRespuestas().values()) {
+        borrarComentarios(commenta);
+      }
+    }
+    comment.getUsuario().getComentarios().remove(comment);    
   }
 }

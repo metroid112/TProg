@@ -67,24 +67,11 @@ public class Comentario {
     }
   }
   
-  public Comentario deleteCom(Integer idComentario) {
-    if (this.idComentario == idComentario) {
-      if (this.getPadre() != null) {
-        this.getPadre().getRespuestas().clear();
-      }
-      return this;
-    } else if (!this.respuestas.isEmpty()) {
-      Comentario encontrado = null;
-      for (Comentario hijo : this.respuestas.values()) {
-        Comentario retornado = hijo.getCom(idComentario);
-        if (retornado != null) {
-          encontrado = retornado;
-        }
-      }
-      return encontrado;
-    } else {
-      return null;
+  public void deleteCom() {
+    if (this.padre != null) {
+      this.padre.getRespuestas().remove(this.idComentario);
     }
+    //this.respuestas.clear();
   }
 
   private Comentario getPadre() {

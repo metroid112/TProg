@@ -155,8 +155,4 @@ public class Video {
   public Map<Integer, Comentario> getComentarios() {
     return this.comentarios;
   }
-
-  public void borrarComentario(int idComentario) {
-    this.comentarios.get(idComentario).deleteCom(idComentario);
-  }
 }
