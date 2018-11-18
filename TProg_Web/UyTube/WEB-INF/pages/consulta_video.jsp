@@ -25,9 +25,10 @@
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class= "contenido">
 			 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
-
+			<% String share = (String) request.getAttribute("ShareURL"); %>
 			<h1><%= vid.getNombre() %></h1>
-				 <br><br>
+				 <br>
+			
 			<iframe width="700" height="465"
 				src="https://www.youtube.com/embed/<%= vid.getYoutubeId() %> ">
 
@@ -47,7 +48,7 @@
 				<h4>Duracion:</h4> <%= duracionString %>
 
 				 <br>
-
+				<h4>Compartir video:</h4> <a style="width: adjust; background-color: yellow;"><%= share %></a>
 				<h4>Categoria:</h4> <%= vid.getCategoria() %>
 				 <br>
 				<h4>URL:</h4> <%=vid.getUrlVideo()%>
