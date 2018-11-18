@@ -1,6 +1,5 @@
 package clases;
 
-import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -174,6 +173,10 @@ public class Usuario {
 
   public String getApellido() {
     return this.apellido;
+  }
+
+  public List<Comentario> getComentarios() {
+    return this.comentarios;
   }
 
   public void setApellido(String apellido) {

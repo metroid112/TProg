@@ -1,6 +1,5 @@
 package datatypes;
 
-import java.awt.image.BufferedImage;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;

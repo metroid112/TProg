@@ -1,17 +1,13 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Comparator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import interfaces.Fabrica;
-import servicios.DtLista;
-import servicios.DtUsuario;
-import servicios.DtVideo;
+
 import servicios.Publicador;
 import servicios.PublicadorService;
 

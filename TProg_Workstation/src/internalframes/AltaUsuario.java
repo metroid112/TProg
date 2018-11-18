@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,12 +27,15 @@ import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
+import org.apache.tika.io.IOUtils;
+
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
 @SuppressWarnings("serial")
 public class AltaUsuario extends JInternalFrame {
   // protected static final String BufferedImage = null;
+  private byte[] byteImagen = null;
   private BufferedImage imagenFile = null;
   private JTextField textField;
   private JTextField textField_1;
@@ -53,11 +58,12 @@ public class AltaUsuario extends JInternalFrame {
   private JTextField dia;
   private JTextField mes;
   private JTextField ano;
+  private JTextField textField_5;
 
   public AltaUsuario() {
     setNormalBounds(new Rectangle(20, 0, 300, 400));
     setTitle("Alta Usuario");
-    setBounds(0, 0, 455, 533);
+    setBounds(0, 0, 456, 555);
 
     JButton btnNewButton = new JButton("Cancelar");
     btnNewButton.addActionListener(new ActionListener() {
@@ -202,9 +208,12 @@ public class AltaUsuario extends JInternalFrame {
         file.showOpenDialog(getFocusOwner());
         /** abrimos el archivo seleccionado */
         abre = file.getSelectedFile();
+
         if (abre != null) {
           try {
-            imagenFile = ImageIO.read(abre);
+
+            InputStream imageInput = new FileInputStream(abre);
+            byteImagen = IOUtils.toByteArray(imageInput);
           } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -216,153 +225,159 @@ public class AltaUsuario extends JInternalFrame {
     this.comboBoxCategoria = new JComboBox<String>();
 
     JLabel lblCategoria = new JLabel("Categoria:");
+    
+    textField_5 = new JTextField();
+    textField_5.setColumns(10);
+    
+    JLabel lblContrasena = new JLabel("Contrasena:");
 
     // fin lógica botones
 
     GroupLayout groupLayout = new GroupLayout(getContentPane());
-    groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-        .addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout
-            .createParallelGroup(Alignment.LEADING)
-            .addGroup(groupLayout.createSequentialGroup().addGap(28)
-                .addComponent(lblIngreseLosDatos, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
-            .addGroup(groupLayout.createSequentialGroup().addContainerGap()
-                .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                    .addGroup(groupLayout.createSequentialGroup()
-                        .addComponent(lblNombreCanal, GroupLayout.PREFERRED_SIZE, 165,
-                            GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(ComponentPlacement.RELATED)
-                        .addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
-                    .addGroup(groupLayout.createSequentialGroup()
-                        .addComponent(lblCorreo, GroupLayout.PREFERRED_SIZE, 165,
-                            GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(ComponentPlacement.RELATED)
-                        .addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
-                    .addGroup(groupLayout.createSequentialGroup()
-                        .addComponent(lblApellido, GroupLayout.PREFERRED_SIZE, 165,
-                            GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(ComponentPlacement.RELATED)
-                        .addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
-                    .addGroup(groupLayout.createSequentialGroup()
-                        .addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 165,
-                            GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(ComponentPlacement.RELATED)
-                        .addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
-                    .addGroup(groupLayout.createSequentialGroup()
-                        .addComponent(lblNickname, GroupLayout.PREFERRED_SIZE, 165,
-                            GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(ComponentPlacement.RELATED)
-                        .addComponent(textField, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
-                    .addGroup(groupLayout.createSequentialGroup()
-                        .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                            .addComponent(lblCambiarCanalPor, GroupLayout.PREFERRED_SIZE, 165,
-                                GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPrivacidad, GroupLayout.PREFERRED_SIZE, 165,
-                                GroupLayout.PREFERRED_SIZE))
-                        .addGap(12)
-                        .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                            .addComponent(rdbtnSi, GroupLayout.PREFERRED_SIZE, 71,
-                                GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rdbtnNewRadioButton))
-                        .addPreferredGap(ComponentPlacement.RELATED)
-                        .addGroup(groupLayout
-                            .createParallelGroup(Alignment.LEADING)
-                            .addComponent(rdbtnNo, GroupLayout.PREFERRED_SIZE, 71,
-                                GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rdbtnPblico)))
-                    .addGroup(
-                        groupLayout.createSequentialGroup()
-                            .addComponent(lblFechaDeNacimiento, GroupLayout.PREFERRED_SIZE, 165,
-                                GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(ComponentPlacement.RELATED)
-                            .addComponent(dia, GroupLayout.PREFERRED_SIZE, 42,
-                                GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(ComponentPlacement.RELATED).addComponent(label)
-                            .addPreferredGap(ComponentPlacement.RELATED)
-                            .addComponent(mes, GroupLayout.PREFERRED_SIZE, 43,
-                                GroupLayout.PREFERRED_SIZE)
-                            .addGap(7)
-                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 5,
-                                GroupLayout.PREFERRED_SIZE)
-                            .addGap(6)
-                            .addComponent(ano, GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
-                    .addGroup(groupLayout.createSequentialGroup()
-                        .addComponent(lblDescripcin, GroupLayout.PREFERRED_SIZE, 165,
-                            GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(ComponentPlacement.RELATED)
-                        .addComponent(textPane, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)))))
-            .addGap(48))
-        .addGroup(
-            groupLayout.createSequentialGroup().addContainerGap()
-                .addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-                    .addGroup(groupLayout.createSequentialGroup().addComponent(btnAceptar)
-                        .addPreferredGap(ComponentPlacement.RELATED).addComponent(btnNewButton))
-                    .addComponent(lblCategoria).addComponent(lblImagen, GroupLayout.PREFERRED_SIZE,
-                        165, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(
-                    groupLayout.createParallelGroup(Alignment.LEADING).addComponent(btnSeleccionar)
-                        .addComponent(comboBoxCategoria, 0, 209, Short.MAX_VALUE))
-                .addContainerGap()));
-    groupLayout
-        .setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-            .addGroup(groupLayout.createSequentialGroup().addContainerGap()
-                .addComponent(lblIngreseLosDatos).addGap(26)
-                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                    .addComponent(lblNickname).addComponent(textField, GroupLayout.PREFERRED_SIZE,
-                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                    .addComponent(lblNombre).addComponent(textField_1, GroupLayout.PREFERRED_SIZE,
-                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                    .addComponent(lblApellido).addComponent(textField_2, GroupLayout.PREFERRED_SIZE,
-                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                    .addComponent(lblCorreo).addComponent(textField_3, GroupLayout.PREFERRED_SIZE,
-                        GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                    .addComponent(lblFechaDeNacimiento)
-                    .addComponent(dia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-                        GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-                        GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ano, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-                        GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label).addComponent(label1))
-                .addGap(13)
-                .addGroup(
-                    groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(rdbtnPblico)
-                        .addComponent(lblPrivacidad).addComponent(rdbtnNewRadioButton))
-                .addPreferredGap(ComponentPlacement.RELATED)
-                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(rdbtnNo)
-                    .addComponent(rdbtnSi).addComponent(lblCambiarCanalPor))
-                .addPreferredGap(ComponentPlacement.UNRELATED)
-                .addGroup(
-                    groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblNombreCanal)
-                        .addComponent(textField_4, GroupLayout.PREFERRED_SIZE,
-                            GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.UNRELATED)
-                .addGroup(
-                    groupLayout.createParallelGroup(Alignment.LEADING)
-                        .addGroup(groupLayout.createSequentialGroup().addComponent(lblDescripcin)
-                            .addGap(71)
-                            .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                                .addComponent(lblImagen).addComponent(btnSeleccionar)))
-                        .addComponent(textPane, GroupLayout.PREFERRED_SIZE, 64,
-                            GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(ComponentPlacement.UNRELATED)
-                .addGroup(
-                    groupLayout.createParallelGroup(Alignment.LEADING)
-                        .addGroup(groupLayout.createSequentialGroup().addComponent(lblCategoria)
-                            .addGap(27)
-                            .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                                .addComponent(btnNewButton).addComponent(btnAceptar)))
-                        .addComponent(comboBoxCategoria, GroupLayout.PREFERRED_SIZE,
-                            GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addGap(117)));
+    groupLayout.setHorizontalGroup(
+      groupLayout.createParallelGroup(Alignment.LEADING)
+        .addGroup(groupLayout.createSequentialGroup()
+          .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(groupLayout.createSequentialGroup()
+              .addGap(28)
+              .addComponent(lblIngreseLosDatos, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
+            .addGroup(groupLayout.createSequentialGroup()
+              .addContainerGap()
+              .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+                .addGroup(groupLayout.createSequentialGroup()
+                  .addComponent(lblNombreCanal, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(textField_4, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+                .addGroup(groupLayout.createSequentialGroup()
+                  .addComponent(lblCorreo, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(textField_3, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+                .addGroup(groupLayout.createSequentialGroup()
+                  .addComponent(lblApellido, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+                .addGroup(groupLayout.createSequentialGroup()
+                  .addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+                .addGroup(groupLayout.createSequentialGroup()
+                  .addComponent(lblNickname, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(textField, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+                .addGroup(groupLayout.createSequentialGroup()
+                  .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+                    .addComponent(lblCambiarCanalPor, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPrivacidad, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE))
+                  .addGap(12)
+                  .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+                    .addComponent(rdbtnSi, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rdbtnNewRadioButton))
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+                    .addComponent(rdbtnNo, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rdbtnPblico)))
+                .addGroup(groupLayout.createSequentialGroup()
+                  .addComponent(lblFechaDeNacimiento, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(dia, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(label)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(mes, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+                  .addGap(7)
+                  .addComponent(label1, GroupLayout.PREFERRED_SIZE, 5, GroupLayout.PREFERRED_SIZE)
+                  .addGap(6)
+                  .addComponent(ano, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addGroup(groupLayout.createSequentialGroup()
+                  .addComponent(lblDescripcin, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(ComponentPlacement.RELATED)
+                  .addComponent(textPane, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))))
+          .addGap(48))
+        .addGroup(groupLayout.createSequentialGroup()
+          .addGap(22)
+          .addComponent(btnAceptar)
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addComponent(btnNewButton)
+          .addContainerGap(265, Short.MAX_VALUE))
+        .addGroup(groupLayout.createSequentialGroup()
+          .addContainerGap()
+          .addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+            .addComponent(lblImagen, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblContrasena)
+            .addComponent(lblCategoria))
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+            .addComponent(btnSeleccionar)
+            .addComponent(comboBoxCategoria, 0, 250, Short.MAX_VALUE)
+            .addComponent(textField_5, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+          .addContainerGap())
+    );
+    groupLayout.setVerticalGroup(
+      groupLayout.createParallelGroup(Alignment.TRAILING)
+        .addGroup(groupLayout.createSequentialGroup()
+          .addContainerGap()
+          .addComponent(lblIngreseLosDatos)
+          .addGap(26)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(lblNickname)
+            .addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(lblNombre)
+            .addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(lblApellido)
+            .addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(lblCorreo)
+            .addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(lblFechaDeNacimiento)
+            .addComponent(dia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+            .addComponent(mes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+            .addComponent(ano, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+            .addComponent(label)
+            .addComponent(label1))
+          .addGap(13)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(rdbtnPblico)
+            .addComponent(lblPrivacidad)
+            .addComponent(rdbtnNewRadioButton))
+          .addPreferredGap(ComponentPlacement.RELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(rdbtnNo)
+            .addComponent(rdbtnSi)
+            .addComponent(lblCambiarCanalPor))
+          .addPreferredGap(ComponentPlacement.UNRELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(lblNombreCanal)
+            .addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+          .addPreferredGap(ComponentPlacement.UNRELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+            .addGroup(groupLayout.createSequentialGroup()
+              .addComponent(lblDescripcin)
+              .addGap(71)
+              .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+                .addComponent(lblImagen)
+                .addComponent(btnSeleccionar)))
+            .addComponent(textPane, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
+          .addPreferredGap(ComponentPlacement.UNRELATED)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(comboBoxCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblCategoria))
+          .addGap(18)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblContrasena))
+          .addGap(24)
+          .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+            .addComponent(btnAceptar)
+            .addComponent(btnNewButton))
+          .addGap(76))
+    );
     getContentPane().setLayout(groupLayout);
 
   }
@@ -370,17 +385,17 @@ public class AltaUsuario extends JInternalFrame {
   protected void cmdAltaUsuarioActionPerformed(ActionEvent e) {
     ctrlUsu = Fabrica.getIUsuariosCanales();
     if (ctrlUsu.existeUsuario(textField.getText())) {
-      JOptionPane.showMessageDialog(this, "El usuario ya existe.");
-    } else if (!ctrlUsu.existeUsuarioMail(textField_3.getText())) {
-      JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.");
+      JOptionPane.showMessageDialog(this, "El usuario ya existe.","Error",JOptionPane.ERROR_MESSAGE);
+    } else if (ctrlUsu.existeUsuarioMail(textField_3.getText())) {
+      JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.","Error",JOptionPane.ERROR_MESSAGE);
     } else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")) {
-      JOptionPane.showMessageDialog(this, "Correo electronico invalido");
+      JOptionPane.showMessageDialog(this, "Correo electronico invalido","Error",JOptionPane.ERROR_MESSAGE);
     } else if (textField.getText().equals("") || textField_1.getText().equals("")
-        || textField_2.getText().equals("")) {
+        || textField_2.getText().equals("") || textField_5.getText().equals("")) {
       JOptionPane.showMessageDialog(this,
-          "Los campos Nickname, Nombre y Apellido son obligatorios.");
+          "Los campos Nickname, Nombre, Apellido y Contrasena son obligatorios.","Error",JOptionPane.ERROR_MESSAGE);
     } else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")) {
-      JOptionPane.showMessageDialog(this, "Correo electronico invalido");
+      JOptionPane.showMessageDialog(this, "Correo electronico invalido","Error",JOptionPane.ERROR_MESSAGE);
     } else {
       try {
 
@@ -389,6 +404,7 @@ public class AltaUsuario extends JInternalFrame {
         String apellido = textField_2.getText();
         String correo = textField_3.getText();
         String categoria = (String) this.comboBoxCategoria.getSelectedItem();
+        String contrasena = textField_5.getText();
         Date nacimiento = null; // formar la fecha desde las partes.
         BufferedImage imagen = imagenFile;
         boolean privado = rdbtnNewRadioButton.isSelected();
@@ -411,8 +427,8 @@ public class AltaUsuario extends JInternalFrame {
         } catch (Exception ex) {
           throw new Exception("Formato de fecha incorrecto", ex);
         }
-        ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, imagen, nombreCanal,
-            descripcion, categoria, privado);
+        ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, byteImagen, nombreCanal,
+            descripcion, categoria, privado, contrasena);
 
         JOptionPane.showMessageDialog(this, "Se ha creado el usuario con exito!");
         clean();

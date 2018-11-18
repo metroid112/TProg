@@ -9,7 +9,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="UyTube/WEB-INF/lib/ServidorCentral.jar"/>
 	<classpathentry kind="lib" path="UyTube/WEB-INF/lib/jstl-1.2.jar"/>
 	<classpathentry kind="lib" path="UyTube/WEB-INF/lib/commons-io-2.6.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.ws.cxf.core.CXF_CLASSPATH_CONTAINER">

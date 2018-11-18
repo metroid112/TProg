@@ -1,7 +1,7 @@
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.util.Map" %>
 <%@ page import = "java.util.Map.Entry" %>
-<%@ page import = "servicios.*,clases.*, utils.*" %>
+<%@ page import = "servicios.*, utils.*" %>
 <!doctype html>
 <html lang="en">
 <head>

@@ -1,12 +1,10 @@
 package servicios;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.time.Duration;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
@@ -19,24 +17,18 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlValue;
-import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Endpoint;
 
 import org.apache.tika.io.IOUtils;
 
-import com.sun.istack.internal.Nullable;
-
-import datatypes.DtBusqueda;
 import datatypes.DtCategoria;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
 import datatypes.DtUsuario;
-import datatypes.DtVideo;
-import excepciones.*;
+import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
@@ -364,6 +356,11 @@ public class Publicador {
       System.out.println("Archivo no encontrado: " + id);
     }    
     return imagenByte;
+  }
+  
+  @WebMethod
+  public void borrarUsuario(String nickUsuario) throws NotFoundException {
+    Fabrica.getIUsuariosCanales().bajaUsuario(nickUsuario);
   }
   
   @WebMethod

@@ -18,16 +18,28 @@ public class Calificacion {
     return new DtCalificacion(this.like, this.usuario.getNick(), this.video.getNombre());
   }
 
-  public Video getVideo() {
-    return video;
-  }
-
   public boolean getlike() {
     return like;
   }
 
+  public Usuario getUsuario() {
+    return this.usuario;
+  }
+
+  public Video getVideo() {
+    return video;
+  }
+
   public void setLike(boolean like) {
     this.like = like;
+  }
+
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;    
+  }
+
+  public void setVideo(Video video) {
+    this.video = video;    
   }
 
   @Override

@@ -1,4 +1,4 @@
-<%@ page import = "interfaces.*, java.util.*, utils.*, servicios.*" %>
+<%@ page import = "java.util.*, utils.*, servicios.*" %>
 <!doctype html>
 <html lang="en">
 <head>

@@ -6,10 +6,8 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,9 +23,6 @@ import servicios.DtUsuario;
 import servicios.DtVideo;
 import servicios.Publicador;
 import servicios.PublicadorService;
-import excepciones.DuplicateClassException;
-import excepciones.InvalidDataException;
-import excepciones.NotFoundException;
 import utils.EstadoSesion;
 
 @WebServlet("/ModificarVideo")

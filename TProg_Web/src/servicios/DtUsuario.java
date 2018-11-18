@@ -29,6 +29,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="categoria" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
@@ -49,7 +50,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "idImagen",
     "fechaNacimiento",
     "ultimaActividad",
-    "categoria"
+    "categoria",
+    "password"
 })
 public class DtUsuario
     extends DtUniversal
@@ -68,6 +70,7 @@ public class DtUsuario
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar ultimaActividad;
     protected String categoria;
+    protected String password;
 
     /**
      * Obtiene el valor de la propiedad nick.
@@ -323,6 +326,30 @@ public class DtUsuario
      */
     public void setCategoria(String value) {
         this.categoria = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad password.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Define el valor de la propiedad password.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPassword(String value) {
+        this.password = value;
     }
 
 }

@@ -3,6 +3,7 @@ package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -29,6 +30,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="visible" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="ultimaActividad" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="idLista" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="nombreOwner" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
@@ -46,7 +48,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "dtVideos",
     "visible",
     "ultimaActividad",
-    "idLista"
+    "idLista",
+    "nombreOwner"
 })
 public class DtLista
     extends DtUniversal
@@ -64,6 +67,7 @@ public class DtLista
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar ultimaActividad;
     protected int idLista;
+    protected String nombreOwner;
 
     /**
      * Gets the value of the categorias property.
@@ -254,6 +258,30 @@ public class DtLista
      */
     public void setIdLista(int value) {
         this.idLista = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad nombreOwner.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombreOwner() {
+        return nombreOwner;
+    }
+
+    /**
+     * Define el valor de la propiedad nombreOwner.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombreOwner(String value) {
+        this.nombreOwner = value;
     }
 
 }

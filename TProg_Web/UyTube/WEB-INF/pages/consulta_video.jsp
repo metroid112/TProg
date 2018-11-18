@@ -2,7 +2,6 @@
 <%@page import="javax.xml.ws.Response"%>
 <%@page import="java.io.Writer"%>
 <%@page import="servicios.DtVideo"%>
-<%@page import="datatypes.DtComentario"%>
 <%@page import="servicios.DtUsuario"%>
 <%@page import="java.util.Map" %>
 <%@page import="java.time.Duration" %>

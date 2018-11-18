@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.tika.io.IOUtils;
 
 import clases.Canal;
 import clases.Categoria;
@@ -58,6 +58,9 @@ public class CtrlDatos implements IDatos {
       IVideos ctrlVideos = Fabrica.getIVideos();
       IListas ctrlListas = Fabrica.getIListas();
       ICategorias ctrlCategorias = Fabrica.getICategorias();
+      
+      byte[] byteNull = getByte("null.JPG");
+      Imagen ceroJPG = new Imagen(byteNull);
 
       class UsuarioBean {
         public String nick;
@@ -87,7 +90,7 @@ public class CtrlDatos implements IDatos {
       UsuarioBean AR = new UsuarioBean();
       UsuarioBean AP = new UsuarioBean();
       UsuarioBean NJ = new UsuarioBean();
-
+      
       HR.nick = "hrubino";
       HR.nombre = "Horacio";
       HR.apellido = "Rubino";

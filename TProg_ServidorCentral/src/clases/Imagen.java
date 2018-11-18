@@ -17,8 +17,8 @@ public class Imagen {
   private String extension;
   
   public Imagen(byte[] imgByte) {
-    Imagen.idCounter++;
     this.id = Imagen.idCounter;
+    Imagen.idCounter++;
     this.crearImg(imgByte);
   }
   
@@ -29,7 +29,13 @@ public class Imagen {
     if (!directorio.isDirectory()) {
       directorio.mkdirs();
     }
-    File archivo = new File(directorio, Integer.toString(id) + this.extension);
+    File archivo = null;
+    if (this.id == 0) {
+      archivo = new File(directorio, Integer.toString(this.id) + ".JPG");
+    } else {
+      archivo = new File(directorio, Integer.toString(this.id) + this.extension);
+    }
+   
     try (OutputStream oStream = new FileOutputStream(archivo)) {
       oStream.write(imgByte);
       oStream.close();
@@ -53,10 +59,6 @@ public class Imagen {
   public int getId() {
     return this.id;
   }
-
-  public String getExtension() {
-    return this.extension;
-  }
   
   public static void borrar(int idImg) throws NotFoundException {
     File media = new File("media/");
@@ -70,6 +72,10 @@ public class Imagen {
     if (!borro) {
       throw new NotFoundException(Integer.toString(idImg));
     }
+  }
+
+  public String getExtension() {
+    return this.extension;
   }
   
   public void modificarImg(int idImg, byte[] img) throws NotFoundException {

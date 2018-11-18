@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import datatypes.DtLista;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IVideos;
@@ -38,15 +39,12 @@ public class VerInformacionUsuario extends JInternalFrame {
     this.padre = padre;
   }
 
-  // imports para el video
   private InfoVideo PanelConsultaVideo;
   private JLabel lblNewLabel_1 = new JLabel("vNombreLista");
   private JLabel lblVtipolista = new JLabel("vTipoLista");
   private JLabel lblNewLabel_2 = new JLabel("vPrivacidad");
   private JList<String> videosLista;
   private IVideos contVideos = Fabrica.getIVideos();
-
-  // fin
 
   public VerInformacionUsuario() {
     setBounds(0, 10, 787, 480);
@@ -75,8 +73,8 @@ public class VerInformacionUsuario extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         if (paneluser.isVideoSeleccionado()) {
-          String vidSel = paneluser.getVideoSeleccionado();
-          verInfo(vidSel, UsrSel);
+          int vidSel = paneluser.getVideoSeleccionado();
+          verInfo(vidSel);
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un video");
         }
@@ -89,9 +87,13 @@ public class VerInformacionUsuario extends JInternalFrame {
       public void actionPerformed(ActionEvent arg0) {
 
         if (paneluser.isListaSelected()) {
-          String lisSel = paneluser.getListaSeleccionada();
-          if (lisSel != null) {
-            cargaDatosLista(lisSel, UsrSel);
+          
+          int idLista = paneluser.getListaSeleccionadaId();
+          String nombreList = paneluser.getListaSeleccionadaNombre();
+          String nombreUsuario = paneluser.getUsuarioSeleccionadoNombre();
+          
+          if (idLista != -1) {
+            cargaDatosLista(idLista,nombreList,nombreUsuario);
           } else {
             JOptionPane.showInputDialog(this);
           }
@@ -221,10 +223,13 @@ public class VerInformacionUsuario extends JInternalFrame {
     panel_2.add(paneluser, BorderLayout.CENTER);
   }
 
-  public void verInfo(String vidSel, String userSel) {
-    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel, userSel));
+  public void verInfo(int vidSel) {
+    try{
+    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel));
     PanelInfoVideo.add(PanelConsultaVideo, BorderLayout.CENTER);
     cambioPanel();
+    }
+    catch(Exception e){}
   }
 
   public void cambioPanel() {
@@ -232,12 +237,14 @@ public class VerInformacionUsuario extends JInternalFrame {
     layout.next(getContentPane());
   }
 
-  private void cargaDatosLista(int lista) {
+  private void cargaDatosLista(int lista, String nombreLista, String nombreUsuario) {
 
     DtLista dtLista;
     try {
-
+      if(paneluser.isSelListParticular())
       dtLista = ctrlLis.getDt(lista);
+      else dtLista = ctrlLis.getDtDefecto(nombreUsuario,nombreLista);
+        
       if (dtLista.isVisible()) {
         lblNewLabel_2.setText("Publico");
       } else {
@@ -251,7 +258,8 @@ public class VerInformacionUsuario extends JInternalFrame {
       lblNewLabel_1.setText(dtLista.getNombre());
       lblVtipolista.setText(dtLista.getTipo());
 
-    } catch (Exception e) {
+    } catch (NotFoundException e) {
+      System.out.println("No  encontrada lista");
       e.printStackTrace();
     }
 
