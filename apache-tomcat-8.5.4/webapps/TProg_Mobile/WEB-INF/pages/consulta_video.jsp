@@ -31,6 +31,7 @@
 <div class="container">
 <jsp:include page="/WEB-INF/extras/header.jsp" />
 		 <% DtVideo vid = (DtVideo) request.getAttribute("DT_VIDEO"); %>
+		 <% String share = (String) request.getAttribute("ShareURL"); %>
 			<div class="vid">
 			<iframe width="560" height="315"
 				src="https://www.youtube.com/embed/<%= vid.getYoutubeId() %>" allowfullscreen="">
@@ -52,6 +53,7 @@
 						Long segundos = vid.getDuracionSegundos();
 						String duracionString = String.format("%d:%02d:%02d", segundos / 3600, (segundos % 3600) / 60, segundos % 60); 
 						%>
+						<p class="product-description"><strong>Compartir video:</strong> <%= share %></p>
 						<p class="product-description"><strong>Duracion:</strong> <%= duracionString %></p>
 						<p class="product-description"><strong>Categoria:</strong> <%= vid.getCategoria() %></p>
 						<p class="product-description"><strong>URL:</strong> <%= vid.getUrlVideo() %></p>
