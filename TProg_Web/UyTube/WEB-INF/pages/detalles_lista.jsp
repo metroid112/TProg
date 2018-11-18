@@ -22,7 +22,11 @@
 				<div class="highlights">
 					<% List<DtVideo> listaVideos = (List<DtVideo>) lista.getDtVideos();
 					if (lista.getNombre().equals("Historial") && lista.getTipo().equals("Defecto")) {
-						
+					    PublicadorService service = new PublicadorService();
+					    Publicador port = service.getPublicadorPort();
+					    for (DtVideo video : listaVideos) {
+					    	Historial historico = (Historial) port.historialVideo(video.getIdVideo(), owner.getNick()).getContenido();
+					    }
 					}
 					for (DtVideo video : listaVideos) {
 						if (video.isVisible()|| (owner != null && video.getUsuario().equals(owner))) { %>

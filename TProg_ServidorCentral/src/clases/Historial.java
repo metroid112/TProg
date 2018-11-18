@@ -2,7 +2,9 @@ package clases;
 
 import java.util.Date;
 
-public class Historial {
+import datatypes.DtUniversal;
+
+public class Historial extends DtUniversal {
   int reproducciones = 0;
   Date fechaUltimaReproduccion;
   
