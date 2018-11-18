@@ -258,13 +258,7 @@ public class Canal {
   }
 
   public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
-    System.out.println(lista);
-    System.out.println(video);
-    System.out.println(ownerVideo.getNick());
     ListaParticular listaObj = listaParticulares.get(lista);
-    if (listaObj == null) {
-      System.out.println("LISTA ES NULL");
-    }
     Video videoObj = listaObj.getVideo(video, ownerVideo);
     if (videoObj != null) {
       listaObj.quitarVideo(videoObj);
@@ -310,5 +304,9 @@ public class Canal {
 
   public void setVisible(boolean visible) {
     this.visible = visible;
+  }
+
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
   }
 }
