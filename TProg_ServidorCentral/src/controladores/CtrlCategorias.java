@@ -7,8 +7,6 @@ import clases.Categoria;
 import clases.ListaParticular;
 import clases.Video;
 import datatypes.DtCategoria;
-import datatypes.DtLista;
-import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import interfaces.ICategorias;
 import manejadores.ManejadorCategorias;

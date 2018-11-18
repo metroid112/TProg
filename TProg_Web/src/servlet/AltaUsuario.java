@@ -58,14 +58,6 @@ public class AltaUsuario extends HttpServlet {
           request.setAttribute("ERROR_PASS", true);
           error = true;
         }
-        if (false) { // TODO ajax nick
-          request.setAttribute("ERROR_NICK", true);
-          error = true;
-        }
-        if (false) { // TODO ajax correo
-          request.setAttribute("ERROR_MAIL", true);
-          error = true;
-        }
         if (error) {
           volver(request, response);
         } else {

@@ -15,7 +15,6 @@ import datatypes.DtLista;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
-import interfaces.Fabrica;
 import interfaces.IListas;
 import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorListasParticulares;

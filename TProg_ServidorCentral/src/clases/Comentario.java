@@ -5,7 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import datatypes.DtComentario;
-import datatypes.DtVideo;
 
 public class Comentario {
 

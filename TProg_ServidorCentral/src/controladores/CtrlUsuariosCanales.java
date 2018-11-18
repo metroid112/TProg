@@ -7,7 +7,6 @@ import java.util.Map;
 
 import clases.Calificacion;
 import clases.Canal;
-import clases.Categoria;
 import clases.Comentario;
 import clases.Imagen;
 import clases.ListaDefecto;
@@ -18,7 +17,6 @@ import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.NotFoundException;
-import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 import manejadores.ManejadorCategorias;
 import manejadores.ManejadorUsuarios;
