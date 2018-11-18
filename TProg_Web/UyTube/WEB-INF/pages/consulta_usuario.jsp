@@ -43,7 +43,7 @@
   			<h2><%= usuario.getNick() %></h2>
   			<div class="head-item" align="right">
   				<div class="thumbnail2">
-  					<img alt="Imagen de <%= usuario.getNick() %>" src="/Img?id=<%= usuario.getIdImagen() %>">
+  					<img alt="Imagen de <%= usuario.getNick() %>" src="Img?id=<%= usuario.getIdImagen() %>">
   				</div>
   			</div>
   			<br>
