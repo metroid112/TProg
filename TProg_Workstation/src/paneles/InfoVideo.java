@@ -3,6 +3,7 @@ package paneles;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -35,9 +36,7 @@ public class InfoVideo extends JPanel {
   private JScrollPane scrollPane2;
   private JList<String> listaValoraciones;
 
-  /**
-   * Create the panel.
-   */
+
   public InfoVideo(IVideos contVideo) {
 
     JLabel lblNombre = new JLabel("Nombre:");
@@ -181,12 +180,12 @@ public class InfoVideo extends JPanel {
 
   }
 
-  public DefaultMutableTreeNode loadComentarios(LinkedHashMap<Integer, DtComentario> coments,
+  public DefaultMutableTreeNode loadComentarios(List<DtComentario> coments,
       String nombreVideo) {
     DefaultMutableTreeNode nodo;
     DefaultMutableTreeNode raiz;
     raiz = new DefaultMutableTreeNode(nombreVideo);
-    for (DtComentario com : coments.values()) {
+    for (DtComentario com : coments) {
       nodo = getNode(com);
       raiz.add(nodo);
     }

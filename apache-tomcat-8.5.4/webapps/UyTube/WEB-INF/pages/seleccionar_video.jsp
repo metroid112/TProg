@@ -1,4 +1,4 @@
-<%@ page import = "interfaces.*, utils.*, datatypes.*" %>
+<%@ page import = "interfaces.*, utils.*, servicios.*" %>
 <%@ page import = "java.util.List" %>
 <!doctype html>
 <html lang="en">
@@ -15,19 +15,20 @@
 			Seleccione el video que quiere quitar
 			<br>
 			<div class="highlights">
-					<% List<DtVideo> listaVideos = (List<DtVideo>) request.getAttribute("VIDEOSLISTA");
-					for (DtVideo video : listaVideos) { %>
-					<div class="detalleClickeableVideoABorrar"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">	
-						<form id="Form<%=video.idVideo%>" class="detClickeableVideo" action="QuitarVideoDeLista" method="POST">
+					<% List<DtUniversal> listaVideos = (List<DtUniversal>) request.getAttribute("VIDEOSLISTA");
+					for (DtUniversal videoUniversal : listaVideos) { 
+					DtVideo video = (DtVideo) videoUniversal;%>
+					<div class="detalleClickeableVideoABorrar"onclick="document.getElementById('Form<%=video.getIdVideo()%>').submit();">	
+						<form id="Form<%=video.getIdVideo()%>" class="detClickeableVideo" action="QuitarVideoDeLista" method="POST">
 						<input type="hidden" name="listapublica" value="<%=request.getAttribute("LISTAPUBLICA")%>">
 						<input type="hidden" name="lista" value="<%=request.getAttribute("LISTA")%>">
-						<input type="hidden" name="video" value="<%=video.idVideo%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.urlThumbnail%>">
+						<input type="hidden" name="video" value="<%=video.getIdVideo()%>">
+						<img class="icon" width="30%" alt="DetalleVideo" src="<%=video.getUrlThumbnail()%>">
 						<br>
 						<header>
-						<%= video.nombre %>
+						<%= video.getNombre() %>
 						<br>
-						User: <%= video.usuario %>
+						User: <%= video.getUsuario() %>
 					</header>
 					</form>	
 					</div>

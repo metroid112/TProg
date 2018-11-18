@@ -3,6 +3,7 @@ package internalframes;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -37,12 +38,15 @@ public class ConsultaLista extends JInternalFrame {
 
   private IUsuariosCanales ctrUsu;
   private IListas ctrLis;
+  private IVideos ctrVid;
   private ButtonGroup grupoLista = new ButtonGroup();
   private DefaultComboBoxModel<String> modelUsuario = new DefaultComboBoxModel<String>();
   private JComboBox<String> comboBoxUsuario;
   private JLabel lVisible;
   private InfoVideo infoVid;
   private JList<String> listaCategorias;
+  private List<DtVideo> videos = new LinkedList<DtVideo>();
+  private List<DtLista> listas = new LinkedList<DtLista>();
 
   private DefaultListModel<String> listListas = new DefaultListModel<>();
 
@@ -209,7 +213,7 @@ public class ConsultaLista extends JInternalFrame {
           lblVideos.setEnabled(true);
           lblVisibilidad.setEnabled(true);
           lblCategorias.setEnabled(true);
-          cargaDatosLista();
+          cargaDatosLista(rdbtnListasParticulares.isSelected());
         } else {
           listaCategorias.setModel(new DefaultListModel<String>());
           listaVideos.setModel(new DefaultListModel<String>());
@@ -235,6 +239,7 @@ public class ConsultaLista extends JInternalFrame {
         modelUsuario.removeAllElements();
         listListas.removeAllElements();
         list.setEnabled(false);
+        listas.clear();
         rdbtnListasPorDefecto.setSelected(true);
         rdbtnListasParticulares.setSelected(false);
         rdbtnListasPorDefecto.setEnabled(false);
@@ -246,6 +251,7 @@ public class ConsultaLista extends JInternalFrame {
     rdbtnListasPorDefecto.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent arg0) {
+
         cargarDefectoListas();
       }
     });
@@ -253,6 +259,7 @@ public class ConsultaLista extends JInternalFrame {
     rdbtnListasParticulares.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+
         cargarParticularListas();
       }
     });
@@ -290,6 +297,8 @@ public class ConsultaLista extends JInternalFrame {
 
     Fabrica.getFabrica();
     ctrUsu = Fabrica.getIUsuariosCanales();
+    videos.clear();
+    listas.clear();
     List<String> usuarios = ctrUsu.listarNombresUsuarios();
     modelUsuario.addElement("");
     for (String usuario : usuarios) {
@@ -302,39 +311,32 @@ public class ConsultaLista extends JInternalFrame {
   public void cargarDefectoListas() {
 
     listListas.removeAllElements();
-
+    Fabrica.getFabrica();
+    ctrLis = Fabrica.getIListas();
+    listas.clear();
     if (modelUsuario.getSelectedItem() != null) {
 
-      String s = (String) modelUsuario.getSelectedItem();
-      List<String> listas = ctrLis.listarListasDefectoUsuario(s);
-
-
-      for (String lista : listas) {
-        listListas.addElement(lista);
+      listas = ctrLis.getDtListasDefectoUsuario(comboBoxUsuario.getSelectedItem().toString());
+      for(DtLista lista : listas){
+        listListas.addElement(lista.getNombre());
       }
     }
 
-    // ctrLis = null;
   }
 
   public void cargarParticularListas() {
     listListas.removeAllElements();
     Fabrica.getFabrica();
     ctrLis = Fabrica.getIListas();
-
+    listas.clear();
     if (modelUsuario.getSelectedItem() != null) {
 
-      String s = modelUsuario.getSelectedItem().toString();
-
-      List<String> listas = ctrLis.listarListasParticularUsuario(s);
-
-
-      for (String lista : listas) {
-        listListas.addElement(lista);
+      listas = ctrLis.getDtListasParticularesUsuario(comboBoxUsuario.getSelectedItem().toString());
+      for(DtLista lista : listas){
+        listListas.addElement(lista.getNombre());
       }
     }
 
-    // ctrLis = null;
   }
 
   boolean checkUsuario() {
@@ -347,17 +349,30 @@ public class ConsultaLista extends JInternalFrame {
     return true;
   }
 
-  private void cargaDatosLista() {
+  private void cargaDatosLista(boolean listaParticular) {
+    
+    ctrVid = Fabrica.getIVideos();
     String lista = list.getSelectedValue();
     String usuario = (String) comboBoxUsuario.getSelectedItem();
+    videos.clear();
+    
+    if(usuario != null)
+    videos = ctrVid.getDtVideosPropietario(usuario);
+    
     try {
-      DtLista dtLista = ctrLis.getDt(lista, usuario);
+      DtLista dtLista;
+      if(listaParticular){
+      dtLista = ctrLis.getDt(obtenerListaId(lista));
+      }
+      else dtLista = ctrLis.getDtDefecto(usuario,lista);
+        
       if (dtLista.isVisible()) {
         lVisible.setText("Publico");
       } else {
         lVisible.setText("Privado");
       }
       DefaultListModel<String> modeloVideos = new DefaultListModel<String>();
+      
       for (String vid : dtLista.getVideos()) {
         modeloVideos.addElement(vid);
       }
@@ -379,20 +394,31 @@ public class ConsultaLista extends JInternalFrame {
   }
 
   private void cargarVideo() {
-    Fabrica.getFabrica();
-    IVideos ctrVid = Fabrica.getIVideos();
-    String duenoVid = null;
-    try {
+    try{
+      Fabrica.getFabrica();
+      IVideos ctrVid = Fabrica.getIVideos();
 
-      duenoVid = listaVideos.getSelectedValue().substring(0,
-          listaVideos.getSelectedValue().indexOf('-'));
-    } catch (Exception e) {
-      JOptionPane.showMessageDialog(this, "error cargarVid" + e.getMessage(), "Error",
-          JOptionPane.ERROR_MESSAGE);
+      DtVideo dtVid = ctrVid.getDtVideo(obtenerVideoId(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1)));
+      infoVid.cargarDatos(dtVid);
     }
-    DtVideo dtVid = ctrVid.getDtVideo(listaVideos.getSelectedValue().substring(listaVideos.getSelectedValue().indexOf('-') + 1),
-        duenoVid);
-    infoVid.cargarDatos(dtVid);
-
+    catch(Exception e){}
+  }
+  
+  public int obtenerListaId(String nombre){
+    for(DtLista lista : listas){
+      if(lista.getNombre().equals(nombre)){
+        return lista.getId();
+      }
+    }
+    return -1;
+  }
+  
+  public int obtenerVideoId(String nombre){
+    for(DtVideo video : videos){
+      if(video.getNombre().equals(nombre)){
+        return video.getIdVideo();
+      }
+    }
+    return -1;
   }
 }

@@ -256,21 +256,19 @@ public class AltaVideo extends JInternalFrame {
     duracion = duracion.plusSeconds((int) spinnerSegundos.getValue());
     Date fecha = datePicker.getDate();
     if (datosCorrectos(nick, nombre, url, duracion, fecha)) {
-      try {
-        contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha, false);
-        JOptionPane.showMessageDialog(this, "Video creado con exito!");
-        setVisible(false);
-        clearDatos();
-      } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video",
-            JOptionPane.ERROR_MESSAGE); // Muesta
-        // el
-        // error
-        // al
-        // dar
-        // de
-        // alta
+      if(url.contains("https://youtu.be/")){
+        try {
+          contVideos.altaVideo(nick, nombre, descripcion, duracion, url, categoria, fecha, false);
+          JOptionPane.showMessageDialog(this, "Video creado con exito!");
+          setVisible(false);
+          clearDatos();
+        } catch (Exception e) {
+          JOptionPane.showMessageDialog(this, e.getMessage(), "Alta video",
+              JOptionPane.ERROR_MESSAGE);
+        }
       }
+      else JOptionPane.showMessageDialog(this, "Formato invalido para la url", "Error!", JOptionPane.ERROR_MESSAGE);
+      
     } else {
       JOptionPane.showMessageDialog(this, "No deben haber campos vacios.", "Error!",
           JOptionPane.ERROR_MESSAGE);

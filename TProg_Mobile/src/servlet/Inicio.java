@@ -22,11 +22,17 @@ public class Inicio extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    if (request.getSession().getAttribute("LOGIN")==null || !request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))
+    {
     iniciar(request, response);
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
     port.cargarDatos();
     request.getRequestDispatcher("index.jsp").forward(request, response);
+  } else {
+    request.getRequestDispatcher("WEB-INF/pages/inicio.jsp").forward(request,
+        response);
+  }
   }
 
   private void iniciar(HttpServletRequest request, HttpServletResponse response) {

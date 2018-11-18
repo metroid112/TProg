@@ -262,13 +262,14 @@ public class Canal {
   public void quitarVideoListaParticular(String video, String lista, Usuario ownerVideo) {
     ListaParticular listaObj = listaParticulares.get(lista);
     Video videoObj = listaObj.getVideo(video, ownerVideo);
-    listaObj.quitarVideo(videoObj);
-    Categoria cat = videoObj.getCategoria();
+    if (videoObj != null) {
+      listaObj.quitarVideo(videoObj);
+      Categoria cat = videoObj.getCategoria();
 
-    if (listaObj.esUnicaCategoria(cat)) {
-      listaObj.quitarCategoria(cat);
+      if (listaObj.esUnicaCategoria(cat)) {
+        listaObj.quitarCategoria(cat);
+      } 
     }
-
   }
 
   public void agregarVideo(Video video) {
@@ -305,4 +306,23 @@ public class Canal {
     this.usuario.getReproducciones().put(idVideo, new Historial(consultas, new Date()));
   }
 
+  public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;    
+  }
+  
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public void setVisible(boolean visible) {
+    this.visible = visible;
+  }
+
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
+  }
 }

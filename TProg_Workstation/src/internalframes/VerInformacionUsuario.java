@@ -19,6 +19,8 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import datatypes.DtLista;
+import datatypes.DtVideo;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IVideos;
@@ -38,15 +40,13 @@ public class VerInformacionUsuario extends JInternalFrame {
     this.padre = padre;
   }
 
-  // imports para el video
+  private DtLista dtLista = null;
   private InfoVideo PanelConsultaVideo;
   private JLabel lblNewLabel_1 = new JLabel("vNombreLista");
   private JLabel lblVtipolista = new JLabel("vTipoLista");
   private JLabel lblNewLabel_2 = new JLabel("vPrivacidad");
   private JList<String> videosLista;
   private IVideos contVideos = Fabrica.getIVideos();
-
-  // fin
 
   public VerInformacionUsuario() {
     setBounds(0, 10, 787, 480);
@@ -63,8 +63,7 @@ public class VerInformacionUsuario extends JInternalFrame {
         getContentPane().remove(paneluser);
         panel_2.remove(paneluser);
         paneluser = null;
-        // padre.SetVisible(true);
-        // getContentPane().removeAll();
+
       }
     });
 
@@ -75,8 +74,8 @@ public class VerInformacionUsuario extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         if (paneluser.isVideoSeleccionado()) {
-          String vidSel = paneluser.getVideoSeleccionado();
-          verInfo(vidSel, UsrSel);
+          int vidSel = paneluser.getVideoSeleccionado();
+          verInfo(vidSel);
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un video");
         }
@@ -87,16 +86,20 @@ public class VerInformacionUsuario extends JInternalFrame {
     verInfoListas.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent arg0) {
-        // cargar informacion de lista,
+
         if (paneluser.isListaSelected()) {
-          String lisSel = paneluser.getListaSeleccionada();
-          if (lisSel != null) {
-            cargaDatosLista(lisSel, UsrSel);
+          
+          int idLista = paneluser.getListaSeleccionadaId();
+          String nombreList = paneluser.getListaSeleccionadaNombre();
+          String nombreUsuario = paneluser.getUsuarioSeleccionadoNombre();
+          
+          if (idLista != -1) {
+            cargaDatosLista(idLista,nombreList,nombreUsuario);
           } else {
             JOptionPane.showInputDialog(this);
           }
-          cambioPanel();
-          cambioPanel();
+          cambioPanel(); //panel de video
+          cambioPanel(); //panel de listas
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione una lista");
         }
@@ -168,7 +171,16 @@ public class VerInformacionUsuario extends JInternalFrame {
     JLabel lblNewLabel = new JLabel("Videos");
 
     JButton VerInfoVideoDesdeCOnsultaLista = new JButton("Ver info video");
-    // TODO darle proposito
+    VerInfoVideoDesdeCOnsultaLista.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent arg0) {
+        if (videosLista.getSelectedValue() != null) {
+          muchasCosas();
+        } else {
+          JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un video");
+        }
+      }
+    });
 
     JLabel lblDetallesLista = new JLabel("Detalles lista:");
     lblDetallesLista.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -213,61 +225,64 @@ public class VerInformacionUsuario extends JInternalFrame {
     videosLista = new JList<String>();
     VideosDeLista.setViewportView(videosLista);
     panelInfoListas.setLayout(glpanelInfoListas);
-    // cambioPanel();
-  }
 
+  }
+  private void muchasCosas(){
+    int idVideo = -1;
+    String nombre = videosLista.getSelectedValue().substring(videosLista.getSelectedValue().indexOf('-') + 1);
+    
+    for(DtVideo video : dtLista.getDtVideos()){
+         if(video.getNombre().equals(nombre))
+           idVideo = video.getIdVideo();
+    }
+    verInfo(idVideo);
+    cambioPanel();
+
+  }
   public void cargarInformacionUsuario(String usuario) {
     UsrSel = usuario;
     paneluser = new DetallesUsuario(usuario);
     panel_2.add(paneluser, BorderLayout.CENTER);
   }
 
-  public void verInfo(String vidSel, String userSel) {
-    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel, userSel));
+  public void verInfo(int vidSel) {
+    try{
+    PanelConsultaVideo.cargarDatos(contVideos.getDtVideo(vidSel));
     PanelInfoVideo.add(PanelConsultaVideo, BorderLayout.CENTER);
-    cambioPanel(); // Voy al panel de informacion
+    cambioPanel();
+    }
+    catch(NotFoundException e){}
   }
 
   public void cambioPanel() {
-    CardLayout layout = (CardLayout) getContentPane().getLayout(); // Consigo el layout
-    layout.next(getContentPane()); // Cambia al siguiente panel
+    CardLayout layout = (CardLayout) getContentPane().getLayout();
+    layout.next(getContentPane());
   }
 
-  /*
-   * JLabel lblNewLabel_1 = new JLabel("vNombreLista");
-   * 
-   * JLabel lblVtipolista = new JLabel("vTipoLista");
-   * 
-   * JLabel lblNewLabel_2 = new JLabel("vPrivacidad");
-   */
+  private void cargaDatosLista(int lista, String nombreLista, String nombreUsuario) {
 
-  private void cargaDatosLista(String lista, String usuario) {
-
-    DtLista dtLista;
     try {
-      // JOptionPane.showMessageDialog(this, lista + " " + usuario);
-      dtLista = ctrlLis.getDt(lista, usuario);
+      if(paneluser.isSelListParticular())
+      dtLista = ctrlLis.getDt(lista);
+      else dtLista = ctrlLis.getDtDefecto(nombreUsuario,nombreLista);
+        
       if (dtLista.isVisible()) {
         lblNewLabel_2.setText("Publico");
       } else {
         lblNewLabel_2.setText("Privado");
       }
       DefaultListModel<String> modeloVideos = new DefaultListModel<String>();
-      for (String vid : dtLista.getVideos()) {
-        modeloVideos.addElement(vid);
+
+      for (DtVideo vid : dtLista.getDtVideos()) {
+        modeloVideos.addElement(vid.getUsuario() + "-" + vid.getNombre());
+        
       }
       videosLista.setModel(modeloVideos);
       lblNewLabel_1.setText(dtLista.getNombre());
       lblVtipolista.setText(dtLista.getTipo());
 
-      // DefaultListModel<String> modeloCategorias = new DefaultListModel<String>();
-      // for (String cat : dtLista.getCategorias()) {
-      // modeloCategorias.addElement(cat);
-      // }
-      // listaCategorias.setModel(modeloCategorias);
-
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
+    } catch (NotFoundException e) {
+      System.out.println("No  encontrada lista");
       e.printStackTrace();
     }
 

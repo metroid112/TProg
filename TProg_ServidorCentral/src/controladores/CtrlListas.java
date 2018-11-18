@@ -15,7 +15,6 @@ import datatypes.DtLista;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;
 import excepciones.NotFoundException;
-import interfaces.Fabrica;
 import interfaces.IListas;
 import manejadores.ManejadorListasDefecto;
 import manejadores.ManejadorListasParticulares;
@@ -57,13 +56,6 @@ public class CtrlListas implements IListas {
     usuarioObjetivo.getCanal().altaListaParticular(nombre, visibilidad);
   }
 
-  /*
-   * @Override public String getDue�oVideo(String due�oLista, String nombreLista, String nombreVid)
-   * throws Exception {
-   * 
-   * return manejadorUsuarios.get(due�oLista).getCanal().getLista(nombreLista).getVideo(
-   * nombreVid).getCanal() .getUsuario().getNick(); }
-   */
 
   @Override
   public void guardarCambios(String nomLis, String usuario, boolean visible) {

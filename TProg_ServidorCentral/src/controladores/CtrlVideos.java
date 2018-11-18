@@ -1,7 +1,6 @@
 package controladores;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -12,7 +11,6 @@ import java.util.Map.Entry;
 import clases.Categoria;
 import clases.Usuario;
 import clases.Video;
-import datatypes.DtUniversal;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
 import excepciones.InvalidDataException;

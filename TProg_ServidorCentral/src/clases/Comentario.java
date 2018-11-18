@@ -11,7 +11,7 @@ public class Comentario {
   private static int idCounter = 0;
   private Date fecha;
   private int idComentario; // id de comentario para uso interno
-  public Comentario padre;
+  private Comentario padre;
   private Map<Integer, Comentario> respuestas = new LinkedHashMap<Integer, Comentario>();
   private String texto;
   private Usuario usuario;
@@ -66,6 +66,17 @@ public class Comentario {
       return null;
     }
   }
+  
+  public void deleteCom() {
+    if (this.padre != null) {
+      this.padre.getRespuestas().remove(this.idComentario);
+    }
+    //this.respuestas.clear();
+  }
+
+  private Comentario getPadre() {
+    return this.padre;
+  }
 
   public DtComentario getDt() {
     return new DtComentario(this);
@@ -99,10 +110,18 @@ public class Comentario {
     return idCounter;
   }
 
+  public void setRespuestas(Map<Integer, Comentario> respuestas) {
+    this.respuestas = respuestas;
+  }
+
   @Override
   public boolean equals(Object object) {
     Comentario comment = (Comentario) object;
     return (this.texto.equals(comment.texto) && this.usuario.equals(comment.usuario)
         && this.video.equals(comment.video));
+  }
+
+  public Video getVideo() {
+    return this.video;
   }
 }

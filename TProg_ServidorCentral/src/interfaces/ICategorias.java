@@ -1,6 +1,5 @@
 package interfaces;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import datatypes.DtCategoria;

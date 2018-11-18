@@ -1,12 +1,10 @@
 package servicios;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.time.Duration;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
@@ -19,23 +17,18 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlValue;
-import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.Endpoint;
 
 import org.apache.tika.io.IOUtils;
 
-import com.sun.istack.internal.Nullable;
-
-import datatypes.DtBusqueda;
 import datatypes.DtCategoria;
 import datatypes.DtPaquete;
 import datatypes.DtUniversal;
-import datatypes.DtVideo;
-import excepciones.*;
+import datatypes.DtUsuario;
+import excepciones.DuplicateClassException;
+import excepciones.InvalidDataException;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
 
@@ -366,6 +359,11 @@ public class Publicador {
   }
   
   @WebMethod
+  public void borrarUsuario(String nickUsuario) throws NotFoundException {
+    Fabrica.getIUsuariosCanales().bajaUsuario(nickUsuario);
+  }
+  
+  @WebMethod
   public void quitarVideoLista(String usuario, String nombreVideo, String nombreOwnerVideo, String lista, Boolean defecto) {
     Fabrica.getIListas().quitarVideoLista(usuario, nombreVideo, nombreOwnerVideo, lista, defecto);
   }
@@ -451,7 +449,12 @@ public class Publicador {
     return Fabrica.getIUsuariosCanales().isSeguidor(seguidor, seguido);
   }
   
-
+  @WebMethod
+  public void modificarUsuario(String nickUsuarioOriginal, DtUniversal usuarioModificado, @XmlElement(required = false, name = "imagen")
+  @WebParam(name = "imagen", header = true) byte[] img) throws DuplicateClassException, NotFoundException {
+    Fabrica.getIUsuariosCanales().modificarUsuario(nickUsuarioOriginal, (DtUsuario) usuarioModificado, img);
+  }
+  
   @WebMethod
   public boolean existeNick(String nick) {
     return Fabrica.getIUsuariosCanales().existeUsuario(nick);
