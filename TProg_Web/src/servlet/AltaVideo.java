@@ -20,8 +20,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import servicios.DtUsuario;
 import servicios.Publicador;
 import servicios.PublicadorService;
-import excepciones.DuplicateClassException;
-import excepciones.NotFoundException;
 
 @WebServlet("/AltaVideo")
 public class AltaVideo extends HttpServlet {

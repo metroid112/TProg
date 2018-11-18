@@ -135,4 +135,24 @@ public class Video {
   public Date getFecha() {
     return this.fecha;
   }
+
+  public void setComentarios(Map<Integer, Comentario> comentarios) {
+    this.comentarios = comentarios;
+  }
+
+  public void setCanal(Canal canal) {
+    this.canal = canal;
+  }
+
+  public void setCategoria(Categoria categoria) {
+    this.categoria = categoria;
+  }
+
+  public List<Calificacion> getCalificaciones() {
+    return this.calificaciones;
+  }
+
+  public Map<Integer, Comentario> getComentarios() {
+    return this.comentarios;
+  }
 }

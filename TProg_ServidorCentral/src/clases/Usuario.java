@@ -1,6 +1,5 @@
 package clases;
 
-import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -70,7 +69,7 @@ public class Usuario {
         : this.getCanal().getCategoria().getNombre();
     Imagen img = this.img;
     return new DtUsuario(this.nombre, this.apellido, this.canal.getNombre(), this.correo,
-        this.canal.getDescripcion(), this.fechaNacimiento, this.canal.isVisible(),
+        this.canal.getDescripcion(), this.fechaNacimiento, !this.canal.isVisible(),
         this.nick, img == null ? "0.JPG" : Integer.toString(img.getId()) + img.getExtension(), categoria);
   }
 
@@ -176,4 +175,39 @@ public class Usuario {
     return this.apellido;
   }
 
+  public List<Comentario> getComentarios() {
+    return this.comentarios;
+  }
+
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
+  }
+
+  public void setCalificaciones(List<Calificacion> calificaciones) {
+    this.calificaciones = calificaciones;
+  }
+
+  public void setCorreo(String correo) {
+    this.correo = correo;
+  }
+
+  public void setFechaNacimiento(Date fechaNacimiento) {
+    this.fechaNacimiento = fechaNacimiento;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public void setNick(String nick) {
+    this.nick = nick;
+  }
+
+  public void setImg(Imagen imagen) {
+    this.img = imagen;
+  }  
 }

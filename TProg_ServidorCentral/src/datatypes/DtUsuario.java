@@ -1,6 +1,5 @@
 package datatypes;
 
-import java.awt.image.BufferedImage;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -20,7 +19,12 @@ public class DtUsuario extends DtUniversal{
   public Date fechaNacimiento;
   public Date ultimaActividad;
   public String categoria;
+  public String password;
 
+  public DtUsuario() {
+    
+  }
+  
   public DtUsuario(String nombre, String apellido, String canal, String correo,
       String descripcionCanal, Date fechaNacimiento, boolean privado,
       String nick, String idImagen, String categoria) {

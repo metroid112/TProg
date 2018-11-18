@@ -15,8 +15,6 @@ public abstract class Lista {
   private int idLista;
   private static int idCounter = 0;
 
-  // Pato: Constructor con todos los atributos, posiblemente se precise cortar
-  // algunos
   public Lista(String nombre, Canal canal) {
     this.nombre = nombre;
     this.canal = canal;
@@ -92,5 +90,13 @@ public abstract class Lista {
 
   public void quitarVideo(Video video) {
     videos.remove(video);
+  }
+  
+  public void setCanal(Canal canal) {
+    this.canal = canal;
+  }
+  
+  public void setVideos(List<Video> videos) {
+    this.videos = videos;
   }
 }

@@ -31,6 +31,10 @@ public class ListaParticular extends Lista {
     return ultimaActividad;
   }
 
+  public void setCategorias(Map<String, Categoria> categorias) {
+    this.categorias = categorias;
+  }
+
   public boolean esUnicaCategoria(Categoria categoria) {
     if (categoria != null) {
       for (Video v : super.getVideos()) {
@@ -65,7 +69,7 @@ public class ListaParticular extends Lista {
       categorias.add(cat.getNombre());
     }
     return new DtLista(this.getNombre(), "Particular", this.visible, videos, this.getDtVideos(),
-        categorias, this.getUltimaActividad(), this.getId());
+        categorias, this.getUltimaActividad(), this.getId(), this.getCanal().getUsuario().getNick());
   }
 
   public void insertarCategoria(Categoria categoria) {

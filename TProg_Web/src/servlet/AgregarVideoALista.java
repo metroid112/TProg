@@ -9,10 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.lang.Exception;
-
-import interfaces.Fabrica;
-import interfaces.IListas;
 import servicios.DtUniversal;
 import servicios.DtUsuario;
 import servicios.DtVideo;

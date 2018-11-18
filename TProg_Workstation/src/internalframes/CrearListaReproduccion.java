@@ -177,7 +177,7 @@ public class CrearListaReproduccion extends JInternalFrame {
             }
             if (rdbtnParticular.isSelected()) {
               boolean publica = rdbtnPublica.isSelected();
-              if (isCanalPublico(modelUsuario.getSelectedItem().toString())) {
+              if (!isCanalPublico(modelUsuario.getSelectedItem().toString())) {
                 publica = false;
               }
               ctrLista.altaListaParticular(textFieldNombre.getText(),
@@ -243,7 +243,7 @@ public class CrearListaReproduccion extends JInternalFrame {
     Fabrica.getFabrica();
     ctrUsu = Fabrica.getIUsuariosCanales();
 
-    if (ctrUsu.isCanalPublico(usuario)) {
+    if (!ctrUsu.isCanalPublico(usuario)) {
       JOptionPane.showMessageDialog(null, "La lista se creara como privada", "El canal es privado",
           JOptionPane.WARNING_MESSAGE);
       return false;

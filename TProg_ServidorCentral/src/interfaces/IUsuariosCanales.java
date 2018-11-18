@@ -6,6 +6,7 @@ import java.util.List;
 import datatypes.DtUsuario;
 import datatypes.DtVideo;
 import excepciones.DuplicateClassException;
+import excepciones.NotFoundException;
 
 public interface IUsuariosCanales {
 
@@ -57,8 +58,10 @@ public interface IUsuariosCanales {
   public boolean isSeguidor(String seguidor, String seguido);
 
   public void dejarSeguir(String seguidor, String seguido);
+  
+  public void bajaUsuario(String nickUsuario) throws NotFoundException;
 
-  public void modificarUsuario(DtUsuario usuarioModificado, DtUsuario usuarioOriginal) throws DuplicateClassException;
+  public void modificarUsuario(String nickUsuarioOriginal, DtUsuario usuarioModificado, byte[] img) throws DuplicateClassException, NotFoundException;
 
   public boolean existeVideo(String nombre, String nick);
 }

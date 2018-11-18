@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,16 +38,40 @@ public class LoginServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/pages/inicio_sesion.jsp").forward(request, response);
       } else {
         String nick = (String) request.getParameter("nickname");
-        response.getWriter().println(nick);
         String pass = (String) request.getParameter("pass");
-        response.getWriter().println(pass);
+        
+        //logica para remember me.
+        String value = request.getParameter("recordarme");
+        boolean rememberMe = false;
+        if(value != null && value.equalsIgnoreCase("on")){
+            rememberMe = true;
+        }
+        if (rememberMe) {           //If your checkbox value is true
+        Cookie[] cookies=request.getCookies();
+        if (cookies != null) {
+           for (Cookie cookie : cookies) {
+               if (cookie.getName().equals("cookieLoginUser") || cookie.getName().equals("cookieLoginPassword")) {
+                 cookie.setMaxAge(0);
+               }
+           }
+        }
+        Cookie cookieUsername = new Cookie("cookieLoginUser", nick);
+        Cookie cookiePassword = new Cookie("cookieLoginPassword",
+                            pass);
+        // Make the cookie one day last
+        cookieUsername.setMaxAge(60 * 60 * 24);
+        cookiePassword.setMaxAge(60 * 60 * 24);
+        response.addCookie(cookieUsername);
+        response.addCookie(cookiePassword);
+        }
+        //fin logica remember me.
         PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
         if (port.checkLogin(nick, pass)) {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_CORRECTO);
           servicios.DtUsuario dtUsuario = (DtUsuario) port.getDtUsuario(nick).getContenido();
           request.getSession().setAttribute("USUARIO_LOGEADO", dtUsuario);
-          request.getRequestDispatcher("WEB-INF/pages/listar_videos.jsp").forward(request,
+          request.getRequestDispatcher("WEB-INF/pages/inicio.jsp").forward(request,
               response);
         } else {
           request.getSession().setAttribute("LOGIN", EstadoSesion.LOGIN_INCORRECTO);
@@ -56,7 +81,7 @@ public class LoginServlet extends HttpServlet {
       }
     } else {
       if (request.getParameter("CERRAR_SESION") == null) {
-        response.sendRedirect("WEB-INF/pages/listar_videos.jsp");
+        response.sendRedirect("WEB-INF/pages/inicio.jsp");
       } else if (request.getParameter("CERRAR_SESION").equals("CONFIRM")) {
         request.getSession().setAttribute("LOGIN", EstadoSesion.NO_LOGIN);
         request.getSession().setAttribute("USUARIO_LOGEADO", null);
@@ -67,12 +92,22 @@ public class LoginServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request, response);
+    if (request.getSession().getAttribute("LOGIN")==null || !request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))
+    {    processRequest(request, response); }
+    else {
+      request.getRequestDispatcher("WEB-INF/pages/inicio.jsp").forward(request,
+          response);
+    }
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    processRequest(request, response);
+    if (request.getSession().getAttribute("LOGIN")==null || !request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_CORRECTO))
+    {    processRequest(request, response); }
+    else {
+      request.getRequestDispatcher("WEB-INF/pages/inicio.jsp").forward(request,
+          response);
+    }
   }
 
 }

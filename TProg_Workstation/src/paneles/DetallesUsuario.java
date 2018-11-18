@@ -94,7 +94,7 @@ public class DetallesUsuario extends JPanel {
     if (privado) {
       tipoCanal = "Canal privado";
     } else {
-      tipoCanal = "Canal público";
+      tipoCanal = "Canal publico";
     }
     JScrollPane scrollPane = new JScrollPane();
 

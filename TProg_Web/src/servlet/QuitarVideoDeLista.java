@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import servicios.*;
-import excepciones.NotFoundException;
-import interfaces.Fabrica;
-import interfaces.IListas;
+import servicios.DtUniversal;
+import servicios.DtUsuario;
+import servicios.DtVideo;
+import servicios.Publicador;
+import servicios.PublicadorService;
 
 @WebServlet("/QuitarVideoDeLista")
 public class QuitarVideoDeLista extends HttpServlet {

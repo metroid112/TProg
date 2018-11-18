@@ -1,13 +1,10 @@
 package manejadores;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import clases.Categoria;
-import datatypes.DtCategoria;
 import excepciones.DuplicateClassException;
 
 public class ManejadorCategorias {
