@@ -35,6 +35,7 @@ import internalframes.ModificarListaReproduccion;
 import internalframes.ModificarVideo;
 import internalframes.QuitarVideo;
 import internalframes.VerInformacionUsuario;
+import servicios.Publicador;
 
 public class Main {
 
@@ -43,6 +44,9 @@ public class Main {
       @Override
       public void run() {
         try {
+          Publicador publicador = new Publicador();
+          publicador.publicar();
+          
           Main window = new Main();
           window.frame.setVisible(true);
         } catch (Exception e) {
