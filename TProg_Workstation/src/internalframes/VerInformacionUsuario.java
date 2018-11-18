@@ -175,11 +175,7 @@ public class VerInformacionUsuario extends JInternalFrame {
       @Override
       public void actionPerformed(ActionEvent arg0) {
         if (videosLista.getSelectedValue() != null) {
-          for(DtVideo video : dtLista.getDtVideos()){
-            if(video.getNombre().equals(videosLista.getSelectedValue().))
-          }
-            //  int vidSel = videosLista.getVideoSeleccionado();
-           //   verInfo(vidSel);
+          muchasCosas();
         } else {
           JOptionPane.showMessageDialog(getFocusOwner(), "Seleccione un video");
         }
@@ -231,7 +227,18 @@ public class VerInformacionUsuario extends JInternalFrame {
     panelInfoListas.setLayout(glpanelInfoListas);
 
   }
+  private void muchasCosas(){
+    int idVideo = -1;
+    String nombre = videosLista.getSelectedValue().substring(videosLista.getSelectedValue().indexOf('-') + 1);
+    System.out.println(videosLista.getSelectedValue().substring(videosLista.getSelectedValue().indexOf('-') + 1));
+    for(DtVideo video : dtLista.getDtVideos()){
+         if(video.getNombre().equals(nombre))
+           idVideo = video.getIdVideo();
+    }
+    verInfo(idVideo);
+    cambioPanel();
 
+  }
   public void cargarInformacionUsuario(String usuario) {
     UsrSel = usuario;
     paneluser = new DetallesUsuario(usuario);
@@ -244,7 +251,7 @@ public class VerInformacionUsuario extends JInternalFrame {
     PanelInfoVideo.add(PanelConsultaVideo, BorderLayout.CENTER);
     cambioPanel();
     }
-    catch(Exception e){}
+    catch(NotFoundException e){}
   }
 
   public void cambioPanel() {
@@ -267,7 +274,7 @@ public class VerInformacionUsuario extends JInternalFrame {
       DefaultListModel<String> modeloVideos = new DefaultListModel<String>();
 
       for (DtVideo vid : dtLista.getDtVideos()) {
-        modeloVideos.addElement(vid.getNombre() + "-" + vid.getUsuario());
+        modeloVideos.addElement(vid.getUsuario() + "-" + vid.getNombre());
         
       }
       videosLista.setModel(modeloVideos);
