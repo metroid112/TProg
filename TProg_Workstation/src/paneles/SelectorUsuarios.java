@@ -67,6 +67,5 @@ public class SelectorUsuarios extends JPanel {
 
   public String getSelectedItem() {
     return list.getSelectedValue();
-    // return model.
   }
 }
