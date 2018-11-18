@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import datatypes.DtLista;
+import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IListas;
 import interfaces.IVideos;
@@ -257,7 +258,8 @@ public class VerInformacionUsuario extends JInternalFrame {
       lblNewLabel_1.setText(dtLista.getNombre());
       lblVtipolista.setText(dtLista.getTipo());
 
-    } catch (Exception e) {
+    } catch (NotFoundException e) {
+      System.out.println("No  encontrada lista");
       e.printStackTrace();
     }
 

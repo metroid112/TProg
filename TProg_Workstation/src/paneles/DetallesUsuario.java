@@ -79,6 +79,7 @@ public class DetallesUsuario extends JPanel {
       tmp = imagenF.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);
     } else {
       try {
+
         Image img = ImageIO.read(new File("media/" + dtUsuario.getIdImagen()));
         tmp = img.getScaledInstance(-1, 100, Image.SCALE_SMOOTH);
         ;
@@ -369,7 +370,18 @@ public class DetallesUsuario extends JPanel {
   }
   
   public boolean isSelListParticular(){
-    DtLista resultado = listas.get(getListaSeleccionadaId());
+    int sel = getListaSeleccionadaId();
+    DtLista resultado = null;
+    
+    for(DtLista lista : listas){
+      if(lista.getId() == sel)
+        resultado = lista;
+    }
+    
+    if(resultado == null){ //para evitar que explote, igual no deberia
+      return false;
+    }
+    
     return resultado.getTipo().equals("Particular");
   }
   

@@ -63,7 +63,7 @@ public class AltaUsuario extends JInternalFrame {
   public AltaUsuario() {
     setNormalBounds(new Rectangle(20, 0, 300, 400));
     setTitle("Alta Usuario");
-    setBounds(0, 0, 455, 533);
+    setBounds(0, 0, 456, 555);
 
     JButton btnNewButton = new JButton("Cancelar");
     btnNewButton.addActionListener(new ActionListener() {
@@ -211,7 +211,7 @@ public class AltaUsuario extends JInternalFrame {
 
         if (abre != null) {
           try {
-            //imagenFile = ImageIO.read(abre);
+
             InputStream imageInput = new FileInputStream(abre);
             byteImagen = IOUtils.toByteArray(imageInput);
           } catch (IOException e) {
@@ -385,17 +385,17 @@ public class AltaUsuario extends JInternalFrame {
   protected void cmdAltaUsuarioActionPerformed(ActionEvent e) {
     ctrlUsu = Fabrica.getIUsuariosCanales();
     if (ctrlUsu.existeUsuario(textField.getText())) {
-      JOptionPane.showMessageDialog(this, "El usuario ya existe.");
+      JOptionPane.showMessageDialog(this, "El usuario ya existe.","Error",JOptionPane.ERROR_MESSAGE);
     } else if (ctrlUsu.existeUsuarioMail(textField_3.getText())) {
-      JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.");
+      JOptionPane.showMessageDialog(this, "El correo electronico ya esta en uso.","Error",JOptionPane.ERROR_MESSAGE);
     } else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")) {
-      JOptionPane.showMessageDialog(this, "Correo electronico invalido");
+      JOptionPane.showMessageDialog(this, "Correo electronico invalido","Error",JOptionPane.ERROR_MESSAGE);
     } else if (textField.getText().equals("") || textField_1.getText().equals("")
         || textField_2.getText().equals("") || textField_5.getText().equals("")) {
       JOptionPane.showMessageDialog(this,
-          "Los campos Nickname, Nombre, Apellido y Contrasena son obligatorios.");
+          "Los campos Nickname, Nombre, Apellido y Contrasena son obligatorios.","Error",JOptionPane.ERROR_MESSAGE);
     } else if (!textField_3.getText().contains("@") || !textField_3.getText().contains(".")) {
-      JOptionPane.showMessageDialog(this, "Correo electronico invalido");
+      JOptionPane.showMessageDialog(this, "Correo electronico invalido","Error",JOptionPane.ERROR_MESSAGE);
     } else {
       try {
 
