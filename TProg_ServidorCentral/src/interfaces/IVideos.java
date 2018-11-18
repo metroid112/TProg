@@ -36,4 +36,6 @@ public interface IVideos {
   public List<DtVideo> getDtVideosPropietario(String nick);
   
   public void consultarVideo(int idVideo, String nickUsuario) throws NotFoundException;
+  
+  public Historial historialVideo(int idVideo, )
 }

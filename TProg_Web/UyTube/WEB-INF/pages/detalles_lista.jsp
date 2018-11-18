@@ -21,6 +21,9 @@
 			<br>
 				<div class="highlights">
 					<% List<DtVideo> listaVideos = (List<DtVideo>) lista.getDtVideos();
+					if (lista.getNombre().equals("Historial") && lista.getTipo().equals("Defecto")) {
+						
+					}
 					for (DtVideo video : listaVideos) {
 						if (video.visible || (owner != null && video.usuario.equals(owner))) { %>
 					<div class="detalleClickeableVideo"onclick="document.getElementById('Form<%=video.idVideo%>').submit();">
