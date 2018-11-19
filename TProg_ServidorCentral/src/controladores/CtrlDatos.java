@@ -249,7 +249,7 @@ public class CtrlDatos implements IDatos {
           MB.nombreCanal, MB.descripcionCanal, "Sin categoria", true, MB.pass);
       ctrlUsuarios.altaUsuario("hectorg", "Héctor", "Guido",
           "hector.gui@elgalpon.org.uy",
-          format.parse("07/01/1954"), getByte("null.JPG"),
+          format.parse("07/01/1954"), null,
           "hectorg",
           "Canal HG",
           "Sin categoria", true, HG.pass);
