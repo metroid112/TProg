@@ -156,7 +156,7 @@ public class AgregarVideo extends JInternalFrame {
         boolean checkUsuario = true;
 
         if (comboBoxUsuario.getSelectedItem() == "") {
-          JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error",
+          JOptionPane.showMessageDialog(null, "No has seleccionado ningÃº n usuario", "Error",
               JOptionPane.ERROR_MESSAGE);
           checkUsuario = false;
         }
