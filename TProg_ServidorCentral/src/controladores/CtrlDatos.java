@@ -698,8 +698,6 @@ public class CtrlDatos implements IDatos {
           formatComentario.parse("30/10/2017 02:17"), "marcelot", "Sweet child'o mine", "kairoh");
       Fabrica.getIUsuariosCanales().comentarVideo("Rock and Rolllll",
           formatComentario.parse("30/10/2017 02:17"), "marcelot", "Sweet child'o mine", "juliob");
-      Fabrica.getIUsuariosCanales().comentarVideo("Anoche exploto!!!",
-          formatComentario.parse("25/08/2018 18:00"), "marcelot", "Dancing in the Dark", "kairoh");
       Fabrica.getIUsuariosCanales().comentarVideo("Anoche explotó!!!", formatComentario.parse("25/08/2018 18:00"), "marcelot", "Dancing in the Dark", "kairoh");
       Fabrica.getIUsuariosCanales().responderComentario("Se viene la edición 2018!!!", formatComentario.parse("11/09/2018 03:45"), "marcelot", "Ingeniería de Muestra 2017", "hectorg",4);
       Fabrica.getIUsuariosCanales().comentarVideo("Mi preferido por lejos!!", formatComentario.parse("15/09/2017 12:29"), "tabarec", V1a.nombre, V1a.owner);
