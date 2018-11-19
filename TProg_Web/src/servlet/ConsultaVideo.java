@@ -36,7 +36,8 @@ public class ConsultaVideo extends HttpServlet {
     String videoId = (String) request.getParameter("VIDEO_ID");
     int idVideo = Integer.parseInt(videoId);
     DtVideo vid;
-
+    String ShareURL = request.getServerName() + ":" + request.getServerPort() + "/v=" + videoId;
+    request.setAttribute("ShareURL", ShareURL);
     //try {     TODO excepcion video no encontrado y eso
       vid = (DtVideo) port.getDtVideo(idVideo).getContenido();
       
@@ -87,8 +88,7 @@ public class ConsultaVideo extends HttpServlet {
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
     String videoId = (String) request.getParameter("VIDEO_ID");
-    String ShareURL = request.getServerName() + ":" + request.getServerPort() + "/v=" + videoId;
-    request.setAttribute("ShareURL", ShareURL);
+
     int id = Integer.parseInt(videoId);
     DtVideo vid;
     //try { TODO excepcion video no encontrado
@@ -98,11 +98,13 @@ public class ConsultaVideo extends HttpServlet {
     //  e.printStackTrace();
     //}
       DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+      if (user != null) {
       try {
         port.consultaVideo(user.getNick(), vid.getIdVideo());
       } catch (NotFoundException_Exception exception) {
         // TODO Auto-generated catch block
         exception.printStackTrace();
+      }
       }
     request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
   }

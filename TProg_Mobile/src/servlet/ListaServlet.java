@@ -10,12 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import interfaces.Fabrica;
-import interfaces.IUsuariosCanales;
 import servicios.DtLista;
 import servicios.DtUniversal;
 import servicios.DtUsuario;
-import servicios.DtVideo;
 import servicios.Publicador;
 import servicios.PublicadorService;
 import utils.EstadoSesion;

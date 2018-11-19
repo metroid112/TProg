@@ -201,12 +201,12 @@ public class QuitarVideo extends JInternalFrame {
         boolean checkVideo = true;
 
         if (comboBoxUsuario.getSelectedItem() == "") {
-          JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error",
+          JOptionPane.showMessageDialog(null, "No has seleccionado ningun usuario", "Error",
               JOptionPane.ERROR_MESSAGE);
           checkUsuario = false;
         }
         if (comboBoxVideos.getSelectedItem() == "") {
-          JOptionPane.showMessageDialog(null, "No has seleccionado ningún video", "Error",
+          JOptionPane.showMessageDialog(null, "No has seleccionado ningun video", "Error",
               JOptionPane.ERROR_MESSAGE);
           checkUsuario = false;
         }

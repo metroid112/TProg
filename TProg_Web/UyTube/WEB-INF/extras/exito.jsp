@@ -13,6 +13,6 @@
 			<% } %>
 	</b></h1>
 	<br>
-	<h2> <b> Se redirigirá al inicio en 3 segundos...</b></h2>
+	<h2> <b> Se redirigira al inicio en 3 segundos...</b></h2>
 </body>
 </html>

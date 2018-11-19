@@ -13,12 +13,10 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import servicios.DtUsuario;
-import servicios.DtVideo;
-import excepciones.NotFoundException;
 import interfaces.Fabrica;
 import interfaces.IUsuariosCanales;
-import interfaces.IVideos;
+import servicios.DtUsuario;
+import servicios.DtVideo;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -35,7 +33,6 @@ public class ConsultaVideo extends HttpServlet {
       throws ServletException, IOException, DatatypeConfigurationException {
 
     //IVideos ctrVideos = Fabrica.getIVideos();
-    IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
     String videoId = (String) request.getParameter("VIDEO_ID");
