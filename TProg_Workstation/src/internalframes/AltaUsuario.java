@@ -426,6 +426,8 @@ public class AltaUsuario extends JInternalFrame {
         } catch (Exception ex) {
           throw new Exception("Formato de fecha incorrecto", ex);
         }
+        if(nombreCanal.isEmpty())
+          nombreCanal = nick;
         ctrlUsu.altaUsuario(nick, nombre, apellido, correo, nacimiento, byteImagen, nombreCanal,
             descripcion, categoria, privado, contrasena);
 
