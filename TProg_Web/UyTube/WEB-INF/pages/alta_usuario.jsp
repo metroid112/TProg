@@ -12,7 +12,7 @@
 		<jsp:include page="/WEB-INF/extras/sidebar.jsp" />
 		<div class="contenido">
 				<% if (request.getAttribute("ERROR_PASS") != null && (boolean) request.getAttribute("ERROR_PASS")) { %>
-					<h2>La contraseñas no coinciden.</h2>
+					<h2>Las passwords no coinciden.</h2>
 				<% } %>
 				<% if (request.getAttribute("ERROR_NICK") != null && (boolean) request.getAttribute("ERROR_PASS")) { %>
 					<h2>El nick ya esta siendo usado.</h2>
@@ -31,21 +31,21 @@
 				<br>
 				Fecha de nacimiento: <input type="date" name="fecha" required>*
 				<br>
-				Contrase�a: <input type="password" name="pass" id="pass" required>*
+				Contraseña: <input type="password" name="pass" id="pass" required>*
 				<br>
-				Confirmar contrase�a: <input type="password" name="passConfirm" id="passConfirm" required>* <span id="passCoinciden" style="font-size: small;"></span>
+				Confirmar contraseña: <input type="password" name="passConfirm" id="passConfirm" required>* <span id="passCoinciden" style="font-size: small;"></span>
 				<br>
 				Imagen: <input type="file" name="img" accept="image/*">
 				<br>
 				Nombre del canal: <input type="text" name="nombreCanal">
 				<br>
-				Descripci�n del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
+				Descripción del canal: <textarea rows="5" cols="35" form="formAltaUsuario" name="descripcion"></textarea>
 				<br>
-				Visibilidad: <input type="radio" name="visibilidad" value="privado" checked>Privado  <input type="radio" name="visibilidad">Público
+				Visibilidad: <input type="radio" name="visibilidad" value="privado" checked>Privado  <input type="radio" name="visibilidad">Publico
 				<br>
-				Categor�a:
+				Categoría:
 				<select name="categoria">
-					<option selected>Sin categor�a</option>
+					<option selected>Sin categoría</option>
 				<% for (String cat : (List<String>) request.getAttribute("CATEGORIAS")) { %>
 					<option value="<%= cat %>"><%= cat %> </option>
 				<% } %>
@@ -105,7 +105,7 @@ $(document).ready(function() {
 		var passConfirm = $("#passConfirm").val();
 		deshab3 = (pass != passConfirm);
 		if (deshab3) {
-			$("#passCoinciden").text("Las contrase�as no coinciden");
+			$("#passCoinciden").text("Las contraseñas no coinciden");
 			$("#passCoinciden").css("color", "red");
 		} else {
 			$("#passCoinciden").text("");
@@ -117,7 +117,7 @@ $(document).ready(function() {
 		var passConfirm = $("#passConfirm").val();
 		deshab3 = (pass != passConfirm);
 		if (deshab3) {
-			$("#passCoinciden").text("Las contrase�as no coinciden");
+			$("#passCoinciden").text("Las contraseñas no coinciden");
 			$("#passCoinciden").css("color", "red");
 		} else {
 			$("#passCoinciden").text("");
