@@ -35,7 +35,7 @@ public class CtrlVideos implements IVideos {
       throws DuplicateClassException, NotFoundException {  
     Categoria categoria = manejadorCategoria.get(nombreCategoria);
     if (categoria == null) {
-      throw new NotFoundException("Categor�a " + nombreCategoria);
+      throw new NotFoundException("Categoría " + nombreCategoria);
     }
     Usuario user = manejadorUsuario.get(nick);
     if (user == null) {
