@@ -79,13 +79,13 @@ public class AltaCategoria extends JInternalFrame {
 
   protected void cmdAltaCategcoriaActionPerformed(ActionEvent e) {
     if (textField.getText().isEmpty()) {
-      JOptionPane.showMessageDialog(this, "La categoria no puede ser vac�a");
+      JOptionPane.showMessageDialog(this, "La categoria no puede ser vacia");
     } else {
       try {
         ctrlCat = Fabrica.getICategorias();
         String texto = textField.getText();
         ctrlCat.altaCategoria(texto);
-        // Muestro éxito de la operación
+        // Muestro Ã©xito de la operaciÃ³n
         JOptionPane.showMessageDialog(this, "La categoria se ha creado con exito");
         textField.setText("");
         setVisible(false);

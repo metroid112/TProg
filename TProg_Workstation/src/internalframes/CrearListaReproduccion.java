@@ -164,7 +164,7 @@ public class CrearListaReproduccion extends JInternalFrame {
 
         if (rdbtnParticular.isSelected()) {
           if (comboBoxUsuario.getSelectedItem() == "") {
-            JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error",
+            JOptionPane.showMessageDialog(null, "No has seleccionado ningun usuario", "Error",
                 JOptionPane.ERROR_MESSAGE);
             checkUsuario = false;
           }
@@ -209,7 +209,7 @@ public class CrearListaReproduccion extends JInternalFrame {
   private boolean checkNombre() {
 
     if (textFieldNombre.getText().isEmpty()) {
-      JOptionPane.showMessageDialog(null, "El nombre de lista no puede ser vacío", "Error",
+      JOptionPane.showMessageDialog(null, "El nombre de lista no puede ser vacio", "Error",
           JOptionPane.ERROR_MESSAGE);
       return false;
     }

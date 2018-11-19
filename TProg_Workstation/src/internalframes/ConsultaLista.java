@@ -342,7 +342,7 @@ public class ConsultaLista extends JInternalFrame {
   boolean checkUsuario() {
 
     if (modelUsuario.getSelectedItem() == "") {
-      JOptionPane.showMessageDialog(null, "No has seleccionado ning�n usuario", "Error",
+      JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error",
           JOptionPane.ERROR_MESSAGE);
       return false;
     }

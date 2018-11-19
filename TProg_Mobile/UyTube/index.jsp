@@ -32,13 +32,13 @@ if (cookies != null) {
 			<div class="col-2">
 			</div>
 				<div class="col-8">
-					<p>Iniciar Sesión					</p>
+					<p>Iniciar SesiÃ³n</p>
 					<form class="login" action="login" method="POST">
 					  <div class="form-group">
 					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo o nickname" name="nickname" value=<%=name%>>
 					  </div>
 					  <div class="form-group">
-					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="pass"value=<%=pass%>>
+					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="ContraseÃ±a" name="pass"value=<%=pass%>>
 					  </div>
 					  <%
 							if (request.getSession().getAttribute("LOGIN").equals(EstadoSesion.LOGIN_INCORRECTO)) { %>
