@@ -198,7 +198,7 @@ public class ModificarListaReproduccion extends JInternalFrame {
   boolean checkUsuario() {
 
     if (modelUsuario.getSelectedItem() == "") {
-      JOptionPane.showMessageDialog(null, "No has seleccionado ningún usuario", "Error",
+      JOptionPane.showMessageDialog(null, "No has seleccionado ningun usuario", "Error",
           JOptionPane.ERROR_MESSAGE);
       return false;
     }
