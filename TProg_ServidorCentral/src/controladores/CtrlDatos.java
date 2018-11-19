@@ -554,11 +554,11 @@ public class CtrlDatos implements IDatos {
           "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
       Fabrica.getIVideos().altaVideo("nicoJ", "Entrevista a director CUTI",
           "Segunda parte de la entrevista realizada por la periodista "
-              + "Paula Echevarr�a al director de CUTI",
+              + "Paula Echevarría al director de CUTI",
           Duration.parse("PT5M39S"), "https://youtu.be/Eq5uBEzI6qs", "Ciencia y Tecnología",
           format.parse("03/04/2017"), true);
       Fabrica.getIVideos().altaVideo("nicoJ", V16.nombre,
-          "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis medicos. Los datos se desprenden del Panorama de la Educación 2014 del anuario del Ministerio de Educación y Cultura. Ese año egresaron de la Universidad de la República 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, según sostienen desde la Facultad de Ingeniería, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundación Julio Ricaldoni, María Simón.",
+          "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis medicos. Los datos se desprenden del Panorama de la Educación 2014 del anuario del Ministerio de Educación y Cultura. Ese año egresaron de la Universidad de la República 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, según sostienen desde la Facultad de Ingeniería, ese número sigue siendo insuficiente y el déficit de profesionales puede significar una traba para el desarrollo del país. De ese desafío hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompaña la decana de esa casa de estudios y presidente de la Fundación Julio Ricaldoni, María Simón.",
           Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnología",
           format.parse("20/07/2016"), true);
 
