@@ -15,6 +15,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import servicios.DtUsuario;
 import servicios.DtVideo;
+import servicios.NotFoundException_Exception;
 import servicios.Publicador;
 import servicios.PublicadorService;
 
@@ -96,7 +97,13 @@ public class ConsultaVideo extends HttpServlet {
     //} catch (NotFoundException e) {
     //  e.printStackTrace();
     //}
-      port.consultaVideo(vid.getIdVideo());
+      DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+      try {
+        port.consultaVideo(user.getNick(), vid.getIdVideo());
+      } catch (NotFoundException_Exception exception) {
+        // TODO Auto-generated catch block
+        exception.printStackTrace();
+      }
     request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
   }
 
