@@ -3,7 +3,6 @@ package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for dtLista complex type.
+ * <p>Clase Java para dtLista complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtLista"&gt;
@@ -99,7 +98,7 @@ public class DtLista
     }
 
     /**
-     * Gets the value of the nombre property.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
@@ -111,7 +110,7 @@ public class DtLista
     }
 
     /**
-     * Sets the value of the nombre property.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +122,7 @@ public class DtLista
     }
 
     /**
-     * Gets the value of the tipo property.
+     * Obtiene el valor de la propiedad tipo.
      * 
      * @return
      *     possible object is
@@ -135,7 +134,7 @@ public class DtLista
     }
 
     /**
-     * Sets the value of the tipo property.
+     * Define el valor de la propiedad tipo.
      * 
      * @param value
      *     allowed object is
@@ -205,7 +204,7 @@ public class DtLista
     }
 
     /**
-     * Gets the value of the visible property.
+     * Obtiene el valor de la propiedad visible.
      * 
      */
     public boolean isVisible() {
@@ -213,7 +212,7 @@ public class DtLista
     }
 
     /**
-     * Sets the value of the visible property.
+     * Define el valor de la propiedad visible.
      * 
      */
     public void setVisible(boolean value) {
@@ -221,7 +220,7 @@ public class DtLista
     }
 
     /**
-     * Gets the value of the ultimaActividad property.
+     * Obtiene el valor de la propiedad ultimaActividad.
      * 
      * @return
      *     possible object is
@@ -233,7 +232,7 @@ public class DtLista
     }
 
     /**
-     * Sets the value of the ultimaActividad property.
+     * Define el valor de la propiedad ultimaActividad.
      * 
      * @param value
      *     allowed object is
@@ -245,7 +244,7 @@ public class DtLista
     }
 
     /**
-     * Gets the value of the idLista property.
+     * Obtiene el valor de la propiedad idLista.
      * 
      */
     public int getIdLista() {
@@ -253,7 +252,7 @@ public class DtLista
     }
 
     /**
-     * Sets the value of the idLista property.
+     * Define el valor de la propiedad idLista.
      * 
      */
     public void setIdLista(int value) {
@@ -261,7 +260,7 @@ public class DtLista
     }
 
     /**
-     * Gets the value of the nombreOwner property.
+     * Obtiene el valor de la propiedad nombreOwner.
      * 
      * @return
      *     possible object is
@@ -273,7 +272,7 @@ public class DtLista
     }
 
     /**
-     * Sets the value of the nombreOwner property.
+     * Define el valor de la propiedad nombreOwner.
      * 
      * @param value
      *     allowed object is

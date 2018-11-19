@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dtCalificacion complex type.
+ * <p>Clase Java para dtCalificacion complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtCalificacion"&gt;
@@ -40,7 +40,7 @@ public class DtCalificacion {
     protected String video;
 
     /**
-     * Gets the value of the like property.
+     * Obtiene el valor de la propiedad like.
      * 
      */
     public boolean isLike() {
@@ -48,7 +48,7 @@ public class DtCalificacion {
     }
 
     /**
-     * Sets the value of the like property.
+     * Define el valor de la propiedad like.
      * 
      */
     public void setLike(boolean value) {
@@ -56,7 +56,7 @@ public class DtCalificacion {
     }
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -68,7 +68,7 @@ public class DtCalificacion {
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -80,7 +80,7 @@ public class DtCalificacion {
     }
 
     /**
-     * Gets the value of the video property.
+     * Obtiene el valor de la propiedad video.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class DtCalificacion {
     }
 
     /**
-     * Sets the value of the video property.
+     * Define el valor de la propiedad video.
      * 
      * @param value
      *     allowed object is

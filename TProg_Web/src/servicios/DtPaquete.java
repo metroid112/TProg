@@ -3,7 +3,6 @@ package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -11,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dtPaquete complex type.
+ * <p>Clase Java para dtPaquete complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtPaquete"&gt;
@@ -46,7 +45,7 @@ public class DtPaquete {
     protected List<DtUniversal> listaDt;
 
     /**
-     * Gets the value of the contenido property.
+     * Obtiene el valor de la propiedad contenido.
      * 
      * @return
      *     possible object is
@@ -58,7 +57,7 @@ public class DtPaquete {
     }
 
     /**
-     * Sets the value of the contenido property.
+     * Define el valor de la propiedad contenido.
      * 
      * @param value
      *     allowed object is

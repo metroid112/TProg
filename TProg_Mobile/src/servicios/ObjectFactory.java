@@ -26,6 +26,7 @@ public class ObjectFactory {
 
     private final static QName _DuplicateClassException_QNAME = new QName("http://servicios/", "DuplicateClassException");
     private final static QName _InvalidDataException_QNAME = new QName("http://servicios/", "InvalidDataException");
+    private final static QName _NotFoundException_QNAME = new QName("http://servicios/", "NotFoundException");
     private final static QName _Imagen_QNAME = new QName("http://servicios/", "imagen");
 
     /**
@@ -49,6 +50,14 @@ public class ObjectFactory {
      */
     public InvalidDataException createInvalidDataException() {
         return new InvalidDataException();
+    }
+
+    /**
+     * Create an instance of {@link NotFoundException }
+     * 
+     */
+    public NotFoundException createNotFoundException() {
+        return new NotFoundException();
     }
 
     /**
@@ -124,6 +133,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Historial }
+     * 
+     */
+    public Historial createHistorial() {
+        return new Historial();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DuplicateClassException }{@code >}}
      * 
      */
@@ -139,6 +156,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://servicios/", name = "InvalidDataException")
     public JAXBElement<InvalidDataException> createInvalidDataException(InvalidDataException value) {
         return new JAXBElement<InvalidDataException>(_InvalidDataException_QNAME, InvalidDataException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NotFoundException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicios/", name = "NotFoundException")
+    public JAXBElement<NotFoundException> createNotFoundException(NotFoundException value) {
+        return new JAXBElement<NotFoundException>(_NotFoundException_QNAME, NotFoundException.class, null, value);
     }
 
     /**

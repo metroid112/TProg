@@ -3,7 +3,6 @@ package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for dtComentario complex type.
+ * <p>Clase Java para dtComentario complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtComentario"&gt;
@@ -86,7 +85,7 @@ public class DtComentario {
     }
 
     /**
-     * Gets the value of the idComentario property.
+     * Obtiene el valor de la propiedad idComentario.
      * 
      */
     public int getIdComentario() {
@@ -94,7 +93,7 @@ public class DtComentario {
     }
 
     /**
-     * Sets the value of the idComentario property.
+     * Define el valor de la propiedad idComentario.
      * 
      */
     public void setIdComentario(int value) {
@@ -102,7 +101,7 @@ public class DtComentario {
     }
 
     /**
-     * Gets the value of the texto property.
+     * Obtiene el valor de la propiedad texto.
      * 
      * @return
      *     possible object is
@@ -114,7 +113,7 @@ public class DtComentario {
     }
 
     /**
-     * Sets the value of the texto property.
+     * Define el valor de la propiedad texto.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +125,7 @@ public class DtComentario {
     }
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -138,7 +137,7 @@ public class DtComentario {
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +149,7 @@ public class DtComentario {
     }
 
     /**
-     * Gets the value of the fecha property.
+     * Obtiene el valor de la propiedad fecha.
      * 
      * @return
      *     possible object is
@@ -162,7 +161,7 @@ public class DtComentario {
     }
 
     /**
-     * Sets the value of the fecha property.
+     * Define el valor de la propiedad fecha.
      * 
      * @param value
      *     allowed object is
@@ -174,7 +173,7 @@ public class DtComentario {
     }
 
     /**
-     * Gets the value of the tieneHijos property.
+     * Obtiene el valor de la propiedad tieneHijos.
      * 
      */
     public boolean isTieneHijos() {
@@ -182,7 +181,7 @@ public class DtComentario {
     }
 
     /**
-     * Sets the value of the tieneHijos property.
+     * Define el valor de la propiedad tieneHijos.
      * 
      */
     public void setTieneHijos(boolean value) {

@@ -3,7 +3,6 @@ package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -13,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for dtVideo complex type.
+ * <p>Clase Java para dtVideo complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtVideo"&gt;
@@ -208,7 +207,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the duracion property.
+     * Obtiene el valor de la propiedad duracion.
      * 
      * @return
      *     possible object is
@@ -220,7 +219,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the duracion property.
+     * Define el valor de la propiedad duracion.
      * 
      * @param value
      *     allowed object is
@@ -232,7 +231,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the duracionSegundos property.
+     * Obtiene el valor de la propiedad duracionSegundos.
      * 
      */
     public long getDuracionSegundos() {
@@ -240,7 +239,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the duracionSegundos property.
+     * Define el valor de la propiedad duracionSegundos.
      * 
      */
     public void setDuracionSegundos(long value) {
@@ -248,7 +247,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the fecha property.
+     * Obtiene el valor de la propiedad fecha.
      * 
      * @return
      *     possible object is
@@ -260,7 +259,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the fecha property.
+     * Define el valor de la propiedad fecha.
      * 
      * @param value
      *     allowed object is
@@ -272,7 +271,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the usuario property.
+     * Obtiene el valor de la propiedad usuario.
      * 
      * @return
      *     possible object is
@@ -284,7 +283,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the usuario property.
+     * Define el valor de la propiedad usuario.
      * 
      * @param value
      *     allowed object is
@@ -296,7 +295,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the nombre property.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
@@ -308,7 +307,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the nombre property.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
@@ -320,7 +319,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the urlVideo property.
+     * Obtiene el valor de la propiedad urlVideo.
      * 
      * @return
      *     possible object is
@@ -332,7 +331,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the urlVideo property.
+     * Define el valor de la propiedad urlVideo.
      * 
      * @param value
      *     allowed object is
@@ -344,7 +343,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the youtubeId property.
+     * Obtiene el valor de la propiedad youtubeId.
      * 
      * @return
      *     possible object is
@@ -356,7 +355,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the youtubeId property.
+     * Define el valor de la propiedad youtubeId.
      * 
      * @param value
      *     allowed object is
@@ -368,7 +367,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the urlThumbnail property.
+     * Obtiene el valor de la propiedad urlThumbnail.
      * 
      * @return
      *     possible object is
@@ -380,7 +379,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the urlThumbnail property.
+     * Define el valor de la propiedad urlThumbnail.
      * 
      * @param value
      *     allowed object is
@@ -392,7 +391,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the descripcion property.
+     * Obtiene el valor de la propiedad descripcion.
      * 
      * @return
      *     possible object is
@@ -404,7 +403,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the descripcion property.
+     * Define el valor de la propiedad descripcion.
      * 
      * @param value
      *     allowed object is
@@ -416,7 +415,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the categoria property.
+     * Obtiene el valor de la propiedad categoria.
      * 
      * @return
      *     possible object is
@@ -428,7 +427,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the categoria property.
+     * Define el valor de la propiedad categoria.
      * 
      * @param value
      *     allowed object is
@@ -440,7 +439,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the visible property.
+     * Obtiene el valor de la propiedad visible.
      * 
      */
     public boolean isVisible() {
@@ -448,7 +447,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the visible property.
+     * Define el valor de la propiedad visible.
      * 
      */
     public void setVisible(boolean value) {
@@ -456,7 +455,7 @@ public class DtVideo
     }
 
     /**
-     * Gets the value of the idVideo property.
+     * Obtiene el valor de la propiedad idVideo.
      * 
      */
     public int getIdVideo() {
@@ -464,7 +463,7 @@ public class DtVideo
     }
 
     /**
-     * Sets the value of the idVideo property.
+     * Define el valor de la propiedad idVideo.
      * 
      */
     public void setIdVideo(int value) {

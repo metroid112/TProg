@@ -45,6 +45,7 @@ public class Publicador {
       try {
         Properties prop = new Properties();
         InputStream in = new FileInputStream("/ens/home01/f/francisco.crocamo/.UyTube/config.properties");
+        //InputStream in = new FileInputStream("config.properties");
         prop.load(in);
         endpoint = Endpoint.publish(prop.getProperty("wsdlURL"), this);
         in.close();
