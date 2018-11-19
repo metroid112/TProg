@@ -33,7 +33,6 @@ public class ConsultaVideo extends HttpServlet {
       throws ServletException, IOException, DatatypeConfigurationException {
 
     //IVideos ctrVideos = Fabrica.getIVideos();
-    IUsuariosCanales ctrUsuariosCanales = Fabrica.getIUsuariosCanales();
     PublicadorService service = new PublicadorService();
     Publicador port = service.getPublicadorPort();
     String videoId = (String) request.getParameter("VIDEO_ID");
