@@ -45,6 +45,7 @@ public class ConsultaLista extends JInternalFrame {
   private JLabel lVisible;
   private InfoVideo infoVid;
   private JList<String> listaCategorias;
+  
   private List<DtVideo> videos = new LinkedList<DtVideo>();
   private List<DtLista> listas = new LinkedList<DtLista>();
 
@@ -55,7 +56,7 @@ public class ConsultaLista extends JInternalFrame {
 
   public ConsultaLista() {
 
-    setTitle("Conultar lista");
+    setTitle("Consultar lista");
     setBounds(0, 0, 580, 500);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     JPanel panelSeleccion = new JPanel();
@@ -351,21 +352,23 @@ public class ConsultaLista extends JInternalFrame {
 
   private void cargaDatosLista(boolean listaParticular) {
     
+    DtLista dtLista;
     ctrVid = Fabrica.getIVideos();
     String lista = list.getSelectedValue();
     String usuario = (String) comboBoxUsuario.getSelectedItem();
     videos.clear();
     
     if(usuario != null)
-    videos = ctrVid.getDtVideosPropietario(usuario);
+    
     
     try {
-      DtLista dtLista;
+      
       if(listaParticular){
       dtLista = ctrLis.getDt(obtenerListaId(lista));
       }
       else dtLista = ctrLis.getDtDefecto(usuario,lista);
-        
+       
+      videos = dtLista.getDtVideos();
       if (dtLista.isVisible()) {
         lVisible.setText("Publico");
       } else {
