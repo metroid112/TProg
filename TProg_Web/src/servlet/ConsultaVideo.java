@@ -98,11 +98,13 @@ public class ConsultaVideo extends HttpServlet {
     //  e.printStackTrace();
     //}
       DtUsuario user = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+      if (user != null) {
       try {
         port.consultaVideo(user.getNick(), vid.getIdVideo());
       } catch (NotFoundException_Exception exception) {
         // TODO Auto-generated catch block
         exception.printStackTrace();
+      }
       }
     request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
   }
