@@ -53,18 +53,21 @@
 			<br>
 			<div class="highlights">
 				<% List<String> listaCategorias = (List<String>) lista.getCategorias();
-				for (String cat : listaCategorias) { %>
-				<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=cat%>').submit();">
-					<form id="Form<%=cat%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="POST">
-						<input type="hidden" name="CATEGORIA" value="<%=cat%>">
-						<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
-						<header>
-						<%= cat %>
-						</header>
-					</form>
-				</div>
-				<br>
-				<% } } %>
+				if (listaCategorias.isEmpty()) { %>
+					<h6>No hay categorias</h6>
+				<% } else { 
+					for (String cat : listaCategorias) { %>
+					<div class="detalleClickeableCategoria"onclick="document.getElementById('Form<%=cat%>').submit();">
+						<form id="Form<%=cat%>" class="detClickeableCategoria" action="ConsultaDeCategoria" method="POST">
+							<input type="hidden" name="CATEGORIA" value="<%=cat%>">
+							<img class="icon" width="30%" alt="DetalleVideo" src="img/categoria.png">
+							<header>
+							<%= cat %>
+							</header>
+						</form>
+					</div>
+					<br>
+				<% }}} %>
 			</div>
 		</div>
 		</div>
