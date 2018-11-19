@@ -29,7 +29,9 @@
 				<select required name="lista">
 					<option value="" disabled selected hidden>Seleccione una lista</option>
 					<% for (String listasPorDefecto : (List<String>) request.getAttribute("LISTAS_POR_DEFECTO")) { %>
+						<% if (!listasPorDefecto.equals("Historial")) { %>
 						<option value="D<%= listasPorDefecto %>" ><%= listasPorDefecto + " - Defecto" %></option>
+						<% } %>
 					<% } %>
 					<% for (String listasParticulares : (List<String>) request.getAttribute("LISTAS_PARTICULARES")) { %>
 						<option value="P<%= listasParticulares %>"><%= listasParticulares + " - Particular" %></option>

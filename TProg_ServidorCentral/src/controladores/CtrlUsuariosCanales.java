@@ -10,6 +10,8 @@ import clases.Canal;
 import clases.Categoria;
 import clases.Comentario;
 import clases.Imagen;
+import clases.Lista;
+import clases.ListaDefecto;
 import clases.ListaDefecto;
 import clases.ListaParticular;
 import clases.Usuario;

@@ -487,6 +487,16 @@ public class Publicador {
     }
   }
   
+  @WebMethod
+  public void consultaVideo(String nick, int idVideo) throws NotFoundException {
+    Fabrica.getIVideos().consultarVideo(idVideo, nick);
+  }
+  
+  @WebMethod
+  public DtPaquete historialVideo(int idVideo, String nickUsuario) throws NotFoundException {
+    return empaquetar(Fabrica.getIVideos().historialVideo(idVideo, nickUsuario));
+  }
+
   /**
    * Empaqueta un data type generico
    * @param contenido

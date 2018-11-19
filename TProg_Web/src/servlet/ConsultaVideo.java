@@ -96,7 +96,7 @@ public class ConsultaVideo extends HttpServlet {
     //} catch (NotFoundException e) {
     //  e.printStackTrace();
     //}
-
+      port.consultaVideo(vid.getIdVideo());
     request.getRequestDispatcher("WEB-INF/pages/consulta_video.jsp").forward(request, response);
   }
 

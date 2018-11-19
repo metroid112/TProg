@@ -528,7 +528,7 @@ public class CtrlDatos implements IDatos {
           "TORNEO CLAUSURA 2018\nFECHA 1.....",
           Duration.parse("PT4M23S"), "https://youtu.be/g46w4_kD_lA", "Deporte",
           format.parse("23/07/2018"), true);
-      Fabrica.getIVideos().altaVideo("juliob", "Inauguracion Estadio Peñarol",
+      Fabrica.getIVideos().altaVideo("juliob", V13.nombre,
           "Recordemos la ceremonia de inauguración del Estadio de Peñarol.\nLlamado \""
               + "Estadio Campeón del Siglo\".",
           Duration.parse("PT3H27M26S"), "https://youtu.be/U6XPJ8Vz72A", "Deporte",
@@ -549,7 +549,7 @@ public class CtrlDatos implements IDatos {
           "My Favorites\n\n\"El Chino\"",
           Duration.parse("PT13M36S"), "https://youtu.be/Gy3fZhWdLEQ", "Deporte",
           format.parse("14/11/2011"), false);
-      Fabrica.getIVideos().altaVideo("tonyp", "Pacheco goles mas recordados", "",
+      Fabrica.getIVideos().altaVideo("tonyp", V12b.nombre, "",
           Duration.parse("PT5M48S"),
           "https://youtu.be/wlEd6-HsIxI", "Deporte", format.parse("05/07/2013"), false);
       Fabrica.getIVideos().altaVideo("nicoJ", "Entrevista a director CUTI",
@@ -557,7 +557,7 @@ public class CtrlDatos implements IDatos {
               + "Paula Echevarr�a al director de CUTI",
           Duration.parse("PT5M39S"), "https://youtu.be/Eq5uBEzI6qs", "Ciencia y Tecnología",
           format.parse("03/04/2017"), true);
-      Fabrica.getIVideos().altaVideo("nicoJ", "Ventana al futuro Uruguay y deficit de ingenieros",
+      Fabrica.getIVideos().altaVideo("nicoJ", V16.nombre,
           "VEA ESTE CONTENIDO EN EnPerspectiva.net: http://www.enperspectiva.net/en-persp...\n\nEn Uruguay hay un ingeniero por cada tres abogados y cada seis medicos. Los datos se desprenden del Panorama de la Educación 2014 del anuario del Ministerio de Educación y Cultura. Ese año egresaron de la Universidad de la República 348 ingenieros, una cifra que supone un leve aumento con respecto a los anteriores.\n\nSin embargo, según sostienen desde la Facultad de Ingeniería, ese n�mero sigue siendo insuficiente y el d�ficit de profesionales puede significar una traba para el desarrollo del pa�s. De ese desaf�o hablaremos en esta nueva entrega de Ventana al Futuro; para eso nos acompa�a la decana de esa casa de estudios y presidente de la Fundación Julio Ricaldoni, María Simón.",
           Duration.parse("PT192M1S"), "https://youtu.be/zBR2pnASlQE", "Ciencia y Tecnología",
           format.parse("20/07/2016"), true);
@@ -569,14 +569,17 @@ public class CtrlDatos implements IDatos {
       ListaDefectoBean LD1 = new ListaDefectoBean();
       ListaDefectoBean LD2 = new ListaDefectoBean();
       ListaDefectoBean LD3 = new ListaDefectoBean();
+      ListaDefectoBean LD4 = new ListaDefectoBean();
 
       LD1.nombre = "Escuchar más tarde";
       LD2.nombre = "Deporte total";
       LD3.nombre = "Novedades generales";
+      LD4.nombre = "Historial";
 
       Fabrica.getIListas().altaListaDefecto(LD1.nombre);
       Fabrica.getIListas().altaListaDefecto(LD2.nombre);
       Fabrica.getIListas().altaListaDefecto(LD3.nombre);
+      Fabrica.getIListas().altaListaDefecto(LD4.nombre);
 
       class ListaParticularBean {
         public String nombre;
@@ -661,17 +664,17 @@ public class CtrlDatos implements IDatos {
           "De todo un poco", false);
       Fabrica.getIListas().agregarVideoLista("cachilas", "Etapa Don Timoteo Liguilla", "cachilas",
           "De todo un poco", false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol",
+      Fabrica.getIListas().agregarVideoLista("juliob", V13.nombre,
           "cachilas",
           "De todo un poco", false);
       Fabrica.getIListas().agregarVideoLista("hectorg", V8.nombre, "nicoJ",
           "Noticias y CYT", false);
       Fabrica.getIListas().agregarVideoLista("nicoJ",
-          "Ventana al futuro Uruguay y deficit de ingenieros",
+          V16.nombre,
           "nicoJ", "Noticias y CYT", false);
       Fabrica.getIListas().agregarVideoLista("juliob", "Show de goles", "juliob", "Solo deportes",
           false);
-      Fabrica.getIListas().agregarVideoLista("juliob", "Inauguracion Estadio Peñarol", "juliob",
+      Fabrica.getIListas().agregarVideoLista("juliob", V13.nombre, "juliob",
           "Solo deportes", false);
 
       DateFormat formatComentario = new SimpleDateFormat("dd/mm/yyyy HH:mm");
@@ -689,7 +692,7 @@ public class CtrlDatos implements IDatos {
           formatComentario.parse("23/10/2017 12:58"), "kairoh", V8.nombre,
           "hectorg");
       Fabrica.getIUsuariosCanales().comentarVideo("Peñarol Peñarol!!!",
-          formatComentario.parse("14/11/2016 05:34"), "kairoh", "Inauguracion Estadio Peñarol",
+          formatComentario.parse("14/11/2016 05:34"), "kairoh", V13.nombre,
           "juliob");
       Fabrica.getIUsuariosCanales().comentarVideo("Rock and Rolllll",
           formatComentario.parse("30/10/2017 02:17"), "marcelot", "Sweet child'o mine", "kairoh");
@@ -711,11 +714,82 @@ public class CtrlDatos implements IDatos {
       Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", false, "Locura celeste", "cachilas");
       Fabrica.getIUsuariosCanales().valorarVideo("nicoJ", true, V7.nombre, "hectorg");
       Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, V7.nombre, "hectorg");
-      Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, "Inauguracion Estadio Peñarol",
+      Fabrica.getIUsuariosCanales().valorarVideo("kairoh", true, V13.nombre,
           "juliob");
       Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Locura celeste", "tabarec");
       Fabrica.getIUsuariosCanales().valorarVideo("marcelot", true, "Dancing in the Dark",
           "kairoh");
+      
+      ManejadorUsuarios mU = ManejadorUsuarios.getManejadorUsuarios();
+      ManejadorVideos mV   = ManejadorVideos.getManejadorVideos();
+      
+      mU.get(HR.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 2);
+      mU.get(HR.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 4);
+      
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 5);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 5);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V5a.owner, V5a.nombre), 4);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V5b.owner, V5b.nombre), 4);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 1);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 1);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V8.owner, V8.nombre), 1);
+      mU.get(MB.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 3);
+      
+      mU.get(HG.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 1);
+      mU.get(HG.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 1);
+      mU.get(HG.nick).getCanal().consultarVideo(mV.returnId(V8.owner, V8.nombre), 1);
+      mU.get(HG.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 10);
+  
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V1a.owner, V1a.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V1b.owner, V1b.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V2a.owner, V2a.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V2b.owner, V2b.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V12a.owner, V12a.nombre), 1);
+      mU.get(TC.nick).getCanal().consultarVideo(mV.returnId(V12b.owner, V12b.nombre), 1);
+      
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V1a.owner, V1a.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V1b.owner, V1b.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V2a.owner, V2a.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V2b.owner, V2b.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 20);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 20);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V9.owner, V9.nombre), 1);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V10.owner, V10.nombre), 2);
+      mU.get(CS.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 5);
+      
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 1);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 1);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V5a.owner, V5a.nombre), 1);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V5b.owner, V5b.nombre), 1);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 2);
+      mU.get(JB.nick).getCanal().consultarVideo(mV.returnId(V13.owner, V13.nombre), 2);
+  
+      mU.get(DP.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 2);
+      mU.get(DP.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 2);
+      mU.get(DP.nick).getCanal().consultarVideo(mV.returnId(V5a.owner, V5a.nombre), 1);
+      mU.get(DP.nick).getCanal().consultarVideo(mV.returnId(V5b.owner, V5b.nombre), 1);
+      
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V3a.owner, V3a.nombre), 8);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V3b.owner, V3b.nombre), 8);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V4.owner, V4.nombre), 6);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V5a.owner, V5a.nombre), 2);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V5b.owner, V5b.nombre), 2);
+      mU.get(KH.nick).getCanal().consultarVideo(mV.returnId(V10.owner, V10.nombre), 1);
+      
+      mU.get(SP.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 5);
+      mU.get(SP.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 1);
+      mU.get(SP.nick).getCanal().consultarVideo(mV.returnId(V8.owner, V8.nombre), 1);
+      mU.get(SP.nick).getCanal().consultarVideo(mV.returnId(V11.owner, V11.nombre), 2);
+      
+      mU.get(AR.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 1);
+      
+      mU.get(AP.nick).getCanal().consultarVideo(mV.returnId(V6.owner, V6.nombre), 1);
+      
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V4.owner, V4.nombre), 8);
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V7.owner, V7.nombre), 3);
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V8.owner, V8.nombre), 21);
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V15.owner, V15.nombre), 10);
+      mU.get(NJ.nick).getCanal().consultarVideo(mV.returnId(V16.owner, V16.nombre), 4);
     }
   }
 

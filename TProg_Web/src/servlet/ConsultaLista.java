@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import servicios.DtLista;
 import servicios.DtUniversal;
 import servicios.DtUsuario;
+import servicios.DtVideo;
+import servicios.Historial;
 //import interfaces.Fabrica;
 //import interfaces.IListas;
 import servicios.Publicador;
@@ -71,7 +75,34 @@ public class ConsultaLista extends HttpServlet {
       } else {
           dtLista = (DtLista) port.getDtLista(idLista).getContenido();
       }
+      List<DtVideo> videos = dtLista.getDtVideos();
       request.setAttribute("DTLISTA", dtLista);
+      boolean esHistorial = dtLista.getNombre().equals("Historial") && dtLista.getTipo().equals("Defecto");
+      if (esHistorial) {
+        class compareReproducciones implements Comparator<DtVideo> {
+          private PublicadorService service1 = new PublicadorService();
+            private Publicador port1 = service1.getPublicadorPort();
+            
+          @Override
+          public int compare(DtVideo video1, DtVideo video2) {
+              Historial historico1 = null;
+              Historial historico2 = null;
+              DtUsuario owner = (DtUsuario) request.getSession().getAttribute("USUARIO_LOGEADO");
+              try {
+                historico1 = (Historial) this.port1.historialVideo(video1.getIdVideo(), owner.getNick()).getContenido();
+                historico2 = (Historial) this.port1.historialVideo(video2.getIdVideo(), owner.getNick()).getContenido();
+              } catch (Exception e) {
+                // TODO:
+              }
+              int repr1 = historico1.getReproducciones();
+              int repr2 = historico2.getReproducciones();
+              return repr1 > repr2 ? -1 : repr1 == repr2 ? 0 : 1;
+          }
+        }
+        Collections.sort(videos, new compareReproducciones());
+      }
+      request.setAttribute("HISTORIAL", esHistorial);
+      request.setAttribute("VIDEOS", videos);
       request.getRequestDispatcher("WEB-INF/pages/detalles_lista.jsp").forward(request, response);
     } else {
       request.getRequestDispatcher("/index.jsp").forward(request, response);

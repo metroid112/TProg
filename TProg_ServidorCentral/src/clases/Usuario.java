@@ -23,7 +23,8 @@ public class Usuario {
   private String password = "";
   private int idUsuario;
   private static int idCounter = 0;
-  private Imagen img;   //TODO null
+  private Imagen img;
+  private Map<Integer, Historial> reproducciones = new HashMap<Integer, Historial>();
 
   public Usuario(String nickname, String nombre, String apellido, String correo,
       Date fechaNacimiento, Imagen img, String password) {
@@ -173,6 +174,10 @@ public class Usuario {
 
   public String getApellido() {
     return this.apellido;
+  }
+  
+  public Map<Integer, Historial> getReproducciones() {
+    return reproducciones;
   }
 
   public List<Comentario> getComentarios() {
