@@ -448,6 +448,7 @@ public class AltaUsuario extends JInternalFrame {
     textField_2.setText("");
     textField_3.setText("");
     textField_4.setText("");
+    textField_5.setText("");
     textPane.setText("");
     dia.setText("");
     mes.setText("");
