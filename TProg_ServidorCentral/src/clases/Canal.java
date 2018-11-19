@@ -302,8 +302,9 @@ public class Canal {
     }
   }
   
-  public void consultarVideo(int idVideo, int consultas) {
+  public void consultarVideo(int idVideo, int consultas) throws NotFoundException {
     this.usuario.getReproducciones().put(idVideo, new Historial(consultas, new Date()));
+    this.usuario.getCanal().getListaDefecto().get("Historial").getVideos().add(ManejadorVideos.getManejadorVideos().getById(idVideo));
   }
 
   public void setCategoria(Categoria categoria) {
