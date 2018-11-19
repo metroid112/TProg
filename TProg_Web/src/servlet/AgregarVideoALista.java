@@ -46,7 +46,7 @@ public class AgregarVideoALista extends HttpServlet {
       try {
         port.agregarVideoLista(nombreOwnerVideo, nombreVideo, usuario, nombreLista, defecto);
         request.setAttribute("EXITO",
-            "¡Se ha agregado el video a la lista seleccionada con éxito!");
+            "Se ha agregado el video a la lista seleccionada con exito");
         request.getRequestDispatcher("/WEB-INF/extras/exito.jsp").forward(request, response);
       } catch (Exception e) {
         request.setAttribute("ERROR", "El video " + "'" + nombreVideo + "'"
