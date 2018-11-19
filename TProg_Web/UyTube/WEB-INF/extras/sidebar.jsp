@@ -47,7 +47,4 @@
 	<form action="VideoServlet" method="GET">
 		<button>Listar Videos</button>
 	</form>
-	<form action="CargaDatos" method="GET">
-		<button>Cargar Datos</button>
-	</form>
 </div>
